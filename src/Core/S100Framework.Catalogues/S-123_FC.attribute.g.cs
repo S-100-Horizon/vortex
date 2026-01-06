@@ -1883,6 +1883,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(servingMobileSatelliteService),
@@ -1904,11 +1905,21 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new mSICoastalWarningArea(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] servingMobileSatelliteService_optional { set { base.AddAttributeValue([.. value.Select(e=> new servingMobileSatelliteService { value = e })]); } }
-		public String? satelliteOceanRegion_optional { set { base.AddAttributeValue(new satelliteOceanRegion { value = value }); } }
-		public String? mSICoastalWarningArea_optional { set { base.AddAttributeValue(new mSICoastalWarningArea { value = value }); } }
+		public int?[] servingMobileSatelliteService_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new servingMobileSatelliteService { value = e })]); }
+			get { return base.GetAttributeValues<servingMobileSatelliteService>(nameof(servingMobileSatelliteService)).Select(e=>e.value).ToArray(); }
+		}
+		public String? satelliteOceanRegion_optional {
+			set { base.AddAttributeValue(new satelliteOceanRegion { value = value }); }
+			get { return base.GetAttributeValue<satelliteOceanRegion>(nameof(satelliteOceanRegion))?.value; }
+		}
+		public String? mSICoastalWarningArea_optional {
+			set { base.AddAttributeValue(new mSICoastalWarningArea { value = value }); }
+			get { return base.GetAttributeValue<mSICoastalWarningArea>(nameof(mSICoastalWarningArea))?.value; }
+		}
 		#endregion
 	}
 
@@ -1929,6 +1940,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(typeOfBroadcastContent),
@@ -1963,13 +1975,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new transmissionRegularity(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] typeOfBroadcastContent_optional { set { base.AddAttributeValue([.. value.Select(e=> new typeOfBroadcastContent { value = e })]); } }
-		public String?[] subjectOrMessageTypeCode_optional { set { base.AddAttributeValue([.. value.Select(e=> new subjectOrMessageTypeCode { value = e })]); } }
-		public String? subjectDescription_optional { set { base.AddAttributeValue(new subjectDescription { value = value }); } }
-		public S100Framework.DomainModel.S100.Time? observationTime_optional { set { base.AddAttributeValue(new observationTime { value = value }); } }
-		public int? transmissionRegularity_optional { set { base.AddAttributeValue(new transmissionRegularity { value = value }); } }
+		public int?[] typeOfBroadcastContent_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new typeOfBroadcastContent { value = e })]); }
+			get { return base.GetAttributeValues<typeOfBroadcastContent>(nameof(typeOfBroadcastContent)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] subjectOrMessageTypeCode_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new subjectOrMessageTypeCode { value = e })]); }
+			get { return base.GetAttributeValues<subjectOrMessageTypeCode>(nameof(subjectOrMessageTypeCode)).Select(e=>e.value).ToArray(); }
+		}
+		public String? subjectDescription_optional {
+			set { base.AddAttributeValue(new subjectDescription { value = value }); }
+			get { return base.GetAttributeValue<subjectDescription>(nameof(subjectDescription))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time? observationTime_optional {
+			set { base.AddAttributeValue(new observationTime { value = value }); }
+			get { return base.GetAttributeValue<observationTime>(nameof(observationTime))?.value; }
+		}
+		public int? transmissionRegularity_optional {
+			set { base.AddAttributeValue(new transmissionRegularity { value = value }); }
+			get { return base.GetAttributeValue<transmissionRegularity>(nameof(transmissionRegularity))?.value; }
+		}
 		#endregion
 	}
 
@@ -1988,6 +2016,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(deliveryPoint),
@@ -2020,13 +2049,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new postalCode(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? deliveryPoint_optional { set { base.AddAttributeValue(new deliveryPoint { value = value }); } }
-		public String? cityName_optional { set { base.AddAttributeValue(new cityName { value = value }); } }
-		public String? administrativeDivision_optional { set { base.AddAttributeValue(new administrativeDivision { value = value }); } }
-		public String? countryName_optional { set { base.AddAttributeValue(new countryName { value = value }); } }
-		public String? postalCode_optional { set { base.AddAttributeValue(new postalCode { value = value }); } }
+		public String? deliveryPoint_optional {
+			set { base.AddAttributeValue(new deliveryPoint { value = value }); }
+			get { return base.GetAttributeValue<deliveryPoint>(nameof(deliveryPoint))?.value; }
+		}
+		public String? cityName_optional {
+			set { base.AddAttributeValue(new cityName { value = value }); }
+			get { return base.GetAttributeValue<cityName>(nameof(cityName))?.value; }
+		}
+		public String? administrativeDivision_optional {
+			set { base.AddAttributeValue(new administrativeDivision { value = value }); }
+			get { return base.GetAttributeValue<administrativeDivision>(nameof(administrativeDivision))?.value; }
+		}
+		public String? countryName_optional {
+			set { base.AddAttributeValue(new countryName { value = value }); }
+			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
+		}
+		public String? postalCode_optional {
+			set { base.AddAttributeValue(new postalCode { value = value }); }
+			get { return base.GetAttributeValue<postalCode>(nameof(postalCode))?.value; }
+		}
 		#endregion
 	}
 
@@ -2045,6 +2090,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(minimumReceivedPower),
@@ -2078,13 +2124,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? minimumReceivedPower_optional { set { base.AddAttributeValue(new minimumReceivedPower { value = value }); } }
-		public double? presumedReceiverAntennaHeight_optional { set { base.AddAttributeValue(new presumedReceiverAntennaHeight { value = value }); } }
-		public double? minimumSignalToInterferenceNoiseRatio_optional { set { base.AddAttributeValue(new minimumSignalToInterferenceNoiseRatio { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public String?[] text_optional { set { base.AddAttributeValue([.. value.Select(e=> new text { value = e })]); } }
+		public double? minimumReceivedPower_optional {
+			set { base.AddAttributeValue(new minimumReceivedPower { value = value }); }
+			get { return base.GetAttributeValue<minimumReceivedPower>(nameof(minimumReceivedPower))?.value; }
+		}
+		public double? presumedReceiverAntennaHeight_optional {
+			set { base.AddAttributeValue(new presumedReceiverAntennaHeight { value = value }); }
+			get { return base.GetAttributeValue<presumedReceiverAntennaHeight>(nameof(presumedReceiverAntennaHeight))?.value; }
+		}
+		public double? minimumSignalToInterferenceNoiseRatio_optional {
+			set { base.AddAttributeValue(new minimumSignalToInterferenceNoiseRatio { value = value }); }
+			get { return base.GetAttributeValue<minimumSignalToInterferenceNoiseRatio>(nameof(minimumSignalToInterferenceNoiseRatio))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] text_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new text { value = e })]); }
+			get { return base.GetAttributeValues<text>(nameof(text)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -2107,6 +2169,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
@@ -2128,9 +2191,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new nameUsage(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? nameUsage_optional { set { base.AddAttributeValue(new nameUsage { value = value }); } }
+		public int? nameUsage_optional {
+			set { base.AddAttributeValue(new nameUsage { value = value }); }
+			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
+		}
 		#endregion
 	}
 
@@ -2149,6 +2216,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateStart),
@@ -2175,12 +2243,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new timeOfDayEnd(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? dateStart_optional { set { base.AddAttributeValue(new dateStart { value = value }); } }
-		public String? dateEnd_optional { set { base.AddAttributeValue(new dateEnd { value = value }); } }
-		public S100Framework.DomainModel.S100.Time? timeOfDayStart_optional { set { base.AddAttributeValue(new timeOfDayStart { value = value }); } }
-		public S100Framework.DomainModel.S100.Time? timeOfDayEnd_optional { set { base.AddAttributeValue(new timeOfDayEnd { value = value }); } }
+		public String? dateStart_optional {
+			set { base.AddAttributeValue(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
+		public String? dateEnd_optional {
+			set { base.AddAttributeValue(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time? timeOfDayStart_optional {
+			set { base.AddAttributeValue(new timeOfDayStart { value = value }); }
+			get { return base.GetAttributeValue<timeOfDayStart>(nameof(timeOfDayStart))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time? timeOfDayEnd_optional {
+			set { base.AddAttributeValue(new timeOfDayEnd { value = value }); }
+			get { return base.GetAttributeValue<timeOfDayEnd>(nameof(timeOfDayEnd))?.value; }
+		}
 		#endregion
 	}
 
@@ -2201,6 +2282,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(frequencyShoreStationReceives),
@@ -2215,9 +2297,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new frequencyShoreStationTransmits(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? frequencyShoreStationReceives_optional { set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); } }
+		public int? frequencyShoreStationReceives_optional {
+			set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
+		}
 		#endregion
 	}
 
@@ -2240,6 +2326,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(frequencyLimitLower),
@@ -2254,6 +2341,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new frequencyLimitUpper(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -2276,6 +2364,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(pictorialRepresentation),
@@ -2302,11 +2391,21 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new pictureInformation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? pictureCaption_optional { set { base.AddAttributeValue(new pictureCaption { value = value }); } }
-		public DateOnly? sourceDate_optional { set { base.AddAttributeValue(new sourceDate { value = value }); } }
-		public String? pictureInformation_optional { set { base.AddAttributeValue(new pictureInformation { value = value }); } }
+		public String? pictureCaption_optional {
+			set { base.AddAttributeValue(new pictureCaption { value = value }); }
+			get { return base.GetAttributeValue<pictureCaption>(nameof(pictureCaption))?.value; }
+		}
+		public DateOnly? sourceDate_optional {
+			set { base.AddAttributeValue(new sourceDate { value = value }); }
+			get { return base.GetAttributeValue<sourceDate>(nameof(sourceDate))?.value; }
+		}
+		public String? pictureInformation_optional {
+			set { base.AddAttributeValue(new pictureInformation { value = value }); }
+			get { return base.GetAttributeValue<pictureInformation>(nameof(pictureInformation))?.value; }
+		}
 		#endregion
 	}
 
@@ -2327,6 +2426,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
@@ -2341,9 +2441,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? uncertaintyVariableFactor_optional { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		public double? uncertaintyVariableFactor_optional {
+			set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
 		#endregion
 	}
 
@@ -2364,6 +2468,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fileLocator),
@@ -2396,12 +2501,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? fileLocator_optional { set { base.AddAttributeValue(new fileLocator { value = value }); } }
-		public String? fileReference_optional { set { base.AddAttributeValue(new fileReference { value = value }); } }
-		public String? headline_optional { set { base.AddAttributeValue(new headline { value = value }); } }
-		public String? text_optional { set { base.AddAttributeValue(new text { value = value }); } }
+		public String? fileLocator_optional {
+			set { base.AddAttributeValue(new fileLocator { value = value }); }
+			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
+		}
+		public String? fileReference_optional {
+			set { base.AddAttributeValue(new fileReference { value = value }); }
+			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
+		}
+		public String? headline_optional {
+			set { base.AddAttributeValue(new headline { value = value }); }
+			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
+		}
+		public String? text_optional {
+			set { base.AddAttributeValue(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
+		}
 		#endregion
 	}
 
@@ -2422,6 +2540,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(headline),
@@ -2442,10 +2561,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new nameOfResource(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? headline_optional { set { base.AddAttributeValue(new headline { value = value }); } }
-		public String? nameOfResource_optional { set { base.AddAttributeValue(new nameOfResource { value = value }); } }
+		public String? headline_optional {
+			set { base.AddAttributeValue(new headline { value = value }); }
+			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
+		}
+		public String? nameOfResource_optional {
+			set { base.AddAttributeValue(new nameOfResource { value = value }); }
+			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
+		}
 		#endregion
 	}
 
@@ -2468,6 +2594,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateStart),
@@ -2482,6 +2609,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new dateEnd(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -2504,6 +2632,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
@@ -2536,12 +2665,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new hoursOfWatch(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public frequencyPair?[] frequencyPair_optional { set { base.AddAttributeValue(value); } }
-		public int?[] dataTransmissionRate_optional { set { base.AddAttributeValue([.. value.Select(e=> new dataTransmissionRate { value = e })]); } }
-		public String? hoursOfWatch_optional { set { base.AddAttributeValue(new hoursOfWatch { value = value }); } }
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public frequencyPair?[] frequencyPair_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
+	}
+		public int?[] dataTransmissionRate_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dataTransmissionRate { value = e })]); }
+			get { return base.GetAttributeValues<dataTransmissionRate>(nameof(dataTransmissionRate)).Select(e=>e.value).ToArray(); }
+		}
+		public String? hoursOfWatch_optional {
+			set { base.AddAttributeValue(new hoursOfWatch { value = value }); }
+			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
+		}
 		#endregion
 	}
 
@@ -2560,6 +2702,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(callSign),
@@ -2586,12 +2729,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new coastStationIdentificationCode(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] callSign_optional { set { base.AddAttributeValue([.. value.Select(e=> new callSign { value = e })]); } }
-		public String?[] mMSICode_optional { set { base.AddAttributeValue([.. value.Select(e=> new mMSICode { value = e })]); } }
-		public int?[] selectiveCallNumber_optional { set { base.AddAttributeValue([.. value.Select(e=> new selectiveCallNumber { value = e })]); } }
-		public String?[] coastStationIdentificationCode_optional { set { base.AddAttributeValue([.. value.Select(e=> new coastStationIdentificationCode { value = e })]); } }
+		public String?[] callSign_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new callSign { value = e })]); }
+			get { return base.GetAttributeValues<callSign>(nameof(callSign)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] mMSICode_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new mMSICode { value = e })]); }
+			get { return base.GetAttributeValues<mMSICode>(nameof(mMSICode)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] selectiveCallNumber_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new selectiveCallNumber { value = e })]); }
+			get { return base.GetAttributeValues<selectiveCallNumber>(nameof(selectiveCallNumber)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] coastStationIdentificationCode_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new coastStationIdentificationCode { value = e })]); }
+			get { return base.GetAttributeValues<coastStationIdentificationCode>(nameof(coastStationIdentificationCode)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -2610,6 +2766,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(headline),
@@ -2630,11 +2787,21 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new actionOrActivity(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? headline_optional { set { base.AddAttributeValue(new headline { value = value }); } }
-		public int? categoryOfRxN_optional { set { base.AddAttributeValue(new categoryOfRxN { value = value }); } }
-		public int? actionOrActivity_optional { set { base.AddAttributeValue(new actionOrActivity { value = value }); } }
+		public String? headline_optional {
+			set { base.AddAttributeValue(new headline { value = value }); }
+			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
+		}
+		public int? categoryOfRxN_optional {
+			set { base.AddAttributeValue(new categoryOfRxN { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRxN>(nameof(categoryOfRxN))?.value; }
+		}
+		public int? actionOrActivity_optional {
+			set { base.AddAttributeValue(new actionOrActivity { value = value }); }
+			get { return base.GetAttributeValue<actionOrActivity>(nameof(actionOrActivity))?.value; }
+		}
 		#endregion
 	}
 
@@ -2655,6 +2822,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
@@ -2669,9 +2837,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new sectorLineLength(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? sectorLineLength_optional { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		public double? sectorLineLength_optional {
+			set { base.AddAttributeValue(new sectorLineLength { value = value }); }
+			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
+		}
 		#endregion
 	}
 
@@ -2692,6 +2864,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
@@ -2706,9 +2879,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new sectorLineLength(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? sectorLineLength_optional { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		public double? sectorLineLength_optional {
+			set { base.AddAttributeValue(new sectorLineLength { value = value }); }
+			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
+		}
 		#endregion
 	}
 
@@ -2729,6 +2906,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateStart),
@@ -2743,9 +2921,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new dateEnd(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? dateStart_optional { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		public String? dateStart_optional {
+			set { base.AddAttributeValue(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
 		#endregion
 	}
 
@@ -2766,6 +2948,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
@@ -2787,10 +2970,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new telecommunicationService(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? contactInstructions_optional { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
-		public int? telecommunicationService_optional { set { base.AddAttributeValue(new telecommunicationService { value = value }); } }
+		public String? contactInstructions_optional {
+			set { base.AddAttributeValue(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		public int? telecommunicationService_optional {
+			set { base.AddAttributeValue(new telecommunicationService { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationService>(nameof(telecommunicationService))?.value; }
+		}
 		#endregion
 	}
 
@@ -2809,6 +2999,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfText),
@@ -2842,13 +3033,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new reportedDate(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfText_optional { set { base.AddAttributeValue(new categoryOfText { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public onlineResource? onlineResource_optional { set { base.AddAttributeValue(value); } }
-		public String? source_optional { set { base.AddAttributeValue(new source { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public int? categoryOfText_optional {
+			set { base.AddAttributeValue(new categoryOfText { value = value }); }
+			get { return base.GetAttributeValue<categoryOfText>(nameof(categoryOfText))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public onlineResource? onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
+		}
+		public String? source_optional {
+			set { base.AddAttributeValue(new source { value = value }); }
+			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
 		#endregion
 	}
 
@@ -2867,6 +3074,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dayOfWeek),
@@ -2894,12 +3102,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new timeOfDayEnd(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] dayOfWeek_optional { set { base.AddAttributeValue([.. value.Select(e=> new dayOfWeek { value = e })]); } }
-		public Boolean? dayOfWeekIsRange_optional { set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); } }
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional { set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayStart { value = e })]); } }
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional { set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayEnd { value = e })]); } }
+		public int?[] dayOfWeek_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dayOfWeek { value = e })]); }
+			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? dayOfWeekIsRange_optional {
+			set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); }
+			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayStart { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
+		}
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -2918,6 +3139,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(minutePastEvenHours),
@@ -2944,12 +3166,25 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new transmissionTime(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? minutePastEvenHours_optional { set { base.AddAttributeValue(new minutePastEvenHours { value = value }); } }
-		public int? minutePastOddHours_optional { set { base.AddAttributeValue(new minutePastOddHours { value = value }); } }
-		public int? minutePastEveryHour_optional { set { base.AddAttributeValue(new minutePastEveryHour { value = value }); } }
-		public S100Framework.DomainModel.S100.Time?[] transmissionTime_optional { set { base.AddAttributeValue([.. value.Select(e=> new transmissionTime { value = e })]); } }
+		public int? minutePastEvenHours_optional {
+			set { base.AddAttributeValue(new minutePastEvenHours { value = value }); }
+			get { return base.GetAttributeValue<minutePastEvenHours>(nameof(minutePastEvenHours))?.value; }
+		}
+		public int? minutePastOddHours_optional {
+			set { base.AddAttributeValue(new minutePastOddHours { value = value }); }
+			get { return base.GetAttributeValue<minutePastOddHours>(nameof(minutePastOddHours))?.value; }
+		}
+		public int? minutePastEveryHour_optional {
+			set { base.AddAttributeValue(new minutePastEveryHour { value = value }); }
+			get { return base.GetAttributeValue<minutePastEveryHour>(nameof(minutePastEveryHour))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time?[] transmissionTime_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new transmissionTime { value = e })]); }
+			get { return base.GetAttributeValues<transmissionTime>(nameof(transmissionTime)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -2970,6 +3205,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
@@ -2984,9 +3220,13 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? uncertaintyVariableFactor_optional { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		public double? uncertaintyVariableFactor_optional {
+			set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
 		#endregion
 	}
 
@@ -3013,6 +3253,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(vesselsCharacteristics),
@@ -3042,6 +3283,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new comparisonOperator(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3064,6 +3306,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSchedule),
@@ -3079,10 +3322,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new timeIntervalsByDayOfWeek(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfSchedule_optional { set { base.AddAttributeValue(new categoryOfSchedule { value = value }); } }
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfSchedule_optional {
+			set { base.AddAttributeValue(new categoryOfSchedule { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
+		}
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
+	}
 		#endregion
 	}
 
@@ -3105,6 +3355,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorLimitOne),
@@ -3119,6 +3370,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new sectorLimitTwo(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3139,6 +3391,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -3159,11 +3412,21 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -3189,6 +3452,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -3221,13 +3485,29 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new reportedDate(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? source_optional { set { base.AddAttributeValue(new source { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? source_optional {
+			set { base.AddAttributeValue(new source { value = value }); }
+			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
 		#endregion
 	}
 
@@ -3246,6 +3526,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfAuthority),
@@ -3273,12 +3554,25 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new rxNCode(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfAuthority_optional { set { base.AddAttributeValue(new categoryOfAuthority { value = value }); } }
-		public textContent? textContent_optional { set { base.AddAttributeValue(value); } }
-		public graphic? graphic_optional { set { base.AddAttributeValue(value); } }
-		public rxNCode?[] rxNCode_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfAuthority_optional {
+			set { base.AddAttributeValue(new categoryOfAuthority { value = value }); }
+			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
+		}
+		public textContent? textContent_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
+		}
+		public graphic? graphic_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<graphic>(nameof(graphic)); }
+		}
+		public rxNCode?[] rxNCode_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); } 
+	}
 		#endregion
 	}
 
@@ -3297,6 +3591,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(inBallast),
@@ -3364,18 +3659,49 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? inBallast_optional { set { base.AddAttributeValue(new inBallast { value = value }); } }
-		public int?[] categoryOfVessel_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfVessel { value = e })]); } }
-		public int? categoryOfVesselRegistry_optional { set { base.AddAttributeValue(new categoryOfVesselRegistry { value = value }); } }
-		public int?[] categoryOfCargo_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); } }
-		public int?[] categoryOfDangerousOrHazardousCargo_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDangerousOrHazardousCargo { value = e })]); } }
-		public int? logicalConnectives_optional { set { base.AddAttributeValue(new logicalConnectives { value = value }); } }
-		public int? thicknessOfIceCapability_optional { set { base.AddAttributeValue(new thicknessOfIceCapability { value = value }); } }
-		public String? vesselPerformance_optional { set { base.AddAttributeValue(new vesselPerformance { value = value }); } }
-		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public Boolean? inBallast_optional {
+			set { base.AddAttributeValue(new inBallast { value = value }); }
+			get { return base.GetAttributeValue<inBallast>(nameof(inBallast))?.value; }
+		}
+		public int?[] categoryOfVessel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfVessel { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfVessel>(nameof(categoryOfVessel)).Select(e=>e.value).ToArray(); }
+		}
+		public int? categoryOfVesselRegistry_optional {
+			set { base.AddAttributeValue(new categoryOfVesselRegistry { value = value }); }
+			get { return base.GetAttributeValue<categoryOfVesselRegistry>(nameof(categoryOfVesselRegistry))?.value; }
+		}
+		public int?[] categoryOfCargo_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] categoryOfDangerousOrHazardousCargo_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDangerousOrHazardousCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfDangerousOrHazardousCargo>(nameof(categoryOfDangerousOrHazardousCargo)).Select(e=>e.value).ToArray(); }
+		}
+		public int? logicalConnectives_optional {
+			set { base.AddAttributeValue(new logicalConnectives { value = value }); }
+			get { return base.GetAttributeValue<logicalConnectives>(nameof(logicalConnectives))?.value; }
+		}
+		public int? thicknessOfIceCapability_optional {
+			set { base.AddAttributeValue(new thicknessOfIceCapability { value = value }); }
+			get { return base.GetAttributeValue<thicknessOfIceCapability>(nameof(thicknessOfIceCapability))?.value; }
+		}
+		public String? vesselPerformance_optional {
+			set { base.AddAttributeValue(new vesselPerformance { value = value }); }
+			get { return base.GetAttributeValue<vesselPerformance>(nameof(vesselPerformance))?.value; }
+		}
+		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselMeasurementsSpecification>(nameof(vesselMeasurementsSpecification)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -3394,6 +3720,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfAuthority),
@@ -3409,10 +3736,17 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfAuthority_optional { set { base.AddAttributeValue(new categoryOfAuthority { value = value }); } }
-		public textContent? textContent_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfAuthority_optional {
+			set { base.AddAttributeValue(new categoryOfAuthority { value = value }); }
+			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
+		}
+		public textContent? textContent_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
+		}
 		#endregion
 	}
 
@@ -3433,6 +3767,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
@@ -3472,14 +3807,33 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new onlineResource(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] language_optional { set { base.AddAttributeValue([.. value.Select(e=> new language { value = e })]); } }
-		public int? categoryOfBroadcastCommunication_optional { set { base.AddAttributeValue(new categoryOfBroadcastCommunication { value = value }); } }
-		public broadcastContent?[] broadcastContent_optional { set { base.AddAttributeValue(value); } }
-		public timesOfTransmission?[] timesOfTransmission_optional { set { base.AddAttributeValue(value); } }
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional { set { base.AddAttributeValue(value); } }
-		public onlineResource? onlineResource_optional { set { base.AddAttributeValue(value); } }
+		public String?[] language_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new language { value = e })]); }
+			get { return base.GetAttributeValues<language>(nameof(language)).Select(e=>e.value).ToArray(); }
+		}
+		public int? categoryOfBroadcastCommunication_optional {
+			set { base.AddAttributeValue(new categoryOfBroadcastCommunication { value = value }); }
+			get { return base.GetAttributeValue<categoryOfBroadcastCommunication>(nameof(categoryOfBroadcastCommunication))?.value; }
+		}
+		public broadcastContent?[] broadcastContent_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<broadcastContent>(nameof(broadcastContent)); } 
+	}
+		public timesOfTransmission?[] timesOfTransmission_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<timesOfTransmission>(nameof(timesOfTransmission)); } 
+	}
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
+	}
+		public onlineResource? onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
+		}
 		#endregion
 	}
 
@@ -3498,6 +3852,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(typeOfConnectivityResource),
@@ -3544,15 +3899,37 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] typeOfConnectivityResource_optional { set { base.AddAttributeValue([.. value.Select(e=> new typeOfConnectivityResource { value = e })]); } }
-		public double? uplinkBandwidth_optional { set { base.AddAttributeValue(new uplinkBandwidth { value = value }); } }
-		public double? downlinkBandwidth_optional { set { base.AddAttributeValue(new downlinkBandwidth { value = value }); } }
-		public double? packetDelay_optional { set { base.AddAttributeValue(new packetDelay { value = value }); } }
-		public int? maximumDataBurstVolume_optional { set { base.AddAttributeValue(new maximumDataBurstVolume { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] typeOfConnectivityResource_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new typeOfConnectivityResource { value = e })]); }
+			get { return base.GetAttributeValues<typeOfConnectivityResource>(nameof(typeOfConnectivityResource)).Select(e=>e.value).ToArray(); }
+		}
+		public double? uplinkBandwidth_optional {
+			set { base.AddAttributeValue(new uplinkBandwidth { value = value }); }
+			get { return base.GetAttributeValue<uplinkBandwidth>(nameof(uplinkBandwidth))?.value; }
+		}
+		public double? downlinkBandwidth_optional {
+			set { base.AddAttributeValue(new downlinkBandwidth { value = value }); }
+			get { return base.GetAttributeValue<downlinkBandwidth>(nameof(downlinkBandwidth))?.value; }
+		}
+		public double? packetDelay_optional {
+			set { base.AddAttributeValue(new packetDelay { value = value }); }
+			get { return base.GetAttributeValue<packetDelay>(nameof(packetDelay))?.value; }
+		}
+		public int? maximumDataBurstVolume_optional {
+			set { base.AddAttributeValue(new maximumDataBurstVolume { value = value }); }
+			get { return base.GetAttributeValue<maximumDataBurstVolume>(nameof(maximumDataBurstVolume))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -3571,6 +3948,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
@@ -3639,19 +4017,53 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new language(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? contactInstructions_optional { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
-		public contactAddress?[] contactAddress_optional { set { base.AddAttributeValue(value); } }
-		public frequencyPair?[] frequencyPair_optional { set { base.AddAttributeValue(value); } }
-		public information? information_optional { set { base.AddAttributeValue(value); } }
-		public onlineResource?[] onlineResource_optional { set { base.AddAttributeValue(value); } }
-		public telecommunications?[] telecommunications_optional { set { base.AddAttributeValue(value); } }
-		public String? callName_optional { set { base.AddAttributeValue(new callName { value = value }); } }
-		public String? callSign_optional { set { base.AddAttributeValue(new callSign { value = value }); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public String? mMSICode_optional { set { base.AddAttributeValue(new mMSICode { value = value }); } }
-		public String? language_optional { set { base.AddAttributeValue(new language { value = value }); } }
+		public String? contactInstructions_optional {
+			set { base.AddAttributeValue(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		public contactAddress?[] contactAddress_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); } 
+	}
+		public frequencyPair?[] frequencyPair_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
+	}
+		public information? information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<information>(nameof(information)); }
+		}
+		public onlineResource?[] onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
+	}
+		public telecommunications?[] telecommunications_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
+	}
+		public String? callName_optional {
+			set { base.AddAttributeValue(new callName { value = value }); }
+			get { return base.GetAttributeValue<callName>(nameof(callName))?.value; }
+		}
+		public String? callSign_optional {
+			set { base.AddAttributeValue(new callSign { value = value }); }
+			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public String? mMSICode_optional {
+			set { base.AddAttributeValue(new mMSICode { value = value }); }
+			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
+		}
+		public String? language_optional {
+			set { base.AddAttributeValue(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
 		#endregion
 	}
 
@@ -3670,8 +4082,10 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3692,6 +4106,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(information),
@@ -3712,11 +4127,21 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new dateVariable(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String?[] dateFixed_optional { set { base.AddAttributeValue([.. value.Select(e=> new dateFixed { value = e })]); } }
-		public String?[] dateVariable_optional { set { base.AddAttributeValue([.. value.Select(e=> new dateVariable { value = e })]); } }
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String?[] dateFixed_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dateFixed { value = e })]); }
+			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] dateVariable_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dateVariable { value = e })]); }
+			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -3739,6 +4164,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(isMRCC),
@@ -3765,10 +4191,17 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new hoursOfWatch(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? hoursOfWatch_optional { set { base.AddAttributeValue(new hoursOfWatch { value = value }); } }
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? hoursOfWatch_optional {
+			set { base.AddAttributeValue(new hoursOfWatch { value = value }); }
+			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
+		}
 		#endregion
 	}
 
@@ -3787,8 +4220,10 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3809,8 +4244,10 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3831,8 +4268,10 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -3855,6 +4294,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(scheduleByDayOfWeek),
@@ -3869,10 +4309,17 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -3891,6 +4338,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(qualityOfHorizontalMeasurement),
@@ -3906,10 +4354,17 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new spatialAccuracy(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? qualityOfHorizontalMeasurement_optional { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
-		public spatialAccuracy? spatialAccuracy_optional { set { base.AddAttributeValue(value); } }
+		public int? qualityOfHorizontalMeasurement_optional {
+			set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); }
+			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
+		}
+		public spatialAccuracy? spatialAccuracy_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<spatialAccuracy>(nameof(spatialAccuracy)); }
+		}
 		#endregion
 	}
 
@@ -3928,6 +4383,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
@@ -3960,13 +4416,29 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new languageInformation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? contactInstructions_optional { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
-		public information? information_optional { set { base.AddAttributeValue(value); } }
-		public onlineResource?[] onlineResource_optional { set { base.AddAttributeValue(value); } }
-		public telecommunications?[] telecommunications_optional { set { base.AddAttributeValue(value); } }
-		public String? languageInformation_optional { set { base.AddAttributeValue(new languageInformation { value = value }); } }
+		public String? contactInstructions_optional {
+			set { base.AddAttributeValue(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		public information? information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<information>(nameof(information)); }
+		}
+		public onlineResource?[] onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
+	}
+		public telecommunications?[] telecommunications_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
+	}
+		public String? languageInformation_optional {
+			set { base.AddAttributeValue(new languageInformation { value = value }); }
+			get { return base.GetAttributeValue<languageInformation>(nameof(languageInformation))?.value; }
+		}
 		#endregion
 	}
 
@@ -3987,6 +4459,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(typeOfRadioService),
@@ -4021,13 +4494,29 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 					CreateInstance = () => new radioChannelDetails(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? typeOfRadioService_optional { set { base.AddAttributeValue(new typeOfRadioService { value = value }); } }
-		public int? frequencyBand_optional { set { base.AddAttributeValue(new frequencyBand { value = value }); } }
-		public String? classOfEmission_optional { set { base.AddAttributeValue(new classOfEmission { value = value }); } }
-		public String? communicationStandard_optional { set { base.AddAttributeValue(new communicationStandard { value = value }); } }
-		public radioChannelDetails?[] radioChannelDetails_optional { set { base.AddAttributeValue(value); } }
+		public int? typeOfRadioService_optional {
+			set { base.AddAttributeValue(new typeOfRadioService { value = value }); }
+			get { return base.GetAttributeValue<typeOfRadioService>(nameof(typeOfRadioService))?.value; }
+		}
+		public int? frequencyBand_optional {
+			set { base.AddAttributeValue(new frequencyBand { value = value }); }
+			get { return base.GetAttributeValue<frequencyBand>(nameof(frequencyBand))?.value; }
+		}
+		public String? classOfEmission_optional {
+			set { base.AddAttributeValue(new classOfEmission { value = value }); }
+			get { return base.GetAttributeValue<classOfEmission>(nameof(classOfEmission))?.value; }
+		}
+		public String? communicationStandard_optional {
+			set { base.AddAttributeValue(new communicationStandard { value = value }); }
+			get { return base.GetAttributeValue<communicationStandard>(nameof(communicationStandard))?.value; }
+		}
+		public radioChannelDetails?[] radioChannelDetails_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<radioChannelDetails>(nameof(radioChannelDetails)); } 
+	}
 		#endregion
 	}
 
@@ -4053,6 +4542,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(textContent),
@@ -4097,15 +4587,37 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public textContent?[] textContent_optional { set { base.AddAttributeValue(value); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? source_optional { set { base.AddAttributeValue(new source { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
+		public textContent?[] textContent_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); } 
+	}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? source_optional {
+			set { base.AddAttributeValue(new source { value = value }); }
+			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
 		#endregion
 	}
 
@@ -4124,6 +4636,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfConnectivitySubscription),
@@ -4169,15 +4682,37 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new coverageIndication(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfConnectivitySubscription_optional { set { base.AddAttributeValue(new categoryOfConnectivitySubscription { value = value }); } }
-		public String? communicationStandard_optional { set { base.AddAttributeValue(new communicationStandard { value = value }); } }
-		public double? estimatedRangeOfTransmission_optional { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
-		public double? baseStationAntennaHeight_optional { set { base.AddAttributeValue(new baseStationAntennaHeight { value = value }); } }
-		public frequencyRange?[] frequencyRange_optional { set { base.AddAttributeValue(value); } }
-		public sectorLimit?[] sectorLimit_optional { set { base.AddAttributeValue(value); } }
-		public coverageIndication? coverageIndication_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfConnectivitySubscription_optional {
+			set { base.AddAttributeValue(new categoryOfConnectivitySubscription { value = value }); }
+			get { return base.GetAttributeValue<categoryOfConnectivitySubscription>(nameof(categoryOfConnectivitySubscription))?.value; }
+		}
+		public String? communicationStandard_optional {
+			set { base.AddAttributeValue(new communicationStandard { value = value }); }
+			get { return base.GetAttributeValue<communicationStandard>(nameof(communicationStandard))?.value; }
+		}
+		public double? estimatedRangeOfTransmission_optional {
+			set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); }
+			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
+		}
+		public double? baseStationAntennaHeight_optional {
+			set { base.AddAttributeValue(new baseStationAntennaHeight { value = value }); }
+			get { return base.GetAttributeValue<baseStationAntennaHeight>(nameof(baseStationAntennaHeight))?.value; }
+		}
+		public frequencyRange?[] frequencyRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<frequencyRange>(nameof(frequencyRange)); } 
+	}
+		public sectorLimit?[] sectorLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); } 
+	}
+		public coverageIndication? coverageIndication_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<coverageIndication>(nameof(coverageIndication)); }
+		}
 		#endregion
 	}
 
@@ -4200,6 +4735,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(idNAVAREA),
@@ -4227,10 +4763,17 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new areaA3ServiceDescription(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public areaA3ServiceDescription?[] areaA3ServiceDescription_optional { set { base.AddAttributeValue(value); } }
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public areaA3ServiceDescription?[] areaA3ServiceDescription_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<areaA3ServiceDescription>(nameof(areaA3ServiceDescription)); } 
+	}
 		#endregion
 	}
 
@@ -4249,6 +4792,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(informationConfidence),
@@ -4258,9 +4802,13 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new informationConfidence(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? informationConfidence_optional { set { base.AddAttributeValue(new informationConfidence { value = value }); } }
+		public int? informationConfidence_optional {
+			set { base.AddAttributeValue(new informationConfidence { value = value }); }
+			get { return base.GetAttributeValue<informationConfidence>(nameof(informationConfidence))?.value; }
+		}
 		#endregion
 	}
 
@@ -4281,6 +4829,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(idMETAREA),
@@ -4295,9 +4844,13 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new onlineResource(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public onlineResource?[] onlineResource_optional { set { base.AddAttributeValue(value); } }
+		public onlineResource?[] onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
+	}
 		#endregion
 	}
 
@@ -4318,6 +4871,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(idNAVAREA),
@@ -4332,9 +4886,13 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new onlineResource(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public onlineResource?[] onlineResource_optional { set { base.AddAttributeValue(value); } }
+		public onlineResource?[] onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
+	}
 		#endregion
 	}
 
@@ -4359,6 +4917,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(typeOfNAVTEXService),
@@ -4393,10 +4952,17 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new status(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
 		#endregion
 	}
 
@@ -4415,6 +4981,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(languageInformation),
@@ -4448,13 +5015,29 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new hoursOfWatch(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? languageInformation_optional { set { base.AddAttributeValue(new languageInformation { value = value }); } }
-		public double? transmissionPower_optional { set { base.AddAttributeValue(new transmissionPower { value = value }); } }
-		public Boolean? transmissionOfTrafficLists_optional { set { base.AddAttributeValue(new transmissionOfTrafficLists { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public String? hoursOfWatch_optional { set { base.AddAttributeValue(new hoursOfWatch { value = value }); } }
+		public String? languageInformation_optional {
+			set { base.AddAttributeValue(new languageInformation { value = value }); }
+			get { return base.GetAttributeValue<languageInformation>(nameof(languageInformation))?.value; }
+		}
+		public double? transmissionPower_optional {
+			set { base.AddAttributeValue(new transmissionPower { value = value }); }
+			get { return base.GetAttributeValue<transmissionPower>(nameof(transmissionPower))?.value; }
+		}
+		public Boolean? transmissionOfTrafficLists_optional {
+			set { base.AddAttributeValue(new transmissionOfTrafficLists { value = value }); }
+			get { return base.GetAttributeValue<transmissionOfTrafficLists>(nameof(transmissionOfTrafficLists))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public String? hoursOfWatch_optional {
+			set { base.AddAttributeValue(new hoursOfWatch { value = value }); }
+			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
+		}
 		#endregion
 	}
 
@@ -4473,6 +5056,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfRadioStation),
@@ -4525,16 +5109,41 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new hoursOfWatch(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfRadioStation_optional { set { base.AddAttributeValue(new categoryOfRadioStation { value = value }); } }
-		public double? estimatedRangeOfTransmission_optional { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
-		public String? transmissionContent_optional { set { base.AddAttributeValue(new transmissionContent { value = value }); } }
-		public Boolean? remoteControlled_optional { set { base.AddAttributeValue(new remoteControlled { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public radiocommunicationIdentifier? radiocommunicationIdentifier_optional { set { base.AddAttributeValue(value); } }
-		public sectorLimit?[] sectorLimit_optional { set { base.AddAttributeValue(value); } }
-		public String? hoursOfWatch_optional { set { base.AddAttributeValue(new hoursOfWatch { value = value }); } }
+		public int? categoryOfRadioStation_optional {
+			set { base.AddAttributeValue(new categoryOfRadioStation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRadioStation>(nameof(categoryOfRadioStation))?.value; }
+		}
+		public double? estimatedRangeOfTransmission_optional {
+			set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); }
+			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
+		}
+		public String? transmissionContent_optional {
+			set { base.AddAttributeValue(new transmissionContent { value = value }); }
+			get { return base.GetAttributeValue<transmissionContent>(nameof(transmissionContent))?.value; }
+		}
+		public Boolean? remoteControlled_optional {
+			set { base.AddAttributeValue(new remoteControlled { value = value }); }
+			get { return base.GetAttributeValue<remoteControlled>(nameof(remoteControlled))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public radiocommunicationIdentifier? radiocommunicationIdentifier_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<radiocommunicationIdentifier>(nameof(radiocommunicationIdentifier)); }
+		}
+		public sectorLimit?[] sectorLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); } 
+	}
+		public String? hoursOfWatch_optional {
+			set { base.AddAttributeValue(new hoursOfWatch { value = value }); }
+			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
+		}
 		#endregion
 	}
 
@@ -4553,6 +5162,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(nationality),
@@ -4561,9 +5171,13 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new nationality(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
 		#endregion
 	}
 
@@ -4584,6 +5198,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfForecastOrWarningArea),
@@ -4612,11 +5227,21 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new status(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? idMETAREA_optional { set { base.AddAttributeValue(new idMETAREA { value = value }); } }
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
+		public String? idMETAREA_optional {
+			set { base.AddAttributeValue(new idMETAREA { value = value }); }
+			get { return base.GetAttributeValue<idMETAREA>(nameof(idMETAREA))?.value; }
+		}
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
 		#endregion
 	}
 
@@ -4635,8 +5260,10 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -4657,8 +5284,10 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -4683,6 +5312,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(maximumDisplayScale),
@@ -4709,10 +5339,17 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? optimumDisplayScale_optional { set { base.AddAttributeValue(new optimumDisplayScale { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? optimumDisplayScale_optional {
+			set { base.AddAttributeValue(new optimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -4731,6 +5368,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfTemporalVariation),
@@ -4776,15 +5414,37 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfTemporalVariation_optional { set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); } }
-		public double? horizontalDistanceUncertainty_optional { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public double? orientationUncertainty_optional { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
-		public surveyDateRange? surveyDateRange_optional { set { base.AddAttributeValue(value); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfTemporalVariation_optional {
+			set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
+		}
+		public double? horizontalDistanceUncertainty_optional {
+			set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); }
+			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
+		}
+		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		public double? orientationUncertainty_optional {
+			set { base.AddAttributeValue(new orientationUncertainty { value = value }); }
+			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
+		public surveyDateRange? surveyDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 

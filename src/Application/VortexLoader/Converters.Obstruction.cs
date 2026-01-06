@@ -103,7 +103,9 @@ namespace S100Framework.Applications
 
             instance.defaultClearanceDepth_optional = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU,current.EXPSOU,current.HEIGHT,current.WATLEV,current.CATOBS,current.OBJECTID ?? -1,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown long name");
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }
@@ -151,7 +153,7 @@ namespace S100Framework.Applications
             // TODO: QualityOfVerticalMeasurement
             if (!string.IsNullOrEmpty(current.SORDAT)) {
                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                    instance.reportedDate = result;
+                    instance.reportedDate_optional = result;
                 }
                 else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -208,7 +210,9 @@ namespace S100Framework.Applications
 
             instance.defaultClearanceDepth_optional = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }
@@ -315,9 +319,9 @@ namespace S100Framework.Applications
 
             instance.defaultClearanceDepth_optional = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
-
-
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }

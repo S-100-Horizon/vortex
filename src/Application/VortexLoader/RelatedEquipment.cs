@@ -7,6 +7,7 @@ using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using System.Data;
+using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications
 {
@@ -134,11 +135,11 @@ namespace S100Framework.Applications
         //    return null;
         //}
 
-        internal void CreateRelatedLineEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature) {
+        internal void CreateRelatedLineEquipment(S57Object s57master, FeatureType s101master, Feature s101MasterFeature) {
             throw new NotImplementedException();
         }
 
-        internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
+        internal void CreateRelatedAreaEquipment(S57Object s57master, FeatureType s101master, Feature s101MasterFeature, int? scaleMinimum) {
             var areaRelated = FeatureRelations.Instance.GetRelated(s57master.GlobalId);
 
             //var nullS57Objects = areaRelated
@@ -228,7 +229,7 @@ namespace S100Framework.Applications
                         buffer["code"] = instance.GetType().Name;
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                        if (instance is FeatureNode) {
+                        if (instance is FeatureType) {
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                         }
                         else {
@@ -264,7 +265,7 @@ namespace S100Framework.Applications
         }
 
         // S57Object s57master, FeatureNode s101master, Feature s101MasterFeature
-        internal void CreateRelatedPointEquipment(S57Object s57master, FeatureNode s101master, Feature s101MasterFeature, int? scaleMinimum) {
+        internal void CreateRelatedPointEquipment(S57Object s57master, FeatureType s101master, Feature s101MasterFeature, int? scaleMinimum) {
 
             var key = (s57master.TableName!.ToLower(), s57master.FcSubtype!.Value, s57master.GlobalId);
             if (_converted.Contains(key)) {
@@ -297,8 +298,8 @@ namespace S100Framework.Applications
                 buffer["code"] = instance.GetType().Name;
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
-                if (instance is FeatureNode) {
-                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureNode)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                if (instance is FeatureType) {
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
                 }
                 else {
                     ;

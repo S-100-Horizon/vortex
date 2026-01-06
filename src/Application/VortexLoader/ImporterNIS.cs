@@ -1023,13 +1023,12 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new NauticalInformation();
-                    instance.information = new List<information>() {
+                    instance.information_optional = [
                             new information() {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
+                            fileLocator_optional = fileLocator,
+                            fileReference_optional = FixFilename(fileReference) ?? default,
                             language = language
-                        }
-                    };
+                            }];
                     result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
@@ -1037,7 +1036,7 @@ namespace S100Framework.Applications
 
                     var instance = new information {
                         language = language,
-                        text = ntxtds,
+                        text_optional = ntxtds,
                     };
                     result.information.Add(instance);
                 }
@@ -1054,13 +1053,12 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new NauticalInformation();
-                    instance.information = new List<information>() {
+                    instance.information_optional = [
                             new information() {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
-                            language = language
-                        }
-                    };
+                            fileLocator_optional = fileLocator,
+                            fileReference_optional = FixFilename(fileReference) ?? default,
+                            language = language,
+                        }];
 
                     result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
@@ -1072,9 +1070,9 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new information {
-                        fileLocator = fileLocator,
+                        fileLocator_optional = fileLocator,
                         language = language,
-                        text = txtdsc,
+                        text_optional = txtdsc,
                     };
                     result.information.Add(instance);
                 }
@@ -1096,13 +1094,12 @@ namespace S100Framework.Applications
                         string language = "eng";
 
                         var instance = new NauticalInformation();
-                        instance.information = new List<information>() {
+                        instance.information = [
                             new information() {
-                            fileLocator = fileLocator,
-                            fileReference = FixFilename(fileReference) ?? default,
+                            fileLocator_optional = fileLocator,
+                            fileReference_optional = FixFilename(fileReference) ?? default,
                             language = language
-                        }
-                    };
+                        }];
 
                         result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
@@ -1113,9 +1110,9 @@ namespace S100Framework.Applications
                         string language = "eng";
 
                         var instance = new information {
-                            fileLocator = fileLocator,
+                            fileLocator_optional = fileLocator,
                             language = language,
-                            text = value,
+                            text_optional = value,
                         };
                         result.information.Add(instance);
                     }
@@ -1139,13 +1136,11 @@ namespace S100Framework.Applications
                             string language = "dan";
 
                             var instance = new NauticalInformation();
-                            instance.information = new List<information>() {
-                            new information() {
-                                fileLocator = fileLocator,
-                                fileReference = FixFilename(fileReference) ?? default,
+                            instance.information_optional = [new information() {
+                                fileLocator_optional = fileLocator,
+                                fileReference_optional = FixFilename(fileReference) ?? default,
                                 language = language
-                            }
-                            };
+                            }];
                         }
                         else if (!string.IsNullOrEmpty(value)) {
                             string? fileLocator = default;
@@ -1153,9 +1148,9 @@ namespace S100Framework.Applications
                             string language = "dan";
 
                             var instance = new information {
-                                fileLocator = fileLocator,
+                                fileLocator_optional = fileLocator,
                                 language = language,
-                                text = value,
+                                text_optional = value,
                             };
                             result.information.Add(instance);
                         }
@@ -1165,9 +1160,9 @@ namespace S100Framework.Applications
             return result;
         }
 
-        internal static List<string> GetCommunicationChannel(string input) {
+        internal static string?[] GetCommunicationChannel(string input) {
             var result = new List<string>();
-            if (string.IsNullOrWhiteSpace(input)) return result;
+            if (string.IsNullOrWhiteSpace(input)) return [];
 
             var tokens = input.Split(';');
             foreach (var token in tokens) {
@@ -1201,7 +1196,7 @@ namespace S100Framework.Applications
                 }
             }
 
-            return result;
+            return result.ToArray();
         }
 
         internal static string? FixFilename(string fileReference) {
@@ -1250,20 +1245,19 @@ namespace S100Framework.Applications
         //    List<information> information = CreateInformationFrom(current);
         //    instanceInformation.AddRange(information);
         //}
-        internal static List<informationBinding> AddInformation(List<information> instanceInformation, int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
+        internal static InformationResult AddInformation(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
             // TODO: TBD.
             //List<information> information = CreateInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
             //instanceInformation.AddRange(information);
 
             //TODO: Fix binding
-            var result = BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
+            return BindNauticalInformationFrom(sourceObjectid, sourceTableName, ntxtds, txtdsc, inform, ninform);
 
+            //if (!result.information.Any())
+            //    return [];
+            //instanceInformation.AddRange(result.information);
 
-            instanceInformation.AddRange(result.information);
-
-
-
-            return result.InformationBindings;
+            //return result.InformationBindings;
         }
     }
 }

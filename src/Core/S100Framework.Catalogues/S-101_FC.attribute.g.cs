@@ -4357,6 +4357,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
@@ -4378,9 +4379,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new nameUsage(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? nameUsage_optional { set { base.AddAttributeValue(new nameUsage { value = value }); } }
+		public int? nameUsage_optional {
+			set { base.AddAttributeValue(new nameUsage { value = value }); }
+			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
+		}
 		#endregion
 	}
 
@@ -4403,6 +4408,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(leastDepthOfDetectedFeaturesMeasured),
@@ -4423,9 +4429,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new sizeOfFeaturesDetected(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? sizeOfFeaturesDetected_optional { set { base.AddAttributeValue(new sizeOfFeaturesDetected { value = value }); } }
+		public double? sizeOfFeaturesDetected_optional {
+			set { base.AddAttributeValue(new sizeOfFeaturesDetected { value = value }); }
+			get { return base.GetAttributeValue<sizeOfFeaturesDetected>(nameof(sizeOfFeaturesDetected))?.value; }
+		}
 		#endregion
 	}
 
@@ -4444,6 +4454,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
@@ -4458,10 +4469,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new dateStart(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? dateEnd_optional { set { base.AddAttributeValue(new dateEnd { value = value }); } }
-		public String? dateStart_optional { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		public String? dateEnd_optional {
+			set { base.AddAttributeValue(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
+		}
+		public String? dateStart_optional {
+			set { base.AddAttributeValue(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
 		#endregion
 	}
 
@@ -4482,6 +4500,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(frequencyShoreStationReceives),
@@ -4496,9 +4515,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new frequencyShoreStationTransmits(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? frequencyShoreStationReceives_optional { set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); } }
+		public int? frequencyShoreStationReceives_optional {
+			set { base.AddAttributeValue(new frequencyShoreStationReceives { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
+		}
 		#endregion
 	}
 
@@ -4519,6 +4542,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(horizontalClearanceValue),
@@ -4533,9 +4557,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new horizontalDistanceUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? horizontalDistanceUncertainty_optional { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		public double? horizontalDistanceUncertainty_optional {
+			set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); }
+			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
+		}
 		#endregion
 	}
 
@@ -4556,6 +4584,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(horizontalClearanceValue),
@@ -4570,9 +4599,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new horizontalDistanceUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? horizontalDistanceUncertainty_optional { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
+		public double? horizontalDistanceUncertainty_optional {
+			set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); }
+			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
+		}
 		#endregion
 	}
 
@@ -4593,6 +4626,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
@@ -4607,9 +4641,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? uncertaintyVariableFactor_optional { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		public double? uncertaintyVariableFactor_optional {
+			set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
 		#endregion
 	}
 
@@ -4630,6 +4668,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fileLocator),
@@ -4662,12 +4701,25 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? fileLocator_optional { set { base.AddAttributeValue(new fileLocator { value = value }); } }
-		public String? fileReference_optional { set { base.AddAttributeValue(new fileReference { value = value }); } }
-		public String? headline_optional { set { base.AddAttributeValue(new headline { value = value }); } }
-		public String? text_optional { set { base.AddAttributeValue(new text { value = value }); } }
+		public String? fileLocator_optional {
+			set { base.AddAttributeValue(new fileLocator { value = value }); }
+			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
+		}
+		public String? fileReference_optional {
+			set { base.AddAttributeValue(new fileReference { value = value }); }
+			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
+		}
+		public String? headline_optional {
+			set { base.AddAttributeValue(new headline { value = value }); }
+			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
+		}
+		public String? text_optional {
+			set { base.AddAttributeValue(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
+		}
 		#endregion
 	}
 
@@ -4690,6 +4742,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(distanceUnitOfMeasurement),
@@ -4711,9 +4764,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new waterwayDistance(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? referenceLocation_optional { set { base.AddAttributeValue(new referenceLocation { value = value }); } }
+		public String? referenceLocation_optional {
+			set { base.AddAttributeValue(new referenceLocation { value = value }); }
+			get { return base.GetAttributeValue<referenceLocation>(nameof(referenceLocation))?.value; }
+		}
 		#endregion
 	}
 
@@ -4734,6 +4791,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(multiplicityKnown),
@@ -4748,9 +4806,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new numberOfFeatures(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? numberOfFeatures_optional { set { base.AddAttributeValue(new numberOfFeatures { value = value }); } }
+		public int? numberOfFeatures_optional {
+			set { base.AddAttributeValue(new numberOfFeatures { value = value }); }
+			get { return base.GetAttributeValue<numberOfFeatures>(nameof(numberOfFeatures))?.value; }
+		}
 		#endregion
 	}
 
@@ -4771,6 +4833,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(headline),
@@ -4791,10 +4854,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new nameOfResource(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? headline_optional { set { base.AddAttributeValue(new headline { value = value }); } }
-		public String? nameOfResource_optional { set { base.AddAttributeValue(new nameOfResource { value = value }); } }
+		public String? headline_optional {
+			set { base.AddAttributeValue(new headline { value = value }); }
+			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
+		}
+		public String? nameOfResource_optional {
+			set { base.AddAttributeValue(new nameOfResource { value = value }); }
+			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
+		}
 		#endregion
 	}
 
@@ -4815,6 +4885,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(orientationUncertainty),
@@ -4829,9 +4900,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new orientationValue(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? orientationUncertainty_optional { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
+		public double? orientationUncertainty_optional {
+			set { base.AddAttributeValue(new orientationUncertainty { value = value }); }
+			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
 		#endregion
 	}
 
@@ -4854,6 +4929,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
@@ -4868,6 +4944,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new dateStart(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -4892,6 +4969,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(radarBand),
@@ -4906,6 +4984,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new waveLengthValue(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -4928,6 +5007,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
@@ -4942,9 +5022,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? language_optional { set { base.AddAttributeValue(new language { value = value }); } }
+		public String? language_optional {
+			set { base.AddAttributeValue(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
 		#endregion
 	}
 
@@ -4965,6 +5049,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
@@ -4979,9 +5064,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new sectorLineLength(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? sectorLineLength_optional { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		public double? sectorLineLength_optional {
+			set { base.AddAttributeValue(new sectorLineLength { value = value }); }
+			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
+		}
 		#endregion
 	}
 
@@ -5002,6 +5091,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorBearing),
@@ -5016,9 +5106,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new sectorLineLength(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? sectorLineLength_optional { set { base.AddAttributeValue(new sectorLineLength { value = value }); } }
+		public double? sectorLineLength_optional {
+			set { base.AddAttributeValue(new sectorLineLength { value = value }); }
+			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
+		}
 		#endregion
 	}
 
@@ -5039,6 +5133,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(language),
@@ -5053,9 +5148,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? language_optional { set { base.AddAttributeValue(new language { value = value }); } }
+		public String? language_optional {
+			set { base.AddAttributeValue(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
 		#endregion
 	}
 
@@ -5078,6 +5177,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(signalDuration),
@@ -5093,6 +5193,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new signalStatus(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -5115,6 +5216,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(speedMaximum),
@@ -5129,9 +5231,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new speedMinimum(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? speedMinimum_optional { set { base.AddAttributeValue(new speedMinimum { value = value }); } }
+		public double? speedMinimum_optional {
+			set { base.AddAttributeValue(new speedMinimum { value = value }); }
+			get { return base.GetAttributeValue<speedMinimum>(nameof(speedMinimum))?.value; }
+		}
 		#endregion
 	}
 
@@ -5150,6 +5256,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(natureOfSurface),
@@ -5172,11 +5279,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new underlyingLayer(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? natureOfSurface_optional { set { base.AddAttributeValue(new natureOfSurface { value = value }); } }
-		public int?[] natureOfSurfaceQualifyingTerms_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurfaceQualifyingTerms { value = e })]); } }
-		public int? underlyingLayer_optional { set { base.AddAttributeValue(new underlyingLayer { value = value }); } }
+		public int? natureOfSurface_optional {
+			set { base.AddAttributeValue(new natureOfSurface { value = value }); }
+			get { return base.GetAttributeValue<natureOfSurface>(nameof(natureOfSurface))?.value; }
+		}
+		public int?[] natureOfSurfaceQualifyingTerms_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurfaceQualifyingTerms { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurfaceQualifyingTerms>(nameof(natureOfSurfaceQualifyingTerms)).Select(e=>e.value).ToArray(); }
+		}
+		public int? underlyingLayer_optional {
+			set { base.AddAttributeValue(new underlyingLayer { value = value }); }
+			get { return base.GetAttributeValue<underlyingLayer>(nameof(underlyingLayer))?.value; }
+		}
 		#endregion
 	}
 
@@ -5197,6 +5314,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateEnd),
@@ -5211,9 +5329,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new dateStart(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? dateStart_optional { set { base.AddAttributeValue(new dateStart { value = value }); } }
+		public String? dateStart_optional {
+			set { base.AddAttributeValue(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
 		#endregion
 	}
 
@@ -5234,6 +5356,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(contactInstructions),
@@ -5255,10 +5378,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new telecommunicationService(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? contactInstructions_optional { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
-		public int? telecommunicationService_optional { set { base.AddAttributeValue(new telecommunicationService { value = value }); } }
+		public String? contactInstructions_optional {
+			set { base.AddAttributeValue(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		public int? telecommunicationService_optional {
+			set { base.AddAttributeValue(new telecommunicationService { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationService>(nameof(telecommunicationService))?.value; }
+		}
 		#endregion
 	}
 
@@ -5283,6 +5413,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(orientation),
@@ -5303,6 +5434,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new timeRelativeToTide(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -5323,6 +5455,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dayOfWeek),
@@ -5350,12 +5483,25 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new timeOfDayEnd(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] dayOfWeek_optional { set { base.AddAttributeValue([.. value.Select(e=> new dayOfWeek { value = e })]); } }
-		public Boolean? dayOfWeekIsRange_optional { set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); } }
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional { set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayStart { value = e })]); } }
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional { set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayEnd { value = e })]); } }
+		public int?[] dayOfWeek_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dayOfWeek { value = e })]); }
+			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? dayOfWeekIsRange_optional {
+			set { base.AddAttributeValue(new dayOfWeekIsRange { value = value }); }
+			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
+		}
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayStart { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
+		}
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
+		}
 		#endregion
 	}
 
@@ -5376,6 +5522,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -5405,11 +5552,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new shapeInformation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public shapeInformation?[] shapeInformation_optional { set { base.AddAttributeValue(value); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public shapeInformation?[] shapeInformation_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); } 
+	}
 		#endregion
 	}
 
@@ -5430,6 +5587,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(magneticAnomalyValue),
@@ -5445,9 +5603,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new referenceDirection(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? referenceDirection_optional { set { base.AddAttributeValue(new referenceDirection { value = value }); } }
+		public int? referenceDirection_optional {
+			set { base.AddAttributeValue(new referenceDirection { value = value }); }
+			get { return base.GetAttributeValue<referenceDirection>(nameof(referenceDirection))?.value; }
+		}
 		#endregion
 	}
 
@@ -5468,6 +5630,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(uncertaintyFixed),
@@ -5482,9 +5645,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? uncertaintyVariableFactor_optional { set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); } }
+		public double? uncertaintyVariableFactor_optional {
+			set { base.AddAttributeValue(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
 		#endregion
 	}
 
@@ -5507,6 +5674,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(speedLimit),
@@ -5528,9 +5696,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new vesselClass(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? vesselClass_optional { set { base.AddAttributeValue(new vesselClass { value = value }); } }
+		public String? vesselClass_optional {
+			set { base.AddAttributeValue(new vesselClass { value = value }); }
+			get { return base.GetAttributeValue<vesselClass>(nameof(vesselClass))?.value; }
+		}
 		#endregion
 	}
 
@@ -5551,6 +5723,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfZoneOfConfidenceInData),
@@ -5578,11 +5751,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -5603,6 +5786,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(moireEffect),
@@ -5617,9 +5801,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new orientation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? moireEffect_optional { set { base.AddAttributeValue(new moireEffect { value = value }); } }
+		public Boolean? moireEffect_optional {
+			set { base.AddAttributeValue(new moireEffect { value = value }); }
+			get { return base.GetAttributeValue<moireEffect>(nameof(moireEffect))?.value; }
+		}
 		#endregion
 	}
 
@@ -5640,6 +5828,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(lightCharacteristic),
@@ -5667,11 +5856,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new signalSequence(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] signalGroup_optional { set { base.AddAttributeValue([.. value.Select(e=> new signalGroup { value = e })]); } }
-		public double? signalPeriod_optional { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
-		public signalSequence?[] signalSequence_optional { set { base.AddAttributeValue(value); } }
+		public String?[] signalGroup_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new signalGroup { value = e })]); }
+			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
+		}
+		public double? signalPeriod_optional {
+			set { base.AddAttributeValue(new signalPeriod { value = value }); }
+			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
+		}
+		public signalSequence?[] signalSequence_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
+	}
 		#endregion
 	}
 
@@ -5692,6 +5891,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSchedule),
@@ -5707,10 +5907,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new timeIntervalsByDayOfWeek(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfSchedule_optional { set { base.AddAttributeValue(new categoryOfSchedule { value = value }); } }
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfSchedule_optional {
+			set { base.AddAttributeValue(new categoryOfSchedule { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
+		}
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
+	}
 		#endregion
 	}
 
@@ -5733,6 +5940,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(sectorLimitOne),
@@ -5747,6 +5955,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new sectorLimitTwo(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
 		#endregion
@@ -5767,6 +5976,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -5787,11 +5997,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -5816,6 +6036,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(referenceTide),
@@ -5844,10 +6065,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new tidalStreamValue(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? streamDepth_optional { set { base.AddAttributeValue(new streamDepth { value = value }); } }
-		public tidalStreamValue?[] tidalStreamValue_optional { set { base.AddAttributeValue(value); } }
+		public double? streamDepth_optional {
+			set { base.AddAttributeValue(new streamDepth { value = value }); }
+			get { return base.GetAttributeValue<streamDepth>(nameof(streamDepth))?.value; }
+		}
+		public tidalStreamValue?[] tidalStreamValue_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<tidalStreamValue>(nameof(tidalStreamValue)); } 
+	}
 		#endregion
 	}
 
@@ -5868,6 +6096,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
@@ -5882,9 +6111,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -5905,6 +6138,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
@@ -5919,9 +6153,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -5942,6 +6180,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceUnlimited),
@@ -5962,10 +6201,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? verticalClearanceValue_optional { set { base.AddAttributeValue(new verticalClearanceValue { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public double? verticalClearanceValue_optional {
+			set { base.AddAttributeValue(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -5986,6 +6232,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(verticalClearanceValue),
@@ -6000,9 +6247,13 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
 		#endregion
 	}
 
@@ -6023,6 +6274,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -6069,15 +6321,37 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new sectorArcExtension(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public directionalCharacter? directionalCharacter_optional { set { base.AddAttributeValue(value); } }
-		public int?[] lightVisibility_optional { set { base.AddAttributeValue([.. value.Select(e=> new lightVisibility { value = e })]); } }
-		public sectorLimit? sectorLimit_optional { set { base.AddAttributeValue(value); } }
-		public double? valueOfNominalRange_optional { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
-		public sectorInformation?[] sectorInformation_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? sectorArcExtension_optional { set { base.AddAttributeValue(new sectorArcExtension { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public directionalCharacter? directionalCharacter_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<directionalCharacter>(nameof(directionalCharacter)); }
+		}
+		public int?[] lightVisibility_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new lightVisibility { value = e })]); }
+			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
+		}
+		public sectorLimit? sectorLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<sectorLimit>(nameof(sectorLimit)); }
+		}
+		public double? valueOfNominalRange_optional {
+			set { base.AddAttributeValue(new valueOfNominalRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
+		}
+		public sectorInformation?[] sectorInformation_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<sectorInformation>(nameof(sectorInformation)); } 
+	}
+		public Boolean? sectorArcExtension_optional {
+			set { base.AddAttributeValue(new sectorArcExtension { value = value }); }
+			get { return base.GetAttributeValue<sectorArcExtension>(nameof(sectorArcExtension))?.value; }
+		}
 		#endregion
 	}
 
@@ -6100,6 +6374,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(lightCharacteristic),
@@ -6133,12 +6408,25 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 					CreateInstance = () => new signalSequence(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public lightSector?[] lightSector_optional { set { base.AddAttributeValue(value); } }
-		public String?[] signalGroup_optional { set { base.AddAttributeValue([.. value.Select(e=> new signalGroup { value = e })]); } }
-		public double? signalPeriod_optional { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
-		public signalSequence?[] signalSequence_optional { set { base.AddAttributeValue(value); } }
+		public lightSector?[] lightSector_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<lightSector>(nameof(lightSector)); } 
+	}
+		public String?[] signalGroup_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new signalGroup { value = e })]); }
+			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
+		}
+		public double? signalPeriod_optional {
+			set { base.AddAttributeValue(new signalPeriod { value = value }); }
+			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
+		}
+		public signalSequence?[] signalSequence_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
+	}
 		#endregion
 	}
 
@@ -6164,6 +6452,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(callSign),
@@ -6214,16 +6503,41 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 					CreateInstance = () => new telecommunications(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? callSign_optional { set { base.AddAttributeValue(new callSign { value = value }); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public String? contactInstructions_optional { set { base.AddAttributeValue(new contactInstructions { value = value }); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public frequencyPair?[] frequencyPair_optional { set { base.AddAttributeValue(value); } }
-		public String? mMSICode_optional { set { base.AddAttributeValue(new mMSICode { value = value }); } }
-		public onlineResource?[] onlineResource_optional { set { base.AddAttributeValue(value); } }
-		public telecommunications?[] telecommunications_optional { set { base.AddAttributeValue(value); } }
+		public String? callSign_optional {
+			set { base.AddAttributeValue(new callSign { value = value }); }
+			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public String? contactInstructions_optional {
+			set { base.AddAttributeValue(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public frequencyPair?[] frequencyPair_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
+	}
+		public String? mMSICode_optional {
+			set { base.AddAttributeValue(new mMSICode { value = value }); }
+			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
+		}
+		public onlineResource?[] onlineResource_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
+	}
+		public telecommunications?[] telecommunications_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
+	}
 		#endregion
 	}
 
@@ -6244,6 +6558,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -6270,12 +6585,25 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6294,6 +6622,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(dateFixed),
@@ -6326,13 +6655,29 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] dateFixed_optional { set { base.AddAttributeValue([.. value.Select(e=> new dateFixed { value = e })]); } }
-		public String?[] dateVariable_optional { set { base.AddAttributeValue([.. value.Select(e=> new dateVariable { value = e })]); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String?[] dateFixed_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dateFixed { value = e })]); }
+			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] dateVariable_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new dateVariable { value = e })]); }
+			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6351,6 +6696,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -6377,12 +6723,25 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -6401,6 +6760,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(qualityOfHorizontalMeasurement),
@@ -6416,10 +6776,17 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 					CreateInstance = () => new spatialAccuracy(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? qualityOfHorizontalMeasurement_optional { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
-		public spatialAccuracy?[] spatialAccuracy_optional { set { base.AddAttributeValue(value); } }
+		public int? qualityOfHorizontalMeasurement_optional {
+			set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); }
+			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
+		}
+		public spatialAccuracy?[] spatialAccuracy_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<spatialAccuracy>(nameof(spatialAccuracy)); } 
+	}
 		#endregion
 	}
 
@@ -6447,6 +6814,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfTemporalVariation),
@@ -6498,15 +6866,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfTemporalVariation_optional { set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); } }
-		public double? horizontalDistanceUncertainty_optional { set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? orientationUncertainty_optional { set { base.AddAttributeValue(new orientationUncertainty { value = value }); } }
-		public surveyDateRange? surveyDateRange_optional { set { base.AddAttributeValue(value); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfTemporalVariation_optional {
+			set { base.AddAttributeValue(new categoryOfTemporalVariation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
+		}
+		public double? horizontalDistanceUncertainty_optional {
+			set { base.AddAttributeValue(new horizontalDistanceUncertainty { value = value }); }
+			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? orientationUncertainty_optional {
+			set { base.AddAttributeValue(new orientationUncertainty { value = value }); }
+			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
+		public surveyDateRange? surveyDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6531,6 +6921,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(drawingIndex),
@@ -6569,11 +6960,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? drawingIndex_optional { set { base.AddAttributeValue(new drawingIndex { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? drawingIndex_optional {
+			set { base.AddAttributeValue(new drawingIndex { value = value }); }
+			get { return base.GetAttributeValue<drawingIndex>(nameof(drawingIndex))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6594,6 +6995,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(marksNavigationalSystemOf),
@@ -6615,10 +7017,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6641,6 +7050,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -6674,11 +7084,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6707,6 +7127,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfTemporalVariation),
@@ -6771,14 +7192,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMaximumValue_optional { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public surveyDateRange? surveyDateRange_optional { set { base.AddAttributeValue(value); } }
-		public zoneOfConfidence?[] zoneOfConfidence_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMaximumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public surveyDateRange? surveyDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
+		}
+		public zoneOfConfidence?[] zoneOfConfidence_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<zoneOfConfidence>(nameof(zoneOfConfidence)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6799,6 +7239,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -6820,10 +7261,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6844,6 +7292,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -6865,10 +7314,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -6893,6 +7349,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMaximumValue),
@@ -7007,24 +7464,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMaximumValue_optional { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featuresDetected? featuresDetected_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? fullSeafloorCoverageAchieved_optional { set { base.AddAttributeValue(new fullSeafloorCoverageAchieved { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? lineSpacingMaximum_optional { set { base.AddAttributeValue(new lineSpacingMaximum { value = value }); } }
-		public int? lineSpacingMinimum_optional { set { base.AddAttributeValue(new lineSpacingMinimum { value = value }); } }
-		public int? measurementDistanceMaximum_optional { set { base.AddAttributeValue(new measurementDistanceMaximum { value = value }); } }
-		public int? measurementDistanceMinimum_optional { set { base.AddAttributeValue(new measurementDistanceMinimum { value = value }); } }
-		public int? qualityOfHorizontalMeasurement_optional { set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int? scaleValueMaximum_optional { set { base.AddAttributeValue(new scaleValueMaximum { value = value }); } }
-		public int? scaleValueMinimum_optional { set { base.AddAttributeValue(new scaleValueMinimum { value = value }); } }
-		public int?[] surveyType_optional { set { base.AddAttributeValue([.. value.Select(e=> new surveyType { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMaximumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featuresDetected? featuresDetected_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<featuresDetected>(nameof(featuresDetected)); }
+		}
+		public Boolean? fullSeafloorCoverageAchieved_optional {
+			set { base.AddAttributeValue(new fullSeafloorCoverageAchieved { value = value }); }
+			get { return base.GetAttributeValue<fullSeafloorCoverageAchieved>(nameof(fullSeafloorCoverageAchieved))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? lineSpacingMaximum_optional {
+			set { base.AddAttributeValue(new lineSpacingMaximum { value = value }); }
+			get { return base.GetAttributeValue<lineSpacingMaximum>(nameof(lineSpacingMaximum))?.value; }
+		}
+		public int? lineSpacingMinimum_optional {
+			set { base.AddAttributeValue(new lineSpacingMinimum { value = value }); }
+			get { return base.GetAttributeValue<lineSpacingMinimum>(nameof(lineSpacingMinimum))?.value; }
+		}
+		public int? measurementDistanceMaximum_optional {
+			set { base.AddAttributeValue(new measurementDistanceMaximum { value = value }); }
+			get { return base.GetAttributeValue<measurementDistanceMaximum>(nameof(measurementDistanceMaximum))?.value; }
+		}
+		public int? measurementDistanceMinimum_optional {
+			set { base.AddAttributeValue(new measurementDistanceMinimum { value = value }); }
+			get { return base.GetAttributeValue<measurementDistanceMinimum>(nameof(measurementDistanceMinimum))?.value; }
+		}
+		public int? qualityOfHorizontalMeasurement_optional {
+			set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); }
+			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleValueMaximum_optional {
+			set { base.AddAttributeValue(new scaleValueMaximum { value = value }); }
+			get { return base.GetAttributeValue<scaleValueMaximum>(nameof(scaleValueMaximum))?.value; }
+		}
+		public int? scaleValueMinimum_optional {
+			set { base.AddAttributeValue(new scaleValueMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleValueMinimum>(nameof(scaleValueMinimum))?.value; }
+		}
+		public int?[] surveyType_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new surveyType { value = e })]); }
+			get { return base.GetAttributeValues<surveyType>(nameof(surveyType)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7047,6 +7553,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -7092,13 +7599,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public String? source_optional { set { base.AddAttributeValue(new source { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public String? source_optional {
+			set { base.AddAttributeValue(new source { value = value }); }
+			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7123,6 +7646,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -7161,11 +7685,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7186,6 +7720,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -7224,14 +7759,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public valueOfLocalMagneticAnomaly?[] valueOfLocalMagneticAnomaly_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public valueOfLocalMagneticAnomaly?[] valueOfLocalMagneticAnomaly_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<valueOfLocalMagneticAnomaly>(nameof(valueOfLocalMagneticAnomaly)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7250,6 +7804,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCoastline),
@@ -7316,18 +7871,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfCoastline_optional { set { base.AddAttributeValue(new categoryOfCoastline { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfSurface_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? categoryOfCoastline_optional {
+			set { base.AddAttributeValue(new categoryOfCoastline { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCoastline>(nameof(categoryOfCoastline))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfSurface_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -7346,6 +7932,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -7392,15 +7979,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7421,6 +8030,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -7447,12 +8057,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7473,6 +8096,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(elevation),
@@ -7512,13 +8136,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7537,6 +8177,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -7570,13 +8211,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7595,6 +8252,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -7627,13 +8285,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7652,6 +8326,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -7691,14 +8366,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7717,6 +8411,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(elevation),
@@ -7756,14 +8451,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7782,6 +8496,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfLandRegion),
@@ -7829,15 +8544,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfLandRegion_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLandRegion { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfSurface_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfLandRegion_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLandRegion { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLandRegion>(nameof(categoryOfLandRegion)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfSurface_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7858,6 +8595,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfVegetation),
@@ -7916,16 +8654,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -7946,6 +8709,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfIce),
@@ -8023,19 +8787,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8054,6 +8852,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSlope),
@@ -8114,17 +8913,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfSlope_optional { set { base.AddAttributeValue(new categoryOfSlope { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfSurface_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfSlope_optional {
+			set { base.AddAttributeValue(new categoryOfSlope { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSlope>(nameof(categoryOfSlope))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfSurface_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8143,6 +8970,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSlope),
@@ -8209,18 +9037,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfSlope_optional { set { base.AddAttributeValue(new categoryOfSlope { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfSurface_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfSlope_optional {
+			set { base.AddAttributeValue(new categoryOfSlope { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSlope>(nameof(categoryOfSlope))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfSurface_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8239,6 +9098,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -8265,12 +9125,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8289,6 +9162,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfBuiltUpArea),
@@ -8366,20 +9240,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfBuiltUpArea_optional { set { base.AddAttributeValue(new categoryOfBuiltUpArea { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int? categoryOfBuiltUpArea_optional {
+			set { base.AddAttributeValue(new categoryOfBuiltUpArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfBuiltUpArea>(nameof(categoryOfBuiltUpArea))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -8398,6 +9309,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buildingShape),
@@ -8528,28 +9440,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? buildingShape_optional { set { base.AddAttributeValue(new buildingShape { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public int?[] function_optional { set { base.AddAttributeValue([.. value.Select(e=> new function { value = e })]); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int? buildingShape_optional {
+			set { base.AddAttributeValue(new buildingShape { value = value }); }
+			get { return base.GetAttributeValue<buildingShape>(nameof(buildingShape))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public int?[] function_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new function { value = e })]); }
+			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -8568,6 +9541,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfAirportAirfield),
@@ -8627,17 +9601,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfAirportAirfield_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAirportAirfield { value = e })]); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfAirportAirfield_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAirportAirfield { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfAirportAirfield>(nameof(categoryOfAirportAirfield)).Select(e=>e.value).ToArray(); }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -8656,6 +9658,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -8715,17 +9718,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8744,6 +9775,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -8803,17 +9835,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -8832,6 +9892,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(bridgeConstruction),
@@ -8957,27 +10018,85 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? bridgeConstruction_optional { set { base.AddAttributeValue(new bridgeConstruction { value = value }); } }
-		public int?[] bridgeFunction_optional { set { base.AddAttributeValue([.. value.Select(e=> new bridgeFunction { value = e })]); } }
-		public int? categoryOfOpeningBridge_optional { set { base.AddAttributeValue(new categoryOfOpeningBridge { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? openingBridge_optional { set { base.AddAttributeValue(new openingBridge { value = value }); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? bridgeConstruction_optional {
+			set { base.AddAttributeValue(new bridgeConstruction { value = value }); }
+			get { return base.GetAttributeValue<bridgeConstruction>(nameof(bridgeConstruction))?.value; }
+		}
+		public int?[] bridgeFunction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new bridgeFunction { value = e })]); }
+			get { return base.GetAttributeValues<bridgeFunction>(nameof(bridgeFunction)).Select(e=>e.value).ToArray(); }
+		}
+		public int? categoryOfOpeningBridge_optional {
+			set { base.AddAttributeValue(new categoryOfOpeningBridge { value = value }); }
+			get { return base.GetAttributeValue<categoryOfOpeningBridge>(nameof(categoryOfOpeningBridge))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? openingBridge_optional {
+			set { base.AddAttributeValue(new openingBridge { value = value }); }
+			get { return base.GetAttributeValue<openingBridge>(nameof(openingBridge))?.value; }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -8998,6 +10117,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -9049,15 +10169,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -9080,6 +10222,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -9137,15 +10280,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -9164,6 +10329,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfConveyor),
@@ -9300,29 +10466,93 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfConveyor_optional { set { base.AddAttributeValue(new categoryOfConveyor { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? liftingCapacity_optional { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? categoryOfConveyor_optional {
+			set { base.AddAttributeValue(new categoryOfConveyor { value = value }); }
+			get { return base.GetAttributeValue<categoryOfConveyor>(nameof(categoryOfConveyor))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? liftingCapacity_optional {
+			set { base.AddAttributeValue(new liftingCapacity { value = value }); }
+			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -9341,6 +10571,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCable),
@@ -9444,24 +10675,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfCable_optional { set { base.AddAttributeValue(new categoryOfCable { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? iceFactor_optional { set { base.AddAttributeValue(new iceFactor { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public verticalClearanceSafe? verticalClearanceSafe_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfCable_optional {
+			set { base.AddAttributeValue(new categoryOfCable { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCable>(nameof(categoryOfCable))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? iceFactor_optional {
+			set { base.AddAttributeValue(new iceFactor { value = value }); }
+			get { return base.GetAttributeValue<iceFactor>(nameof(iceFactor))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public verticalClearanceSafe? verticalClearanceSafe_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceSafe>(nameof(verticalClearanceSafe)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -9480,6 +10760,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfPipelinePipe),
@@ -9578,23 +10859,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfPipelinePipe_optional { set { base.AddAttributeValue(new categoryOfPipelinePipe { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfPipelinePipe_optional {
+			set { base.AddAttributeValue(new categoryOfPipelinePipe { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -9615,6 +10942,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfPylon),
@@ -9739,26 +11067,81 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -9777,6 +11160,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfFence),
@@ -9882,24 +11266,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfFence_optional { set { base.AddAttributeValue(new categoryOfFence { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfFence_optional {
+			set { base.AddAttributeValue(new categoryOfFence { value = value }); }
+			get { return base.GetAttributeValue<categoryOfFence>(nameof(categoryOfFence))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -9918,6 +11351,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -9970,16 +11404,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -9998,6 +11457,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfRoad),
@@ -10058,17 +11518,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfRoad_optional { set { base.AddAttributeValue(new categoryOfRoad { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfRoad_optional {
+			set { base.AddAttributeValue(new categoryOfRoad { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRoad>(nameof(categoryOfRoad))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -10087,6 +11575,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -10158,19 +11647,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -10193,6 +11716,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfLandmark),
@@ -10330,28 +11854,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfLandmark_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLandmark { value = e })]); } }
-		public int?[] categoryOfSpecialPurposeMark_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public int?[] function_optional { set { base.AddAttributeValue([.. value.Select(e=> new function { value = e })]); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int?[] categoryOfLandmark_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLandmark { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLandmark>(nameof(categoryOfLandmark)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] categoryOfSpecialPurposeMark_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public int?[] function_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new function { value = e })]); }
+			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -10370,6 +11955,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buildingShape),
@@ -10507,29 +12093,93 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? buildingShape_optional { set { base.AddAttributeValue(new buildingShape { value = value }); } }
-		public int? categoryOfSiloTank_optional { set { base.AddAttributeValue(new categoryOfSiloTank { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int? buildingShape_optional {
+			set { base.AddAttributeValue(new buildingShape { value = value }); }
+			get { return base.GetAttributeValue<buildingShape>(nameof(buildingShape))?.value; }
+		}
+		public int? categoryOfSiloTank_optional {
+			set { base.AddAttributeValue(new categoryOfSiloTank { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSiloTank>(nameof(categoryOfSiloTank))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -10548,6 +12198,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -10690,30 +12341,97 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -10732,6 +12450,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfFortifiedStructure),
@@ -10829,23 +12548,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfFortifiedStructure_optional { set { base.AddAttributeValue(new categoryOfFortifiedStructure { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int? categoryOfFortifiedStructure_optional {
+			set { base.AddAttributeValue(new categoryOfFortifiedStructure { value = value }); }
+			get { return base.GetAttributeValue<categoryOfFortifiedStructure>(nameof(categoryOfFortifiedStructure))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -10866,6 +12631,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfProductionArea),
@@ -10969,23 +12735,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -11004,6 +12816,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCheckpoint),
@@ -11044,14 +12857,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfCheckpoint_optional { set { base.AddAttributeValue(new categoryOfCheckpoint { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfCheckpoint_optional {
+			set { base.AddAttributeValue(new categoryOfCheckpoint { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCheckpoint>(nameof(categoryOfCheckpoint))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -11070,6 +12902,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfHulk),
@@ -11179,25 +13012,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfHulk_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfHulk { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfHulk_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfHulk { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfHulk>(nameof(categoryOfHulk)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -11216,6 +13101,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfPile),
@@ -11320,24 +13206,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfPile_optional { set { base.AddAttributeValue(new categoryOfPile { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? categoryOfPile_optional {
+			set { base.AddAttributeValue(new categoryOfPile { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPile>(nameof(categoryOfPile))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -11356,6 +13291,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -11433,20 +13369,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -11465,6 +13438,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfShorelineConstruction),
@@ -11595,28 +13569,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfShorelineConstruction_optional { set { base.AddAttributeValue(new categoryOfShorelineConstruction { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfShorelineConstruction_optional {
+			set { base.AddAttributeValue(new categoryOfShorelineConstruction { value = value }); }
+			get { return base.GetAttributeValue<categoryOfShorelineConstruction>(nameof(categoryOfShorelineConstruction))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -11639,6 +13674,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfStructure),
@@ -11794,30 +13830,97 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfStructure_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfStructure { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? product_optional { set { base.AddAttributeValue(new product { value = value }); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfStructure_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfStructure { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfStructure>(nameof(categoryOfStructure)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? product_optional {
+			set { base.AddAttributeValue(new product { value = value }); }
+			get { return base.GetAttributeValue<product>(nameof(product))?.value; }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -11836,6 +13939,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -11896,17 +14000,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -11925,6 +14057,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCanal),
@@ -11996,19 +14129,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfCanal_optional { set { base.AddAttributeValue(new categoryOfCanal { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfCanal_optional {
+			set { base.AddAttributeValue(new categoryOfCanal { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCanal>(nameof(categoryOfCanal))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -12031,6 +14198,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(distanceMarkVisible),
@@ -12075,13 +14243,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -12100,6 +14284,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfGate),
@@ -12192,22 +14377,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfGate_optional { set { base.AddAttributeValue(new categoryOfGate { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceOpen? horizontalClearanceOpen_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceOpen? verticalClearanceOpen_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfGate_optional {
+			set { base.AddAttributeValue(new categoryOfGate { value = value }); }
+			get { return base.GetAttributeValue<categoryOfGate>(nameof(categoryOfGate))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public horizontalClearanceOpen? horizontalClearanceOpen_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceOpen>(nameof(horizontalClearanceOpen)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceOpen? verticalClearanceOpen_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceOpen>(nameof(verticalClearanceOpen)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -12226,6 +14454,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfDam),
@@ -12332,24 +14561,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfDam_optional { set { base.AddAttributeValue(new categoryOfDam { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfDam_optional {
+			set { base.AddAttributeValue(new categoryOfDam { value = value }); }
+			get { return base.GetAttributeValue<categoryOfDam>(nameof(categoryOfDam))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -12368,6 +14646,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCrane),
@@ -12497,28 +14776,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new inTheWater(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfCrane_optional { set { base.AddAttributeValue(new categoryOfCrane { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? liftingCapacity_optional { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
-		public orientation? orientation_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public double? radius_optional { set { base.AddAttributeValue(new radius { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalClearanceFixed? verticalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public Boolean? inTheWater_optional { set { base.AddAttributeValue(new inTheWater { value = value }); } }
+		public int? categoryOfCrane_optional {
+			set { base.AddAttributeValue(new categoryOfCrane { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCrane>(nameof(categoryOfCrane))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? liftingCapacity_optional {
+			set { base.AddAttributeValue(new liftingCapacity { value = value }); }
+			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
+		}
+		public orientation? orientation_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public double? radius_optional {
+			set { base.AddAttributeValue(new radius { value = value }); }
+			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalClearanceFixed? verticalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public Boolean? inTheWater_optional {
+			set { base.AddAttributeValue(new inTheWater { value = value }); }
+			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
+		}
 		#endregion
 	}
 
@@ -12539,6 +14879,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCargo),
@@ -12628,22 +14969,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfCargo_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalClearanceLength_optional { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
-		public double? horizontalClearanceWidth_optional { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public double? minimumBerthDepth_optional { set { base.AddAttributeValue(new minimumBerthDepth { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfCargo_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalClearanceLength_optional {
+			set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
+		}
+		public double? horizontalClearanceWidth_optional {
+			set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public double? minimumBerthDepth_optional {
+			set { base.AddAttributeValue(new minimumBerthDepth { value = value }); }
+			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -12664,6 +15048,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfDolphin),
@@ -12787,27 +15172,85 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfDolphin_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDolphin { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfDolphin_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDolphin { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfDolphin>(nameof(categoryOfDolphin)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -12826,6 +15269,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -12890,18 +15334,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -12920,6 +15395,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -13021,24 +15497,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalClearanceLength_optional { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
-		public double? horizontalClearanceWidth_optional { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalClearanceLength_optional {
+			set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
+		}
+		public double? horizontalClearanceWidth_optional {
+			set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13057,6 +15582,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -13184,28 +15710,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalClearanceLength_optional { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
-		public double? horizontalClearanceWidth_optional { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? liftingCapacity_optional { set { base.AddAttributeValue(new liftingCapacity { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalClearanceLength_optional {
+			set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
+		}
+		public double? horizontalClearanceWidth_optional {
+			set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? liftingCapacity_optional {
+			set { base.AddAttributeValue(new liftingCapacity { value = value }); }
+			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -13224,6 +15811,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -13301,20 +15889,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -13333,6 +15958,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfDock),
@@ -13416,21 +16042,61 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfDock_optional { set { base.AddAttributeValue(new categoryOfDock { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalClearanceLength_optional { set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); } }
-		public double? horizontalClearanceWidth_optional { set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfDock_optional {
+			set { base.AddAttributeValue(new categoryOfDock { value = value }); }
+			get { return base.GetAttributeValue<categoryOfDock>(nameof(categoryOfDock))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public double? horizontalClearanceLength_optional {
+			set { base.AddAttributeValue(new horizontalClearanceLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
+		}
+		public double? horizontalClearanceWidth_optional {
+			set { base.AddAttributeValue(new horizontalClearanceWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13449,6 +16115,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -13514,18 +16181,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13544,6 +16242,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -13607,18 +16306,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13637,6 +16367,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -13669,13 +16400,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13694,6 +16441,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSeaArea),
@@ -13727,13 +16475,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfSeaArea_optional { set { base.AddAttributeValue(new categoryOfSeaArea { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfSeaArea_optional {
+			set { base.AddAttributeValue(new categoryOfSeaArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSeaArea>(nameof(categoryOfSeaArea))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13758,6 +16522,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfTidalStream),
@@ -13809,13 +16574,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13838,6 +16619,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -13895,15 +16677,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13924,6 +16728,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfWaterTurbulence),
@@ -13957,12 +16762,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -13985,6 +16803,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -14029,14 +16848,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? stationNumber_optional { set { base.AddAttributeValue(new stationNumber { value = value }); } }
-		public tidalStreamPanelValues?[] tidalStreamPanelValues_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? stationNumber_optional {
+			set { base.AddAttributeValue(new stationNumber { value = value }); }
+			get { return base.GetAttributeValue<stationNumber>(nameof(stationNumber))?.value; }
+		}
+		public tidalStreamPanelValues?[] tidalStreamPanelValues_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<tidalStreamPanelValues>(nameof(tidalStreamPanelValues)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14055,6 +16893,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -14108,16 +16947,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14138,6 +17002,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMinimumValue),
@@ -14215,19 +17080,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMaximumValue_optional { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
-		public String? dredgedDate_optional { set { base.AddAttributeValue(new dredgedDate { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int? qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue(new qualityOfVerticalMeasurement { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMaximumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
+		}
+		public String? dredgedDate_optional {
+			set { base.AddAttributeValue(new dredgedDate { value = value }); }
+			get { return base.GetAttributeValue<dredgedDate>(nameof(dredgedDate))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int? qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue(new qualityOfVerticalMeasurement { value = value }); }
+			get { return base.GetAttributeValue<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14248,6 +17147,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMinimumValue),
@@ -14280,12 +17180,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? sweptDate_optional { set { base.AddAttributeValue(new sweptDate { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? sweptDate_optional {
+			set { base.AddAttributeValue(new sweptDate { value = value }); }
+			get { return base.GetAttributeValue<sweptDate>(nameof(sweptDate))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14306,6 +17219,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -14332,11 +17246,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14359,6 +17283,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMinimumValue),
@@ -14385,10 +17310,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14407,6 +17339,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -14434,12 +17367,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14458,6 +17404,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -14472,10 +17419,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14496,6 +17450,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -14535,14 +17490,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public surfaceCharacteristics?[] surfaceCharacteristics_optional { set { base.AddAttributeValue(value); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public surfaceCharacteristics?[] surfaceCharacteristics_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<surfaceCharacteristics>(nameof(surfaceCharacteristics)); } 
+	}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14561,6 +17535,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfWeedKelp),
@@ -14594,13 +17569,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfWeedKelp_optional { set { base.AddAttributeValue(new categoryOfWeedKelp { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfWeedKelp_optional {
+			set { base.AddAttributeValue(new categoryOfWeedKelp { value = value }); }
+			get { return base.GetAttributeValue<categoryOfWeedKelp>(nameof(categoryOfWeedKelp))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14619,6 +17610,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -14645,12 +17637,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14669,6 +17674,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -14695,12 +17701,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14719,6 +17738,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -14745,12 +17765,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -14775,6 +17808,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(expositionOfSounding),
@@ -14867,19 +17901,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new surroundingDepth(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? expositionOfSounding_optional { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? natureOfSurface_optional { set { base.AddAttributeValue(new natureOfSurface { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public double? defaultClearanceDepth_optional { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		public int? expositionOfSounding_optional {
+			set { base.AddAttributeValue(new expositionOfSounding { value = value }); }
+			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? natureOfSurface_optional {
+			set { base.AddAttributeValue(new natureOfSurface { value = value }); }
+			get { return base.GetAttributeValue<natureOfSurface>(nameof(natureOfSurface))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public double? defaultClearanceDepth_optional {
+			set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); }
+			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
 		#endregion
 	}
 
@@ -14902,6 +17970,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfWreck),
@@ -15019,24 +18088,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new surroundingDepth(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfWreck_optional { set { base.AddAttributeValue(new categoryOfWreck { value = value }); } }
-		public int? expositionOfSounding_optional { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public double? valueOfSounding_optional { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
-		public double? defaultClearanceDepth_optional { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		public int? categoryOfWreck_optional {
+			set { base.AddAttributeValue(new categoryOfWreck { value = value }); }
+			get { return base.GetAttributeValue<categoryOfWreck>(nameof(categoryOfWreck))?.value; }
+		}
+		public int? expositionOfSounding_optional {
+			set { base.AddAttributeValue(new expositionOfSounding { value = value }); }
+			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfSounding_optional {
+			set { base.AddAttributeValue(new valueOfSounding { value = value }); }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
+		public double? defaultClearanceDepth_optional {
+			set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); }
+			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
 		#endregion
 	}
 
@@ -15059,6 +18177,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfObstruction),
@@ -15190,26 +18309,81 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new surroundingDepth(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfObstruction_optional { set { base.AddAttributeValue(new categoryOfObstruction { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public int? expositionOfSounding_optional { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int?[] natureOfSurface_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public double? valueOfSounding_optional { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public double? defaultClearanceDepth_optional { set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); } }
+		public int? categoryOfObstruction_optional {
+			set { base.AddAttributeValue(new categoryOfObstruction { value = value }); }
+			get { return base.GetAttributeValue<categoryOfObstruction>(nameof(categoryOfObstruction))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public int? expositionOfSounding_optional {
+			set { base.AddAttributeValue(new expositionOfSounding { value = value }); }
+			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int?[] natureOfSurface_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfSurface { value = e })]); }
+			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfSounding_optional {
+			set { base.AddAttributeValue(new valueOfSounding { value = value }); }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public double? defaultClearanceDepth_optional {
+			set { base.AddAttributeValue(new defaultClearanceDepth { value = value }); }
+			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
 		#endregion
 	}
 
@@ -15228,6 +18402,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -15293,18 +18468,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public double? valueOfSounding_optional { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfSounding_optional {
+			set { base.AddAttributeValue(new valueOfSounding { value = value }); }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15323,6 +18529,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -15349,12 +18556,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15373,6 +18593,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfFishingFacility),
@@ -15438,18 +18659,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfFishingFacility_optional { set { base.AddAttributeValue(new categoryOfFishingFacility { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfFishingFacility_optional {
+			set { base.AddAttributeValue(new categoryOfFishingFacility { value = value }); }
+			get { return base.GetAttributeValue<categoryOfFishingFacility>(nameof(categoryOfFishingFacility))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15470,6 +18722,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfMarineFarmCulture),
@@ -15580,24 +18833,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfMarineFarmCulture_optional { set { base.AddAttributeValue(new categoryOfMarineFarmCulture { value = value }); } }
-		public int? expositionOfSounding_optional { set { base.AddAttributeValue(new expositionOfSounding { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfSounding_optional { set { base.AddAttributeValue(new valueOfSounding { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfMarineFarmCulture_optional {
+			set { base.AddAttributeValue(new categoryOfMarineFarmCulture { value = value }); }
+			get { return base.GetAttributeValue<categoryOfMarineFarmCulture>(nameof(categoryOfMarineFarmCulture))?.value; }
+		}
+		public int? expositionOfSounding_optional {
+			set { base.AddAttributeValue(new expositionOfSounding { value = value }); }
+			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfSounding_optional {
+			set { base.AddAttributeValue(new valueOfSounding { value = value }); }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15616,6 +18918,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfOffshorePlatform),
@@ -15733,26 +19036,81 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfOffshorePlatform_optional { set { base.AddAttributeValue(new categoryOfOffshorePlatform { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? flareStack_optional { set { base.AddAttributeValue(new flareStack { value = value }); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? categoryOfOffshorePlatform_optional {
+			set { base.AddAttributeValue(new categoryOfOffshorePlatform { value = value }); }
+			get { return base.GetAttributeValue<categoryOfOffshorePlatform>(nameof(categoryOfOffshorePlatform))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? flareStack_optional {
+			set { base.AddAttributeValue(new flareStack { value = value }); }
+			get { return base.GetAttributeValue<flareStack>(nameof(flareStack))?.value; }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -15771,6 +19129,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buriedDepth),
@@ -15830,17 +19189,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? buriedDepth_optional { set { base.AddAttributeValue(new buriedDepth { value = value }); } }
-		public int? categoryOfCable_optional { set { base.AddAttributeValue(new categoryOfCable { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? buriedDepth_optional {
+			set { base.AddAttributeValue(new buriedDepth { value = value }); }
+			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
+		}
+		public int? categoryOfCable_optional {
+			set { base.AddAttributeValue(new categoryOfCable { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCable>(nameof(categoryOfCable))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15859,6 +19246,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfCable),
@@ -15918,17 +19306,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfCable_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCable { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfCable_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCable { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCable>(nameof(categoryOfCable)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -15947,6 +19363,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buriedDepth),
@@ -16050,24 +19467,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? buriedDepth_optional { set { base.AddAttributeValue(new buriedDepth { value = value }); } }
-		public int?[] categoryOfPipelinePipe_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public double? depthRangeMaximumValue_optional { set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public double? buriedDepth_optional {
+			set { base.AddAttributeValue(new buriedDepth { value = value }); }
+			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
+		}
+		public int?[] categoryOfPipelinePipe_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe)).Select(e=>e.value).ToArray(); }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public double? depthRangeMaximumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMaximumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -16086,6 +19552,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfPipelinePipe),
@@ -16152,18 +19619,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfPipelinePipe_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfPipelinePipe_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16182,6 +19680,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfOffshoreProductionArea),
@@ -16293,25 +19792,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfOffshoreProductionArea_optional { set { base.AddAttributeValue(new categoryOfOffshoreProductionArea { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? waterLevelEffect_optional { set { base.AddAttributeValue(new waterLevelEffect { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfOffshoreProductionArea_optional {
+			set { base.AddAttributeValue(new categoryOfOffshoreProductionArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfOffshoreProductionArea>(nameof(categoryOfOffshoreProductionArea))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? waterLevelEffect_optional {
+			set { base.AddAttributeValue(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16334,6 +19885,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfNavigationLine),
@@ -16392,15 +19944,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? measuredDistance_optional { set { base.AddAttributeValue(new measuredDistance { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? measuredDistance_optional {
+			set { base.AddAttributeValue(new measuredDistance { value = value }); }
+			get { return base.GetAttributeValue<measuredDistance>(nameof(measuredDistance))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16425,6 +19999,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(basedOnFixedMarks),
@@ -16521,20 +20096,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16553,6 +20165,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -16591,14 +20204,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16617,6 +20249,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMinimumValue),
@@ -16707,22 +20340,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public double? orientationValue_optional { set { base.AddAttributeValue(new orientationValue { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? trafficFlow_optional { set { base.AddAttributeValue(new trafficFlow { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public double? orientationValue_optional {
+			set { base.AddAttributeValue(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? trafficFlow_optional {
+			set { base.AddAttributeValue(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16741,6 +20417,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -16785,15 +20462,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16814,6 +20513,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(basedOnFixedMarks),
@@ -16904,21 +20604,61 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? orientationValue_optional { set { base.AddAttributeValue(new orientationValue { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public int? trafficFlow_optional { set { base.AddAttributeValue(new trafficFlow { value = value }); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? orientationValue_optional {
+			set { base.AddAttributeValue(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int? trafficFlow_optional {
+			set { base.AddAttributeValue(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -16941,6 +20681,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(basedOnFixedMarks),
@@ -17019,18 +20760,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? basedOnFixedMarks_optional { set { base.AddAttributeValue(new basedOnFixedMarks { value = value }); } }
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public Boolean? basedOnFixedMarks_optional {
+			set { base.AddAttributeValue(new basedOnFixedMarks { value = value }); }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
+		}
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17049,6 +20821,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -17087,14 +20860,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17115,6 +20907,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17154,13 +20947,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17185,6 +20994,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(basedOnFixedMarks),
@@ -17275,19 +21085,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? depthRangeMinimumValue_optional { set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? iMOAdopted_optional { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? depthRangeMinimumValue_optional {
+			set { base.AddAttributeValue(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? iMOAdopted_optional {
+			set { base.AddAttributeValue(new iMOAdopted { value = value }); }
+			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17312,6 +21156,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(depthRangeMinimumValue),
@@ -17409,20 +21254,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? iMOAdopted_optional { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] qualityOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int?[] techniqueOfVerticalMeasurement_optional { set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); } }
-		public verticalUncertainty? verticalUncertainty_optional { set { base.AddAttributeValue(value); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? iMOAdopted_optional {
+			set { base.AddAttributeValue(new iMOAdopted { value = value }); }
+			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] qualityOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] techniqueOfVerticalMeasurement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		public verticalUncertainty? verticalUncertainty_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17441,6 +21323,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -17479,14 +21362,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? iMOAdopted_optional { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? iMOAdopted_optional {
+			set { base.AddAttributeValue(new iMOAdopted { value = value }); }
+			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17505,6 +21407,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17551,15 +21454,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17580,6 +21505,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -17638,17 +21564,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? iMOAdopted_optional { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? iMOAdopted_optional {
+			set { base.AddAttributeValue(new iMOAdopted { value = value }); }
+			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17667,6 +21621,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17719,16 +21674,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? orientationValue_optional { set { base.AddAttributeValue(new orientationValue { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? orientationValue_optional {
+			set { base.AddAttributeValue(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17747,6 +21727,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17780,13 +21761,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17805,6 +21802,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17838,13 +21836,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17863,6 +21877,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17909,15 +21924,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -17936,6 +21973,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -17982,15 +22020,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18009,6 +22069,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -18053,15 +22114,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? iMOAdopted_optional { set { base.AddAttributeValue(new iMOAdopted { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? iMOAdopted_optional {
+			set { base.AddAttributeValue(new iMOAdopted { value = value }); }
+			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18080,6 +22163,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -18118,14 +22202,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18144,6 +22247,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -18182,14 +22286,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18210,6 +22333,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -18248,13 +22372,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18275,6 +22415,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
@@ -18339,17 +22480,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double?[] orientationValue_optional { set { base.AddAttributeValue([.. value.Select(e=> new orientationValue { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double?[] orientationValue_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new orientationValue { value = e })]); }
+			get { return base.GetAttributeValues<orientationValue>(nameof(orientationValue)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18370,6 +22539,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfFerry),
@@ -18422,16 +22592,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfFerry_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfFerry { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfFerry_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfFerry { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfFerry>(nameof(categoryOfFerry)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18452,6 +22647,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -18491,13 +22687,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18516,6 +22728,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
@@ -18561,15 +22774,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18588,6 +22823,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(callSign),
@@ -18658,19 +22894,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? callSign_optional { set { base.AddAttributeValue(new callSign { value = value }); } }
-		public int?[] categoryOfRadarStation_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRadarStation { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfMaximumRange_optional { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? callSign_optional {
+			set { base.AddAttributeValue(new callSign { value = value }); }
+			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
+		}
+		public int?[] categoryOfRadarStation_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRadarStation { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfRadarStation>(nameof(categoryOfRadarStation)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfMaximumRange_optional {
+			set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18689,6 +22959,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfAnchorage),
@@ -18761,19 +23032,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfAnchorage_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAnchorage { value = e })]); } }
-		public int?[] categoryOfCargo_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfAnchorage_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] categoryOfCargo_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18792,6 +23097,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfMooringArea),
@@ -18869,20 +23175,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfMooringArea_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfMooringArea { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public double? maximumPermittedVesselLength_optional { set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfMooringArea_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfMooringArea { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfMooringArea>(nameof(categoryOfMooringArea)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public double? maximumPermittedVesselLength_optional {
+			set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
 		#endregion
 	}
 
@@ -18901,6 +23244,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfAnchorage),
@@ -18966,18 +23310,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfAnchorage_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAnchorage { value = e })]); } }
-		public int?[] categoryOfCargo_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? radius_optional { set { base.AddAttributeValue(new radius { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfAnchorage_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] categoryOfCargo_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public double? radius_optional {
+			set { base.AddAttributeValue(new radius { value = value }); }
+			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -18996,6 +23371,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19048,16 +23424,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19076,6 +23477,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfDumpingGround),
@@ -19135,17 +23537,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfDumpingGround_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDumpingGround { value = e })]); } }
-		public String? dateDisused_optional { set { base.AddAttributeValue(new dateDisused { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfDumpingGround_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfDumpingGround { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfDumpingGround>(nameof(categoryOfDumpingGround)).Select(e=>e.value).ToArray(); }
+		}
+		public String? dateDisused_optional {
+			set { base.AddAttributeValue(new dateDisused { value = value }); }
+			get { return base.GetAttributeValue<dateDisused>(nameof(dateDisused))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19164,6 +23594,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfMilitaryPracticeArea),
@@ -19235,19 +23666,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfMilitaryPracticeArea_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfMilitaryPracticeArea { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfMilitaryPracticeArea_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfMilitaryPracticeArea { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfMilitaryPracticeArea>(nameof(categoryOfMilitaryPracticeArea)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19268,6 +23733,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(inDispute),
@@ -19319,15 +23785,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? inDispute_optional { set { base.AddAttributeValue(new inDispute { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String?[] nationality_optional { set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public Boolean? inDispute_optional {
+			set { base.AddAttributeValue(new inDispute { value = value }); }
+			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String?[] nationality_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); }
+			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -19346,6 +23834,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19404,17 +23893,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19433,6 +23950,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(condition),
@@ -19491,17 +24009,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -19520,6 +24066,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19570,16 +24117,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -19600,6 +24172,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -19638,14 +24211,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? inDispute_optional { set { base.AddAttributeValue(new inDispute { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String?[] nationality_optional { set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public Boolean? inDispute_optional {
+			set { base.AddAttributeValue(new inDispute { value = value }); }
+			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String?[] nationality_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); }
+			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19666,6 +24258,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19698,13 +24291,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String?[] nationality_optional { set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String?[] nationality_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); }
+			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19725,6 +24334,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -19751,11 +24361,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19776,6 +24396,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(inDispute),
@@ -19808,13 +24429,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? inDispute_optional { set { base.AddAttributeValue(new inDispute { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String?[] nationality_optional { set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public Boolean? inDispute_optional {
+			set { base.AddAttributeValue(new inDispute { value = value }); }
+			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String?[] nationality_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); }
+			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19835,6 +24472,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19874,13 +24512,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19899,6 +24553,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -19951,16 +24606,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -19979,6 +24659,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20012,13 +24693,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20037,6 +24734,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20070,13 +24768,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20095,6 +24809,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20134,14 +24849,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20160,6 +24894,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfOilBarrier),
@@ -20219,17 +24954,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfOilBarrier_optional { set { base.AddAttributeValue(new categoryOfOilBarrier { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfOilBarrier_optional {
+			set { base.AddAttributeValue(new categoryOfOilBarrier { value = value }); }
+			get { return base.GetAttributeValue<categoryOfOilBarrier>(nameof(categoryOfOilBarrier))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20250,6 +25013,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
@@ -20276,11 +25040,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20301,6 +25075,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(inDispute),
@@ -20346,15 +25121,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? inDispute_optional { set { base.AddAttributeValue(new inDispute { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String?[] nationality_optional { set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public Boolean? inDispute_optional {
+			set { base.AddAttributeValue(new inDispute { value = value }); }
+			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String?[] nationality_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new nationality { value = e })]); }
+			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20373,6 +25170,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20418,15 +25216,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? nationality_optional { set { base.AddAttributeValue(new nationality { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? nationality_optional {
+			set { base.AddAttributeValue(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20445,6 +25265,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
@@ -20477,13 +25298,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20502,6 +25339,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20546,15 +25384,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? regulationCitation_optional { set { base.AddAttributeValue(new regulationCitation { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public String? regulationCitation_optional {
+			set { base.AddAttributeValue(new regulationCitation { value = value }); }
+			get { return base.GetAttributeValue<regulationCitation>(nameof(regulationCitation))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20573,6 +25433,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -20605,13 +25466,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? regulationCitation_optional { set { base.AddAttributeValue(new regulationCitation { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? regulationCitation_optional {
+			set { base.AddAttributeValue(new regulationCitation { value = value }); }
+			get { return base.GetAttributeValue<regulationCitation>(nameof(regulationCitation))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20632,6 +25509,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfRestrictedArea),
@@ -20697,18 +25575,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfRestrictedArea_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRestrictedArea { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfRestrictedArea_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRestrictedArea { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfRestrictedArea>(nameof(categoryOfRestrictedArea)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20731,6 +25640,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfLight),
@@ -20867,28 +25777,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfLight_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLight { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? exhibitionConditionOfLight_optional { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? flareBearing_optional { set { base.AddAttributeValue(new flareBearing { value = value }); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? lightVisibility_optional { set { base.AddAttributeValue(new lightVisibility { value = value }); } }
-		public Boolean? majorLight_optional { set { base.AddAttributeValue(new majorLight { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? signalGeneration_optional { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfNominalRange_optional { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfLight_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLight { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? exhibitionConditionOfLight_optional {
+			set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public int? flareBearing_optional {
+			set { base.AddAttributeValue(new flareBearing { value = value }); }
+			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? lightVisibility_optional {
+			set { base.AddAttributeValue(new lightVisibility { value = value }); }
+			get { return base.GetAttributeValue<lightVisibility>(nameof(lightVisibility))?.value; }
+		}
+		public Boolean? majorLight_optional {
+			set { base.AddAttributeValue(new majorLight { value = value }); }
+			get { return base.GetAttributeValue<majorLight>(nameof(majorLight))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? signalGeneration_optional {
+			set { base.AddAttributeValue(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfNominalRange_optional {
+			set { base.AddAttributeValue(new valueOfNominalRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -20909,6 +25880,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfLight),
@@ -21007,23 +25979,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfLight_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLight { value = e })]); } }
-		public int? exhibitionConditionOfLight_optional { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public sectorCharacteristics?[] sectorCharacteristics_optional { set { base.AddAttributeValue(value); } }
-		public int? signalGeneration_optional { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfLight_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfLight { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
+		}
+		public int? exhibitionConditionOfLight_optional {
+			set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public sectorCharacteristics?[] sectorCharacteristics_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics)); } 
+	}
+		public int? signalGeneration_optional {
+			set { base.AddAttributeValue(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -21042,6 +26060,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -21132,22 +26151,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? flareBearing_optional { set { base.AddAttributeValue(new flareBearing { value = value }); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public rhythmOfLight? rhythmOfLight_optional { set { base.AddAttributeValue(value); } }
-		public int? signalGeneration_optional { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public int? flareBearing_optional {
+			set { base.AddAttributeValue(new flareBearing { value = value }); }
+			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public rhythmOfLight? rhythmOfLight_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
+		}
+		public int? signalGeneration_optional {
+			set { base.AddAttributeValue(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -21166,6 +26228,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -21269,24 +26332,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? exhibitionConditionOfLight_optional { set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? flareBearing_optional { set { base.AddAttributeValue(new flareBearing { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public int?[] lightVisibility_optional { set { base.AddAttributeValue([.. value.Select(e=> new lightVisibility { value = e })]); } }
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional { set { base.AddAttributeValue(value); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public rhythmOfLight? rhythmOfLight_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfNominalRange_optional { set { base.AddAttributeValue(new valueOfNominalRange { value = value }); } }
-		public int? verticalDatum_optional { set { base.AddAttributeValue(new verticalDatum { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? exhibitionConditionOfLight_optional {
+			set { base.AddAttributeValue(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public int? flareBearing_optional {
+			set { base.AddAttributeValue(new flareBearing { value = value }); }
+			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public int?[] lightVisibility_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new lightVisibility { value = e })]); }
+			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
+		}
+		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public rhythmOfLight? rhythmOfLight_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfNominalRange_optional {
+			set { base.AddAttributeValue(new valueOfNominalRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
+		}
+		public int? verticalDatum_optional {
+			set { base.AddAttributeValue(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -21311,6 +26423,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -21422,23 +26535,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -21463,6 +26622,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -21574,23 +26734,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -21613,6 +26819,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -21717,23 +26924,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -21756,6 +27009,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -21860,23 +27114,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -21901,6 +27201,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -22012,24 +27313,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSpecialPurposeMark_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfSpecialPurposeMark_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22052,6 +27402,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -22143,21 +27494,61 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22180,6 +27571,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -22286,23 +27678,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfInstallationBuoy_optional { set { base.AddAttributeValue(new categoryOfInstallationBuoy { value = value }); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] product_optional { set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int? categoryOfInstallationBuoy_optional {
+			set { base.AddAttributeValue(new categoryOfInstallationBuoy { value = value }); }
+			get { return base.GetAttributeValue<categoryOfInstallationBuoy>(nameof(categoryOfInstallationBuoy))?.value; }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] product_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22323,6 +27761,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(buoyShape),
@@ -22426,23 +27865,69 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? maximumPermittedDraught_optional { set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); } }
-		public double? maximumPermittedVesselLength_optional { set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public Boolean? visitorsMooring_optional { set { base.AddAttributeValue(new visitorsMooring { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? maximumPermittedDraught_optional {
+			set { base.AddAttributeValue(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		public double? maximumPermittedVesselLength_optional {
+			set { base.AddAttributeValue(new maximumPermittedVesselLength { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public Boolean? visitorsMooring_optional {
+			set { base.AddAttributeValue(new visitorsMooring { value = value }); }
+			get { return base.GetAttributeValue<visitorsMooring>(nameof(visitorsMooring))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22467,6 +27952,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(beaconShape),
@@ -22610,28 +28096,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22656,6 +28203,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(beaconShape),
@@ -22799,28 +28347,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -22843,6 +28452,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(beaconShape),
@@ -22979,28 +28589,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23023,6 +28694,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(beaconShape),
@@ -23159,28 +28831,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23205,6 +28938,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(beaconShape),
@@ -23348,29 +29082,93 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSpecialPurposeMark_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? marksNavigationalSystemOf_optional { set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfSpecialPurposeMark_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? marksNavigationalSystemOf_optional {
+			set { base.AddAttributeValue(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23393,6 +29191,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSpecialPurposeMark),
@@ -23509,25 +29308,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSpecialPurposeMark_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); } }
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public double? elevation_optional { set { base.AddAttributeValue(new elevation { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public shapeInformation?[] shapeInformation_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfSpecialPurposeMark_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public double? elevation_optional {
+			set { base.AddAttributeValue(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public shapeInformation?[] shapeInformation_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23548,6 +29399,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -23657,25 +29509,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public topmark? topmark_optional { set { base.AddAttributeValue(value); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public topmark? topmark_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23696,6 +29600,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -23799,24 +29704,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? horizontalLength_optional { set { base.AddAttributeValue(new horizontalLength { value = value }); } }
-		public double? horizontalWidth_optional { set { base.AddAttributeValue(new horizontalWidth { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public Boolean? radarConspicuous_optional { set { base.AddAttributeValue(new radarConspicuous { value = value }); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? verticalLength_optional { set { base.AddAttributeValue(new verticalLength { value = value }); } }
-		public int? visualProminence_optional { set { base.AddAttributeValue(new visualProminence { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? horizontalLength_optional {
+			set { base.AddAttributeValue(new horizontalLength { value = value }); }
+			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
+		}
+		public double? horizontalWidth_optional {
+			set { base.AddAttributeValue(new horizontalWidth { value = value }); }
+			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public Boolean? radarConspicuous_optional {
+			set { base.AddAttributeValue(new radarConspicuous { value = value }); }
+			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? verticalLength_optional {
+			set { base.AddAttributeValue(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		public int? visualProminence_optional {
+			set { base.AddAttributeValue(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -23835,6 +29789,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(colour),
@@ -23894,17 +29849,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] colour_optional { set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); } }
-		public int? colourPattern_optional { set { base.AddAttributeValue(new colourPattern { value = value }); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] colour_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		public int? colourPattern_optional {
+			set { base.AddAttributeValue(new colourPattern { value = value }); }
+			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
+		}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -23923,6 +29906,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(fixedDateRange),
@@ -23968,15 +29952,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public double? height_optional { set { base.AddAttributeValue(new height { value = value }); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public double? height_optional {
+			set { base.AddAttributeValue(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -23997,6 +30003,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfFogSignal),
@@ -24086,21 +30093,61 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? signalFrequency_optional { set { base.AddAttributeValue(new signalFrequency { value = value }); } }
-		public int? signalGeneration_optional { set { base.AddAttributeValue(new signalGeneration { value = value }); } }
-		public String? signalGroup_optional { set { base.AddAttributeValue(new signalGroup { value = value }); } }
-		public double? signalPeriod_optional { set { base.AddAttributeValue(new signalPeriod { value = value }); } }
-		public signalSequence?[] signalSequence_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfMaximumRange_optional { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? signalFrequency_optional {
+			set { base.AddAttributeValue(new signalFrequency { value = value }); }
+			get { return base.GetAttributeValue<signalFrequency>(nameof(signalFrequency))?.value; }
+		}
+		public int? signalGeneration_optional {
+			set { base.AddAttributeValue(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		public String? signalGroup_optional {
+			set { base.AddAttributeValue(new signalGroup { value = value }); }
+			get { return base.GetAttributeValue<signalGroup>(nameof(signalGroup))?.value; }
+		}
+		public double? signalPeriod_optional {
+			set { base.AddAttributeValue(new signalPeriod { value = value }); }
+			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
+		}
+		public signalSequence?[] signalSequence_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfMaximumRange_optional {
+			set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24119,6 +30166,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(estimatedRangeOfTransmission),
@@ -24176,17 +30224,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? estimatedRangeOfTransmission_optional { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? mMSICode_optional { set { base.AddAttributeValue(new mMSICode { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? estimatedRangeOfTransmission_optional {
+			set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); }
+			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? mMSICode_optional {
+			set { base.AddAttributeValue(new mMSICode { value = value }); }
+			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24207,6 +30283,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(estimatedRangeOfTransmission),
@@ -24271,17 +30348,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public double? estimatedRangeOfTransmission_optional { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public String? mMSICode_optional { set { base.AddAttributeValue(new mMSICode { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? status_optional { set { base.AddAttributeValue(new status { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public double? estimatedRangeOfTransmission_optional {
+			set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); }
+			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public String? mMSICode_optional {
+			set { base.AddAttributeValue(new mMSICode { value = value }); }
+			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? status_optional {
+			set { base.AddAttributeValue(new status { value = value }); }
+			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24300,6 +30405,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(callSign),
@@ -24376,20 +30482,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String? callSign_optional { set { base.AddAttributeValue(new callSign { value = value }); } }
-		public int?[] categoryOfRadioStation_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRadioStation { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public double? estimatedRangeOfTransmission_optional { set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public frequencyPair? frequencyPair_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String? callSign_optional {
+			set { base.AddAttributeValue(new callSign { value = value }); }
+			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
+		}
+		public int?[] categoryOfRadioStation_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRadioStation { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfRadioStation>(nameof(categoryOfRadioStation)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public double? estimatedRangeOfTransmission_optional {
+			set { base.AddAttributeValue(new estimatedRangeOfTransmission { value = value }); }
+			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public frequencyPair? frequencyPair_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<frequencyPair>(nameof(frequencyPair)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24410,6 +30553,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfRadarTransponderBeacon),
@@ -24492,20 +30636,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public radarWaveLength?[] radarWaveLength_optional { set { base.AddAttributeValue(value); } }
-		public sectorLimit? sectorLimit_optional { set { base.AddAttributeValue(value); } }
-		public String? signalGroup_optional { set { base.AddAttributeValue(new signalGroup { value = value }); } }
-		public signalSequence?[] signalSequence_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public double? valueOfMaximumRange_optional { set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public radarWaveLength?[] radarWaveLength_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<radarWaveLength>(nameof(radarWaveLength)); } 
+	}
+		public sectorLimit? sectorLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<sectorLimit>(nameof(sectorLimit)); }
+		}
+		public String? signalGroup_optional {
+			set { base.AddAttributeValue(new signalGroup { value = value }); }
+			get { return base.GetAttributeValue<signalGroup>(nameof(signalGroup))?.value; }
+		}
+		public signalSequence?[] signalSequence_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public double? valueOfMaximumRange_optional {
+			set { base.AddAttributeValue(new valueOfMaximumRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24524,6 +30705,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfPilotBoardingPlace),
@@ -24602,20 +30784,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int? categoryOfPilotBoardingPlace_optional { set { base.AddAttributeValue(new categoryOfPilotBoardingPlace { value = value }); } }
-		public int? categoryOfPreference_optional { set { base.AddAttributeValue(new categoryOfPreference { value = value }); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public String?[] destination_optional { set { base.AddAttributeValue([.. value.Select(e=> new destination { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] pilotMovement_optional { set { base.AddAttributeValue([.. value.Select(e=> new pilotMovement { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int? categoryOfPilotBoardingPlace_optional {
+			set { base.AddAttributeValue(new categoryOfPilotBoardingPlace { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPilotBoardingPlace>(nameof(categoryOfPilotBoardingPlace))?.value; }
+		}
+		public int? categoryOfPreference_optional {
+			set { base.AddAttributeValue(new categoryOfPreference { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPreference>(nameof(categoryOfPreference))?.value; }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] destination_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new destination { value = e })]); }
+			get { return base.GetAttributeValues<destination>(nameof(destination)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] pilotMovement_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new pilotMovement { value = e })]); }
+			get { return base.GetAttributeValues<pilotMovement>(nameof(pilotMovement)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24634,6 +30853,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(featureName),
@@ -24660,12 +30880,25 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24684,6 +30917,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(communicationChannel),
@@ -24741,17 +30975,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public Boolean? isMRCC_optional { set { base.AddAttributeValue(new isMRCC { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public Boolean? isMRCC_optional {
+			set { base.AddAttributeValue(new isMRCC { value = value }); }
+			get { return base.GetAttributeValue<isMRCC>(nameof(isMRCC))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24772,6 +31034,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSignalStationWarning),
@@ -24830,17 +31093,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSignalStationWarning_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSignalStationWarning { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfSignalStationWarning_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSignalStationWarning { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSignalStationWarning>(nameof(categoryOfSignalStationWarning)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24861,6 +31152,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSignalStationTraffic),
@@ -24919,17 +31211,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSignalStationTraffic_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSignalStationTraffic { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfSignalStationTraffic_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSignalStationTraffic { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSignalStationTraffic>(nameof(categoryOfSignalStationTraffic)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -24948,6 +31268,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfRescueStation),
@@ -25006,17 +31327,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfRescueStation_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRescueStation { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
+		public int?[] categoryOfRescueStation_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfRescueStation { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfRescueStation>(nameof(categoryOfRescueStation)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
 		#endregion
 	}
 
@@ -25037,6 +31386,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfHarbourFacility),
@@ -25141,24 +31491,73 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfHarbourFacility_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); } }
-		public String?[] communicationChannel_optional { set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); } }
-		public int? condition_optional { set { base.AddAttributeValue(new condition { value = value }); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public fixedDateRange? fixedDateRange_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public int?[] natureOfConstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int? product_optional { set { base.AddAttributeValue(new product { value = value }); } }
-		public String? reportedDate_optional { set { base.AddAttributeValue(new reportedDate { value = value }); } }
-		public int?[] restriction_optional { set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional { set { base.AddAttributeValue(value); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfHarbourFacility_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
+		}
+		public String?[] communicationChannel_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		public int? condition_optional {
+			set { base.AddAttributeValue(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public fixedDateRange? fixedDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public int?[] natureOfConstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new natureOfConstruction { value = e })]); }
+			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int? product_optional {
+			set { base.AddAttributeValue(new product { value = value }); }
+			get { return base.GetAttributeValue<product>(nameof(product))?.value; }
+		}
+		public String? reportedDate_optional {
+			set { base.AddAttributeValue(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		public int?[] restriction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new restriction { value = e })]); }
+			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
+		}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
+	}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -25179,6 +31578,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(categoryOfSmallCraftFacility),
@@ -25231,16 +31631,41 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new pictorialRepresentation(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public int?[] categoryOfSmallCraftFacility_optional { set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSmallCraftFacility { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
-		public String? interoperabilityIdentifier_optional { set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); } }
-		public periodicDateRange?[] periodicDateRange_optional { set { base.AddAttributeValue(value); } }
-		public int?[] status_optional { set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
-		public information?[] information_optional { set { base.AddAttributeValue(value); } }
-		public String? pictorialRepresentation_optional { set { base.AddAttributeValue(new pictorialRepresentation { value = value }); } }
+		public int?[] categoryOfSmallCraftFacility_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new categoryOfSmallCraftFacility { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfSmallCraftFacility>(nameof(categoryOfSmallCraftFacility)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
+		public String? interoperabilityIdentifier_optional {
+			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
+		}
+		public periodicDateRange?[] periodicDateRange_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
+	}
+		public int?[] status_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		public information?[] information_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); } 
+	}
+		public String? pictorialRepresentation_optional {
+			set { base.AddAttributeValue(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
+		}
 		#endregion
 	}
 
@@ -25265,6 +31690,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(textOffsetBearing),
@@ -25298,11 +31724,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new scaleMinimum(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public Boolean? textRotation_optional { set { base.AddAttributeValue(new textRotation { value = value }); } }
-		public int?[] textType_optional { set { base.AddAttributeValue([.. value.Select(e=> new textType { value = e })]); } }
-		public int? scaleMinimum_optional { set { base.AddAttributeValue(new scaleMinimum { value = value }); } }
+		public Boolean? textRotation_optional {
+			set { base.AddAttributeValue(new textRotation { value = value }); }
+			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))?.value; }
+		}
+		public int?[] textType_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new textType { value = e })]); }
+			get { return base.GetAttributeValues<textType>(nameof(textType)).Select(e=>e.value).ToArray(); }
+		}
+		public int? scaleMinimum_optional {
+			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
 		#endregion
 	}
 
@@ -25321,6 +31757,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 				.. base.attributesOptional,
 			];
 
+		#region Attribute Bindingss
 		public override AttributeBinding[] attributeBindings() => [
 				new AttributeBinding {
 					attribute = nameof(drawingInstruction),
@@ -25335,10 +31772,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 					CreateInstance = () => new featureName(),
 				},
 			];
+		#endregion
 
 		#region Optional Attributes
-		public String?[] drawingInstruction_optional { set { base.AddAttributeValue([.. value.Select(e=> new drawingInstruction { value = e })]); } }
-		public featureName?[] featureName_optional { set { base.AddAttributeValue(value); } }
+		public String?[] drawingInstruction_optional {
+			set { base.AddAttributeValue([.. value.Select(e=> new drawingInstruction { value = e })]); }
+			get { return base.GetAttributeValues<drawingInstruction>(nameof(drawingInstruction)).Select(e=>e.value).ToArray(); }
+		}
+		public featureName?[] featureName_optional {
+			set { base.AddAttributeValue(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
+	}
 		#endregion
 	}
 

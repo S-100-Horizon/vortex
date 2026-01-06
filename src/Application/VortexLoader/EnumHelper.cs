@@ -1,24 +1,25 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace S100Framework.Applications
 {
     public static class EnumHelper
     {
-        public static int? GetEnumValue(object? value) {
+        public static int? GetEnumValue(object? value, [CallerMemberName] string? propertyName = null) {
             if (value is null) return null;
             if (value is string strValue) {
                 if (strValue.Equals("-32767"))
                     return null;
                 if (int.TryParse(strValue, out int result))
                     return result;
-                throw new ArgumentException($"Invalid string value for enum {typeof(TType).Name}::{typeof(TEnum).Name}: {strValue}");
+                throw new ArgumentException($"Invalid string value for enum {propertyName}: {strValue}");
             }
             if (value is int intValue) {
                 if (intValue == -32767)
                     return null;
                 return intValue;
             }
-            throw new ArgumentException($"Value must be of type string or int. Provided value type: {typeof(TType).Name}::{typeof(TEnum).Name} - {value.GetType().Name}");
+            throw new ArgumentException($"Value must be of type string or int. Provided value type: {propertyName} - {value.GetType().Name}");
         }
 
         public static int?[]? GetEnumValues(object? value) {

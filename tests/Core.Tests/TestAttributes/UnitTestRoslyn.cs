@@ -403,6 +403,7 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
+                        roslyn.AppendLine("\t\t#region Attribute Bindingss");
                         roslyn.AppendLine($"\t\tpublic override AttributeBinding[] attributeBindings() => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -422,6 +423,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
                         roslyn.AppendLine($"\t\t\t];");
+                        roslyn.AppendLine("\t\t#endregion");
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t#region Optional Attributes");
@@ -434,24 +436,48 @@ namespace TestAttributes
 
                             if (lower == 0 && upper == 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower == 0 && upper > 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower > 0 && upper > lower) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                         }
                         roslyn.AppendLine("\t\t#endregion");
@@ -556,6 +582,7 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
+                        roslyn.AppendLine("\t\t#region Attribute Bindingss");
                         roslyn.AppendLine($"\t\tpublic override AttributeBinding[] attributeBindings() => [");
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -574,6 +601,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
                         roslyn.AppendLine($"\t\t\t];");
+                        roslyn.AppendLine("\t\t#endregion");
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t#region Optional Attributes");
@@ -586,24 +614,48 @@ namespace TestAttributes
 
                             if (lower == 0 && upper == 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower == 0 && upper > 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower > 0 && upper > lower) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                         }
                         roslyn.AppendLine("\t\t#endregion");
@@ -707,6 +759,7 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
+                        roslyn.AppendLine("\t\t#region Attribute Bindingss");
                         roslyn.AppendLine($"\t\tpublic override AttributeBinding[] attributeBindings() => [");
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -725,6 +778,7 @@ namespace TestAttributes
                             roslyn.AppendLine($"\t\t\t\t}},");
                         }
                         roslyn.AppendLine($"\t\t\t];");
+                        roslyn.AppendLine("\t\t#endregion");
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t#region Optional Attributes");
@@ -737,24 +791,48 @@ namespace TestAttributes
 
                             if (lower == 0 && upper == 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{ set {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower == 0 && upper > 1) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                             if (lower > 0 && upper > lower) {
                                 var prefix = attributesKnownTypes[referenceCode];
-                                if (attributesKnownComplex.Contains(referenceCode))
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");
-                                else
-                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
+                                if (attributesKnownComplex.Contains(referenceCode)) {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
+                                    roslyn.AppendLine($"\t}}");
+                                }
+                                else {
+                                    roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                                    roslyn.AppendLine($"\t\t}}");
+                                }
                             }
                         }
                         roslyn.AppendLine("\t\t#endregion");

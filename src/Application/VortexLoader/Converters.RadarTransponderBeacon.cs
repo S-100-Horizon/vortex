@@ -35,12 +35,12 @@ namespace S100Framework.Applications
 
             if (current.RADWAL != default) {
                 if (ImporterNIS.TryGetRadarWaveLengths(current.RADWAL, out var lengths)) {
-                    instance.radarWaveLength = lengths;
+                    instance.radarWaveLength_optional = lengths;
                 }
             }
 
             if (current.SECTR1.HasValue && current.SECTR2.HasValue) {
-                instance.sectorLimit = new sectorLimit() {
+                instance.sectorLimit_optional = new sectorLimit() {
                     sectorLimitOne = new sectorLimitOne {
                         sectorBearing = current.SECTR1.Value,
                     },
@@ -53,11 +53,11 @@ namespace S100Framework.Applications
             var rhythmOfLight = ImporterNIS.GetRythmOfLight<RadarTransponderBeacon>(current);
 
             if (current.SIGGRP != default) {
-                instance.signalGroup = current.SIGGRP;
+                instance.signalGroup_optional = current.SIGGRP;
             }
 
             if (current.SIGSEQ != default) {
-                instance.signalSequence = rhythmOfLight.signalSequence;
+                instance.signalSequence_optional = rhythmOfLight.signalSequence;
             }
 
             if (current.STATUS != default) {
@@ -65,7 +65,7 @@ namespace S100Framework.Applications
             }
 
             if (current.VALMXR.HasValue) {
-                instance.valueOfMaximumRange = current.VALMXR.Value;
+                instance.valueOfMaximumRange_optional = current.VALMXR.Value;
             }
 
             if (scaleMinimum.HasValue) {
@@ -80,8 +80,9 @@ namespace S100Framework.Applications
                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
-
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }

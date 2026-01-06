@@ -2,6 +2,7 @@
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
+using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 
@@ -14,11 +15,13 @@ namespace S100Framework.Applications
             var instance = new WindTurbine();
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                var colour = ImporterNIS.GetColours(current.COLOUR);
+                if (colour is not null && colour.Any())
+                    instance.colour_optional = colour;
             }
 
             if (current.COLPAT != default) {
-                instance.colourPattern = ImporterNIS.GetColourPattern(current.COLPAT);
+                instance.colourPattern_optional = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
             }
 
             if (current.CONDTN.HasValue) {
@@ -47,14 +50,16 @@ namespace S100Framework.Applications
             // TODO: multiplicityOfFeatures
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                    instance.natureOfConstruction_optional = natureOfConstruction;
             }
 
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
             }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                    instance.reportedDate_optional = result;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -67,23 +72,23 @@ namespace S100Framework.Applications
                 instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
             }
 
+            var verticalUncertainty = new verticalUncertainty();
+            if (current.VERACC.HasValue && current.VERACC.Value != -32767d)
+                verticalUncertainty.uncertaintyFixed = current.VERACC.Value;
 
-            instance.verticalClearanceFixed = new() {
-                verticalUncertainty = new() {
-                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                    uncertaintyVariableFactor = default(double?)
-                },
-                //verticalClearanceValue = default(double?)
-                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
-                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
-                //verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL.Value : default(double?),
+            var verticalClearanceFixed = new verticalClearanceFixed {
+                verticalUncertainty_optional = verticalUncertainty
             };
+            if (current.VERCLR.HasValue && current.VERCLR.Value != -32767d)
+                verticalClearanceFixed.verticalClearanceValue = current.VERCLR.Value;
 
-
+            instance.verticalClearanceFixed_optional = new() {
+                verticalUncertainty_optional = verticalUncertainty,
+            };
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength_optional = current.VERLEN.Value;
-                instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<WindTurbine>(current.VERDAT ?? 3);
+                instance.verticalDatum_optional = ImporterNIS.GetVerticalDatum<WindTurbine>(current.VERDAT ?? 3)?.value;
 
             }
 
@@ -92,11 +97,8 @@ namespace S100Framework.Applications
             }
 
             if (current.WATLEV.HasValue) {
-                if (current.WATLEV.Value == -32767)
-                    instance.waterLevelEffect = EnumHelper.GetEnumValue(-1);
-                else {
+                if (current.WATLEV.Value != -32767)
                     instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
-                }
             }
 
 
@@ -108,11 +110,11 @@ namespace S100Framework.Applications
             }
 
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
-
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
-
         }
     }
 }

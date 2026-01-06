@@ -300,6 +300,14 @@ namespace S100Framework.AttributeModel
             }
         }
 
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
         protected void AddAttributeValue(Attribute[] attribute) {
             foreach (var a in attribute) {
                 var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
@@ -355,6 +363,14 @@ namespace S100Framework.AttributeModel
             else {
                 this.attributesOptional = [.. this.attributesOptional, attribute];
             }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
 
         protected void AddAttributeValue(Attribute[] attribute) {
@@ -414,7 +430,16 @@ namespace S100Framework.AttributeModel
             }
         }
 
-        protected void AddAttributeValue(Attribute[] attribute) {
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e=>e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
+        protected void AddAttributeValue(Attribute?[] attribute) {
+            if (attribute == null) return;
             foreach (var a in attribute) {
                 var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {

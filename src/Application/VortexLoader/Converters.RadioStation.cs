@@ -13,7 +13,7 @@ namespace S100Framework.Applications
             var instance = new RadioStation();
 
             if (current.CALSGN != default) {
-                instance.callSign = current.CALSGN;
+                instance.callSign_optional = current.CALSGN;
             }
 
             if (current.CATROS != null) {
@@ -41,7 +41,9 @@ namespace S100Framework.Applications
                 };
 
                 if (category != null) {
-                    instance.categoryOfRadioStation = EnumHelper.GetEnumValues(category);
+                    var categoryOfRadioStation = EnumHelper.GetEnumValues(category);
+                    if (categoryOfRadioStation is not null && categoryOfRadioStation.Any())
+                        instance.categoryOfRadioStation_optional = categoryOfRadioStation;
                 }
                 else {
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Radiostation of type {subtype} is not converted.");
@@ -49,11 +51,11 @@ namespace S100Framework.Applications
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
+                instance.communicationChannel_optional = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
             if (current.ESTRNG.HasValue) {
-                instance.estimatedRangeOfTransmission = current.ESTRNG.Value;
+                instance.estimatedRangeOfTransmission_optional = current.ESTRNG.Value;
             }
 
             instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -64,7 +66,7 @@ namespace S100Framework.Applications
             }
 
             if (current.SIGFRQ.HasValue) {
-                instance.frequencyPair = ImporterNIS.GetFrequencyPair(current.SIGFRQ.Value);
+                instance.frequencyPair_optional = ImporterNIS.GetFrequencyPair(current.SIGFRQ.Value);
             }
 
             // TODO: interoperabilityidentifier
@@ -90,12 +92,11 @@ namespace S100Framework.Applications
                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }
-
-
-
     }
 }

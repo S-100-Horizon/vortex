@@ -13,11 +13,13 @@ namespace S100Framework.Applications
             var instance = new Retroreflector();
 
             if (current.COLOUR != default) {
-                instance.colour = EnumHelper.GetEnumValues(current.COLOUR);
+                var colours = EnumHelper.GetEnumValues(current.COLOUR);
+                if ((colours is not null && colours.Any()))
+                    instance.colour_optional = colours;
             }
 
             if (current.COLPAT != default) {
-                instance.colourPattern = ImporterNIS.GetColourPattern(current.COLPAT);
+                instance.colourPattern_optional = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
             }
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -54,13 +56,11 @@ namespace S100Framework.Applications
                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
-
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }
-
-
-
     }
 }

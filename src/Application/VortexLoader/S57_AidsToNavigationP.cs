@@ -76,7 +76,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -179,7 +179,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             instance.pictorialRepresentation_optional = FixFilename(current.PICREP!);
 
@@ -203,7 +205,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -311,7 +313,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -335,7 +339,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -440,7 +444,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -464,7 +470,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -575,7 +581,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -599,7 +607,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -682,7 +690,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -706,7 +717,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -786,7 +797,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -810,7 +824,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -890,7 +904,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -914,7 +931,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -997,7 +1014,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -1021,7 +1041,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1100,7 +1120,10 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -1124,7 +1147,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (relatedEquipment != null) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1200,7 +1223,10 @@ namespace S100Framework.Applications
                                             instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                         }
 
-                                        instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                        var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                        instance.information_optional = result.information.ToArray();
+                                        instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                                         instance.pictorialRepresentation_optional = FixFilename(current.PICREP!);
 
@@ -1222,7 +1248,7 @@ namespace S100Framework.Applications
                                         #endregion aidstonavigation
 
                                         if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                            relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                            relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                                         }
 
                                     }
@@ -1321,7 +1347,10 @@ namespace S100Framework.Applications
                                 }
 
 
-                                instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                instance.information_optional = result.information.ToArray();
+                                instance.SetInformationBindings(result.InformationBindings.ToArray());
+
 
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP!);
 
@@ -1343,7 +1372,7 @@ namespace S100Framework.Applications
                                 #endregion aidstonavigation
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                                 }
                             }
                         }
@@ -1351,7 +1380,11 @@ namespace S100Framework.Applications
 
                     case 55: { // DAYMAR_Daymark // SLAVE RIND: 2
                             var instance = ImporterNIS._converterRegistry.Convert<Daymark>(current);
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -1369,7 +1402,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1380,7 +1413,9 @@ namespace S100Framework.Applications
                             //We do not have in the database information regarding “Radio Activated” nor “Call Activated”. We do have one instance of “On request”. What does this refer to??
                             var instance = _converterRegistry.Convert<FogSignal>(current);
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1398,7 +1433,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1570,7 +1605,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -1594,7 +1631,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1671,7 +1708,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -1695,7 +1734,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1734,7 +1773,9 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -1754,7 +1795,7 @@ namespace S100Framework.Applications
                             #endregion aidstonavigation
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1778,7 +1819,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1802,7 +1843,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
 
                         }
@@ -1827,7 +1868,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1850,10 +1891,12 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GlobalId, name);
                             Logger.Current.DataObject((int)featureN.GetObjectID(), tableName, name, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                                relatedEquipment?.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
                         }
                         break;
@@ -1891,8 +1934,8 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static bool TryGetRadarWaveLengths(string radwal, out List<radarWaveLength> radarWaveLengths) {
-            radarWaveLengths = new List<radarWaveLength>();
+        internal static bool TryGetRadarWaveLengths(string radwal, out radarWaveLength[] radarWaveLengths) {
+            radarWaveLengths = [];
 
             string[] parts = radwal.Split(',');
             foreach (var part in parts) {
@@ -1900,10 +1943,10 @@ namespace S100Framework.Applications
                 if (split.Length == 2) {
                     if (double.TryParse(split[0], CultureInfo.InvariantCulture, out double waveLength)) {
                         string band = split[1];
-                        radarWaveLengths.Add(new radarWaveLength() {
+                        radarWaveLengths = [.. radarWaveLengths, new radarWaveLength() {
                             radarBand = band,
                             waveLengthValue = waveLength
-                        });
+                        }];
                     }
                     else { // data error
                         return false;

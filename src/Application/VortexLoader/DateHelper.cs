@@ -154,8 +154,8 @@ namespace S100Framework.Applications
                 if (end != default) {
                     if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
                         value = new fixedDateRange() {
-                            dateStart = start,
-                            dateEnd = end
+                            dateStart_optional = start,
+                            dateEnd_optional = end
                         };
                         return true;
                     }

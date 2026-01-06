@@ -13,15 +13,17 @@ namespace S100Framework.Applications
             var instance = new RadarStation();
 
             if (current.CALSGN != default) {
-                instance.callSign = current.CALSGN;
+                instance.callSign_optional = current.CALSGN;
             }
 
             if (current.CATRAS != null) {
-                instance.categoryOfRadarStation = EnumHelper.GetEnumValues(current.CATRAS);
+                var categoryOfRadarStation = EnumHelper.GetEnumValues(current.CATRAS);
+                if (categoryOfRadarStation is not null && categoryOfRadarStation.Any())
+                    instance.categoryOfRadarStation_optional = categoryOfRadarStation;
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
+                instance.communicationChannel_optional = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
             instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -46,7 +48,7 @@ namespace S100Framework.Applications
             }
 
             if (current.VALMXR.HasValue) {
-                instance.valueOfMaximumRange = current.VALMXR.Value;
+                instance.valueOfMaximumRange_optional = current.VALMXR.Value;
             }
 
 
@@ -57,9 +59,9 @@ namespace S100Framework.Applications
                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
-
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
-
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }

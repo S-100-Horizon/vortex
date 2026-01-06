@@ -159,12 +159,13 @@ namespace S100Framework.Applications
 
 
             var result = command switch {
-                "GML" => ImporterGML(target, arguments),
+                //"GML" => ImporterGML(target, arguments),
                 "NIS" => ImporterNIS.Load(target, arguments),
-                "YAML" => ImporterYAML.Load(target, arguments),
+                //"YAML" => ImporterYAML.Load(target, arguments),
                 _ => throw new System.ArgumentNullException(nameof(command)),
             };
         }
+#if GML
         private static bool ImporterGML(Geodatabase geodatabase, ParserResult<Options> arguments) {
             S100Framework.GML.Dataset? dataset = null;
 
@@ -292,8 +293,10 @@ namespace S100Framework.Applications
 
             return true;
         }
+#endif
     }
 
+#if YAML
     public static class YAMLExtensions
     {
         public static ArcGIS.Core.Geometry.Geometry? GetFeatureShape(this S100Framework.YAML.Dataset dataset, S100Framework.YAML.Feature feature) {
@@ -568,4 +571,5 @@ namespace S100Framework.Applications
             return dataset?.CompositeCurves?.FirstOrDefault(e => e.Name == trimmed)!;
         }
     }
+#endif
 }

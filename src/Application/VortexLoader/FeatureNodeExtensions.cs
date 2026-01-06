@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.AttributeModel;
 using S100Framework.DomainModel;
 
 namespace S100Framework.Applications
@@ -7,12 +8,12 @@ namespace S100Framework.Applications
     internal static class FeatureNodeExtensions
     {
 
-        private static List<informationBinding> _informationBindingList = null!;
+        private static informationBinding[]? _informationBindingList = null;
 
-        internal static void SetInformationBindings(this FeatureNode featureNode, List<informationBinding> informationBinding) {
+        internal static void SetInformationBindings(this FeatureType featureNode, informationBinding[]? informationBinding) {
             _informationBindingList = informationBinding;
         }
-        internal static List<informationBinding> GetInformationBindings(this FeatureNode featureNode) {
+        internal static informationBinding[]? GetInformationBindings(this FeatureType featureNode) {
             if (_informationBindingList is null || !_informationBindingList.Any())
                 return [];
             

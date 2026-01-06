@@ -14,11 +14,15 @@ namespace S100Framework.Applications
             var instance = new SignalStationWarning();
 
             if (current.CATSIW != default) {
-                instance.categoryOfSignalStationWarning = EnumHelper.GetEnumValues(current.CATSIW);
+                var categoryOfSignalStationWarning = EnumHelper.GetEnumValues(current.CATSIW);
+                if (categoryOfSignalStationWarning is not null && categoryOfSignalStationWarning.Any()) {
+                    instance.categoryOfSignalStationWarning = categoryOfSignalStationWarning[0];
+                    instance.categoryOfSignalStationWarning_optional = categoryOfSignalStationWarning[1..];
+                }
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
+                instance.communicationChannel_optional = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
             instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -44,11 +48,11 @@ namespace S100Framework.Applications
                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
-            instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+            instance.information_optional = result.information.ToArray();
+            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;
         }
-
-
     }
 }

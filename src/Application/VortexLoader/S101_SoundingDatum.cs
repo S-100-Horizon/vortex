@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using VortexLoader.Singletons;
 
 
@@ -83,7 +84,7 @@ namespace S100Framework.Applications
                 foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
 
 
-                    verticalDatum soundingDatum = default;
+                    verticalDatum? soundingDatum = default;
                     foreach (var elm in SoundingDatums.Instance.Touch(item)) {
                         soundingDatum = elm.Item2;
                     }
@@ -93,7 +94,6 @@ namespace S100Framework.Applications
                     }
 
                     var instance = new SoundingDatum {
-                        verticalDatum = default,
                     };
 
                     //foreach (var datum in Geometries.GetTouchingOrIntersectingGeometries(all_M_QUAL_geometries,item)) {
@@ -128,7 +128,6 @@ namespace S100Framework.Applications
                     }
 
                     var instance = new SoundingDatum {
-                        verticalDatum = default,
                     };
 
                     instance.verticalDatum = EnumHelper.GetEnumValue(item.FieldName_FieldValue!["verdat"]);
