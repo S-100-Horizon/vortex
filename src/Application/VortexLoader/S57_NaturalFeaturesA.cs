@@ -59,15 +59,15 @@ namespace S100Framework.Applications
                             var instance = new Lake();
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation = current.ELEVAT.Value;
+                                instance.elevation_optional = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.STATUS != default) {
-                                instance.status = GetSingleStatus(current.STATUS);
+                                instance.status_optional = GetSingleStatus(current.STATUS)?.value;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -76,7 +76,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -108,17 +108,17 @@ namespace S100Framework.Applications
                             var instance = new LandArea();
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: InteroperabilityIdentifier
 
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                    instance.reportedDate_optional = result;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -127,7 +127,7 @@ namespace S100Framework.Applications
 
 
                             if (current.STATUS != default) {
-                                instance.status = GetSingleStatus(current.STATUS);
+                                instance.status_optional = GetSingleStatus(current.STATUS)?.value;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -136,7 +136,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
 
@@ -171,19 +171,23 @@ namespace S100Framework.Applications
                             var instance = new LandRegion();
 
                             if (current.CATLND != default) {
-                                instance.categoryOfLandRegion = EnumHelper.GetEnumValues<LandRegion, categoryOfLandRegion>(current.CATLND);
+                                var categoryOfLandRegion = EnumHelper.GetEnumValues(current.CATLND);
+                                if (categoryOfLandRegion is not null && categoryOfLandRegion.Any())
+                                    instance.categoryOfLandRegion_optional = categoryOfLandRegion;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: Interoperabilityidentifier
 
                             if (current.NATSUR != default) {
-                                instance.natureOfSurface = EnumHelper.GetEnumValues<LandRegion, natureOfSurface>(current.NATSUR);
+                                var natureOfSurface = EnumHelper.GetEnumValues(current.NATSUR);
+                                if (natureOfSurface is not null && natureOfSurface.Any())
+                                    instance.natureOfSurface_optional = natureOfSurface;
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<LandRegion, waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -192,7 +196,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -227,19 +231,19 @@ namespace S100Framework.Applications
                     case 20: {    // RIVERS
                             var instance = new River();
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.STATUS != default) {
-                                instance.status = GetSingleStatus(current.STATUS);
+                                instance.status_optional = GetSingleStatus(current.STATUS)?.value;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -286,10 +290,10 @@ namespace S100Framework.Applications
                             var instance = new SeaAreaNamedWaterArea();
 
                             if (current.CATSEA.HasValue) {
-                                instance.categoryOfSeaArea = EnumHelper.GetEnumValue<SeaAreaNamedWaterArea, categoryOfSeaArea>(current.CATSEA.Value);
+                                instance.categoryOfSeaArea_optional = EnumHelper.GetEnumValue(current.CATSEA.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
@@ -297,7 +301,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -330,42 +334,38 @@ namespace S100Framework.Applications
                         }
 
                     case 35: {    // VEGATN
-                            var instance = new Vegetation {
-                                categoryOfVegetation = default,
+                            var instance = new Vegetation {                               
                             };
 
                             if (current.CATVEG != default) {
-                                instance.categoryOfVegetation = EnumHelper.GetEnumValue<Vegetation, categoryOfVegetation>(current.CATVEG);
+                                instance.categoryOfVegetation = EnumHelper.GetEnumValue(current.CATVEG);
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation = current.ELEVAT.Value;
+                                instance.elevation_optional = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
-                            }
-                            else {
-                                instance.height = default(double?);
+                                instance.height_optional = current.HEIGHT.Value;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<Vegetation, visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

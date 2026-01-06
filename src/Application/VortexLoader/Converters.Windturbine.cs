@@ -14,7 +14,7 @@ namespace S100Framework.Applications
             var instance = new WindTurbine();
 
             if (current.COLOUR != default) {
-                instance.colour = ImporterNIS.GetColours<WindTurbine>(current.COLOUR);
+                instance.colour = ImporterNIS.GetColours(current.COLOUR);
             }
 
             if (current.COLPAT != default) {
@@ -22,24 +22,24 @@ namespace S100Framework.Applications
             }
 
             if (current.CONDTN.HasValue) {
-                instance.condition = ImporterNIS.GetCondition(current.CONDTN.Value);
+                instance.condition_optional = ImporterNIS.GetCondition(current.CONDTN.Value)?.value;
             }
 
             if (current.ELEVAT.HasValue) {
-                instance.elevation = current.ELEVAT.Value;
+                instance.elevation_optional = current.ELEVAT.Value;
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
+                instance.fixedDateRange_optional = dateRange;
             }                            
                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                                instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(double?);
+                                
                             }
 
             // TODO: interoperabilityIdentifier
@@ -47,11 +47,11 @@ namespace S100Framework.Applications
             // TODO: multiplicityOfFeatures
 
             if (current.NATCON != default) {
-                instance.natureOfConstruction = EnumHelper.GetEnumValues<WindTurbine,natureOfConstruction>(current.NATCON);
+                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
             }
 
             if (current.CONRAD.HasValue) {
-                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
             }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
                                     instance.reportedDate = result;
@@ -64,7 +64,7 @@ namespace S100Framework.Applications
 
 
             if (current.STATUS != default) {
-                instance.status = ImporterNIS.GetStatus(current.STATUS);
+                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
             }
 
 
@@ -82,20 +82,20 @@ namespace S100Framework.Applications
 
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
+                instance.verticalLength_optional = current.VERLEN.Value;
                 instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<WindTurbine>(current.VERDAT ?? 3);
 
             }
 
             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                instance.visualProminence = EnumHelper.GetEnumValue<WindTurbine,visualProminence>(current.CONVIS.Value);
+                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
             }
 
             if (current.WATLEV.HasValue) {
                 if (current.WATLEV.Value == -32767)
-                    instance.waterLevelEffect = EnumHelper.GetEnumValue<WindTurbine, waterLevelEffect>(-1);
+                    instance.waterLevelEffect = EnumHelper.GetEnumValue(-1);
                 else {
-                    instance.waterLevelEffect = EnumHelper.GetEnumValue<WindTurbine, waterLevelEffect>(current.WATLEV);
+                    instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                 }
             }
 
@@ -104,7 +104,7 @@ namespace S100Framework.Applications
                 string subtype = "";
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
 

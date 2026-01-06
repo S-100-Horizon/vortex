@@ -52,14 +52,14 @@ namespace S100Framework.Applications
                             var instance = new MilitaryPracticeArea();
 
                             if (current.CATMPA is not null) {
-                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues<MilitaryPracticeArea,categoryOfMilitaryPracticeArea>(current.CATMPA);
+                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues(current.CATMPA);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -68,15 +68,15 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
-                                instance.periodicDateRange = periodicDateRange;
+                                instance.periodicDateRange_optional = periodicDateRange;
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<MilitaryFeaturesP,restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             // TODO: vesselspeedlimit
@@ -85,14 +85,14 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

@@ -14,18 +14,18 @@ namespace S100Framework.Applications
             var instance = new SignalStationWarning();
 
             if (current.CATSIW != default) {
-                instance.categoryOfSignalStationWarning = EnumHelper.GetEnumValues<SignalStationWarning,categoryOfSignalStationWarning>(current.CATSIW);
+                instance.categoryOfSignalStationWarning = EnumHelper.GetEnumValues(current.CATSIW);
             }
 
             if (current.COMCHA != default) {
                 instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
+                instance.fixedDateRange_optional = dateRange;
             }
 
             // DODO: Interoperability identifier
@@ -33,7 +33,7 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (scaleMinimum.HasValue) {
-                instance.scaleMinimum = scaleMinimum;
+                instance.scaleMinimum_optional = scaleMinimum;
             }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -41,7 +41,7 @@ namespace S100Framework.Applications
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
             instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

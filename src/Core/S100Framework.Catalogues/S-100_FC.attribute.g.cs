@@ -318,6 +318,8 @@ namespace S100Framework.AttributeModel
                 }
             }
         }
+
+        public Attribute[] this[string name] => this.attributes.Where(e=>e.S100FC_code.Equals(name)).ToArray();
     }
 
     public abstract class InformationType
@@ -375,6 +377,8 @@ namespace S100Framework.AttributeModel
                 }
             }
         }
+
+        public Attribute[] this[string name] => this.attributes.Where(e => e.S100FC_code.Equals(name)).ToArray();
     }
 
     public abstract class FeatureType

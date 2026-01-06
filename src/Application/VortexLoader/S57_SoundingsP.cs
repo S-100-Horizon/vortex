@@ -109,9 +109,9 @@ namespace S100Framework.Applications
 
                                     if (current.QUASOU != default) {
                                         if (current.QUASOU == "-32767")
-                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, qualityOfVerticalMeasurement>("-1");
+                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues("-1");
                                         else {
-                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, qualityOfVerticalMeasurement>(current.QUASOU);
+                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                                         }
                                     }
 
@@ -130,7 +130,9 @@ namespace S100Framework.Applications
                                     }
 
                                     if (current.TECSOU != null) {
-                                        sounding.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<Sounding, techniqueOfVerticalMeasurement>(current.TECSOU);
+                                        var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                                        if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                            sounding.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                                     }
 
                                     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -189,7 +191,9 @@ namespace S100Framework.Applications
                                     // TODO: interoperabilityIdentifier
 
                                     if (current.TECSOU != null) {
-                                        instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DepthNoBottomFound, techniqueOfVerticalMeasurement>(current.TECSOU);
+                                        var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                                        if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                            instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                                     }
 
                                     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -198,7 +202,7 @@ namespace S100Framework.Applications
                                         if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                             throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                        instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                     }
 
                                     instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

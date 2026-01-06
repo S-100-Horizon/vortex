@@ -57,7 +57,7 @@ namespace S100Framework.Applications
                     case 15: { // SBDARE_SeabedArea
                             var instance = new SeabedArea();
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
@@ -76,7 +76,7 @@ namespace S100Framework.Applications
                             if (current.NATQUA != default && current.NATQUA.Trim().Length > 0) {
                                 natquaValues = current.NATQUA.Trim().Trim(',').Split(',');
                                 natureOfSurfaceQualifyingTermsCount = natquaValues.Count();
-                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues<surfaceCharacteristics, natureOfSurfaceQualifyingTerms>(current.NATQUA);
+                                natureOfSurfaceQualifyingTermsList = EnumHelper.GetEnumValues(current.NATQUA);
                             }
 
                             // TODO: Verify this against action point 48
@@ -92,7 +92,7 @@ namespace S100Framework.Applications
 
                             if (naturOfSurfaceCount > 0) {
                                 for (int i = 0; i < list1.Count(); i++) {
-                                    var natureOfSurface = EnumHelper.GetEnumValue<SeabedArea, natureOfSurface>(list1[i]);
+                                    var natureOfSurface = EnumHelper.GetEnumValue(list1[i]);
 
                                     if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
                                         instance.surfaceCharacteristics.Add(new() {
@@ -157,14 +157,14 @@ namespace S100Framework.Applications
                             //}
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect = EnumHelper.GetEnumValue<SeabedArea, waterLevelEffect>(current.WATLEV);
+                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -196,17 +196,17 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength_optional = current.VERLEN.Value;
                             }
                             else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
-                                instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(double?);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -278,10 +278,10 @@ namespace S100Framework.Applications
 
                                 var instance = new WeedKelp();
                                 if (current.CATWED.HasValue) {
-                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue<WeedKelp, categoryOfWeedKelp>(current.CATWED.Value);
+                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue(current.CATWED.Value);
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 // TODO: interoperabilityIdentifier
 
@@ -291,7 +291,7 @@ namespace S100Framework.Applications
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
                                 instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

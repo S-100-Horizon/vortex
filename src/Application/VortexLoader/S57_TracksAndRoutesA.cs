@@ -55,7 +55,7 @@ namespace S100Framework.Applications
 
                             var orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767d ? current.ORIENT!.Value : default(double?);
                             var depthValue = current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d ? current.DRVAL1!.Value : default(double?);
-                            var trafficFlow = EnumHelper.GetEnumValue<DeepWaterRoutePart, trafficFlow>(current.TRAFIC!.Value);
+                            var trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC!.Value);
 
                             var instance = new DeepWaterRoutePart {
                                 depthRangeMinimumValue = depthValue,
@@ -63,11 +63,11 @@ namespace S100Framework.Applications
                                 trafficFlow = trafficFlow,
                             };
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: imoAdopted
@@ -82,24 +82,26 @@ namespace S100Framework.Applications
 
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<DeepWaterRoutePart, qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                             }
 
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<DeepWaterRoutePart, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<DeepWaterRoutePart, techniqueOfVerticalMeasurement>(current.TECSOU);
+                                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<DeepWaterRoutePart, trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
@@ -116,7 +118,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -151,11 +153,11 @@ namespace S100Framework.Applications
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -167,19 +169,19 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<Fairway, qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<Fairway, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<Fairway, trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
@@ -194,7 +196,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
@@ -231,17 +233,17 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<InshoreTrafficZone, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
@@ -252,7 +254,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -281,11 +283,11 @@ namespace S100Framework.Applications
                     case 20: { // PRCARE_PrecautionaryArea
                             var instance = new PrecautionaryArea();
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: imoAdopted
@@ -294,11 +296,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<PrecautionaryArea, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
@@ -309,7 +311,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -346,7 +348,7 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -356,7 +358,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
 
@@ -364,7 +366,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -419,11 +421,11 @@ namespace S100Framework.Applications
                             //    instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             //}
 
-                            //instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            //instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             //DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             //if (dateRange != default) {
-                            //    instance.fixedDateRange = dateRange;
+                            //    instance.fixedDateRange_optional = dateRange;
                             //}
 
                             //// TODO: interoperabilityIdentifier
@@ -436,23 +438,23 @@ namespace S100Framework.Applications
 
                             //DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             //if (periodicDateRange != default) {
-                            //    instance.periodicDateRange = periodicDateRange;
+                            //    instance.periodicDateRange_optional = periodicDateRange;
                             //}
 
                             //if (current.QUASOU != default) {
-                            //    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack, qualityOfVerticalMeasurement>(current.QUASOU);
+                            //    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                             //}
 
                             //if (current.STATUS != default) {
-                            //    instance.status = GetStatus(current.STATUS);
+                            //    instance.status_optional = GetStatus(current.STATUS);
                             //}
 
                             //if (current.TECSOU != null) {
-                            //    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<RecommendedTrack, techniqueOfVerticalMeasurement>(current.TECSOU);
+                            //    instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
                             //}
 
                             //if (current.TRAFIC.HasValue) {
-                            //    instance.trafficFlow = EnumHelper.GetEnumValue<RecommendedTrack, trafficFlow>(current.TRAFIC.Value);
+                            //    instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             //}
 
                             //if (current.SOUACC.HasValue) {
@@ -465,7 +467,7 @@ namespace S100Framework.Applications
                             //    string subtype = "";
                             //    if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                             //        throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                            //    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            //    instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             //}
 
                             //instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -500,20 +502,20 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -550,7 +552,7 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -560,11 +562,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<TrafficSeparationSchemeLanePart, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
@@ -575,7 +577,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -607,17 +609,17 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues<TrafficSeparationSchemeRoundabout, restriction>(current.RESTRN);
+                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
@@ -628,7 +630,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
@@ -676,7 +678,7 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -686,19 +688,21 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<TwoWayRoutePart, qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<TwoWayRoutePart,techniqueOfVerticalMeasurement>(current.TECSOU);
+                                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue<TwoWayRoutePart, trafficFlow>(current.TRAFIC.Value);
+                                instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
@@ -711,7 +715,7 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

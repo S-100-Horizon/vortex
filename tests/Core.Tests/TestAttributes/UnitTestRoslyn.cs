@@ -374,17 +374,10 @@ namespace TestAttributes
                                 var creator = string.Empty;
                                 for (int i = 0; i < lower; i++)
                                     creator += $"new {referenceCode}(), ";
-                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
+                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; set; }} = new {referenceCode}[{lower}]{{ {creator}}};");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; init; }} = new {referenceCode}();");
-                                else {
-                                    var creator = string.Empty;
-                                    for (int i = 0; i < lower; i++)
-                                        creator += $"new {referenceCode}(), ";
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
-                                }
+                                roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; set; }} = new {referenceCode}();");
                             }
                         }
 
@@ -402,10 +395,7 @@ namespace TestAttributes
                                     roslyn.AppendLine($"\t\t\t\t{referenceCode}{i + 1},");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\t\t\t{referenceCode},");
-                                else
-                                    roslyn.AppendLine($"\t\t\t\t.. {referenceCode},");
+                                roslyn.AppendLine($"\t\t\t\t{referenceCode},");
                             }
 
                         }
@@ -537,17 +527,10 @@ namespace TestAttributes
                                 var creator = string.Empty;
                                 for (int i = 0; i < lower; i++)
                                     creator += $"new {referenceCode}(), ";
-                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
+                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; set; }} = new {referenceCode}[{lower}]{{ {creator}}};");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; init; }} = new {referenceCode}();");
-                                else {
-                                    var creator = string.Empty;
-                                    for (int i = 0; i < lower; i++)
-                                        creator += $"new {referenceCode}(), ";
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
-                                }
+                                roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; set; }} = new {referenceCode}();");
                             }
                         }
 
@@ -566,10 +549,7 @@ namespace TestAttributes
                                     roslyn.AppendLine($"\t\t\t\t{referenceCode}{i + 1},");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\t\t\t{referenceCode},");
-                                else
-                                    roslyn.AppendLine($"\t\t\t\t.. {referenceCode},");
+                                roslyn.AppendLine($"\t\t\t\t{referenceCode},");
                             }
                         }
                         roslyn.AppendLine("\t\t\t\t.. base.attributesOptional,");
@@ -699,17 +679,10 @@ namespace TestAttributes
                                 var creator = string.Empty;
                                 for (int i = 0; i < lower; i++)
                                     creator += $"new {referenceCode}(), ";
-                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
+                                roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; set }} = new {referenceCode}[{lower}]{{ {creator}}};");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; init; }} = new {referenceCode}();");
-                                else {
-                                    var creator = string.Empty;
-                                    for (int i = 0; i < lower; i++)
-                                        creator += $"new {referenceCode}(), ";
-                                    roslyn.AppendLine($"\t\tpublic {referenceCode}[] {referenceCode} {{ get; init; }} = new {referenceCode}[{lower}]{{ {creator}}};");
-                                }
+                                roslyn.AppendLine($"\t\tpublic {referenceCode} {referenceCode} {{ get; set; }} = new {referenceCode}();");
                             }
                         }
 
@@ -727,10 +700,7 @@ namespace TestAttributes
                                     roslyn.AppendLine($"\t\t\t\t{referenceCode}{i + 1},");
                             }
                             else if (lower == 1) {
-                                if (upper == 1)
-                                    roslyn.AppendLine($"\t\t\t\t{referenceCode},");
-                                else
-                                    roslyn.AppendLine($"\t\t\t\t.. {referenceCode},");
+                                roslyn.AppendLine($"\t\t\t\t{referenceCode},");
                             }
                         }
                         roslyn.AppendLine("\t\t\t\t.. base.attributesOptional,");
@@ -779,7 +749,7 @@ namespace TestAttributes
                                 else
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }} }}");
                             }
-                            if(lower>0 && upper > lower) {
+                            if (lower > 0 && upper > lower) {
                                 var prefix = attributesKnownTypes[referenceCode];
                                 if (attributesKnownComplex.Contains(referenceCode))
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{ set {{ base.AddAttributeValue(value); }} }}");

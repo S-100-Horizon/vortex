@@ -63,7 +63,7 @@ namespace S100Framework.Applications
 
         public static QueryFilter QueryFilter { get; internal set; } = new();
 
-        public static IDictionary<int, int> VerticalDatumConverter = new Dictionary<int,int>();
+        public static IDictionary<int, int> VerticalDatumConverter = new Dictionary<int, int>();
 
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
@@ -694,7 +694,7 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : DomainModel.FeatureNode {
+        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : AttributeModel.FeatureType {
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights
@@ -729,12 +729,18 @@ namespace S100Framework.Applications
 
             var rhythmOfLight = new rhythmOfLight() {
                 //lightCharacteristic = lightCharacteristicsValue,
-                signalGroup = [..parenthesisParts],
-                signalPeriod = signalPeriodN,
-                signalSequence = [.. signalSequences],
+                //signalGroup = [..parenthesisParts],
+                //signalPeriod = signalPeriodN,
+                //signalSequence = [.. signalSequences],
             };
             if (lightCharacteristicsValue != null)
                 rhythmOfLight.lightCharacteristic.value = EnumHelper.GetEnumValue(current.LITCHR);
+            if (parenthesisParts.Any())
+                rhythmOfLight.signalGroup_optional = parenthesisParts.ToArray();
+            if (signalPeriodN.HasValue)
+                rhythmOfLight.signalPeriod_optional = signalPeriodN.Value;
+            if (signalSequences.Any())
+                rhythmOfLight.signalSequence_optional = signalSequences.ToArray();
             return rhythmOfLight;
         }
 
@@ -751,7 +757,7 @@ namespace S100Framework.Applications
             return EnumHelper.GetEnumValue(value);
 
             //if (value != 3) {
-            //    return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+            //    return EnumHelper.GetEnumValue(value);
             //}
 
             //return verticalDatum.BalticSeaChartDatum2000;
@@ -761,11 +767,11 @@ namespace S100Framework.Applications
         }
 
         //internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : DomainModel.FeatureNode {
-        //    return EnumHelper.GetEnumValue<TType, verticalDatum>(value);
+        //    return EnumHelper.GetEnumValue(value);
         //}
 
 
-        internal static List<signalSequence> GetSignalSequences(string? sigseq) {
+        internal static signalSequence[] GetSignalSequences(string? sigseq) {
             var signalSequences = new List<signalSequence>();
 
             string pattern = @"(\d+\.\d+)|\((\d+\.\d+)\)";
@@ -794,12 +800,11 @@ namespace S100Framework.Applications
                     }
                 }
             }
-            return signalSequences;
+            return signalSequences.ToArray();
         }
 
-        internal static int?[]? GetColours<TType>(string color) where TType : class {//DomainModel.FeatureNode{
+        internal static int?[]? GetColours(string color) {
             return EnumHelper.GetEnumValues(color);
-
 
             //List<colour> colours = new List<colour>();
             //if (color != default) {

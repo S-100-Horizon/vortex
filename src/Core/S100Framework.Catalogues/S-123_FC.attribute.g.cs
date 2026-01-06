@@ -1875,11 +1875,11 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(areaA3ServiceDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Area A3 Service Description";
-		public servingMobileSatelliteService[] servingMobileSatelliteService { get; init; } = new servingMobileSatelliteService[1]{ new servingMobileSatelliteService(), };
+		public servingMobileSatelliteService servingMobileSatelliteService { get; set; } = new servingMobileSatelliteService();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. servingMobileSatelliteService,
+				servingMobileSatelliteService,
 				.. base.attributesOptional,
 			];
 
@@ -1921,11 +1921,11 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(broadcastContent);
 		[JsonIgnore]
 		public override string S100FC_name => "Broadcast Content";
-		public typeOfBroadcastContent[] typeOfBroadcastContent { get; init; } = new typeOfBroadcastContent[1]{ new typeOfBroadcastContent(), };
+		public typeOfBroadcastContent typeOfBroadcastContent { get; set; } = new typeOfBroadcastContent();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. typeOfBroadcastContent,
+				typeOfBroadcastContent,
 				.. base.attributesOptional,
 			];
 
@@ -2097,8 +2097,8 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; init; } = new language();
-		public name name { get; init; } = new name();
+		public language language { get; set; } = new language();
+		public name name { get; set; } = new name();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2193,7 +2193,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyPair);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Pair";
-		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
+		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; set; } = new frequencyShoreStationTransmits();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2230,8 +2230,8 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Range";
-		public frequencyLimitLower frequencyLimitLower { get; init; } = new frequencyLimitLower();
-		public frequencyLimitUpper frequencyLimitUpper { get; init; } = new frequencyLimitUpper();
+		public frequencyLimitLower frequencyLimitLower { get; set; } = new frequencyLimitLower();
+		public frequencyLimitUpper frequencyLimitUpper { get; set; } = new frequencyLimitUpper();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2268,7 +2268,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(graphic);
 		[JsonIgnore]
 		public override string S100FC_name => "Graphic";
-		public pictorialRepresentation pictorialRepresentation { get; init; } = new pictorialRepresentation();
+		public pictorialRepresentation pictorialRepresentation { get; set; } = new pictorialRepresentation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2319,7 +2319,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2356,7 +2356,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
-		public language language { get; init; } = new language();
+		public language language { get; set; } = new language();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2414,7 +2414,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
-		public linkage linkage { get; init; } = new linkage();
+		public linkage linkage { get; set; } = new linkage();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2458,8 +2458,8 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateStart dateStart { get; init; } = new dateStart();
-		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public dateStart dateStart { get; set; } = new dateStart();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2496,7 +2496,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(radioChannelDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Channel Details";
-		public transmissionOfTrafficLists transmissionOfTrafficLists { get; init; } = new transmissionOfTrafficLists();
+		public transmissionOfTrafficLists transmissionOfTrafficLists { get; set; } = new transmissionOfTrafficLists();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2647,7 +2647,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitOne);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit One";
-		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2684,7 +2684,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitTwo);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit Two";
-		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2721,7 +2721,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(surveyDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Date Range";
-		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2758,7 +2758,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
-		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2962,7 +2962,7 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2999,10 +2999,10 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Measurements Specification";
-		public vesselsCharacteristics vesselsCharacteristics { get; init; } = new vesselsCharacteristics();
-		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; init; } = new vesselsCharacteristicsValue();
-		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; init; } = new vesselsCharacteristicsUnit();
-		public comparisonOperator comparisonOperator { get; init; } = new comparisonOperator();
+		public vesselsCharacteristics vesselsCharacteristics { get; set; } = new vesselsCharacteristics();
+		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; set; } = new vesselsCharacteristicsValue();
+		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; } = new vesselsCharacteristicsUnit();
+		public comparisonOperator comparisonOperator { get; set; } = new comparisonOperator();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3056,11 +3056,11 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(scheduleByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Schedule by Day of Week";
-		public timeIntervalsByDayOfWeek[] timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek[1]{ new timeIntervalsByDayOfWeek(), };
+		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; set; } = new timeIntervalsByDayOfWeek();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. timeIntervalsByDayOfWeek,
+				timeIntervalsByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
@@ -3095,8 +3095,8 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit";
-		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
-		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
+		public sectorLimitOne sectorLimitOne { get; set; } = new sectorLimitOne();
+		public sectorLimitTwo sectorLimitTwo { get; set; } = new sectorLimitTwo();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3425,11 +3425,11 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(BroadcastDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Broadcast Details";
-		public broadcastContent[] broadcastContent { get; init; } = new broadcastContent[1]{ new broadcastContent(), };
+		public broadcastContent broadcastContent { get; set; } = new broadcastContent();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. broadcastContent,
+				broadcastContent,
 				.. base.attributesOptional,
 			];
 
@@ -3729,8 +3729,8 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(RadioControlCentre);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Control Centre";
-		public isMRCC isMRCC { get; init; } = new isMRCC();
-		public acceptAMVER acceptAMVER { get; init; } = new acceptAMVER();
+		public isMRCC isMRCC { get; set; } = new isMRCC();
+		public acceptAMVER acceptAMVER { get; set; } = new acceptAMVER();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3847,11 +3847,11 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(ServiceHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Hours";
-		public scheduleByDayOfWeek[] scheduleByDayOfWeek { get; init; } = new scheduleByDayOfWeek[1]{ new scheduleByDayOfWeek(), };
+		public scheduleByDayOfWeek scheduleByDayOfWeek { get; set; } = new scheduleByDayOfWeek();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. scheduleByDayOfWeek,
+				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
@@ -3979,11 +3979,11 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(TransmissionDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Transmission Details";
-		public radioChannelDetails[] radioChannelDetails { get; init; } = new radioChannelDetails[1]{ new radioChannelDetails(), };
+		public radioChannelDetails radioChannelDetails { get; set; } = new radioChannelDetails();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. radioChannelDetails,
+				radioChannelDetails,
 				.. base.attributesOptional,
 			];
 
@@ -4190,8 +4190,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(GMDSSArea);
 		[JsonIgnore]
 		public override string S100FC_name => "GMDSS Area";
-		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
-		public categoryOfGMDSSArea categoryOfGMDSSArea { get; init; } = new categoryOfGMDSSArea();
+		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
+		public categoryOfGMDSSArea categoryOfGMDSSArea { get; set; } = new categoryOfGMDSSArea();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4273,7 +4273,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(METAREA);
 		[JsonIgnore]
 		public override string S100FC_name => "METAREA";
-		public idMETAREA idMETAREA { get; init; } = new idMETAREA();
+		public idMETAREA idMETAREA { get; set; } = new idMETAREA();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4310,7 +4310,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(NAVAREA);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVAREA";
-		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
+		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4347,9 +4347,9 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(NAVTEXServiceArea);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVTEX Service Area";
-		public typeOfNAVTEXService typeOfNAVTEXService { get; init; } = new typeOfNAVTEXService();
-		public idNAVAREA idNAVAREA { get; init; } = new idNAVAREA();
-		public transmitterIdentificationCharacter transmitterIdentificationCharacter { get; init; } = new transmitterIdentificationCharacter();
+		public typeOfNAVTEXService typeOfNAVTEXService { get; set; } = new typeOfNAVTEXService();
+		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
+		public transmitterIdentificationCharacter transmitterIdentificationCharacter { get; set; } = new transmitterIdentificationCharacter();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4576,7 +4576,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(WeatherForecastAndWarningArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Weather Forecast and Warning Area";
-		public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea { get; init; } = new categoryOfForecastOrWarningArea();
+		public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea { get; set; } = new categoryOfForecastOrWarningArea();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4673,8 +4673,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
-		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
-		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public maximumDisplayScale maximumDisplayScale { get; set; } = new maximumDisplayScale();
+		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [

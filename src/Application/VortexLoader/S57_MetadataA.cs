@@ -73,7 +73,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             if (current.PUBREF != default) {
@@ -90,10 +90,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
 
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.MARSYS.HasValue) {
-                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue<LocalDirectionOfBuoyage, marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    localDirectionOfBuoyage.marksNavigationalSystemOf = EnumHelper.GetEnumValue(current.MARSYS.Value);
                                 }
                                 //else {
                                 //    Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
@@ -168,7 +168,7 @@ namespace S100Framework.Applications
                                 };
 
                                 if (current.MARSYS.HasValue) {
-                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue<NavigationalSystemOfMarks, marksNavigationalSystemOf>(current.MARSYS.Value);
+                                    instance.marksNavigationalSystemOf_optional = EnumHelper.GetEnumValue(current.MARSYS.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");
@@ -443,7 +443,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey, qualityOfVerticalMeasurement>(current.QUASOU);
+                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                             }
 
                             if (current.SCVAL1.HasValue && current.SCVAL1 != -32767) {
@@ -463,11 +463,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SURTYP != default) {
-                                instance.surveyType = EnumHelper.GetEnumValues<QualityOfSurvey, surveyType>(current.SURTYP);
+                                instance.surveyType = EnumHelper.GetEnumValues(current.SURTYP);
                             }
 
                             if (current.TECSOU != null) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues<QualityOfSurvey, techniqueOfVerticalMeasurement>(current.TECSOU);
+                                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

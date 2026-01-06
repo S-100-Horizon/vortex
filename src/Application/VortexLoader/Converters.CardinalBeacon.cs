@@ -23,13 +23,12 @@ namespace S100Framework.Applications
             }
 
             if (current.COLOUR != default) {
-                var colours = ImporterNIS.GetColours<CardinalBeacon>(current.COLOUR);
-                if (colours != null && colours.Any()) {
-                    instance.colour[0].value = colours[0];
+                var colours = ImporterNIS.GetColours(current.COLOUR);
+                if (colours is not null && colours.Any()) {
+                    instance.colour.value = colours[0];
                     if (colours.Count() > 1)
                         instance.colour_optional = colours[1..];
                 }
-                //instance.colour = ImporterNIS.GetColours<CardinalBeacon>(current.COLOUR);
             }
 
 
@@ -54,9 +53,6 @@ namespace S100Framework.Applications
 
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                 instance.height_optional = current.HEIGHT.Value;
-            }
-            else {
-                instance.height_optional = default(double?);
             }
 
             // TODO: interoperabilityidentifier

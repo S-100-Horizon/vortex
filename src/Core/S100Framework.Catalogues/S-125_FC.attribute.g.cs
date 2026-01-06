@@ -2327,8 +2327,8 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; init; } = new language();
-		public name name { get; init; } = new name();
+		public language language { get; set; } = new language();
+		public name name { get; set; } = new name();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2401,7 +2401,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2438,7 +2438,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
-		public language language { get; init; } = new language();
+		public language language { get; set; } = new language();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2496,7 +2496,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(multiplicityOfFeatures);
 		[JsonIgnore]
 		public override string S100FC_name => "Multiplicity of Features";
-		public multiplicityKnown multiplicityKnown { get; init; } = new multiplicityKnown();
+		public multiplicityKnown multiplicityKnown { get; set; } = new multiplicityKnown();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2533,7 +2533,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(orientation);
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation";
-		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public orientationValue orientationValue { get; set; } = new orientationValue();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2570,8 +2570,8 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateEnd dateEnd { get; init; } = new dateEnd();
-		public dateStart dateStart { get; init; } = new dateStart();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
+		public dateStart dateStart { get; set; } = new dateStart();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2608,8 +2608,8 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(radarWaveLength);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Wave Length";
-		public radarBand radarBand { get; init; } = new radarBand();
-		public waveLengthValue waveLengthValue { get; init; } = new waveLengthValue();
+		public radarBand radarBand { get; set; } = new radarBand();
+		public waveLengthValue waveLengthValue { get; set; } = new waveLengthValue();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2646,7 +2646,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(sectorInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Information";
-		public text text { get; init; } = new text();
+		public text text { get; set; } = new text();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2683,7 +2683,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitOne);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit One";
-		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2720,7 +2720,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitTwo);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit Two";
-		public sectorBearing sectorBearing { get; init; } = new sectorBearing();
+		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2757,8 +2757,8 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(signalSequence);
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Sequence";
-		public signalDuration signalDuration { get; init; } = new signalDuration();
-		public signalStatus signalStatus { get; init; } = new signalStatus();
+		public signalDuration signalDuration { get; set; } = new signalDuration();
+		public signalStatus signalStatus { get; set; } = new signalStatus();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2796,7 +2796,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(textualDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Textual Description";
-		public fileReference fileReference { get; init; } = new fileReference();
+		public fileReference fileReference { get; set; } = new fileReference();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2833,7 +2833,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2870,7 +2870,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(rhythmOfLight);
 		[JsonIgnore]
 		public override string S100FC_name => "Rhythm Of Light";
-		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
+		public lightCharacteristic lightCharacteristic { get; set; } = new lightCharacteristic();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2922,7 +2922,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(directionalCharacter);
 		[JsonIgnore]
 		public override string S100FC_name => "Directional Character";
-		public orientation orientation { get; init; } = new orientation();
+		public orientation orientation { get; set; } = new orientation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2959,8 +2959,8 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit";
-		public sectorLimitOne sectorLimitOne { get; init; } = new sectorLimitOne();
-		public sectorLimitTwo sectorLimitTwo { get; init; } = new sectorLimitTwo();
+		public sectorLimitOne sectorLimitOne { get; set; } = new sectorLimitOne();
+		public sectorLimitTwo sectorLimitTwo { get; set; } = new sectorLimitTwo();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3040,7 +3040,7 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(obscuredSector);
 		[JsonIgnore]
 		public override string S100FC_name => "Obscured Sector";
-		public sectorLimit sectorLimit { get; init; } = new sectorLimit();
+		public sectorLimit sectorLimit { get; set; } = new sectorLimit();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3077,11 +3077,11 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(lightSector);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Sector";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
+		public colour colour { get; set; } = new colour();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				.. base.attributesOptional,
 			];
 
@@ -3152,13 +3152,13 @@ namespace S100Framework.AttributeModel.S125.ComplexAttributes
 		public override string S100FC_code => nameof(sectorCharacteristics);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Characteristics";
-		public lightCharacteristic lightCharacteristic { get; init; } = new lightCharacteristic();
-		public lightSector[] lightSector { get; init; } = new lightSector[1]{ new lightSector(), };
+		public lightCharacteristic lightCharacteristic { get; set; } = new lightCharacteristic();
+		public lightSector lightSector { get; set; } = new lightSector();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
 				lightCharacteristic,
-				.. lightSector,
+				lightSector,
 				.. base.attributesOptional,
 			];
 
@@ -3257,7 +3257,7 @@ namespace S100Framework.AttributeModel.S125.InformationTypes
 		public override string S100FC_code => nameof(AtonStatusInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Status Information";
-		public changeDetails changeDetails { get; init; } = new changeDetails();
+		public changeDetails changeDetails { get; set; } = new changeDetails();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3401,8 +3401,8 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(NavigationLine);
 		[JsonIgnore]
 		public override string S100FC_name => "Navigation Line";
-		public categoryOfNavigationLine categoryOfNavigationLine { get; init; } = new categoryOfNavigationLine();
-		public orientation orientation { get; init; } = new orientation();
+		public categoryOfNavigationLine categoryOfNavigationLine { get; set; } = new categoryOfNavigationLine();
+		public orientation orientation { get; set; } = new orientation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3447,9 +3447,9 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(RecommendedTrack);
 		[JsonIgnore]
 		public override string S100FC_name => "Recommended Track";
-		public basedOnFixedMarks basedOnFixedMarks { get; init; } = new basedOnFixedMarks();
-		public orientation orientation { get; init; } = new orientation();
-		public trafficFlow trafficFlow { get; init; } = new trafficFlow();
+		public basedOnFixedMarks basedOnFixedMarks { get; set; } = new basedOnFixedMarks();
+		public orientation orientation { get; set; } = new orientation();
+		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3569,7 +3569,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(StructureObject);
 		[JsonIgnore]
 		public override string S100FC_name => "Structure Object";
-		public atoNNumber atoNNumber { get; init; } = new atoNNumber();
+		public atoNNumber atoNNumber { get; set; } = new atoNNumber();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3606,13 +3606,13 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(GenericBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Generic Buoy";
-		public buoyShape buoyShape { get; init; } = new buoyShape();
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
+		public buoyShape buoyShape { get; set; } = new buoyShape();
+		public colour colour { get; set; } = new colour();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
 				buoyShape,
-				.. colour,
+				colour,
 				.. base.attributesOptional,
 			];
 
@@ -3693,13 +3693,13 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(GenericBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Generic Beacon";
-		public beaconShape beaconShape { get; init; } = new beaconShape();
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
+		public beaconShape beaconShape { get; set; } = new beaconShape();
+		public colour colour { get; set; } = new colour();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
 				beaconShape,
-				.. colour,
+				colour,
 				.. base.attributesOptional,
 			];
 
@@ -3802,12 +3802,12 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(Landmark);
 		[JsonIgnore]
 		public override string S100FC_name => "Landmark";
-		public categoryOfLandmark[] categoryOfLandmark { get; init; } = new categoryOfLandmark[1]{ new categoryOfLandmark(), };
-		public visualProminence visualProminence { get; init; } = new visualProminence();
+		public categoryOfLandmark categoryOfLandmark { get; set; } = new categoryOfLandmark();
+		public visualProminence visualProminence { get; set; } = new visualProminence();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. categoryOfLandmark,
+				categoryOfLandmark,
 				visualProminence,
 				.. base.attributesOptional,
 			];
@@ -3897,13 +3897,13 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(Daymark);
 		[JsonIgnore]
 		public override string S100FC_name => "Daymark";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
-		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
-		public isSlatted isSlatted { get; init; } = new isSlatted();
+		public colour colour { get; set; } = new colour();
+		public topmarkDaymarkShape topmarkDaymarkShape { get; set; } = new topmarkDaymarkShape();
+		public isSlatted isSlatted { get; set; } = new isSlatted();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				topmarkDaymarkShape,
 				isSlatted,
 				.. base.attributesOptional,
@@ -3985,7 +3985,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(FogSignal);
 		[JsonIgnore]
 		public override string S100FC_name => "Fog Signal";
-		public categoryOfFogSignal categoryOfFogSignal { get; init; } = new categoryOfFogSignal();
+		public categoryOfFogSignal categoryOfFogSignal { get; set; } = new categoryOfFogSignal();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4068,7 +4068,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(RadarTransponderBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Transponder Beacon";
-		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; init; } = new categoryOfRadarTransponderBeacon();
+		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; } = new categoryOfRadarTransponderBeacon();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4149,7 +4149,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(RadioStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Station";
-		public categoryOfRadioStation categoryOfRadioStation { get; init; } = new categoryOfRadioStation();
+		public categoryOfRadioStation categoryOfRadioStation { get; set; } = new categoryOfRadioStation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4249,11 +4249,11 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightFloat);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Float";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
+		public colour colour { get; set; } = new colour();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				.. base.attributesOptional,
 			];
 
@@ -4320,11 +4320,11 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightVessel);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Vessel";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
+		public colour colour { get; set; } = new colour();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				.. base.attributesOptional,
 			];
 
@@ -4629,7 +4629,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(CardinalBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Cardinal Buoy";
-		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		public categoryOfCardinalMark categoryOfCardinalMark { get; set; } = new categoryOfCardinalMark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4682,7 +4682,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(InstallationBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Installation Buoy";
-		public categoryOfInstallationBuoy categoryOfInstallationBuoy { get; init; } = new categoryOfInstallationBuoy();
+		public categoryOfInstallationBuoy categoryOfInstallationBuoy { get; set; } = new categoryOfInstallationBuoy();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4735,7 +4735,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LateralBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Lateral Buoy";
-		public categoryOfLateralMark categoryOfLateralMark { get; init; } = new categoryOfLateralMark();
+		public categoryOfLateralMark categoryOfLateralMark { get; set; } = new categoryOfLateralMark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4810,11 +4810,11 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Special Purpose/General Buoy";
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark[1]{ new categoryOfSpecialPurposeMark(), };
+		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; set; } = new categoryOfSpecialPurposeMark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. categoryOfSpecialPurposeMark,
+				categoryOfSpecialPurposeMark,
 				.. base.attributesOptional,
 			];
 
@@ -4842,7 +4842,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(CardinalBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Cardinal Beacon";
-		public categoryOfCardinalMark categoryOfCardinalMark { get; init; } = new categoryOfCardinalMark();
+		public categoryOfCardinalMark categoryOfCardinalMark { get; set; } = new categoryOfCardinalMark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -4917,11 +4917,11 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Special Purpose/General Beacon";
-		public categoryOfSpecialPurposeMark[] categoryOfSpecialPurposeMark { get; init; } = new categoryOfSpecialPurposeMark[1]{ new categoryOfSpecialPurposeMark(), };
+		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; set; } = new categoryOfSpecialPurposeMark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. categoryOfSpecialPurposeMark,
+				categoryOfSpecialPurposeMark,
 				.. base.attributesOptional,
 			];
 
@@ -4949,7 +4949,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LateralBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Lateral Beacon";
-		public categoryOfLandmark categoryOfLandmark { get; init; } = new categoryOfLandmark();
+		public categoryOfLandmark categoryOfLandmark { get; set; } = new categoryOfLandmark();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5062,7 +5062,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(VerticalDatumOfData);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Datum of Data";
-		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public verticalDatum verticalDatum { get; set; } = new verticalDatum();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5093,8 +5093,8 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
-		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
-		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public maximumDisplayScale maximumDisplayScale { get; set; } = new maximumDisplayScale();
+		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5131,7 +5131,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LocalDirectionOfBuoyage);
 		[JsonIgnore]
 		public override string S100FC_name => "Local Direction of Buoyage";
-		public orientation orientation { get; init; } = new orientation();
+		public orientation orientation { get; set; } = new orientation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5161,7 +5161,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(NavigationalSystemOfMarks);
 		[JsonIgnore]
 		public override string S100FC_name => "Navigational System of Marks";
-		public marksNavigationalSystemOf marksNavigationalSystemOf { get; init; } = new marksNavigationalSystemOf();
+		public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; } = new marksNavigationalSystemOf();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5192,7 +5192,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(SoundingDatum);
 		[JsonIgnore]
 		public override string S100FC_name => "Sounding Datum";
-		public verticalDatum verticalDatum { get; init; } = new verticalDatum();
+		public verticalDatum verticalDatum { get; set; } = new verticalDatum();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5223,8 +5223,8 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfBathymetricData);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Bathymetric Data";
-		public categoryOfTemporalVariation categoryOfTemporalVariation { get; init; } = new categoryOfTemporalVariation();
-		public horizontalPositionUncertainty horizontalPositionUncertainty { get; init; } = new horizontalPositionUncertainty();
+		public categoryOfTemporalVariation categoryOfTemporalVariation { get; set; } = new categoryOfTemporalVariation();
+		public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; } = new horizontalPositionUncertainty();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5356,7 +5356,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(DangerousFeature);
 		[JsonIgnore]
 		public override string S100FC_name => "Dangerous Feature";
-		public interoperabilityIdentifier interoperabilityIdentifier { get; init; } = new interoperabilityIdentifier();
+		public interoperabilityIdentifier interoperabilityIdentifier { get; set; } = new interoperabilityIdentifier();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5393,8 +5393,8 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(ElectronicAtoN);
 		[JsonIgnore]
 		public override string S100FC_name => "Electronic AtoN";
-		public atoNNumber atoNNumber { get; init; } = new atoNNumber();
-		public mMSICode mMSICode { get; init; } = new mMSICode();
+		public atoNNumber atoNNumber { get; set; } = new atoNNumber();
+		public mMSICode mMSICode { get; set; } = new mMSICode();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5439,7 +5439,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(Topmark);
 		[JsonIgnore]
 		public override string S100FC_name => "Topmark";
-		public topmarkDaymarkShape topmarkDaymarkShape { get; init; } = new topmarkDaymarkShape();
+		public topmarkDaymarkShape topmarkDaymarkShape { get; set; } = new topmarkDaymarkShape();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5493,7 +5493,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(AtonAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Aggregation";
-		public categoryOfAggregation categoryOfAggregation { get; init; } = new categoryOfAggregation();
+		public categoryOfAggregation categoryOfAggregation { get; set; } = new categoryOfAggregation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5524,7 +5524,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(AtonAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Association";
-		public categoryOfAssociation categoryOfAssociation { get; init; } = new categoryOfAssociation();
+		public categoryOfAssociation categoryOfAssociation { get; set; } = new categoryOfAssociation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5555,12 +5555,12 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightAirObstruction);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Air Obstruction";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
-		public rhythmOfLight rhythmOfLight { get; init; } = new rhythmOfLight();
+		public colour colour { get; set; } = new colour();
+		public rhythmOfLight rhythmOfLight { get; set; } = new rhythmOfLight();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				rhythmOfLight,
 				.. base.attributesOptional,
 			];
@@ -5632,12 +5632,12 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightAllAround);
 		[JsonIgnore]
 		public override string S100FC_name => "Light All Around";
-		public colour[] colour { get; init; } = new colour[1]{ new colour(), };
-		public rhythmOfLight rhythmOfLight { get; init; } = new rhythmOfLight();
+		public colour colour { get; set; } = new colour();
+		public rhythmOfLight rhythmOfLight { get; set; } = new rhythmOfLight();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. colour,
+				colour,
 				rhythmOfLight,
 				.. base.attributesOptional,
 			];
@@ -5740,7 +5740,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightFogDetector);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Fog Detector";
-		public rhythmOfLight rhythmOfLight { get; init; } = new rhythmOfLight();
+		public rhythmOfLight rhythmOfLight { get; set; } = new rhythmOfLight();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5786,11 +5786,11 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(LightSectored);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Sectored";
-		public sectorCharacteristics[] sectorCharacteristics { get; init; } = new sectorCharacteristics[1]{ new sectorCharacteristics(), };
+		public sectorCharacteristics sectorCharacteristics { get; set; } = new sectorCharacteristics();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. sectorCharacteristics,
+				sectorCharacteristics,
 				.. base.attributesOptional,
 			];
 
@@ -5863,7 +5863,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(SyntheticAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Synthetic AIS Aid To Navigation";
-		public categoryOfSyntheticAISAidtoNavigation categoryOfSyntheticAISAidtoNavigation { get; init; } = new categoryOfSyntheticAISAidtoNavigation();
+		public categoryOfSyntheticAISAidtoNavigation categoryOfSyntheticAISAidtoNavigation { get; set; } = new categoryOfSyntheticAISAidtoNavigation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5894,7 +5894,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Physical AIS Aid to Navigation";
-		public categoryOfPhysicalAISAidToNavigation categoryOfPhysicalAISAidToNavigation { get; init; } = new categoryOfPhysicalAISAidToNavigation();
+		public categoryOfPhysicalAISAidToNavigation categoryOfPhysicalAISAidToNavigation { get; set; } = new categoryOfPhysicalAISAidToNavigation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -5925,7 +5925,7 @@ namespace S100Framework.AttributeModel.S125.FeatureTypes
 		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Virtual AIS Aid to Navigation";
-		public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; init; } = new virtualAISAidToNavigationType();
+		public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; set; } = new virtualAISAidToNavigationType();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [

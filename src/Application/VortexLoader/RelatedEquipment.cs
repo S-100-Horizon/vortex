@@ -44,7 +44,7 @@ namespace S100Framework.Applications
                 colourPattern? topmarkColourPattern = null;
 
                 if (relatedTopmark.COLOUR != default) {
-                    topmarkColours = ImporterNIS.GetColours<TType>(relatedTopmark.COLOUR);
+                    topmarkColours = ImporterNIS.GetColours(relatedTopmark.COLOUR);
                 }
 
                 if (relatedTopmark.COLPAT != default) {
@@ -102,7 +102,7 @@ namespace S100Framework.Applications
         //        colourPattern? daymarkColourPattern = null;
 
         //        if (relatedDaymark.COLOUR != default) {
-        //            daymarkColours = ImporterNIS.GetColours<TType>(relatedDaymark.COLOUR);
+        //            daymarkColours = ImporterNIS.GetColours(relatedDaymark.COLOUR);
         //        }
 
         //        if (relatedDaymark.COLPAT != default) {
@@ -124,7 +124,7 @@ namespace S100Framework.Applications
         //        }
 
         //        if (relatedDaymark.TOPSHP.HasValue) {
-        //            daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue<TType, topmarkDaymarkShape>(relatedDaymark.TOPSHP.Value);
+        //            daymark.topmarkDaymarkShape = EnumHelper.GetEnumValue(relatedDaymark.TOPSHP.Value);
         //        }
 
         //        ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedDaymark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");

@@ -11,7 +11,6 @@ namespace S100Framework.Applications
         internal static FogSignal CreateFogSignal(S57Object structure, int? scaleMinimum, Geodatabase source) {
 
             var instance = new FogSignal {
-                categoryOfFogSignal = default,
             };
 
             var current = structure as AidsToNavigationP;
@@ -21,55 +20,55 @@ namespace S100Framework.Applications
             }
 
             if (current.CATFOG.HasValue != default) {
-                instance.categoryOfFogSignal = EnumHelper.GetEnumValue<FogSignal,categoryOfFogSignal>(current.CATFOG.Value);
+                instance.categoryOfFogSignal.value = EnumHelper.GetEnumValue(current.CATFOG.Value);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange = dateRange;
+                instance.fixedDateRange_optional = dateRange;
             }
 
             // TODO: interoperabilityidentifier
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
-                instance.periodicDateRange = periodicDateRange;
+                instance.periodicDateRange_optional = periodicDateRange;
             }
 
             if (current.SIGFRQ.HasValue) {
-                instance.signalFrequency = current.SIGFRQ.Value;
+                instance.signalFrequency_optional = current.SIGFRQ.Value;
             }
             if (current.SIGGEN.HasValue) {
-                instance.signalGeneration = EnumHelper.GetEnumValue<FogSignal,signalGeneration>(current.SIGGEN.Value);
+                instance.signalGeneration_optional = EnumHelper.GetEnumValue(current.SIGGEN.Value);
             }
             if (current.SIGGRP != default) {
-                instance.signalGroup = current.SIGGRP;
+                instance.signalGroup_optional = current.SIGGRP;
             }
 
             if (current.SIGPER != default) {
-                instance.signalPeriod = current.SIGPER == -32767d ? null : current.SIGPER;
+                instance.signalPeriod_optional = current.SIGPER == -32767d ? null : current.SIGPER;
             }
 
             if (current.SIGSEQ != default) {
-                instance.signalSequence = ImporterNIS.GetSignalSequences(current.SIGSEQ);
+                instance.signalSequence_optional = ImporterNIS.GetSignalSequences(current.SIGSEQ);
             }
 
             if (current.STATUS != default) {
-                instance.status = ImporterNIS.GetStatus(current.STATUS);
+                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
             }
 
-            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             // TODO: interoperabilityidentifier
 
             if (current.VALMXR.HasValue) {
-                instance.valueOfMaximumRange = current.VALMXR.Value;
+                instance.valueOfMaximumRange_optional = current.VALMXR.Value;
             }
 
             if (scaleMinimum.HasValue) {
-                instance.scaleMinimum = scaleMinimum;
+                instance.scaleMinimum_optional = scaleMinimum;
             }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -77,7 +76,7 @@ namespace S100Framework.Applications
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
             instance.SetInformationBindings(ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

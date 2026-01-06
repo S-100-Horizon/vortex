@@ -51,33 +51,33 @@ namespace S100Framework.Applications
                             var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
-                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue<ShorelineConstruction, categoryOfShorelineConstruction>(current.CATSLC.Value);
+                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue(current.CATSLC.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours<ShorelineConstruction>(current.COLOUR);
+                                instance.colour = GetColours(current.COLOUR);
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern = GetColourPattern(current.COLPAT);
+                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition = GetCondition(current.CONDTN.Value);
+                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange = dateRange;
+                                instance.fixedDateRange_optional = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                                instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                instance.height = default(double?);
+                                
                             }
 
                             var horclr = current.HORCLR ?? default;
@@ -91,21 +91,21 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HORLEN.HasValue) {
-                                instance.horizontalLength = current.HORLEN.Value;
+                                instance.horizontalLength_optional = current.HORLEN.Value;
                             }
 
                             if (current.HORWID.HasValue) {
-                                instance.horizontalWidth = current.HORWID.Value;
+                                instance.horizontalWidth_optional = current.HORWID.Value;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues<ShorelineConstruction, natureOfConstruction>(current.NATCON);
+                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
@@ -117,22 +117,22 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status = GetStatus(current.STATUS);
+                                instance.status_optional = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
-                                instance.visualProminence = EnumHelper.GetEnumValue<ShorelineConstruction, visualProminence>(current.CONVIS.Value);
+                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(-1);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue(-1);
                                 else {
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue<ShorelineConstruction, waterLevelEffect>(current.WATLEV);
+                                    instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                                 }
                             }
 
@@ -142,7 +142,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));

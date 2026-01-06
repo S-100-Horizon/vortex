@@ -1639,8 +1639,8 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; init; } = new language();
-		public name name { get; init; } = new name();
+		public language language { get; set; } = new language();
+		public name name { get; set; } = new name();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1721,7 +1721,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyPair);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Pair";
-		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; init; } = new frequencyShoreStationTransmits();
+		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; set; } = new frequencyShoreStationTransmits();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1758,7 +1758,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1852,7 +1852,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
-		public linkage linkage { get; init; } = new linkage();
+		public linkage linkage { get; set; } = new linkage();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1925,7 +1925,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(orientation);
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation";
-		public orientationValue orientationValue { get; init; } = new orientationValue();
+		public orientationValue orientationValue { get; set; } = new orientationValue();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1962,8 +1962,8 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateStart dateStart { get; init; } = new dateStart();
-		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public dateStart dateStart { get; set; } = new dateStart();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2111,7 +2111,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(surveyDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Date Range";
-		public dateEnd dateEnd { get; init; } = new dateEnd();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2148,7 +2148,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
-		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2310,7 +2310,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2347,10 +2347,10 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Measurements Specification";
-		public comparisonOperator comparisonOperator { get; init; } = new comparisonOperator();
-		public vesselsCharacteristics vesselsCharacteristics { get; init; } = new vesselsCharacteristics();
-		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; init; } = new vesselsCharacteristicsValue();
-		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; init; } = new vesselsCharacteristicsUnit();
+		public comparisonOperator comparisonOperator { get; set; } = new comparisonOperator();
+		public vesselsCharacteristics vesselsCharacteristics { get; set; } = new vesselsCharacteristics();
+		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; set; } = new vesselsCharacteristicsValue();
+		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; } = new vesselsCharacteristicsUnit();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2455,11 +2455,11 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(graphic);
 		[JsonIgnore]
 		public override string S100FC_name => "Graphic";
-		public pictorialRepresentation[] pictorialRepresentation { get; init; } = new pictorialRepresentation[1]{ new pictorialRepresentation(), };
+		public pictorialRepresentation pictorialRepresentation { get; set; } = new pictorialRepresentation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. pictorialRepresentation,
+				pictorialRepresentation,
 				.. base.attributesOptional,
 			];
 
@@ -2514,11 +2514,11 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_code => nameof(scheduleByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Schedule by Day of Week";
-		public timeIntervalsByDayOfWeek[] timeIntervalsByDayOfWeek { get; init; } = new timeIntervalsByDayOfWeek[1]{ new timeIntervalsByDayOfWeek(), };
+		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; set; } = new timeIntervalsByDayOfWeek();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. timeIntervalsByDayOfWeek,
+				timeIntervalsByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
@@ -2815,7 +2815,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_code => nameof(Authority);
 		[JsonIgnore]
 		public override string S100FC_name => "Authority";
-		public categoryOfAuthority categoryOfAuthority { get; init; } = new categoryOfAuthority();
+		public categoryOfAuthority categoryOfAuthority { get; set; } = new categoryOfAuthority();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3091,11 +3091,11 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_code => nameof(ServiceHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Hours";
-		public scheduleByDayOfWeek[] scheduleByDayOfWeek { get; init; } = new scheduleByDayOfWeek[1]{ new scheduleByDayOfWeek(), };
+		public scheduleByDayOfWeek scheduleByDayOfWeek { get; set; } = new scheduleByDayOfWeek();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. scheduleByDayOfWeek,
+				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
@@ -3244,8 +3244,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_code => nameof(InformationArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Information Area";
-		public categoryOfRelationship categoryOfRelationship { get; init; } = new categoryOfRelationship();
-		public actionOrActivity actionOrActivity { get; init; } = new actionOrActivity();
+		public categoryOfRelationship categoryOfRelationship { get; set; } = new categoryOfRelationship();
+		public actionOrActivity actionOrActivity { get; set; } = new actionOrActivity();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3284,11 +3284,11 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_code => nameof(MarineProtectedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Marine Protected Area";
-		public categoryOfMarineProtectedArea[] categoryOfMarineProtectedArea { get; init; } = new categoryOfMarineProtectedArea[1]{ new categoryOfMarineProtectedArea(), };
+		public categoryOfMarineProtectedArea categoryOfMarineProtectedArea { get; set; } = new categoryOfMarineProtectedArea();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. categoryOfMarineProtectedArea,
+				categoryOfMarineProtectedArea,
 				.. base.attributesOptional,
 			];
 
@@ -3355,11 +3355,11 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_code => nameof(RestrictedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Restricted Area";
-		public restriction[] restriction { get; init; } = new restriction[1]{ new restriction(), };
+		public restriction restriction { get; set; } = new restriction();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. restriction,
+				restriction,
 				.. base.attributesOptional,
 			];
 
@@ -3425,8 +3425,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
-		public maximumDisplayScale maximumDisplayScale { get; init; } = new maximumDisplayScale();
-		public minimumDisplayScale minimumDisplayScale { get; init; } = new minimumDisplayScale();
+		public maximumDisplayScale maximumDisplayScale { get; set; } = new maximumDisplayScale();
+		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3556,15 +3556,15 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_code => nameof(TextPlacement);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Placement";
-		public textOffsetBearing textOffsetBearing { get; init; } = new textOffsetBearing();
-		public textOffsetDistance textOffsetDistance { get; init; } = new textOffsetDistance();
-		public textType[] textType { get; init; } = new textType[1]{ new textType(), };
+		public textOffsetBearing textOffsetBearing { get; set; } = new textOffsetBearing();
+		public textOffsetDistance textOffsetDistance { get; set; } = new textOffsetDistance();
+		public textType textType { get; set; } = new textType();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
 				textOffsetBearing,
 				textOffsetDistance,
-				.. textType,
+				textType,
 				.. base.attributesOptional,
 			];
 

@@ -88,16 +88,16 @@ namespace S100Framework.Applications
         }
 
 
-        internal static bool TryGetPeriodicDateRange(string? start, string? end, out List<periodicDateRange>? value) {
+        internal static bool TryGetPeriodicDateRange(string? start, string? end, out periodicDateRange[]? value) {
             if (start != default) {
                 if (end != default) {
                     if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
-                        value = new List<periodicDateRange>() {
+                        value = [
                                 new periodicDateRange() {
                                     dateStart = $"--{start}",
                                     dateEnd = $"--{end}"
                                 }
-                            };
+                            ];
                         return true;
                     }
                     else {

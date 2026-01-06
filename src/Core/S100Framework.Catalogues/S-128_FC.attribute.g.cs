@@ -1530,8 +1530,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(customPaperSize);
 		[JsonIgnore]
 		public override string S100FC_name => "Custom Paper Size";
-		public paperWidth paperWidth { get; init; } = new paperWidth();
-		public paperLength paperLength { get; init; } = new paperLength();
+		public paperWidth paperWidth { get; set; } = new paperWidth();
+		public paperLength paperLength { get; set; } = new paperLength();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1568,8 +1568,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(defaultLocale);
 		[JsonIgnore]
 		public override string S100FC_name => "Default Locale";
-		public characterEncoding characterEncoding { get; init; } = new characterEncoding();
-		public countryName countryName { get; init; } = new countryName();
+		public characterEncoding characterEncoding { get; set; } = new characterEncoding();
+		public countryName countryName { get; set; } = new countryName();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1613,7 +1613,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public name name { get; init; } = new name();
+		public name name { get; set; } = new name();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1714,7 +1714,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
-		public linkage linkage { get; init; } = new linkage();
+		public linkage linkage { get; set; } = new linkage();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1779,8 +1779,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateEnd dateEnd { get; init; } = new dateEnd();
-		public dateStart dateStart { get; init; } = new dateStart();
+		public dateEnd dateEnd { get; set; } = new dateEnd();
+		public dateStart dateStart { get; set; } = new dateStart();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1817,8 +1817,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(pricing);
 		[JsonIgnore]
 		public override string S100FC_name => "Pricing";
-		public currency currency { get; init; } = new currency();
-		public price price { get; init; } = new price();
+		public currency currency { get; set; } = new currency();
+		public price price { get; set; } = new price();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1899,9 +1899,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(productSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Product Specification";
-		public editionDate editionDate { get; init; } = new editionDate();
-		public name name { get; init; } = new name();
-		public version version { get; init; } = new version();
+		public editionDate editionDate { get; set; } = new editionDate();
+		public name name { get; set; } = new name();
+		public version version { get; set; } = new version();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1952,9 +1952,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(supportFileSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Support File Specification";
-		public editionDate editionDate { get; init; } = new editionDate();
-		public name name { get; init; } = new name();
-		public version version { get; init; } = new version();
+		public editionDate editionDate { get; set; } = new editionDate();
+		public name name { get; set; } = new name();
+		public version version { get; set; } = new version();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1998,9 +1998,9 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(serviceSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Specification";
-		public editionDate editionDate { get; init; } = new editionDate();
-		public name name { get; init; } = new name();
-		public version version { get; init; } = new version();
+		public editionDate editionDate { get; set; } = new editionDate();
+		public name name { get; set; } = new name();
+		public version version { get; set; } = new version();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2110,8 +2110,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
-		public contactInstructions contactInstructions { get; init; } = new contactInstructions();
-		public telecommunicationIdentifier telecommunicationIdentifier { get; init; } = new telecommunicationIdentifier();
+		public contactInstructions contactInstructions { get; set; } = new contactInstructions();
+		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2156,12 +2156,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalOfCycle);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Interval Of Cycle";
-		public typeOfTimeIntervalUnit[] typeOfTimeIntervalUnit { get; init; } = new typeOfTimeIntervalUnit[1]{ new typeOfTimeIntervalUnit(), };
-		public valueOfTime valueOfTime { get; init; } = new valueOfTime();
+		public typeOfTimeIntervalUnit typeOfTimeIntervalUnit { get; set; } = new typeOfTimeIntervalUnit();
+		public valueOfTime valueOfTime { get; set; } = new valueOfTime();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. typeOfTimeIntervalUnit,
+				typeOfTimeIntervalUnit,
 				valueOfTime,
 				.. base.attributesOptional,
 			];
@@ -2196,8 +2196,8 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(weekOfYear);
 		[JsonIgnore]
 		public override string S100FC_name => "Week Of Year";
-		public weekNumber weekNumber { get; init; } = new weekNumber();
-		public yearNumber yearNumber { get; init; } = new yearNumber();
+		public weekNumber weekNumber { get; set; } = new weekNumber();
+		public yearNumber yearNumber { get; set; } = new yearNumber();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2270,7 +2270,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(printInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Print Information";
-		public printSize printSize { get; init; } = new printSize();
+		public printSize printSize { get; set; } = new printSize();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2328,13 +2328,13 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(supportFile);
 		[JsonIgnore]
 		public override string S100FC_name => "Support File";
-		public digitalSignatureReference digitalSignatureReference { get; init; } = new digitalSignatureReference();
-		public fileLocator fileLocator { get; init; } = new fileLocator();
-		public fileName fileName { get; init; } = new fileName();
-		public supportFileFormat supportFileFormat { get; init; } = new supportFileFormat();
-		public supportFilePurpose supportFilePurpose { get; init; } = new supportFilePurpose();
-		public defaultLocale defaultLocale { get; init; } = new defaultLocale();
-		public supportFileSpecification supportFileSpecification { get; init; } = new supportFileSpecification();
+		public digitalSignatureReference digitalSignatureReference { get; set; } = new digitalSignatureReference();
+		public fileLocator fileLocator { get; set; } = new fileLocator();
+		public fileName fileName { get; set; } = new fileName();
+		public supportFileFormat supportFileFormat { get; set; } = new supportFileFormat();
+		public supportFilePurpose supportFilePurpose { get; set; } = new supportFilePurpose();
+		public defaultLocale defaultLocale { get; set; } = new defaultLocale();
+		public supportFileSpecification supportFileSpecification { get; set; } = new supportFileSpecification();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2445,7 +2445,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalOfProduct);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Interval Of Product";
-		public issueDate issueDate { get; init; } = new issueDate();
+		public issueDate issueDate { get; set; } = new issueDate();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2489,7 +2489,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_code => nameof(referenceToNM);
 		[JsonIgnore]
 		public override string S100FC_name => "Reference To NM";
-		public publicationDate publicationDate { get; init; } = new publicationDate();
+		public publicationDate publicationDate { get; set; } = new publicationDate();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2533,7 +2533,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_code => nameof(CatalogueSectionHeader);
 		[JsonIgnore]
 		public override string S100FC_name => "Catalogue Section Header";
-		public catalogueSectionNumber catalogueSectionNumber { get; init; } = new catalogueSectionNumber();
+		public catalogueSectionNumber catalogueSectionNumber { get; set; } = new catalogueSectionNumber();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2577,7 +2577,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_code => nameof(ContactDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Details";
-		public contactInstructions contactInstructions { get; init; } = new contactInstructions();
+		public contactInstructions contactInstructions { get; set; } = new contactInstructions();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2735,7 +2735,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_code => nameof(ProducerInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Producer Information";
-		public agencyResponsibleForProduction agencyResponsibleForProduction { get; init; } = new agencyResponsibleForProduction();
+		public agencyResponsibleForProduction agencyResponsibleForProduction { get; set; } = new agencyResponsibleForProduction();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2772,7 +2772,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_code => nameof(DistributorInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Distributor Information";
-		public distributorName distributorName { get; init; } = new distributorName();
+		public distributorName distributorName { get; set; } = new distributorName();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -2809,12 +2809,12 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public override string S100FC_code => nameof(CatalogueElement);
 		[JsonIgnore]
 		public override string S100FC_name => "Catalogue Element";
-		public catalogueElementClassification[] catalogueElementClassification { get; init; } = new catalogueElementClassification[1]{ new catalogueElementClassification(), };
-		public notForNavigation notForNavigation { get; init; } = new notForNavigation();
+		public catalogueElementClassification catalogueElementClassification { get; set; } = new catalogueElementClassification();
+		public notForNavigation notForNavigation { get; set; } = new notForNavigation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. catalogueElementClassification,
+				catalogueElementClassification,
 				notForNavigation,
 				.. base.attributesOptional,
 			];
@@ -3056,8 +3056,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public override string S100FC_code => nameof(ElectronicProduct);
 		[JsonIgnore]
 		public override string S100FC_name => "Electronic Product";
-		public issueDate issueDate { get; init; } = new issueDate();
-		public typeOfProductFormat typeOfProductFormat { get; init; } = new typeOfProductFormat();
+		public issueDate issueDate { get; set; } = new issueDate();
+		public typeOfProductFormat typeOfProductFormat { get; set; } = new typeOfProductFormat();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3123,7 +3123,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public override string S100FC_code => nameof(PhysicalProduct);
 		[JsonIgnore]
 		public override string S100FC_name => "Physical Product";
-		public editionDate editionDate { get; init; } = new editionDate();
+		public editionDate editionDate { get; set; } = new editionDate();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -3188,7 +3188,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public override string S100FC_code => nameof(S100Service);
 		[JsonIgnore]
 		public override string S100FC_name => "S100 Service";
-		public typeOfProductFormat typeOfProductFormat { get; init; } = new typeOfProductFormat();
+		public typeOfProductFormat typeOfProductFormat { get; set; } = new typeOfProductFormat();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [

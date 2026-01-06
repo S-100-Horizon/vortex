@@ -97,7 +97,7 @@ namespace S100Framework.Applications
                     };
 
                     //foreach (var datum in Geometries.GetTouchingOrIntersectingGeometries(all_M_QUAL_geometries,item)) {
-                    //    instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum, DomainModel.S101.verticalDatum>(datum.FieldName_FieldValue!["SDAT"].ToString()!); // DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
+                    //    instance.verticalDatum = EnumHelper.GetEnumValue(datum.FieldName_FieldValue!["SDAT"].ToString()!); // DomainModel.S101.verticalDatum.BalticSeaChartDatum2000;
                     //}
 
                     if (soundingDatum == default) {
@@ -131,7 +131,7 @@ namespace S100Framework.Applications
                         verticalDatum = default,
                     };
 
-                    instance.verticalDatum = EnumHelper.GetEnumValue<SoundingDatum, DomainModel.S101.verticalDatum>(item.FieldName_FieldValue!["verdat"]);
+                    instance.verticalDatum = EnumHelper.GetEnumValue(item.FieldName_FieldValue!["verdat"]);
 
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;

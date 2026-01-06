@@ -921,8 +921,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(chartAffected);
 		[JsonIgnore]
 		public override string S100FC_name => "Chart Affected";
-		public chartNumber chartNumber { get; init; } = new chartNumber();
-		public editionDate editionDate { get; init; } = new editionDate();
+		public chartNumber chartNumber { get; set; } = new chartNumber();
+		public editionDate editionDate { get; set; } = new editionDate();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1023,8 +1023,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
-		public language language { get; init; } = new language();
-		public text text { get; init; } = new text();
+		public language language { get; set; } = new language();
+		public text text { get; set; } = new text();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1061,8 +1061,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(locationName);
 		[JsonIgnore]
 		public override string S100FC_name => "Location Name";
-		public language language { get; init; } = new language();
-		public text text { get; init; } = new text();
+		public language language { get; set; } = new language();
+		public text text { get; set; } = new text();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1099,11 +1099,11 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(messageSeriesIdentifier);
 		[JsonIgnore]
 		public override string S100FC_name => "Message Series Identifier";
-		public agencyResponsibleForProduction agencyResponsibleForProduction { get; init; } = new agencyResponsibleForProduction();
-		public nameOfSeries nameOfSeries { get; init; } = new nameOfSeries();
-		public warningNumber warningNumber { get; init; } = new warningNumber();
-		public warningType warningType { get; init; } = new warningType();
-		public year year { get; init; } = new year();
+		public agencyResponsibleForProduction agencyResponsibleForProduction { get; set; } = new agencyResponsibleForProduction();
+		public nameOfSeries nameOfSeries { get; set; } = new nameOfSeries();
+		public warningNumber warningNumber { get; set; } = new warningNumber();
+		public warningType warningType { get; set; } = new warningType();
+		public year year { get; set; } = new year();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1176,8 +1176,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(navwarnTitle);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVWARN Title";
-		public language language { get; init; } = new language();
-		public text text { get; init; } = new text();
+		public language language { get; set; } = new language();
+		public text text { get; set; } = new text();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1286,8 +1286,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; init; } = new language();
-		public name name { get; init; } = new name();
+		public language language { get; set; } = new language();
+		public name name { get; set; } = new name();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1332,7 +1332,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; init; } = new uncertaintyFixed();
+		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1362,7 +1362,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(spatialAccuracy);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Accuracy";
-		public horizontalPositionUncertainty horizontalPositionUncertainty { get; init; } = new horizontalPositionUncertainty();
+		public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; } = new horizontalPositionUncertainty();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1392,7 +1392,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(affectedChartPublications);
 		[JsonIgnore]
 		public override string S100FC_name => "Affected Chart Publications";
-		public language language { get; init; } = new language();
+		public language language { get; set; } = new language();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1450,11 +1450,11 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(generalArea);
 		[JsonIgnore]
 		public override string S100FC_name => "General Area";
-		public locationName[] locationName { get; init; } = new locationName[1]{ new locationName(), };
+		public locationName locationName { get; set; } = new locationName();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. locationName,
+				locationName,
 				.. base.attributesOptional,
 			];
 
@@ -1488,11 +1488,11 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		public override string S100FC_code => nameof(locality);
 		[JsonIgnore]
 		public override string S100FC_name => "Locality";
-		public locationName[] locationName { get; init; } = new locationName[1]{ new locationName(), };
+		public locationName locationName { get; set; } = new locationName();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. locationName,
+				locationName,
 				.. base.attributesOptional,
 			];
 
@@ -1533,8 +1533,8 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		public override string S100FC_code => nameof(References);
 		[JsonIgnore]
 		public override string S100FC_name => "References";
-		public noMessageOnHand noMessageOnHand { get; init; } = new noMessageOnHand();
-		public referenceCategory referenceCategory { get; init; } = new referenceCategory();
+		public noMessageOnHand noMessageOnHand { get; set; } = new noMessageOnHand();
+		public referenceCategory referenceCategory { get; set; } = new referenceCategory();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1579,15 +1579,15 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		public override string S100FC_code => nameof(NavwarnPreamble);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVWARN Preamble";
-		public generalArea[] generalArea { get; init; } = new generalArea[1]{ new generalArea(), };
-		public messageSeriesIdentifier messageSeriesIdentifier { get; init; } = new messageSeriesIdentifier();
-		public intService intService { get; init; } = new intService();
-		public navwarnTypeGeneral navwarnTypeGeneral { get; init; } = new navwarnTypeGeneral();
-		public publicationTime publicationTime { get; init; } = new publicationTime();
+		public generalArea generalArea { get; set; } = new generalArea();
+		public messageSeriesIdentifier messageSeriesIdentifier { get; set; } = new messageSeriesIdentifier();
+		public intService intService { get; set; } = new intService();
+		public navwarnTypeGeneral navwarnTypeGeneral { get; set; } = new navwarnTypeGeneral();
+		public publicationTime publicationTime { get; set; } = new publicationTime();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
-				.. generalArea,
+				generalArea,
 				messageSeriesIdentifier,
 				intService,
 				navwarnTypeGeneral,
@@ -1715,7 +1715,7 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		public override string S100FC_code => nameof(NavwarnPart);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVWARN Part";
-		public warningInformation warningInformation { get; init; } = new warningInformation();
+		public warningInformation warningInformation { get; set; } = new warningInformation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
@@ -1796,10 +1796,10 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		public override string S100FC_code => nameof(TextPlacement);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Placement";
-		public text text { get; init; } = new text();
-		public textOffsetBearing textOffsetBearing { get; init; } = new textOffsetBearing();
-		public textOffsetDistance textOffsetDistance { get; init; } = new textOffsetDistance();
-		public textRotation textRotation { get; init; } = new textRotation();
+		public text text { get; set; } = new text();
+		public textOffsetBearing textOffsetBearing { get; set; } = new textOffsetBearing();
+		public textOffsetDistance textOffsetDistance { get; set; } = new textOffsetDistance();
+		public textRotation textRotation { get; set; } = new textRotation();
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
