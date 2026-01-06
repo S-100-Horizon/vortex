@@ -428,7 +428,7 @@ namespace S100Framework.Applications
                                 var structureName = windturbineFeature.UID();
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedPointEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum);
+                                    relatedEquipment?.CreateRelatedPointEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum_optional);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, structureName ?? "Unknown structure name");

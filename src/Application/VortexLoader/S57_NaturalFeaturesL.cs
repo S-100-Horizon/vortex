@@ -50,9 +50,6 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 1: { // LNDARE_LandArea
                             var instance = new LandArea {
-                                condition = null,
-                                status = null,
-                                scaleMinimum = null,
                             };
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -99,8 +96,6 @@ namespace S100Framework.Applications
                         break;
                     case 5: { // LNDELV_LandElevation
                             var instance = new LandElevation {
-                                elevation = default,
-                                scaleMinimum = null,
                             };
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
