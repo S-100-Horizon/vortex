@@ -119,7 +119,7 @@ namespace S100Framework.Applications
 
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
                                     instance.reportedDate_optional = result;
                                 }
                                 else {

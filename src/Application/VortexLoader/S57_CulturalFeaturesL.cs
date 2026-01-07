@@ -62,7 +62,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -124,7 +126,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<CableOverhead>(current.VERDAT ?? 3);
+                            instance.verticalDatum_optional = !current.VERDAT.HasValue ? default : ImporterNIS.GetVerticalDatum<CableOverhead>(current.VERDAT ?? 3)?.value;
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
@@ -163,10 +165,12 @@ namespace S100Framework.Applications
                             var instance = new Conveyor();
 
                             if (current.CATCON.HasValue) {
-                                instance.categoryOfConveyor = EnumHelper.GetEnumValue(current.CATCON.Value);
+                                instance.categoryOfConveyor_optional = EnumHelper.GetEnumValue(current.CATCON.Value);
                             }
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -209,8 +213,8 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -222,17 +226,17 @@ namespace S100Framework.Applications
                             }
 
 
-                            instance.verticalClearanceFixed = new() {
-                                verticalUncertainty = new() {
+                            instance.verticalClearanceFixed_optional = new() {
+                                verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
+                                    uncertaintyVariableFactor_optional = default(double?)
                                 },
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
                                 verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
                             };
 
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3);
+                            instance.verticalDatum_optional = !current.VERDAT.HasValue ? default : ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3)?.value;
                             foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
                                 if (elm.Item2 == instance.verticalDatum) {
                                     instance.verticalDatum = null;
@@ -290,11 +294,13 @@ namespace S100Framework.Applications
                             var instance = new Dam();
 
                             if (current.CATDAM.HasValue) {
-                                instance.categoryOfDam = EnumHelper.GetEnumValue(current.CATDAM.Value);
+                                instance.categoryOfDam_optional = EnumHelper.GetEnumValue(current.CATDAM.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -321,7 +327,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -384,11 +392,13 @@ namespace S100Framework.Applications
                             var instance = new FenceWall();
 
                             if (current.CATFNC.HasValue) {
-                                instance.categoryOfFence = EnumHelper.GetEnumValue(current.CATFNC.Value);
+                                instance.categoryOfFence_optional = EnumHelper.GetEnumValue(current.CATFNC.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = ImporterNIS.GetColours(current.COLOUR);
+                                var colour = ImporterNIS.GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
                             if (current.COLPAT != default) {
                                 instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
@@ -414,7 +424,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -422,8 +434,8 @@ namespace S100Framework.Applications
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -499,16 +511,18 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous_optional = current.CONRAD.Value == 0 ? true : false;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -545,10 +559,10 @@ namespace S100Framework.Applications
                             }
 
                             if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater = false;
+                                instance.inTheWater_optional = false;
                             }
                             else {
-                                instance.inTheWater = true;
+                                instance.inTheWater_optional = true;
                             }
 
 
@@ -612,8 +626,8 @@ namespace S100Framework.Applications
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -690,8 +704,8 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -765,7 +779,7 @@ namespace S100Framework.Applications
                             var instance = new Road();
 
                             if (current.CATROD.HasValue) {
-                                instance.categoryOfRoad = EnumHelper.GetEnumValue(current.CATROD.Value);
+                                instance.categoryOfRoad_optional = EnumHelper.GetEnumValue(current.CATROD.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -777,12 +791,14 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");

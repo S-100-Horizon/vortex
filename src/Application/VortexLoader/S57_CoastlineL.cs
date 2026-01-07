@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -60,27 +61,29 @@ namespace S100Framework.Applications
 
                             if (catcoa != default/* && instance.natureOfSurface == default*/) {
                                 categoryOfCoastline? e = catcoa switch {
-                                    1 => categoryOfCoastline.SteepCoast,
-                                    2 => categoryOfCoastline.FlatCoast,
+                                    1 => 1, //categoryOfCoastline.SteepCoast,
+                                    2 => 2, //categoryOfCoastline.FlatCoast,
                                     3 => null, // SANDY SHORE
                                     4 => null, // STONY SHORE
                                     5 => null, // SHINGLY SHORE
-                                    6 => categoryOfCoastline.GlacierSeawardEnd,
-                                    7 => categoryOfCoastline.Mangrove,
-                                    8 => categoryOfCoastline.MarshyShore,
+                                    6 => 6, //categoryOfCoastline.GlacierSeawardEnd,
+                                    7 => 7, //categoryOfCoastline.Mangrove,
+                                    8 => 8, //categoryOfCoastline.MarshyShore,
                                     9 => null, //CORAL REEF
-                                    10 => null, // ICE COAST
+                                    10 => 10, // ICE COAST
                                     11 => null, // SHELLY SHORE
-                                    -32767 => (categoryOfCoastline)(-1),
+                                    -32767 => default,
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
-                                if (e.HasValue) {
-                                    instance.categoryOfCoastline = e.Value;
+                                if (e is not null) {
+                                    instance.categoryOfCoastline_optional = e.value;
                                 }
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.ELEVAT.HasValue) {
@@ -101,16 +104,16 @@ namespace S100Framework.Applications
                             */
                             if (catcoa != default) {
                                 natureOfSurface? e = catcoa switch {
-                                    3 => natureOfSurface.Sand,
-                                    4 => natureOfSurface.Stone,
-                                    5 => natureOfSurface.Pebbles,
-                                    9 => natureOfSurface.Coral,
-                                    11 => natureOfSurface.Shells,
-                                    -32767 => (natureOfSurface)(-1),
+                                    3 => 4, //natureOfSurface.Sand,
+                                    4 => 5, //natureOfSurface.Stone,
+                                    5 => 7, //natureOfSurface.Pebbles,
+                                    9 => 14, //natureOfSurface.Coral,
+                                    11 => 17,   //natureOfSurface.Shells,
+                                    -32767 => default,
                                     _ => null //lthrow new IndexOutOfRangeException($"catcoa to natureOfSurface: {catcoa}")
                                 };
-                                if (e.HasValue) {
-                                    instance.natureOfSurface = [e.Value];
+                                if (e is not null) {
+                                    instance.natureOfSurface_optional = [e.value];
 
                                 }
                             }
@@ -159,11 +162,13 @@ namespace S100Framework.Applications
                             var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
-                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue(current.CATSLC.Value);
+                                instance.categoryOfShorelineConstruction_optional = EnumHelper.GetEnumValue(current.CATSLC.Value);
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -192,9 +197,9 @@ namespace S100Framework.Applications
                             var horacc = current.HORACC ?? default;
 
                             if (horclr != default) {
-                                instance.horizontalClearanceFixed = new() {
+                                instance.horizontalClearanceFixed_optional = new() {
                                     horizontalClearanceValue = horclr,
-                                    horizontalDistanceUncertainty = horacc,
+                                    horizontalDistanceUncertainty_optional = horacc,
                                 };
                             }
 
@@ -209,15 +214,17 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -238,7 +245,7 @@ namespace S100Framework.Applications
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = default;    // EnumHelper.GetEnumValue(-1);
+                                    instance.waterLevelEffect_optional = default;    // EnumHelper.GetEnumValue(-1);
                                 else {
                                     instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                                 }

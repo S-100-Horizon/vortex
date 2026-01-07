@@ -198,7 +198,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.ELEVAT.HasValue) {

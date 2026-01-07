@@ -301,7 +301,7 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic override string valueType => \"{valueType}\";");
                         //roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
-                        roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix} value) => new {code} {{ value = value }};");
+                        roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix}? value) => new {code} {{ value = value }};");
                         roslyn.AppendLine($"\t}}");
                     }
                     roslyn.AppendLine();

@@ -78,8 +78,8 @@ namespace S100Framework.Applications
                                 instance.periodicDateRange_optional = periodicDateRange;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -148,8 +148,8 @@ namespace S100Framework.Applications
                                     instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                                 }
                                 if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                        instance.reportedDate = result;
+                                    if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                        instance.reportedDate_optional = reportedDate;
                                     }
                                     else {
                                         Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");

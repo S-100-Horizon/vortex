@@ -53,7 +53,9 @@ namespace S100Framework.Applications
                             var instance = new AirportAirfield();
 
                             if (current.CATAIR != default) {
-                                instance.categoryOfAirportAirfield = EnumHelper.GetEnumValues(current.CATAIR);
+                                var categoryOfAirportAirfield = EnumHelper.GetEnumValues(current.CATAIR);
+                                if (categoryOfAirportAirfield is not null && categoryOfAirportAirfield.Any())
+                                    instance.categoryOfAirportAirfield_optional = categoryOfAirportAirfield;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -64,8 +66,8 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -85,7 +87,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -118,7 +122,7 @@ namespace S100Framework.Applications
                     case 10: { // BUAARE_BuiltUpArea
                             var instance = new BuiltUpArea();
                             if (current.CATBUA.HasValue) {
-                                instance.categoryOfBuiltUpArea = EnumHelper.GetEnumValue(current.CATBUA.Value);
+                                instance.categoryOfBuiltUpArea_optional = EnumHelper.GetEnumValue(current.CATBUA.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -139,8 +143,8 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -160,7 +164,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -212,7 +218,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -244,15 +252,17 @@ namespace S100Framework.Applications
                             // TODO: multiplicity of features
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -280,7 +290,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -316,10 +328,14 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // CTRPNT_ControlPoint
-                            if (current.CATCTR.HasValue && (current.CATCTR == 1 || current.CATCTR == 5)) {
+                            if (current.CATCTR.HasValue && (current.CATCTR == 1 || current.CATCTR == 5)) {                                
                                 var instance = new Landmark {
-                                    categoryOfLandmark = EnumHelper.GetEnumValues(current.CATCTR),
                                 };
+                                var categoryOfLandmark = EnumHelper.GetEnumValues(current.CATCTR);
+                                if (categoryOfLandmark is not null && categoryOfLandmark.Any()) {
+                                    instance.categoryOfLandmark = categoryOfLandmark[0];
+                                    instance.categoryOfLandmark_optional = categoryOfLandmark[1..];
+                                }
                                 if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                     string subtype = "";
 
@@ -329,7 +345,9 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                instance.information_optional = result.information.ToArray();
+                                instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 if (current.PICREP != default) {
                                     instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -390,7 +408,10 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
@@ -441,13 +462,19 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATLMK != default) {
-                                instance.categoryOfLandmark = EnumHelper.GetEnumValues(current.CATLMK);
+                                var categoryOfLandmark = EnumHelper.GetEnumValues(current.CATLMK);
+                                if (categoryOfLandmark is not null && categoryOfLandmark.Any()) {
+                                    instance.categoryOfLandmark = categoryOfLandmark[0];
+                                    instance.categoryOfLandmark_optional = categoryOfLandmark[1..];
+                                }
                             }
 
                             // TODO: CATSPM
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -507,8 +534,8 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -536,7 +563,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -613,8 +642,8 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -643,7 +672,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -677,7 +708,9 @@ namespace S100Framework.Applications
                             };
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -707,15 +740,17 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -748,7 +783,9 @@ namespace S100Framework.Applications
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
-                            instance.SetInformationBindings(AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information_optional = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
@@ -795,7 +832,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COLOUR != default) {
-                                instance.colour = GetColours(current.COLOUR);
+                                var colour = GetColours(current.COLOUR);
+                                if (colour is not null && colour.Any())
+                                    instance.colour_optional = colour;
                             }
 
                             if (current.COLPAT != default) {
@@ -825,7 +864,9 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.NATCON != default) {
-                                instance.natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction_optional = natureOfConstruction;
                             }
 
                             if (current.PRODCT != null) {
@@ -838,8 +879,8 @@ namespace S100Framework.Applications
                                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
-                                    instance.reportedDate = result;
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate_optional = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");

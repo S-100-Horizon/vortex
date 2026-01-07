@@ -16,7 +16,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Based On Fixed Marks";
 
-		public static implicit operator basedOnFixedMarks(Boolean value) => new basedOnFixedMarks { value = value };
+		public static implicit operator basedOnFixedMarks(Boolean? value) => new basedOnFixedMarks { value = value };
 	}
 
 	/// <summary>
@@ -133,7 +133,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Buried Depth";
 
-		public static implicit operator buriedDepth(double value) => new buriedDepth { value = value };
+		public static implicit operator buriedDepth(double? value) => new buriedDepth { value = value };
 	}
 
 	/// <summary>
@@ -146,7 +146,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Call Sign";
 
-		public static implicit operator callSign(String value) => new callSign { value = value };
+		public static implicit operator callSign(String? value) => new callSign { value = value };
 	}
 
 	/// <summary>
@@ -1788,7 +1788,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Communication Channel";
 
-		public static implicit operator communicationChannel(String value) => new communicationChannel { value = value };
+		public static implicit operator communicationChannel(String? value) => new communicationChannel { value = value };
 	}
 
 	/// <summary>
@@ -1821,7 +1821,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Instructions";
 
-		public static implicit operator contactInstructions(String value) => new contactInstructions { value = value };
+		public static implicit operator contactInstructions(String? value) => new contactInstructions { value = value };
 	}
 
 	/// <summary>
@@ -1852,7 +1852,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Date Disused";
 
-		public static implicit operator dateDisused(String value) => new dateDisused { value = value };
+		public static implicit operator dateDisused(String? value) => new dateDisused { value = value };
 	}
 
 	/// <summary>
@@ -1865,7 +1865,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Date End";
 
-		public static implicit operator dateEnd(String value) => new dateEnd { value = value };
+		public static implicit operator dateEnd(String? value) => new dateEnd { value = value };
 	}
 
 	/// <summary>
@@ -1878,7 +1878,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Date Fixed";
 
-		public static implicit operator dateFixed(String value) => new dateFixed { value = value };
+		public static implicit operator dateFixed(String? value) => new dateFixed { value = value };
 	}
 
 	/// <summary>
@@ -1891,7 +1891,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Date Start";
 
-		public static implicit operator dateStart(String value) => new dateStart { value = value };
+		public static implicit operator dateStart(String? value) => new dateStart { value = value };
 	}
 
 	/// <summary>
@@ -1904,7 +1904,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Date Variable";
 
-		public static implicit operator dateVariable(String value) => new dateVariable { value = value };
+		public static implicit operator dateVariable(String? value) => new dateVariable { value = value };
 	}
 
 	/// <summary>
@@ -1939,7 +1939,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Day of Week is Range";
 
-		public static implicit operator dayOfWeekIsRange(Boolean value) => new dayOfWeekIsRange { value = value };
+		public static implicit operator dayOfWeekIsRange(Boolean? value) => new dayOfWeekIsRange { value = value };
 	}
 
 	/// <summary>
@@ -1952,7 +1952,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Default Clearance Depth";
 
-		public static implicit operator defaultClearanceDepth(double value) => new defaultClearanceDepth { value = value };
+		public static implicit operator defaultClearanceDepth(double? value) => new defaultClearanceDepth { value = value };
 	}
 
 	/// <summary>
@@ -1965,7 +1965,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Range Maximum Value";
 
-		public static implicit operator depthRangeMaximumValue(double value) => new depthRangeMaximumValue { value = value };
+		public static implicit operator depthRangeMaximumValue(double? value) => new depthRangeMaximumValue { value = value };
 	}
 
 	/// <summary>
@@ -1978,7 +1978,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Range Minimum Value";
 
-		public static implicit operator depthRangeMinimumValue(double value) => new depthRangeMinimumValue { value = value };
+		public static implicit operator depthRangeMinimumValue(double? value) => new depthRangeMinimumValue { value = value };
 	}
 
 	/// <summary>
@@ -1991,7 +1991,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Destination";
 
-		public static implicit operator destination(String value) => new destination { value = value };
+		public static implicit operator destination(String? value) => new destination { value = value };
 	}
 
 	/// <summary>
@@ -2004,7 +2004,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Distance Mark Visible";
 
-		public static implicit operator distanceMarkVisible(Boolean value) => new distanceMarkVisible { value = value };
+		public static implicit operator distanceMarkVisible(Boolean? value) => new distanceMarkVisible { value = value };
 	}
 
 	/// <summary>
@@ -2037,7 +2037,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Dredged Date";
 
-		public static implicit operator dredgedDate(String value) => new dredgedDate { value = value };
+		public static implicit operator dredgedDate(String? value) => new dredgedDate { value = value };
 	}
 
 	/// <summary>
@@ -2050,7 +2050,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Elevation";
 
-		public static implicit operator elevation(double value) => new elevation { value = value };
+		public static implicit operator elevation(double? value) => new elevation { value = value };
 	}
 
 	/// <summary>
@@ -2063,7 +2063,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Estimated Range of Transmission";
 
-		public static implicit operator estimatedRangeOfTransmission(double value) => new estimatedRangeOfTransmission { value = value };
+		public static implicit operator estimatedRangeOfTransmission(double? value) => new estimatedRangeOfTransmission { value = value };
 	}
 
 	/// <summary>
@@ -2113,7 +2113,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "File Locator";
 
-		public static implicit operator fileLocator(String value) => new fileLocator { value = value };
+		public static implicit operator fileLocator(String? value) => new fileLocator { value = value };
 	}
 
 	/// <summary>
@@ -2126,7 +2126,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "File Reference";
 
-		public static implicit operator fileReference(String value) => new fileReference { value = value };
+		public static implicit operator fileReference(String? value) => new fileReference { value = value };
 	}
 
 	/// <summary>
@@ -2139,7 +2139,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Flare Bearing";
 
-		public static implicit operator flareBearing(int value) => new flareBearing { value = value };
+		public static implicit operator flareBearing(int? value) => new flareBearing { value = value };
 	}
 
 	/// <summary>
@@ -2152,7 +2152,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Flare Stack";
 
-		public static implicit operator flareStack(Boolean value) => new flareStack { value = value };
+		public static implicit operator flareStack(Boolean? value) => new flareStack { value = value };
 	}
 
 	/// <summary>
@@ -2165,7 +2165,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Shore Station Receives";
 
-		public static implicit operator frequencyShoreStationReceives(int value) => new frequencyShoreStationReceives { value = value };
+		public static implicit operator frequencyShoreStationReceives(int? value) => new frequencyShoreStationReceives { value = value };
 	}
 
 	/// <summary>
@@ -2178,7 +2178,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Shore Station Transmits";
 
-		public static implicit operator frequencyShoreStationTransmits(int value) => new frequencyShoreStationTransmits { value = value };
+		public static implicit operator frequencyShoreStationTransmits(int? value) => new frequencyShoreStationTransmits { value = value };
 	}
 
 	/// <summary>
@@ -2191,7 +2191,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Drawing Index";
 
-		public static implicit operator drawingIndex(int value) => new drawingIndex { value = value };
+		public static implicit operator drawingIndex(int? value) => new drawingIndex { value = value };
 	}
 
 	/// <summary>
@@ -2204,7 +2204,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Full Seafloor Coverage Achieved";
 
-		public static implicit operator fullSeafloorCoverageAchieved(Boolean value) => new fullSeafloorCoverageAchieved { value = value };
+		public static implicit operator fullSeafloorCoverageAchieved(Boolean? value) => new fullSeafloorCoverageAchieved { value = value };
 	}
 
 	/// <summary>
@@ -2278,7 +2278,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Headline";
 
-		public static implicit operator headline(String value) => new headline { value = value };
+		public static implicit operator headline(String? value) => new headline { value = value };
 	}
 
 	/// <summary>
@@ -2291,7 +2291,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Height";
 
-		public static implicit operator height(double value) => new height { value = value };
+		public static implicit operator height(double? value) => new height { value = value };
 	}
 
 	/// <summary>
@@ -2304,7 +2304,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Length";
 
-		public static implicit operator horizontalClearanceLength(double value) => new horizontalClearanceLength { value = value };
+		public static implicit operator horizontalClearanceLength(double? value) => new horizontalClearanceLength { value = value };
 	}
 
 	/// <summary>
@@ -2317,7 +2317,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Value";
 
-		public static implicit operator horizontalClearanceValue(double value) => new horizontalClearanceValue { value = value };
+		public static implicit operator horizontalClearanceValue(double? value) => new horizontalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -2330,7 +2330,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Width";
 
-		public static implicit operator horizontalClearanceWidth(double value) => new horizontalClearanceWidth { value = value };
+		public static implicit operator horizontalClearanceWidth(double? value) => new horizontalClearanceWidth { value = value };
 	}
 
 	/// <summary>
@@ -2343,7 +2343,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Distance Uncertainty";
 
-		public static implicit operator horizontalDistanceUncertainty(double value) => new horizontalDistanceUncertainty { value = value };
+		public static implicit operator horizontalDistanceUncertainty(double? value) => new horizontalDistanceUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -2356,7 +2356,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Length";
 
-		public static implicit operator horizontalLength(double value) => new horizontalLength { value = value };
+		public static implicit operator horizontalLength(double? value) => new horizontalLength { value = value };
 	}
 
 	/// <summary>
@@ -2369,7 +2369,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Width";
 
-		public static implicit operator horizontalWidth(double value) => new horizontalWidth { value = value };
+		public static implicit operator horizontalWidth(double? value) => new horizontalWidth { value = value };
 	}
 
 	/// <summary>
@@ -2382,7 +2382,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Ice Factor";
 
-		public static implicit operator iceFactor(double value) => new iceFactor { value = value };
+		public static implicit operator iceFactor(double? value) => new iceFactor { value = value };
 	}
 
 	/// <summary>
@@ -2395,7 +2395,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "IMO Adopted";
 
-		public static implicit operator iMOAdopted(Boolean value) => new iMOAdopted { value = value };
+		public static implicit operator iMOAdopted(Boolean? value) => new iMOAdopted { value = value };
 	}
 
 	/// <summary>
@@ -2408,7 +2408,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "In Dispute";
 
-		public static implicit operator inDispute(Boolean value) => new inDispute { value = value };
+		public static implicit operator inDispute(Boolean? value) => new inDispute { value = value };
 	}
 
 	/// <summary>
@@ -2421,7 +2421,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Interoperability Identifier";
 
-		public static implicit operator interoperabilityIdentifier(String value) => new interoperabilityIdentifier { value = value };
+		public static implicit operator interoperabilityIdentifier(String? value) => new interoperabilityIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -2434,7 +2434,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "In the Water";
 
-		public static implicit operator inTheWater(Boolean value) => new inTheWater { value = value };
+		public static implicit operator inTheWater(Boolean? value) => new inTheWater { value = value };
 	}
 
 	/// <summary>
@@ -2447,7 +2447,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Is MRCC";
 
-		public static implicit operator isMRCC(Boolean value) => new isMRCC { value = value };
+		public static implicit operator isMRCC(Boolean? value) => new isMRCC { value = value };
 	}
 
 	/// <summary>
@@ -2478,7 +2478,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Language";
 
-		public static implicit operator language(String value) => new language { value = value };
+		public static implicit operator language(String? value) => new language { value = value };
 	}
 
 	/// <summary>
@@ -2491,7 +2491,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Least Depth of Detected Features Measured";
 
-		public static implicit operator leastDepthOfDetectedFeaturesMeasured(Boolean value) => new leastDepthOfDetectedFeaturesMeasured { value = value };
+		public static implicit operator leastDepthOfDetectedFeaturesMeasured(Boolean? value) => new leastDepthOfDetectedFeaturesMeasured { value = value };
 	}
 
 	/// <summary>
@@ -2504,7 +2504,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Lifting Capacity";
 
-		public static implicit operator liftingCapacity(double value) => new liftingCapacity { value = value };
+		public static implicit operator liftingCapacity(double? value) => new liftingCapacity { value = value };
 	}
 
 	/// <summary>
@@ -2578,7 +2578,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Line Spacing Maximum";
 
-		public static implicit operator lineSpacingMaximum(int value) => new lineSpacingMaximum { value = value };
+		public static implicit operator lineSpacingMaximum(int? value) => new lineSpacingMaximum { value = value };
 	}
 
 	/// <summary>
@@ -2591,7 +2591,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Line Spacing Minimum";
 
-		public static implicit operator lineSpacingMinimum(int value) => new lineSpacingMinimum { value = value };
+		public static implicit operator lineSpacingMinimum(int? value) => new lineSpacingMinimum { value = value };
 	}
 
 	/// <summary>
@@ -2604,7 +2604,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Linkage";
 
-		public static implicit operator linkage(String value) => new linkage { value = value };
+		public static implicit operator linkage(String? value) => new linkage { value = value };
 	}
 
 	/// <summary>
@@ -2617,7 +2617,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Magnetic Anomaly Value";
 
-		public static implicit operator magneticAnomalyValue(double value) => new magneticAnomalyValue { value = value };
+		public static implicit operator magneticAnomalyValue(double? value) => new magneticAnomalyValue { value = value };
 	}
 
 	/// <summary>
@@ -2647,7 +2647,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Major Light";
 
-		public static implicit operator majorLight(Boolean value) => new majorLight { value = value };
+		public static implicit operator majorLight(Boolean? value) => new majorLight { value = value };
 	}
 
 	/// <summary>
@@ -2679,7 +2679,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Display Scale";
 
-		public static implicit operator maximumDisplayScale(int value) => new maximumDisplayScale { value = value };
+		public static implicit operator maximumDisplayScale(int? value) => new maximumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -2692,7 +2692,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Draught";
 
-		public static implicit operator maximumPermittedDraught(double value) => new maximumPermittedDraught { value = value };
+		public static implicit operator maximumPermittedDraught(double? value) => new maximumPermittedDraught { value = value };
 	}
 
 	/// <summary>
@@ -2705,7 +2705,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Vessel Length";
 
-		public static implicit operator maximumPermittedVesselLength(double value) => new maximumPermittedVesselLength { value = value };
+		public static implicit operator maximumPermittedVesselLength(double? value) => new maximumPermittedVesselLength { value = value };
 	}
 
 	/// <summary>
@@ -2718,7 +2718,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Measured Distance";
 
-		public static implicit operator measuredDistance(int value) => new measuredDistance { value = value };
+		public static implicit operator measuredDistance(int? value) => new measuredDistance { value = value };
 	}
 
 	/// <summary>
@@ -2731,7 +2731,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Measurement Distance Maximum";
 
-		public static implicit operator measurementDistanceMaximum(int value) => new measurementDistanceMaximum { value = value };
+		public static implicit operator measurementDistanceMaximum(int? value) => new measurementDistanceMaximum { value = value };
 	}
 
 	/// <summary>
@@ -2744,7 +2744,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Measurement Distance Minimum";
 
-		public static implicit operator measurementDistanceMinimum(int value) => new measurementDistanceMinimum { value = value };
+		public static implicit operator measurementDistanceMinimum(int? value) => new measurementDistanceMinimum { value = value };
 	}
 
 	/// <summary>
@@ -2757,7 +2757,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Display Scale";
 
-		public static implicit operator minimumDisplayScale(int value) => new minimumDisplayScale { value = value };
+		public static implicit operator minimumDisplayScale(int? value) => new minimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -2770,7 +2770,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "MMSI Code";
 
-		public static implicit operator mMSICode(String value) => new mMSICode { value = value };
+		public static implicit operator mMSICode(String? value) => new mMSICode { value = value };
 	}
 
 	/// <summary>
@@ -2783,7 +2783,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Moire Effect";
 
-		public static implicit operator moireEffect(Boolean value) => new moireEffect { value = value };
+		public static implicit operator moireEffect(Boolean? value) => new moireEffect { value = value };
 	}
 
 	/// <summary>
@@ -2796,7 +2796,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Multiplicity Known";
 
-		public static implicit operator multiplicityKnown(Boolean value) => new multiplicityKnown { value = value };
+		public static implicit operator multiplicityKnown(Boolean? value) => new multiplicityKnown { value = value };
 	}
 
 	/// <summary>
@@ -2809,7 +2809,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Name";
 
-		public static implicit operator name(String value) => new name { value = value };
+		public static implicit operator name(String? value) => new name { value = value };
 	}
 
 	/// <summary>
@@ -2822,7 +2822,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Name of Resource";
 
-		public static implicit operator nameOfResource(String value) => new nameOfResource { value = value };
+		public static implicit operator nameOfResource(String? value) => new nameOfResource { value = value };
 	}
 
 	/// <summary>
@@ -2852,7 +2852,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Nationality";
 
-		public static implicit operator nationality(String value) => new nationality { value = value };
+		public static implicit operator nationality(String? value) => new nationality { value = value };
 	}
 
 	/// <summary>
@@ -2943,7 +2943,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Number of Features";
 
-		public static implicit operator numberOfFeatures(int value) => new numberOfFeatures { value = value };
+		public static implicit operator numberOfFeatures(int? value) => new numberOfFeatures { value = value };
 	}
 
 	/// <summary>
@@ -2956,7 +2956,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Opening Bridge";
 
-		public static implicit operator openingBridge(Boolean value) => new openingBridge { value = value };
+		public static implicit operator openingBridge(Boolean? value) => new openingBridge { value = value };
 	}
 
 	/// <summary>
@@ -2969,7 +2969,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Uncertainty";
 
-		public static implicit operator orientationUncertainty(double value) => new orientationUncertainty { value = value };
+		public static implicit operator orientationUncertainty(double? value) => new orientationUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -2982,7 +2982,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Value";
 
-		public static implicit operator orientationValue(double value) => new orientationValue { value = value };
+		public static implicit operator orientationValue(double? value) => new orientationValue { value = value };
 	}
 
 	/// <summary>
@@ -2995,7 +2995,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Pictorial Representation";
 
-		public static implicit operator pictorialRepresentation(String value) => new pictorialRepresentation { value = value };
+		public static implicit operator pictorialRepresentation(String? value) => new pictorialRepresentation { value = value };
 	}
 
 	/// <summary>
@@ -3107,7 +3107,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Band";
 
-		public static implicit operator radarBand(String value) => new radarBand { value = value };
+		public static implicit operator radarBand(String? value) => new radarBand { value = value };
 	}
 
 	/// <summary>
@@ -3120,7 +3120,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Conspicuous";
 
-		public static implicit operator radarConspicuous(Boolean value) => new radarConspicuous { value = value };
+		public static implicit operator radarConspicuous(Boolean? value) => new radarConspicuous { value = value };
 	}
 
 	/// <summary>
@@ -3133,7 +3133,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Radius";
 
-		public static implicit operator radius(double value) => new radius { value = value };
+		public static implicit operator radius(double? value) => new radius { value = value };
 	}
 
 	/// <summary>
@@ -3146,7 +3146,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Reference Location";
 
-		public static implicit operator referenceLocation(String value) => new referenceLocation { value = value };
+		public static implicit operator referenceLocation(String? value) => new referenceLocation { value = value };
 	}
 
 	/// <summary>
@@ -3194,7 +3194,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Reference Year for Magnetic Variation";
 
-		public static implicit operator referenceYearForMagneticVariation(String value) => new referenceYearForMagneticVariation { value = value };
+		public static implicit operator referenceYearForMagneticVariation(String? value) => new referenceYearForMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -3207,7 +3207,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Regulation Citation";
 
-		public static implicit operator regulationCitation(String value) => new regulationCitation { value = value };
+		public static implicit operator regulationCitation(String? value) => new regulationCitation { value = value };
 	}
 
 	/// <summary>
@@ -3220,7 +3220,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Reported Date";
 
-		public static implicit operator reportedDate(String value) => new reportedDate { value = value };
+		public static implicit operator reportedDate(String? value) => new reportedDate { value = value };
 	}
 
 	/// <summary>
@@ -3277,7 +3277,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Scale Minimum";
 
-		public static implicit operator scaleMinimum(int value) => new scaleMinimum { value = value };
+		public static implicit operator scaleMinimum(int? value) => new scaleMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3290,7 +3290,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Scale Value Maximum";
 
-		public static implicit operator scaleValueMaximum(int value) => new scaleValueMaximum { value = value };
+		public static implicit operator scaleValueMaximum(int? value) => new scaleValueMaximum { value = value };
 	}
 
 	/// <summary>
@@ -3303,7 +3303,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Scale Value Minimum";
 
-		public static implicit operator scaleValueMinimum(int value) => new scaleValueMinimum { value = value };
+		public static implicit operator scaleValueMinimum(int? value) => new scaleValueMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3316,7 +3316,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Bearing";
 
-		public static implicit operator sectorBearing(double value) => new sectorBearing { value = value };
+		public static implicit operator sectorBearing(double? value) => new sectorBearing { value = value };
 	}
 
 	/// <summary>
@@ -3329,7 +3329,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Arc Extension";
 
-		public static implicit operator sectorArcExtension(Boolean value) => new sectorArcExtension { value = value };
+		public static implicit operator sectorArcExtension(Boolean? value) => new sectorArcExtension { value = value };
 	}
 
 	/// <summary>
@@ -3342,7 +3342,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Line Length";
 
-		public static implicit operator sectorLineLength(double value) => new sectorLineLength { value = value };
+		public static implicit operator sectorLineLength(double? value) => new sectorLineLength { value = value };
 	}
 
 	/// <summary>
@@ -3355,7 +3355,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Duration";
 
-		public static implicit operator signalDuration(double value) => new signalDuration { value = value };
+		public static implicit operator signalDuration(double? value) => new signalDuration { value = value };
 	}
 
 	/// <summary>
@@ -3368,7 +3368,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Frequency";
 
-		public static implicit operator signalFrequency(int value) => new signalFrequency { value = value };
+		public static implicit operator signalFrequency(int? value) => new signalFrequency { value = value };
 	}
 
 	/// <summary>
@@ -3402,7 +3402,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Group";
 
-		public static implicit operator signalGroup(String value) => new signalGroup { value = value };
+		public static implicit operator signalGroup(String? value) => new signalGroup { value = value };
 	}
 
 	/// <summary>
@@ -3415,7 +3415,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Period";
 
-		public static implicit operator signalPeriod(double value) => new signalPeriod { value = value };
+		public static implicit operator signalPeriod(double? value) => new signalPeriod { value = value };
 	}
 
 	/// <summary>
@@ -3445,7 +3445,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Significant Features Detected";
 
-		public static implicit operator significantFeaturesDetected(Boolean value) => new significantFeaturesDetected { value = value };
+		public static implicit operator significantFeaturesDetected(Boolean? value) => new significantFeaturesDetected { value = value };
 	}
 
 	/// <summary>
@@ -3458,7 +3458,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Size of Features Detected";
 
-		public static implicit operator sizeOfFeaturesDetected(double value) => new sizeOfFeaturesDetected { value = value };
+		public static implicit operator sizeOfFeaturesDetected(double? value) => new sizeOfFeaturesDetected { value = value };
 	}
 
 	/// <summary>
@@ -3471,7 +3471,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Source";
 
-		public static implicit operator source(String value) => new source { value = value };
+		public static implicit operator source(String? value) => new source { value = value };
 	}
 
 	/// <summary>
@@ -3484,7 +3484,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Limit";
 
-		public static implicit operator speedLimit(double value) => new speedLimit { value = value };
+		public static implicit operator speedLimit(double? value) => new speedLimit { value = value };
 	}
 
 	/// <summary>
@@ -3497,7 +3497,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Maximum";
 
-		public static implicit operator speedMaximum(double value) => new speedMaximum { value = value };
+		public static implicit operator speedMaximum(double? value) => new speedMaximum { value = value };
 	}
 
 	/// <summary>
@@ -3510,7 +3510,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Minimum";
 
-		public static implicit operator speedMinimum(double value) => new speedMinimum { value = value };
+		public static implicit operator speedMinimum(double? value) => new speedMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3541,7 +3541,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Station Name";
 
-		public static implicit operator stationName(String value) => new stationName { value = value };
+		public static implicit operator stationName(String? value) => new stationName { value = value };
 	}
 
 	/// <summary>
@@ -3554,7 +3554,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Station Number";
 
-		public static implicit operator stationNumber(String value) => new stationNumber { value = value };
+		public static implicit operator stationNumber(String? value) => new stationNumber { value = value };
 	}
 
 	/// <summary>
@@ -3600,7 +3600,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Stream Depth";
 
-		public static implicit operator streamDepth(double value) => new streamDepth { value = value };
+		public static implicit operator streamDepth(double? value) => new streamDepth { value = value };
 	}
 
 	/// <summary>
@@ -3613,7 +3613,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Surrounding Depth";
 
-		public static implicit operator surroundingDepth(double value) => new surroundingDepth { value = value };
+		public static implicit operator surroundingDepth(double? value) => new surroundingDepth { value = value };
 	}
 
 	/// <summary>
@@ -3626,7 +3626,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Authority";
 
-		public static implicit operator surveyAuthority(String value) => new surveyAuthority { value = value };
+		public static implicit operator surveyAuthority(String? value) => new surveyAuthority { value = value };
 	}
 
 	/// <summary>
@@ -3666,7 +3666,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Update Number";
 
-		public static implicit operator updateNumber(int value) => new updateNumber { value = value };
+		public static implicit operator updateNumber(int? value) => new updateNumber { value = value };
 	}
 
 	/// <summary>
@@ -3698,7 +3698,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Swept Date";
 
-		public static implicit operator sweptDate(String value) => new sweptDate { value = value };
+		public static implicit operator sweptDate(String? value) => new sweptDate { value = value };
 	}
 
 	/// <summary>
@@ -3741,7 +3741,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunication Identifier";
 
-		public static implicit operator telecommunicationIdentifier(String value) => new telecommunicationIdentifier { value = value };
+		public static implicit operator telecommunicationIdentifier(String? value) => new telecommunicationIdentifier { value = value };
 	}
 
 	/// <summary>
@@ -3777,7 +3777,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Text";
 
-		public static implicit operator text(String value) => new text { value = value };
+		public static implicit operator text(String? value) => new text { value = value };
 	}
 
 	/// <summary>
@@ -3790,7 +3790,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Text Offset Bearing";
 
-		public static implicit operator textOffsetBearing(int value) => new textOffsetBearing { value = value };
+		public static implicit operator textOffsetBearing(int? value) => new textOffsetBearing { value = value };
 	}
 
 	/// <summary>
@@ -3803,7 +3803,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Text Offset Distance";
 
-		public static implicit operator textOffsetDistance(int value) => new textOffsetDistance { value = value };
+		public static implicit operator textOffsetDistance(int? value) => new textOffsetDistance { value = value };
 	}
 
 	/// <summary>
@@ -3816,7 +3816,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Text Rotation";
 
-		public static implicit operator textRotation(Boolean value) => new textRotation { value = value };
+		public static implicit operator textRotation(Boolean? value) => new textRotation { value = value };
 	}
 
 	/// <summary>
@@ -3846,7 +3846,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Time of Day End";
 
-		public static implicit operator timeOfDayEnd(S100Framework.DomainModel.S100.Time value) => new timeOfDayEnd { value = value };
+		public static implicit operator timeOfDayEnd(S100Framework.DomainModel.S100.Time? value) => new timeOfDayEnd { value = value };
 	}
 
 	/// <summary>
@@ -3859,7 +3859,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Time of Day Start";
 
-		public static implicit operator timeOfDayStart(S100Framework.DomainModel.S100.Time value) => new timeOfDayStart { value = value };
+		public static implicit operator timeOfDayStart(S100Framework.DomainModel.S100.Time? value) => new timeOfDayStart { value = value };
 	}
 
 	/// <summary>
@@ -3872,7 +3872,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Time Relative to Tide";
 
-		public static implicit operator timeRelativeToTide(double value) => new timeRelativeToTide { value = value };
+		public static implicit operator timeRelativeToTide(double? value) => new timeRelativeToTide { value = value };
 	}
 
 	/// <summary>
@@ -3952,7 +3952,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Fixed";
 
-		public static implicit operator uncertaintyFixed(double value) => new uncertaintyFixed { value = value };
+		public static implicit operator uncertaintyFixed(double? value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -3965,7 +3965,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Variable Factor";
 
-		public static implicit operator uncertaintyVariableFactor(double value) => new uncertaintyVariableFactor { value = value };
+		public static implicit operator uncertaintyVariableFactor(double? value) => new uncertaintyVariableFactor { value = value };
 	}
 
 	/// <summary>
@@ -3978,7 +3978,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Underlying Layer";
 
-		public static implicit operator underlyingLayer(int value) => new underlyingLayer { value = value };
+		public static implicit operator underlyingLayer(int? value) => new underlyingLayer { value = value };
 	}
 
 	/// <summary>
@@ -3991,7 +3991,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Annual Change in Magnetic Variation";
 
-		public static implicit operator valueOfAnnualChangeInMagneticVariation(double value) => new valueOfAnnualChangeInMagneticVariation { value = value };
+		public static implicit operator valueOfAnnualChangeInMagneticVariation(double? value) => new valueOfAnnualChangeInMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4004,7 +4004,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Depth Contour";
 
-		public static implicit operator valueOfDepthContour(double value) => new valueOfDepthContour { value = value };
+		public static implicit operator valueOfDepthContour(double? value) => new valueOfDepthContour { value = value };
 	}
 
 	/// <summary>
@@ -4017,7 +4017,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Magnetic Variation";
 
-		public static implicit operator valueOfMagneticVariation(double value) => new valueOfMagneticVariation { value = value };
+		public static implicit operator valueOfMagneticVariation(double? value) => new valueOfMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4030,7 +4030,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Maximum Range";
 
-		public static implicit operator valueOfMaximumRange(double value) => new valueOfMaximumRange { value = value };
+		public static implicit operator valueOfMaximumRange(double? value) => new valueOfMaximumRange { value = value };
 	}
 
 	/// <summary>
@@ -4043,7 +4043,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Nominal Range";
 
-		public static implicit operator valueOfNominalRange(double value) => new valueOfNominalRange { value = value };
+		public static implicit operator valueOfNominalRange(double? value) => new valueOfNominalRange { value = value };
 	}
 
 	/// <summary>
@@ -4056,7 +4056,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Sounding";
 
-		public static implicit operator valueOfSounding(double value) => new valueOfSounding { value = value };
+		public static implicit operator valueOfSounding(double? value) => new valueOfSounding { value = value };
 	}
 
 	/// <summary>
@@ -4069,7 +4069,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Unlimited";
 
-		public static implicit operator verticalClearanceUnlimited(Boolean value) => new verticalClearanceUnlimited { value = value };
+		public static implicit operator verticalClearanceUnlimited(Boolean? value) => new verticalClearanceUnlimited { value = value };
 	}
 
 	/// <summary>
@@ -4082,7 +4082,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Value";
 
-		public static implicit operator verticalClearanceValue(double value) => new verticalClearanceValue { value = value };
+		public static implicit operator verticalClearanceValue(double? value) => new verticalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -4141,7 +4141,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Length";
 
-		public static implicit operator verticalLength(double value) => new verticalLength { value = value };
+		public static implicit operator verticalLength(double? value) => new verticalLength { value = value };
 	}
 
 	/// <summary>
@@ -4154,7 +4154,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Class";
 
-		public static implicit operator vesselClass(String value) => new vesselClass { value = value };
+		public static implicit operator vesselClass(String? value) => new vesselClass { value = value };
 	}
 
 	/// <summary>
@@ -4194,7 +4194,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Visitors Mooring";
 
-		public static implicit operator visitorsMooring(Boolean value) => new visitorsMooring { value = value };
+		public static implicit operator visitorsMooring(Boolean? value) => new visitorsMooring { value = value };
 	}
 
 	/// <summary>
@@ -4247,7 +4247,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Waterway Distance";
 
-		public static implicit operator waterwayDistance(double value) => new waterwayDistance { value = value };
+		public static implicit operator waterwayDistance(double? value) => new waterwayDistance { value = value };
 	}
 
 	/// <summary>
@@ -4260,7 +4260,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Wave Length Value";
 
-		public static implicit operator waveLengthValue(double value) => new waveLengthValue { value = value };
+		public static implicit operator waveLengthValue(double? value) => new waveLengthValue { value = value };
 	}
 
 	/// <summary>
@@ -4303,7 +4303,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Berth Depth";
 
-		public static implicit operator minimumBerthDepth(double value) => new minimumBerthDepth { value = value };
+		public static implicit operator minimumBerthDepth(double? value) => new minimumBerthDepth { value = value };
 	}
 
 	/// <summary>
@@ -4316,7 +4316,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Optimum Display Scale";
 
-		public static implicit operator optimumDisplayScale(int value) => new optimumDisplayScale { value = value };
+		public static implicit operator optimumDisplayScale(int? value) => new optimumDisplayScale { value = value };
 	}
 
 	/// <summary>
@@ -4329,7 +4329,7 @@ namespace S100Framework.AttributeModel.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Drawing Instruction";
 
-		public static implicit operator drawingInstruction(String value) => new drawingInstruction { value = value };
+		public static implicit operator drawingInstruction(String? value) => new drawingInstruction { value = value };
 	}
 
 }

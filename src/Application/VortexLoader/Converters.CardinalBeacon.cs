@@ -74,7 +74,7 @@ namespace S100Framework.Applications
                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
             }
             if (!string.IsNullOrEmpty(current.SORDAT)) {
-                if (DateHelper.TryConvertSordat(current.SORDAT, out var result)) {
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
                     instance.reportedDate_optional = result;
                 }
                 else {

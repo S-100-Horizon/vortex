@@ -57,7 +57,7 @@ namespace S100Framework.Applications
             }
 
             if (current.SIGSEQ != default) {
-                instance.signalSequence_optional = rhythmOfLight.signalSequence;
+                instance.signalSequence_optional = rhythmOfLight.signalSequence_optional;
             }
 
             if (current.STATUS != default) {

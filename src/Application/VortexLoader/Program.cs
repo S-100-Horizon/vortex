@@ -4,7 +4,6 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
 //using S100Framework.DomainModel;
-using S100Framework.GML;
 using Serilog;
 using System.Text.Json;
 using System.Text.RegularExpressions;
