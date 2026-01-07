@@ -86,9 +86,9 @@ namespace S100Framework.Applications
                             var horacc = current.HORACC ?? default;
 
                             if (horclr != default) {
-                                instance.horizontalClearanceFixed = new() {
+                                instance.horizontalClearanceFixed_optional = new() {
                                     horizontalClearanceValue = horclr,
-                                    horizontalDistanceUncertainty = horacc,
+                                    horizontalDistanceUncertainty_optional = horacc,
                                 };
                             }
 
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 

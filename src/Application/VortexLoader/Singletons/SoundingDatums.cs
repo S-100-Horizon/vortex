@@ -14,7 +14,7 @@ namespace S100Framework.Applications.Singletons
         private static SoundingDatums? _instance;
         private static readonly object _lock = new object();
 
-        private readonly List<(Geometry, DomainModel.S101.verticalDatum)> _polygons = new List<(Geometry, DomainModel.S101.verticalDatum)>();
+        private readonly List<(Geometry, AttributeModel.S101.SimpleAttributes.verticalDatum)> _polygons = new List<(Geometry, AttributeModel.S101.SimpleAttributes.verticalDatum)>();
 
 
         internal static void Initialize() {
@@ -45,7 +45,7 @@ namespace S100Framework.Applications.Singletons
         /// <summary>
         /// Adds a polygon geometry to the collection.
         /// </summary>
-        public void Add(Geometry polygon, DomainModel.S101.verticalDatum vdat) {
+        public void Add(Geometry polygon, AttributeModel.S101.SimpleAttributes.verticalDatum vdat) {
             if (polygon == null)
                 throw new ArgumentNullException(nameof(polygon));
 
@@ -58,7 +58,7 @@ namespace S100Framework.Applications.Singletons
         /// <summary>
         /// Returns all polygons from the collection that touch the specified geometry.
         /// </summary>
-        public IEnumerable<(Geometry, DomainModel.S101.verticalDatum)> Touch(Geometry geometry) {
+        public IEnumerable<(Geometry, AttributeModel.S101.SimpleAttributes.verticalDatum)> Touch(Geometry geometry) {
             if (geometry == null)
                 throw new ArgumentNullException(nameof(geometry));
 

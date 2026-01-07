@@ -166,7 +166,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -300,7 +300,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -430,7 +430,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -567,7 +567,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -783,7 +783,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -1591,7 +1591,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -1694,7 +1694,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 

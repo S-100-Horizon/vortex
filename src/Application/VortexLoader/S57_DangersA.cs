@@ -129,7 +129,7 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility();
 
                             if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue(current.CATFIF.Value);
+                                instance.categoryOfFishingFacility_optional = EnumHelper.GetEnumValue(current.CATFIF.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -256,7 +256,7 @@ namespace S100Framework.Applications
                                     //instance.verticalLength = default(double?);
                                 }
 
-                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                     instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                                 }
 
@@ -305,7 +305,9 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                    var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                    if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                        instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                                 }
                                 if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
@@ -460,7 +462,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.CONRAD.HasValue) {

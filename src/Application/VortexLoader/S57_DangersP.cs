@@ -60,17 +60,17 @@ namespace S100Framework.Applications
                             var instance = new CautionArea();
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition = EnumHelper.GetEnumValue(current.CONDTN);
+                                instance.condition_optional = EnumHelper.GetEnumValue(current.CONDTN);
                             }
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRangeDAT);
                             if (dateRangeDAT != default) {
-                                instance.fixedDateRange = dateRangeDAT;
+                                instance.fixedDateRange_optional = dateRangeDAT;
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var dateRangePER);
                             if (dateRangePER != default) {
-                                instance.periodicDateRange = dateRangePER;
+                                instance.periodicDateRange_optional = dateRangePER;
                             }
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information_optional = result.information.ToArray();
@@ -111,7 +111,9 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                    var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                    if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                        instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                                 }
                                 if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
@@ -140,7 +142,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SOUACC.HasValue) {
-                                    instance.verticalUncertainty = new() {
+                                    instance.verticalUncertainty_optional = new() {
                                         uncertaintyFixed = current.SOUACC.Value
                                     };
                                 }
@@ -230,7 +232,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
@@ -253,7 +257,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                instance.valueOfSounding_optional = current.VALSOU.Value;
+                                instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
                                 
@@ -281,10 +285,6 @@ namespace S100Framework.Applications
 
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
-
-                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
-                            instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             bool coveredByUnsurveyedArea = false;
                             bool coveredByDredgedArea = false;
@@ -322,25 +322,25 @@ namespace S100Framework.Applications
                                         (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                         (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
 
-                                        instance.defaultClearanceDepth = instance.surroundingDepth;
+                                        instance.defaultClearanceDepth_optional = instance.surroundingDepth!.value;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
 
-                                        instance.defaultClearanceDepth = 0.1d;
+                                        instance.defaultClearanceDepth_optional = 0.1d;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
 
-                                        instance.defaultClearanceDepth = 0d;
+                                        instance.defaultClearanceDepth_optional = 0d;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
 
-                                        instance.defaultClearanceDepth = -15d;
+                                        instance.defaultClearanceDepth_optional = -15d;
                                     }
                                     else {
                                         ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
@@ -350,15 +350,15 @@ namespace S100Framework.Applications
                             else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
                                 if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
-                                    instance.defaultClearanceDepth = 0.1d;
+                                    instance.defaultClearanceDepth_optional = 0.1d;
                                 }
                                 else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
-                                    instance.defaultClearanceDepth = 0d;
+                                    instance.defaultClearanceDepth_optional = 0d;
                                 }
                                 else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                         (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
-                                    instance.defaultClearanceDepth = -15d;
+                                    instance.defaultClearanceDepth_optional = -15d;
                                 }
                                 else {
                                     ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
@@ -394,7 +394,6 @@ namespace S100Framework.Applications
 
                     case 40: { // WATTUR
                             var instance = new WaterTurbulence {
-                                categoryOfWaterTurbulence = default,
                             };
 
                             if (current.CATWAT.HasValue) {
@@ -445,7 +444,7 @@ namespace S100Framework.Applications
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
                             if (current.CATWRK.HasValue && !current.VALSOU.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue(current.CATWRK.Value);
+                                instance.categoryOfWreck_optional = EnumHelper.GetEnumValue(current.CATWRK.Value);
                             }
 
                             if (current.EXPSOU.HasValue) {
@@ -464,7 +463,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.CONRAD.HasValue) {
@@ -490,7 +491,9 @@ namespace S100Framework.Applications
                                     During the automated conversion process, all instances of TECSOU = 6 will be converted to technique of vertical measurement = 18.
                                  */
                                 var tecsou = !string.IsNullOrEmpty(current.TECSOU) && int.Parse(current.TECSOU) == 6 ? "18" : current.TECSOU;
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(tecsou);
+                                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(tecsou);
+                                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
@@ -505,7 +508,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

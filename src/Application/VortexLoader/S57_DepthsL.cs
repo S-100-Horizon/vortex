@@ -4,7 +4,6 @@ using S100Framework.Applications.Singletons;
 using S100Framework.DomainModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.InformationAssociations;
 using S100Framework.AttributeModel.S101.InformationTypes;
 
 
@@ -221,7 +220,7 @@ namespace S100Framework.Applications
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
-            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue(4);
+            spatialQuality101.qualityOfHorizontalMeasurement_optional = EnumHelper.GetEnumValue(4);
 
             bufferInformationType["ps"] = ps101;
             bufferInformationType["code"] = spatialQuality101.Code;

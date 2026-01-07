@@ -141,7 +141,7 @@ namespace S100Framework.Applications
                 dateEnd = default,
             };
 
-            value.dateStart = start;
+            value.dateStart_optional = start;
             if (!string.IsNullOrEmpty(end) && DateHelper.regexTruncatedDateValidation.IsMatch(end)) {
                 value.dateEnd = end;
             }

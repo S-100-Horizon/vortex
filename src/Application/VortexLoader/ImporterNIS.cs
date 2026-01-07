@@ -4,7 +4,6 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
@@ -744,7 +743,7 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        internal static verticalDatum? GetVerticalDatum<TType>(int value) where TType : AttributeModel.FeatureType {
+        internal static verticalDatum? GetVerticalDatum(int value) {
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
@@ -762,7 +761,7 @@ namespace S100Framework.Applications
 
             //return verticalDatum.BalticSeaChartDatum2000;
         }
-        internal static verticalDatum? GetSoundingDatum<TType>(int value) where TType : AttributeModel.FeatureType {
+        internal static verticalDatum? GetSoundingDatum(int value) {
             return EnumHelper.GetEnumValue(value);
         }
 

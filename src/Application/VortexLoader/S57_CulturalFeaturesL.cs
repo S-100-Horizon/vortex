@@ -126,12 +126,17 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalDatum_optional = !current.VERDAT.HasValue ? default : ImporterNIS.GetVerticalDatum<CableOverhead>(current.VERDAT ?? 3)?.value;
-                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
-                                if (elm.Item2 == instance.verticalDatum) {
-                                    instance.verticalDatum = null;
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
                                 }
-                            }
+                                if (update)
+                                    instance.verticalDatum_optional = verticalDatum.value;
+                            }                          
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
@@ -198,7 +203,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.LIFCAP.HasValue) {
-                                instance.liftingCapacity = current.LIFCAP.Value;
+                                instance.liftingCapacity_optional = current.LIFCAP.Value;
                             }
 
                             //TODO: multiplicityOfFeatures
@@ -235,19 +240,23 @@ namespace S100Framework.Applications
                                 verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
                             };
 
-
-                            instance.verticalDatum_optional = !current.VERDAT.HasValue ? default : ImporterNIS.GetVerticalDatum<Conveyor>(current.VERDAT ?? 3)?.value;
-                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
-                                if (elm.Item2 == instance.verticalDatum) {
-                                    instance.verticalDatum = null;
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
                                 }
+                                if (update)
+                                    instance.verticalDatum_optional = verticalDatum.value;
                             }
-
+   
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -348,7 +357,7 @@ namespace S100Framework.Applications
                                 //instance.verticalLength = default(double?);
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -430,7 +439,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous_optional = current.CONRAD.Value == 0 ? true : false;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
@@ -450,7 +459,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -537,7 +546,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -558,12 +567,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                             }
 
-                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater_optional = false;
-                            }
-                            else {
-                                instance.inTheWater_optional = true;
-                            }
+                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
 
@@ -597,7 +601,7 @@ namespace S100Framework.Applications
                             var instance = new PipelineOverhead();
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValue(current.CATPIP);
+                                instance.categoryOfPipelinePipe_optional = EnumHelper.GetEnumValue(current.CATPIP);
                             }
 
                             if (current.CONDTN.HasValue) {

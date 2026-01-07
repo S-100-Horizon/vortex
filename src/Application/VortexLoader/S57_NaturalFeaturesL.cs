@@ -154,7 +154,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.STATUS != default) {
-                                instance.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                                instance.status_optional = ImporterNIS.GetSingleStatus(current.STATUS)?.value;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -194,7 +194,7 @@ namespace S100Framework.Applications
                             var instance = new SlopeTopline();
 
                             if (current.CATSLO.HasValue) {
-                                instance.categoryOfSlope = EnumHelper.GetEnumValue(current.CATSLO.Value);
+                                instance.categoryOfSlope_optional = EnumHelper.GetEnumValue(current.CATSLO.Value);
                             }
 
                             if (current.COLOUR != default) {

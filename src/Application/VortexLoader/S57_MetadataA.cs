@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System;
 
 namespace S100Framework.Applications
@@ -228,7 +229,7 @@ namespace S100Framework.Applications
                             */
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1;
                             }
 
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
@@ -265,96 +266,83 @@ namespace S100Framework.Applications
                                 int catzoc = current.CATZOC!.Value;
 
                                 if (catzoc == 1) {
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = 1;    // dataAssessment.Assessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = true,
                                         leastDepthOfDetectedFeaturesMeasured = true,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = true;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
-                                        }
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                        categoryOfZoneOfConfidenceInData = 1,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
                                     };
                                 }
                                 else if (catzoc == 2) { // A2
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = 1;    // dataAssessment.Assessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = true,
                                         leastDepthOfDetectedFeaturesMeasured = true,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = true;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA2,
-                                        }
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = 2,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA2,
                                     };
                                 }
                                 else if (catzoc == 3) { // B
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = 1;    // dataAssessment.Assessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = false,
                                         leastDepthOfDetectedFeaturesMeasured = false,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceB,
-                                        }
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = 3,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceB,                                        
                                     };
                                 }
                                 else if (catzoc == 4) { // C
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = 1;    // dataAssessment.Assessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = false,
                                         leastDepthOfDetectedFeaturesMeasured = false,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,
-                                        }
+                                    instance.zoneOfConfidence =new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = 4,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,                                        
                                     };
 
                                 }
                                 else if (catzoc == 5) { // D
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.UnlikelyToChange;
-                                    instance.dataAssessment = dataAssessment.Assessed;
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.UnlikelyToChange;
+                                    instance.dataAssessment = 1;    // dataAssessment.Assessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = false,
                                         leastDepthOfDetectedFeaturesMeasured = false,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceD,
-                                        }
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = 5,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceD,                                        
                                     };
 
                                 }
                                 else if (catzoc == 6) { // U
-                                    instance.categoryOfTemporalVariation = categoryOfTemporalVariation.Unassessed;
-                                    instance.dataAssessment = dataAssessment.Unassessed;
-
+                                    instance.categoryOfTemporalVariation = 5;   // categoryOfTemporalVariation.Unassessed;
+                                    instance.dataAssessment = 1;    // dataAssessment.Unassessed;
                                     instance.featuresDetected = new featuresDetected() {
                                         significantFeaturesDetected = false,
                                         leastDepthOfDetectedFeaturesMeasured = false,
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
-                                    instance.zoneOfConfidence = new() {
-                                        new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = categoryOfZoneOfConfidenceInData.ZoneOfConfidenceU,
-                                        }
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                            categoryOfZoneOfConfidenceInData = 6,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceU,                                        
                                     };
 
 
@@ -367,11 +355,11 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var dateRange)) {
-                                instance.surveyDateRange = dateRange;
+                                instance.surveyDateRange_optional = dateRange;
                             }
 
                             if (DateHelper.TryGetSurveyDateRange(current.SURSTA, current.SUREND, out var surveyDateRange)) {
-                                instance.surveyDateRange = surveyDateRange;
+                                instance.surveyDateRange_optional = surveyDateRange;
                             }
 
 
@@ -401,15 +389,13 @@ namespace S100Framework.Applications
                         break;
                     case 50: { // M_SREL_SurveyReliability
                             var instance = new QualityOfSurvey {
-                                surveyAuthority = default,
-                                surveyDateRange = default!,
                             };
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
+                                instance.depthRangeMaximumValue_optional = current.DRVAL2.Value;
                             }
 
                             // TODO: featuresdetected
@@ -424,7 +410,7 @@ namespace S100Framework.Applications
 
                             if (current.SDISMX.HasValue && current.SDISMX.Value != -32767d) {
                                 if (current.SDISMX.Value % 1 == 0) {
-                                    instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
+                                    instance.measurementDistanceMaximum_optional = Convert.ToInt32(current.SDISMX.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX} and cannot be converted to an integer");
@@ -433,7 +419,7 @@ namespace S100Framework.Applications
 
                             if (current.SDISMN.HasValue && current.SDISMN.Value != -32767d) {
                                 if (current.SDISMN.Value % 1 == 0) {
-                                    instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
+                                    instance.measurementDistanceMaximum_optional = Convert.ToInt32(current.SDISMN.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMN on M_SREL: value is {current.SDISMN} and cannot be converted to an integer");
@@ -441,22 +427,24 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUAPOS.HasValue) {
-                                instance.qualityOfHorizontalMeasurement = current.QUAPOS.Value switch {
-                                    4 => qualityOfHorizontalMeasurement.Approximate,
+                                instance.qualityOfHorizontalMeasurement_optional = current.QUAPOS.Value switch {
+                                    4 => 4, //qualityOfHorizontalMeasurement.Approximate,
                                     _ => default,
                                 };
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.SCVAL1.HasValue && current.SCVAL1 != -32767) {
-                                instance.scaleValueMaximum = current.SCVAL1;
+                                instance.scaleValueMaximum_optional = current.SCVAL1;
                             }
 
                             if (current.SCVAL2.HasValue && current.SCVAL2 != -32767) {
-                                instance.scaleValueMinimum = current.SCVAL2;
+                                instance.scaleValueMinimum_optional = current.SCVAL2;
                             }
 
                             if (current.SURATH != default) {
@@ -468,7 +456,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SURTYP != default) {
-                                instance.surveyType = EnumHelper.GetEnumValues(current.SURTYP);
+                                var surveyType = EnumHelper.GetEnumValues(current.SURTYP);
+                                if (surveyType is not null && surveyType.Any()) {
+                                    instance.surveyType = surveyType[0];
+                                    instance.surveyType_optional = surveyType[1..];
+                                }
                             }
 
                             if (current.TECSOU != null) {
@@ -494,7 +486,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleValueMinimum);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleValueMinimum_optional);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -510,15 +502,16 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            var verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<VerticalDatumOfData>(current.VERDAT ?? 3);
-
-                            instance.verticalDatum = verticalDatum;
-
-
-                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
-                                if (elm.Item2 == instance.verticalDatum) {
-                                    instance.verticalDatum = null;
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
                                 }
+                                if (update)
+                                    instance.verticalDatum = verticalDatum.value;
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
@@ -545,9 +538,10 @@ namespace S100Framework.Applications
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
 
-                            if (verticalDatum.HasValue) {
-                                VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.Value);
-                            } else {
+                            if (verticalDatum is not null) {
+                                VerticalDatums.Instance.Add(current.SHAPE!.Clone(), verticalDatum!.value);
+                            }
+                            else {
                                 Logger.Current.DataError(current.OBJECTID.Value, current.TableName!, current.LNAM!, $"M_VDAT_VerticalDatumOfData has no VERDAT");
                             }
 

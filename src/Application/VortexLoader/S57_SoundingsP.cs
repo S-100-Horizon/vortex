@@ -108,10 +108,10 @@ namespace S100Framework.Applications
 
 
                                     if (current.QUASOU != default) {
-                                        if (current.QUASOU == "-32767")
-                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues("-1");
-                                        else {
-                                            sounding.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                        if (current.QUASOU != "-32767") {
+                                            var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                            if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                                sounding.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                                         }
                                     }
 

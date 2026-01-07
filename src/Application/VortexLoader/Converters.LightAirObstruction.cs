@@ -67,7 +67,7 @@ namespace S100Framework.Applications
                 instance.valueOfNominalRange_optional = current.VALNMR.Value;
             }
 
-            var verticalDatum = ImporterNIS.GetVerticalDatum<LightAirObstruction>(current.VERDAT ?? 3);
+            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
             if (verticalDatum != null) {
                 var update = true;
                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {

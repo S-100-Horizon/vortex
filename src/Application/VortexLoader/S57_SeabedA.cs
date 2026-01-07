@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -67,7 +68,7 @@ namespace S100Framework.Applications
                             string[] natsurValues = null!;
                             string[] natquaValues = null!;
 
-                            List<natureOfSurfaceQualifyingTerms>? natureOfSurfaceQualifyingTermsList = null;
+                            int?[]? natureOfSurfaceQualifyingTermsList = default;
 
                             if (current.NATSUR != default && current.NATSUR.Trim().Length > 0) {
                                 natsurValues = current.NATSUR.Trim().Trim(',').Split(',');
@@ -83,28 +84,37 @@ namespace S100Framework.Applications
 
                             surfaceCharacteristics surfaceChars = new();
 
-                            instance.surfaceCharacteristics = new List<DomainModel.S101.ComplexAttributes.surfaceCharacteristics>();
+                            //instance.surfaceCharacteristics = new List<AttributeModel.S101.ComplexAttributes.surfaceCharacteristics>();
 
                             var list1 = string.IsNullOrWhiteSpace(current.NATSUR) || string.IsNullOrEmpty(current.NATSUR.Trim().Trim(',')) ? new List<string> { "" } : current.NATSUR.Trim().Trim(',').Split(',').ToList();
                             var list2 = string.IsNullOrWhiteSpace(current.NATQUA) || string.IsNullOrEmpty(current.NATQUA.Trim().Trim(',')) ? new List<string> { "" } : current.NATQUA.Trim().Trim(',').Split(',').ToList();
 
-                            var result = new List<(string, string)>();
+                            //var result = new List<(string, string)>();
+
+                            surfaceCharacteristics[] surfaceCharacteristics = [];
 
                             if (naturOfSurfaceCount > 0) {
                                 for (int i = 0; i < list1.Count(); i++) {
                                     var natureOfSurface = EnumHelper.GetEnumValue(list1[i]);
 
                                     if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
-                                        instance.surfaceCharacteristics.Add(new() {
-                                            natureOfSurface = natureOfSurface,
-                                            natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
+                                        surfaceCharacteristics = [.. surfaceCharacteristics,new() {
+                                            natureOfSurface_optional = natureOfSurface,
+                                            natureOfSurfaceQualifyingTerms_optional = [natureOfSurfaceQualifyingTermsList![i]],
+                                        }];
+                                        //instance.surfaceCharacteristics.Add(new() {
+                                        //    natureOfSurface = natureOfSurface,
+                                        //    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
 
-                                        });
+                                        //});
                                     }
                                     else {
-                                        instance.surfaceCharacteristics.Add(new() {
-                                            natureOfSurface = natureOfSurface
-                                        });
+                                        surfaceCharacteristics = [.. surfaceCharacteristics,new() {
+                                            natureOfSurface_optional = natureOfSurface,
+                                        }];
+                                        //instance.surfaceCharacteristics.Add(new() {
+                                        //    natureOfSurface = natureOfSurface
+                                        //});
                                     }
                                 }
                             }
@@ -119,15 +129,20 @@ namespace S100Framework.Applications
                                                 Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, "NatureOfSurface is empty but natureOfSurfaceQualifyingTerms are not. This is not permitted.");
                                             }
                                             else {
-                                                instance.surfaceCharacteristics.Add(new() {
-                                                    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
-                                                });
+                                                surfaceCharacteristics = [.. surfaceCharacteristics,new() {
+                                                    natureOfSurfaceQualifyingTerms_optional = [natureOfSurfaceQualifyingTermsList![i]],
+                                                }];
+                                                //instance.surfaceCharacteristics.Add(new() {
+                                                //    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
+                                                //});
                                             }
                                         }
 
                                     }
                                 }
                             }
+                            instance.surfaceCharacteristics = surfaceCharacteristics[0];
+                            instance.surfaceCharacteristics_optional = surfaceCharacteristics[1..];
 
                             //foreach (var natsur in list1) {
                             //    foreach (var natqua in list2) {
@@ -242,7 +257,7 @@ namespace S100Framework.Applications
                             if (current.CATWED.HasValue && current.CATWED.Value == 3) {
                                 var seagrass = new Seagrass();
 
-                                seagrass.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                seagrass.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 // TODO: interoperabilityIdentifier
 
@@ -255,7 +270,9 @@ namespace S100Framework.Applications
                                     seagrass.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                seagrass.SetInformationBindings(AddInformation(seagrass.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                seagrass.information_optional = result.information.ToArray();
+                                seagrass.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = seagrass.GetType().Name;
@@ -282,7 +299,7 @@ namespace S100Framework.Applications
 
                                 var instance = new WeedKelp();
                                 if (current.CATWED.HasValue) {
-                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue(current.CATWED.Value);
+                                    instance.categoryOfWeedKelp_optional = EnumHelper.GetEnumValue(current.CATWED.Value);
                                 }
 
                                 instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);

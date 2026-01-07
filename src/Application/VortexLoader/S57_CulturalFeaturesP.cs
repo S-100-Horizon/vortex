@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.ComponentModel;
 
 namespace S100Framework.Applications
@@ -151,7 +152,7 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -180,12 +181,7 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater = false;
-                            }
-                            else {
-                                instance.inTheWater = true;
-                            }
+                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
                             buffer["ps"] = ps101;
@@ -214,7 +210,7 @@ namespace S100Framework.Applications
                             var instance = new Building();
 
                             if (current.BUISHP != null) {
-                                instance.buildingShape = EnumHelper.GetEnumValue(current.BUISHP);
+                                instance.buildingShape_optional = EnumHelper.GetEnumValue(current.BUISHP);
                             }
 
                             if (current.COLOUR != default) {
@@ -238,7 +234,9 @@ namespace S100Framework.Applications
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.FUNCTN != default) {
-                                instance.function = EnumHelper.GetEnumValues(current.FUNCTN);
+                                var function = EnumHelper.GetEnumValues(current.FUNCTN);
+                                if (function is not null && function.Any())
+                                    instance.function_optional = function;
                             }
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
                                 instance.height_optional = current.HEIGHT.Value;
@@ -277,7 +275,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -298,12 +296,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                             }
 
-                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater = false;
-                            }
-                            else {
-                                instance.inTheWater = true;
-                            }
+                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
                             buffer["ps"] = ps101;
@@ -353,12 +346,7 @@ namespace S100Framework.Applications
                                     instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                                 }
 
-                                if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                    instance.inTheWater = false;
-                                }
-                                else {
-                                    instance.inTheWater = true;
-                                }
+                                instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
                                 buffer["ps"] = ps101;
@@ -492,7 +480,9 @@ namespace S100Framework.Applications
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.FUNCTN != null) {
-                                instance.function = EnumHelper.GetEnumValues(current.FUNCTN);
+                                var function = EnumHelper.GetEnumValues(current.FUNCTN);
+                                if (function is not null && function.Any())
+                                    instance.function_optional = function;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
@@ -507,25 +497,23 @@ namespace S100Framework.Applications
                             // TODO: multiplicityOfFeatures
 
                             if (current.NATCON != default) {
-                                var supportedEnumValues = S100Framework.Catalogues.Helper.GetValidEnumValues(typeof(Landmark), "natureOfConstruction");
-
                                 var parts = current.NATCON.Split([',', ';'], StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
                                 foreach (var p in parts) {
                                     if (int.TryParse(p, out int value)) {
                                         var natcon = value switch {
-                                            1 => natureOfConstruction.Masonry,
-                                            2 => natureOfConstruction.Concreted,
-                                            3 => natureOfConstruction.LooseBoulders,
-                                            6 => natureOfConstruction.Wooden,
-                                            7 => natureOfConstruction.Metal,
-                                            8 => natureOfConstruction.GlassReinforcedPlastic,
-                                            11 => natureOfConstruction.Latticed,
-                                            12 => natureOfConstruction.Glass,
+                                            1 => 1, //natureOfConstruction.Masonry,
+                                            2 => 2, //natureOfConstruction.Concreted,
+                                            3 => 3, //natureOfConstruction.LooseBoulders,
+                                            6 => 6, //natureOfConstruction.Wooden,
+                                            7 => 7, //natureOfConstruction.Metal,
+                                            8 => 8, //natureOfConstruction.GlassReinforcedPlastic,
+                                            11 => 11,   //natureOfConstruction.Latticed,
+                                            12 => 12,   //natureOfConstruction.Glass,
                                             -32767 => default,  //  Not supported in array
                                             _ => default,
                                         };
                                         if (natcon != default)
-                                            instance.natureOfConstruction = [.. instance.natureOfConstruction, natcon];
+                                            instance.natureOfConstruction_optional = [natcon];  //  append
                                     }
                                 }
                             }
@@ -571,12 +559,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                             }
 
-                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater = false;
-                            }
-                            else {
-                                instance.inTheWater = true;
-                            }
+                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
                             buffer["ps"] = ps101;

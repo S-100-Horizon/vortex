@@ -4,6 +4,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -86,11 +87,7 @@ namespace S100Framework.Applications
                             // TODO: horizontalClearanceLength
 
                             if (current.HORCLR.HasValue) {
-                                instance.horizontalClearanceWidth = current.HORCLR.Value;
-                            }
-
-                            if (current.HORCLR.HasValue) {
-                                instance.horizontalClearanceWidth = current.HORCLR.Value;
+                                instance.horizontalClearanceWidth_optional = current.HORCLR.Value;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -105,7 +102,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.STATUS != default) {
@@ -113,7 +112,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }
@@ -156,7 +155,7 @@ namespace S100Framework.Applications
                             var instance = new CoastGuardStation();
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                                instance.communicationChannel_optional = current.COMCHA.Split(',').ToArray();
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -228,7 +227,7 @@ namespace S100Framework.Applications
                             var instance = new Crane();
 
                             if (current.CATCRN.HasValue) {
-                                instance.categoryOfCrane = EnumHelper.GetEnumValue(current.CATCRN.Value);
+                                instance.categoryOfCrane_optional = EnumHelper.GetEnumValue(current.CATCRN.Value);
                             }
 
                             if (current.COLOUR != default) {
@@ -258,13 +257,12 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.LIFCAP.HasValue) {
-                                instance.liftingCapacity = current.LIFCAP.Value;
+                                instance.liftingCapacity_optional = current.LIFCAP.Value;
                             }
 
                             if (current.ORIENT.HasValue) {
-                                instance.orientation = new() {
+                                instance.orientation_optional = new() {
                                     orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767d ? current.ORIENT : default(double?),
-                                    orientationUncertainty = default(double?)
                                 };
                             }
 
@@ -273,36 +271,33 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RADIUS.HasValue && current.RADIUS.Value != -32767d) {
-                                instance.radius = current.RADIUS.Value;
-                            }
-                            else {
-                                instance.radius = default(double?);
-                            }
-
+                                instance.radius_optional = current.RADIUS.Value;
+                            }                            
 
                             if (current.STATUS != default) {
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalClearanceFixed = new() {
-                                verticalUncertainty = new() {
+                            instance.verticalClearanceFixed_optional = new() {
+                                verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
                                 },
                                 // TODO: verticalClearanceValue
                                 //verticalClearanceValue = default(double?)
                                 verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
                             };
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Crane>(current.VERDAT ?? 3);
-
-                            // Clear vdat if covered by a metadata object with same vdat
-                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
-                                if (elm.Item2 == instance.verticalDatum) {
-                                    instance.verticalDatum = null;
-                                    break;
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
                                 }
-                            }
+                                if (update)
+                                    instance.verticalDatum_optional = verticalDatum.value;
+                            }                           
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength_optional = current.VERLEN.Value;
@@ -333,12 +328,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
                             }
 
-                            if (LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0) {
-                                instance.inTheWater = false;
-                            }
-                            else {
-                                instance.inTheWater = true;
-                            }
+                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -369,7 +359,7 @@ namespace S100Framework.Applications
                             var instance = new Gate();
 
                             if (current.CATGAT.HasValue) {
-                                instance.categoryOfGate = EnumHelper.GetEnumValue(current.CATGAT.Value);
+                                instance.categoryOfGate_optional = EnumHelper.GetEnumValue(current.CATGAT.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -377,14 +367,14 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            instance.horizontalClearanceOpen = new horizontalClearanceOpen() {
+                            instance.horizontalClearanceOpen_optional = new horizontalClearanceOpen() {
                                 horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
+                                horizontalDistanceUncertainty_optional = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             // TODO: interoperabilityIdentifier
@@ -396,31 +386,37 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.STATUS != default) {
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalClearanceOpen = new() {
-                                verticalUncertainty = new() {
+                            instance.verticalClearanceOpen_optional = new() {
+                                verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.VERACC.HasValue ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
                                 },
-                                verticalClearanceValue = current.VERCLR.HasValue ? current.VERCLR.Value : default(double?),
-                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(double)) : null
+                                verticalClearanceValue_optional = current.VERCLR.HasValue ? current.VERCLR.Value : default(double?),
+                                verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(double)) : default
                             };
 
-                            instance.verticalDatum = !current.VERDAT.HasValue ? null : ImporterNIS.GetVerticalDatum<Gate>(current.VERDAT ?? 3);
-                            foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
-                                if (elm.Item2 == instance.verticalDatum) {
-                                    instance.verticalDatum = null;
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
                                 }
-                            }
+                                if (update)
+                                    instance.verticalDatum_optional = verticalDatum.value;
+                            }          
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }
@@ -464,7 +460,11 @@ namespace S100Framework.Applications
                             var instance = new HarbourFacility();
 
                             if (current.CATHAF != default) {
-                                instance.categoryOfHarbourFacility = EnumHelper.GetEnumValues(current.CATHAF);
+                                var categoryOfHarbourFacility = EnumHelper.GetEnumValues(current.CATHAF);
+                                if (categoryOfHarbourFacility is not null && categoryOfHarbourFacility.Any()) {
+                                    instance.categoryOfHarbourFacility = categoryOfHarbourFacility[0];
+                                    instance.categoryOfHarbourFacility_optional = categoryOfHarbourFacility[1..];
+                                }
                             }
 
                             if (current.COMCHA != default) {
@@ -551,10 +551,10 @@ namespace S100Framework.Applications
 
 
                             if (current.CATHLK != default) {
-                                instance.categoryOfHulk = EnumHelper.GetEnumValues(current.CATHLK);
-                            }
-                            ;
-
+                                var categoryOfHulk = EnumHelper.GetEnumValues(current.CATHLK);
+                                if (categoryOfHulk is not null && categoryOfHulk.Any())
+                                    instance.categoryOfHulk_optional = categoryOfHulk;
+                            }                            
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
@@ -610,7 +610,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -666,10 +666,10 @@ namespace S100Framework.Applications
                                 var instance = new Dolphin();
 
                                 if (catmor == 1) {
-                                    instance.categoryOfDolphin = new() { categoryOfDolphin.MooringDolphin };
+                                    instance.categoryOfDolphin = 1; // categoryOfDolphin.MooringDolphin
                                 }
                                 if (catmor == 2) {
-                                    instance.categoryOfDolphin = new() { categoryOfDolphin.DeviationDolphin };
+                                    instance.categoryOfDolphin = 2; // categoryOfDolphin.DeviationDolphin
                                 }
 
                                 if (current.COLOUR != default) {
@@ -737,7 +737,7 @@ namespace S100Framework.Applications
                                     instance.verticalLength_optional = current.VERLEN.Value;
                                 }
 
-                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                     instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                                 }
 
@@ -861,7 +861,7 @@ namespace S100Framework.Applications
                             if (catmor == 4) {
                                 var instance = new ShorelineConstruction();
 
-                                instance.categoryOfShorelineConstruction = categoryOfShorelineConstruction.TieUpWall;
+                                instance.categoryOfShorelineConstruction_optional = 23; // categoryOfShorelineConstruction.TieUpWall;
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -895,9 +895,9 @@ namespace S100Framework.Applications
                                 var horacc = current.HORACC ?? default;
 
                                 if (horclr != default) {
-                                    instance.horizontalClearanceFixed = new() {
+                                    instance.horizontalClearanceFixed_optional = new() {
                                         horizontalClearanceValue = horclr,
-                                        horizontalDistanceUncertainty = horacc,
+                                        horizontalDistanceUncertainty_optional = horacc,
                                     };
                                 }
 
@@ -938,13 +938,13 @@ namespace S100Framework.Applications
                                     instance.verticalLength_optional = current.VERLEN.Value;
                                 }
 
-                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                     instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                                 }
 
                                 if (current.WATLEV.HasValue) {
                                     if (current.WATLEV.Value == -32767)
-                                        instance.waterLevelEffect = EnumHelper.GetEnumValue(-1);
+                                        instance.waterLevelEffect_optional = default;
                                     else {
                                         instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                                     }
@@ -988,7 +988,7 @@ namespace S100Framework.Applications
                             if (catmor == 5) {
                                 var instance = new Pile();
 
-                                instance.categoryOfPile = categoryOfPile.MooringPost;
+                                instance.categoryOfPile_optional = /;   // categoryOfPile.MooringPost;
 
 
                                 if (current.COLOUR != default) {
@@ -1045,7 +1045,7 @@ namespace S100Framework.Applications
                                     instance.verticalLength_optional = current.VERLEN.Value;
                                 }
 
-                                if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                                if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                     instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                                 }
 
@@ -1095,13 +1095,11 @@ namespace S100Framework.Applications
                             // MOORING BUOY
                             if (catmor == 7) {
                                 var instance = new MooringBuoy() {
-                                    buoyShape = default,
                                 };
 
                                 if (current.BOYSHP == default) {
-                                    instance.buoyShape = buoyShape.Spherical;
+                                    instance.buoyShape = 3; // buoyShape.Spherical;
                                 }
-
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -1193,13 +1191,13 @@ namespace S100Framework.Applications
                             var instance = new PilotBoardingPlace();
 
                             if (current.CATPIL.HasValue) {
-                                instance.categoryOfPilotBoardingPlace = EnumHelper.GetEnumValue(current.CATPIL);
+                                instance.categoryOfPilotBoardingPlace_optional = EnumHelper.GetEnumValue(current.CATPIL);
                             }
 
                             // TODO: CategoryOfPrecense - new S-101 att.
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                                instance.communicationChannel_optional = current.COMCHA.Split(',').ToArray();
                             }
 
                             // TODO: Destination - new S-101 att.
@@ -1260,7 +1258,7 @@ namespace S100Framework.Applications
                     case 55: { // PILPNT_Pile
                             var instance = new Pile();
 
-                            instance.categoryOfPile = categoryOfPile.MooringPost;
+                            instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
@@ -1316,7 +1314,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -1363,11 +1361,13 @@ namespace S100Framework.Applications
                             var instance = new RescueStation();
 
                             if (current.CATRSC != null) {
-                                instance.categoryOfRescueStation = EnumHelper.GetEnumValues(current.CATRSC);
+                                var categoryOfRescueStation = EnumHelper.GetEnumValues(current.CATRSC);
+                                if (categoryOfRescueStation is not null && categoryOfRescueStation.Any())
+                                    instance.categoryOfRescueStation_optional = categoryOfRescueStation;
                             }
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = current.COMCHA.Split(',').ToList<string>();
+                                instance.communicationChannel_optional = current.COMCHA.Split(',').ToArray();
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -1475,7 +1475,11 @@ namespace S100Framework.Applications
                             var instance = new SmallCraftFacility();
 
                             if (current.CATSCF != default) {
-                                instance.categoryOfSmallCraftFacility = EnumHelper.GetEnumValues(current.CATSCF);
+                                var categoryOfSmallCraftFacility = EnumHelper.GetEnumValues(current.CATSCF);
+                                if (categoryOfSmallCraftFacility is not null && categoryOfSmallCraftFacility.Any()) {
+                                    instance.categoryOfSmallCraftFacility = categoryOfSmallCraftFacility[0];
+                                    instance.categoryOfSmallCraftFacility_optional = categoryOfSmallCraftFacility[1..];
+                                }
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);

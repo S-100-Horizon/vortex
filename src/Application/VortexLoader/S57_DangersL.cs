@@ -145,7 +145,7 @@ namespace S100Framework.Applications
                                 // TODO: interoperabilityIdentifier
 
                                 if (current.QUASOU != default) {
-                                    instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                    instance.qualityOfVerticalMeasurement_optional = EnumHelper.GetEnumValues(current.QUASOU);
                                 }
                                 if (!string.IsNullOrEmpty(current.SORDAT)) {
                                     if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {

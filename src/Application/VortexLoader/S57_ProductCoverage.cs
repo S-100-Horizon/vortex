@@ -210,7 +210,7 @@ namespace S100Framework.Applications
                                     verticalDatum = default,
                                 };
 
-                                vdat.verticalDatum = GetVerticalDatum<VerticalDatumOfData>(current.VDAT ?? 3);
+                                vdat.verticalDatum = GetVerticalDatum(current.VDAT ?? 3)?.value;
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
@@ -225,14 +225,14 @@ namespace S100Framework.Applications
                                 var name = featureN.UID();
 
                                 // Registering vertical datum information for all areas
-                                VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.Value);
+                                VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.value);
 
-                                SoundingDatums.Instance.Add(productCoverage!.SHAPE!, GetSoundingDatum<VerticalDatumOfData>(current.SDAT!.Value)!.Value);
+                                SoundingDatums.Instance.Add(productCoverage!.SHAPE!, GetSoundingDatum(current.SDAT!.Value)!);
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
-                                VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum!.Value);
+                                VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum!.value);
 
                             }
                             break;

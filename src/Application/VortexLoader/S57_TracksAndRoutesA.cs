@@ -82,12 +82,16 @@ namespace S100Framework.Applications
 
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -171,11 +175,15 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -244,7 +252,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -304,7 +314,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -576,7 +588,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -631,7 +645,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -706,7 +722,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.STATUS != default) {

@@ -117,7 +117,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
@@ -266,15 +266,15 @@ namespace S100Framework.Applications
                                 if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
                                     throw new NotImplementedException();    //  If it is required to encode a sand dune or sand hill, it must be done using the feature Sloping Ground with attribute category of slope = 3 (dune) or 4 (hill) and attribute nature of surface = 4 (sand). If these features are positioned along the coastline, a Coastline feature must also be encoded.
 
-                                instance.categoryOfSlope = EnumHelper.GetEnumValue(current.CATSLO.Value);
+                                instance.categoryOfSlope_optional = EnumHelper.GetEnumValue(current.CATSLO.Value);
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.COLOUR != default) {
-                                var colour = GetColours(current.COLOUR);
-                                if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                var colours = GetColours(current.COLOUR);
+                                if (colours is not null && colours.Any())
+                                    instance.colour_optional = colours;
                             }
 
                             if(current.NATSUR != default) {
@@ -283,7 +283,7 @@ namespace S100Framework.Applications
                                     instance.natureOfSurface_optional = natureOfSurface;
                             }
                             if (current.CONRAD != default) {
-                                instance.radarConspicuous = current.CONRAD!.Value switch {
+                                instance.radarConspicuous_optional = current.CONRAD!.Value switch {
                                     1 => true,      //  radar conspicuous
                                     2 => false,     //  not radar conspicuous
                                     4 => true,      //  radar conspicuous (has radar reflector)
@@ -293,7 +293,7 @@ namespace S100Framework.Applications
                             }
 
                             if(current.CONVIS != default) {
-                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS!);
+                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS!);
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -332,7 +332,6 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // VEGATN_Vegetation
                             var instance = new Vegetation {
-                                categoryOfVegetation = default,
                             };
 
                             if (current.CATVEG != default) {
@@ -358,7 +357,7 @@ namespace S100Framework.Applications
                                 instance.verticalLength_optional = current.VERLEN.Value;
                             }
 
-                            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+                            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 

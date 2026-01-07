@@ -58,7 +58,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CATACH != default) {
-                                instance.categoryOfAnchorage = EnumHelper.GetEnumValues(current.CATACH);
+                                var categoryOfAnchorage = EnumHelper.GetEnumValues(current.CATACH);
+                                if (categoryOfAnchorage is not null && categoryOfAnchorage.Any())
+                                    instance.categoryOfAnchorage_optional = categoryOfAnchorage;
                             }
 
                             // new S-101
@@ -79,7 +81,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -87,7 +91,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -136,7 +140,9 @@ namespace S100Framework.Applications
                             var instance = new DumpingGround();
 
                             if (current.CATDPG != default) {
-                                instance.categoryOfDumpingGround = EnumHelper.GetEnumValues(current.CATDPG);
+                                var categoryOfDumpingGround = EnumHelper.GetEnumValues(current.CATDPG);
+                                if (categoryOfDumpingGround is not null && categoryOfDumpingGround.Any())
+                                    instance.categoryOfDumpingGround_optional = categoryOfDumpingGround;
                             }
 
                             // TODO: DateDisused
@@ -147,7 +153,9 @@ namespace S100Framework.Applications
 
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -155,7 +163,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -210,7 +218,7 @@ namespace S100Framework.Applications
 
 
                             if (current.CATMFA != null) {
-                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue(current.CATMFA);
+                                instance.categoryOfMarineFarmCulture_optional = EnumHelper.GetEnumValue(current.CATMFA);
                             }
 
                             if (current.EXPSOU.HasValue) {
@@ -235,11 +243,15 @@ namespace S100Framework.Applications
                             }
 
                             if (current.QUASOU != default) {
-                                instance.qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
+                                if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
+                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -263,11 +275,11 @@ namespace S100Framework.Applications
                             // TODO: VerticalUncertainty
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             //if (plts_comp_scale != default) {
@@ -309,7 +321,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != null) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -317,7 +331,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);

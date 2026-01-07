@@ -88,17 +88,20 @@ namespace S100Framework.Applications
 
             if (current.VERLEN.HasValue) {
                 instance.verticalLength_optional = current.VERLEN.Value;
-                instance.verticalDatum_optional = ImporterNIS.GetVerticalDatum<WindTurbine>(current.VERDAT ?? 3)?.value;
+                instance.verticalDatum_optional = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3)?.value;
 
             }
 
-            if (current.CONVIS.HasValue && current.CONVIS.Value != -32767) {
+            if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
             }
 
             if (current.WATLEV.HasValue) {
-                if (current.WATLEV.Value != -32767)
+                if (current.WATLEV.Value == -32767)
+                    instance.waterLevelEffect_optional = default;
+                else {
                     instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                }
             }
 
 

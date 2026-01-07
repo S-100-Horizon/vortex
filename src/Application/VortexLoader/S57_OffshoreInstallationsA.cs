@@ -1,10 +1,10 @@
 ﻿using ArcGIS.Core.Data;
-using NetTopologySuite.Utilities;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Text.RegularExpressions;
 
 namespace S100Framework.Applications
@@ -57,7 +57,9 @@ namespace S100Framework.Applications
                             var instance = new CableArea();
 
                             if (current.CATCBL.HasValue) {
-                                instance.categoryOfCable = EnumHelper.GetEnumValues(current.CATCBL.Value);
+                                var categoryOfCable = EnumHelper.GetEnumValues(current.CATCBL.Value);
+                                if (categoryOfCable is not null && categoryOfCable.Any())
+                                    instance.categoryOfCable_optional = categoryOfCable;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -70,7 +72,9 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -78,7 +82,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
@@ -117,7 +121,7 @@ namespace S100Framework.Applications
                             var instance = new OffshorePlatform();
 
                             if (current.CATOFP != default) {
-                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue(current.CATOFP);
+                                instance.categoryOfOffshorePlatform_optional = EnumHelper.GetEnumValue(current.CATOFP);
                             }
 
                             if (current.COLOUR != default) {
@@ -228,10 +232,10 @@ namespace S100Framework.Applications
                             if (current.CATPRA.HasValue) {
                                 // Windfarm
                                 if (current.CATPRA.Value == 9) {
-                                    instance.categoryOfOffshoreProductionArea = categoryOfOffshoreProductionArea.WindFarm;
+                                    instance.categoryOfOffshoreProductionArea_optional = 1;  // categoryOfOffshoreProductionArea.WindFarm;
                                 }
                                 else if (current.CATPRA.Value == 8) {
-                                    instance.categoryOfOffshoreProductionArea = categoryOfOffshoreProductionArea.TankFarm;
+                                    instance.categoryOfOffshoreProductionArea_optional = 4;  // categoryOfOffshoreProductionArea.TankFarm;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID!.Value, tableName, current.LNAM ?? "Unknown LNAM", $"Cannot convert OffshoreInstallation with CATPRA = {current.CATPRA.Value}");
@@ -281,7 +285,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -344,7 +350,9 @@ namespace S100Framework.Applications
 
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues(current.CATPIP);
+                                var categoryOfPipelinePipe = EnumHelper.GetEnumValues(current.CATPIP);
+                                if (categoryOfPipelinePipe is not null && categoryOfPipelinePipe.Any())
+                                    instance.categoryOfPipelinePipe_optional = categoryOfPipelinePipe;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -363,7 +371,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -417,7 +427,7 @@ namespace S100Framework.Applications
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
 
-        internal static List<vesselSpeedLimit> GetVesselSpeedLimit(string value) {
+        internal static vesselSpeedLimit[] GetVesselSpeedLimit(string value) {
             string pattern = @"\bspeed\s*limit(?: is)?\s+(\d+(?:\.\d+)?)\s+(knots?)\b";
             string patternFaster = @"faster than.*?\b(\d+)\s+(knot[s]?)\b"; ;
 
@@ -429,7 +439,7 @@ namespace S100Framework.Applications
 
 
                 var units = unit.ToLower() switch {
-                    "knots" => speedUnits.Knots,
+                    "knots" => 4,
                     _ => throw new NotImplementedException($"Vessel speed limit: Units {unit}")
                 };
 
@@ -444,7 +454,7 @@ namespace S100Framework.Applications
 
 
                 var units = unit.ToLower() switch {
-                    "knots" => speedUnits.Knots,
+                    "knots" => 4,
                     _ => throw new NotImplementedException($"Vessel speed limit: Units {unit}")
                 };
 

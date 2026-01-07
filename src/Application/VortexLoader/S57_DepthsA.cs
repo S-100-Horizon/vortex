@@ -93,13 +93,13 @@ namespace S100Framework.Applications
                     case 5: {     // DRGARE // SKIN OF EARTH
                             var instance = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2,
+                                depthRangeMaximumValue_optional = drval2,
                             };
 
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.dredgedDate = result;
+                                    instance.dredgedDate_optional = reportedDate;
                                 }
                             }
                             else {
@@ -110,7 +110,9 @@ namespace S100Framework.Applications
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             // TODO: InteroperabilityIdentifier
@@ -125,11 +127,15 @@ namespace S100Framework.Applications
                             //}
 
                             if (!string.IsNullOrEmpty(restrn)) {
-                                instance.restriction = EnumHelper.GetEnumValues(restrn);
+                                var restriction = EnumHelper.GetEnumValues(restrn);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (!string.IsNullOrEmpty(tecsou)) {
-                                instance.techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(tecsou);
+                                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(tecsou);
+                                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
                             }
 
                             //TODO: verticalUncertainty - Not converted
@@ -141,7 +147,7 @@ namespace S100Framework.Applications
                             //
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information_optional = result.information.ToArray();

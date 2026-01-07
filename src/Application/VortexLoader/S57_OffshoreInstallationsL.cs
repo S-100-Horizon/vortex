@@ -3,6 +3,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -55,7 +56,7 @@ namespace S100Framework.Applications
                             var instance = new CableSubmarine();
 
                             if (current.BURDEP.HasValue) {
-                                instance.buriedDepth = current.BURDEP.Value;
+                                instance.buriedDepth_optional = current.BURDEP.Value;
                             }
 
                             if (current.CATCBL.HasValue) {
@@ -67,10 +68,10 @@ namespace S100Framework.Applications
                                         11.5.1, 11.5.3, A-2
                                      */
 
-                                    instance.categoryOfCable = categoryOfCable.TelecommunicationsCable;
+                                    instance.categoryOfCable_optional = 10; //categoryOfCable.TelecommunicationsCable;
                                 }
                                 else {
-                                    instance.categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
+                                    instance.categoryOfCable_optional = EnumHelper.GetEnumValue(current.CATCBL.Value);
                                 }
                             }
 
@@ -131,11 +132,13 @@ namespace S100Framework.Applications
                             var instance = new PipelineSubmarineOnLand();
 
                             if (current.BURDEP.HasValue) {
-                                instance.buriedDepth = current.BURDEP.Value;
+                                instance.buriedDepth_optional = current.BURDEP.Value;
                             }
 
                             if (current.CATPIP != default) {
-                                instance.categoryOfPipelinePipe = EnumHelper.GetEnumValues(current.CATPIP);
+                                var categoryOfPipelinePipe = EnumHelper.GetEnumValues(current.CATPIP);
+                                if (categoryOfPipelinePipe is not null && categoryOfPipelinePipe.Any())
+                                    instance.categoryOfPipelinePipe_optional = categoryOfPipelinePipe;
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -143,11 +146,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
+                                instance.depthRangeMaximumValue_optional = current.DRVAL2.Value;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);

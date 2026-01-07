@@ -55,7 +55,9 @@ namespace S100Framework.Applications
                             var instance = new MilitaryPracticeArea();
 
                             if (current.CATMPA != default) {
-                                instance.categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues(current.CATMPA);
+                                var categoryOfMilitaryPracticeArea = EnumHelper.GetEnumValues(current.CATMPA);
+                                if (categoryOfMilitaryPracticeArea is not null && categoryOfMilitaryPracticeArea.Any())
+                                    instance.categoryOfMilitaryPracticeArea_optional = categoryOfMilitaryPracticeArea;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -75,7 +77,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.RESTRN != default) {
-                                instance.restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                var restriction = EnumHelper.GetEnumValues(current.RESTRN);
+                                if (restriction is not null && restriction.Any())
+                                    instance.restriction_optional = restriction;
                             }
 
                             if (current.STATUS != default) {
@@ -83,7 +87,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
