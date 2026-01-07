@@ -160,79 +160,39 @@ namespace S100Framework.WPF
         private void ExecuteRemoveCollectionItem(object? parameter) {
             System.Diagnostics.Debug.WriteLine($"ExecuteRemoveCollectionItem called with parameter: {parameter?.GetType().Name}");
 
-            if (parameter is PropertyItem item) {
-                System.Diagnostics.Debug.WriteLine($"Item Name: {item.Name}, CollectionIndex: {item.CollectionIndex}");
-                System.Diagnostics.Debug.WriteLine($"ParentObject type: {item.ParentObject?.GetType().Name}");
-
-                if (item.ParentObject is IList list) {
-                    System.Diagnostics.Debug.WriteLine($"List Count: {list.Count}, IsReadOnly: {list.IsReadOnly}, IsFixedSize: {list.IsFixedSize}");
-
-                    try {
-                        // Use the stored collection index to remove the correct item
-                        if (item.CollectionIndex >= 0 && item.CollectionIndex < list.Count) {
-                            System.Diagnostics.Debug.WriteLine($"Removing item at index {item.CollectionIndex}");
-                            list.RemoveAt(item.CollectionIndex);
-                            System.Diagnostics.Debug.WriteLine($"Item removed. New count: {list.Count}");
-
-                            // If we have a reference to the parent collection item, refresh it
-                            // This will automatically update the UI
-                            if (item.ParentCollectionItem != null) {
-                                System.Diagnostics.Debug.WriteLine("Refreshing parent collection item");
-
-                                // Ensure we're on the UI thread
-                                Dispatcher.Invoke(() => {
-                                    item.ParentCollectionItem.RefreshChildren();
-                                });
-                            }
-                            else {
-                                // Fallback: refresh all properties
-                                System.Diagnostics.Debug.WriteLine("No parent collection item, refreshing all properties");
-                                Dispatcher.Invoke(() => {
-                                    RefreshProperties();
-                                });
-                            }
-                        }
-                        else {
-                            System.Diagnostics.Debug.WriteLine($"Invalid index: {item.CollectionIndex}, List count: {list.Count}");
-                        }
-                    }
-                    catch (Exception ex) {
-                        System.Diagnostics.Debug.WriteLine($"Error removing collection item: {ex.Message}");
-                        System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
-                    }
-                }
-                else {
-                    System.Diagnostics.Debug.WriteLine("ParentObject is not IList");
-                }
-            }
-            else {
+            if (parameter is not PropertyItem item) {
                 System.Diagnostics.Debug.WriteLine("Parameter is not PropertyItem");
+                return;
             }
+
+            // Get the parent collection item
+            var parentCollection = item.ParentCollectionItem;
+            if (parentCollection == null) {
+                System.Diagnostics.Debug.WriteLine("No ParentCollectionItem found");
+                return;
+            }
+
+            System.Diagnostics.Debug.WriteLine($"Item Name: {item.Name}, removing from parent collection");
+
+            // Use the parent's RemoveChildItem method which handles everything correctly
+            bool success = parentCollection.RemoveChildItem(item);
+            
+            System.Diagnostics.Debug.WriteLine($"Remove result: {success}");
         }
 
         private bool CanExecuteRemoveCollectionItem(object? parameter) {
-            System.Diagnostics.Debug.WriteLine($"CanExecuteRemoveCollectionItem called with parameter: {parameter?.GetType().Name ?? "null"}");
-
-            if (parameter is PropertyItem item) {
-                System.Diagnostics.Debug.WriteLine($"  Item Name: {item.Name}, CollectionIndex: {item.CollectionIndex}");
-                System.Diagnostics.Debug.WriteLine($"  ParentObject: {item.ParentObject?.GetType().Name ?? "null"}");
-
-                if (item.ParentObject is IList list) {
-                    System.Diagnostics.Debug.WriteLine($"  List Count: {list.Count}, IsReadOnly: {list.IsReadOnly}, IsFixedSize: {list.IsFixedSize}");
-                    bool canExecute = !list.IsReadOnly && !list.IsFixedSize &&
-                           item.CollectionIndex >= 0 && item.CollectionIndex < list.Count;
-                    System.Diagnostics.Debug.WriteLine($"  CanExecute result: {canExecute}");
-                    return canExecute;
-                }
-                else {
-                    System.Diagnostics.Debug.WriteLine("  ParentObject is not IList - returning false");
-                }
-            }
-            else {
-                System.Diagnostics.Debug.WriteLine("  Parameter is not PropertyItem - returning false");
+            if (parameter is not PropertyItem item) {
+                return false;
             }
 
-            return false;
+            // Must have a parent collection
+            var parentCollection = item.ParentCollectionItem;
+            if (parentCollection == null) {
+                return false;
+            }
+
+            // Check if the collection allows removal
+            return parentCollection.CanRemoveItems;
         }
 
         #endregion
