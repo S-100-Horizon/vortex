@@ -112,7 +112,7 @@ namespace S100Framework.Applications
 
                             // TODO: VerticalUncertainty
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 

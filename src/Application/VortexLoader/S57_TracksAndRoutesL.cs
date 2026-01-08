@@ -59,7 +59,11 @@ namespace S100Framework.Applications
                             var instance = new FerryRoute();
 
                             if (current.CATFRY.HasValue) {
-                                instance.categoryOfFerry = EnumHelper.GetEnumValues(current.CATFRY.Value);
+                                var categoryOfFerry = EnumHelper.GetEnumValues(current.CATFRY.Value);
+                                if (categoryOfFerry is not null && categoryOfFerry.Any()) {
+                                    instance.categoryOfFerry = categoryOfFerry[0];
+                                    instance.categoryOfFerry_optional = categoryOfFerry[1..];
+                                }
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -133,7 +137,7 @@ namespace S100Framework.Applications
                             // TODO: measured distance
 
                             if (current.ORIENT.HasValue) {
-                                instance.orientation = new DomainModel.S101.ComplexAttributes.orientation() {
+                                instance.orientation = new AttributeModel.S101.ComplexAttributes.orientation() {
                                     orientationValue = current.ORIENT.Value,
                                     // TODO: oriantationUncertainty
                                     //orientationUncertainty = ,
@@ -189,7 +193,6 @@ namespace S100Framework.Applications
                         }
                     case 20: { // RCRTCL_RecommendedRouteCenterline
                             var instance = new RecommendedRouteCentreline {
-                                basedOnFixedMarks = default,
                             };
 
                             if (current.CATTRK.HasValue) {
@@ -205,7 +208,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -218,7 +221,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                                instance.orientationValue_optional = current.ORIENT.Value;
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -244,11 +247,11 @@ namespace S100Framework.Applications
 
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
+                                instance.trafficFlow_optional = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }
@@ -289,11 +292,10 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint {
-                                trafficFlow = default,
                             };
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
+                                instance.communicationChannel_optional = GetCommunicationChannel(current.COMCHA);
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -306,7 +308,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = new() { current.ORIENT.Value };
+                                instance.orientationValue_optional = [current.ORIENT.Value];
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -358,9 +360,6 @@ namespace S100Framework.Applications
                         break;
                     case 30: { // RECTRC_RecommendedTrack
                             var instance = new RecommendedTrack {
-                                basedOnFixedMarks = default,
-                                orientationValue = default,
-                                trafficFlow = default,
                             };
 
                             if (current.CATTRK.HasValue) {
@@ -376,7 +375,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -420,7 +419,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }

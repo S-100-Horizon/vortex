@@ -336,7 +336,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SOUACC.HasValue) {
-                                    instance.verticalUncertainty = new() {
+                                    instance.verticalUncertainty_optional = new() {
                                         uncertaintyFixed = current.SOUACC.Value
                                     };
                                 }
@@ -437,13 +437,11 @@ namespace S100Framework.Applications
                         break;
                     case 25: { // WRECKS_Wreck
                             var instance = new Wreck {
-                                surroundingDepth = default,
-                                waterLevelEffect = default,
                             };
 
                             // action point #42 Attributes converted correctly but the combination of both is prohibited in S-101 (DCEG 13.5). Ignore/ drop CATWRK when VALSOU is populated on conversion.
                             if (current.CATWRK.HasValue && !current.VALSOU.HasValue) {
-                                instance.categoryOfWreck = EnumHelper.GetEnumValue(current.CATWRK.Value);
+                                instance.categoryOfWreck_optional = EnumHelper.GetEnumValue(current.CATWRK.Value);
                             }
 
                             if (current.EXPSOU.HasValue) {
@@ -501,7 +499,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -522,7 +520,7 @@ namespace S100Framework.Applications
                                 instance.surroundingDepth = drval1;
                             }
 
-                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
+                            instance.defaultClearanceDepth_optional = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
 
 
                             buffer["ps"] = ps101;

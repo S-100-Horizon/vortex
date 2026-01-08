@@ -510,8 +510,8 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";

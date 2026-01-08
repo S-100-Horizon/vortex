@@ -145,7 +145,9 @@ namespace S100Framework.Applications
                                     localDirectionOfBuoyage.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
-                                localDirectionOfBuoyage.SetInformationBindings(AddInformation(localDirectionOfBuoyage.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                localDirectionOfBuoyage.information_optional = result.information.ToArray();
+                                localDirectionOfBuoyage.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = localDirectionOfBuoyage.GetType().Name;
@@ -167,11 +169,10 @@ namespace S100Framework.Applications
                             }
                             else {
                                 var instance = new NavigationalSystemOfMarks {
-                                    marksNavigationalSystemOf = default,
                                 };
 
                                 if (current.MARSYS.HasValue) {
-                                    instance.marksNavigationalSystemOf_optional = EnumHelper.GetEnumValue(current.MARSYS.Value);
+                                    instance.marksNavigationalSystemOf = EnumHelper.GetEnumValue(current.MARSYS.Value);
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? default, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown LNAM", $"Missing MARSYS value for M_NSYS where globalid = '{{{current.GLOBALID}}}'");

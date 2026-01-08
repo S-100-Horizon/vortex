@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using NetTopologySuite.GeometriesGraph;
 using S100Framework.Applications.S57.esri;
 using S100Framework.DomainModel;
 using S100Framework.AttributeModel.S101.ComplexAttributes;

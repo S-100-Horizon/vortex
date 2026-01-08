@@ -2037,9 +2037,9 @@ namespace S100Framework.Applications
                         }
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLightValue.lightCharacteristic,
-                            signalGroup_optional = rhythmofLightValue.signalGroup,
-                            signalPeriod_optional = rhythmofLightValue.signalPeriod,
-                            signalSequence_optional = rhythmofLightValue.signalSequence,
+                            signalGroup_optional = rhythmofLightValue.signalGroup_optional,
+                            signalPeriod_optional = rhythmofLightValue.signalPeriod_optional,
+                            signalSequence_optional = rhythmofLightValue.signalSequence_optional,
                             lightSector = lightSector,
                         };
 

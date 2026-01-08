@@ -5,8 +5,8 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.ComponentModel;
-using YamlDotNet.Serialization;
 
 namespace S100Framework.Applications
 {
@@ -71,7 +71,7 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: imoAdopted
-                            instance.iMOAdopted = null;
+                            //instance.iMOAdopted_optional = null;
 
                             // TODO: InteroperabilityIdentifier
 
@@ -109,13 +109,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -156,7 +156,7 @@ namespace S100Framework.Applications
                             var instance = new Fairway();
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -171,7 +171,7 @@ namespace S100Framework.Applications
                             // TODO: maximumPermittedDraught
 
                             if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                                instance.orientationValue_optional = current.ORIENT.Value;
                             }
 
                             if (current.QUASOU != default) {
@@ -191,11 +191,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.TRAFIC.HasValue) {
-                                instance.trafficFlow = EnumHelper.GetEnumValue(current.TRAFIC.Value);
+                                instance.trafficFlow_optional = EnumHelper.GetEnumValue(current.TRAFIC.Value);
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }
@@ -208,8 +208,6 @@ namespace S100Framework.Applications
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
                                 instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
-
-                            ImporterNIS.AddInformation(instance.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information_optional = result.information.ToArray();
@@ -261,8 +259,8 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -309,7 +307,7 @@ namespace S100Framework.Applications
                             }
 
                             // TODO: imoAdopted
-                            instance.iMOAdopted = null;
+                            //instance.iMOAdopted_optional = null;
 
                             // TODO: interoperabilityIdentifier
 
@@ -323,8 +321,8 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -365,7 +363,6 @@ namespace S100Framework.Applications
                         }
                     case 30: { // RCTLPT_RecommendedTrafficLanePart
                             var instance = new RecommendedTrafficLanePart {
-                                orientationValue = default,
                             };
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -584,7 +581,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.ORIENT.HasValue) {
-                                instance.orientationValue = current.ORIENT.Value;
+                                instance.orientationValue_optional = current.ORIENT.Value;
                             }
 
                             if (current.RESTRN != default) {
@@ -597,8 +594,8 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -654,8 +651,8 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
-                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -696,10 +693,10 @@ namespace S100Framework.Applications
 
                             if (current.CATTRK.HasValue) {
                                 if (current.CATTRK.Value == 1) {
-                                    instance.basedOnFixedMarks = true;
+                                    instance.basedOnFixedMarks_optional = true;
                                 }
                                 else if (current.CATTRK.Value == 2) {
-                                    instance.basedOnFixedMarks = false;
+                                    instance.basedOnFixedMarks_optional = false;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, tableName, longname, $"Cannot convert value {current.CATTRK.Value} to basedOnFixedMarks boolean. Only values 1 and 2 are supported.");
@@ -707,7 +704,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
                             }
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -742,7 +739,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SOUACC.HasValue) {
-                                instance.verticalUncertainty = new() {
+                                instance.verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.SOUACC.Value
                                 };
                             }

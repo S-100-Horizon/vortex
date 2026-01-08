@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Net.Mail;
 
 namespace S100Framework.Applications
@@ -69,14 +70,10 @@ namespace S100Framework.Applications
                                     var sounding = new Sounding {
                                     };
                                     if (quasou != default) {
-                                        sounding.qualityOfVerticalMeasurement = new List<qualityOfVerticalMeasurement> {
-                                            (qualityOfVerticalMeasurement)Enum.Parse(typeof(qualityOfVerticalMeasurement), quasou)
-                                        };
+                                        sounding.qualityOfVerticalMeasurement_optional = [EnumHelper.GetEnumValue(quasou)];
                                     }
                                     if (tecsou != default && !string.IsNullOrEmpty(tecsou)) {
-                                        sounding.techniqueOfVerticalMeasurement = new List<techniqueOfVerticalMeasurement> {
-                                            (techniqueOfVerticalMeasurement)Enum.Parse(typeof(techniqueOfVerticalMeasurement), tecsou)
-                                        };
+                                        sounding.techniqueOfVerticalMeasurement_optional = [EnumHelper.GetEnumValue(tecsou)];
                                     }
 
                                     //if (objnam != default) {
@@ -101,7 +98,7 @@ namespace S100Framework.Applications
                                     //}
 
 
-                                    sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                    sounding.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
                                     // TODO: interoperabilityIdentifier
@@ -118,7 +115,7 @@ namespace S100Framework.Applications
 
                                     if (!string.IsNullOrEmpty(current.SORDAT)) {
                                         if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                            sounding.reportedDate = result;
+                                            sounding.reportedDate_optional = reportedDate;
                                         }
                                         else {
                                             Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -126,7 +123,7 @@ namespace S100Framework.Applications
                                     }
 
                                     if (current.STATUS != default) {
-                                        sounding.status = ImporterNIS.GetSingleStatus(current.STATUS);
+                                        sounding.status_optional = ImporterNIS.GetSingleStatus(current.STATUS)?.value;
                                     }
 
                                     if (current.TECSOU != null) {
@@ -144,7 +141,9 @@ namespace S100Framework.Applications
                                         sounding.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                     }
 
-                                    sounding.SetInformationBindings(AddInformation(sounding.information, current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM));
+                                    var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                                    sounding.information_optional = result.information.ToArray();
+                                    sounding.SetInformationBindings(result.InformationBindings.ToArray());
 
                                     bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
                                     bufferPointset["ps"] = ps101;

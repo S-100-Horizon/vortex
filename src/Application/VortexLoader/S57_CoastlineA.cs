@@ -79,7 +79,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             var horclr = current.HORCLR ?? default;
@@ -133,11 +133,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.WATLEV.HasValue) {
-                                if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect = EnumHelper.GetEnumValue(-1);
-                                else {
-                                    instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
-                                }
+                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

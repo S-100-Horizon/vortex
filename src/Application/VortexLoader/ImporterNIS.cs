@@ -1028,7 +1028,7 @@ namespace S100Framework.Applications
                             fileReference_optional = FixFilename(fileReference) ?? default,
                             language = language
                             }];
-                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
@@ -1059,7 +1059,7 @@ namespace S100Framework.Applications
                             language = language,
                         }];
 
-                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
 
                     // information.Add(instance);
                 }
@@ -1093,14 +1093,14 @@ namespace S100Framework.Applications
                         string language = "eng";
 
                         var instance = new NauticalInformation();
-                        instance.information = [
+                        instance.information_optional = [
                             new information() {
                             fileLocator_optional = fileLocator,
                             fileReference_optional = FixFilename(fileReference) ?? default,
                             language = language
                         }];
 
-                        result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
+                        result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
 
                     }
                     else if (!string.IsNullOrEmpty(value)) {

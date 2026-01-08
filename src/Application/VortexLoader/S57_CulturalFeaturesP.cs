@@ -539,7 +539,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -807,11 +807,11 @@ namespace S100Framework.Applications
                             var instance = new SiloTank();
 
                             if (current.BUISHP.HasValue) {
-                                instance.buildingShape = EnumHelper.GetEnumValue(current.BUISHP.Value);
+                                instance.buildingShape_optional = EnumHelper.GetEnumValue(current.BUISHP.Value);
                             }
 
                             if (current.CATSIL.HasValue) {
-                                instance.categoryOfSiloTank = EnumHelper.GetEnumValue(current.CATSIL.Value);
+                                instance.categoryOfSiloTank_optional = EnumHelper.GetEnumValue(current.CATSIL.Value);
                             }
 
                             if (current.COLOUR != default) {

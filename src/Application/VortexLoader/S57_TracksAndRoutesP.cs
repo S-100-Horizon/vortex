@@ -106,11 +106,10 @@ namespace S100Framework.Applications
                         break;
                     case 10: { // RDOCAL_RadioCallingInPoint
                             var instance = new RadioCallingInPoint {
-                                trafficFlow = default,
                             };
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
+                                instance.communicationChannel_optional = GetCommunicationChannel(current.COMCHA);
                             }
 
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -123,7 +122,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = new() { current.ORIENT.Value };
+                                instance.orientationValue_optional = [current.ORIENT.Value];
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);

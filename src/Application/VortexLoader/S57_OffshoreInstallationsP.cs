@@ -56,7 +56,7 @@ namespace S100Framework.Applications
                             var instance = new OffshorePlatform();
 
                             if (current.CATOFP != default) {
-                                instance.categoryOfOffshorePlatform = EnumHelper.GetEnumValue(current.CATOFP);
+                                instance.categoryOfOffshorePlatform_optional = EnumHelper.GetEnumValue(current.CATOFP);
                             }
 
                             if (current.COLOUR != default) {

@@ -98,11 +98,11 @@ namespace S100Framework.Applications
                 dsnm = "101DK00" + dsnm!.Substring(2);
 
                 var specificUsage = dsnm[7] switch {
-                    '5' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeHarbour,
-                    '4' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeApproach,
-                    '3' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeCoastal,
-                    '2' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeGeneral,
-                    '1' => S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeOverview,
+                    '5' => 5,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeHarbour,
+                    '4' => 4,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeApproach,
+                    '3' => 3,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeCoastal,
+                    '2' => 2,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeGeneral,
+                    '1' => 1,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeOverview,
                     _ => throw new InvalidDataException(),
                 };
 

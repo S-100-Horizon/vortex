@@ -62,7 +62,7 @@ namespace S100Framework.Applications
                             var instance = new FishingFacility();
 
                             if (current.CATFIF.HasValue) {
-                                instance.categoryOfFishingFacility = EnumHelper.GetEnumValue(current.CATFIF.Value);
+                                instance.categoryOfFishingFacility_optional = EnumHelper.GetEnumValue(current.CATFIF.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -175,7 +175,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.SOUACC.HasValue) {
-                                    instance.verticalUncertainty = new() {
+                                    instance.verticalUncertainty_optional = new() {
                                         uncertaintyFixed = current.SOUACC.Value
                                     };
                                 }

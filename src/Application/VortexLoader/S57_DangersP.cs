@@ -228,7 +228,7 @@ namespace S100Framework.Applications
                             instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.NATSUR != null) {
-                                instance.natureOfSurface = EnumHelper.GetEnumValue(current.NATSUR);
+                                instance.natureOfSurface_optional = EnumHelper.GetEnumValue(current.NATSUR);
                             }
 
                             if (current.QUASOU != default) {
@@ -310,11 +310,11 @@ namespace S100Framework.Applications
                             }
 
 
-                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth.HasValue;
+                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth!.value is not null;
 
                             bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
 
-                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !instance.surroundingDepth.HasValue;
+                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth!.value is not null);
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
                                 if (!(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {
@@ -529,7 +529,7 @@ namespace S100Framework.Applications
                                 instance.surroundingDepth = drval1;
                             }
 
-                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
+                            instance.defaultClearanceDepth_optional = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;

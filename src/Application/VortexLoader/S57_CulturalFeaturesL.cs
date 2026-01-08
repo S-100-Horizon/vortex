@@ -501,7 +501,7 @@ namespace S100Framework.Applications
                             var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
-                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue(current.CATFOR.Value);
+                                instance.categoryOfFortifiedStructure_optional = EnumHelper.GetEnumValue(current.CATFOR.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -642,10 +642,10 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalClearanceFixed = new() {
-                                verticalUncertainty = new() {
+                            instance.verticalClearanceFixed_optional = new() {
+                                verticalUncertainty_optional = new() {
                                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
+                                    uncertaintyVariableFactor_optional = default(double?)
                                 },
                                 //verticalClearanceValue = default(double?)
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),

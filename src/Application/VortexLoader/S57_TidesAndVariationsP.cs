@@ -92,10 +92,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VALLMA is not null) {
-                                instance.valueOfLocalMagneticAnomaly = [
-                                    new() {
-                                        magneticAnomalyValue = current.VALLMA / 60
-                                    }];
+                                instance.valueOfLocalMagneticAnomaly = new() {
+                                    magneticAnomalyValue = current.VALLMA / 60,
+                                };
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);

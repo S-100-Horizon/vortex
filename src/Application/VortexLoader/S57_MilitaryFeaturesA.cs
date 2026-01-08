@@ -4,6 +4,7 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -86,7 +87,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

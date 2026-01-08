@@ -90,7 +90,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
@@ -162,7 +162,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
@@ -213,7 +213,6 @@ namespace S100Framework.Applications
                         }
                     case 35: { // MARCUL_MarineFarmCulture
                             var instance = new MarineFarmCulture() {
-                                waterLevelEffect = default,
                             };
 
 
@@ -274,7 +273,7 @@ namespace S100Framework.Applications
 
                             // TODO: VerticalUncertainty
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
@@ -330,7 +329,7 @@ namespace S100Framework.Applications
                                 instance.status_optional = GetStatus(current.STATUS);
                             }
 
-                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(restriction.SpeedRestricted)) {
+                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
                                 instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
