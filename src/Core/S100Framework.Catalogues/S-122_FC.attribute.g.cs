@@ -2914,7 +2914,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : S100Framework.AttributeModel.InformationType
+	public class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -2923,6 +2923,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -2969,7 +2970,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
 	/// </summary>
-	public class Applicability : S100Framework.AttributeModel.InformationType
+	public class Applicability : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Applicability);
@@ -2978,6 +2979,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3108,7 +3110,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
-	public class Authority : S100Framework.AttributeModel.InformationType
+	public class Authority : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Authority);
@@ -3118,6 +3120,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfAuthority,
 				.. base.attributesOptional,
 			];
@@ -3151,7 +3154,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	public class ContactDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -3160,6 +3163,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3296,7 +3300,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
-	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	public class NauticalInformation : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NauticalInformation);
@@ -3305,6 +3309,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3320,7 +3325,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
-	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	public class NonStandardWorkingDay : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
@@ -3329,6 +3334,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3374,7 +3380,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
-	public class Recommendations : S100Framework.AttributeModel.InformationType
+	public class Recommendations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Recommendations);
@@ -3383,6 +3389,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3398,7 +3405,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
-	public class Regulations : S100Framework.AttributeModel.InformationType
+	public class Regulations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Regulations);
@@ -3407,6 +3414,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3422,7 +3430,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
-	public class Restrictions : S100Framework.AttributeModel.InformationType
+	public class Restrictions : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Restrictions);
@@ -3431,6 +3439,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3446,7 +3455,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
-	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	public class ServiceHours : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ServiceHours);
@@ -3456,6 +3465,7 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
@@ -3638,7 +3648,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
 	/// </summary>
-	public class InformationArea : S100Framework.AttributeModel.FeatureType
+	public class InformationArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationArea);
@@ -3649,6 +3659,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfRelationship,
 				actionOrActivity,
 				.. base.attributesOptional,
@@ -3680,7 +3691,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 	/// <summary>
 	/// Any area of the intertidal or sub-tidal terrain, together with its overlying water and associated flora, fauna, historical and cultural features, which has been reserved by law or other effective means to protect part or all of the enclosed environment.
 	/// </summary>
-	public class MarineProtectedArea : S100Framework.AttributeModel.FeatureType
+	public class MarineProtectedArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MarineProtectedArea);
@@ -3690,6 +3701,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfMarineProtectedArea,
 				.. base.attributesOptional,
 			];
@@ -3771,7 +3783,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 	/// <summary>
 	/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
-	public class RestrictedArea : S100Framework.AttributeModel.FeatureType
+	public class RestrictedArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RestrictedArea);
@@ -3781,6 +3793,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				restriction,
 				.. base.attributesOptional,
 			];
@@ -3830,7 +3843,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
-	public class VesselTrafficServiceArea : S100Framework.AttributeModel.FeatureType
+	public class VesselTrafficServiceArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VesselTrafficServiceArea);
@@ -3839,6 +3852,7 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 

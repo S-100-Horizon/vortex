@@ -1,4 +1,4 @@
-﻿using S100Framework.DomainModel;
+﻿using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.InformationTypes;
 using System;

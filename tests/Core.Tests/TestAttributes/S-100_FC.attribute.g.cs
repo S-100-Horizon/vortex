@@ -269,9 +269,9 @@ namespace S100Framework.AttributeModel
 
         public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract AttributeBinding[] attributeBindings();
+        public abstract attributeBinding[] attributeBindings();
 
-        public AttributeBinding[] mandatoryBindings() {
+        public attributeBinding[] mandatoryBindings() {
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
@@ -341,9 +341,9 @@ namespace S100Framework.AttributeModel
 
         public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract AttributeBinding[] attributeBindings();
+        public abstract attributeBinding[] attributeBindings();
 
-        public AttributeBinding[] mandatoryBindings() {
+        public attributeBinding[] mandatoryBindings() {
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
@@ -403,12 +403,16 @@ namespace S100Framework.AttributeModel
 
         [JsonIgnore]
         public abstract Attribute[] attributes { get; }
-
+        
         public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract AttributeBinding[] attributeBindings();
+        public informationBinding[] informationBindings { get; set; } = [];
 
-        public AttributeBinding[] mandatoryBindings() {
+        public featureBinding[] featureBindings { get; set; } = [];
+
+        public abstract attributeBinding[] attributeBindings();
+
+        public attributeBinding[] mandatoryBindings() {
             return [.. this.attributeBindings().Where(e => e.lower > 0)];
         }
 
@@ -435,7 +439,7 @@ namespace S100Framework.AttributeModel
         }
 
         protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e=>e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
 
         protected void AddAttributeValue(Attribute?[] attribute) {
@@ -459,7 +463,7 @@ namespace S100Framework.AttributeModel
         }
     }
 
-    public class AttributeBinding
+    public class attributeBinding
     {
         public string attribute { get; init; } = string.Empty;
 
@@ -475,6 +479,44 @@ namespace S100Framework.AttributeModel
         public int FreeSeats { get; set; } = int.MaxValue;
 
         public Func<Attribute?> CreateInstance { get; init; } = () => null;
+    }
+
+    public abstract class InformationAssociation
+    {
+        [JsonIgnore]
+        public abstract string role { get; }
+    }
+
+    public abstract class FeatureAssociation
+    {
+        [JsonIgnore]
+        public abstract string[] roles { get; }
+    }
+
+    public abstract class informationBinding
+    {
+        public string roleType { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? informationType { get; set; } = null;
+        public string informationId { get; set; } = string.Empty;
+    }
+
+    public class informationBinding<TAssociation> : informationBinding where TAssociation : InformationAssociation, new()
+    {
+        public TAssociation association { get; init; } = new TAssociation();
+    }
+
+    public abstract class featureBinding
+    {
+        public string roleType { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? featureType { get; set; } = null;
+        public string featureId { get; set; } = string.Empty;        
+    }
+
+    public class featureBinding<TAssociation> : featureBinding where TAssociation : FeatureAssociation, new()
+    {
+        public TAssociation association { get; init; } = new TAssociation();
     }
 
     public interface ISummary

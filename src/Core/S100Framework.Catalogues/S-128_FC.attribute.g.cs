@@ -3178,7 +3178,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 	/// <summary>
 	/// A physical or electronic product, that is primarily intended for navigation.
 	/// </summary>
-	public class NavigationalProduct : S100Framework.AttributeModel.FeatureType
+	public class NavigationalProduct : CatalogueElement
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationalProduct);
@@ -3187,6 +3187,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3366,7 +3367,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 	/// <summary>
 	/// Electronic navigation product.
 	/// </summary>
-	public class ElectronicProduct : S100Framework.AttributeModel.FeatureType
+	public class ElectronicProduct : NavigationalProduct
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ElectronicProduct);
@@ -3377,6 +3378,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				issueDate,
 				typeOfProductFormat,
 				.. base.attributesOptional,
@@ -3447,7 +3449,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 	/// <summary>
 	/// A product printed on paper.
 	/// </summary>
-	public class PhysicalProduct : S100Framework.AttributeModel.FeatureType
+	public class PhysicalProduct : NavigationalProduct
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PhysicalProduct);
@@ -3457,6 +3459,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				editionDate,
 				.. base.attributesOptional,
 			];
@@ -3529,7 +3532,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 	/// <summary>
 	/// A service that makes use of S-100 based product specifications to support data transfer.
 	/// </summary>
-	public class S100Service : S100Framework.AttributeModel.FeatureType
+	public class S100Service : CatalogueElement
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(S100Service);
@@ -3539,6 +3542,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				typeOfProductFormat,
 				.. base.attributesOptional,
 			];

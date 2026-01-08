@@ -2,6 +2,7 @@
 using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
+using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
@@ -437,9 +438,9 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - Spanfixed
-                                    DomainModel.featureBinding[] bindings = [
-                                        new DomainModel.featureBinding<BridgeAggregation>() {
-                                            referenceId = relatedBridge.Name,
+                                    AttributeModel.featureBinding[] bindings = [
+                                        new AttributeModel.featureBinding {
+                                            referenceId = name,
                                             featureType=nameof(SpanFixed),
                                             role = "theCollection",
                                             roleType = "aggregation"
@@ -1268,7 +1269,7 @@ namespace S100Framework.Applications
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
 
                                 // Create link to bridge - PylonBridgeSupport
-                                DomainModel.featureBinding[] bindings = [
+                                featureBinding[] bindings = [
                                     new DomainModel.featureBinding<BridgeAggregation>() {
                                         referenceId = relatedBridge.Name,
                                         featureType = nameof(PylonBridgeSupport),

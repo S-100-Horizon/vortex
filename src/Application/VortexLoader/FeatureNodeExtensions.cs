@@ -1,6 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using S100Framework.AttributeModel;
-using S100Framework.DomainModel;
+﻿using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications
 {

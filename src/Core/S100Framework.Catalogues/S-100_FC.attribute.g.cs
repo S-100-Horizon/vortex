@@ -477,6 +477,24 @@ namespace S100Framework.AttributeModel
         public Func<Attribute?> CreateInstance { get; init; } = () => null;
     }
 
+
+
+    public abstract class informationBinding
+    {
+        public string roleType { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? informationType { get; set; } = null;
+        public string referenceId { get; set; } = string.Empty;
+    }
+
+    public abstract class featureBinding
+    {
+        public string roleType { get; set; } = string.Empty;
+        public string role { get; set; } = string.Empty;
+        public string? featureType { get; set; } = null;
+        public string referenceId { get; set; } = string.Empty;
+    }
+
     public interface ISummary
     {
         public static string Name => string.Empty;

@@ -4436,7 +4436,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : S100Framework.AttributeModel.InformationType
+	public class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -4445,6 +4445,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4491,7 +4492,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
 	/// </summary>
-	public class Applicability : S100Framework.AttributeModel.InformationType
+	public class Applicability : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Applicability);
@@ -4500,6 +4501,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4630,7 +4632,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
-	public class Authority : S100Framework.AttributeModel.InformationType
+	public class Authority : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Authority);
@@ -4640,6 +4642,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfAuthority,
 				.. base.attributesOptional,
 			];
@@ -4673,7 +4676,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Services that are available for a given port.
 	/// </summary>
-	public class AvailablePortServices : S100Framework.AttributeModel.InformationType
+	public class AvailablePortServices : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AvailablePortServices);
@@ -4682,6 +4685,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4838,7 +4842,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	public class ContactDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -4847,6 +4851,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4983,7 +4988,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// The seaward end of a channel, harbour, dock, etc.
 	/// </summary>
-	public class Entrance : S100Framework.AttributeModel.InformationType
+	public class Entrance : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Entrance);
@@ -4992,6 +4997,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5107,7 +5113,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
-	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	public class NauticalInformation : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NauticalInformation);
@@ -5116,6 +5122,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5131,7 +5138,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
-	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	public class NonStandardWorkingDay : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
@@ -5140,6 +5147,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5185,7 +5193,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
-	public class Recommendations : S100Framework.AttributeModel.InformationType
+	public class Recommendations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Recommendations);
@@ -5194,6 +5202,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5209,7 +5218,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
-	public class Regulations : S100Framework.AttributeModel.InformationType
+	public class Regulations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Regulations);
@@ -5218,6 +5227,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5233,7 +5243,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
-	public class Restrictions : S100Framework.AttributeModel.InformationType
+	public class Restrictions : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Restrictions);
@@ -5242,6 +5252,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5257,7 +5268,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
-	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	public class ServiceHours : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ServiceHours);
@@ -5267,6 +5278,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
@@ -5479,7 +5491,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
 	/// </summary>
-	public class OrganizationContactArea : S100Framework.AttributeModel.FeatureType
+	public class OrganizationContactArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OrganizationContactArea);
@@ -5488,6 +5500,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5503,7 +5516,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A location which may be supervised by a responsible or controlling authority.
 	/// </summary>
-	public class SupervisedArea : S100Framework.AttributeModel.FeatureType
+	public class SupervisedArea : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SupervisedArea);
@@ -5512,6 +5525,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5527,7 +5541,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// The physical installations and facilities that support operations in a port or harbour.
 	/// </summary>
-	public class HarbourPhysicalInfrastructure : S100Framework.AttributeModel.FeatureType
+	public class HarbourPhysicalInfrastructure : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourPhysicalInfrastructure);
@@ -5536,6 +5550,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5551,7 +5566,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// The spatial arrangement of areas and other types of locations that are designated for specified purposes or otherwise distinguished from other areas and locations.
 	/// </summary>
-	public class Layout : S100Framework.AttributeModel.FeatureType
+	public class Layout : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Layout);
@@ -5560,6 +5575,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5575,7 +5591,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A designated area of water where a vessel, sea plane, etc., may anchor.
 	/// </summary>
-	public class AnchorBerth : S100Framework.AttributeModel.FeatureType
+	public class AnchorBerth : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AnchorBerth);
@@ -5584,6 +5600,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5631,7 +5648,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
 	/// </summary>
-	public class AnchorageArea : S100Framework.AttributeModel.FeatureType
+	public class AnchorageArea : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AnchorageArea);
@@ -5640,6 +5657,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5718,7 +5736,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// Equipment with material handling or operational capabilities, characterised by wheeled (including tracked) mobility, and which autonomously moves along a preset route based on environmental markers or external guidance signals.
 	/// </summary>
-	public class AutomatedGuidedVehicle : S100Framework.AttributeModel.FeatureType
+	public class AutomatedGuidedVehicle : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AutomatedGuidedVehicle);
@@ -5727,6 +5745,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5742,7 +5761,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
-	public class Berth : S100Framework.AttributeModel.FeatureType
+	public class Berth : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Berth);
@@ -5752,6 +5771,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				uNLocationCode,
 				.. base.attributesOptional,
 			];
@@ -5989,7 +6009,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A specific position within a berth where a vessel may be moored or anchored.
 	/// </summary>
-	public class BerthPosition : S100Framework.AttributeModel.FeatureType
+	public class BerthPosition : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(BerthPosition);
@@ -5998,6 +6018,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6073,7 +6094,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
-	public class Bollard : S100Framework.AttributeModel.FeatureType
+	public class Bollard : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Bollard);
@@ -6082,6 +6103,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6117,7 +6139,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
-	public class DockArea : S100Framework.AttributeModel.FeatureType
+	public class DockArea : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DockArea);
@@ -6126,6 +6148,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6182,7 +6205,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
-	public class DryDock : S100Framework.AttributeModel.FeatureType
+	public class DryDock : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DryDock);
@@ -6191,6 +6214,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6226,7 +6250,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
-	public class Dolphin : S100Framework.AttributeModel.FeatureType
+	public class Dolphin : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Dolphin);
@@ -6236,6 +6260,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfDolphin,
 				.. base.attributesOptional,
 			];
@@ -6263,7 +6288,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
 	/// </summary>
-	public class DumpingGround : S100Framework.AttributeModel.FeatureType
+	public class DumpingGround : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DumpingGround);
@@ -6272,6 +6297,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6328,7 +6354,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An imaginary line parallel to a face of a berth or quay which touches the seaward face of the fenders.
 	/// </summary>
-	public class FenderLine : S100Framework.AttributeModel.FeatureType
+	public class FenderLine : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FenderLine);
@@ -6337,6 +6363,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6362,7 +6389,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
-	public class FloatingDock : S100Framework.AttributeModel.FeatureType
+	public class FloatingDock : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FloatingDock);
@@ -6371,6 +6398,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6396,7 +6424,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
-	public class Gridiron : S100Framework.AttributeModel.FeatureType
+	public class Gridiron : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Gridiron);
@@ -6405,6 +6433,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6440,7 +6469,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
-	public class HarbourAreaAdministrative : S100Framework.AttributeModel.FeatureType
+	public class HarbourAreaAdministrative : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourAreaAdministrative);
@@ -6449,6 +6478,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6526,7 +6556,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A distinguishable portion of the area over which a harbour authority has jurisdiction.
 	/// </summary>
-	public class HarbourAreaSection : S100Framework.AttributeModel.FeatureType
+	public class HarbourAreaSection : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourAreaSection);
@@ -6535,6 +6565,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6593,7 +6624,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An enclosed area of water surrounded by quay walls constructed to provide means for the transfer of cargos from and to ships.
 	/// </summary>
-	public class HarbourBasin : S100Framework.AttributeModel.FeatureType
+	public class HarbourBasin : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourBasin);
@@ -6602,6 +6633,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6658,7 +6690,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
-	public class HarbourFacility : S100Framework.AttributeModel.FeatureType
+	public class HarbourFacility : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourFacility);
@@ -6667,6 +6699,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6682,7 +6715,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 	/// </summary>
-	public class LockBasin : S100Framework.AttributeModel.FeatureType
+	public class LockBasin : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LockBasin);
@@ -6691,6 +6724,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6716,7 +6750,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A lock basin is divided into several lock basin parts, if this lock basin has one ground level but several gates.
 	/// </summary>
-	public class LockBasinPart : S100Framework.AttributeModel.FeatureType
+	public class LockBasinPart : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LockBasinPart);
@@ -6725,6 +6759,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6750,7 +6785,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
-	public class MooringBuoy : S100Framework.AttributeModel.FeatureType
+	public class MooringBuoy : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MooringBuoy);
@@ -6759,6 +6794,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -6814,7 +6850,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// The equipment or structure used to secure a vessel.
 	/// </summary>
-	public class MooringWarpingFacility : S100Framework.AttributeModel.FeatureType
+	public class MooringWarpingFacility : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MooringWarpingFacility);
@@ -6825,6 +6861,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfMooringWarpingFacility,
 				iDCode,
 				.. base.attributesOptional,
@@ -6885,7 +6922,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// Facilities or infrastructure providing shore power to berthed vessels.
 	/// </summary>
-	public class OnshorePowerFacility : S100Framework.AttributeModel.FeatureType
+	public class OnshorePowerFacility : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OnshorePowerFacility);
@@ -6895,6 +6932,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				iDCode,
 				.. base.attributesOptional,
 			];
@@ -6979,7 +7017,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// The extent to which a coastal State claims or may claim a specific jurisdiction in accordance with the provisions of International Law.
 	/// </summary>
-	public class OuterLimit : S100Framework.AttributeModel.FeatureType
+	public class OuterLimit : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OuterLimit);
@@ -6988,6 +7026,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7063,7 +7102,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
-	public class PilotBoardingPlace : S100Framework.AttributeModel.FeatureType
+	public class PilotBoardingPlace : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotBoardingPlace);
@@ -7072,6 +7111,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7139,7 +7179,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
-	public class SeaplaneLandingArea : S100Framework.AttributeModel.FeatureType
+	public class SeaplaneLandingArea : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SeaplaneLandingArea);
@@ -7148,6 +7188,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7204,7 +7245,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A platform powered by synchronous electric motors (for example syncrolift) used to lift vessels (larger than boats) in and out of the water.
 	/// </summary>
-	public class ShipLift : S100Framework.AttributeModel.FeatureType
+	public class ShipLift : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ShipLift);
@@ -7213,6 +7254,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7238,7 +7280,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A wheeled vehicle designed to lift and carry containers or vessels within its own framework. It is used for moving, and sometimes stacking, shipping containers and vessels.
 	/// </summary>
-	public class StraddleCarrier : S100Framework.AttributeModel.FeatureType
+	public class StraddleCarrier : HarbourPhysicalInfrastructure
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(StraddleCarrier);
@@ -7247,6 +7289,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7262,7 +7305,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// A terminal covers that area on shore which provides buildings and constructions for the transfer of cargo or passengers from and to ships.
 	/// </summary>
-	public class Terminal : S100Framework.AttributeModel.FeatureType
+	public class Terminal : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Terminal);
@@ -7271,6 +7314,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7359,7 +7403,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An area of water or enlargement of a channel used for turning vessels.
 	/// </summary>
-	public class TurningBasin : S100Framework.AttributeModel.FeatureType
+	public class TurningBasin : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TurningBasin);
@@ -7368,6 +7412,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -7424,7 +7469,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 	/// <summary>
 	/// An area in which uniform general information of the waterway exists.
 	/// </summary>
-	public class WaterwayArea : S100Framework.AttributeModel.FeatureType
+	public class WaterwayArea : Layout
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WaterwayArea);
@@ -7434,6 +7479,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfPortSection,
 				.. base.attributesOptional,
 			];

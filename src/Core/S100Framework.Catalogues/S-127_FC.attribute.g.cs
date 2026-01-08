@@ -3470,7 +3470,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : S100Framework.AttributeModel.InformationType
+	public class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -3479,6 +3479,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3525,7 +3526,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
 	/// </summary>
-	public class Applicability : S100Framework.AttributeModel.InformationType
+	public class Applicability : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Applicability);
@@ -3534,6 +3535,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3664,7 +3666,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
-	public class Authority : S100Framework.AttributeModel.InformationType
+	public class Authority : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Authority);
@@ -3674,6 +3676,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfAuthority,
 				.. base.attributesOptional,
 			];
@@ -3707,7 +3710,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	public class ContactDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -3716,6 +3719,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3852,7 +3856,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
-	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	public class NauticalInformation : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NauticalInformation);
@@ -3861,6 +3865,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3876,7 +3881,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
-	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	public class NonStandardWorkingDay : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
@@ -3885,6 +3890,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3930,7 +3936,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
-	public class Recommendations : S100Framework.AttributeModel.InformationType
+	public class Recommendations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Recommendations);
@@ -3939,6 +3945,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3954,7 +3961,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
-	public class Regulations : S100Framework.AttributeModel.InformationType
+	public class Regulations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Regulations);
@@ -3963,6 +3970,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3978,7 +3986,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
-	public class Restrictions : S100Framework.AttributeModel.InformationType
+	public class Restrictions : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Restrictions);
@@ -3987,6 +3995,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4002,7 +4011,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
-	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	public class ServiceHours : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ServiceHours);
@@ -4012,6 +4021,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
@@ -4048,7 +4058,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 	/// <summary>
 	/// Description of how a ship should report to a maritime authority, including when to report, what to report and whether the format conforms to the IMO standard.
 	/// </summary>
-	public class ShipReport : S100Framework.AttributeModel.InformationType
+	public class ShipReport : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ShipReport);
@@ -4060,6 +4070,7 @@ namespace S100Framework.AttributeModel.S127.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfShipReport,
 				iMOFormatForReporting,
 				noticeTime,
@@ -4272,7 +4283,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
 	/// </summary>
-	public class OrganizationContactArea : S100Framework.AttributeModel.FeatureType
+	public class OrganizationContactArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OrganizationContactArea);
@@ -4281,6 +4292,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4296,7 +4308,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A location which may be supervised by a responsible or controlling authority.
 	/// </summary>
-	public class SupervisedArea : S100Framework.AttributeModel.FeatureType
+	public class SupervisedArea : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SupervisedArea);
@@ -4305,6 +4317,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4320,7 +4333,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A service feature generally involving one or more reports from the requester, including communications not strictly considered "reporting".
 	/// </summary>
-	public class ReportableServiceArea : S100Framework.AttributeModel.FeatureType
+	public class ReportableServiceArea : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ReportableServiceArea);
@@ -4329,6 +4342,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4344,7 +4358,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
 	/// </summary>
-	public class CautionArea : S100Framework.AttributeModel.FeatureType
+	public class CautionArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CautionArea);
@@ -4353,6 +4367,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4390,7 +4405,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area where hazards, caused by concentrations of shipping, may occur. Hazards are risks to shipping, which stem from sources other than shoal water or obstructions.
 	/// </summary>
-	public class ConcentrationOfShippingHazardArea : S100Framework.AttributeModel.FeatureType
+	public class ConcentrationOfShippingHazardArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ConcentrationOfShippingHazardArea);
@@ -4399,6 +4414,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4436,7 +4452,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// The area to which an International Ship and Port Facility Security (ISPS) level applies. The ISPS Code is a comprehensive set of measures to enhance the security of ships and port facilities, developed in response to the perceived threats to ships and port facilities in the wake of the 9/11 attacks in the United States.
 	/// </summary>
-	public class ISPSCodeSecurityLevel : S100Framework.AttributeModel.FeatureType
+	public class ISPSCodeSecurityLevel : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ISPSCodeSecurityLevel);
@@ -4446,6 +4462,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				iSPSLevel,
 				.. base.attributesOptional,
 			];
@@ -4469,7 +4486,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A broadcast service established to provide port information without interaction between the customer and the service provider. This information could be inter alia berthing information, availability of port services, shipping schedules, meteorological and hydrological data.
 	/// </summary>
-	public class LocalPortBroadcastServiceArea : S100Framework.AttributeModel.FeatureType
+	public class LocalPortBroadcastServiceArea : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LocalPortBroadcastServiceArea);
@@ -4479,6 +4496,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				requirementsForMaintenanceOfListeningWatch,
 				.. base.attributesOptional,
 			];
@@ -4511,7 +4529,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out. Also called an 'exercise area'.
 	/// </summary>
-	public class MilitaryPracticeArea : S100Framework.AttributeModel.FeatureType
+	public class MilitaryPracticeArea : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MilitaryPracticeArea);
@@ -4520,6 +4538,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4578,7 +4597,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
-	public class PilotBoardingPlace : S100Framework.AttributeModel.FeatureType
+	public class PilotBoardingPlace : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotBoardingPlace);
@@ -4587,6 +4606,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4697,7 +4717,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// The service provided by a person who directs the movements of a vessel through pilot waters, usually a person who has demonstrated extensive knowledge of channels, aids to navigation, dangers to navigation, etc., in a particular area and is licensed for that area.
 	/// </summary>
-	public class PilotService : S100Framework.AttributeModel.FeatureType
+	public class PilotService : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotService);
@@ -4707,6 +4727,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				remotePilot,
 				.. base.attributesOptional,
 			];
@@ -4771,7 +4792,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
-	public class PilotageDistrict : S100Framework.AttributeModel.FeatureType
+	public class PilotageDistrict : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotageDistrict);
@@ -4780,6 +4801,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4805,7 +4827,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area where there is a raised risk of piracy or armed robbery.
 	/// </summary>
-	public class PiracyRiskArea : S100Framework.AttributeModel.FeatureType
+	public class PiracyRiskArea : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PiracyRiskArea);
@@ -4814,6 +4836,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4851,7 +4874,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A place where a ship in need of assistance can take action to enable it to stabilize its condition and reduce the hazards to navigation, and to protect human life and the environment.
 	/// </summary>
-	public class PlaceOfRefuge : S100Framework.AttributeModel.FeatureType
+	public class PlaceOfRefuge : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PlaceOfRefuge);
@@ -4860,6 +4883,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4896,7 +4920,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
 	/// </summary>
-	public class RadarRange : S100Framework.AttributeModel.FeatureType
+	public class RadarRange : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarRange);
@@ -4905,6 +4929,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4941,7 +4966,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
 	/// </summary>
-	public class RadioCallingInPoint : S100Framework.AttributeModel.FeatureType
+	public class RadioCallingInPoint : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioCallingInPoint);
@@ -4951,6 +4976,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				trafficFlow,
 				.. base.attributesOptional,
 			];
@@ -5037,7 +5063,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A specified area designated by an appropriate authority within which navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
-	public class RestrictedArea : S100Framework.AttributeModel.FeatureType
+	public class RestrictedArea : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RestrictedArea);
@@ -5047,6 +5073,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				restriction,
 				.. base.attributesOptional,
 			];
@@ -5096,7 +5123,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area or line designating the limits or central line of a routeing measure (or part of a routeing measure). Routeing measures include traffic separation schemes, deep-water routes, two-way routes, archipelagic sea lanes, and fairway systems.
 	/// </summary>
-	public class RouteingMeasure : S100Framework.AttributeModel.FeatureType
+	public class RouteingMeasure : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RouteingMeasure);
@@ -5106,6 +5133,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfRouteingMeasure,
 				.. base.attributesOptional,
 			];
@@ -5151,7 +5179,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A service established by a relevant authority consisting of one or more reporting points or lines at which ships are required to report their identity, course, speed and other data to the monitoring authority.
 	/// </summary>
-	public class ShipReportingServiceArea : S100Framework.AttributeModel.FeatureType
+	public class ShipReportingServiceArea : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ShipReportingServiceArea);
@@ -5161,6 +5189,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				requirementsForMaintenanceOfListeningWatch,
 				.. base.attributesOptional,
 			];
@@ -5193,7 +5222,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
 	/// </summary>
-	public class SignalStationWarning : S100Framework.AttributeModel.FeatureType
+	public class SignalStationWarning : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SignalStationWarning);
@@ -5203,6 +5232,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfSignalStationWarning,
 				.. base.attributesOptional,
 			];
@@ -5251,7 +5281,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
 	/// </summary>
-	public class SignalStationTraffic : S100Framework.AttributeModel.FeatureType
+	public class SignalStationTraffic : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SignalStationTraffic);
@@ -5261,6 +5291,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfSignalStationTraffic,
 				.. base.attributesOptional,
 			];
@@ -5309,7 +5340,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area for which an authority has stated under keel allowance requirements.
 	/// </summary>
-	public class UnderKeelClearanceAllowanceArea : S100Framework.AttributeModel.FeatureType
+	public class UnderKeelClearanceAllowanceArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(UnderKeelClearanceAllowanceArea);
@@ -5318,6 +5349,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5354,7 +5386,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area for which an authority permits use of dynamic under keel clearance information or provides dynamic information related to under keel clearances.
 	/// </summary>
-	public class UnderKeelClearanceManagementArea : S100Framework.AttributeModel.FeatureType
+	public class UnderKeelClearanceManagementArea : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(UnderKeelClearanceManagementArea);
@@ -5364,6 +5396,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				dynamicResource,
 				.. base.attributesOptional,
 			];
@@ -5387,7 +5420,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
-	public class VesselTrafficServiceArea : S100Framework.AttributeModel.FeatureType
+	public class VesselTrafficServiceArea : ReportableServiceArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VesselTrafficServiceArea);
@@ -5397,6 +5430,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				requirementsForMaintenanceOfListeningWatch,
 				.. base.attributesOptional,
 			];
@@ -5429,7 +5463,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 	/// <summary>
 	/// An area in which uniform general information of the waterway exists.
 	/// </summary>
-	public class WaterwayArea : S100Framework.AttributeModel.FeatureType
+	public class WaterwayArea : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WaterwayArea);
@@ -5439,6 +5473,7 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				dynamicResource,
 				.. base.attributesOptional,
 			];

@@ -3514,7 +3514,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : S100Framework.AttributeModel.InformationType
+	public class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -3523,6 +3523,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3579,7 +3580,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Describes the relationship between vessel characteristics and: (i) the applicability of an associated information object or feature to the vessel; or, (ii) the use of a facility, place, or service by the vessel; or, (iii) passage of the vessel through an area.
 	/// </summary>
-	public class Applicability : S100Framework.AttributeModel.InformationType
+	public class Applicability : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Applicability);
@@ -3588,6 +3589,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3708,7 +3710,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// A person or organisation having political or administrative power and control.
 	/// </summary>
-	public class Authority : S100Framework.AttributeModel.InformationType
+	public class Authority : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Authority);
@@ -3717,6 +3719,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3753,7 +3756,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Description of the content and schedule of a service using broadcast technology of radiocommunications to deliver information (to every receiver within a direct range). Online resource to access the content may also be included.
 	/// </summary>
-	public class BroadcastDetails : S100Framework.AttributeModel.InformationType
+	public class BroadcastDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(BroadcastDetails);
@@ -3763,6 +3766,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				broadcastContent,
 				.. base.attributesOptional,
 			];
@@ -3840,7 +3844,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Information related to the Quality of Service (QoS) of the connectivity.
 	/// </summary>
-	public class ConnectivityQualityOfService : S100Framework.AttributeModel.InformationType
+	public class ConnectivityQualityOfService : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ConnectivityQualityOfService);
@@ -3849,6 +3853,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3936,7 +3941,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100Framework.AttributeModel.InformationType
+	public class ContactDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -3945,6 +3950,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4070,7 +4076,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
-	public class NauticalInformation : S100Framework.AttributeModel.InformationType
+	public class NauticalInformation : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NauticalInformation);
@@ -4079,6 +4085,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4094,7 +4101,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
-	public class NonStandardWorkingDay : S100Framework.AttributeModel.InformationType
+	public class NonStandardWorkingDay : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
@@ -4103,6 +4110,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4148,7 +4156,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// The control centre of the radio service or radio stations
 	/// </summary>
-	public class RadioControlCentre : S100Framework.AttributeModel.InformationType
+	public class RadioControlCentre : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioControlCentre);
@@ -4159,6 +4167,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				isMRCC,
 				acceptAMVER,
 				.. base.attributesOptional,
@@ -4208,7 +4217,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Recommendations for a related area or facility.
 	/// </summary>
-	public class Recommendations : S100Framework.AttributeModel.InformationType
+	public class Recommendations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Recommendations);
@@ -4217,6 +4226,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4232,7 +4242,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Regulations for a related area or facility.
 	/// </summary>
-	public class Regulations : S100Framework.AttributeModel.InformationType
+	public class Regulations : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Regulations);
@@ -4241,6 +4251,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4256,7 +4267,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Restrictions for a related area or facility.
 	/// </summary>
-	public class Restrictions : S100Framework.AttributeModel.InformationType
+	public class Restrictions : AbstractRxN
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Restrictions);
@@ -4265,6 +4276,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4280,7 +4292,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
-	public class ServiceHours : S100Framework.AttributeModel.InformationType
+	public class ServiceHours : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ServiceHours);
@@ -4290,6 +4302,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
@@ -4371,7 +4384,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// A service to provide decision support and advice to the seafarer on board responsible for medical care.
 	/// </summary>
-	public class TelemedicalAssistanceService : S100Framework.AttributeModel.InformationType
+	public class TelemedicalAssistanceService : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TelemedicalAssistanceService);
@@ -4380,6 +4393,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4445,7 +4459,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 	/// <summary>
 	/// Description of the radiocommunication service with respect to the radio method and radio channels for the transfer of information by means of signals.
 	/// </summary>
-	public class TransmissionDetails : S100Framework.AttributeModel.InformationType
+	public class TransmissionDetails : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TransmissionDetails);
@@ -4455,6 +4469,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				radioChannelDetails,
 				.. base.attributesOptional,
 			];
@@ -4624,7 +4639,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// An area of connectivity coverage available for the subscription of connectivity service.
 	/// </summary>
-	public class ConnectivitySubscriptionArea : S100Framework.AttributeModel.FeatureType
+	public class ConnectivitySubscriptionArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ConnectivitySubscriptionArea);
@@ -4633,6 +4648,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4719,7 +4735,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// An area defined for a global communications service based upon automated systems, both satellite based and terrestrial, to provide distress alerting and promulgation of maritime safety information for mariners.
 	/// </summary>
-	public class GMDSSArea : S100Framework.AttributeModel.FeatureType
+	public class GMDSSArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(GMDSSArea);
@@ -4730,6 +4746,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				idNAVAREA,
 				categoryOfGMDSSArea,
 				.. base.attributesOptional,
@@ -4780,7 +4797,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// A region in which the perception of a phenomenon or the availability of a service is known only to a specified level of confidence.
 	/// </summary>
-	public class IndeterminateZone : S100Framework.AttributeModel.FeatureType
+	public class IndeterminateZone : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IndeterminateZone);
@@ -4789,6 +4806,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -4815,7 +4833,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// A geographical sea area (which may include inland seas, lakes and waterways navigable by seagoing ships) established for the purpose of coordinating the broadcast of marine meteorological information.
 	/// </summary>
-	public class METAREA : S100Framework.AttributeModel.FeatureType
+	public class METAREA : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(METAREA);
@@ -4825,6 +4843,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				idMETAREA,
 				.. base.attributesOptional,
 			];
@@ -4857,7 +4876,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// The short title for a geographical sea area (may include inland seas, lakes and waterways navigable by sea-going ships) established for the purpose of coordinating the broadcast of navigational warnings. The term NAVAREA followed by a roman numeral may be used to identify a particular sea area. The delimitation of such areas is not related to and shall not prejudice the delimitation of any boundaries between States.
 	/// </summary>
-	public class NAVAREA : S100Framework.AttributeModel.FeatureType
+	public class NAVAREA : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NAVAREA);
@@ -4867,6 +4886,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				idNAVAREA,
 				.. base.attributesOptional,
 			];
@@ -4899,7 +4919,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// A unique and precisely defined sea area, wholly contained within the NAVTEX coverage area, for which maritime safety information is provided from a particular NAVTEX transmitter.
 	/// </summary>
-	public class NAVTEXServiceArea : S100Framework.AttributeModel.FeatureType
+	public class NAVTEXServiceArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NAVTEXServiceArea);
@@ -4911,6 +4931,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				typeOfNAVTEXService,
 				idNAVAREA,
 				transmitterIdentificationCharacter,
@@ -4969,7 +4990,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// The area where a radio service can be obtained and the characteristics of the radio transmission.
 	/// </summary>
-	public class RadioServiceArea : S100Framework.AttributeModel.FeatureType
+	public class RadioServiceArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioServiceArea);
@@ -4978,6 +4999,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5044,7 +5066,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
-	public class RadioStation : S100Framework.AttributeModel.FeatureType
+	public class RadioStation : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioStation);
@@ -5053,6 +5075,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5150,7 +5173,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// A defined geographical area where a specific country or organization is designated to coordinate and provide search and rescue services.
 	/// </summary>
-	public class SearchAndRescueRegion : S100Framework.AttributeModel.FeatureType
+	public class SearchAndRescueRegion : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SearchAndRescueRegion);
@@ -5159,6 +5182,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5184,7 +5208,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// An area for which weather forecasts and warnings are provided for specified periods.
 	/// </summary>
-	public class WeatherForecastAndWarningArea : S100Framework.AttributeModel.FeatureType
+	public class WeatherForecastAndWarningArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WeatherForecastAndWarningArea);
@@ -5194,6 +5218,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				categoryOfForecastOrWarningArea,
 				.. base.attributesOptional,
 			];
@@ -5248,7 +5273,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// Aggregation of a geographic feature describing a service or phenomenon with zones of different confidence about the availability of the service, occurrence of the phenomenon, or applicability of the information described by the geographic feature.
 	/// </summary>
-	public class FuzzyAreaAggregate : S100Framework.AttributeModel.FeatureType
+	public class FuzzyAreaAggregate : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FuzzyAreaAggregate);
@@ -5257,6 +5282,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -5272,7 +5298,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 	/// <summary>
 	/// Aggregation of areas where radio services from a single radio service are available to different levels of reliability.
 	/// </summary>
-	public class RadioServiceAreaAggregate : S100Framework.AttributeModel.FeatureType
+	public class RadioServiceAreaAggregate : FuzzyAreaAggregate
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioServiceAreaAggregate);
@@ -5281,6 +5307,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 
 		[JsonIgnore]
 		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
