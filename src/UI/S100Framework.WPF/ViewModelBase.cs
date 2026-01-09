@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel;
 using System.Collections;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -57,22 +58,143 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private Dictionary<ViewModelBase, string> nestedProperties = new();
+        private Dictionary<INotifyCollectionChanged, string> nestedCollections = new();
+        private Dictionary<INotifyCollectionChanged, List<ViewModelBase>> collectionItems = new();
 
         protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             if (string.IsNullOrWhiteSpace(propertyName)) return;
 
             if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            if (backingFiled is ViewModelBase viewModel) {   // if old value is ViewModel, than we assume that it was subscribed, so - unsubscribe it
+            
+            // Unsubscribe from old ViewModel
+            if (backingFiled is ViewModelBase viewModel) {
                 viewModel.PropertyChanged -= ChildViewModelChanged;
                 nestedProperties.Remove(viewModel);
             }
+            
+            // Unsubscribe from old collection
+            if (backingFiled is INotifyCollectionChanged oldCollection) {
+                UnsubscribeFromCollection(oldCollection);
+            }
+            
+            // Subscribe to new ViewModel
             if (value is ViewModelBase valueViewModel) {
-                // if new value is ViewModel, than we must subscribe it on PropertyChanged and add it into subscribe dictionary
                 valueViewModel.PropertyChanged += ChildViewModelChanged;
                 nestedProperties.Add(valueViewModel, propertyName);
             }
+            
+            // Subscribe to new collection
+            if (value is INotifyCollectionChanged newCollection) {
+                SubscribeToCollection(newCollection, propertyName);
+            }
+            
             backingFiled = value;
             OnPropertyChanged(propertyName);
+        }
+
+        private void SubscribeToCollection(INotifyCollectionChanged collection, string propertyName) {
+            nestedCollections[collection] = propertyName;
+            collectionItems[collection] = new List<ViewModelBase>();
+            
+            collection.CollectionChanged += OnCollectionChanged;
+            
+            // Subscribe to existing items in the collection
+            if (collection is IEnumerable enumerable) {
+                foreach (var item in enumerable) {
+                    if (item is ViewModelBase vm) {
+                        SubscribeToCollectionItem(collection, vm);
+                    }
+                }
+            }
+        }
+
+        private void UnsubscribeFromCollection(INotifyCollectionChanged collection) {
+            collection.CollectionChanged -= OnCollectionChanged;
+            
+            // Unsubscribe from all items in the collection
+            if (collectionItems.TryGetValue(collection, out var items)) {
+                foreach (var vm in items) {
+                    vm.PropertyChanged -= CollectionItemChanged;
+                }
+                collectionItems.Remove(collection);
+            }
+            
+            nestedCollections.Remove(collection);
+        }
+
+        private void SubscribeToCollectionItem(INotifyCollectionChanged collection, ViewModelBase item) {
+            item.PropertyChanged += CollectionItemChanged;
+            
+            if (collectionItems.TryGetValue(collection, out var items)) {
+                if (!items.Contains(item)) {
+                    items.Add(item);
+                }
+            }
+        }
+
+        private void UnsubscribeFromCollectionItem(INotifyCollectionChanged collection, ViewModelBase item) {
+            item.PropertyChanged -= CollectionItemChanged;
+            
+            if (collectionItems.TryGetValue(collection, out var items)) {
+                items.Remove(item);
+            }
+        }
+
+        private void OnCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e) {
+            if (sender is not INotifyCollectionChanged collection) return;
+            if (!nestedCollections.TryGetValue(collection, out var propertyName)) return;
+
+            // Handle removed items
+            if (e.OldItems != null) {
+                foreach (var item in e.OldItems) {
+                    if (item is ViewModelBase vm) {
+                        UnsubscribeFromCollectionItem(collection, vm);
+                    }
+                }
+            }
+
+            // Handle added items
+            if (e.NewItems != null) {
+                foreach (var item in e.NewItems) {
+                    if (item is ViewModelBase vm) {
+                        SubscribeToCollectionItem(collection, vm);
+                    }
+                }
+            }
+
+            // Handle reset (clear)
+            if (e.Action == NotifyCollectionChangedAction.Reset) {
+                if (collectionItems.TryGetValue(collection, out var items)) {
+                    foreach (var vm in items.ToList()) {
+                        vm.PropertyChanged -= CollectionItemChanged;
+                    }
+                    items.Clear();
+                }
+                
+                // Re-subscribe to current items after reset
+                if (collection is IEnumerable enumerable) {
+                    foreach (var item in enumerable) {
+                        if (item is ViewModelBase vm) {
+                            SubscribeToCollectionItem(collection, vm);
+                        }
+                    }
+                }
+            }
+
+            OnPropertyChanged(propertyName);
+            Validate();
+        }
+
+        private void CollectionItemChanged(object? sender, PropertyChangedEventArgs e) {
+            if (sender is not ViewModelBase vm) return;
+
+            // Find which collection this item belongs to
+            foreach (var kvp in collectionItems) {
+                if (kvp.Value.Contains(vm) && nestedCollections.TryGetValue(kvp.Key, out var propertyName)) {
+                    OnPropertyChanged(propertyName);
+                    return;
+                }
+            }
         }
 
         private void ChildViewModelChanged(object? sender, PropertyChangedEventArgs e) {
@@ -191,11 +313,20 @@ namespace S100Framework.WPF.ViewModel
         #endregion
 
         #region IDisposable
-        public void Dispose() {   // need to make sure that we unsubscibed
+        public void Dispose() {
+            // Unsubscribe from nested ViewModels
             foreach (ViewModelBase viewModel in nestedProperties.Keys) {
                 viewModel.PropertyChanged -= ChildViewModelChanged;
                 viewModel.Dispose();
             }
+            nestedProperties.Clear();
+            
+            // Unsubscribe from collections
+            foreach (var collection in nestedCollections.Keys.ToList()) {
+                UnsubscribeFromCollection(collection);
+            }
+            nestedCollections.Clear();
+            collectionItems.Clear();
         }
 
         #endregion
@@ -209,8 +340,9 @@ namespace S100Framework.WPF.ViewModel
                 var required = p.GetCustomAttribute<MandatoryAttribute>();
                 if (required != default) {
                     var value = viewmodelProperties.Single(e => e.Name == p.Name)?.GetValue(this);
-                    if (value is null) {
-                        // UNKNOWN, this.AddError(p.Name, $"{p.Name} is required.");
+                    if (value is null || (value is string str && string.IsNullOrWhiteSpace(str))) {
+                        // UNKNOWN,
+                        this.AddError(p.Name, $"{p.Name} is required.");
                     }
                 }
 

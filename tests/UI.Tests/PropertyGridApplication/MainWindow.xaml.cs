@@ -46,29 +46,7 @@ namespace PropertyGridApplication
             this.MainPropertyGrid.SelectedObject = viewModel;
 
             // Tilmeld property changed events
-            //SubscribeToPropertyChanges(viewModel);
-            viewModel.PropertyChanged += (s, ev) => {
-                if (!string.IsNullOrEmpty(ev.PropertyName)) {
-                    LogMessage($"ViewModel property changed: {ev.PropertyName}");
-                    // Send the new value of the property to the log
-                    var propInfo = viewModel.GetType().GetProperty(ev.PropertyName);
-                    if (propInfo != null) {
-                        var newValue = propInfo.GetValue(viewModel);
-                        LogMessage($"New value of {ev.PropertyName}: {newValue}");
-                    }
-                    else {
-                        LogMessage($"Property {ev.PropertyName} not found on ViewModel");
-                    }
-                }
-                else {
-                    LogMessage($"Property {ev.PropertyName} not found on ViewModel");
-                }
-;
-                if (viewModel.HasErrors) {
-                    LogMessage("The model contains errors");
-                }
-            };
-
+            SubscribeToPropertyChanges(viewModel);
             LogMessage("Application started");
             LogMessage($"Loaded object: {viewModel.GetType().Name}");
         }
