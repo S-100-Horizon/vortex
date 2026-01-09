@@ -309,11 +309,11 @@ namespace S100Framework.Applications
                             }
 
 
-                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth!.value is not null;
+                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth is not null && instance.surroundingDepth!.value is not null;
 
                             bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
 
-                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth!.value is not null);
+                            bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth is not null && instance.surroundingDepth!.value is not null);
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
                                 if (!(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {

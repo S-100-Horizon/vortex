@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using S100Framework.Applications.S57.esri;
 using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
@@ -1094,13 +1095,18 @@ namespace S100Framework.Applications.Singletons
 
                 //var featureBindingPrimary = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
                 var key = $"{relation.Master.S101Type!.Name}::{relation.Slave.S101Type!.Name}";
-                var featureBindingPrimary = featureBindings[key]();
-                featureBindingPrimary.featureId = relation!.Slave!.Name;
-                //featureBindingPrimary.role = bindingDefinitionPrimary.role;
-                //featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
-                featureBindingPrimary.featureType = relation!.Slave!.S101Type.Name;
 
-                primaryBindings.Add(featureBindingPrimary);
+                if (featureBindings.ContainsKey(key)) {
+                    var featureBindingPrimary = featureBindings[key]();
+                    featureBindingPrimary.featureId = relation!.Slave!.Name;
+                    //featureBindingPrimary.role = bindingDefinitionPrimary.role;
+                    //featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
+                    featureBindingPrimary.featureType = relation!.Slave!.S101Type.Name;
+
+                    primaryBindings.Add(featureBindingPrimary);
+                }
+                else
+                    Logger.Current.Error("featureBinding doesn't exist: {key}", key);
             }
             {
                 //TODO: Foreign end
@@ -1112,13 +1118,17 @@ namespace S100Framework.Applications.Singletons
 
                 //var featureBindingForeign = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
                 var key = $"{relation.Slave.S101Type!.Name}::{relation.Master.S101Type!.Name}";
-                var featureBindingForeign = featureBindings[key]();
-                featureBindingForeign.featureId = relation!.Master!.Name;
-                //featureBindingForeign.role = bindingDefinitionForeign.role;
-                //featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
-                featureBindingForeign.featureType = relation!.Master!.S101Type.Name;
+                if (featureBindings.ContainsKey(key)) {
+                    var featureBindingForeign = featureBindings[key]();
+                    featureBindingForeign.featureId = relation!.Master!.Name;
+                    //featureBindingForeign.role = bindingDefinitionForeign.role;
+                    //featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
+                    featureBindingForeign.featureType = relation!.Master!.S101Type.Name;
 
-                foreignBindings.Add(featureBindingForeign);
+                    foreignBindings.Add(featureBindingForeign);
+                }
+                else
+                    Logger.Current.Error("featureBinding doesn't exist: {key}", key);
             }
 
             if (s101SlaveFeature["featurebindings"] is null) {
