@@ -495,8 +495,8 @@ namespace S100Framework.AttributeModel
 
     public abstract class informationBinding
     {
-        public string roleType { get; set; } = string.Empty;
-        public string role { get; set; } = string.Empty;
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
         public string? informationType { get; set; } = null;
         public string informationId { get; set; } = string.Empty;
     }
@@ -508,8 +508,8 @@ namespace S100Framework.AttributeModel
 
     public abstract class featureBinding
     {
-        public string roleType { get; set; } = string.Empty;
-        public string role { get; set; } = string.Empty;
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
         public string? featureType { get; set; } = null;
         public string featureId { get; set; } = string.Empty;        
     }

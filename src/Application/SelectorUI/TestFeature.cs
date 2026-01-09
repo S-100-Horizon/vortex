@@ -22,8 +22,8 @@ namespace PropertyGridApplication
                 featureName,
                 .. base.attributes,
             ];
-        public override AttributeBinding[] attributeBindings() => [
-                new AttributeBinding {
+        public override attributeBinding[] attributeBindings() => [
+                new attributeBinding {
                     attribute = nameof(featureName),
                     lower = 1,
                     upper = 1,
@@ -45,8 +45,8 @@ namespace PropertyGridApplication
         public override S100Framework.AttributeModel.Attribute[] attributes => [
                 featuresDetectedNested,
             ];
-        public override AttributeBinding[] attributeBindings() => [
-                 new AttributeBinding {
+        public override attributeBinding[] attributeBindings() => [
+                 new attributeBinding {
                     attribute = nameof(featuresDetectedNested),
                     lower = 1,
                     upper = 1,
@@ -68,8 +68,8 @@ namespace PropertyGridApplication
                 featuresDetectedNested,
                 .. base.attributes,
             ];
-        public override AttributeBinding[] attributeBindings() => [
-                 new AttributeBinding {
+        public override attributeBinding[] attributeBindings() => [
+                 new attributeBinding {
                     attribute = nameof(featuresDetectedNested),
                     lower = 1,
                     upper = 1,

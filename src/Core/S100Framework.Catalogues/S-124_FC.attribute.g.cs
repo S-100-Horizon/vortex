@@ -931,27 +931,27 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(chartNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new chartNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(chartPlanNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartPlanNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(lastNoticeDate),
 					lower = 0,
 					upper = 1,
@@ -961,10 +961,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? chartPlanNumber_optional {
 			set { base.AddAttributeValue(new chartPlanNumber { value = value }); }
 			get { return base.GetAttributeValue<chartPlanNumber>(nameof(chartPlanNumber))?.value; }
 		}
+		[JsonIgnore]
 		public DateOnly? lastNoticeDate_optional {
 			set { base.AddAttributeValue(new lastNoticeDate { value = value }); }
 			get { return base.GetAttributeValue<lastNoticeDate>(nameof(lastNoticeDate))?.value; }
@@ -987,27 +989,27 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateStart(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(timeOfDayEnd),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new timeOfDayEnd(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(timeOfDayStart),
 					lower = 0,
 					upper = 1,
@@ -1017,18 +1019,22 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? dateEnd_optional {
 			set { base.AddAttributeValue(new dateEnd { value = value }); }
 			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
+		[JsonIgnore]
 		public String? dateStart_optional {
 			set { base.AddAttributeValue(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
+		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? timeOfDayEnd_optional {
 			set { base.AddAttributeValue(new timeOfDayEnd { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayEnd>(nameof(timeOfDayEnd))?.value; }
 		}
+		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? timeOfDayStart_optional {
 			set { base.AddAttributeValue(new timeOfDayStart { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayStart>(nameof(timeOfDayStart))?.value; }
@@ -1055,15 +1061,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1095,15 +1101,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1141,46 +1147,46 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(nameOfSeries),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nameOfSeries(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(warningNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new warningNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(warningType),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new warningType(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(year),
 					lower = 1,
 					upper = 1,
@@ -1190,10 +1196,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? interoperabilityIdentifier_optional {
 			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
+		[JsonIgnore]
 		public String? nationality_optional {
 			set { base.AddAttributeValue(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
@@ -1220,15 +1228,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1256,15 +1264,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(navwarnTypeDetails),
 					lower = 0,
 					upper = 2147483647,
@@ -1274,10 +1282,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public information?[] information_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); } 
 	}
+		[JsonIgnore]
 		public int?[] navwarnTypeDetails_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new navwarnTypeDetails { value = e })]); }
 			get { return base.GetAttributeValues<navwarnTypeDetails>(nameof(navwarnTypeDetails)).Select(e=>e.value).ToArray(); }
@@ -1300,15 +1310,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(atoNNumber),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new atoNNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 2147483647,
@@ -1318,10 +1328,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String?[] atoNNumber_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new atoNNumber { value = e })]); }
 			get { return base.GetAttributeValues<atoNNumber>(nameof(atoNNumber)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public String?[] interoperabilityIdentifier_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
 			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
@@ -1348,21 +1360,21 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
@@ -1373,6 +1385,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? nameUsage_optional {
 			set { base.AddAttributeValue(new nameUsage { value = value }); }
 			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
@@ -1397,9 +1410,9 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
@@ -1429,9 +1442,9 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 1,
 					upper = 1,
@@ -1461,33 +1474,33 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(chartAffected),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartAffected(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(chartPublicationIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartPublicationIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(internationalChartAffected),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new internationalChartAffected(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(publicationAffected),
 					lower = 0,
 					upper = 1,
@@ -1497,18 +1510,22 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public chartAffected? chartAffected_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<chartAffected>(nameof(chartAffected)); }
 		}
+		[JsonIgnore]
 		public String? chartPublicationIdentifier_optional {
 			set { base.AddAttributeValue(new chartPublicationIdentifier { value = value }); }
 			get { return base.GetAttributeValue<chartPublicationIdentifier>(nameof(chartPublicationIdentifier))?.value; }
 		}
+		[JsonIgnore]
 		public String? internationalChartAffected_optional {
 			set { base.AddAttributeValue(new internationalChartAffected { value = value }); }
 			get { return base.GetAttributeValue<internationalChartAffected>(nameof(internationalChartAffected))?.value; }
 		}
+		[JsonIgnore]
 		public String? publicationAffected_optional {
 			set { base.AddAttributeValue(new publicationAffected { value = value }); }
 			get { return base.GetAttributeValue<publicationAffected>(nameof(publicationAffected))?.value; }
@@ -1533,15 +1550,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(localityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new localityIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(locationName),
 					lower = 1,
 					upper = 2147483647,
@@ -1551,10 +1568,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? localityIdentifier_optional {
 			set { base.AddAttributeValue(new localityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<localityIdentifier>(nameof(localityIdentifier))?.value; }
 		}
+		[JsonIgnore]
 		public locationName?[] locationName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); } 
@@ -1579,15 +1598,15 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(localityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new localityIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(locationName),
 					lower = 1,
 					upper = 2147483647,
@@ -1597,10 +1616,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? localityIdentifier_optional {
 			set { base.AddAttributeValue(new localityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<localityIdentifier>(nameof(localityIdentifier))?.value; }
 		}
+		[JsonIgnore]
 		public locationName?[] locationName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); } 
@@ -1608,6 +1629,46 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#endregion
 	}
 
+}
+
+namespace S100Framework.AttributeModel.S124.InformationAssociation
+{
+	using S100Framework.AttributeModel.S124.SimpleAttributes;
+	using S100Framework.AttributeModel.S124.ComplexAttributes;
+
+	public class navwarnPreambleContent : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "header";
+		
+		
+	}
+	public class navwarnReferences : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theReferences";
+		
+		
+	}
+}
+
+namespace S100Framework.AttributeModel.S124.FeatureAssociation
+{
+	using S100Framework.AttributeModel.S124.SimpleAttributes;
+	using S100Framework.AttributeModel.S124.ComplexAttributes;
+
+	public class TextAssociation : S100Framework.AttributeModel.FeatureAssociation
+	{
+		[JsonIgnore]
+		public override string[] roles => ["theCartographicText","thePositionProvider"];
+
+	}
+	public class areaAffected : S100Framework.AttributeModel.FeatureAssociation
+	{
+		[JsonIgnore]
+		public override string[] roles => ["impacts","affects"];
+
+	}
 }
 
 namespace S100Framework.AttributeModel.S124.InformationTypes
@@ -1634,21 +1695,21 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(messageSeriesIdentifier),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new messageSeriesIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(noMessageOnHand),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new noMessageOnHand(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(referenceCategory),
 					lower = 1,
 					upper = 1,
@@ -1659,6 +1720,7 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public messageSeriesIdentifier?[] messageSeriesIdentifier_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<messageSeriesIdentifier>(nameof(messageSeriesIdentifier)); } 
@@ -1691,58 +1753,58 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(affectedChartPublications),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new affectedChartPublications(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(generalArea),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new generalArea(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(locality),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new locality(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(messageSeriesIdentifier),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new messageSeriesIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(navwarnTitle),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new navwarnTitle(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(cancellationDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new cancellationDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(intService),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new intService(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(navwarnTypeGeneral),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
 					CreateInstance = () => new navwarnTypeGeneral(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(publicationTime),
 					lower = 1,
 					upper = 1,
@@ -1752,22 +1814,27 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public affectedChartPublications?[] affectedChartPublications_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<affectedChartPublications>(nameof(affectedChartPublications)); } 
 	}
+		[JsonIgnore]
 		public generalArea?[] generalArea_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<generalArea>(nameof(generalArea)); } 
 	}
+		[JsonIgnore]
 		public locality?[] locality_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<locality>(nameof(locality)); } 
 	}
+		[JsonIgnore]
 		public navwarnTitle?[] navwarnTitle_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<navwarnTitle>(nameof(navwarnTitle)); } 
 	}
+		[JsonIgnore]
 		public DateTime? cancellationDate_optional {
 			set { base.AddAttributeValue(new cancellationDate { value = value }); }
 			get { return base.GetAttributeValue<cancellationDate>(nameof(cancellationDate))?.value; }
@@ -1790,16 +1857,16 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(qualityOfHorizontalMeasurement),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
 					CreateInstance = () => new qualityOfHorizontalMeasurement(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(spatialAccuracy),
 					lower = 0,
 					upper = 1,
@@ -1809,10 +1876,12 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? qualityOfHorizontalMeasurement_optional {
 			set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
 		}
+		[JsonIgnore]
 		public spatialAccuracy? spatialAccuracy_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<spatialAccuracy>(nameof(spatialAccuracy)); }
@@ -1844,34 +1913,34 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [7,8,14,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(warningInformation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new warningInformation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(featureReference),
 					lower = 0,
 					upper = 2147483647,
@@ -1881,18 +1950,22 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? restriction_optional {
 			set { base.AddAttributeValue(new restriction { value = value }); }
 			get { return base.GetAttributeValue<restriction>(nameof(restriction))?.value; }
 		}
+		[JsonIgnore]
 		public fixedDateRange?[] fixedDateRange_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<fixedDateRange>(nameof(fixedDateRange)); } 
 	}
+		[JsonIgnore]
 		public featureName?[] featureName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
 	}
+		[JsonIgnore]
 		public featureReference?[] featureReference_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<featureReference>(nameof(featureReference)); } 
@@ -1915,8 +1988,8 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
 			];
 		#endregion
 
@@ -1947,33 +2020,33 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new text(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(textOffsetBearing),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetBearing(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(textOffsetDistance),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetDistance(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(textRotation),
 					lower = 1,
 					upper = 1,
@@ -1983,6 +2056,7 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? scaleMinimum_optional {
 			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
@@ -2012,9 +2086,25 @@ namespace S100Framework.AttributeModel.S124
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$association",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.navwarnPreambleContent>), typeDiscriminator: "navwarnPreambleContent"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.navwarnReferences>), typeDiscriminator: "navwarnReferences"));
+				}
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$association",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.TextAssociation>), typeDiscriminator: "TextAssociation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.areaAffected>), typeDiscriminator: "areaAffected"));
+				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "code",
+						TypeDiscriminatorPropertyName = "$code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(atoNNumber), typeDiscriminator: "atoNNumber"));

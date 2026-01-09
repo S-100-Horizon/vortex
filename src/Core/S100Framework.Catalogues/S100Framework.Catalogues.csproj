@@ -17,6 +17,7 @@
     <Compile Remove="S-122_FC.g.cs" />
     <Compile Remove="S-123_FC.g.cs" />
     <Compile Remove="S-124_FC.g.cs" />
+    <Compile Remove="S-125_FC.attribute.g.cs" />
     <Compile Remove="S-125_FC.g.cs" />
     <Compile Remove="S-127_FC.g.cs" />
     <Compile Remove="S-128_FC.g.cs" />

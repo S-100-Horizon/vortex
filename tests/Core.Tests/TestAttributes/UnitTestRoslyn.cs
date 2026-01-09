@@ -865,6 +865,8 @@ namespace TestAttributes
             }
             #endregion
 
+            var featureBindingsCreator = new StringBuilder();
+
             #region S100_FC_FeatureType
             {
                 var abstractTypesKnown = new List<string>();
@@ -1049,6 +1051,18 @@ namespace TestAttributes
 
                         roslyn.AppendLine($"\t}}");
                         roslyn.AppendLine();
+
+                        foreach (var featureBinding in element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
+                            var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                            var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                            var roleType = featureBinding.Attribute("roleType")!.Value!;
+
+                            foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
+                                var featureType = e.Attribute("ref")!.Value!;
+
+                                featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
+                            }
+                        }
                     }
                 } while (notFinished);
                 roslyn.AppendLine("}");
@@ -1108,9 +1122,23 @@ namespace TestAttributes
                 roslyn.AppendLine("\t\t\t});");
                 roslyn.AppendLine("\t\t\tjsonSerializerOptions.TypeInfoResolver = resolver;");
                 roslyn.AppendLine("\t\t\treturn jsonSerializerOptions;");
-                roslyn.AppendLine("\t\t}");
-                roslyn.AppendLine("\t}");
+                roslyn.AppendLine("\t\t}"); 
 
+                //  featureBindings
+                roslyn.AppendLine();
+                roslyn.AppendLine("\t\tpublic static (featureBinding primary, featureBinding foreign) CreateFeatureBinding(FeatureType primary, FeatureType foreign) {");
+                roslyn.AppendLine("\t\t\tvar key = $\"{primary.S100FC_code}::{foreign.S100FC_code}\";");
+                roslyn.AppendLine("\t\t\tvar primaryBinding = featureBindings[$\"{primary.S100FC_code}::{foreign.S100FC_code}\"]();");
+                roslyn.AppendLine("\t\t\tvar foreignBinding = featureBindings[$\"{foreign.S100FC_code}::{primary.S100FC_code}\"]();");
+                roslyn.AppendLine("\t\t\treturn (primaryBinding, foreignBinding);");
+                roslyn.AppendLine("\t\t}");
+                roslyn.AppendLine();
+                roslyn.AppendLine("\t\tprivate static Dictionary<string, Func<featureBinding>> featureBindings = new Dictionary<string, Func<featureBinding>> {");
+                roslyn.Append(featureBindingsCreator.ToString());
+                roslyn.AppendLine("\t\t};");
+
+
+                roslyn.AppendLine("\t}");
                 roslyn.AppendLine("}");
             }
             #endregion

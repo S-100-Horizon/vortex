@@ -15,7 +15,7 @@ namespace S100Framework.WPF
         public ICommand DeleteAttributeCommand { get; }
 
         protected void OnCreateAttributeCommand(object? parameter) {
-            if (parameter is AttributeBinding attributeBinding) {
+            if (parameter is attributeBinding attributeBinding) {
                 var instance = attributeBinding.CreateInstance();
                 if (instance is SimpleAttribute simpleAttribute)
                     this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));

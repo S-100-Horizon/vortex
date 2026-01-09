@@ -1479,33 +1479,33 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(administrativeDivision),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new administrativeDivision(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(cityName),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new cityName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new countryName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(deliveryPoint),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new deliveryPoint(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(postalCode),
 					lower = 0,
 					upper = 1,
@@ -1515,22 +1515,27 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? administrativeDivision_optional {
 			set { base.AddAttributeValue(new administrativeDivision { value = value }); }
 			get { return base.GetAttributeValue<administrativeDivision>(nameof(administrativeDivision))?.value; }
 		}
+		[JsonIgnore]
 		public String? cityName_optional {
 			set { base.AddAttributeValue(new cityName { value = value }); }
 			get { return base.GetAttributeValue<cityName>(nameof(cityName))?.value; }
 		}
+		[JsonIgnore]
 		public String? countryName_optional {
 			set { base.AddAttributeValue(new countryName { value = value }); }
 			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
 		}
+		[JsonIgnore]
 		public String?[] deliveryPoint_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new deliveryPoint { value = e })]); }
 			get { return base.GetAttributeValues<deliveryPoint>(nameof(deliveryPoint)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public String? postalCode_optional {
 			set { base.AddAttributeValue(new postalCode { value = value }); }
 			get { return base.GetAttributeValue<postalCode>(nameof(postalCode))?.value; }
@@ -1557,15 +1562,15 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(paperWidth),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new paperWidth(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(paperLength),
 					lower = 1,
 					upper = 1,
@@ -1597,21 +1602,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(characterEncoding),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new characterEncoding(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(countryName),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new countryName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
@@ -1621,6 +1626,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? language_optional {
 			set { base.AddAttributeValue(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
@@ -1645,21 +1651,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
@@ -1669,10 +1675,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? language_optional {
 			set { base.AddAttributeValue(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
+		[JsonIgnore]
 		public int? nameUsage_optional {
 			set { base.AddAttributeValue(new nameUsage { value = value }); }
 			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
@@ -1695,33 +1703,33 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(fileLocator),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fileLocator(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(fileReference),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fileReference(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new headline(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(text),
 					lower = 0,
 					upper = 2147483647,
@@ -1731,22 +1739,27 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? fileLocator_optional {
 			set { base.AddAttributeValue(new fileLocator { value = value }); }
 			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
 		}
+		[JsonIgnore]
 		public String? fileReference_optional {
 			set { base.AddAttributeValue(new fileReference { value = value }); }
 			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
 		}
+		[JsonIgnore]
 		public String? headline_optional {
 			set { base.AddAttributeValue(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
+		[JsonIgnore]
 		public String? language_optional {
 			set { base.AddAttributeValue(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
+		[JsonIgnore]
 		public String?[] text_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new text { value = e })]); }
 			get { return base.GetAttributeValues<text>(nameof(text)).Select(e=>e.value).ToArray(); }
@@ -1771,39 +1784,39 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(applicationProfile),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new applicationProfile(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(linkage),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new linkage(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(nameOfResource),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nameOfResource(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(onlineDescription),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new onlineDescription(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(protocol),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new protocol(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(protocolRequest),
 					lower = 0,
 					upper = 1,
@@ -1813,22 +1826,27 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? applicationProfile_optional {
 			set { base.AddAttributeValue(new applicationProfile { value = value }); }
 			get { return base.GetAttributeValue<applicationProfile>(nameof(applicationProfile))?.value; }
 		}
+		[JsonIgnore]
 		public String? nameOfResource_optional {
 			set { base.AddAttributeValue(new nameOfResource { value = value }); }
 			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
 		}
+		[JsonIgnore]
 		public String? onlineDescription_optional {
 			set { base.AddAttributeValue(new onlineDescription { value = value }); }
 			get { return base.GetAttributeValue<onlineDescription>(nameof(onlineDescription))?.value; }
 		}
+		[JsonIgnore]
 		public String? protocol_optional {
 			set { base.AddAttributeValue(new protocol { value = value }); }
 			get { return base.GetAttributeValue<protocol>(nameof(protocol))?.value; }
 		}
+		[JsonIgnore]
 		public String? protocolRequest_optional {
 			set { base.AddAttributeValue(new protocolRequest { value = value }); }
 			get { return base.GetAttributeValue<protocolRequest>(nameof(protocolRequest))?.value; }
@@ -1855,15 +1873,15 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(dateStart),
 					lower = 1,
 					upper = 1,
@@ -1895,21 +1913,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(contractPeriod),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new contractPeriod(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(currency),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new currency(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(price),
 					lower = 1,
 					upper = 1,
@@ -1919,6 +1937,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? contractPeriod_optional {
 			set { base.AddAttributeValue(new contractPeriod { value = value }); }
 			get { return base.GetAttributeValue<contractPeriod>(nameof(contractPeriod))?.value; }
@@ -1941,16 +1960,16 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(iSO216),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new iSO216(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(customPaperSize),
 					lower = 0,
 					upper = 1,
@@ -1960,10 +1979,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? iSO216_optional {
 			set { base.AddAttributeValue(new iSO216 { value = value }); }
 			get { return base.GetAttributeValue<iSO216>(nameof(iSO216))?.value; }
 		}
+		[JsonIgnore]
 		public customPaperSize? customPaperSize_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<customPaperSize>(nameof(customPaperSize)); }
@@ -1992,27 +2013,27 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(iSSN),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iSSN(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
@@ -2022,6 +2043,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? iSSN_optional {
 			set { base.AddAttributeValue(new iSSN { value = value }); }
 			get { return base.GetAttributeValue<iSSN>(nameof(iSSN))?.value; }
@@ -2050,21 +2072,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
@@ -2098,21 +2120,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(version),
 					lower = 1,
 					upper = 1,
@@ -2140,41 +2162,41 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(categoryOfAuthority),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
 					CreateInstance = () => new categoryOfAuthority(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(countryName),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new countryName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(source),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new source(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(sourceType),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new sourceType(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
@@ -2184,26 +2206,32 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int? categoryOfAuthority_optional {
 			set { base.AddAttributeValue(new categoryOfAuthority { value = value }); }
 			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
 		}
+		[JsonIgnore]
 		public String? countryName_optional {
 			set { base.AddAttributeValue(new countryName { value = value }); }
 			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
 		}
+		[JsonIgnore]
 		public DateOnly? reportedDate_optional {
 			set { base.AddAttributeValue(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
+		[JsonIgnore]
 		public String? source_optional {
 			set { base.AddAttributeValue(new source { value = value }); }
 			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
 		}
+		[JsonIgnore]
 		public int? sourceType_optional {
 			set { base.AddAttributeValue(new sourceType { value = value }); }
 			get { return base.GetAttributeValue<sourceType>(nameof(sourceType))?.value; }
 		}
+		[JsonIgnore]
 		public featureName?[] featureName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
@@ -2230,21 +2258,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(contactInstructions),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new contactInstructions(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(telecommunicationIdentifier),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new telecommunicationIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(telecommunicationService),
 					lower = 0,
 					upper = 2147483647,
@@ -2255,6 +2283,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int?[] telecommunicationService_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new telecommunicationService { value = e })]); }
 			get { return base.GetAttributeValues<telecommunicationService>(nameof(telecommunicationService)).Select(e=>e.value).ToArray(); }
@@ -2281,16 +2310,16 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(typeOfTimeIntervalUnit),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new typeOfTimeIntervalUnit(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(valueOfTime),
 					lower = 1,
 					upper = 1,
@@ -2300,6 +2329,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public int?[] typeOfTimeIntervalUnit_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new typeOfTimeIntervalUnit { value = e })]); }
 			get { return base.GetAttributeValues<typeOfTimeIntervalUnit>(nameof(typeOfTimeIntervalUnit)).Select(e=>e.value).ToArray(); }
@@ -2326,15 +2356,15 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(weekNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new weekNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(yearNumber),
 					lower = 1,
 					upper = 1,
@@ -2362,15 +2392,15 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(timeIntervalOfCycle),
 					lower = 0,
 					upper = 1,
@@ -2380,10 +2410,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public periodicDateRange? periodicDateRange_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<periodicDateRange>(nameof(periodicDateRange)); }
 		}
+		[JsonIgnore]
 		public timeIntervalOfCycle? timeIntervalOfCycle_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<timeIntervalOfCycle>(nameof(timeIntervalOfCycle)); }
@@ -2408,33 +2440,33 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(printAgency),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new printAgency(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(printNation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new printNation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(reprintEdition),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reprintEdition(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(reprintNation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reprintNation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(printSize),
 					lower = 1,
 					upper = 1,
@@ -2444,18 +2476,22 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? printAgency_optional {
 			set { base.AddAttributeValue(new printAgency { value = value }); }
 			get { return base.GetAttributeValue<printAgency>(nameof(printAgency))?.value; }
 		}
+		[JsonIgnore]
 		public String? printNation_optional {
 			set { base.AddAttributeValue(new printNation { value = value }); }
 			get { return base.GetAttributeValue<printNation>(nameof(printNation))?.value; }
 		}
+		[JsonIgnore]
 		public String? reprintEdition_optional {
 			set { base.AddAttributeValue(new reprintEdition { value = value }); }
 			get { return base.GetAttributeValue<reprintEdition>(nameof(reprintEdition))?.value; }
 		}
+		[JsonIgnore]
 		public String? reprintNation_optional {
 			set { base.AddAttributeValue(new reprintNation { value = value }); }
 			get { return base.GetAttributeValue<reprintNation>(nameof(reprintNation))?.value; }
@@ -2492,79 +2528,79 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(comment),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new comment(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(digitalSignatureReference),
 					lower = 1,
 					upper = 1,
 					permitedValues = [8],
 					CreateInstance = () => new digitalSignatureReference(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(digitalSignatureValue),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new digitalSignatureValue(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(editionNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new editionNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(fileLocator),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new fileLocator(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(fileName),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new fileName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(issueDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new issueDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(otherDataTypeDescription),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new otherDataTypeDescription(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(supportFileFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,100],
 					CreateInstance = () => new supportFileFormat(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(supportFilePurpose),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new supportFilePurpose(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(defaultLocale),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new defaultLocale(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(supportFileSpecification),
 					lower = 1,
 					upper = 1,
@@ -2574,22 +2610,27 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? comment_optional {
 			set { base.AddAttributeValue(new comment { value = value }); }
 			get { return base.GetAttributeValue<comment>(nameof(comment))?.value; }
 		}
+		[JsonIgnore]
 		public int? digitalSignatureValue_optional {
 			set { base.AddAttributeValue(new digitalSignatureValue { value = value }); }
 			get { return base.GetAttributeValue<digitalSignatureValue>(nameof(digitalSignatureValue))?.value; }
 		}
+		[JsonIgnore]
 		public int? editionNumber_optional {
 			set { base.AddAttributeValue(new editionNumber { value = value }); }
 			get { return base.GetAttributeValue<editionNumber>(nameof(editionNumber))?.value; }
 		}
+		[JsonIgnore]
 		public DateOnly? issueDate_optional {
 			set { base.AddAttributeValue(new issueDate { value = value }); }
 			get { return base.GetAttributeValue<issueDate>(nameof(issueDate))?.value; }
 		}
+		[JsonIgnore]
 		public String? otherDataTypeDescription_optional {
 			set { base.AddAttributeValue(new otherDataTypeDescription { value = value }); }
 			get { return base.GetAttributeValue<otherDataTypeDescription>(nameof(otherDataTypeDescription))?.value; }
@@ -2614,21 +2655,21 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(expirationDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new expirationDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(issueDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new issueDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(issuanceCycle),
 					lower = 0,
 					upper = 1,
@@ -2638,10 +2679,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public DateOnly? expirationDate_optional {
 			set { base.AddAttributeValue(new expirationDate { value = value }); }
 			get { return base.GetAttributeValue<expirationDate>(nameof(expirationDate))?.value; }
 		}
+		[JsonIgnore]
 		public issuanceCycle? issuanceCycle_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<issuanceCycle>(nameof(issuanceCycle)); }
@@ -2666,15 +2709,15 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(publicationDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new publicationDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(weekOfYear),
 					lower = 0,
 					upper = 1,
@@ -2684,6 +2727,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public weekOfYear? weekOfYear_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<weekOfYear>(nameof(weekOfYear)); }
@@ -2691,6 +2735,109 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		#endregion
 	}
 
+}
+
+namespace S100Framework.AttributeModel.S128.InformationAssociation
+{
+	using S100Framework.AttributeModel.S128.SimpleAttributes;
+	using S100Framework.AttributeModel.S128.ComplexAttributes;
+
+	public class CarriageRequirement : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theElement";
+		
+		
+	}
+	public class DistributionDetails : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "catalogueHeader";
+		
+		
+	}
+	public class DistributorContact : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theDistributor";
+		
+		
+	}
+	public class PriceOfElement : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theCatalogueElement";
+		
+		
+	}
+	public class PriceOfNauticalProduct : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theCatalogueOfNauticalProduct";
+		
+		
+	}
+	public class ProducerContact : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theProducer";
+		
+		
+	}
+	public class ProductionDetails : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "catalogueHeader";
+		
+		
+	}
+	public class ProductPackage : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string role => "theCatalogueElement";
+		
+		
+	}
+}
+
+namespace S100Framework.AttributeModel.S128.FeatureAssociation
+{
+	using S100Framework.AttributeModel.S128.SimpleAttributes;
+	using S100Framework.AttributeModel.S128.ComplexAttributes;
+
+	public class ProductMapping : S100Framework.AttributeModel.FeatureAssociation
+	{
+		[JsonIgnore]
+		public override string[] roles => ["theSource","theReference"];
+
+		public categoryOfProductMapping categoryOfProductMapping { get; set; } = new categoryOfProductMapping();
+
+		[JsonIgnore]
+		public Attribute[] attributes => [
+				categoryOfProductMapping,
+			];
+
+		#region Attribute Bindings
+		public attributeBinding[] attributeBindings() => [
+				new attributeBinding {
+					attribute = nameof(categoryOfProductMapping),
+					lower = 1,
+					upper = 1,
+					permitedValues = [1,2,3,4],
+					CreateInstance = () => new categoryOfProductMapping(),
+				},
+			];
+		#endregion
+
+		#region Optional Attributes
+		#endregion
+	}
+	public class Correlated : S100Framework.AttributeModel.FeatureAssociation
+	{
+		[JsonIgnore]
+		public override string[] roles => ["theMain","thePanel"];
+
+	}
 }
 
 namespace S100Framework.AttributeModel.S128.InformationTypes
@@ -2715,21 +2862,21 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(catalogueSectionNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new catalogueSectionNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(catalogueSectionTitle),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new catalogueSectionTitle(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 1,
@@ -2739,10 +2886,12 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? catalogueSectionTitle_optional {
 			set { base.AddAttributeValue(new catalogueSectionTitle { value = value }); }
 			get { return base.GetAttributeValue<catalogueSectionTitle>(nameof(catalogueSectionTitle))?.value; }
 		}
+		[JsonIgnore]
 		public information? information_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<information>(nameof(information)); }
@@ -2767,39 +2916,39 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(contactInstructions),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new contactInstructions(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(contactAddress),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new contactAddress(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new onlineResource(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(telecommunications),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new telecommunications(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
@@ -2809,22 +2958,27 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public contactAddress?[] contactAddress_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); } 
 	}
+		[JsonIgnore]
 		public information?[] information_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); } 
 	}
+		[JsonIgnore]
 		public onlineResource?[] onlineResource_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
 	}
+		[JsonIgnore]
 		public telecommunications?[] telecommunications_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
 	}
+		[JsonIgnore]
 		public sourceIndication?[] sourceIndication_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); } 
@@ -2847,21 +3001,21 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(domesticCarriageRequirements),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new domesticCarriageRequirements(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(internationalCarriageRequirements),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new internationalCarriageRequirements(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
@@ -2871,14 +3025,17 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? domesticCarriageRequirements_optional {
 			set { base.AddAttributeValue(new domesticCarriageRequirements { value = value }); }
 			get { return base.GetAttributeValue<domesticCarriageRequirements>(nameof(domesticCarriageRequirements))?.value; }
 		}
+		[JsonIgnore]
 		public String? internationalCarriageRequirements_optional {
 			set { base.AddAttributeValue(new internationalCarriageRequirements { value = value }); }
 			get { return base.GetAttributeValue<internationalCarriageRequirements>(nameof(internationalCarriageRequirements))?.value; }
 		}
+		[JsonIgnore]
 		public featureName?[] featureName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
@@ -2901,27 +3058,27 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new onlineResource(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(pricing),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new pricing(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 2147483647,
@@ -2931,18 +3088,22 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public information?[] information_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); } 
 	}
+		[JsonIgnore]
 		public onlineResource?[] onlineResource_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
 	}
+		[JsonIgnore]
 		public pricing?[] pricing_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<pricing>(nameof(pricing)); } 
 	}
+		[JsonIgnore]
 		public sourceIndication?[] sourceIndication_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); } 
@@ -2967,15 +3128,15 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(agencyName),
 					lower = 0,
 					upper = 1,
@@ -2985,6 +3146,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? agencyName_optional {
 			set { base.AddAttributeValue(new agencyName { value = value }); }
 			get { return base.GetAttributeValue<agencyName>(nameof(agencyName))?.value; }
@@ -3009,9 +3171,9 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(distributorName),
 					lower = 1,
 					upper = 1,
@@ -3050,75 +3212,75 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(catalogueElementClassification),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new catalogueElementClassification(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(catalogueElementIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new catalogueElementIdentifier(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(classification),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new classification(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(iMOMaritimeService),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new iMOMaritimeService(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(notForNavigation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new notForNavigation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new onlineResource(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(sourceIndication),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new sourceIndication(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(supportFile),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new supportFile(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(timeIntervalOfProduct),
 					lower = 0,
 					upper = 1,
@@ -3128,46 +3290,57 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? agencyResponsibleForProduction_optional {
 			set { base.AddAttributeValue(new agencyResponsibleForProduction { value = value }); }
 			get { return base.GetAttributeValue<agencyResponsibleForProduction>(nameof(agencyResponsibleForProduction))?.value; }
 		}
+		[JsonIgnore]
 		public int?[] catalogueElementClassification_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new catalogueElementClassification { value = e })]); }
 			get { return base.GetAttributeValues<catalogueElementClassification>(nameof(catalogueElementClassification)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public String? catalogueElementIdentifier_optional {
 			set { base.AddAttributeValue(new catalogueElementIdentifier { value = value }); }
 			get { return base.GetAttributeValue<catalogueElementIdentifier>(nameof(catalogueElementIdentifier))?.value; }
 		}
+		[JsonIgnore]
 		public String? classification_optional {
 			set { base.AddAttributeValue(new classification { value = value }); }
 			get { return base.GetAttributeValue<classification>(nameof(classification))?.value; }
 		}
+		[JsonIgnore]
 		public int?[] iMOMaritimeService_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new iMOMaritimeService { value = e })]); }
 			get { return base.GetAttributeValues<iMOMaritimeService>(nameof(iMOMaritimeService)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public featureName?[] featureName_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
 	}
+		[JsonIgnore]
 		public information?[] information_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); } 
 	}
+		[JsonIgnore]
 		public onlineResource? onlineResource_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
 		}
+		[JsonIgnore]
 		public sourceIndication? sourceIndication_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<sourceIndication>(nameof(sourceIndication)); }
 		}
+		[JsonIgnore]
 		public supportFile?[] supportFile_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValues<supportFile>(nameof(supportFile)); } 
 	}
+		[JsonIgnore]
 		public timeIntervalOfProduct? timeIntervalOfProduct_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<timeIntervalOfProduct>(nameof(timeIntervalOfProduct)); }
@@ -3191,102 +3364,102 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(approximateGridResolution),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new approximateGridResolution(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(compilationScale),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new compilationScale(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(distributionStatus),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new distributionStatus(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(editionNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new editionNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(maximumDisplayScale),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumDisplayScale(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(minimumDisplayScale),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new minimumDisplayScale(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(navigationPurpose),
 					lower = 0,
 					upper = 3,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new navigationPurpose(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(optimumDisplayScale),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new optimumDisplayScale(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(originalProductNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new originalProductNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(producerNation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new producerNation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(productNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new productNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(specificUsage),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new specificUsage(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(updateDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new updateDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(updateNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new updateNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(horizontalDatumEPSGCode),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalDatumEPSGCode(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
@@ -3297,66 +3470,82 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public double?[] approximateGridResolution_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new approximateGridResolution { value = e })]); }
 			get { return base.GetAttributeValues<approximateGridResolution>(nameof(approximateGridResolution)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public int?[] compilationScale_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new compilationScale { value = e })]); }
 			get { return base.GetAttributeValues<compilationScale>(nameof(compilationScale)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public int? distributionStatus_optional {
 			set { base.AddAttributeValue(new distributionStatus { value = value }); }
 			get { return base.GetAttributeValue<distributionStatus>(nameof(distributionStatus))?.value; }
 		}
+		[JsonIgnore]
 		public int? editionNumber_optional {
 			set { base.AddAttributeValue(new editionNumber { value = value }); }
 			get { return base.GetAttributeValue<editionNumber>(nameof(editionNumber))?.value; }
 		}
+		[JsonIgnore]
 		public int? maximumDisplayScale_optional {
 			set { base.AddAttributeValue(new maximumDisplayScale { value = value }); }
 			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))?.value; }
 		}
+		[JsonIgnore]
 		public int? minimumDisplayScale_optional {
 			set { base.AddAttributeValue(new minimumDisplayScale { value = value }); }
 			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))?.value; }
 		}
+		[JsonIgnore]
 		public int?[] navigationPurpose_optional {
 			set { base.AddAttributeValue([.. value.Select(e=> new navigationPurpose { value = e })]); }
 			get { return base.GetAttributeValues<navigationPurpose>(nameof(navigationPurpose)).Select(e=>e.value).ToArray(); }
 		}
+		[JsonIgnore]
 		public int? optimumDisplayScale_optional {
 			set { base.AddAttributeValue(new optimumDisplayScale { value = value }); }
 			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
 		}
+		[JsonIgnore]
 		public String? originalProductNumber_optional {
 			set { base.AddAttributeValue(new originalProductNumber { value = value }); }
 			get { return base.GetAttributeValue<originalProductNumber>(nameof(originalProductNumber))?.value; }
 		}
+		[JsonIgnore]
 		public String? producerNation_optional {
 			set { base.AddAttributeValue(new producerNation { value = value }); }
 			get { return base.GetAttributeValue<producerNation>(nameof(producerNation))?.value; }
 		}
+		[JsonIgnore]
 		public String? productNumber_optional {
 			set { base.AddAttributeValue(new productNumber { value = value }); }
 			get { return base.GetAttributeValue<productNumber>(nameof(productNumber))?.value; }
 		}
+		[JsonIgnore]
 		public int? specificUsage_optional {
 			set { base.AddAttributeValue(new specificUsage { value = value }); }
 			get { return base.GetAttributeValue<specificUsage>(nameof(specificUsage))?.value; }
 		}
+		[JsonIgnore]
 		public DateOnly? updateDate_optional {
 			set { base.AddAttributeValue(new updateDate { value = value }); }
 			get { return base.GetAttributeValue<updateDate>(nameof(updateDate))?.value; }
 		}
+		[JsonIgnore]
 		public int? updateNumber_optional {
 			set { base.AddAttributeValue(new updateNumber { value = value }); }
 			get { return base.GetAttributeValue<updateNumber>(nameof(updateNumber))?.value; }
 		}
+		[JsonIgnore]
 		public int? horizontalDatumEPSGCode_optional {
 			set { base.AddAttributeValue(new horizontalDatumEPSGCode { value = value }); }
 			get { return base.GetAttributeValue<horizontalDatumEPSGCode>(nameof(horizontalDatumEPSGCode))?.value; }
 		}
+		[JsonIgnore]
 		public int? verticalDatum_optional {
 			set { base.AddAttributeValue(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
@@ -3384,40 +3573,40 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(compressionFlag),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new compressionFlag(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(datasetName),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new datasetName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(issueDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new issueDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(issueTime),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new issueTime(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(typeOfProductFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new typeOfProductFormat(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(productSpecification),
 					lower = 0,
 					upper = 1,
@@ -3427,18 +3616,22 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public Boolean? compressionFlag_optional {
 			set { base.AddAttributeValue(new compressionFlag { value = value }); }
 			get { return base.GetAttributeValue<compressionFlag>(nameof(compressionFlag))?.value; }
 		}
+		[JsonIgnore]
 		public String? datasetName_optional {
 			set { base.AddAttributeValue(new datasetName { value = value }); }
 			get { return base.GetAttributeValue<datasetName>(nameof(datasetName))?.value; }
 		}
+		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? issueTime_optional {
 			set { base.AddAttributeValue(new issueTime { value = value }); }
 			get { return base.GetAttributeValue<issueTime>(nameof(issueTime))?.value; }
 		}
+		[JsonIgnore]
 		public productSpecification? productSpecification_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<productSpecification>(nameof(productSpecification)); }
@@ -3464,39 +3657,39 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(iSBN),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iSBN(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(publicationNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new publicationNumber(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(typeOfPhysicalProduct),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new typeOfPhysicalProduct(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(printInformation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new printInformation(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(referenceToNM),
 					lower = 0,
 					upper = 1,
@@ -3506,22 +3699,27 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public String? iSBN_optional {
 			set { base.AddAttributeValue(new iSBN { value = value }); }
 			get { return base.GetAttributeValue<iSBN>(nameof(iSBN))?.value; }
 		}
+		[JsonIgnore]
 		public String? publicationNumber_optional {
 			set { base.AddAttributeValue(new publicationNumber { value = value }); }
 			get { return base.GetAttributeValue<publicationNumber>(nameof(publicationNumber))?.value; }
 		}
+		[JsonIgnore]
 		public String? typeOfPhysicalProduct_optional {
 			set { base.AddAttributeValue(new typeOfPhysicalProduct { value = value }); }
 			get { return base.GetAttributeValue<typeOfPhysicalProduct>(nameof(typeOfPhysicalProduct))?.value; }
 		}
+		[JsonIgnore]
 		public printInformation? printInformation_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<printInformation>(nameof(printInformation)); }
 		}
+		[JsonIgnore]
 		public referenceToNM? referenceToNM_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<referenceToNM>(nameof(referenceToNM)); }
@@ -3547,41 +3745,41 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindingss
-		public override AttributeBinding[] attributeBindings() => [
-				new AttributeBinding {
+		#region Attribute Bindings
+		public override attributeBinding[] attributeBindings() => [
+				new attributeBinding {
 					attribute = nameof(compressionFlag),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new compressionFlag(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(serviceName),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new serviceName(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(serviceStatus),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new serviceStatus(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(typeOfProductFormat),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new typeOfProductFormat(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(serviceSpecification),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new serviceSpecification(),
 				},
-				new AttributeBinding {
+				new attributeBinding {
 					attribute = nameof(productSpecification),
 					lower = 0,
 					upper = 1,
@@ -3591,22 +3789,27 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		#endregion
 
 		#region Optional Attributes
+		[JsonIgnore]
 		public Boolean? compressionFlag_optional {
 			set { base.AddAttributeValue(new compressionFlag { value = value }); }
 			get { return base.GetAttributeValue<compressionFlag>(nameof(compressionFlag))?.value; }
 		}
+		[JsonIgnore]
 		public String? serviceName_optional {
 			set { base.AddAttributeValue(new serviceName { value = value }); }
 			get { return base.GetAttributeValue<serviceName>(nameof(serviceName))?.value; }
 		}
+		[JsonIgnore]
 		public int? serviceStatus_optional {
 			set { base.AddAttributeValue(new serviceStatus { value = value }); }
 			get { return base.GetAttributeValue<serviceStatus>(nameof(serviceStatus))?.value; }
 		}
+		[JsonIgnore]
 		public serviceSpecification? serviceSpecification_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<serviceSpecification>(nameof(serviceSpecification)); }
 		}
+		[JsonIgnore]
 		public productSpecification? productSpecification_optional {
 			set { base.AddAttributeValue(value); }
 			get { return base.GetAttributeValue<productSpecification>(nameof(productSpecification)); }
@@ -3636,9 +3839,31 @@ namespace S100Framework.AttributeModel.S128
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$association",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.CarriageRequirement>), typeDiscriminator: "CarriageRequirement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.DistributionDetails>), typeDiscriminator: "DistributionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.DistributorContact>), typeDiscriminator: "DistributorContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.PriceOfElement>), typeDiscriminator: "PriceOfElement"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.PriceOfNauticalProduct>), typeDiscriminator: "PriceOfNauticalProduct"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.ProducerContact>), typeDiscriminator: "ProducerContact"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.ProductionDetails>), typeDiscriminator: "ProductionDetails"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.ProductPackage>), typeDiscriminator: "ProductPackage"));
+				}
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {
+					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
+						TypeDiscriminatorPropertyName = "$association",
+						IgnoreUnrecognizedTypeDiscriminators = true,
+					};
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.ProductMapping>), typeDiscriminator: "ProductMapping"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.Correlated>), typeDiscriminator: "Correlated"));
+				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "code",
+						TypeDiscriminatorPropertyName = "$code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(administrativeDivision), typeDiscriminator: "administrativeDivision"));

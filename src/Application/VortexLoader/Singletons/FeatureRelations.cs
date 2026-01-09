@@ -6,6 +6,7 @@ using S100Framework.AttributeModel.S101.FeatureTypes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -1019,7 +1020,7 @@ namespace S100Framework.Applications.Singletons
             return _srcObjectToSlaves.ContainsKey(globalId);
         }
 
-        internal void AddRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature) {
+        internal void AddRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, featureBinding featureBindingPrimary, featureBinding featureBindingForeign) {
             //if (_relationCount > 0) {
             //    return;
             //}
@@ -1039,10 +1040,10 @@ namespace S100Framework.Applications.Singletons
             // Legacy - is not in use... to be deleted.
             _relations.Add(relation);
 
-            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature);
+            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature, featureBindingPrimary, featureBindingForeign);
         }
 
-        private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature) {
+        private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature, featureBinding featureBindingPrimary, featureBinding featureBindingForeign) {
             Relation relation = new(master, slave);
 
             if (relation.Master == null) {
@@ -1052,33 +1053,30 @@ namespace S100Framework.Applications.Singletons
                 throw new ArgumentNullException("relation slave");
             }
 
-            Type TPrimary = relation.Master.S101Type;
-            Type TForeign = relation.Slave.S101Type;
+            //Type TPrimary = relation.Master.S101Type;
+            //Type TForeign = relation.Slave.S101Type;
 
-            //var featureBindingsPrimary = TPrimary?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
-            //var featureBindingsForeign = TForeign?.GetProperty("featureBindingDefinitions")?.GetValue(null) as featureBindingDefinition[];
-
-            var featureBindingsPrimary = DomainModel.S101.FeatureBindings.featureBindingDefinitions(relation.Master.S101Type!.Name);
-            var featureBindingsForeign = DomainModel.S101.FeatureBindings.featureBindingDefinitions(relation.Slave.S101Type!.Name);
+            //var featureBindingsPrimary = AttributeModel.S101.FeatureBindings.featureBindingDefinitions(relation.Master.S101Type!.Name);
+            //var featureBindingsForeign = AttributeModel.S101.FeatureBindings.featureBindingDefinitions(relation.Slave.S101Type!.Name);
 
 
-            featureBindingDefinition? bindingDefinitionForeign;
-            featureBindingDefinition? bindingDefinitionPrimary;
+            //featureBindingDefinition? bindingDefinitionForeign;
+            //featureBindingDefinition? bindingDefinitionPrimary;
 
             // Create association
             {
-                bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
-                if (bindingDefinitionForeign == null) {
+                //bindingDefinitionForeign = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
+                //if (bindingDefinitionForeign == null) {
 
-                    var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
-                    var tracebackMasterString = string.Join(", ", tracebackMaster.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
-                    var tracebackSlave = ConversionAnalytics.Instance.GetTraceBack(relation.Slave.Name);
-                    var tracebackSlaveString = string.Join(", ", tracebackSlave.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
-                    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}') MASTERS:{tracebackMasterString} SLAVES:{tracebackSlaveString}";
-                    Logger.Current.DataError(-1, "", "relate", msg);
-                    return;
-                    //throw new NotSupportedException(msg);
-                }
+                //    var tracebackMaster = ConversionAnalytics.Instance.GetTraceBack(relation.Master.Name);
+                //    var tracebackMasterString = string.Join(", ", tracebackMaster.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                //    var tracebackSlave = ConversionAnalytics.Instance.GetTraceBack(relation.Slave.Name);
+                //    var tracebackSlaveString = string.Join(", ", tracebackSlave.Select(tuple => $"{tuple.Item1} - {tuple.Item2}"));
+                //    var msg = $"Cannot relate {relation.Master.GetType().Name} {relation.Master.S101Type.Name} with {relation.Slave.GetType().Name} {relation.Slave.S101Type.Name} - where name in ('{relation.Master.Name}','{relation.Slave.Name}') MASTERS:{tracebackMasterString} SLAVES:{tracebackSlaveString}";
+                //    Logger.Current.DataError(-1, "", "relate", msg);
+                //    return;
+                //    //throw new NotSupportedException(msg);
+                //}
             }
 
             // Store binding
@@ -1088,15 +1086,15 @@ namespace S100Framework.Applications.Singletons
             // Create binding
             {
                 // Create primary end
-                bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
-                if (bindingDefinitionPrimary == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TPrimary.Name} for {TForeign.Name}");
-                }
+                //bindingDefinitionPrimary = featureBindingsPrimary?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TForeign.Name));
+                //if (bindingDefinitionPrimary == null) {
+                //    throw new NotSupportedException($"no bindingdefinition on {TPrimary.Name} for {TForeign.Name}");
+                //}
 
-                var featureBindingPrimary = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
-                featureBindingPrimary.referenceId = relation!.Slave!.Name;
-                featureBindingPrimary.role = bindingDefinitionPrimary.role;
-                featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
+                //var featureBindingPrimary = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionPrimary.association))!;
+                featureBindingPrimary.featureId = relation!.Slave!.Name;
+                //featureBindingPrimary.role = bindingDefinitionPrimary.role;
+                //featureBindingPrimary.roleType = bindingDefinitionPrimary.roleType.ToString();
                 featureBindingPrimary.featureType = relation!.Slave!.S101Type.Name;
 
                 primaryBindings.Add(featureBindingPrimary);
@@ -1104,15 +1102,15 @@ namespace S100Framework.Applications.Singletons
             {
                 //TODO: Foreign end
                 // Create foreign end
-                bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary.Name));
-                if (bindingDefinitionForeign == null) {
-                    throw new NotSupportedException($"no bindingdefinition on {TForeign.Name} for {TPrimary.Name}");
-                }
+                //bindingDefinitionForeign = featureBindingsForeign?.FirstOrDefault(fbd => fbd.featureTypes.Contains(TPrimary.Name));
+                //if (bindingDefinitionForeign == null) {
+                //    throw new NotSupportedException($"no bindingdefinition on {TForeign.Name} for {TPrimary.Name}");
+                //}
 
-                var featureBindingForeign = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
-                featureBindingForeign.referenceId = relation!.Master!.Name;
-                featureBindingForeign.role = bindingDefinitionForeign.role;
-                featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
+                //var featureBindingForeign = (featureBinding)Activator.CreateInstance(DomainModel.S101.Summary.FeatureBindings(bindingDefinitionForeign.association))!;
+                featureBindingForeign.featureId = relation!.Master!.Name;
+                //featureBindingForeign.role = bindingDefinitionForeign.role;
+                //featureBindingForeign.roleType = bindingDefinitionForeign.roleType.ToString();
                 featureBindingForeign.featureType = relation!.Master!.S101Type.Name;
 
                 foreignBindings.Add(featureBindingForeign);
