@@ -6083,6 +6083,7 @@ namespace S100Framework.AttributeModel.S127
 	using System.Text.Json;
 	using S100Framework.AttributeModel.S127.SimpleAttributes;
 	using S100Framework.AttributeModel.S127.ComplexAttributes;
+	using S100Framework.AttributeModel.S127.FeatureAssociation;
 	using S100Framework.AttributeModel.S127.FeatureTypes;
 
 	public class Summary : ISummary

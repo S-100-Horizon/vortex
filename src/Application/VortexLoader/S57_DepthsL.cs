@@ -5,6 +5,8 @@ using S100Framework.DomainModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.InformationTypes;
+using S100Framework.AttributeModel;
+using S100Framework.AttributeModel.S101.InformationAssociation;
 
 
 namespace S100Framework.Applications
@@ -223,7 +225,7 @@ namespace S100Framework.Applications
             spatialQuality101.qualityOfHorizontalMeasurement_optional = EnumHelper.GetEnumValue(4);
 
             bufferInformationType["ps"] = ps101;
-            bufferInformationType["code"] = spatialQuality101.Code;
+            bufferInformationType["code"] = spatialQuality101.S100FC_code;
             bufferInformationType["edition"] = ImporterNIS.s101version;
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
@@ -232,11 +234,10 @@ namespace S100Framework.Applications
 
             // create binding
             var informationBinding = new informationBinding<SpatialAssociation> {
-                referenceId = informationName,                
-                //association = nameof(SpatialAssociation),
+                informationId = informationName,                
                 informationType = nameof(SpatialQuality),
-                role = Enum.GetName<Role>(Role.theQualityInformation)!,
-                roleType = roleType.association.ToString()
+                role = "theQualityInformation",
+                roleType = "association",
             };
 
             return /*informationAssociationName, spatialQuality101,*/ [informationBinding];

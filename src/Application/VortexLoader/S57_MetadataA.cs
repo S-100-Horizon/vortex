@@ -234,7 +234,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2;
+                                instance.depthRangeMaximumValue_optional = current.DRVAL2;
                             }
 
                             // TODO: featuresDetected

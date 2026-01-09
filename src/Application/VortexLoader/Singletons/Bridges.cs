@@ -1,8 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100Framework.DomainModel;
-using S100Framework.AttributeModel.S101.FeatureAssociations;
+using S100Framework.AttributeModel;
+using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.DomainModel;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -253,12 +254,12 @@ namespace S100Framework.Applications.Singletons
                     foreach (var binding in bindings) {
                         var relatedBridge = row.UID();
                         var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
-                        var featureBinding = new featureBinding<BridgeAggregation> {
-                            referenceId = binding.ChildName!,
-                            featureType = name,
-                            role = "theComponent",
-                            roleType = "association"
-                        };
+                        featureBinding featureBinding = new featureBinding<BridgeAggregation> {
+                                        role = "theComponent",
+                                        roleType = "association",
+                                        featureId = binding.ChildName!,
+                                        featureType = name,
+                                    };
                         featureBindings.Add(featureBinding);
                     }
                     row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
@@ -273,8 +274,8 @@ namespace S100Framework.Applications.Singletons
 
                     //S100Framework.AttributeModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.AttributeModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 
-                    bridge.openingBridge = canOpen;
-                    bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
+                    bridge.openingBridge_optional = canOpen;
+                    bridge.featureName_optional = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
                     row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
 

@@ -4,7 +4,7 @@ using ArcGIS.Core.Internal.Geometry;
 using S100Framework.DomainModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.InformationAssociations;
+using S100Framework.AttributeModel.S101.InformationAssociation;
 using S100Framework.AttributeModel.S101.InformationTypes;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -87,7 +88,7 @@ namespace S100Framework.Applications.Singletons
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
             bufferInformationType["ps"] = ImporterNIS.ps101;
-            bufferInformationType["code"] = nauticalInformation.Code;
+            bufferInformationType["code"] = nauticalInformation.S100FC_code;
             bufferInformationType["edition"] = ImporterNIS.s101version;
             bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
 
@@ -96,11 +97,11 @@ namespace S100Framework.Applications.Singletons
 
             // create binding
             var informationBinding = new informationBinding<AdditionalInformation> {
-                referenceId = informationName,
+                informationId = informationName,
                 //association = nameof(AdditionalInformation),
                 informationType = nameof(NauticalInformation),
-                role = Enum.GetName<Role>(Role.theInformation)!,
-                roleType = roleType.association.ToString()
+                role = "theInformation",
+                roleType = "association",
             };
 
             return /*informationAssociationName, spatialQuality101,*/ informationBinding;
@@ -124,11 +125,11 @@ namespace S100Framework.Applications.Singletons
                 using (var insertCursor = attachment.CreateInsertCursor()) {
                     foreach (var nauticalInformation in NauticalInformations.Instance._nauticalInformations.Values) {
 
-                        foreach (var info in nauticalInformation.information) {
+                        foreach (var info in nauticalInformation.information_optional) {
                             var supportFile = new S100Horizon.Settings.SupportFile();
-                            supportFile.FileName = info.fileReference!;
+                            supportFile.FileName = info!.fileReference_optional!;
 
-                            var s57FileName = info.fileReference!.Clone().ToString()!.Replace("101DK00", "DK");
+                            var s57FileName = info.fileReference_optional!.Clone().ToString()!.Replace("101DK00", "DK");
 
                             string? filePath = default;
 

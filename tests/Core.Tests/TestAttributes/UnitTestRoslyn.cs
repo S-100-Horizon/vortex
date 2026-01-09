@@ -679,7 +679,6 @@ namespace TestAttributes
             }
             #endregion
 
-
             #region S100_FC_InformationType
             {
                 var abstractTypesKnown = new List<string>();
@@ -865,7 +864,8 @@ namespace TestAttributes
             }
             #endregion
 
-            var featureBindingsCreator = new StringBuilder();
+            var featureBindingsCreatorKeys = new List<string>();
+            var featureBindingsCreator = new StringBuilder();            
 
             #region S100_FC_FeatureType
             {
@@ -1060,7 +1060,10 @@ namespace TestAttributes
                             foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
                                 var featureType = e.Attribute("ref")!.Value!;
 
-                                featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
+                                if (!featureBindingsCreatorKeys.Contains($"{code}::{featureType}")) {
+                                    featureBindingsCreatorKeys.Add($"{code}::{featureType}");
+                                    featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
+                                }
                             }
                         }
                     }
@@ -1077,6 +1080,7 @@ namespace TestAttributes
                 roslyn.AppendLine($"\tusing System.Text.Json;");
                 roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
                 roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.FeatureAssociation;");
                 roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.FeatureTypes;");
                 roslyn.AppendLine();
 
@@ -1125,17 +1129,17 @@ namespace TestAttributes
                 roslyn.AppendLine("\t\t}"); 
 
                 //  featureBindings
-                roslyn.AppendLine();
-                roslyn.AppendLine("\t\tpublic static (featureBinding primary, featureBinding foreign) CreateFeatureBinding(FeatureType primary, FeatureType foreign) {");
-                roslyn.AppendLine("\t\t\tvar key = $\"{primary.S100FC_code}::{foreign.S100FC_code}\";");
-                roslyn.AppendLine("\t\t\tvar primaryBinding = featureBindings[$\"{primary.S100FC_code}::{foreign.S100FC_code}\"]();");
-                roslyn.AppendLine("\t\t\tvar foreignBinding = featureBindings[$\"{foreign.S100FC_code}::{primary.S100FC_code}\"]();");
-                roslyn.AppendLine("\t\t\treturn (primaryBinding, foreignBinding);");
-                roslyn.AppendLine("\t\t}");
-                roslyn.AppendLine();
-                roslyn.AppendLine("\t\tprivate static Dictionary<string, Func<featureBinding>> featureBindings = new Dictionary<string, Func<featureBinding>> {");
-                roslyn.Append(featureBindingsCreator.ToString());
-                roslyn.AppendLine("\t\t};");
+                //roslyn.AppendLine();
+                //roslyn.AppendLine("\t\tpublic static (featureBinding primary, featureBinding foreign) CreateFeatureBinding(FeatureType primary, FeatureType foreign) {");
+                //roslyn.AppendLine("\t\t\tvar key = $\"{primary.S100FC_code}::{foreign.S100FC_code}\";");
+                //roslyn.AppendLine("\t\t\tvar primaryBinding = featureBindings[$\"{primary.S100FC_code}::{foreign.S100FC_code}\"]();");
+                //roslyn.AppendLine("\t\t\tvar foreignBinding = featureBindings[$\"{foreign.S100FC_code}::{primary.S100FC_code}\"]();");
+                //roslyn.AppendLine("\t\t\treturn (primaryBinding, foreignBinding);");
+                //roslyn.AppendLine("\t\t}");
+                //roslyn.AppendLine();
+                //roslyn.AppendLine("\t\tprivate static Dictionary<string, Func<featureBinding>> featureBindings = new Dictionary<string, Func<featureBinding>> {");
+                //roslyn.Append(featureBindingsCreator.ToString());
+                //roslyn.AppendLine("\t\t};");
 
 
                 roslyn.AppendLine("\t}");

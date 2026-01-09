@@ -16,6 +16,7 @@ using System.Text.RegularExpressions;
 using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
+using S100Framework.AttributeModel.S101;
 
 [assembly: InternalsVisibleTo("TestNisImporter")]
 namespace S100Framework.Applications
@@ -29,19 +30,18 @@ namespace S100Framework.Applications
             PropertyNameCaseInsensitive = true,
         };
 
-        internal static readonly JsonSerializerOptions jsonInformationTypeSerializerOptions = new() {
+        internal static readonly JsonSerializerOptions jsonInformationTypeSerializerOptions = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
-            TypeInfoResolver = Summary.InformationBindingResolver(),
-        };
+            //TypeInfoResolver = Summary.InformationBindingResolver(),
+        }.AppendTypeInfoResolver();
 
-        internal static readonly JsonSerializerOptions jsonFeatureTypeSerializerOptions = new() {
+        internal static readonly JsonSerializerOptions jsonFeatureTypeSerializerOptions = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
-            TypeInfoResolver = Summary.FeatureBindingResolver(),
-        };
+        }.AppendTypeInfoResolver();
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";

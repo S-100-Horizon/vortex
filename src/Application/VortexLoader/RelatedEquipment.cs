@@ -2,9 +2,11 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel;
+using S100Framework.AttributeModel;
+using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using System.Data;
 using S100Framework.AttributeModel;
@@ -211,7 +213,6 @@ namespace S100Framework.Applications
 
                     // TODO: ENABLE THIS 
                     FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(lightSectored.GetType(), equipmentName!), featureN, s101MasterFeature);
-
                 }
                 // 
                 foreach (var relatedObject in relatedNonSectoredEquipment) {
@@ -723,8 +724,5 @@ namespace S100Framework.Applications
 
 
         }
-
-
-
     }
 }

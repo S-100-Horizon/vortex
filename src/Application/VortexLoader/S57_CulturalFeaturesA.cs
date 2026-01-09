@@ -5,6 +5,7 @@ using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.ComponentModel;
@@ -341,14 +342,12 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - SpanOpening
-                                    DomainModel.featureBinding[] bindings = [
-                                        new DomainModel.featureBinding<BridgeAggregation> {
-                                            featureType = nameof(SpanOpening),
-                                            referenceId = relatedBridge.Name,
-                                            role = "theCollection",
-                                            roleType = "aggregation"
-                                        }
-                                    ];
+                                    featureBinding[] bindings = [new featureBinding<BridgeAggregation> { 
+                                        role = "theCollection", 
+                                        roleType = "aggregation", 
+                                        featureId = relatedBridge.Name,
+                                        featureType = nameof(Bridge),
+                                    }];
 
                                     featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
                                     featureN.Store();
@@ -438,14 +437,12 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanFixed), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - Spanfixed
-                                    AttributeModel.featureBinding[] bindings = [
-                                        new AttributeModel.featureBinding {
-                                            referenceId = name,
-                                            featureType=nameof(SpanFixed),
-                                            role = "theCollection",
-                                            roleType = "aggregation"
-                                        }
-                                    ];
+                                    featureBinding[] bindings = [new featureBinding<BridgeAggregation> {
+                                        role = "theCollection",
+                                        roleType = "aggregation",
+                                        featureId = relatedBridge.Name,
+                                        featureType = nameof(Bridge),
+                                    }];
 
                                     featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
                                     featureN.Store();
@@ -1269,14 +1266,12 @@ namespace S100Framework.Applications
                                 Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(PylonBridgeSupport), current.OBJNAM, current.NOBJNM);
 
                                 // Create link to bridge - PylonBridgeSupport
-                                featureBinding[] bindings = [
-                                    new DomainModel.featureBinding<BridgeAggregation>() {
-                                        referenceId = relatedBridge.Name,
-                                        featureType = nameof(PylonBridgeSupport),
+                                featureBinding[] bindings = [new featureBinding<BridgeAggregation> {
                                         role = "theCollection",
-                                        roleType = "aggregation"
-                                    }
-                                ];
+                                        roleType = "aggregation",
+                                        featureId = relatedBridge.Name,
+                                        featureType = nameof(Bridge),
+                                    }];
 
                                 featureN["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(bindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
                                 featureN.Store();

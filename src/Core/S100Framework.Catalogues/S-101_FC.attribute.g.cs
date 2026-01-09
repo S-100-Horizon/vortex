@@ -33926,6 +33926,7 @@ namespace S100Framework.AttributeModel.S101
 	using System.Text.Json;
 	using S100Framework.AttributeModel.S101.SimpleAttributes;
 	using S100Framework.AttributeModel.S101.ComplexAttributes;
+	using S100Framework.AttributeModel.S101.FeatureAssociation;
 	using S100Framework.AttributeModel.S101.FeatureTypes;
 
 	public class Summary : ISummary

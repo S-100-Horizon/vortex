@@ -8308,6 +8308,7 @@ namespace S100Framework.AttributeModel.S131
 	using System.Text.Json;
 	using S100Framework.AttributeModel.S131.SimpleAttributes;
 	using S100Framework.AttributeModel.S131.ComplexAttributes;
+	using S100Framework.AttributeModel.S131.FeatureAssociation;
 	using S100Framework.AttributeModel.S131.FeatureTypes;
 
 	public class Summary : ISummary

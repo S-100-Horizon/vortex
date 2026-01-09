@@ -3824,6 +3824,7 @@ namespace S100Framework.AttributeModel.S128
 	using System.Text.Json;
 	using S100Framework.AttributeModel.S128.SimpleAttributes;
 	using S100Framework.AttributeModel.S128.ComplexAttributes;
+	using S100Framework.AttributeModel.S128.FeatureAssociation;
 	using S100Framework.AttributeModel.S128.FeatureTypes;
 
 	public class Summary : ISummary

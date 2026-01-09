@@ -2071,6 +2071,7 @@ namespace S100Framework.AttributeModel.S124
 	using System.Text.Json;
 	using S100Framework.AttributeModel.S124.SimpleAttributes;
 	using S100Framework.AttributeModel.S124.ComplexAttributes;
+	using S100Framework.AttributeModel.S124.FeatureAssociation;
 	using S100Framework.AttributeModel.S124.FeatureTypes;
 
 	public class Summary : ISummary

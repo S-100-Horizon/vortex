@@ -3,6 +3,8 @@ using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S128.ComplexAttributes;
+using S100Framework.AttributeModel.S128.SimpleAttributes;
 using VortexLoader.Singletons;
 
 namespace S100Framework.Applications
@@ -107,20 +109,18 @@ namespace S100Framework.Applications
                 };
 
                 var instance = new S100Framework.AttributeModel.S128.FeatureTypes.ElectronicProduct {
-                    catalogueElementClassification = new List<S100Framework.AttributeModel.S128.catalogueElementClassification> {
-                                S100Framework.AttributeModel.S128.catalogueElementClassification.Enc,
-                            },
-                    editionNumber = edtn,
-                    updateNumber = updn,
+                    catalogueElementClassification = 1, // catalogueElementClassification.Enc
+                    editionNumber_optional = edtn,
+                    updateNumber_optional = updn,
                     issueDate = DateOnly.FromDateTime(isdt),
                     notForNavigation = true,
-                    typeOfProductFormat = S100Framework.AttributeModel.S128.typeOfProductFormat.IsoIec8211,
-                    datasetName = dsnm,
-                    specificUsage = specificUsage,
-                    productSpecification = new S100Framework.AttributeModel.S128.ComplexAttributes.productSpecification {
-                        editionDate = S100Framework.AttributeModel.S101.Summary.VersionDate,
-                        name = S100Framework.AttributeModel.S101.Summary.ProductId,
-                        version = S100Framework.AttributeModel.S101.Summary.Version.ToString(),
+                    typeOfProductFormat = 2,    //typeOfProductFormat.IsoIec8211,
+                    datasetName_optional = dsnm,
+                    specificUsage_optional = specificUsage,
+                    productSpecification_optional = new productSpecification {
+                        editionDate = AttributeModel.S101.Summary.VersionDate,
+                        name = AttributeModel.S101.Summary.ProductId,
+                        version = AttributeModel.S101.Summary.Version.ToString(),
                     },
                 };
 
@@ -140,7 +140,7 @@ namespace S100Framework.Applications
                     //var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
                     var displayScale = DisplayScale.GetDisplayScale(serie) ?? default;
 
-                    var coverageShape = productCoverage.SHAPE;
+                    var coverageShape = productCoverage.SHAPE!;
 
                     //(coverageShape as ArcGIS.Core.Geometry.Polygon).Area != (cutOutM_SCL[0] as ArcGIS.Core.Geometry.Polygon).Area
                     var cutOutM_SCL = Geometries.EraseTouchingParts([coverageShape], allM_CSCL.Select(e => e.SHAPE!).ToList());

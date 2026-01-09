@@ -468,7 +468,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
+                                instance.communicationChannel_optional = GetCommunicationChannel(current.COMCHA);
                             }
 
                             if (current.CONDTN.HasValue) {
@@ -988,7 +988,7 @@ namespace S100Framework.Applications
                             if (catmor == 5) {
                                 var instance = new Pile();
 
-                                instance.categoryOfPile_optional = /;   // categoryOfPile.MooringPost;
+                                instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
 
 
                                 if (current.COLOUR != default) {
