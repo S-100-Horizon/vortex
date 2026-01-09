@@ -1,8 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using VortexLoader.Singletons;
@@ -74,7 +71,7 @@ namespace S100Framework.Applications
 
                 all_M_QUAL_geometries = Geometries.AllGeometries(metadataA, M_Qual_WhereFilter, ["verdat", "plts_comp_scale"]);
                 all_M_SDAT_geometries = Geometries.AllGeometries(metadataA, M_SDAT_WhereFilter, ["verdat", "plts_comp_scale"]);
-                
+
 
                 var all_M_QUAL_dissolved = Geometries.GetDissolvedClipped(metadataA, M_Qual_WhereFilter, productCoverage, productCoverageFilter);
 
@@ -106,9 +103,9 @@ namespace S100Framework.Applications
                     instance.verticalDatum = soundingDatum;
 
 
-                 // Clear vdat if covered by a metadata object with same vdat
+                    // Clear vdat if covered by a metadata object with same vdat
 
-                 buffer["ps"] = ps101;
+                    buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
@@ -128,9 +125,8 @@ namespace S100Framework.Applications
                     }
 
                     var instance = new SoundingDatum {
+                        verticalDatum = EnumHelper.GetEnumValue(item.FieldName_FieldValue!["verdat"])
                     };
-
-                    instance.verticalDatum = EnumHelper.GetEnumValue(item.FieldName_FieldValue!["verdat"]);
 
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;

@@ -10,7 +10,7 @@ namespace S100Framework.Applications.Singletons
 
         private static Geodatabase? _geodatabase;
 
-        private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
+        private static readonly Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = [];
 
         private SanityChecker(Geodatabase geodatabase) {
             _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));
@@ -148,7 +148,7 @@ namespace S100Framework.Applications.Singletons
 
                 }
 
-                if (tableErrorCount >0) {
+                if (tableErrorCount > 0) {
                     Logger.Current.Information($"{tableErrorCount} errors in {tableName}");
                 }
             }

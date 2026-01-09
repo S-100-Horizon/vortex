@@ -1,11 +1,4 @@
 ﻿using ArcGIS.Core.Geometry;
-using S100Framework.AttributeModel.S101.FeatureTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -14,7 +7,7 @@ namespace S100Framework.Applications.Singletons
         private static LandAreas? _instance;
         private static readonly object _lock = new object();
 
-        private readonly List<Geometry> _polygons = new List<Geometry>();
+        private readonly List<Geometry> _polygons = [];
 
 
         internal static void Initialize() {
@@ -52,7 +45,7 @@ namespace S100Framework.Applications.Singletons
             if (polygon.GeometryType != GeometryType.Polygon)
                 throw new ArgumentException("Only polygon geometries are supported.");
 
-            _polygons.Add(polygon);
+            this._polygons.Add(polygon);
         }
 
         /// <summary>
@@ -62,7 +55,7 @@ namespace S100Framework.Applications.Singletons
             if (geometry == null)
                 throw new ArgumentNullException(nameof(geometry));
 
-            return _polygons.Where(p =>
+            return this._polygons.Where(p =>
                 GeometryEngine.Instance.Touches(p, geometry) ||
                 GeometryEngine.Instance.Intersects(p, geometry) ||
                 GeometryEngine.Instance.Contains(p, geometry));

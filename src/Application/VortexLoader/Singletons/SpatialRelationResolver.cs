@@ -11,7 +11,7 @@ namespace S100Framework.Applications.Singletons
         private static SpatialRelationResolver? _instance;
         private static readonly object _lock = new object();
 
-        private static Dictionary<string, FeatureClass> _featureClasses = new();
+        private static readonly Dictionary<string, FeatureClass> _featureClasses = [];
 
         private static Geodatabase? _geodatabase;
         private static SQLSyntax? _sqlSyntax;
@@ -53,7 +53,7 @@ namespace S100Framework.Applications.Singletons
             //return new List<T>() { (T)(object)current.GlobalId };
 
             if (!_featureClasses.ContainsKey(typeof(T).Name)) {
-                _featureClasses[typeof(T).Name] = _geodatabase!.OpenDataset<FeatureClass>(GetFullTableName(typeof(T).Name));
+                _featureClasses[typeof(T).Name] = _geodatabase!.OpenDataset<FeatureClass>(this.GetFullTableName(typeof(T).Name));
             }
             var featureclass = _featureClasses[typeof(T).Name];
 
@@ -68,7 +68,7 @@ namespace S100Framework.Applications.Singletons
             //return new List<T>() { (T)(object)current.GlobalId };
 
             if (!_featureClasses.ContainsKey(typeof(T).Name)) {
-                _featureClasses[typeof(T).Name] = _geodatabase!.OpenDataset<FeatureClass>(GetFullTableName(typeof(T).Name));
+                _featureClasses[typeof(T).Name] = _geodatabase!.OpenDataset<FeatureClass>(this.GetFullTableName(typeof(T).Name));
             }
             var featureclass = _featureClasses[typeof(T).Name];
 

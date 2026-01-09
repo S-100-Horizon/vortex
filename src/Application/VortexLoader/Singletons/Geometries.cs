@@ -119,7 +119,7 @@ namespace VortexLoader.Singletons
 
         internal static List<T> Features<T>(FeatureClass featureClass, QueryFilter filter) where T : S57Object {
             using var cursor = featureClass.Search(filter, false);
-            List<T> result = new List<T>();
+            List<T> result = [];
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 var val = Activator.CreateInstance(typeof(T), feature) as T;
@@ -130,7 +130,7 @@ namespace VortexLoader.Singletons
 
         internal static List<Geometry> AllGeometries(FeatureClass featureClass, QueryFilter filter) {
             using var cursor = featureClass.Search(filter, false);
-            List<Geometry> geometries = new List<Geometry>();
+            List<Geometry> geometries = [];
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
                 geometries.Add(feature.GetShape());
@@ -139,9 +139,9 @@ namespace VortexLoader.Singletons
         }
         internal static List<GeometryResult> AllGeometries(FeatureClass featureClass, QueryFilter filter, List<string> fieldsToReturn) {
             using var cursor = featureClass.Search(filter, false);
-            List<GeometryResult> geometries = new List<GeometryResult>();
+            List<GeometryResult> geometries = [];
 
-            List<int> indices = new List<int>();
+            List<int> indices = [];
 
             foreach (var fieldName in fieldsToReturn) {
                 indices.Add(cursor.FindField(fieldName));
@@ -150,8 +150,9 @@ namespace VortexLoader.Singletons
             while (cursor.MoveNext()) {
                 var feature = (Feature)cursor.Current;
 
-                var result = new GeometryResult();
-                result.Geometry = feature.GetShape();
+                var result = new GeometryResult {
+                    Geometry = feature.GetShape()
+                };
                 int idx = 0;
                 foreach (var index in indices) {
 
@@ -236,23 +237,23 @@ namespace VortexLoader.Singletons
         {
 
             public Polygon? OuterRing { get; set; }
-            public List<Polygon> InnerRings { get; set; } = new List<Polygon>();
+            public List<Polygon> InnerRings { get; set; } = [];
 
             /// <summary>
             /// Gets the combined Polygon geometry from the outer and inner rings.
             /// </summary>
             public Polygon Geometry {
                 get {
-                    var builder = new PolygonBuilder(OuterRing!.Parts[0].SpatialReference);
+                    var builder = new PolygonBuilder(this.OuterRing!.Parts[0].SpatialReference);
 
-                    if (OuterRing.Parts.Count != 1) {
+                    if (this.OuterRing.Parts.Count != 1) {
                         throw new NotSupportedException("Building single polygon from multiple outer parts is not supported.");
                     }
 
 
-                    builder.AddPart(OuterRing.Parts[0]);
+                    builder.AddPart(this.OuterRing.Parts[0]);
 
-                    foreach (var hole in InnerRings) {
+                    foreach (var hole in this.InnerRings) {
                         builder.AddPart(hole.Parts[0]);
                     }
 

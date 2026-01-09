@@ -1,19 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using ArcGIS.Core.Internal.Geometry;
-using S100Framework.DomainModel;
-using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.InformationAssociation;
 using S100Framework.AttributeModel.S101.InformationTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
-using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -23,8 +11,8 @@ namespace S100Framework.Applications.Singletons
         private static readonly object _lock = new object();
         private static Geodatabase? _destination;
 
-        private readonly Dictionary<string, NauticalInformation> _nauticalInformations = new();
-        private readonly Dictionary<string, informationBinding<AdditionalInformation>> _nauticalBindings = new();
+        private readonly Dictionary<string, NauticalInformation> _nauticalInformations = [];
+        private readonly Dictionary<string, informationBinding<AdditionalInformation>> _nauticalBindings = [];
 
         /// <summary>
         /// Initializes
@@ -72,19 +60,19 @@ namespace S100Framework.Applications.Singletons
             if (nauticalInformation == null)
                 throw new ArgumentNullException(nameof(nauticalInformation));
 
-            if (!_nauticalInformations.ContainsKey(fileName)) {
-                _nauticalInformations.Add(fileName, nauticalInformation);
+            if (!this._nauticalInformations.ContainsKey(fileName)) {
+                this._nauticalInformations.Add(fileName, nauticalInformation);
 
                 // Create informationtype
-                _nauticalBindings.Add(fileName, CreateInformationType(_destination!, nauticalInformation));
+                this._nauticalBindings.Add(fileName, CreateInformationType(_destination!, nauticalInformation));
             }
 
-            return _nauticalBindings[fileName];
+            return this._nauticalBindings[fileName];
 
         }
 
         private static informationBinding<AdditionalInformation> CreateInformationType(Geodatabase target, NauticalInformation nauticalInformation) {
-            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));            
+            using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
             bufferInformationType["ps"] = ImporterNIS.ps101;
@@ -112,7 +100,7 @@ namespace S100Framework.Applications.Singletons
         /// Returns all polygons from the collection that touch the specified geometry.
         /// </summary>
         public bool Bind(string fileName, out NauticalInformation? nauticalInformation) {
-            return _nauticalInformations.TryGetValue(fileName, out nauticalInformation);
+            return this._nauticalInformations.TryGetValue(fileName, out nauticalInformation);
         }
 
 
@@ -126,16 +114,17 @@ namespace S100Framework.Applications.Singletons
                     foreach (var nauticalInformation in NauticalInformations.Instance._nauticalInformations.Values) {
 
                         foreach (var info in nauticalInformation.information_optional) {
-                            var supportFile = new S100Horizon.Settings.SupportFile();
-                            supportFile.FileName = info!.fileReference_optional!;
+                            var supportFile = new S100Horizon.Settings.SupportFile {
+                                FileName = info!.fileReference_optional!
+                            };
 
                             var s57FileName = info.fileReference_optional!.Clone().ToString()!.Replace("101DK00", "DK");
 
                             string? filePath = default;
 
-                            if (!string.IsNullOrEmpty(ImporterNIS._notesPath)) { 
-                                filePath = Directory.EnumerateFiles(ImporterNIS._notesPath, s57FileName,  SearchOption.AllDirectories).FirstOrDefault();
-                            }   
+                            if (!string.IsNullOrEmpty(ImporterNIS._notesPath)) {
+                                filePath = Directory.EnumerateFiles(ImporterNIS._notesPath, s57FileName, SearchOption.AllDirectories).FirstOrDefault();
+                            }
 
                             if (filePath == default) {
                                 Logger.Current.Error($"Cannot find NauticalInformation fileref: {s57FileName} in {ImporterNIS._notesPath}");
@@ -147,7 +136,7 @@ namespace S100Framework.Applications.Singletons
                             string targetFolder = Path.GetFullPath(ImporterNIS._notesPath).TrimEnd(Path.DirectorySeparatorChar);
                             bool isFileInProductionFolderRoot = string.Equals(fileDirectory, targetFolder, StringComparison.OrdinalIgnoreCase);
                             if (!isFileInProductionFolderRoot) {
-                                Logger.Current.DataError(-1,"","",$"NauticalInformation fileref: {s57FileName} found in subfolder in notes folder: {fileDirectory}");
+                                Logger.Current.DataError(-1, "", "", $"NauticalInformation fileref: {s57FileName} found in subfolder in notes folder: {fileDirectory}");
                             }
 
                             supportFile.date = DateOnly.FromDateTime(File.GetLastWriteTimeUtc(filePath));
@@ -166,7 +155,7 @@ namespace S100Framework.Applications.Singletons
                                 ".xslt" => DomainModel.S100.S100_SupportFileFormat.XSLT,
                                 _ => throw new NotSupportedException($"Illegal file extension for support files: {Path.GetExtension(filePath).ToLower()}")
                             };
-                            
+
                             rowBuffer["ps"] = "S-100.Horizon";
                             rowBuffer["code"] = "supportfile";
                             rowBuffer["edition"] = ImporterNIS.s101version;
@@ -176,12 +165,13 @@ namespace S100Framework.Applications.Singletons
                             insertCursor.Insert(rowBuffer);
                             fileCount++;
 
-                            
+
 
                         }
                     }
                 }
-            };
+            }
+            ;
             Logger.Current.Information($"Flushed {fileCount} nautical information support file references");
         }
 

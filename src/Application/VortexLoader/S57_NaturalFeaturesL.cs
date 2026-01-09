@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -147,9 +146,9 @@ namespace S100Framework.Applications
 
                         }
                     case 15: { // RIVERS_River
-                            var instance = new River();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new River {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             // TODO: interoperabilityIdentifier
 

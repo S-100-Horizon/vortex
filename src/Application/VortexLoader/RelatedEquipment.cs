@@ -3,24 +3,21 @@ using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
-using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Data;
-using S100Framework.AttributeModel;
 
 namespace S100Framework.Applications
 {
     internal class RelatedEquipment
     {
-        Geodatabase _source;
-        Geodatabase _target;
+        readonly Geodatabase _source;
+        readonly Geodatabase _target;
 
-        HashSet<(string TableName, int Subtype, Guid globalid)> _converted = new();
+        readonly HashSet<(string TableName, int Subtype, Guid globalid)> _converted = [];
 
-        HashSet<string> _relations = new();
+        readonly HashSet<string> _relations = [];
 
         public RelatedEquipment(Geodatabase source, Geodatabase target) {
             this._source = source;
@@ -159,8 +156,8 @@ namespace S100Framework.Applications
             //    ;
             //}
 
-            var tableName = _target.GetName("point");
-            using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
+            var tableName = this._target.GetName("point");
+            using var featureClass = this._target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
 
             // group structures per location
@@ -182,7 +179,7 @@ namespace S100Framework.Applications
 
                 // Sectoredlights
                 if (relatedLightSectored.Count > 0) {
-                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, scaleMinimum, _source);
+                    var lightSectored = Converters.CreateLightSectored(relatedLightSectored, scaleMinimum, this._source);
 
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
@@ -269,11 +266,11 @@ namespace S100Framework.Applications
         internal void CreateRelatedPointEquipment(S57Object s57master, FeatureType s101master, Feature s101MasterFeature, int? scaleMinimum) {
 
             var key = (s57master.TableName!.ToLower(), s57master.FcSubtype!.Value, s57master.GlobalId);
-            if (_converted.Contains(key)) {
+            if (this._converted.Contains(key)) {
                 throw new DuplicateNameException($"Related equipment already converted for {key}");
             }
 
-            _converted.Add(key);
+            this._converted.Add(key);
 
             // if all related equipments are topmarks - return. Topmarks have become attributes
             if (!FeatureRelations.Instance.GetRelated(s57master.GlobalId).Any(e => e?.PLTS_Frel?.DEST_SUB?.ToLower() != "topmar_topmark"))
@@ -285,8 +282,8 @@ namespace S100Framework.Applications
 
             var relatedNonSectoredEquipment = totalRelated.Where(e => e.S101Type != typeof(LightSectored)).ToList();
 
-            var tableName = _target.GetName("point");
-            using var featureClass = _target.OpenDataset<FeatureClass>(tableName);
+            var tableName = this._target.GetName("point");
+            using var featureClass = this._target.OpenDataset<FeatureClass>(tableName);
             using var buffer = featureClass.CreateRowBuffer();
 
 

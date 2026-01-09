@@ -11,7 +11,7 @@ namespace S100Framework.Applications.Singletons
 
         private static Geodatabase? _target;
 
-        private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
+        private static readonly Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = [];
 
         private Afterburner(Geodatabase target) {
             _target = target ?? throw new ArgumentNullException(nameof(target));

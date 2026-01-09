@@ -1,23 +1,19 @@
 ﻿using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.InformationTypes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace S100Framework.Applications
 {
-    internal class InformationResult {
+    internal class InformationResult
+    {
 
         // Simple text
-        internal List<information> information { get; set; } = new();
+        internal List<information> information { get; set; } = [];
 
         // File references
-        internal List<NauticalInformation> NauticalInformation { get; set; } = new();
+        internal List<NauticalInformation> NauticalInformation { get; set; } = [];
 
 
-        internal List<informationBinding> InformationBindings { get; set; } = new();
+        internal List<informationBinding> InformationBindings { get; set; } = [];
     }
 }

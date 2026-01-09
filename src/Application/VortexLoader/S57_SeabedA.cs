@@ -1,10 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -56,9 +54,9 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 15: { // SBDARE_SeabedArea
-                            var instance = new SeabedArea();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new SeabedArea {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             // TODO: interoperabilityIdentifier
 
@@ -86,8 +84,8 @@ namespace S100Framework.Applications
 
                             //instance.surfaceCharacteristics = new List<AttributeModel.S101.ComplexAttributes.surfaceCharacteristics>();
 
-                            var list1 = string.IsNullOrWhiteSpace(current.NATSUR) || string.IsNullOrEmpty(current.NATSUR.Trim().Trim(',')) ? new List<string> { "" } : current.NATSUR.Trim().Trim(',').Split(',').ToList();
-                            var list2 = string.IsNullOrWhiteSpace(current.NATQUA) || string.IsNullOrEmpty(current.NATQUA.Trim().Trim(',')) ? new List<string> { "" } : current.NATQUA.Trim().Trim(',').Split(',').ToList();
+                            var list1 = string.IsNullOrWhiteSpace(current.NATSUR) || string.IsNullOrEmpty(current.NATSUR.Trim().Trim(',')) ? [""] : current.NATSUR.Trim().Trim(',').Split(',').ToList();
+                            var list2 = string.IsNullOrWhiteSpace(current.NATQUA) || string.IsNullOrEmpty(current.NATQUA.Trim().Trim(',')) ? [""] : current.NATQUA.Trim().Trim(',').Split(',').ToList();
 
                             //var result = new List<(string, string)>();
 
@@ -255,9 +253,9 @@ namespace S100Framework.Applications
                     case 40: { // WEDKLP_WeedKelp
 
                             if (current.CATWED.HasValue && current.CATWED.Value == 3) {
-                                var seagrass = new Seagrass();
-
-                                seagrass.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var seagrass = new Seagrass {
+                                    featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                };
 
                                 // TODO: interoperabilityIdentifier
 

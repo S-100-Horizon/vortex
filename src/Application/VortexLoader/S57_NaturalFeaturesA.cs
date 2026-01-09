@@ -1,10 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.DomainModel;
-using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -236,9 +234,9 @@ namespace S100Framework.Applications
                         }
 
                     case 20: {    // RIVERS
-                            var instance = new River();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new River {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             // TODO: interoperabilityIdentifier
 
@@ -345,7 +343,7 @@ namespace S100Framework.Applications
                         }
 
                     case 35: {    // VEGATN
-                            var instance = new Vegetation {                               
+                            var instance = new Vegetation {
                             };
 
                             if (current.CATVEG != default) {

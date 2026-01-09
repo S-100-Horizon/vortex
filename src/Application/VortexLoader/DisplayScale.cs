@@ -27,9 +27,9 @@
         };
 
         public DisplayScale(int maximumDisplayScale, int optimumDisplayScale, int? minimumDisplayScale) {
-            MaximumDisplayScale = maximumDisplayScale;
-            OptimumDisplayScale = optimumDisplayScale;
-            MinimumDisplayScale = minimumDisplayScale;
+            this.MaximumDisplayScale = maximumDisplayScale;
+            this.OptimumDisplayScale = optimumDisplayScale;
+            this.MinimumDisplayScale = minimumDisplayScale;
         }
 
         public static DisplayScale? GetDisplayScale(string series) {

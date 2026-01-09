@@ -3,8 +3,8 @@
 
     internal class ConversionAnalytics
     {
-        IDictionary<Guid, List<string>> _convertedS57Objects;
-        IDictionary<string, IDictionary<Guid, List<string>>> _tableNameToConvertedS57Objects;
+        readonly IDictionary<Guid, List<string>> _convertedS57Objects;
+        readonly IDictionary<string, IDictionary<Guid, List<string>>> _tableNameToConvertedS57Objects;
         private readonly object _lock = new object();
 
 
@@ -16,7 +16,7 @@
         }
 
         internal bool IsConverted(Guid globalid) {
-            return _convertedS57Objects.ContainsKey(globalid);
+            return this._convertedS57Objects.ContainsKey(globalid);
         }
 
 
@@ -28,9 +28,9 @@
         /// <param _s101name="_s101name">S-101 _s101name</param>
         /// <exception cref="ArgumentException"></exception>
         internal void AddConverted(string tableName, Guid guid, string name) {
-            lock (_lock) {
-                if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
-                    _tableNameToConvertedS57Objects.Add(tableName.ToLower(), new Dictionary<Guid, List<string>>());
+            lock (this._lock) {
+                if (!this._tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+                    this._tableNameToConvertedS57Objects.Add(tableName.ToLower(), new Dictionary<Guid, List<string>>());
                 }
 
 
@@ -38,44 +38,44 @@
                 //    throw new ArgumentException($"{guid} for {tableName} already converted.");
                 //}
 
-                if (_tableNameToConvertedS57Objects[tableName.ToLower()].ContainsKey(guid)) {
-                    _tableNameToConvertedS57Objects[tableName.ToLower()][guid].Add(name);
+                if (this._tableNameToConvertedS57Objects[tableName.ToLower()].ContainsKey(guid)) {
+                    this._tableNameToConvertedS57Objects[tableName.ToLower()][guid].Add(name);
                 }
                 else {
-                    _tableNameToConvertedS57Objects[tableName.ToLower()].Add(guid, new List<string> { name });
+                    this._tableNameToConvertedS57Objects[tableName.ToLower()].Add(guid, [name]);
                 }
 
-                if (!_convertedS57Objects.ContainsKey(guid)) {
-                    _convertedS57Objects[guid] = new List<string> { name };
+                if (!this._convertedS57Objects.ContainsKey(guid)) {
+                    this._convertedS57Objects[guid] = [name];
                 }
                 else {
-                    _convertedS57Objects[guid].Add(name);
+                    this._convertedS57Objects[guid].Add(name);
                 }
             }
         }
 
         internal void AddConverted(string tableName, IDictionary<Guid, List<string>> guidName) {
-            lock (_lock) {
-                if (_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
-                    var commonGuids = _tableNameToConvertedS57Objects[tableName.ToLower()].Keys.Intersect(guidName.Keys).ToList();
+            lock (this._lock) {
+                if (this._tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+                    var commonGuids = this._tableNameToConvertedS57Objects[tableName.ToLower()].Keys.Intersect(guidName.Keys).ToList();
                     if (commonGuids.Count > 0) {
                         throw new ArgumentException($"Object already converted {string.Join(",", commonGuids)} in {tableName.ToLower()}.");
                     }
-                    _tableNameToConvertedS57Objects[tableName.ToLower()].Union(guidName);
+                    this._tableNameToConvertedS57Objects[tableName.ToLower()].Union(guidName);
                 }
                 else {
                     var guidNames = new Dictionary<Guid, List<string>>();
                     guidNames.Union(guidName);
-                    _tableNameToConvertedS57Objects[tableName.ToLower()] = guidNames;
+                    this._tableNameToConvertedS57Objects[tableName.ToLower()] = guidNames;
 
                 }
-                _convertedS57Objects.Union(guidName);
+                this._convertedS57Objects.Union(guidName);
             }
         }
 
         internal List<(Guid GlobalId, string tableName)> GetTraceBack(string name) {
 
-            var result = _tableNameToConvertedS57Objects
+            var result = this._tableNameToConvertedS57Objects
                 .SelectMany(table => table.Value, (table, inner) => new { TableName = table.Key, Guid = inner.Key, Strings = inner.Value }) // Flatten the dictionary
                 .Where(x => x.Strings.Contains(name)) // Filter for name in the list
                 .Select(x => (x.Guid, x.TableName)) // Project to (string, Guid)
@@ -87,11 +87,11 @@
 
 
         internal int GetConvertedCount(string tableName) {
-            if (!_tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
+            if (!this._tableNameToConvertedS57Objects.ContainsKey(tableName.ToLower())) {
                 return 0;
             }
 
-            return _tableNameToConvertedS57Objects[tableName.ToLower()].Count;
+            return this._tableNameToConvertedS57Objects[tableName.ToLower()].Count;
         }
 
         public static ConversionAnalytics Instance {

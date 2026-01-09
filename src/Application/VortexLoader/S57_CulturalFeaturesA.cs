@@ -1,15 +1,11 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
-using System.ComponentModel;
-using VortexLoader.Singletons;
 
 namespace S100Framework.Applications
 {
@@ -164,7 +160,7 @@ namespace S100Framework.Applications
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                         }
                         break;
-                        
+
                     case 5: { // BRIDGE_Bridge  // SPANS
                               //var instance = new Bridge();
 
@@ -179,7 +175,7 @@ namespace S100Framework.Applications
                             }
 
                             bool openingBridge = false;
-                            List<bridgeFunction> bridgeFunctionValue = new List<bridgeFunction>();
+                            List<bridgeFunction> bridgeFunctionValue = [];
                             int? scaleMinimum = default;
                             //List<colour> colours = new();
                             //colourPattern? colourPatterns = default;
@@ -223,14 +219,14 @@ namespace S100Framework.Applications
                             }
                             else if (current.CATBRG != default && current.CATBRG == "9") {
                                 openingBridge = false;
-                                bridgeFunctionValue = new List<bridgeFunction>() { 3,   /*bridgeFunction.Pedestrian*/ };
+                                bridgeFunctionValue = [3,   /*bridgeFunction.Pedestrian*/];
                             }
                             else if (current.CATBRG != default && current.CATBRG == "10") {
                                 openingBridge = false;
                             }
                             else if (current.CATBRG != default && current.CATBRG == "11") {
                                 openingBridge = false;
-                                bridgeFunctionValue = new List<bridgeFunction>() { 4,   /*bridgeFunction.Aqueduct*/ };
+                                bridgeFunctionValue = [4,   /*bridgeFunction.Aqueduct*/];
                             }
                             else if (current.CATBRG != default && current.CATBRG == "12") {
                                 openingBridge = false;
@@ -342,9 +338,9 @@ namespace S100Framework.Applications
                                     Bridges.Instance.AddRelation(relatedBridge!.Name, name, typeof(SpanOpening), current.OBJNAM, current.NOBJNM);
 
                                     // Create link to bridge - SpanOpening
-                                    featureBinding[] bindings = [new featureBinding<BridgeAggregation> { 
-                                        role = "theCollection", 
-                                        roleType = "aggregation", 
+                                    featureBinding[] bindings = [new featureBinding<BridgeAggregation> {
+                                        role = "theCollection",
+                                        roleType = "aggregation",
                                         featureId = relatedBridge.Name,
                                         featureType = nameof(Bridge),
                                     }];
@@ -418,7 +414,7 @@ namespace S100Framework.Applications
                                     }
                                     if (update)
                                         instance.verticalDatum_optional = verticalDatum.value;
-                                }  
+                                }
 
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = instance.GetType().Name;
@@ -479,7 +475,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -586,7 +582,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -695,7 +691,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -748,7 +744,7 @@ namespace S100Framework.Applications
                                 }
                                 if (update)
                                     instance.verticalDatum_optional = verticalDatum.value;
-                            }    
+                            }
 
                             if (current.VERLEN.HasValue) {
                                 instance.verticalLength_optional = current.VERLEN.Value;
@@ -817,7 +813,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -964,7 +960,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1071,7 +1067,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1190,7 +1186,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1591,7 +1587,7 @@ namespace S100Framework.Applications
                                 if (update)
                                     instance.verticalDatum_optional = verticalDatum.value;
                             }
-     
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))

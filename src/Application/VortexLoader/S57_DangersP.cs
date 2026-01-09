@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -104,9 +103,9 @@ namespace S100Framework.Applications
 
                             // Foul ground
                             if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
-                                var instance = new FoulGround();
-
-                                instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var instance = new FoulGround {
+                                    featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                };
 
                                 // TODO: interoperabilityIdentifier
 
@@ -138,7 +137,7 @@ namespace S100Framework.Applications
                                     instance.valueOfSounding_optional = current.VALSOU.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 if (current.SOUACC.HasValue) {
@@ -260,7 +259,7 @@ namespace S100Framework.Applications
                                 instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
-                                
+
                             }
 
                             //      S57
@@ -345,7 +344,7 @@ namespace S100Framework.Applications
                                     else {
                                         ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
                                     }
-                                }                                
+                                }
                             }
                             else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
                                 if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
@@ -457,7 +456,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -500,7 +499,7 @@ namespace S100Framework.Applications
                                 instance.valueOfSounding_optional = current.VALSOU.Value;
                             }
                             else {
-                                
+
                             }
 
                             if (current.CONVIS.HasValue) {

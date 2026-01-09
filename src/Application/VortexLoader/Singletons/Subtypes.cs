@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal.CIM;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -8,8 +7,8 @@ namespace S100Framework.Applications.Singletons
         private static Subtypes? _instance;
         private static readonly object _lock = new object();
         private readonly Geodatabase _geodatabase;
-        private SQLSyntax _sqlSyntax;
-        private Tuple<string, string, string> _tuple;
+        private readonly SQLSyntax _sqlSyntax;
+        private readonly Tuple<string, string, string> _tuple;
 
         private readonly Dictionary<string, Dictionary<int, string>> _subtypes;
 
@@ -26,15 +25,15 @@ namespace S100Framework.Applications.Singletons
         }
 
         private Subtypes(Geodatabase geodatabase) {
-            _subtypes = new Dictionary<string, Dictionary<int, string>>();
-            _geodatabase = geodatabase;
+            this._subtypes = [];
+            this._geodatabase = geodatabase;
 
-            _sqlSyntax = _geodatabase.GetSQLSyntax();
-            var name = _geodatabase.GetDefinitions<TableDefinition>().First().GetName();
-            _tuple = _sqlSyntax.ParseTableName(name);
+            this._sqlSyntax = this._geodatabase.GetSQLSyntax();
+            var name = this._geodatabase.GetDefinitions<TableDefinition>().First().GetName();
+            this._tuple = this._sqlSyntax.ParseTableName(name);
         }
 
-        private string GetFullTableName(string name) => _sqlSyntax.QualifyTableName(_tuple.Item1, _tuple.Item2, name);
+        private string GetFullTableName(string name) => this._sqlSyntax.QualifyTableName(this._tuple.Item1, this._tuple.Item2, name);
 
         public static Subtypes Instance {
             get {
@@ -45,24 +44,24 @@ namespace S100Framework.Applications.Singletons
         }
 
         private void RegisterSubtypes(string tableName) {
-            using var featureclass = _geodatabase.OpenDataset<FeatureClass>(GetFullTableName(tableName));
+            using var featureclass = this._geodatabase.OpenDataset<FeatureClass>(this.GetFullTableName(tableName));
 
             var subtypes = new Dictionary<int, string>();
             foreach (var subtype in featureclass.GetSubtypes()) {
                 subtypes.Add(subtype.Key, subtype.Value);
 
             }
-            _subtypes[_sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
+            this._subtypes[this._sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
         }
 
         public bool TryGetSubtype(string tableName, int code, out string value) {
-            tableName = _sqlSyntax.ParseTableName(tableName).Item3;
-            
-            if (!_subtypes.ContainsKey(tableName)) {
-                RegisterSubtypes(tableName);
+            tableName = this._sqlSyntax.ParseTableName(tableName).Item3;
+
+            if (!this._subtypes.ContainsKey(tableName)) {
+                this.RegisterSubtypes(tableName);
             }
 
-            if (_subtypes.TryGetValue(tableName, out var subtypes)) {
+            if (this._subtypes.TryGetValue(tableName, out var subtypes)) {
                 value = subtypes[code];
                 return true;
             }
@@ -77,7 +76,7 @@ namespace S100Framework.Applications.Singletons
                 subtypes.Add(subtype.Key, subtype.Value);
 
             }
-            _subtypes[_sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
+            this._subtypes[this._sqlSyntax.ParseTableName(featureclass.GetName()).Item3] = subtypes;
 
         }
     }

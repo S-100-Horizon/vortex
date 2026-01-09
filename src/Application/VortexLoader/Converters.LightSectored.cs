@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
@@ -137,7 +136,7 @@ namespace S100Framework.Applications
             if (current.EXCLIT.HasValue) {
                 instance.exhibitionConditionOfLight_optional = EnumHelper.GetEnumValue(current.EXCLIT.Value);
             }
-            
+
             instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -181,7 +180,7 @@ namespace S100Framework.Applications
                     instance.sectorCharacteristics = sectorCharacteristics[0];
                     instance.sectorCharacteristics_optional = sectorCharacteristics[1..];
                 }
-            }            
+            }
 
             if (current.SIGGEN != null) {
                 instance.signalGeneration_optional = EnumHelper.GetEnumValue(current.SIGGEN.Value);

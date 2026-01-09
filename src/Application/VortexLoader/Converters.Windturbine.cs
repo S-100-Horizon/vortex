@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
@@ -37,13 +36,13 @@ namespace S100Framework.Applications
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
                 instance.fixedDateRange_optional = dateRange;
-            }                            
-                           if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
-                            }
-                            else {
-                                
-                            }
+            }
+            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
+                instance.height_optional = current.HEIGHT.Value;
+            }
+            else {
+
+            }
 
             // TODO: interoperabilityIdentifier
 
@@ -57,14 +56,15 @@ namespace S100Framework.Applications
 
             if (current.CONRAD.HasValue) {
                 instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
-            }                            if (!string.IsNullOrEmpty(current.SORDAT)) {
-                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
-                                }
-                                else {
-                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
-                                }
-                            }
+            }
+            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                    instance.reportedDate_optional = reportedDate;
+                }
+                else {
+                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                }
+            }
 
 
 

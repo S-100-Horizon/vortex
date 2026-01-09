@@ -14,7 +14,7 @@ namespace S100Framework.Applications
         internal static informationBinding[]? GetInformationBindings(this FeatureType featureNode) {
             if (_informationBindingList is null || !_informationBindingList.Any())
                 return [];
-            
+
             return _informationBindingList;
         }
 

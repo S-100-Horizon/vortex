@@ -4,7 +4,6 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S128.ComplexAttributes;
-using S100Framework.AttributeModel.S128.SimpleAttributes;
 using VortexLoader.Singletons;
 
 namespace S100Framework.Applications

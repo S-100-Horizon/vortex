@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
@@ -63,21 +62,20 @@ namespace S100Framework.Applications
 
                 switch (fcSubtype) {
                     case 1: { // BERTHS_Berth
-                            var instance = new Berth();
+                            var instance = new Berth {
+                                // TODO: Category of Berth
+                                /* S-57 ENC to S-101 Conversion Guidance ed 1.2.0
 
+                                    The attribute category of cargo has been introduced in S-101 to encode the type of vessel cargo
+                                    allowed at the berth, in particular the fact that a berth is a berth for dangerous or hazardous cargo
+                                    (category of cargo = 7). This information is encoded in S-57 on BERTHS using the attribute
+                                    INFORM (see clause 2.3). In order for this information to be converted across to S-101, the text
+                                    string encoded in INFORM on the BERTHS should be in a standardised format, such as Dangerous
+                                    or hazardous cargo.
+                                */
 
-                            // TODO: Category of Berth
-                            /* S-57 ENC to S-101 Conversion Guidance ed 1.2.0
-
-                                The attribute category of cargo has been introduced in S-101 to encode the type of vessel cargo
-                                allowed at the berth, in particular the fact that a berth is a berth for dangerous or hazardous cargo
-                                (category of cargo = 7). This information is encoded in S-57 on BERTHS using the attribute
-                                INFORM (see clause 2.3). In order for this information to be converted across to S-101, the text
-                                string encoded in INFORM on the BERTHS should be in a standardised format, such as Dangerous
-                                or hazardous cargo.
-                            */
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -174,7 +172,7 @@ namespace S100Framework.Applications
                                 for this information to be converted across to S - 101, the text string encoded in INFORM on the
                                 CGUSTA should be in a standardised format, such as Maritime Rescue and Coordination Centre.
                             */
-                            
+
                             //TODO: MRCC from INFORM
 
 
@@ -251,7 +249,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -272,7 +270,7 @@ namespace S100Framework.Applications
 
                             if (current.RADIUS.HasValue && current.RADIUS.Value != -32767d) {
                                 instance.radius_optional = current.RADIUS.Value;
-                            }                            
+                            }
 
                             if (current.STATUS != default) {
                                 instance.status_optional = GetStatus(current.STATUS);
@@ -297,7 +295,7 @@ namespace S100Framework.Applications
                                 }
                                 if (update)
                                     instance.verticalDatum_optional = verticalDatum.value;
-                            }                           
+                            }
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
                                 instance.verticalLength_optional = current.VERLEN.Value;
@@ -413,7 +411,7 @@ namespace S100Framework.Applications
                                 }
                                 if (update)
                                     instance.verticalDatum_optional = verticalDatum.value;
-                            }          
+                            }
 
                             if (current.SOUACC.HasValue) {
                                 instance.verticalUncertainty_optional = new() {
@@ -554,7 +552,7 @@ namespace S100Framework.Applications
                                 var categoryOfHulk = EnumHelper.GetEnumValues(current.CATHLK);
                                 if (categoryOfHulk is not null && categoryOfHulk.Any())
                                     instance.categoryOfHulk_optional = categoryOfHulk;
-                            }                            
+                            }
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
@@ -698,7 +696,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -859,9 +857,9 @@ namespace S100Framework.Applications
 
                             // SHORELINECONSTRUCTION
                             if (catmor == 4) {
-                                var instance = new ShorelineConstruction();
-
-                                instance.categoryOfShorelineConstruction_optional = 23; // categoryOfShorelineConstruction.TieUpWall;
+                                var instance = new ShorelineConstruction {
+                                    categoryOfShorelineConstruction_optional = 23 // categoryOfShorelineConstruction.TieUpWall;
+                                };
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -888,7 +886,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 var horclr = current.HORCLR ?? default;
@@ -986,9 +984,9 @@ namespace S100Framework.Applications
 
                             // PILE
                             if (catmor == 5) {
-                                var instance = new Pile();
-
-                                instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
+                                var instance = new Pile {
+                                    categoryOfPile_optional = 8   // categoryOfPile.MooringPost;
+                                };
 
 
                                 if (current.COLOUR != default) {
@@ -1018,7 +1016,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -1256,9 +1254,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // PILPNT_Pile
-                            var instance = new Pile();
-
-                            instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
+                            var instance = new Pile {
+                                categoryOfPile_optional = 8   // categoryOfPile.MooringPost;
+                            };
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
@@ -1287,7 +1285,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier

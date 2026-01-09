@@ -1,11 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
-using System;
 
 namespace S100Framework.Applications
 {
@@ -289,7 +287,7 @@ namespace S100Framework.Applications
                                     };
                                     instance.fullSeafloorCoverageAchieved = true;
                                     instance.zoneOfConfidence = new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = 2,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA2,
+                                        categoryOfZoneOfConfidenceInData = 2,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA2,
                                     };
                                 }
                                 else if (catzoc == 3) { // B
@@ -302,7 +300,7 @@ namespace S100Framework.Applications
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
                                     instance.zoneOfConfidence = new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = 3,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceB,                                        
+                                        categoryOfZoneOfConfidenceInData = 3,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceB,                                        
                                     };
                                 }
                                 else if (catzoc == 4) { // C
@@ -314,8 +312,8 @@ namespace S100Framework.Applications
 
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
-                                    instance.zoneOfConfidence =new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = 4,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,                                        
+                                    instance.zoneOfConfidence = new zoneOfConfidence() {
+                                        categoryOfZoneOfConfidenceInData = 4,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceC,                                        
                                     };
 
                                 }
@@ -329,7 +327,7 @@ namespace S100Framework.Applications
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
                                     instance.zoneOfConfidence = new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = 5,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceD,                                        
+                                        categoryOfZoneOfConfidenceInData = 5,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceD,                                        
                                     };
 
                                 }
@@ -343,7 +341,7 @@ namespace S100Framework.Applications
                                     };
                                     instance.fullSeafloorCoverageAchieved = false;
                                     instance.zoneOfConfidence = new zoneOfConfidence() {
-                                            categoryOfZoneOfConfidenceInData = 6,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceU,                                        
+                                        categoryOfZoneOfConfidenceInData = 6,   //categoryOfZoneOfConfidenceInData.ZoneOfConfidenceU,                                        
                                     };
 
 

@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
-using S100Framework.AttributeModel.S128.ComplexAttributes;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
@@ -16,11 +15,11 @@ namespace S100Framework.Applications.Singletons
         private static SpatialAssociations? _instance;
         private static readonly object _lock = new object();
 
-        private static Dictionary<string, FeatureClass> _featureClasses = new();
+        private static readonly Dictionary<string, FeatureClass> _featureClasses = [];
 
         private static Geodatabase? _geodatabase;
 
-        private static Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = new Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)>();
+        private static readonly Dictionary<string, (Guid globalId, int qualityOfPrecision, Geometry Shape)> _spatialAttributesL = [];
 
         private SpatialAssociations(Geodatabase geodatabase, QueryFilter filter) {
             _geodatabase = geodatabase ?? throw new ArgumentNullException(nameof(geodatabase));

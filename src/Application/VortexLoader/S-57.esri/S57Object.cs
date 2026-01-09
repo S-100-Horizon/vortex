@@ -1,5 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Geometry;
 
 namespace S100Framework.Applications.S57.esri
 {

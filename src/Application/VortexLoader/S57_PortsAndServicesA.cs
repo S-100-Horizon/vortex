@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
@@ -245,7 +244,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -532,7 +531,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -789,7 +788,7 @@ namespace S100Framework.Applications
                                 }
                                 if (update)
                                     instance.verticalDatum_optional = verticalDatum.value;
-                            } 
+                            }
 
                             if (current.SOUACC.HasValue) {
                                 instance.verticalUncertainty_optional = new() {
@@ -1057,9 +1056,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // LOKBSN_LockBasin
-                            var instance = new LockBasin();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new LockBasin {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -1162,7 +1161,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 // TODO: interoperabilityIdentifier
@@ -1323,9 +1322,9 @@ namespace S100Framework.Applications
 
                             // SHORELINECONSTRUCTION
                             if (catmor == 4) {
-                                var instance = new ShorelineConstruction();
-
-                                instance.categoryOfShorelineConstruction_optional = 23; // categoryOfShorelineConstruction.TieUpWall;
+                                var instance = new ShorelineConstruction {
+                                    categoryOfShorelineConstruction_optional = 23 // categoryOfShorelineConstruction.TieUpWall;
+                                };
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -1351,7 +1350,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 var horclr = current.HORCLR ?? default;
@@ -1448,9 +1447,9 @@ namespace S100Framework.Applications
 
                             // PILE
                             if (catmor == 5) {
-                                var instance = new Pile();
-
-                                instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
+                                var instance = new Pile {
+                                    categoryOfPile_optional = 8   // categoryOfPile.MooringPost;
+                                };
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -1477,7 +1476,7 @@ namespace S100Framework.Applications
                                     instance.height_optional = current.HEIGHT.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 // TODO: interoperabilityIdentifier

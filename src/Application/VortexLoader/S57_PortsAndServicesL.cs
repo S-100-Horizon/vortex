@@ -1,9 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -710,9 +710,9 @@ namespace S100Framework.Applications
 
                             // SHORELINECONSTRUCTION
                             if (catmor == 4) {
-                                var instance = new ShorelineConstruction();
-
-                                instance.categoryOfShorelineConstruction_optional = 23; // categoryOfShorelineConstruction.TieUpWall;
+                                var instance = new ShorelineConstruction {
+                                    categoryOfShorelineConstruction_optional = 23 // categoryOfShorelineConstruction.TieUpWall;
+                                };
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -833,9 +833,9 @@ namespace S100Framework.Applications
 
                             // PILE
                             if (catmor == 5) {
-                                var instance = new Pile();
-
-                                instance.categoryOfPile_optional = 8;   // categoryOfPile.MooringPost;
+                                var instance = new Pile {
+                                    categoryOfPile_optional = 8   // categoryOfPile.MooringPost;
+                                };
 
                                 if (current.COLOUR != default) {
                                     var colour = GetColours(current.COLOUR);
@@ -935,9 +935,9 @@ namespace S100Framework.Applications
 
                             // CABLESUBMARINE
                             if (catmor == 6) {
-                                var instance = new CableSubmarine();
-
-                                instance.categoryOfCable_optional = 9;  // categoryOfCable.JunctionCable;
+                                var instance = new CableSubmarine {
+                                    categoryOfCable_optional = 9  // categoryOfCable.JunctionCable;
+                                };
 
                                 if (current.CONDTN.HasValue) {
                                     instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;

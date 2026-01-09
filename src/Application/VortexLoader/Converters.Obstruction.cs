@@ -2,7 +2,6 @@
 //using ArcGIS.Desktop.Internal.Mapping;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -45,7 +44,7 @@ namespace S100Framework.Applications
 
             if (current.PRODCT != default) {
                 var product = EnumHelper.GetEnumValues(current.PRODCT);
-                if(product is not null && product.Any())
+                if (product is not null && product.Any())
                     instance.product_optional = product;
             }
 
@@ -64,9 +63,9 @@ namespace S100Framework.Applications
             }
 
             if (current.TECSOU != null) {
-                    var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
-                    if(techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
-                        instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
+                var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
+                if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
+                    instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
             }
 
             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
@@ -101,7 +100,7 @@ namespace S100Framework.Applications
                 instance.surroundingDepth = drval1;
             }
 
-            instance.defaultClearanceDepth_optional = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU,current.EXPSOU,current.HEIGHT,current.WATLEV,current.CATOBS,current.OBJECTID ?? -1,current.TableName ?? "Unknown tablename",current.LNAM ?? "Unknown long name");
+            instance.defaultClearanceDepth_optional = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
             instance.information_optional = result.information.ToArray();
@@ -176,7 +175,7 @@ namespace S100Framework.Applications
                 instance.valueOfSounding_optional = current.VALSOU.Value;
             }
             else {
-                
+
             }
 
             if (current.VERLEN.HasValue) {
@@ -241,7 +240,7 @@ namespace S100Framework.Applications
                 instance.height_optional = current.HEIGHT.Value;
             }
             else {
-                
+
             }
 
             // DODO: Interoperability identifier
@@ -286,7 +285,7 @@ namespace S100Framework.Applications
                 instance.valueOfSounding_optional = current.VALSOU.Value;
             }
             else {
-                
+
             }
 
             if (current.VERLEN.HasValue) {

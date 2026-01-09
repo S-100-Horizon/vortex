@@ -1,12 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using Microsoft.AspNetCore.Components.Forms;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
-using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -61,9 +56,8 @@ namespace S100Framework.Applications
                                 depthRangeMinimumValue = depthValue,
                                 orientationValue = orientationValue,
                                 trafficFlow = trafficFlow,
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -141,7 +135,7 @@ namespace S100Framework.Applications
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
-                            
+
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
                                 relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
                             }
@@ -297,9 +291,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // PRCARE_PrecautionaryArea
-                            var instance = new PrecautionaryArea();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new PrecautionaryArea {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -671,7 +665,7 @@ namespace S100Framework.Applications
                             buffer["edition"] = ImporterNIS.s101version;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
-                            
+
                             SetShape(buffer, current.SHAPE);
                             ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 

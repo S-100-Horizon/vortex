@@ -5,10 +5,10 @@ using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.InformationTypes;
+using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -16,7 +16,6 @@ using System.Text.RegularExpressions;
 using VortexLoader;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
-using S100Framework.AttributeModel.S101;
 
 [assembly: InternalsVisibleTo("TestNisImporter")]
 namespace S100Framework.Applications
@@ -644,7 +643,7 @@ namespace S100Framework.Applications
             }
         }
 
-        static string[] ISO3166 = ["AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "CV", "KH", "CM", "CA", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CD", "CG", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "SZ", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MK", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "UM", "US", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW"];
+        static readonly string[] ISO3166 = ["AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "CV", "KH", "CM", "CA", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CD", "CG", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "SZ", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MK", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "UM", "US", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW"];
 
         internal static string GetNation(string nation) {
             if (ISO3166.Contains(nation.ToUpperInvariant()))
@@ -702,7 +701,7 @@ namespace S100Framework.Applications
             */
 
             //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
-            List<string> parenthesisParts = new List<string>();
+            List<string> parenthesisParts = [];
 
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
                 string pattern = @"\([^()]*\)";
@@ -871,7 +870,7 @@ namespace S100Framework.Applications
         }
 
         internal static int?[] GetStatus(string statuses) {
-            List<int?> statusList = new List<int?>();
+            List<int?> statusList = [];
 
             var featureStatus = statuses.Trim();
 
@@ -983,15 +982,15 @@ namespace S100Framework.Applications
 
 
         internal static featureName[] GetFeatureName(string? objname, string? nobjnme) {
-            List<featureName> featureName = new List<featureName>();
+            List<featureName> featureName = [];
             if (objname != default) {
                 var objnam = objname.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
                     var item = new featureName {
                         language = "eng",
                         name = objnam,
+                        nameUsage_optional = 1    //nameUsage.DefaultNameDisplay,
                     };
-                    item.nameUsage_optional = 1;    //nameUsage.DefaultNameDisplay,
                     featureName.Add(item);
                 }
             }
@@ -1001,8 +1000,8 @@ namespace S100Framework.Applications
                     var item = new featureName {
                         language = "dan",
                         name = nobjnm,
+                        nameUsage_optional = 2    //nameUsage.AlternateNameDisplay,
                     };
-                    item.nameUsage_optional = 2;    //nameUsage.AlternateNameDisplay,
                     featureName.Add(item);
                 }
             }
@@ -1021,13 +1020,14 @@ namespace S100Framework.Applications
                     string fileReference = ntxtds;
                     string language = "eng";
 
-                    var instance = new NauticalInformation();
-                    instance.information_optional = [
-                            new information() {
-                            fileLocator_optional = fileLocator,
-                            fileReference_optional = FixFilename(fileReference) ?? default,
-                            language = language
-                            }];
+                    var instance = new NauticalInformation {
+                        information_optional = [
+                                new information() {
+                                fileLocator_optional = fileLocator,
+                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                language = language
+                                }]
+                    };
                     result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
@@ -1051,13 +1051,14 @@ namespace S100Framework.Applications
                     string fileReference = txtdsc;
                     string language = "eng";
 
-                    var instance = new NauticalInformation();
-                    instance.information_optional = [
-                            new information() {
-                            fileLocator_optional = fileLocator,
-                            fileReference_optional = FixFilename(fileReference) ?? default,
-                            language = language,
-                        }];
+                    var instance = new NauticalInformation {
+                        information_optional = [
+                                new information() {
+                                fileLocator_optional = fileLocator,
+                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                language = language,
+                            }]
+                    };
 
                     result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
 
@@ -1092,13 +1093,14 @@ namespace S100Framework.Applications
                         string fileReference = txtdsc;
                         string language = "eng";
 
-                        var instance = new NauticalInformation();
-                        instance.information_optional = [
-                            new information() {
-                            fileLocator_optional = fileLocator,
-                            fileReference_optional = FixFilename(fileReference) ?? default,
-                            language = language
-                        }];
+                        var instance = new NauticalInformation {
+                            information_optional = [
+                                new information() {
+                                fileLocator_optional = fileLocator,
+                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                language = language
+                            }]
+                        };
 
                         result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
 
@@ -1134,12 +1136,13 @@ namespace S100Framework.Applications
                             string fileReference = value;
                             string language = "dan";
 
-                            var instance = new NauticalInformation();
-                            instance.information_optional = [new information() {
-                                fileLocator_optional = fileLocator,
-                                fileReference_optional = FixFilename(fileReference) ?? default,
-                                language = language
-                            }];
+                            var instance = new NauticalInformation {
+                                information_optional = [new information() {
+                                    fileLocator_optional = fileLocator,
+                                    fileReference_optional = FixFilename(fileReference) ?? default,
+                                    language = language
+                                }]
+                            };
                         }
                         else if (!string.IsNullOrEmpty(value)) {
                             string? fileLocator = default;

@@ -1,9 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 
 namespace S100Framework.Applications
 {
@@ -310,9 +308,9 @@ namespace S100Framework.Applications
                         }
 
                     case 30: { // CTSARE_CargoTranshipmentArea
-                            var instance = new CargoTranshipmentArea();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new CargoTranshipmentArea {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -493,9 +491,8 @@ namespace S100Framework.Applications
                         }
                     case 65: { // FSHZNE_FisheryZone
                             var instance = new FisheryZone {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
@@ -541,9 +538,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 70: { // HRBARE_HarbourAreaAdministrative
-                            var instance = new HarbourAreaAdministrative();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new HarbourAreaAdministrative {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
                             // TODO: interoperabilityIdentifier
 
@@ -647,7 +644,7 @@ namespace S100Framework.Applications
                                 instance.valueOfSounding_optional = current.VALSOU.Value;
                             }
                             else {
-                                
+
                             }
 
 
@@ -783,9 +780,9 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 110: { // SPLARE_SeaPlaneLandingArea
-                            var instance = new SeaplaneLandingArea();
-
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var instance = new SeaplaneLandingArea {
+                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            };
 
 
                             // TODO: interoperabilityIdentifier

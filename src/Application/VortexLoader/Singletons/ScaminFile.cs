@@ -1,5 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
+﻿using ArcGIS.Core.Geometry;
 using System.Xml.Linq;
 
 namespace S100Framework.Applications.Singletons
@@ -17,24 +16,24 @@ namespace S100Framework.Applications.Singletons
         public Polygon Polygon { get; }
 
         public NamedPolygon(string name, Polygon polygon) {
-            Name = name;
-            Polygon = polygon;
+            this.Name = name;
+            this.Polygon = polygon;
         }
     }
 
     public class Scamin
     {
         private static Scamin? _instance;
-        private static readonly Dictionary<string, ScaminFile> _scaminFiles = new();
-        internal static readonly List<NamedPolygon> _polygons = new();
+        private static readonly Dictionary<string, ScaminFile> _scaminFiles = [];
+        internal static readonly List<NamedPolygon> _polygons = [];
         private static readonly object _lock = new object();
 
         private Scamin(string pathToScaminFiles) {
             var sr = SpatialReferences.WGS84;
 
             // TODO: Get Scamin polygons and corresponding filenames from external datasource. Ie. database, geopackage, shapefiles etc.
-            AddPolygon("SCAMIN_GST_Danmark.xml", new List<Coordinate2D>
-            {
+            AddPolygon("SCAMIN_GST_Danmark.xml",
+            [
                 new(14.8303810, 55.8645445),
                 new(16.8899873, 55.8827711),
                 new(16.8596097, 54.4003405),
@@ -46,10 +45,10 @@ namespace S100Framework.Applications.Singletons
                 new(12.0217782, 57.3854226),
                 new(12.4852245, 56.3505873),
                 new(14.8303810, 55.8645445)
-            }, sr);
+            ], sr);
 
-            AddPolygon("SCAMIN_GST_Grønland.xml", new List<Coordinate2D>
-            {
+            AddPolygon("SCAMIN_GST_Grønland.xml",
+            [
                 new(-22.4155794, 84.4901456),
                 new(-8.7395659,  83.1641702),
                 new(-10.8451051, 75.0614524),
@@ -59,11 +58,11 @@ namespace S100Framework.Applications.Singletons
                 new(-71.8371442, 72.7315264),
                 new(-79.7941045, 84.8437883),
                 new(-22.4155794, 84.4901456)
-            }, sr);
+            ], sr);
 
             // TODO: Add US scamin file...
-            AddPolygon("SCAMIN_GST_Grønland.xml", new List<Coordinate2D> 
-            { 
+            AddPolygon("SCAMIN_GST_Grønland.xml",
+            [
                 new(-138.5403112, 53.7017463),
                 new(-122.5440356, 61.2520361),
                 new(-55.9168726,  62.1953461),
@@ -75,7 +74,7 @@ namespace S100Framework.Applications.Singletons
                 new(-94.4267869,  9.1413510),
                 new(-112.1914224, 7.1350314),
                 new(-133.7712815, 28.5463887)
-            }, sr);
+            ], sr);
 
             foreach (var filePath in Directory.GetFiles(pathToScaminFiles, "*.xml")) {
                 var fileName = Path.GetFileName(filePath);
@@ -175,34 +174,34 @@ namespace S100Framework.Applications.Singletons
 
     internal class ScaminFile
     {
-        private XElement root;
-        private List<ObjectData> _objects = new();
-        private List<int> _radarScales = new();
-        private List<int> _scaminValues = new();
+        private readonly XElement root;
+        private List<ObjectData> _objects = [];
+        private List<int> _radarScales = [];
+        private List<int> _scaminValues = [];
 
         internal ScaminFile(string filePath) {
             var xmlData = File.ReadAllText(filePath);
-            root = XElement.Parse(xmlData);
-            LoadObjects();
-            LoadRadarScales();
-            LoadScaminValues();
+            this.root = XElement.Parse(xmlData);
+            this.LoadObjects();
+            this.LoadRadarScales();
+            this.LoadScaminValues();
         }
 
         private void LoadRadarScales() {
-            _radarScales = root.Descendants("RadarScale")
+            this._radarScales = this.root.Descendants("RadarScale")
                        .Select(r => Convert.ToInt32(r.Attribute("Value")?.Value))
                        .ToList();
         }
 
         private void LoadScaminValues() {
-            _scaminValues = root.Descendants("SCAMIN")
+            this._scaminValues = this.root.Descendants("SCAMIN")
                        .Select(s => Convert.ToInt32(s.Attribute("Value")?.Value))
                        .ToList();
         }
 
         private void LoadObjects() {
-            _objects = new List<ObjectData>();
-            foreach (var o in root.Descendants("Object")) {
+            this._objects = [];
+            foreach (var o in this.root.Descendants("Object")) {
                 var name = Convert.ToString(o.Attribute("Name")?.Value);
                 var ptype = Convert.ToString(o.Attribute("PrimitiveType")?.Value);
                 var condition = Convert.ToBoolean(o.Attribute("HasCondition")?.Value);
@@ -231,7 +230,7 @@ namespace S100Framework.Applications.Singletons
                     conditions.Add(rules);
                 }
 
-                _objects.Add(new ObjectData {
+                this._objects.Add(new ObjectData {
                     Name = name,
                     PrimitiveType = ptype,
                     HasCondition = condition,
@@ -242,7 +241,7 @@ namespace S100Framework.Applications.Singletons
         }
 
         private int? GetDefaultStepValueByName(string name, PrimitiveType primitiveType, bool isRelatedToStructure) {
-            var obj = _objects.FirstOrDefault(o => o.Name != null && o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
+            var obj = this._objects.FirstOrDefault(o => o.Name != null && o.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase));
 
             if (obj == null) {
                 return null;
@@ -278,18 +277,18 @@ namespace S100Framework.Applications.Singletons
         }
 
         internal int GetClosestScaminValue(int inputValue) {
-            var closestScamin = _scaminValues
+            var closestScamin = this._scaminValues
                                 .OrderBy(v => Math.Abs(v - inputValue))
                                 .FirstOrDefault();
             return closestScamin;
         }
 
         protected internal int? GetMinimumScale(string name, PrimitiveType primitiveType, int compilationScale, bool isRelatedToStructure) {
-            var closestScamin = GetClosestScaminValue(compilationScale);
+            var closestScamin = this.GetClosestScaminValue(compilationScale);
 
-            var defaultStepValue = GetDefaultStepValueByName(name, primitiveType, isRelatedToStructure);
+            var defaultStepValue = this.GetDefaultStepValueByName(name, primitiveType, isRelatedToStructure);
 
-            var higherScamins = _scaminValues.Where(v => v >= closestScamin).Order().ToArray();
+            var higherScamins = this._scaminValues.Where(v => v >= closestScamin).Order().ToArray();
 
             int? index = null;
 
@@ -308,6 +307,6 @@ namespace S100Framework.Applications.Singletons
         public string? PrimitiveType { get; set; }
         public bool HasCondition { get; set; }
         public string? DefaultStepValue { get; set; }
-        public List<List<string>> Conditions { get; set; } = new List<List<string>>();
+        public List<List<string>> Conditions { get; set; } = [];
     }
 }

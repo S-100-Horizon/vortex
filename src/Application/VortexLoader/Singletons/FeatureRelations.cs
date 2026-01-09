@@ -1,12 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
 using S100Framework.AttributeModel.S101.ComplexAttributes;
-using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.FeatureAssociation;
-using System.Collections;
-using System.Collections.Generic;
+using S100Framework.AttributeModel.S101.FeatureTypes;
 using System.Data;
 
 namespace S100Framework.Applications.Singletons
@@ -29,20 +26,20 @@ namespace S100Framework.Applications.Singletons
 
     internal class PltsCollection
     {
-        private List<PltsSlave> _related;
+        private readonly List<PltsSlave> _related;
 
-        private PLTS_Collections _plts_collections;
+        private readonly PLTS_Collections _plts_collections;
 
-        Geodatabase? _source;
+        readonly Geodatabase? _source;
 
         public PltsCollection(Geodatabase source, PLTS_Collections plts_collections) {
-            _plts_collections = plts_collections;
-            _related = new();
-            _source = source;
+            this._plts_collections = plts_collections;
+            this._related = [];
+            this._source = source;
         }
 
         internal void AddRelated(PLTS_Frel plts_frel) {
-            _related.Add(new PltsSlave(plts_frel));
+            this._related.Add(new PltsSlave(plts_frel));
         }
     }
 
@@ -53,11 +50,11 @@ namespace S100Framework.Applications.Singletons
         public PLTS_Frel PLTS_Frel { get; internal set; }
 
         public S57Object? S57Object {
-            get => s57Object;
+            get => this.s57Object;
 
             internal set {
 
-                s57Object = value;
+                this.s57Object = value;
 
                 var s57Obj = this.s57Object;
 
@@ -310,12 +307,12 @@ namespace S100Framework.Applications.Singletons
         private static FeatureRelations? _instance;
         //        private static Geodatabase? _source;
         //        private static Geodatabase? _target;
-        private static HashSet<Relation> _relations = new HashSet<Relation>();
-        private static Dictionary<Guid, PltsCollection> _pltsCollections = new Dictionary<Guid, PltsCollection>();
-        private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-        private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
+        private static readonly HashSet<Relation> _relations = [];
+        private static Dictionary<Guid, PltsCollection> _pltsCollections = [];
+        private static Dictionary<Guid, IList<PltsSlave>> _srcObjectToSlaves = [];
+        private static Dictionary<string, PLTS_Master_Slaves> _pltsMasterSlaves = [];
 
-        private static Dictionary<(string, string), Relation> _createdRelations = new Dictionary<(string, string), Relation>();
+        private static readonly Dictionary<(string, string), Relation> _createdRelations = [];
 
         private static bool _isInitialized = false;
 
@@ -336,9 +333,9 @@ namespace S100Framework.Applications.Singletons
 
 
         internal static void Initialize(Geodatabase source, Geodatabase target) {
-            _pltsCollections = new Dictionary<Guid, PltsCollection>();
-            _srcObjectToSlaves = new Dictionary<Guid, IList<PltsSlave>>();
-            _pltsMasterSlaves = new Dictionary<string, PLTS_Master_Slaves>();
+            _pltsCollections = [];
+            _srcObjectToSlaves = [];
+            _pltsMasterSlaves = [];
 
             LoadPltsCollections(source);
             LoadPltsFrels2(source);
@@ -393,7 +390,7 @@ namespace S100Framework.Applications.Singletons
                 throw new NotImplementedException($"Only light types are supported.");
             }
 
-            List<int> catlits = new();
+            List<int> catlits = [];
 
             if (aton.CATLIT != default) {
                 catlits = aton.CATLIT.Split(',')
@@ -432,11 +429,11 @@ namespace S100Framework.Applications.Singletons
         internal IList<PltsSlave> GetRelated(Guid uid) {
             var result = new List<PltsSlave>();
             if (_srcObjectToSlaves.ContainsKey(uid)) {
-                
-                
+
+
                 return _srcObjectToSlaves[uid];
             }
-                
+
 
             return result;
         }
@@ -589,7 +586,7 @@ namespace S100Framework.Applications.Singletons
                     // source: structure - destination: equipment
                     Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
                     if (!_srcObjectToSlaves.ContainsKey(uid)) {
-                        _srcObjectToSlaves[uid] = new List<PltsSlave>() { new PltsSlave(plts_frel) };
+                        _srcObjectToSlaves[uid] = [new PltsSlave(plts_frel)];
                     }
                     else {
                         // Same relation multiple times are ignored.
@@ -613,7 +610,7 @@ namespace S100Framework.Applications.Singletons
                 .ToDictionary(group => group.Key, group => group.First());
 
 
-            
+
 
             // foreach featureclass represented in plts_rels, load all destination objects
             var destinationFcToFrels = frels.GroupBy(obj => obj.DEST_FC ?? "Unknown DEST_FC").ToDictionary(group => group.Key, group => group.ToList());
@@ -650,7 +647,7 @@ namespace S100Framework.Applications.Singletons
                         if (idIndex.ContainsKey(currentGlobalId)) {
                             loadedRelatedObjectsCount++;
                             //idIndex[currentGlobalId].S57Object = new AidsToNavigationP((Feature)cursorRelated.Current);
-                            
+
                             foreach (var kvp in _srcObjectToSlaves) {
                                 var key = kvp.Key;
                                 var list = kvp.Value;
@@ -1031,7 +1028,7 @@ namespace S100Framework.Applications.Singletons
 
             Relation relation = new(master, slave);
 
-            if (IsCircular(master, slave)) {
+            if (this.IsCircular(master, slave)) {
                 throw new NotSupportedException($"{relation} is circular. Not permitted.");
 
             }
@@ -1044,7 +1041,7 @@ namespace S100Framework.Applications.Singletons
             // Legacy - is not in use... to be deleted.
             _relations.Add(relation);
 
-            StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature);
+            this.StoreRelation(master, slave, s101SlaveFeature, s101MasterFeature);
         }
 
         private void StoreRelation(S57Master master, S57Slave slave, Feature s101SlaveFeature, Feature s101MasterFeature) {
@@ -1084,8 +1081,8 @@ namespace S100Framework.Applications.Singletons
             }
 
             // Store binding
-            List<featureBinding> primaryBindings = new List<featureBinding>();
-            List<featureBinding> foreignBindings = new List<featureBinding>();
+            List<featureBinding> primaryBindings = [];
+            List<featureBinding> foreignBindings = [];
 
             // Create binding
             {
@@ -1127,7 +1124,8 @@ namespace S100Framework.Applications.Singletons
             if (s101SlaveFeature["featurebindings"] is null) {
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
                 s101SlaveFeature.Store();
-            } else {
+            }
+            else {
                 List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!, ImporterNIS.jsonFeatureTypeSerializerOptions)!;
                 existingBinding.AddRange(foreignBindings);
                 s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding, ImporterNIS.jsonFeatureTypeSerializerOptions);
@@ -3348,13 +3346,13 @@ namespace S100Framework.Applications.Singletons
         // Override Equals (for compatibility with collections like HashSet)
         public override bool Equals(object? obj) {
             if (obj is Relation other) {
-                return Equals(other); // Use the correct Equals method
+                return this.Equals(other); // Use the correct Equals method
             }
             return false;
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(_s101type, _s101name);
+            return HashCode.Combine(this._s101type, this._s101name);
         }
     }
     internal class S57Slave : IEquatable<S57Slave>
@@ -3381,13 +3379,13 @@ namespace S100Framework.Applications.Singletons
         // Override Equals (for compatibility with collections like HashSet)
         public override bool Equals(object? obj) {
             if (obj is Relation other) {
-                return Equals(other); // Use the correct Equals method
+                return this.Equals(other); // Use the correct Equals method
             }
             return false;
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(_s101type, _s101name);
+            return HashCode.Combine(this._s101type, this._s101name);
         }
     }
 
@@ -3418,13 +3416,13 @@ namespace S100Framework.Applications.Singletons
         // Override Equals (for compatibility with collections like HashSet)
         public override bool Equals(object? obj) {
             if (obj is Relation other) {
-                return Equals(other); // Use the correct Equals method
+                return this.Equals(other); // Use the correct Equals method
             }
             return false;
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(_master, _slave);
-        }       
+            return HashCode.Combine(this._master, this._slave);
+        }
     }
 }

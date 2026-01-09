@@ -3,9 +3,7 @@ using ArcGIS.Core.Geometry;
 using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.FeatureAssociation;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.DomainModel;
 using System.Diagnostics;
-using System.Reflection;
 
 
 namespace S100Framework.Applications.Singletons
@@ -23,13 +21,13 @@ namespace S100Framework.Applications.Singletons
         public Geometry DissolvedGeometry { get; private set; }
 
         public BridgeElement(int id, List<string> objectIDs, Geometry dissolvedGeometry) {
-            Id = id;
-            ObjectIDs = objectIDs;
-            DissolvedGeometry = dissolvedGeometry;
+            this.Id = id;
+            this.ObjectIDs = objectIDs;
+            this.DissolvedGeometry = dissolvedGeometry;
         }
 
         public bool ContainsOID(string tableName, long oid) {
-            return ObjectIDs.Contains($"{tableName.ToLower()}:{oid}");
+            return this.ObjectIDs.Contains($"{tableName.ToLower()}:{oid}");
         }
     }
 
@@ -73,7 +71,7 @@ namespace S100Framework.Applications.Singletons
                     .ToList();
 
                 if (!touchingOids.Any()) {
-                    groups.Add(new List<string> { oid });
+                    groups.Add([oid]);
                 }
                 else {
                     var groupIndexes = new HashSet<int>();
@@ -153,11 +151,11 @@ namespace S100Framework.Applications.Singletons
 
         private static List<BridgeElement>? _groups;
 
-        private static Dictionary<string, List<BridgeRelation>> _bindings = new();
+        private static readonly Dictionary<string, List<BridgeRelation>> _bindings = [];
 
         internal List<BridgeRelation> GetBindings(string bridgeName) {
             if (!_bindings.ContainsKey(bridgeName)) {
-                return new();
+                return [];
             }
 
 
@@ -178,13 +176,13 @@ namespace S100Framework.Applications.Singletons
                 });
             }
             else {
-                _bindings.Add(parentName, new List<BridgeRelation> { new BridgeRelation() {
+                _bindings.Add(parentName, [ new BridgeRelation() {
                     ChildName = childName,
                     childTypeS101 = childTypeS101,
                     ParentName = parentName,
                     ChildDisplayName = childDisplayName,
                     NationalChildDisplayName = nationalChildDisplayName
-                } });
+                } ]);
             }
         }
 
@@ -216,7 +214,7 @@ namespace S100Framework.Applications.Singletons
 
             var sqlSyntax = _source.GetSQLSyntax();
 
-            _groups = featureGrouper.GroupAndDissolveToBridgeElements(sqlSyntax, new() { culturalFeaturesA }, ImporterNIS.QueryFilter);
+            _groups = featureGrouper.GroupAndDissolveToBridgeElements(sqlSyntax, [culturalFeaturesA], ImporterNIS.QueryFilter);
         }
 
         internal static void Initialize(Geodatabase source, Geodatabase destination) {
@@ -255,11 +253,11 @@ namespace S100Framework.Applications.Singletons
                         var relatedBridge = row.UID();
                         var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
                         featureBinding featureBinding = new featureBinding<BridgeAggregation> {
-                                        role = "theComponent",
-                                        roleType = "association",
-                                        featureId = binding.ChildName!,
-                                        featureType = name,
-                                    };
+                            role = "theComponent",
+                            roleType = "association",
+                            featureId = binding.ChildName!,
+                            featureType = name,
+                        };
                         featureBindings.Add(featureBinding);
                     }
                     row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);

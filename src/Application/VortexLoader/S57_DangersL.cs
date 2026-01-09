@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 namespace S100Framework.Applications
@@ -138,9 +137,9 @@ namespace S100Framework.Applications
                             }
                             // Foul ground
                             if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
-                                var instance = new FoulGround();
-
-                                instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var instance = new FoulGround {
+                                    featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                };
 
                                 // TODO: interoperabilityIdentifier
 
@@ -171,7 +170,7 @@ namespace S100Framework.Applications
                                     instance.valueOfSounding_optional = current.VALSOU.Value;
                                 }
                                 else {
-                                    
+
                                 }
 
                                 if (current.SOUACC.HasValue) {

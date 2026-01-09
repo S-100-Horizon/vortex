@@ -1,10 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
-using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -135,7 +132,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -242,7 +239,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -321,7 +318,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: { // CTRPNT_ControlPoint
-                            if (current.CATCTR.HasValue && (current.CATCTR == 1 || current.CATCTR == 5)) {                                
+                            if (current.CATCTR.HasValue && (current.CATCTR == 1 || current.CATCTR == 5)) {
                                 var instance = new Landmark {
                                 };
                                 var categoryOfLandmark = EnumHelper.GetEnumValues(current.CATCTR);
@@ -489,7 +486,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -610,7 +607,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -715,7 +712,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -839,7 +836,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier

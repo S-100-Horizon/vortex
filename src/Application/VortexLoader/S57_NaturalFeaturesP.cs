@@ -1,7 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 
 
@@ -277,7 +276,7 @@ namespace S100Framework.Applications
                                     instance.colour_optional = colours;
                             }
 
-                            if(current.NATSUR != default) {
+                            if (current.NATSUR != default) {
                                 var natureOfSurface = EnumHelper.GetEnumValues(current.NATSUR);
                                 if (natureOfSurface is not null && natureOfSurface.Any())
                                     instance.natureOfSurface_optional = natureOfSurface;
@@ -289,10 +288,10 @@ namespace S100Framework.Applications
                                     4 => true,      //  radar conspicuous (has radar reflector)
                                     -32767 => default,
                                     _ => throw new NotImplementedException(),
-                                };                                    
+                                };
                             }
 
-                            if(current.CONVIS != default) {
+                            if (current.CONVIS != default) {
                                 instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS!);
                             }
 
@@ -348,7 +347,7 @@ namespace S100Framework.Applications
                                 instance.height_optional = current.HEIGHT.Value;
                             }
                             else {
-                                
+
                             }
 
                             // TODO: interoperabilityIdentifier

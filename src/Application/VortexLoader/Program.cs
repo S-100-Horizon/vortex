@@ -1,11 +1,8 @@
 ﻿//using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
 //using S100Framework.DomainModel;
-using Serilog;
-using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -25,7 +22,7 @@ namespace S100Framework.Applications
 
         //private static Serilog.Core.Logger? _logger;
 
-        private static Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
+        private static readonly Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
 
         public class Options
         {
@@ -124,8 +121,9 @@ namespace S100Framework.Applications
                 }
                 else if (Uri.IsWellFormedUriString(target, UriKind.Absolute)) {
                     createGeodatabase = () => {
-                        var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute));
-                        serviceProps.Version = "sde.DEFAULT";
+                        var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute)) {
+                            Version = "sde.DEFAULT"
+                        };
 
                         var geodatabase = new Geodatabase(serviceProps);
 

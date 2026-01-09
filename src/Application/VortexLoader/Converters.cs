@@ -6,21 +6,21 @@ namespace VortexLoader
     public class ConverterRegistry
     {
         // The extra object is an additional parameter to the converter
-        private readonly Dictionary<(Type from, Type to), Func<object, int?, Geodatabase, object>> _converters = new();
+        private readonly Dictionary<(Type from, Type to), Func<object, int?, Geodatabase, object>> _converters = [];
 
         public void Register<TFrom, TTo>(Func<TFrom, int?, Geodatabase, TTo> converter) {
             if (converter == null) {
                 throw new ArgumentNullException(nameof(converter));
             }
 
-            _converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum,  geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase)!;
+            this._converters[(typeof(TFrom), typeof(TTo))] = (input, scaleMinimum, geodatabase) => converter((TFrom)input, scaleMinimum, geodatabase)!;
         }
 
         public TOut Convert<TOut>(object value, int? scaleMinimum = default(int?), Geodatabase geodatabase = null!) {
             var fromType = value.GetType();
             var toType = typeof(TOut);
 
-            if (_converters.TryGetValue((fromType, toType), out var converter)) {
+            if (this._converters.TryGetValue((fromType, toType), out var converter)) {
                 return (TOut)converter(value, scaleMinimum, geodatabase);
             }
 
@@ -30,7 +30,7 @@ namespace VortexLoader
         public object Convert(object value, Type toType, int? scaleMinimum/* = default(int?)*/, Geodatabase geodatabase = null!) {
             var fromType = value.GetType();
 
-            if (_converters.TryGetValue((fromType, toType), out var converter)) {
+            if (this._converters.TryGetValue((fromType, toType), out var converter)) {
                 return converter(value, scaleMinimum, geodatabase);
             }
 
