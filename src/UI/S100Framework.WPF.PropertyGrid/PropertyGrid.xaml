@@ -22,7 +22,9 @@
         <converters:InformationBindingConverter x:Key="InformationBindingConverter"/>
         <converters:FeatureBindingConverter x:Key="FeatureBindingConverter"/>
         <converters:NullToBoolConverter x:Key="NullToBoolConverter"/>
-        
+        <converters:ErrorToBorderBrushConverter x:Key="ErrorToBorderBrushConverter"/>
+        <converters:ErrorToBorderThicknessConverter x:Key="ErrorToBorderThicknessConverter"/>
+        <converters:ErrorToBackgroundConverter x:Key="ErrorToBackgroundConverter"/>
 
         <!-- Style for Expander -->
         <Style x:Key="ExpanderToggleButtonStyle" TargetType="ToggleButton">
@@ -68,50 +70,158 @@
             </Setter>
         </Style>
 
+        <!-- Base style for editors with validation -->
+        <Style x:Key="ValidationTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                    <Setter Property="BorderBrush" Value="#E74C3C"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Background" Value="#FFF5F5"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- Data Templates for Different Property Types -->
         
-        <!-- String Editor -->
+        <!-- String Editor with Validation -->
         <DataTemplate x:Key="StringEditorTemplate">
-            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
-                     IsReadOnly="{Binding IsReadOnly}"
-                     Margin="2" 
-                     Padding="2"
-                     VerticalContentAlignment="Center"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0"
+                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Style="{StaticResource ValidationTextBoxStyle}"
+                         ToolTip="{Binding ErrorMessage}"/>
+                <!-- Error indicator icon -->
+                <TextBlock Grid.Column="1" 
+                           Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </Grid>
         </DataTemplate>
 
-        <!-- Number Editor -->
+        <!-- Number Editor with Validation -->
         <DataTemplate x:Key="NumberEditorTemplate">
-            <TextBox Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
-                     IsReadOnly="{Binding IsReadOnly}"
-                     Margin="2" 
-                     Padding="2"
-                     VerticalContentAlignment="Center"
-                     PreviewTextInput="NumberTextBox_PreviewTextInput"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0"
+                         Text="{Binding Value, UpdateSourceTrigger=PropertyChanged}" 
+                         IsReadOnly="{Binding IsReadOnly}"
+                         Style="{StaticResource ValidationTextBoxStyle}"
+                         PreviewTextInput="NumberTextBox_PreviewTextInput"
+                         ToolTip="{Binding ErrorMessage}"/>
+                <!-- Error indicator icon -->
+                <TextBlock Grid.Column="1" 
+                           Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </Grid>
         </DataTemplate>
 
-        <!-- Boolean Editor -->
+        <!-- Boolean Editor with Validation -->
         <DataTemplate x:Key="BoolEditorTemplate">
-            <CheckBox IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
-                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
-                      Margin="2"
-                      VerticalAlignment="Center"
-                      HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox IsChecked="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                          IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                          Margin="2"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Left"/>
+                <!-- Error indicator icon -->
+                <TextBlock Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
         </DataTemplate>
 
-        <!-- Enum Editor -->
+        <!-- Enum Editor with Validation -->
         <DataTemplate x:Key="EnumEditorTemplate">
-            <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumValuesConverter}}"
-                      SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
-                      IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
-                      Margin="2"
-                      Padding="2"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Grid.Column="0"
+                          ItemsSource="{Binding {}, Converter={StaticResource EnumValuesConverter}}"
+                          SelectedItem="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                          IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                          Margin="2"
+                          Padding="2">
+                    <ComboBox.Style>
+                        <Style TargetType="ComboBox">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                                    <Setter Property="BorderBrush" Value="#E74C3C"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ComboBox.Style>
+                </ComboBox>
+                <!-- Error indicator icon -->
+                <TextBlock Grid.Column="1" 
+                           Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </Grid>
         </DataTemplate>
 
-        <!-- DateTime Editor -->
+        <!-- DateTime Editor with Validation -->
         <DataTemplate x:Key="DateTimeEditorTemplate">
-            <DatePicker SelectedDate="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
-                        IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
-                        Margin="2"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DatePicker Grid.Column="0"
+                            SelectedDate="{Binding Value, UpdateSourceTrigger=PropertyChanged}"
+                            IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"
+                            Margin="2">
+                    <DatePicker.Style>
+                        <Style TargetType="DatePicker">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                                    <Setter Property="BorderBrush" Value="#E74C3C"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DatePicker.Style>
+                </DatePicker>
+                <!-- Error indicator icon -->
+                <TextBlock Grid.Column="1" 
+                           Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </Grid>
         </DataTemplate>
 
         <!-- Read-Only Editor -->
@@ -122,15 +232,25 @@
                        VerticalAlignment="Center"/>
         </DataTemplate>
 
-        <!-- Complex Type Editor (shows type name, expandable) -->
+        <!-- Complex Type Editor (shows type name, expandable) with validation indicator -->
         <DataTemplate x:Key="ComplexTypeEditorTemplate">
-            <TextBlock Margin="2,4" VerticalAlignment="Center">
-                <Run Text="{Binding PropertyType, Converter={StaticResource TypeToStringConverter}}" 
-                     Foreground="#0066CC" FontStyle="Italic"/>
-            </TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="2,4" VerticalAlignment="Center">
+                    <Run Text="{Binding PropertyType, Converter={StaticResource TypeToStringConverter}}" 
+                         Foreground="#0066CC" FontStyle="Italic"/>
+                </TextBlock>
+                <!-- Error indicator icon for complex types -->
+                <TextBlock Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            </StackPanel>
         </DataTemplate>
 
-        <!-- Collection Editor (shows count, has add/remove buttons) -->
+        <!-- Collection Editor (shows count, has add/remove buttons) with validation indicator -->
         <DataTemplate x:Key="CollectionEditorTemplate" DataType="{x:Type models:CollectionPropertyItem}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="2,4" VerticalAlignment="Center" Foreground="#666">
@@ -144,6 +264,14 @@
                         Padding="5,0"
                         MinWidth="20"
                         Visibility="{Binding CanAddItems, Converter={StaticResource BoolToVisibilityConverter}}"/>
+                <!-- Error indicator icon for collections -->
+                <TextBlock Text="?" 
+                           Foreground="#E74C3C" 
+                           FontSize="14"
+                           VerticalAlignment="Center"
+                           Margin="4,0,2,0"
+                           ToolTip="{Binding ErrorMessage}"
+                           Visibility="{Binding HasErrors, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>
         </DataTemplate>
 
@@ -195,7 +323,7 @@
                                                    FeatureRoleEditorTemplate="{StaticResource FeatureRoleEditorTemplate}"
                                                    FeatureTypeEditorTemplate="{StaticResource FeatureTypeEditorTemplate}"/>
 
-        <!-- Hierarchical Data Template for TreeView -->
+        <!-- Hierarchical Data Template for TreeView with validation support -->
         <HierarchicalDataTemplate x:Key="PropertyItemTemplate" 
                                   DataType="{x:Type models:PropertyItem}"
                                   ItemsSource="{Binding Children}">
@@ -206,16 +334,36 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Property Name Column -->
+                <!-- Property Name Column with error highlighting -->
                 <Border Grid.Column="0" 
-                        Background="#F5F5F5" 
                         BorderBrush="#DDD" 
                         BorderThickness="0,0,1,1"
                         Padding="5,2">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="Background" Value="#F5F5F5"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                                    <Setter Property="Background" Value="#FFEBEE"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
                     <TextBlock Text="{Binding DisplayName}" 
                                FontWeight="SemiBold"
-                               VerticalAlignment="Center"
-                               ToolTip="{Binding Description}"/>
+                               VerticalAlignment="Center">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="ToolTip" Value="{Binding Description}"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding HasErrors}" Value="True">
+                                        <Setter Property="Foreground" Value="#C0392B"/>
+                                        <Setter Property="ToolTip" Value="{Binding ErrorMessage}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Border>
 
                 <!-- Property Value Column -->

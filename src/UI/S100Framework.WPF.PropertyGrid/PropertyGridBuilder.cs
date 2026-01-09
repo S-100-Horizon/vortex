@@ -31,7 +31,7 @@ namespace S100Framework.WPF
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var prop in properties/*.OrderBy(p => p.Name)*/) {
+            foreach (var prop in properties) {
                 // Skip indexed properties
                 if (prop.GetIndexParameters().Length > 0)
                     continue;
@@ -105,37 +105,59 @@ namespace S100Framework.WPF
                 Attributes = [.. attributes],
             };
 
+            // Wire up validation for the collection property itself
+            item.SetupValidation(parentObj, prop.Name);
+
             // Populate collection items
             if (collection != null) {
                 int index = 0;
                 foreach (var element in collection) {
-                    var childItem = new PropertyItem {
-                        Name = $"[{index}]",
-                        DisplayName = $"[{index}]",
-                        PropertyType = element?.GetType() ?? elementType,
-                        ParentObject = collection,
-                        Level = level + 1,
-                        Value = element,
-                        IsReadOnly = item.IsReadOnly,
-                        CollectionIndex = index,
-                        ParentCollectionItem = item,
-                        Attributes = item.Attributes,
-                    };
-
-                    if (element != null && IsComplexType(element.GetType())) {
-                        childItem.IsComplexType = true;
-                        var childProperties = GetProperties(element, level + 2);
-                        foreach (var childProp in childProperties) {
-                            childItem.Children.Add(childProp);
-                        }
-                    }
-
+                    var childItem = CreateCollectionChildItem(element, elementType, index, item, level);
                     item.Children.Add(childItem);
                     index++;
                 }
             }
 
             return item;
+        }
+
+        /// <summary>
+        /// Creates a child PropertyItem for a collection element
+        /// </summary>
+        internal static PropertyItem CreateCollectionChildItem(object? element, Type elementType, int index, 
+            CollectionPropertyItem parentCollection, int parentLevel) {
+            
+            var childItem = new PropertyItem {
+                Name = $"[{index}]",
+                DisplayName = $"[{index}]",
+                PropertyType = element?.GetType() ?? elementType,
+                ParentObject = parentCollection.Collection,
+                Level = parentLevel + 1,
+                Value = element,
+                IsReadOnly = parentCollection.IsReadOnly,
+                CollectionIndex = index,
+                ParentCollectionItem = parentCollection,
+                Attributes = parentCollection.Attributes,
+            };
+
+            // For collection items that are complex types with validation support
+            if (element != null) {
+                if (IsComplexType(element.GetType())) {
+                    childItem.IsComplexType = true;
+                    var childProperties = GetProperties(element, parentLevel + 2);
+                    foreach (var childProp in childProperties) {
+                        childItem.Children.Add(childProp);
+                    }
+                }
+
+                // Wire up validation if the element supports it
+                if (element is INotifyDataErrorInfo || element is IDataErrorInfo) {
+                    // For collection items, we track the whole object's validation
+                    // The child properties will have their own validation wired up
+                }
+            }
+
+            return childItem;
         }
 
         /// <summary>
@@ -157,6 +179,9 @@ namespace S100Framework.WPF
                 Attributes = [.. prop.GetCustomAttributes()],
             };
 
+            // Wire up validation for the complex property itself
+            item.SetupValidation(parentObj, prop.Name);
+
             // Recursively get properties of complex type
             if (value != null) {
                 var childProperties = GetProperties(value, level + 1);
@@ -172,7 +197,7 @@ namespace S100Framework.WPF
         /// Creates a simple type property item
         /// </summary>
         private static PropertyItem CreateSimpleItem(PropertyInfo prop, object parentObj, object? value, int level) {
-            return new PropertyItem {
+            var item = new PropertyItem {
                 Name = prop.Name,
                 DisplayName = GetDisplayName(prop),                
                 PropertyType = prop.PropertyType,
@@ -185,12 +210,17 @@ namespace S100Framework.WPF
                 Description = GetDescription(prop),
                 Attributes = [.. prop.GetCustomAttributes()],
             };
+
+            // Wire up validation
+            item.SetupValidation(parentObj, prop.Name);
+
+            return item;
         }
 
         /// <summary>
         /// Determines if a type is a complex type (not a simple value type)
         /// </summary>
-        private static bool IsComplexType(Type type) {
+        internal static bool IsComplexType(Type type) {
             // Unwrap nullable types
             Type actualType = Nullable.GetUnderlyingType(type) ?? type;
 
@@ -224,8 +254,6 @@ namespace S100Framework.WPF
         /// <summary>
         /// Gets the description for a property with fallback to type description
         /// </summary>
-        /// <param name="prop">The property to get description for</param>
-        /// <returns>The description text, or null if not found</returns>
         private static string? GetDescription(PropertyInfo prop) {
             // First: Try property's Description attribute
             var propDescAttr = prop.GetCustomAttribute<DescriptionAttribute>();

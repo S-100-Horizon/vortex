@@ -85,6 +85,13 @@ namespace S100Framework.WPF.Models
 
                 System.Diagnostics.Debug.WriteLine($"Removing item at index {childIndex}. Collection count before: {Collection.Count}");
 
+                // Detach validation from the item being removed
+                childToRemove.DetachValidation();
+                foreach (var child in childToRemove.Children)
+                {
+                    child.DetachValidation();
+                }
+
                 // Remove from the actual collection first
                 Collection.RemoveAt(childIndex);
                 
@@ -114,36 +121,6 @@ namespace S100Framework.WPF.Models
                 return false;
             }
         }
-/*
-        /// <summary>
-        /// Full rebuild of children from the collection. Use sparingly.
-        /// </summary>
-        public void RefreshChildren()
-        {
-            if (Collection == null)
-            {
-                Children.Clear();
-                OnPropertyChanged(nameof(HasChildren));
-                OnPropertyChanged(nameof(CanAddItems));
-                OnPropertyChanged(nameof(CanRemoveItems));
-                return;
-            }
-
-            Children.Clear();
-            
-            int index = 0;
-            foreach (var item in Collection)
-            {
-                var childItem = CreateChildPropertyItem(item, index);
-                Children.Add(childItem);
-                index++;
-            }
-            
-            OnPropertyChanged(nameof(HasChildren));
-            OnPropertyChanged(nameof(CanAddItems));
-            OnPropertyChanged(nameof(CanRemoveItems));
-        }
-*/
 
         /// <summary>
         /// Creates a PropertyItem for a collection element
@@ -203,7 +180,7 @@ namespace S100Framework.WPF.Models
             return null;
         }
 
-        private bool IsComplexTypeInternal(Type type)
+        private static bool IsComplexTypeInternal(Type type)
         {
             return !type.IsPrimitive &&
                    type != typeof(string) &&

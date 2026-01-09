@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace S100Framework.WPF.Converters
 {
@@ -164,6 +165,87 @@ namespace S100Framework.WPF.Converters
                 return Visibility.Visible;
             }
             return Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts HasErrors boolean to a border brush color for validation display
+    /// </summary>
+    public class ErrorToBorderBrushConverter : IValueConverter
+    {
+        /// <summary>
+        /// The brush to use when there are errors
+        /// </summary>
+        public Brush ErrorBrush { get; set; } = Brushes.Red;
+
+        /// <summary>
+        /// The brush to use when there are no errors (default border)
+        /// </summary>
+        public Brush NormalBrush { get; set; } = new SolidColorBrush(Color.FromRgb(171, 173, 179)); // Default TextBox border
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool hasErrors && hasErrors) {
+                return ErrorBrush;
+            }
+            return NormalBrush;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts HasErrors boolean to border thickness for validation display
+    /// </summary>
+    public class ErrorToBorderThicknessConverter : IValueConverter
+    {
+        /// <summary>
+        /// The thickness when there are errors
+        /// </summary>
+        public Thickness ErrorThickness { get; set; } = new Thickness(2);
+
+        /// <summary>
+        /// The normal border thickness
+        /// </summary>
+        public Thickness NormalThickness { get; set; } = new Thickness(1);
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool hasErrors && hasErrors) {
+                return ErrorThickness;
+            }
+            return NormalThickness;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    /// <summary>
+    /// Converts HasErrors boolean to a background color for row highlighting
+    /// </summary>
+    public class ErrorToBackgroundConverter : IValueConverter
+    {
+        /// <summary>
+        /// The background when there are errors
+        /// </summary>
+        public Brush ErrorBackground { get; set; } = new SolidColorBrush(Color.FromArgb(40, 255, 0, 0)); // Light red
+
+        /// <summary>
+        /// The normal background
+        /// </summary>
+        public Brush NormalBackground { get; set; } = Brushes.White;
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool hasErrors && hasErrors) {
+                return ErrorBackground;
+            }
+            return NormalBackground;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
