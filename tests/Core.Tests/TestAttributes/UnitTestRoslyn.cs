@@ -386,7 +386,7 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var lower = int.Parse(subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
@@ -406,8 +406,9 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attribute Bindings");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindings() => [");
+                        roslyn.AppendLine("\t\t#region Catalogue");
+                        roslyn.AppendLine("\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var permittedValues = subAttributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
@@ -442,7 +443,7 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");                                    
+                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -540,7 +541,7 @@ namespace TestAttributes
                     var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
                     var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
 
-                    var roles = element.Elements(XName.Get("role", scopes["S100FC"])).Select(e => e.Attribute("ref")!.Value).Select(e=>$"\"{e}\"");
+                    var roles = element.Elements(XName.Get("role", scopes["S100FC"])).Select(e => e.Attribute("ref")!.Value).Select(e => $"\"{e}\"");
 
                     roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.FeatureAssociation");
                     roslyn.AppendLine($"\t{{");
@@ -587,8 +588,9 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attribute Bindings");
-                        roslyn.AppendLine($"\t\tpublic attributeBinding[] attributeBindings() => [");
+                        roslyn.AppendLine("\t\t#region Catalogue");
+                        roslyn.AppendLine("\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
@@ -749,9 +751,9 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
                         if (superType != null) {
-                            roslyn.AppendLine($"\t\t\t\t.. base.attributes,");
+                            roslyn.AppendLine($"\t\t\t\t.. base.attributeBindings,");
                         }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -772,8 +774,12 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attribute Bindings");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindings() => [");
+                        roslyn.AppendLine("\t\t#region Catalogue");
+                        roslyn.AppendLine("\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
+                        if (superType != null) {
+                            roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
+                        }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
@@ -865,7 +871,7 @@ namespace TestAttributes
             #endregion
 
             var featureBindingsCreatorKeys = new List<string>();
-            var featureBindingsCreator = new StringBuilder();            
+            var featureBindingsCreator = new StringBuilder();
 
             #region S100_FC_FeatureType
             {
@@ -943,9 +949,9 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
                         if (superType != null) {
-                            roslyn.AppendLine($"\t\t\t\t.. base.attributes,");
+                            roslyn.AppendLine($"\t\t\t\t.. base.attributeBindings,");
                         }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -965,8 +971,12 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t];");
 
                         roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attribute Bindings");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindings() => [");
+                        roslyn.AppendLine("\t\t#region Catalogue");
+                        roslyn.AppendLine("\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
+                        if (superType != null) {
+                            roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
+                        }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
@@ -1126,7 +1136,7 @@ namespace TestAttributes
                 roslyn.AppendLine("\t\t\t});");
                 roslyn.AppendLine("\t\t\tjsonSerializerOptions.TypeInfoResolver = resolver;");
                 roslyn.AppendLine("\t\t\treturn jsonSerializerOptions;");
-                roslyn.AppendLine("\t\t}"); 
+                roslyn.AppendLine("\t\t}");
 
                 //  featureBindings
                 //roslyn.AppendLine();

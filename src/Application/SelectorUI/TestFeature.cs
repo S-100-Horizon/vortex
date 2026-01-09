@@ -18,17 +18,17 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featureName featureName { get; init; } = new featureName();
 
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
+        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
                 featureName,
-                .. base.attributes,
+                .. base.attributeBindings,
             ];
-        public override attributeBinding[] attributeBindings() => [
+        public override attributeBinding[] attributeBindingsCatalogue => [
+                .. base.attributeBindingsCatalogue,
                 new attributeBinding {
                     attribute = nameof(featureName),
                     lower = 1,
                     upper = 1,
                 },
-                .. base.attributeBindings(),
             ];
     }
 
@@ -42,10 +42,10 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
 
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
+        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
                 featuresDetectedNested,
             ];
-        public override attributeBinding[] attributeBindings() => [
+        public override attributeBinding[] attributeBindingsCatalogue => [
                  new attributeBinding {
                     attribute = nameof(featuresDetectedNested),
                     lower = 1,
@@ -64,17 +64,17 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
 
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
+        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
                 featuresDetectedNested,
-                .. base.attributes,
+                .. base.attributeBindings,
             ];
-        public override attributeBinding[] attributeBindings() => [
-                 new attributeBinding {
+        public override attributeBinding[] attributeBindingsCatalogue => [
+                .. base.attributeBindingsCatalogue,
+                new attributeBinding {
                     attribute = nameof(featuresDetectedNested),
                     lower = 1,
                     upper = 1,
-                },
-                .. base.attributeBindings(),
+                },                
             ];
     }
 }

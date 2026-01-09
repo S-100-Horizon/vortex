@@ -262,29 +262,36 @@ namespace S100Framework.AttributeModel
         public int? value { get; set; } = default;
     }
 
-    public abstract class ComplexAttribute : Attribute
+
+
+    public interface IAttributeBindings
+    {
+    }
+
+    public abstract class ComplexAttribute : Attribute, IAttributeBindings
     {
         [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
+        public abstract Attribute[] attributeBindings { get; }
 
         public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract attributeBinding[] attributeBindings();
+        [JsonIgnore]
+        public abstract attributeBinding[] attributeBindingsCatalogue { get; }
 
         public attributeBinding[] mandatoryBindings() {
-            return [.. this.attributeBindings().Where(e => e.lower > 0)];
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
         public int? FreeSeats(string code) {
-            var binding = this.attributeBindings().SingleOrDefault(e => e.attribute.Equals(code));
+            var binding = attributeBindingsCatalogue!.SingleOrDefault(e => e.attribute.Equals(code));
             if (binding == null)
                 return null;
-            return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
+            return (binding.upper - this.attributeBindings.Where(e => e.GetType().Name.Equals(code)).Count());
         }
 
         protected void AddAttributeValue(Attribute? attribute) {
             if (attribute == null) return;
-            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
@@ -310,7 +317,7 @@ namespace S100Framework.AttributeModel
 
         protected void AddAttributeValue(Attribute[] attribute) {
             foreach (var a in attribute) {
-                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
                     var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
@@ -328,7 +335,7 @@ namespace S100Framework.AttributeModel
         }
     }
 
-    public abstract class InformationType
+    public abstract class InformationType : IAttributeBindings
     {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
@@ -337,19 +344,20 @@ namespace S100Framework.AttributeModel
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
+        public abstract Attribute[] attributeBindings { get; }
 
         public Attribute[] attributesOptional { get; set; } = [];
 
-        public abstract attributeBinding[] attributeBindings();
+        [JsonIgnore]
+        public abstract attributeBinding[] attributeBindingsCatalogue { get; }
 
         public attributeBinding[] mandatoryBindings() {
-            return [.. this.attributeBindings().Where(e => e.lower > 0)];
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
         protected void AddAttributeValue(Attribute? attribute) {
             if (attribute == null) return;
-            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
@@ -375,7 +383,7 @@ namespace S100Framework.AttributeModel
 
         protected void AddAttributeValue(Attribute[] attribute) {
             foreach (var a in attribute) {
-                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
                     var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
@@ -393,7 +401,7 @@ namespace S100Framework.AttributeModel
         }
     }
 
-    public abstract class FeatureType
+    public abstract class FeatureType : IAttributeBindings
     {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
@@ -402,23 +410,26 @@ namespace S100Framework.AttributeModel
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
-        
+        public abstract Attribute[] attributeBindings { get; }
+
         public Attribute[] attributesOptional { get; set; } = [];
 
+        [JsonIgnore]
         public informationBinding[] informationBindings { get; set; } = [];
 
+        [JsonIgnore]
         public featureBinding[] featureBindings { get; set; } = [];
 
-        public abstract attributeBinding[] attributeBindings();
+        [JsonIgnore]
+        public abstract attributeBinding[] attributeBindingsCatalogue { get; }
 
         public attributeBinding[] mandatoryBindings() {
-            return [.. this.attributeBindings().Where(e => e.lower > 0)];
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
         protected void AddAttributeValue(Attribute? attribute) {
             if (attribute == null) return;
-            var binding = attributeBindings().Single(e => e.attribute.Equals(attribute.S100FC_code));
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
@@ -445,7 +456,7 @@ namespace S100Framework.AttributeModel
         protected void AddAttributeValue(Attribute?[] attribute) {
             if (attribute == null) return;
             foreach (var a in attribute) {
-                var binding = attributeBindings().Single(e => e.attribute.Equals(a.S100FC_code));
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
                     var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
@@ -476,8 +487,6 @@ namespace S100Framework.AttributeModel
         public bool IsMandatory => this.lower > 0;
         public bool IsOptional => this.lower == 0;
 
-        public int FreeSeats { get; set; } = int.MaxValue;
-
         public Func<Attribute?> CreateInstance { get; init; } = () => null;
     }
 
@@ -485,12 +494,18 @@ namespace S100Framework.AttributeModel
     {
         [JsonIgnore]
         public abstract string role { get; }
+
+        [JsonIgnore]
+        public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];
     }
 
     public abstract class FeatureAssociation
     {
         [JsonIgnore]
         public abstract string[] roles { get; }
+
+        [JsonIgnore]
+        public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];
     }
 
     public abstract class informationBinding
@@ -511,7 +526,7 @@ namespace S100Framework.AttributeModel
         public string roleType { get; init; } = string.Empty;
         public string role { get; init; } = string.Empty;
         public string? featureType { get; set; } = null;
-        public string featureId { get; set; } = string.Empty;        
+        public string featureId { get; set; } = string.Empty;
     }
 
     public class featureBinding<TAssociation> : featureBinding where TAssociation : FeatureAssociation, new()

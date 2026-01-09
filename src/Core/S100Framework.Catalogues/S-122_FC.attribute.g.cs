@@ -1533,12 +1533,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Contact Address";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(deliveryPoint),
 					lower = 0,
@@ -1612,12 +1613,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Designation";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(designationScheme),
 					lower = 0,
@@ -1683,14 +1685,15 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public name name { get; set; } = new name();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				language,
 				name,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(language),
 					lower = 1,
@@ -1733,12 +1736,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Fixed Date Range";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(dateStart),
 					lower = 0,
@@ -1780,13 +1784,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; set; } = new frequencyShoreStationTransmits();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				frequencyShoreStationTransmits,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(frequencyShoreStationReceives),
 					lower = 0,
@@ -1823,13 +1828,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				uncertaintyFixed,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
@@ -1865,12 +1871,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Information";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(fileLocator),
 					lower = 0,
@@ -1945,13 +1952,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public linkage linkage { get; set; } = new linkage();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				linkage,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(linkage),
 					lower = 1,
@@ -2044,13 +2052,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public orientationValue orientationValue { get; set; } = new orientationValue();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				orientationValue,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
@@ -2088,14 +2097,15 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				dateStart,
 				dateEnd,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(dateStart),
 					lower = 1,
@@ -2126,12 +2136,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "RxN Code";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfRxN),
 					lower = 0,
@@ -2185,12 +2196,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Source Indication";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfAuthority),
 					lower = 0,
@@ -2278,13 +2290,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public dateEnd dateEnd { get; set; } = new dateEnd();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				dateEnd,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(dateStart),
 					lower = 0,
@@ -2321,13 +2334,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				telecommunicationIdentifier,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfCommunicationPreference),
 					lower = 0,
@@ -2398,12 +2412,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Text Content";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfText),
 					lower = 0,
@@ -2467,12 +2482,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Time Intervals by Day of Week";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(dayOfWeek),
 					lower = 0,
@@ -2537,13 +2553,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				uncertaintyFixed,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
@@ -2583,7 +2600,7 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; } = new vesselsCharacteristicsUnit();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				comparisonOperator,
 				vesselsCharacteristics,
 				vesselsCharacteristicsValue,
@@ -2591,8 +2608,9 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(comparisonOperator),
 					lower = 1,
@@ -2638,12 +2656,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Bearing Information";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(cardinalDirection),
 					lower = 0,
@@ -2708,13 +2727,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public pictorialRepresentation pictorialRepresentation { get; set; } = new pictorialRepresentation();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				pictorialRepresentation,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(pictorialRepresentation),
 					lower = 1,
@@ -2789,13 +2809,14 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; set; } = new timeIntervalsByDayOfWeek();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				timeIntervalsByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfSchedule),
 					lower = 0,
@@ -2848,12 +2869,13 @@ namespace S100Framework.AttributeModel.S122.ComplexAttributes
 		public override string S100FC_name => "Spatial Accuracy";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
@@ -3009,12 +3031,13 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Information Type";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(featureName),
 					lower = 0,
@@ -3088,13 +3111,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "AbstractRxN";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(categoryOfAuthority),
 					lower = 0,
@@ -3147,13 +3172,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Applicability";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(inBallast),
 					lower = 0,
@@ -3299,14 +3326,16 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public categoryOfAuthority categoryOfAuthority { get; set; } = new categoryOfAuthority();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				categoryOfAuthority,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(categoryOfAuthority),
 					lower = 1,
@@ -3343,13 +3372,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Contact Details";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(callName),
 					lower = 0,
@@ -3501,13 +3532,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Nautical Information";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 			];
 		#endregion
 
@@ -3526,13 +3559,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Non-Standard Working Day";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(dateFixed),
 					lower = 0,
@@ -3584,13 +3619,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Recommendations";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 			];
 		#endregion
 
@@ -3609,13 +3646,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Regulations";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 			];
 		#endregion
 
@@ -3634,13 +3673,15 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Restrictions";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 			];
 		#endregion
 
@@ -3660,14 +3701,16 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public scheduleByDayOfWeek scheduleByDayOfWeek { get; set; } = new scheduleByDayOfWeek();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				scheduleByDayOfWeek,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(scheduleByDayOfWeek),
 					lower = 1,
@@ -3708,12 +3751,13 @@ namespace S100Framework.AttributeModel.S122.InformationTypes
 		public override string S100FC_name => "Spatial Quality";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(qualityOfHorizontalMeasurement),
 					lower = 0,
@@ -3762,12 +3806,13 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_name => "Feature Type";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
@@ -3865,15 +3910,17 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public actionOrActivity actionOrActivity { get; set; } = new actionOrActivity();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				categoryOfRelationship,
 				actionOrActivity,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(categoryOfRelationship),
 					lower = 1,
@@ -3907,14 +3954,16 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public categoryOfMarineProtectedArea categoryOfMarineProtectedArea { get; set; } = new categoryOfMarineProtectedArea();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				categoryOfMarineProtectedArea,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(categoryOfMarineProtectedArea),
 					lower = 1,
@@ -4005,14 +4054,16 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public restriction restriction { get; set; } = new restriction();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				restriction,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 				new attributeBinding {
 					attribute = nameof(categoryOfRestrictedArea),
 					lower = 0,
@@ -4067,13 +4118,15 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_name => "Vessel Traffic Service Area";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
+		public override Attribute[] attributeBindings => [
+				.. base.attributeBindings,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
 			];
 		#endregion
 
@@ -4094,14 +4147,15 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				maximumDisplayScale,
 				minimumDisplayScale,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(maximumDisplayScale),
 					lower = 1,
@@ -4154,12 +4208,13 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public override string S100FC_name => "Quality of Non-Bathymetric Data";
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(categoryOfTemporalVariation),
 					lower = 0,
@@ -4270,15 +4325,16 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 		public textType textType { get; set; } = new textType();
 
 		[JsonIgnore]
-		public override Attribute[] attributes => [
+		public override Attribute[] attributeBindings => [
 				textOffsetBearing,
 				textOffsetDistance,
 				textType,
 				.. base.attributesOptional,
 			];
 
-		#region Attribute Bindings
-		public override attributeBinding[] attributeBindings() => [
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBinding[] attributeBindingsCatalogue => [
 				new attributeBinding {
 					attribute = nameof(textOffsetBearing),
 					lower = 1,

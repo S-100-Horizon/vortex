@@ -97,7 +97,7 @@ namespace S100Framework.WPF
         public ComplexAttributeViewModel(ComplexAttribute attribute) : base(attribute) {
             this._attribute = attribute;
 
-            this.attributeBindings = this._attribute.attributeBindings();
+            this.attributeBindings = this._attribute.attributeBindingsCatalogue;
             foreach (var e in attribute.attributes) {
                 if (e is SimpleAttribute simpleAttribute)
                     this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
@@ -131,7 +131,7 @@ namespace S100Framework.WPF
         public S100AttributeEditorViewModel(S100Framework.AttributeModel.FeatureType feature) {
             this._feature = feature;
             this.code = this._feature.S100FC_code;
-            this.attributeBindings = this._feature.attributeBindings();
+            this.attributeBindings = this._feature.attributeBindingsCatalogue;
             foreach (var e in this._feature.attributes)
                 if (e is SimpleAttribute simpleAttribute)
                     this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
