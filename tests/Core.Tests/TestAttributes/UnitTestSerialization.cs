@@ -6,6 +6,8 @@ using Xunit.Abstractions;
 
 namespace TestAttributes.S101
 {
+    using JsonFlatten;
+    using Newtonsoft.Json.Linq;
     using S100Framework.AttributeModel.S101;
     using S100Framework.AttributeModel.S101.ComplexAttributes;
     using S100Framework.AttributeModel.S101.FeatureAssociation;
@@ -76,6 +78,39 @@ namespace TestAttributes.S101
         }
 
         [Fact]
+        public void S101_Flatten() {
+            var relatedFeature = new SpanFixed {
+                verticalClearanceFixed = new verticalClearanceFixed { verticalClearanceValue = 14d },
+            };
+            var feature = new Bridge {
+            };
+
+            feature.featureName = [new featureName {
+                language = "eng",
+                name = "No where!",
+                nameUsage = 1,
+            }];
+
+            feature.features = [new featureBinding<BridgeAggregation>{
+                featureId = "1234",
+                featureType = relatedFeature.S100FC_code,
+                role = "theComponent",
+                roleType = "association",
+            }];
+
+            var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
+
+            var jsonObject = JObject.Parse(json);
+
+            var flatten = jsonObject.Flatten(includeNullAndEmptyValues: true);
+
+
+            var reloaded = System.Text.Json.JsonSerializer.Deserialize<Bridge>(json, jsonSerializerOptions);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
         public void Test_AttributeAssignment() {
             var drval1 = 10d;
             var drval2 = default(double?);
@@ -89,7 +124,15 @@ namespace TestAttributes.S101
             //    value = "ID:1234"
             //});
         }
+
+
+
+
+
     }
+
+
+
 
     public static class Extension
     {
