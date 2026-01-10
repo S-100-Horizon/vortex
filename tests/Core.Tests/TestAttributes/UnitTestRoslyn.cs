@@ -443,14 +443,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -460,14 +460,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -477,14 +477,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -624,14 +624,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -641,14 +641,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -658,14 +658,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -813,14 +813,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -830,14 +830,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -847,14 +847,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -1010,14 +1010,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}? {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(new {referenceCode} {{ value = value }}); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode}))?.value; }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -1027,14 +1027,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }
@@ -1044,14 +1044,14 @@ namespace TestAttributes
                                 if (attributesKnownComplex.Contains(referenceCode)) {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue(value); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }} ");
                                     roslyn.AppendLine($"\t}}");
                                 }
                                 else {
                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                     roslyn.AppendLine($"\t\tpublic {prefix}?[] {referenceCode}_optional {{");
-                                    roslyn.AppendLine($"\t\t\tset {{ base.AddAttributeValue([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                                     roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                                     roslyn.AppendLine($"\t\t}}");
                                 }

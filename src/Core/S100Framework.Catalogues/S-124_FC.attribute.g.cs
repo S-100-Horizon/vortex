@@ -964,12 +964,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String? chartPlanNumber_optional {
-			set { base.AddAttributeValue(new chartPlanNumber { value = value }); }
+			set { base.SetAttribute(new chartPlanNumber { value = value }); }
 			get { return base.GetAttributeValue<chartPlanNumber>(nameof(chartPlanNumber))?.value; }
 		}
 		[JsonIgnore]
 		public DateOnly? lastNoticeDate_optional {
-			set { base.AddAttributeValue(new lastNoticeDate { value = value }); }
+			set { base.SetAttribute(new lastNoticeDate { value = value }); }
 			get { return base.GetAttributeValue<lastNoticeDate>(nameof(lastNoticeDate))?.value; }
 		}
 		#endregion
@@ -1023,22 +1023,22 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String? dateEnd_optional {
-			set { base.AddAttributeValue(new dateEnd { value = value }); }
+			set { base.SetAttribute(new dateEnd { value = value }); }
 			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
 		public String? dateStart_optional {
-			set { base.AddAttributeValue(new dateStart { value = value }); }
+			set { base.SetAttribute(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
 		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? timeOfDayEnd_optional {
-			set { base.AddAttributeValue(new timeOfDayEnd { value = value }); }
+			set { base.SetAttribute(new timeOfDayEnd { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayEnd>(nameof(timeOfDayEnd))?.value; }
 		}
 		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? timeOfDayStart_optional {
-			set { base.AddAttributeValue(new timeOfDayStart { value = value }); }
+			set { base.SetAttribute(new timeOfDayStart { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayStart>(nameof(timeOfDayStart))?.value; }
 		}
 		#endregion
@@ -1203,12 +1203,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String? interoperabilityIdentifier_optional {
-			set { base.AddAttributeValue(new interoperabilityIdentifier { value = value }); }
+			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public String? nationality_optional {
-			set { base.AddAttributeValue(new nationality { value = value }); }
+			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		#endregion
@@ -1291,12 +1291,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public information?[] information_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); } 
 	}
 		[JsonIgnore]
 		public int?[] navwarnTypeDetails_optional {
-			set { base.AddAttributeValue([.. value.Select(e=> new navwarnTypeDetails { value = e })]); }
+			set { base.SetAttribute([.. value.Select(e=> new navwarnTypeDetails { value = e })]); }
 			get { return base.GetAttributeValues<navwarnTypeDetails>(nameof(navwarnTypeDetails)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -1338,12 +1338,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String?[] atoNNumber_optional {
-			set { base.AddAttributeValue([.. value.Select(e=> new atoNNumber { value = e })]); }
+			set { base.SetAttribute([.. value.Select(e=> new atoNNumber { value = e })]); }
 			get { return base.GetAttributeValues<atoNNumber>(nameof(atoNNumber)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
 		public String?[] interoperabilityIdentifier_optional {
-			set { base.AddAttributeValue([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
+			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
 			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -1396,7 +1396,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public int? nameUsage_optional {
-			set { base.AddAttributeValue(new nameUsage { value = value }); }
+			set { base.SetAttribute(new nameUsage { value = value }); }
 			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
 		}
 		#endregion
@@ -1524,22 +1524,22 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public chartAffected? chartAffected_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<chartAffected>(nameof(chartAffected)); }
 		}
 		[JsonIgnore]
 		public String? chartPublicationIdentifier_optional {
-			set { base.AddAttributeValue(new chartPublicationIdentifier { value = value }); }
+			set { base.SetAttribute(new chartPublicationIdentifier { value = value }); }
 			get { return base.GetAttributeValue<chartPublicationIdentifier>(nameof(chartPublicationIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public String? internationalChartAffected_optional {
-			set { base.AddAttributeValue(new internationalChartAffected { value = value }); }
+			set { base.SetAttribute(new internationalChartAffected { value = value }); }
 			get { return base.GetAttributeValue<internationalChartAffected>(nameof(internationalChartAffected))?.value; }
 		}
 		[JsonIgnore]
 		public String? publicationAffected_optional {
-			set { base.AddAttributeValue(new publicationAffected { value = value }); }
+			set { base.SetAttribute(new publicationAffected { value = value }); }
 			get { return base.GetAttributeValue<publicationAffected>(nameof(publicationAffected))?.value; }
 		}
 		#endregion
@@ -1583,12 +1583,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String? localityIdentifier_optional {
-			set { base.AddAttributeValue(new localityIdentifier { value = value }); }
+			set { base.SetAttribute(new localityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<localityIdentifier>(nameof(localityIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public locationName?[] locationName_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); } 
 	}
 		#endregion
@@ -1632,12 +1632,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		#region Optional Attributes
 		[JsonIgnore]
 		public String? localityIdentifier_optional {
-			set { base.AddAttributeValue(new localityIdentifier { value = value }); }
+			set { base.SetAttribute(new localityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<localityIdentifier>(nameof(localityIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public locationName?[] locationName_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); } 
 	}
 		#endregion
@@ -1737,7 +1737,7 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#region Optional Attributes
 		[JsonIgnore]
 		public messageSeriesIdentifier?[] messageSeriesIdentifier_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<messageSeriesIdentifier>(nameof(messageSeriesIdentifier)); } 
 	}
 		#endregion
@@ -1832,27 +1832,27 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#region Optional Attributes
 		[JsonIgnore]
 		public affectedChartPublications?[] affectedChartPublications_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<affectedChartPublications>(nameof(affectedChartPublications)); } 
 	}
 		[JsonIgnore]
 		public generalArea?[] generalArea_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<generalArea>(nameof(generalArea)); } 
 	}
 		[JsonIgnore]
 		public locality?[] locality_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<locality>(nameof(locality)); } 
 	}
 		[JsonIgnore]
 		public navwarnTitle?[] navwarnTitle_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<navwarnTitle>(nameof(navwarnTitle)); } 
 	}
 		[JsonIgnore]
 		public DateTime? cancellationDate_optional {
-			set { base.AddAttributeValue(new cancellationDate { value = value }); }
+			set { base.SetAttribute(new cancellationDate { value = value }); }
 			get { return base.GetAttributeValue<cancellationDate>(nameof(cancellationDate))?.value; }
 		}
 		#endregion
@@ -1895,12 +1895,12 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		#region Optional Attributes
 		[JsonIgnore]
 		public int? qualityOfHorizontalMeasurement_optional {
-			set { base.AddAttributeValue(new qualityOfHorizontalMeasurement { value = value }); }
+			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
 		}
 		[JsonIgnore]
 		public spatialAccuracy? spatialAccuracy_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<spatialAccuracy>(nameof(spatialAccuracy)); }
 		}
 		#endregion
@@ -1970,22 +1970,22 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		#region Optional Attributes
 		[JsonIgnore]
 		public int? restriction_optional {
-			set { base.AddAttributeValue(new restriction { value = value }); }
+			set { base.SetAttribute(new restriction { value = value }); }
 			get { return base.GetAttributeValue<restriction>(nameof(restriction))?.value; }
 		}
 		[JsonIgnore]
 		public fixedDateRange?[] fixedDateRange_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<fixedDateRange>(nameof(fixedDateRange)); } 
 	}
 		[JsonIgnore]
 		public featureName?[] featureName_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
 	}
 		[JsonIgnore]
 		public featureReference?[] featureReference_optional {
-			set { base.AddAttributeValue(value); }
+			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValues<featureReference>(nameof(featureReference)); } 
 	}
 		#endregion
@@ -2078,7 +2078,7 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		#region Optional Attributes
 		[JsonIgnore]
 		public int? scaleMinimum_optional {
-			set { base.AddAttributeValue(new scaleMinimum { value = value }); }
+			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		#endregion

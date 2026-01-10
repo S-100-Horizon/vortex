@@ -289,7 +289,7 @@ namespace S100Framework.AttributeModel
             return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
         }
 
-        protected void AddAttributeValue(Attribute? attribute) {
+        protected void SetAttribute(Attribute? attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
@@ -307,15 +307,7 @@ namespace S100Framework.AttributeModel
             }
         }
 
-        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
-        }
-
-        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
-        }
-
-        protected void AddAttributeValue(Attribute[] attribute) {
+        protected void SetAttribute(Attribute[] attribute) {
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
@@ -332,6 +324,14 @@ namespace S100Framework.AttributeModel
                     this.attributesOptional = [.. this.attributesOptional, a];
                 }
             }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
     }
 
@@ -358,7 +358,7 @@ namespace S100Framework.AttributeModel
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
-        protected void AddAttributeValue(Attribute? attribute) {
+        protected void SetAttribute(Attribute? attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
@@ -376,15 +376,7 @@ namespace S100Framework.AttributeModel
             }
         }
 
-        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
-        }
-
-        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
-        }
-
-        protected void AddAttributeValue(Attribute[] attribute) {
+        protected void SetAttribute(Attribute[] attribute) {
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
@@ -402,6 +394,14 @@ namespace S100Framework.AttributeModel
                 }
             }
         }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }      
     }
 
     public abstract class FeatureType : IAttributeBindings
@@ -430,7 +430,7 @@ namespace S100Framework.AttributeModel
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
-        protected void AddAttributeValue(Attribute? attribute) {
+        protected void SetAttribute(Attribute? attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
@@ -448,15 +448,7 @@ namespace S100Framework.AttributeModel
             }
         }
 
-        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
-        }
-
-        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
-        }
-
-        protected void AddAttributeValue(Attribute?[] attribute) {
+        protected void SetAttribute(Attribute?[] attribute) {
             if (attribute == null) return;
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
@@ -474,6 +466,14 @@ namespace S100Framework.AttributeModel
                     this.attributesOptional = [.. this.attributesOptional, a];
                 }
             }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
     }
 
