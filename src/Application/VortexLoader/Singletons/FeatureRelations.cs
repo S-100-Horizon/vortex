@@ -1132,24 +1132,24 @@ namespace S100Framework.Applications.Singletons
             }
 
             if (s101SlaveFeature["featurebindings"] is null) {
-                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(foreignBindings, ImporterNIS.jsonSerializerOptions);
                 s101SlaveFeature.Store();
             }
             else {
-                List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!, ImporterNIS.jsonFeatureTypeSerializerOptions)!;
+                List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101SlaveFeature["featurebindings"])!, ImporterNIS.jsonSerializerOptions)!;
                 existingBinding.AddRange(foreignBindings);
-                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding, ImporterNIS.jsonFeatureTypeSerializerOptions);
+                s101SlaveFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding, ImporterNIS.jsonSerializerOptions);
                 s101SlaveFeature.Store();
             }
 
             if (s101MasterFeature["featurebindings"] is null) {
-                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
+                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(primaryBindings, ImporterNIS.jsonSerializerOptions);
                 s101MasterFeature.Store();
             }
             else {
-                List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!, ImporterNIS.jsonFeatureTypeSerializerOptions)!;
+                List<featureBinding> existingBinding = System.Text.Json.JsonSerializer.Deserialize<List<featureBinding>>(Convert.ToString(s101MasterFeature["featurebindings"])!, ImporterNIS.jsonSerializerOptions)!;
                 existingBinding.AddRange(primaryBindings);
-                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding, ImporterNIS.jsonFeatureTypeSerializerOptions);
+                s101MasterFeature["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(existingBinding, ImporterNIS.jsonSerializerOptions);
                 s101MasterFeature.Store();
             }
         }

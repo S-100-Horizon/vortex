@@ -146,7 +146,7 @@ namespace S100Framework.Applications
                                     bufferPointset["ps"] = ps101;
                                     bufferPointset["code"] = sounding.GetType().Name;
                                     bufferPointset["edition"] = ImporterNIS.s101version;
-                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
 
                                     //var featureN = featureClass.CreateRow(bufferPointset);
                                     var id = insertCursor.Insert(bufferPointset);
@@ -158,7 +158,7 @@ namespace S100Framework.Applications
 
                                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, "objid: {id.ToString()}");
 
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
+                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding, ImporterNIS.jsonSerializerOptions));
 
                                     // TODO: Handle Spatialquality
                                     //if (quapos != default && quapos == 4) {
@@ -209,12 +209,12 @@ namespace S100Framework.Applications
                                     bufferPointset["ps"] = ps101;
                                     bufferPointset["code"] = instance.GetType().Name;
                                     bufferPointset["edition"] = ImporterNIS.s101version;
-                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonInformationTypeSerializerOptions);
+                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
                                     var oid = insertCursor.Insert(bufferPointset);
 
-                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, oid.ToString()); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                    ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, oid.ToString()); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
+                                    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
 
                                 }
                                 break;

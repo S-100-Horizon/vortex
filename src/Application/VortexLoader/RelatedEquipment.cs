@@ -7,6 +7,7 @@ using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Data;
+using System.Text.Json;
 
 namespace S100Framework.Applications
 {
@@ -185,7 +186,7 @@ namespace S100Framework.Applications
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
-                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), jsonSerializerOptions);
 
                     ImporterNIS.SetShape(buffer, shape);
                     ImporterNIS.SetUsageBand(buffer, s57master!.PLTS_COMP_SCALE!.Value);
@@ -203,7 +204,7 @@ namespace S100Framework.Applications
                             throw new NotSupportedException($"Empty PLTS_Frel.DEST_FC");
                         }
                         ConversionAnalytics.Instance.AddConverted(relatedObject.PLTS_Frel.DEST_FC, relatedObject.GlobalId, equipmentName ?? "Unknown equipment");
-                        Logger.Current.DataObject(-1, relatedObject.S57Object!.TableName!, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored));
+                        Logger.Current.DataObject(-1, relatedObject.S57Object!.TableName!, equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions));
                     }
 
                     // Add relation between s57master polygon and slave equipment
@@ -228,7 +229,7 @@ namespace S100Framework.Applications
                         buffer["edition"] = ImporterNIS.s101version;
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         if (instance is FeatureType) {
-                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
                         }
                         else {
                             ;
@@ -256,7 +257,7 @@ namespace S100Framework.Applications
                         // TODO: ENABLE THIS 
                         //FeatureRelations.Instance.AddRelation(new(s101master.GetType(), equipmentName), new(instance.GetType(), name));
 
-                        Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+                        Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                     }
                 }
             }
@@ -297,7 +298,7 @@ namespace S100Framework.Applications
                 buffer["edition"] = ImporterNIS.s101version;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 if (instance is FeatureType) {
-                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
                 }
                 else {
                     ;
@@ -315,7 +316,7 @@ namespace S100Framework.Applications
 
                 foreach (var relatedObject in related) {
                     ConversionAnalytics.Instance.AddConverted(relatedObject.GetType().Name, relatedObject.GLOBALID, equipmentName!);
-                    Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                 }
 
                 if (equipmentName == null) {
@@ -350,7 +351,7 @@ namespace S100Framework.Applications
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
 
                     if (instance is FeatureType) {
-                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonInformationTypeSerializerOptions);
+                        buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
                     }
                     else {
                         ;
@@ -377,7 +378,7 @@ namespace S100Framework.Applications
                     FeatureRelations.Instance.AddRelation(new(s101master.GetType(), s101MasterFeature.UID()), new(instance.GetType(), equipmentName), featureN, s101MasterFeature);
                     featureN.Store();
 
-                    Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+                    Logger.Current.DataObject((int)featureN.GetObjectID(), relatedObject.S57Object.TableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
 
                 }
                 else {
@@ -435,7 +436,7 @@ namespace S100Framework.Applications
 
             //        FeatureRelations.Instance.AddRelation(new(slave.GetType(), equipmentName), new(instance.GetType(), name));
 
-            //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance));
+            //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
 
             //        return;
             //    }
@@ -478,7 +479,7 @@ namespace S100Framework.Applications
 
             //            FeatureRelations.Instance.AddRelation(new(slave.GetType(), equipmentName), new(instance.GetType(), name));
 
-            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
             //        }
             //        return;
             //    }
@@ -537,7 +538,7 @@ namespace S100Framework.Applications
 
             //        FeatureRelations.Instance.AddRelation(new(slave.GetType(), equipmentName), new(instance.GetType(), name));
 
-            //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //        Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
             //    }
 
             //    related = FeatureRelations.Instance.GetRelated<AidsToNavigationP>(typeof(LightAllAround), s57master.GLOBALID);
@@ -573,7 +574,7 @@ namespace S100Framework.Applications
             //            ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", light.GLOBALID, equipmentName);
 
 
-            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
             //        }
             //        return;
             //    }
@@ -611,7 +612,7 @@ namespace S100Framework.Applications
             //            ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", light.GLOBALID, equipmentName);
 
 
-            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
             //        }
             //        return;
             //    }
@@ -646,7 +647,7 @@ namespace S100Framework.Applications
 
             //            ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", radarTransponder.GLOBALID, equipmentName);
 
-            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
 
             //            ;
             //        }
@@ -682,7 +683,7 @@ namespace S100Framework.Applications
 
             //            ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", daymark.GLOBALID, equipmentName);
 
-            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance));
+            //            Logger.Current.DataObject((int)featureN.GetObjectID(), tableName ?? "Uknown table name", equipmentName ?? "Unknown equipment name", System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
 
             //            ;
             //        }

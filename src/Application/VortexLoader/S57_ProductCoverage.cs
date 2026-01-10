@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl, ImporterNIS.jsonSerializerOptions);
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
@@ -190,7 +190,7 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage, ImporterNIS.jsonSerializerOptions);
                                 buffer["informationbindings"] = "[]";
 
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
@@ -214,7 +214,7 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat, ImporterNIS.jsonSerializerOptions);
                                 buffer["informationbindings"] = "[]";
 
                                 SetShape(buffer, productCoverage.SHAPE);
@@ -254,7 +254,7 @@ namespace S100Framework.Applications
                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                 }
 
-                Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance));
+                Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }

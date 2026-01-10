@@ -260,7 +260,7 @@ namespace S100Framework.Applications.Singletons
                         };
                         featureBindings.Add(featureBinding);
                     }
-                    row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonFeatureTypeSerializerOptions);
+                    row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
 
                     // Update opening bridge
                     var canOpen = bindings.Any(obj => {
@@ -275,7 +275,7 @@ namespace S100Framework.Applications.Singletons
                     bridge.openingBridge = canOpen;
                     bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
-                    row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
+                    row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge, ImporterNIS.jsonSerializerOptions);
 
                     cursor.Update(row);
                     //row.Store();

@@ -23,24 +23,24 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
 
-        internal static readonly JsonSerializerOptions jsonSerializerOptions = new() {
-            WriteIndented = false,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            PropertyNameCaseInsensitive = true,
-        };
-
-        internal static readonly JsonSerializerOptions jsonInformationTypeSerializerOptions = new JsonSerializerOptions {
-            WriteIndented = false,
-            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-            PropertyNameCaseInsensitive = true,
-            //TypeInfoResolver = Summary.InformationBindingResolver(),
-        }.AppendTypeInfoResolver();
-
-        internal static readonly JsonSerializerOptions jsonFeatureTypeSerializerOptions = new JsonSerializerOptions {
+        internal static readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
         }.AppendTypeInfoResolver();
+
+        //internal static readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions {
+        //    WriteIndented = false,
+        //    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        //    PropertyNameCaseInsensitive = true,
+        //    //TypeInfoResolver = Summary.InformationBindingResolver(),
+        //}.AppendTypeInfoResolver();
+
+        //internal static readonly JsonSerializerOptions jsonFeatureTypeSerializerOptions = new JsonSerializerOptions {
+        //    WriteIndented = false,
+        //    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+        //    PropertyNameCaseInsensitive = true,
+        //}.AppendTypeInfoResolver();
 
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
         internal static string _notesPath = "";
