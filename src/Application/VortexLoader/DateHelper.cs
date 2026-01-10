@@ -139,7 +139,7 @@ namespace S100Framework.Applications
 
             value = new surveyDateRange {
                 dateEnd = default,
-                dateStart_optional = start
+                dateStart = start
             };
             if (!string.IsNullOrEmpty(end) && DateHelper.regexTruncatedDateValidation.IsMatch(end)) {
                 value.dateEnd = end;
@@ -153,8 +153,8 @@ namespace S100Framework.Applications
                 if (end != default) {
                     if (regexTruncatedDateValidation.IsMatch(end) && regexTruncatedDateValidation.IsMatch(start)) {
                         value = new fixedDateRange() {
-                            dateStart_optional = start,
-                            dateEnd_optional = end
+                            dateStart = start,
+                            dateEnd = end
                         };
                         return true;
                     }

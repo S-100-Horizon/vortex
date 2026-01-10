@@ -81,6 +81,8 @@ namespace S100Framework.Applications
                 foreach (var item in all_dissolved_M_QUALs_without_M_SDATs) {
 
 
+                    //TODO: ??? loop ??
+
                     verticalDatum? soundingDatum = default;
                     foreach (var elm in SoundingDatums.Instance.Touch(item)) {
                         soundingDatum = elm.Item2;
@@ -89,7 +91,7 @@ namespace S100Framework.Applications
                     if (item.IsEmpty) {
                         continue;
                     }
-
+                    
                     var instance = new SoundingDatum {
                     };
 
@@ -100,7 +102,7 @@ namespace S100Framework.Applications
                     if (soundingDatum == default) {
                         throw new ArgumentException("Cannot set sounding datum.");
                     }
-                    instance.verticalDatum = soundingDatum;
+                    instance.verticalDatum = soundingDatum!.value;
 
 
                     // Clear vdat if covered by a metadata object with same vdat

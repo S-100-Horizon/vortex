@@ -98,20 +98,20 @@ namespace S100Framework.Applications
                             if (current.CATAIR != default) {
                                 var categoryOfAirportAirfield = EnumHelper.GetEnumValues(current.CATAIR);
                                 if (categoryOfAirportAirfield is not null && categoryOfAirportAirfield.Any())
-                                    instance.categoryOfAirportAirfield_optional = categoryOfAirportAirfield;
+                                    instance.categoryOfAirportAirfield = categoryOfAirportAirfield;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -119,7 +119,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -128,15 +128,15 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -152,7 +152,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -269,11 +269,11 @@ namespace S100Framework.Applications
                                     instance = new SpanOpening() {
                                         verticalClearanceClosed = new verticalClearanceClosed() {
                                             verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL!.Value : default(double?),
-                                            verticalUncertainty_optional = verticalUncertaintyValue,
+                                            verticalUncertainty = verticalUncertaintyValue,
                                         }
                                         ,
                                         verticalClearanceOpen = new verticalClearanceOpen() {
-                                            verticalClearanceValue_optional = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
                                             //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
                                             verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(double)) : default
                                         }
@@ -286,22 +286,22 @@ namespace S100Framework.Applications
                                         }
                                         ,
                                         verticalClearanceOpen = new verticalClearanceOpen() {
-                                            verticalClearanceValue_optional = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
                                             //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
                                             verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(double)) : default
                                         }
                                     };
 
                                 }
-                                instance.horizontalClearanceFixed_optional = new horizontalClearanceFixed() {
+                                instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                     horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                    horizontalDistanceUncertainty_optional = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                                 };
 
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
-                                    instance.fixedDateRange_optional = dateRange;
+                                    instance.fixedDateRange = dateRange;
                                 }
 
                                 var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
@@ -313,11 +313,11 @@ namespace S100Framework.Applications
                                         }
                                     }
                                     if (update)
-                                        instance.verticalDatum_optional = verticalDatum.value;
+                                        instance.verticalDatum = verticalDatum.value;
                                 }
 
                                 var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                instance.information_optional = result.information.ToArray();
+                                instance.information = result.information.ToArray();
                                 instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 bufferSurface["ps"] = ps101;
@@ -350,7 +350,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -377,7 +377,7 @@ namespace S100Framework.Applications
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
                                             verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : default(double?),
-                                            verticalUncertainty_optional = verticalUncertaintyValue
+                                            verticalUncertainty = verticalUncertaintyValue
                                         }
                                     };
                                 }
@@ -391,17 +391,17 @@ namespace S100Framework.Applications
 
                                 }
 
-                                instance.horizontalClearanceFixed_optional = new horizontalClearanceFixed() {
+                                instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                     horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                    horizontalDistanceUncertainty_optional = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?)
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?)
                                 };
 
                                 var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                instance.information_optional = result.information.ToArray();
+                                instance.information = result.information.ToArray();
                                 instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 if (current.PICREP != default) {
-                                    instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                    instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
 
                                 var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
@@ -413,7 +413,7 @@ namespace S100Framework.Applications
                                         }
                                     }
                                     if (update)
-                                        instance.verticalDatum_optional = verticalDatum.value;
+                                        instance.verticalDatum = verticalDatum.value;
                                 }
 
                                 bufferSurface["ps"] = ps101;
@@ -446,7 +446,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
 
 
@@ -463,16 +463,16 @@ namespace S100Framework.Applications
                             var instance = new BuiltUpArea();
 
                             if (current.CATBUA.HasValue) {
-                                instance.categoryOfBuiltUpArea_optional = EnumHelper.GetEnumValue(current.CATBUA.Value);
+                                instance.categoryOfBuiltUpArea = EnumHelper.GetEnumValue(current.CATBUA.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -481,12 +481,12 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -494,7 +494,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -503,15 +503,15 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             /*
@@ -522,7 +522,7 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -539,7 +539,7 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -550,36 +550,36 @@ namespace S100Framework.Applications
                             var instance = new Building();
 
                             if (current.BUISHP != null) {
-                                instance.buildingShape_optional = EnumHelper.GetEnumValue(current.BUISHP);
+                                instance.buildingShape = EnumHelper.GetEnumValue(current.BUISHP);
                             }
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation_optional = current.ELEVAT.Value;
+                                instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.FUNCTN != default) {
                                 var function = EnumHelper.GetEnumValues(current.FUNCTN);
                                 if (function is not null && function.Any())
-                                    instance.function_optional = function;
+                                    instance.function = function;
                             }
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -592,15 +592,15 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -608,15 +608,15 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -625,18 +625,18 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -651,7 +651,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -664,31 +664,31 @@ namespace S100Framework.Applications
                             var instance = new Conveyor();
 
                             if (current.CATCON.HasValue) {
-                                instance.categoryOfConveyor_optional = EnumHelper.GetEnumValue(current.CATCON.Value);
+                                instance.categoryOfConveyor = EnumHelper.GetEnumValue(current.CATCON.Value);
                             }
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -697,7 +697,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.LIFCAP.HasValue) {
-                                instance.liftingCapacity_optional = current.LIFCAP.Value;
+                                instance.liftingCapacity = current.LIFCAP.Value;
                             }
 
                             //TODO: multiplicityOfFeatures
@@ -705,15 +705,15 @@ namespace S100Framework.Applications
                             if (current.PRODCT != null) {
                                 var product = EnumHelper.GetEnumValues(current.PRODCT);
                                 if (product is not null && product.Any())
-                                    instance.product_optional = product;
+                                    instance.product = product;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -721,13 +721,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalClearanceFixed_optional = new() {
-                                verticalUncertainty_optional = new() {
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
                                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor_optional = default(double?)
+                                    uncertaintyVariableFactor = default(double?)
                                 },
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
                                 verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
@@ -743,15 +743,15 @@ namespace S100Framework.Applications
                                     }
                                 }
                                 if (update)
-                                    instance.verticalDatum_optional = verticalDatum.value;
+                                    instance.verticalDatum = verticalDatum.value;
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -760,15 +760,15 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -784,7 +784,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -800,17 +800,17 @@ namespace S100Framework.Applications
                             var instance = new FortifiedStructure();
 
                             if (current.CATFOR.HasValue) {
-                                instance.categoryOfFortifiedStructure_optional = EnumHelper.GetEnumValue(current.CATFOR.Value);
+                                instance.categoryOfFortifiedStructure = EnumHelper.GetEnumValue(current.CATFOR.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -821,16 +821,16 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 0 ? true : false;
+                                instance.radarConspicuous = current.CONRAD.Value == 0 ? true : false;
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -838,15 +838,15 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -855,18 +855,18 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
 
@@ -883,7 +883,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -908,7 +908,7 @@ namespace S100Framework.Applications
                                 var windturbineFeature = surface.CreateRow(bufferSurface);
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment?.CreateRelatedAreaEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum_optional);
+                                    relatedEquipment?.CreateRelatedAreaEquipment(current, windturbine, windturbineFeature, windturbine.scaleMinimum);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, windturbineFeature.UID() ?? "Unknown structure name");
@@ -924,7 +924,7 @@ namespace S100Framework.Applications
                                 var categoryOfLandmark = EnumHelper.GetEnumValues(current.CATLMK);
                                 if (categoryOfLandmark is not null && categoryOfLandmark.Any()) {
                                     instance.categoryOfLandmark = categoryOfLandmark[0];
-                                    instance.categoryOfLandmark_optional = categoryOfLandmark[1..];
+                                    instance.categoryOfLandmark = categoryOfLandmark[1..];
                                 }
                             }
 
@@ -933,31 +933,31 @@ namespace S100Framework.Applications
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation_optional = current.ELEVAT.Value;
+                                instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.FUNCTN != null) {
                                 var function = EnumHelper.GetEnumValues(current.FUNCTN);
                                 if (function is not null && function.Any())
-                                    instance.function_optional = function;
+                                    instance.function = function;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -970,15 +970,15 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -986,11 +986,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1003,18 +1003,18 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater_optional = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
 
 
                             bufferSurface["ps"] = ps101;
@@ -1030,7 +1030,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1049,22 +1049,22 @@ namespace S100Framework.Applications
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation_optional = current.ELEVAT.Value;
+                                instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -1075,15 +1075,15 @@ namespace S100Framework.Applications
                             if (current.PRODCT != null) {
                                 var product = EnumHelper.GetEnumValues(current.PRODCT);
                                 if (product is not null && product.Any())
-                                    instance.product_optional = product;
+                                    instance.product = product;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1091,33 +1091,33 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
                                 //instance.verticalLength = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -1133,7 +1133,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1164,26 +1164,26 @@ namespace S100Framework.Applications
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -1196,15 +1196,15 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1212,37 +1212,37 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
                                 //instance.verticalLength = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -1276,7 +1276,7 @@ namespace S100Framework.Applications
 
                             //FeatureRelations.Instance.AddRelation(new(typeof(Bridge), relatedBridge, new(instance.GetType(), name), featureN, s101MasterFeature, _featureAssociation);
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1289,25 +1289,25 @@ namespace S100Framework.Applications
                             var instance = new Road();
 
                             if (current.CATROD.HasValue) {
-                                instance.categoryOfRoad_optional = EnumHelper.GetEnumValue(current.CATROD.Value);
+                                instance.categoryOfRoad = EnumHelper.GetEnumValue(current.CATROD.Value);
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1315,18 +1315,18 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             bufferSurface["ps"] = ps101;
@@ -1342,7 +1342,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1355,26 +1355,26 @@ namespace S100Framework.Applications
                             var instance = new Runway();
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
-                                instance.periodicDateRange_optional = periodicDateRange;
+                                instance.periodicDateRange = periodicDateRange;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1382,18 +1382,18 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             bufferSurface["ps"] = ps101;
@@ -1409,7 +1409,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1422,35 +1422,35 @@ namespace S100Framework.Applications
                             var instance = new SiloTank();
 
                             if (current.BUISHP.HasValue) {
-                                instance.buildingShape_optional = EnumHelper.GetEnumValue(current.BUISHP.Value);
+                                instance.buildingShape = EnumHelper.GetEnumValue(current.BUISHP.Value);
                             }
 
                             if (current.CATSIL.HasValue) {
-                                instance.categoryOfSiloTank_optional = EnumHelper.GetEnumValue(current.CATSIL.Value);
+                                instance.categoryOfSiloTank = EnumHelper.GetEnumValue(current.CATSIL.Value);
                             }
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation_optional = current.ELEVAT.Value;
+                                instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1460,21 +1460,21 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.PRODCT != null) {
                                 var product = EnumHelper.GetEnumValues(current.PRODCT);
                                 if (product is not null && product.Any())
-                                    instance.product_optional = product;
+                                    instance.product = product;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1482,18 +1482,18 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
                             else {
                                 //instance.verticalLength = default(double?);
                             }
 
                             if (current.CONVIS.HasValue) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1502,15 +1502,15 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -1526,7 +1526,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -1539,21 +1539,21 @@ namespace S100Framework.Applications
                             var instance = new Tunnel();
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            instance.horizontalClearanceFixed_optional = new horizontalClearanceFixed() {
+                            instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
                                 horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                horizontalDistanceUncertainty_optional = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
                             };
 
                             // TODO: interoperabilityIdentifier
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -1561,13 +1561,13 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
-                            instance.verticalClearanceFixed_optional = new() {
-                                verticalUncertainty_optional = new() {
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
                                     uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor_optional = default(double?)
+                                    uncertaintyVariableFactor = default(double?)
                                 },
                                 //verticalClearanceValue = default(double?)
                                 //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
@@ -1585,22 +1585,22 @@ namespace S100Framework.Applications
                                     }
                                 }
                                 if (update)
-                                    instance.verticalDatum_optional = verticalDatum.value;
+                                    instance.verticalDatum = verticalDatum.value;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             bufferSurface["ps"] = ps101;
@@ -1616,7 +1616,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

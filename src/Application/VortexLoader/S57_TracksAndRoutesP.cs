@@ -56,7 +56,7 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -66,7 +66,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
 
@@ -74,11 +74,11 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -108,29 +108,29 @@ namespace S100Framework.Applications
                             };
 
                             if (current.COMCHA != default) {
-                                instance.communicationChannel_optional = GetCommunicationChannel(current.COMCHA);
+                                instance.communicationChannel = GetCommunicationChannel(current.COMCHA);
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue_optional = [current.ORIENT.Value];
+                                instance.orientationValue = [current.ORIENT.Value];
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
-                                instance.periodicDateRange_optional = periodicDateRange;
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.TRAFIC.HasValue) {
@@ -141,11 +141,11 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -161,7 +161,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

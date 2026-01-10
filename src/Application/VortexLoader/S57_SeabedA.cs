@@ -55,7 +55,7 @@ namespace S100Framework.Applications
                 switch (fcSubtype) {
                     case 15: { // SBDARE_SeabedArea
                             var instance = new SeabedArea {
-                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
 
                             // TODO: interoperabilityIdentifier
@@ -97,8 +97,8 @@ namespace S100Framework.Applications
 
                                     if (list2.Count() > i && !string.IsNullOrEmpty(list2[i])) {
                                         surfaceCharacteristics = [.. surfaceCharacteristics,new() {
-                                            natureOfSurface_optional = natureOfSurface,
-                                            natureOfSurfaceQualifyingTerms_optional = [natureOfSurfaceQualifyingTermsList![i]],
+                                            natureOfSurface = natureOfSurface,
+                                            natureOfSurfaceQualifyingTerms = [natureOfSurfaceQualifyingTermsList![i]],
                                         }];
                                         //instance.surfaceCharacteristics.Add(new() {
                                         //    natureOfSurface = natureOfSurface,
@@ -108,7 +108,7 @@ namespace S100Framework.Applications
                                     }
                                     else {
                                         surfaceCharacteristics = [.. surfaceCharacteristics,new() {
-                                            natureOfSurface_optional = natureOfSurface,
+                                            natureOfSurface = natureOfSurface,
                                         }];
                                         //instance.surfaceCharacteristics.Add(new() {
                                         //    natureOfSurface = natureOfSurface
@@ -128,7 +128,7 @@ namespace S100Framework.Applications
                                             }
                                             else {
                                                 surfaceCharacteristics = [.. surfaceCharacteristics,new() {
-                                                    natureOfSurfaceQualifyingTerms_optional = [natureOfSurfaceQualifyingTermsList![i]],
+                                                    natureOfSurfaceQualifyingTerms = [natureOfSurfaceQualifyingTermsList![i]],
                                                 }];
                                                 //instance.surfaceCharacteristics.Add(new() {
                                                 //    natureOfSurfaceQualifyingTerms = new() { natureOfSurfaceQualifyingTermsList![i] }
@@ -142,7 +142,7 @@ namespace S100Framework.Applications
                             if (surfaceCharacteristics.Any()) {
                                 instance.surfaceCharacteristics = surfaceCharacteristics[0];
                                 if (surfaceCharacteristics.Length > 1)
-                                    instance.surfaceCharacteristics_optional = surfaceCharacteristics[1..];
+                                    instance.surfaceCharacteristics = surfaceCharacteristics[1..];
                             }
 
                             //foreach (var natsur in list1) {
@@ -173,18 +173,18 @@ namespace S100Framework.Applications
                             //}
 
                             if (current.WATLEV.HasValue) {
-                                instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -199,7 +199,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -214,7 +214,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
                             else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
                                 //instance.verticalLength = default(double?);
@@ -224,11 +224,11 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -243,7 +243,7 @@ namespace S100Framework.Applications
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -257,7 +257,7 @@ namespace S100Framework.Applications
 
                             if (current.CATWED.HasValue && current.CATWED.Value == 3) {
                                 var seagrass = new Seagrass {
-                                    featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                    featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
                                 };
 
                                 // TODO: interoperabilityIdentifier
@@ -268,11 +268,11 @@ namespace S100Framework.Applications
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                    seagrass.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    seagrass.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
                                 var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                seagrass.information_optional = result.information.ToArray();
+                                seagrass.information = result.information.ToArray();
                                 seagrass.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 buffer["ps"] = ps101;
@@ -288,7 +288,7 @@ namespace S100Framework.Applications
                                 var name = featureN.UID();
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment!.CreateRelatedAreaEquipment(current, seagrass, featureN, seagrass.scaleMinimum_optional);
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, seagrass, featureN, seagrass.scaleMinimum);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
@@ -300,10 +300,10 @@ namespace S100Framework.Applications
 
                                 var instance = new WeedKelp();
                                 if (current.CATWED.HasValue) {
-                                    instance.categoryOfWeedKelp_optional = EnumHelper.GetEnumValue(current.CATWED.Value);
+                                    instance.categoryOfWeedKelp = EnumHelper.GetEnumValue(current.CATWED.Value);
                                 }
 
-                                instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                                 // TODO: interoperabilityIdentifier
 
@@ -313,11 +313,11 @@ namespace S100Framework.Applications
                                     if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                         throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                    instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                    instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                 }
 
                                 var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                instance.information_optional = result.information.ToArray();
+                                instance.information = result.information.ToArray();
                                 instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                 buffer["ps"] = ps101;
@@ -333,7 +333,7 @@ namespace S100Framework.Applications
                                 var name = featureN.UID();
 
                                 if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                    relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                                 }
 
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);

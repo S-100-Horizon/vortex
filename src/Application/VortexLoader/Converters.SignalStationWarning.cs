@@ -14,21 +14,19 @@ namespace S100Framework.Applications
 
             if (current.CATSIW != default) {
                 var categoryOfSignalStationWarning = EnumHelper.GetEnumValues(current.CATSIW);
-                if (categoryOfSignalStationWarning is not null && categoryOfSignalStationWarning.Any()) {
-                    instance.categoryOfSignalStationWarning = categoryOfSignalStationWarning[0];
-                    instance.categoryOfSignalStationWarning_optional = categoryOfSignalStationWarning[1..];
-                }
+                if (categoryOfSignalStationWarning is not null)
+                    instance.categoryOfSignalStationWarning = categoryOfSignalStationWarning;
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel_optional = ImporterNIS.GetCommunicationChannel(current.COMCHA);
+                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
-            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange_optional = dateRange;
+                instance.fixedDateRange = dateRange;
             }
 
             // DODO: Interoperability identifier
@@ -36,7 +34,7 @@ namespace S100Framework.Applications
             // TODO: Maximum permitted draught
 
             if (scaleMinimum.HasValue) {
-                instance.scaleMinimum_optional = scaleMinimum;
+                instance.scaleMinimum = scaleMinimum;
             }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -44,11 +42,11 @@ namespace S100Framework.Applications
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-            instance.information_optional = result.information.ToArray();
+            instance.information = result.information.ToArray();
             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;

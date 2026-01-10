@@ -270,10 +270,7 @@ namespace S100Framework.AttributeModel
 
     public abstract class ComplexAttribute : Attribute, IAttributeBindings
     {
-        [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
-
-        public Attribute[] attributesOptional { get; set; } = [];
+        public Attribute[] attributes { get; private set; } = [];
 
         [JsonIgnore]
         public abstract attributeBinding[] attributeBindingsCatalogue { get; }
@@ -293,17 +290,17 @@ namespace S100Framework.AttributeModel
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
-                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
-                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                    this.attributes = [.. this.attributes, attribute];
                 }
                 else {
-                    var index = Array.IndexOf(this.attributesOptional, value);
-                    this.attributesOptional[index] = attribute;
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
                 }
             }
             else {
-                this.attributesOptional = [.. this.attributesOptional, attribute];
+                this.attributes = [.. this.attributes, attribute];
             }
         }
 
@@ -311,27 +308,27 @@ namespace S100Framework.AttributeModel
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
-                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
-                        this.attributesOptional = [.. this.attributesOptional, a];
+                        this.attributes = [.. this.attributes, a];
                     }
                     else {
-                        var index = Array.IndexOf(this.attributesOptional, value);
-                        this.attributesOptional[index] = a;
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
                     }
                 }
                 else {
-                    this.attributesOptional = [.. this.attributesOptional, a];
+                    this.attributes = [.. this.attributes, a];
                 }
             }
         }
 
         protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
         }
 
         protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
     }
 
@@ -343,10 +340,7 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
-        [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
-
-        public Attribute[] attributesOptional { get; set; } = [];
+        public Attribute[] attributes { get; private set; } = [];
 
         [JsonIgnore]
         public informationBinding[] informations { get; set; } = [];
@@ -362,17 +356,17 @@ namespace S100Framework.AttributeModel
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
-                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
-                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                    this.attributes = [.. this.attributes, attribute];
                 }
                 else {
-                    var index = Array.IndexOf(this.attributesOptional, value);
-                    this.attributesOptional[index] = attribute;
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
                 }
             }
             else {
-                this.attributesOptional = [.. this.attributesOptional, attribute];
+                this.attributes = [.. this.attributes, attribute];
             }
         }
 
@@ -380,27 +374,27 @@ namespace S100Framework.AttributeModel
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
-                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
-                        this.attributesOptional = [.. this.attributesOptional, a];
+                        this.attributes = [.. this.attributes, a];
                     }
                     else {
-                        var index = Array.IndexOf(this.attributesOptional, value);
-                        this.attributesOptional[index] = a;
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
                     }
                 }
                 else {
-                    this.attributesOptional = [.. this.attributesOptional, a];
+                    this.attributes = [.. this.attributes, a];
                 }
             }
         }
 
         protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
         }
 
         protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }      
     }
 
@@ -412,10 +406,7 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
-        [JsonIgnore]
-        public abstract Attribute[] attributes { get; }
-
-        public Attribute[] attributesOptional { get; set; } = [];
+        public Attribute[] attributes { get; private set; } = [];
 
         [JsonIgnore]
         public informationBinding[] informations { get; set; } = [];
@@ -430,50 +421,50 @@ namespace S100Framework.AttributeModel
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
-        protected void SetAttribute(Attribute? attribute) {
+        protected void SetAttribute(Attribute attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
-                var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
                 if (value == default) {
-                    this.attributesOptional = [.. this.attributesOptional, attribute];
+                    this.attributes = [.. this.attributes, attribute];
                 }
                 else {
-                    var index = Array.IndexOf(this.attributesOptional, value);
-                    this.attributesOptional[index] = attribute;
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
                 }
             }
             else {
-                this.attributesOptional = [.. this.attributesOptional, attribute];
+                this.attributes = [.. this.attributes, attribute];
             }
         }
 
-        protected void SetAttribute(Attribute?[] attribute) {
+        protected void SetAttribute(Attribute[] attribute) {
             if (attribute == null) return;
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
-                    var value = this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
                     if (value == default) {
-                        this.attributesOptional = [.. this.attributesOptional, a];
+                        this.attributes = [.. this.attributes, a];
                     }
                     else {
-                        var index = Array.IndexOf(this.attributesOptional, value);
-                        this.attributesOptional[index] = a;
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
                     }
                 }
                 else {
-                    this.attributesOptional = [.. this.attributesOptional, a];
+                    this.attributes = [.. this.attributes, a];
                 }
             }
         }
 
         protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
         }
 
         protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
-            return this.attributesOptional.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
     }
 
@@ -498,8 +489,56 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string role { get; }
 
+        public Attribute[] attributes { get; private set; } = [];
+
         [JsonIgnore]
         public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];
+
+        protected void SetAttribute(Attribute attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributes = [.. this.attributes, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
+                }
+            }
+            else {
+                this.attributes = [.. this.attributes, attribute];
+            }
+        }
+
+        protected void SetAttribute(Attribute[] attribute) {
+            if (attribute == null) return;
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributes = [.. this.attributes, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
+                    }
+                }
+                else {
+                    this.attributes = [.. this.attributes, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
     }
 
     public abstract class FeatureAssociation
@@ -507,8 +546,56 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string[] roles { get; }
 
+        public Attribute[] attributes { get; private set; } = [];
+
         [JsonIgnore]
         public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];
+
+        protected void SetAttribute(Attribute attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributes = [.. this.attributes, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
+                }
+            }
+            else {
+                this.attributes = [.. this.attributes, attribute];
+            }
+        }
+
+        protected void SetAttribute(Attribute[] attribute) {
+            if (attribute == null) return;
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributes = [.. this.attributes, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
+                    }
+                }
+                else {
+                    this.attributes = [.. this.attributes, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
     }
 
     public abstract class informationBinding

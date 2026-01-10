@@ -58,15 +58,15 @@ namespace S100Framework.Applications
                 };
 
                 if (topmarkColours != null) {
-                    topmark.colour_optional = topmarkColours;
+                    topmark.colour = topmarkColours;
                 }
 
                 if (topmarkColourPattern is not null) {
-                    topmark.colourPattern_optional = topmarkColourPattern.value;
+                    topmark.colourPattern = topmarkColourPattern.value;
                 }
 
                 if (relatedTopmark.TOPSHP.HasValue) {
-                    topmark.topmarkDaymarkShape.value = EnumHelper.GetEnumValue(relatedTopmark.TOPSHP.Value);
+                    topmark.topmarkDaymarkShape = EnumHelper.GetEnumValue(relatedTopmark.TOPSHP.Value);
                 }
 
                 ConversionAnalytics.Instance.AddConverted("AidsToNavigationP", relatedTopmark.GLOBALID, "ATTRIBUTE. NO NAME AVAILABLE");

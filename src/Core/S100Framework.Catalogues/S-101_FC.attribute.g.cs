@@ -4347,15 +4347,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; set; } = new language();
-		public name name { get; set; } = new name();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				language,
-				name,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4382,9 +4373,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? nameUsage_optional {
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+		}
+		[JsonIgnore]
+		public String? name {
+			set { base.SetAttribute(new name { value = value }); }
+			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+		}
+		[JsonIgnore]
+		public int? nameUsage {
 			set { base.SetAttribute(new nameUsage { value = value }); }
 			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
 		}
@@ -4400,15 +4401,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(featuresDetected);
 		[JsonIgnore]
 		public override string S100FC_name => "Features Detected";
-		public leastDepthOfDetectedFeaturesMeasured leastDepthOfDetectedFeaturesMeasured { get; set; } = new leastDepthOfDetectedFeaturesMeasured();
-		public significantFeaturesDetected significantFeaturesDetected { get; set; } = new significantFeaturesDetected();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				leastDepthOfDetectedFeaturesMeasured,
-				significantFeaturesDetected,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4434,9 +4426,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? sizeOfFeaturesDetected_optional {
+		public Boolean? leastDepthOfDetectedFeaturesMeasured {
+			set { base.SetAttribute(new leastDepthOfDetectedFeaturesMeasured { value = value }); }
+			get { return base.GetAttributeValue<leastDepthOfDetectedFeaturesMeasured>(nameof(leastDepthOfDetectedFeaturesMeasured))!.value; }
+		}
+		[JsonIgnore]
+		public Boolean? significantFeaturesDetected {
+			set { base.SetAttribute(new significantFeaturesDetected { value = value }); }
+			get { return base.GetAttributeValue<significantFeaturesDetected>(nameof(significantFeaturesDetected))!.value; }
+		}
+		[JsonIgnore]
+		public double? sizeOfFeaturesDetected {
 			set { base.SetAttribute(new sizeOfFeaturesDetected { value = value }); }
 			get { return base.GetAttributeValue<sizeOfFeaturesDetected>(nameof(sizeOfFeaturesDetected))?.value; }
 		}
@@ -4452,11 +4454,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(fixedDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Fixed Date Range";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4476,14 +4473,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? dateEnd_optional {
+		public String? dateEnd {
 			set { base.SetAttribute(new dateEnd { value = value }); }
 			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
-		public String? dateStart_optional {
+		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
@@ -4499,13 +4496,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyPair);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Pair";
-		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; set; } = new frequencyShoreStationTransmits();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				frequencyShoreStationTransmits,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4525,11 +4515,16 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? frequencyShoreStationReceives_optional {
+		public int? frequencyShoreStationReceives {
 			set { base.SetAttribute(new frequencyShoreStationReceives { value = value }); }
 			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
+		}
+		[JsonIgnore]
+		public int? frequencyShoreStationTransmits {
+			set { base.SetAttribute(new frequencyShoreStationTransmits { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))!.value; }
 		}
 		#endregion
 	}
@@ -4543,13 +4538,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalClearanceFixed);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Fixed";
-		public horizontalClearanceValue horizontalClearanceValue { get; set; } = new horizontalClearanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				horizontalClearanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4569,9 +4557,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty_optional {
+		public double? horizontalClearanceValue {
+			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))!.value; }
+		}
+		[JsonIgnore]
+		public double? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -4587,13 +4580,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalClearanceOpen);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Open";
-		public horizontalClearanceValue horizontalClearanceValue { get; set; } = new horizontalClearanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				horizontalClearanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4613,9 +4599,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty_optional {
+		public double? horizontalClearanceValue {
+			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))!.value; }
+		}
+		[JsonIgnore]
+		public double? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -4631,13 +4622,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				uncertaintyFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4657,9 +4641,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor_optional {
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -4675,13 +4664,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
-		public language language { get; set; } = new language();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				language,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4719,24 +4701,29 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? fileLocator_optional {
+		public String? fileLocator {
 			set { base.SetAttribute(new fileLocator { value = value }); }
 			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
 		}
 		[JsonIgnore]
-		public String? fileReference_optional {
+		public String? fileReference {
 			set { base.SetAttribute(new fileReference { value = value }); }
 			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
 		}
 		[JsonIgnore]
-		public String? headline_optional {
+		public String? headline {
 			set { base.SetAttribute(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
 		[JsonIgnore]
-		public String? text_optional {
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+		}
+		[JsonIgnore]
+		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
 			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
@@ -4752,15 +4739,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(measuredDistanceValue);
 		[JsonIgnore]
 		public override string S100FC_name => "Measured Distance Value";
-		public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; } = new distanceUnitOfMeasurement();
-		public waterwayDistance waterwayDistance { get; set; } = new waterwayDistance();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				distanceUnitOfMeasurement,
-				waterwayDistance,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4787,11 +4765,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? referenceLocation_optional {
+		public int? distanceUnitOfMeasurement {
+			set { base.SetAttribute(new distanceUnitOfMeasurement { value = value }); }
+			get { return base.GetAttributeValue<distanceUnitOfMeasurement>(nameof(distanceUnitOfMeasurement))!.value; }
+		}
+		[JsonIgnore]
+		public String? referenceLocation {
 			set { base.SetAttribute(new referenceLocation { value = value }); }
 			get { return base.GetAttributeValue<referenceLocation>(nameof(referenceLocation))?.value; }
+		}
+		[JsonIgnore]
+		public double? waterwayDistance {
+			set { base.SetAttribute(new waterwayDistance { value = value }); }
+			get { return base.GetAttributeValue<waterwayDistance>(nameof(waterwayDistance))!.value; }
 		}
 		#endregion
 	}
@@ -4805,13 +4793,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(multiplicityOfFeatures);
 		[JsonIgnore]
 		public override string S100FC_name => "Multiplicity of Features";
-		public multiplicityKnown multiplicityKnown { get; set; } = new multiplicityKnown();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				multiplicityKnown,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4831,9 +4812,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? numberOfFeatures_optional {
+		public Boolean? multiplicityKnown {
+			set { base.SetAttribute(new multiplicityKnown { value = value }); }
+			get { return base.GetAttributeValue<multiplicityKnown>(nameof(multiplicityKnown))!.value; }
+		}
+		[JsonIgnore]
+		public int? numberOfFeatures {
 			set { base.SetAttribute(new numberOfFeatures { value = value }); }
 			get { return base.GetAttributeValue<numberOfFeatures>(nameof(numberOfFeatures))?.value; }
 		}
@@ -4849,13 +4835,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
-		public linkage linkage { get; set; } = new linkage();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				linkage,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4881,14 +4860,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? headline_optional {
+		public String? headline {
 			set { base.SetAttribute(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
 		[JsonIgnore]
-		public String? nameOfResource_optional {
+		public String? linkage {
+			set { base.SetAttribute(new linkage { value = value }); }
+			get { return base.GetAttributeValue<linkage>(nameof(linkage))!.value; }
+		}
+		[JsonIgnore]
+		public String? nameOfResource {
 			set { base.SetAttribute(new nameOfResource { value = value }); }
 			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
 		}
@@ -4904,13 +4888,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(orientation);
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation";
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientationValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4930,11 +4907,16 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? orientationUncertainty_optional {
+		public double? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
+		[JsonIgnore]
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
 		}
 		#endregion
 	}
@@ -4948,15 +4930,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateEnd dateEnd { get; set; } = new dateEnd();
-		public dateStart dateStart { get; set; } = new dateStart();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				dateEnd,
-				dateStart,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4976,7 +4949,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+		}
+		[JsonIgnore]
+		public String? dateStart {
+			set { base.SetAttribute(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))!.value; }
+		}
 		#endregion
 	}
 
@@ -4989,15 +4972,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(radarWaveLength);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Wave Length";
-		public radarBand radarBand { get; set; } = new radarBand();
-		public waveLengthValue waveLengthValue { get; set; } = new waveLengthValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				radarBand,
-				waveLengthValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5017,7 +4991,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public String? radarBand {
+			set { base.SetAttribute(new radarBand { value = value }); }
+			get { return base.GetAttributeValue<radarBand>(nameof(radarBand))!.value; }
+		}
+		[JsonIgnore]
+		public double? waveLengthValue {
+			set { base.SetAttribute(new waveLengthValue { value = value }); }
+			get { return base.GetAttributeValue<waveLengthValue>(nameof(waveLengthValue))!.value; }
+		}
 		#endregion
 	}
 
@@ -5030,13 +5014,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(sectorInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Information";
-		public text text { get; set; } = new text();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				text,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5056,11 +5033,16 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? language_optional {
+		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
+		[JsonIgnore]
+		public String? text {
+			set { base.SetAttribute(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
 		}
 		#endregion
 	}
@@ -5074,13 +5056,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitOne);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit One";
-		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorBearing,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5100,9 +5075,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? sectorLineLength_optional {
+		public double? sectorBearing {
+			set { base.SetAttribute(new sectorBearing { value = value }); }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+		}
+		[JsonIgnore]
+		public double? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -5118,13 +5098,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitTwo);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit Two";
-		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorBearing,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5144,9 +5117,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? sectorLineLength_optional {
+		public double? sectorBearing {
+			set { base.SetAttribute(new sectorBearing { value = value }); }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+		}
+		[JsonIgnore]
+		public double? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -5162,13 +5140,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(shapeInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Shape Information";
-		public text text { get; set; } = new text();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				text,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5188,11 +5159,16 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? language_optional {
+		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
+		[JsonIgnore]
+		public String? text {
+			set { base.SetAttribute(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
 		}
 		#endregion
 	}
@@ -5206,15 +5182,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(signalSequence);
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Sequence";
-		public signalDuration signalDuration { get; set; } = new signalDuration();
-		public signalStatus signalStatus { get; set; } = new signalStatus();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				signalDuration,
-				signalStatus,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5235,7 +5202,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public double? signalDuration {
+			set { base.SetAttribute(new signalDuration { value = value }); }
+			get { return base.GetAttributeValue<signalDuration>(nameof(signalDuration))!.value; }
+		}
+		[JsonIgnore]
+		public int? signalStatus {
+			set { base.SetAttribute(new signalStatus { value = value }); }
+			get { return base.GetAttributeValue<signalStatus>(nameof(signalStatus))!.value; }
+		}
 		#endregion
 	}
 
@@ -5248,13 +5225,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(speed);
 		[JsonIgnore]
 		public override string S100FC_name => "Speed";
-		public speedMaximum speedMaximum { get; set; } = new speedMaximum();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				speedMaximum,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5274,9 +5244,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? speedMinimum_optional {
+		public double? speedMaximum {
+			set { base.SetAttribute(new speedMaximum { value = value }); }
+			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))!.value; }
+		}
+		[JsonIgnore]
+		public double? speedMinimum {
 			set { base.SetAttribute(new speedMinimum { value = value }); }
 			get { return base.GetAttributeValue<speedMinimum>(nameof(speedMinimum))?.value; }
 		}
@@ -5292,11 +5267,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(surfaceCharacteristics);
 		[JsonIgnore]
 		public override string S100FC_name => "Surface Characteristics";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5324,19 +5294,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? natureOfSurface_optional {
+		public int? natureOfSurface {
 			set { base.SetAttribute(new natureOfSurface { value = value }); }
 			get { return base.GetAttributeValue<natureOfSurface>(nameof(natureOfSurface))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurfaceQualifyingTerms_optional {
+		public int?[] natureOfSurfaceQualifyingTerms {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurfaceQualifyingTerms { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurfaceQualifyingTerms>(nameof(natureOfSurfaceQualifyingTerms)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? underlyingLayer_optional {
+		public int? underlyingLayer {
 			set { base.SetAttribute(new underlyingLayer { value = value }); }
 			get { return base.GetAttributeValue<underlyingLayer>(nameof(underlyingLayer))?.value; }
 		}
@@ -5352,13 +5322,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(surveyDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Date Range";
-		public dateEnd dateEnd { get; set; } = new dateEnd();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				dateEnd,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5378,9 +5341,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? dateStart_optional {
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+		}
+		[JsonIgnore]
+		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
@@ -5396,13 +5364,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
-		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				telecommunicationIdentifier,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5429,14 +5390,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? contactInstructions_optional {
+		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
 			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
-		public int? telecommunicationService_optional {
+		public String? telecommunicationIdentifier {
+			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))!.value; }
+		}
+		[JsonIgnore]
+		public int? telecommunicationService {
 			set { base.SetAttribute(new telecommunicationService { value = value }); }
 			get { return base.GetAttributeValue<telecommunicationService>(nameof(telecommunicationService))?.value; }
 		}
@@ -5452,17 +5418,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(tidalStreamValue);
 		[JsonIgnore]
 		public override string S100FC_name => "Tidal Stream Value";
-		public orientation orientation { get; set; } = new orientation();
-		public speedMaximum speedMaximum { get; set; } = new speedMaximum();
-		public timeRelativeToTide timeRelativeToTide { get; set; } = new timeRelativeToTide();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientation,
-				speedMaximum,
-				timeRelativeToTide,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5488,7 +5443,22 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+		}
+		[JsonIgnore]
+		public double? speedMaximum {
+			set { base.SetAttribute(new speedMaximum { value = value }); }
+			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))!.value; }
+		}
+		[JsonIgnore]
+		public double? timeRelativeToTide {
+			set { base.SetAttribute(new timeRelativeToTide { value = value }); }
+			get { return base.GetAttributeValue<timeRelativeToTide>(nameof(timeRelativeToTide))!.value; }
+		}
 		#endregion
 	}
 
@@ -5501,11 +5471,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Intervals by Day of Week";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5538,24 +5503,24 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] dayOfWeek_optional {
+		public int?[] dayOfWeek {
 			set { base.SetAttribute([.. value.Select(e=> new dayOfWeek { value = e })]); }
 			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? dayOfWeekIsRange_optional {
+		public Boolean? dayOfWeekIsRange {
 			set { base.SetAttribute(new dayOfWeekIsRange { value = value }); }
 			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional {
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart {
 			set { base.SetAttribute([.. value.Select(e=> new timeOfDayStart { value = e })]); }
 			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional {
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd {
 			set { base.SetAttribute([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
 			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
 		}
@@ -5571,13 +5536,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(topmark);
 		[JsonIgnore]
 		public override string S100FC_name => "Topmark";
-		public topmarkDaymarkShape topmarkDaymarkShape { get; set; } = new topmarkDaymarkShape();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				topmarkDaymarkShape,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5612,22 +5570,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public shapeInformation?[] shapeInformation_optional {
+		public int? topmarkDaymarkShape {
+			set { base.SetAttribute(new topmarkDaymarkShape { value = value }); }
+			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))!.value; }
+		}
+		[JsonIgnore]
+		public shapeInformation?[] shapeInformation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); } 
-	}
+			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); }
+		}
 		#endregion
 	}
 
@@ -5640,13 +5603,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(valueOfLocalMagneticAnomaly);
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Local Magnetic Anomaly";
-		public magneticAnomalyValue magneticAnomalyValue { get; set; } = new magneticAnomalyValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				magneticAnomalyValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5667,9 +5623,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? referenceDirection_optional {
+		public double? magneticAnomalyValue {
+			set { base.SetAttribute(new magneticAnomalyValue { value = value }); }
+			get { return base.GetAttributeValue<magneticAnomalyValue>(nameof(magneticAnomalyValue))!.value; }
+		}
+		[JsonIgnore]
+		public int? referenceDirection {
 			set { base.SetAttribute(new referenceDirection { value = value }); }
 			get { return base.GetAttributeValue<referenceDirection>(nameof(referenceDirection))?.value; }
 		}
@@ -5685,13 +5646,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				uncertaintyFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5711,9 +5665,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor_optional {
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -5729,15 +5688,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(vesselSpeedLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Speed Limit";
-		public speedLimit speedLimit { get; set; } = new speedLimit();
-		public speedUnits speedUnits { get; set; } = new speedUnits();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				speedLimit,
-				speedUnits,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5764,9 +5714,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? vesselClass_optional {
+		public double? speedLimit {
+			set { base.SetAttribute(new speedLimit { value = value }); }
+			get { return base.GetAttributeValue<speedLimit>(nameof(speedLimit))!.value; }
+		}
+		[JsonIgnore]
+		public int? speedUnits {
+			set { base.SetAttribute(new speedUnits { value = value }); }
+			get { return base.GetAttributeValue<speedUnits>(nameof(speedUnits))!.value; }
+		}
+		[JsonIgnore]
+		public String? vesselClass {
 			set { base.SetAttribute(new vesselClass { value = value }); }
 			get { return base.GetAttributeValue<vesselClass>(nameof(vesselClass))?.value; }
 		}
@@ -5782,13 +5742,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(zoneOfConfidence);
 		[JsonIgnore]
 		public override string S100FC_name => "Zone of Confidence";
-		public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; } = new categoryOfZoneOfConfidenceInData();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfZoneOfConfidenceInData,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5821,19 +5774,24 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public int? categoryOfZoneOfConfidenceInData {
+			set { base.SetAttribute(new categoryOfZoneOfConfidenceInData { value = value }); }
+			get { return base.GetAttributeValue<categoryOfZoneOfConfidenceInData>(nameof(categoryOfZoneOfConfidenceInData))!.value; }
+		}
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -5849,13 +5807,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(directionalCharacter);
 		[JsonIgnore]
 		public override string S100FC_name => "Directional Character";
-		public orientation orientation { get; set; } = new orientation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5875,11 +5826,16 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? moireEffect_optional {
+		public Boolean? moireEffect {
 			set { base.SetAttribute(new moireEffect { value = value }); }
 			get { return base.GetAttributeValue<moireEffect>(nameof(moireEffect))?.value; }
+		}
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
 		}
 		#endregion
 	}
@@ -5893,13 +5849,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(rhythmOfLight);
 		[JsonIgnore]
 		public override string S100FC_name => "Rhythm of Light";
-		public lightCharacteristic lightCharacteristic { get; set; } = new lightCharacteristic();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				lightCharacteristic,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5932,22 +5881,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] signalGroup_optional {
+		public int? lightCharacteristic {
+			set { base.SetAttribute(new lightCharacteristic { value = value }); }
+			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))!.value; }
+		}
+		[JsonIgnore]
+		public String?[] signalGroup {
 			set { base.SetAttribute([.. value.Select(e=> new signalGroup { value = e })]); }
 			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? signalPeriod_optional {
+		public double? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
 		[JsonIgnore]
-		public signalSequence?[] signalSequence_optional {
+		public signalSequence?[] signalSequence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
-	}
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); }
+		}
 		#endregion
 	}
 
@@ -5960,13 +5914,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(scheduleByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Schedule by Day of Week";
-		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; set; } = new timeIntervalsByDayOfWeek();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				timeIntervalsByDayOfWeek,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5987,17 +5934,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfSchedule_optional {
+		public int? categoryOfSchedule {
 			set { base.SetAttribute(new categoryOfSchedule { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
 		}
 		[JsonIgnore]
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
-	}
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek))!; }
+		}
 		#endregion
 	}
 
@@ -6010,15 +5957,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit";
-		public sectorLimitOne sectorLimitOne { get; set; } = new sectorLimitOne();
-		public sectorLimitTwo sectorLimitTwo { get; set; } = new sectorLimitTwo();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorLimitOne,
-				sectorLimitTwo,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6038,7 +5976,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public sectorLimitOne? sectorLimitOne {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<sectorLimitOne>(nameof(sectorLimitOne))!; }
+		}
+		[JsonIgnore]
+		public sectorLimitTwo? sectorLimitTwo {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<sectorLimitTwo>(nameof(sectorLimitTwo))!; }
+		}
 		#endregion
 	}
 
@@ -6051,11 +5999,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(spatialAccuracy);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Accuracy";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6081,19 +6024,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -6109,17 +6052,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(tidalStreamPanelValues);
 		[JsonIgnore]
 		public override string S100FC_name => "Tidal Stream Panel Values";
-		public referenceTide referenceTide { get; set; } = new referenceTide();
-		public referenceTideType referenceTideType { get; set; } = new referenceTideType();
-		public tidalStreamValue tidalStreamValue { get; set; } = new tidalStreamValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				referenceTide,
-				referenceTideType,
-				tidalStreamValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6153,17 +6085,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? streamDepth_optional {
+		public int? referenceTide {
+			set { base.SetAttribute(new referenceTide { value = value }); }
+			get { return base.GetAttributeValue<referenceTide>(nameof(referenceTide))!.value; }
+		}
+		[JsonIgnore]
+		public int? referenceTideType {
+			set { base.SetAttribute(new referenceTideType { value = value }); }
+			get { return base.GetAttributeValue<referenceTideType>(nameof(referenceTideType))!.value; }
+		}
+		[JsonIgnore]
+		public double? streamDepth {
 			set { base.SetAttribute(new streamDepth { value = value }); }
 			get { return base.GetAttributeValue<streamDepth>(nameof(streamDepth))?.value; }
 		}
 		[JsonIgnore]
-		public tidalStreamValue?[] tidalStreamValue_optional {
+		public tidalStreamValue?[] tidalStreamValue {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<tidalStreamValue>(nameof(tidalStreamValue)); } 
-	}
+			get { return base.GetAttributeValues<tidalStreamValue>(nameof(tidalStreamValue))!; }
+		}
 		#endregion
 	}
 
@@ -6176,13 +6118,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(verticalClearanceClosed);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Closed";
-		public verticalClearanceValue verticalClearanceValue { get; set; } = new verticalClearanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6202,9 +6137,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -6220,13 +6160,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(verticalClearanceFixed);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Fixed";
-		public verticalClearanceValue verticalClearanceValue { get; set; } = new verticalClearanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6246,9 +6179,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -6264,13 +6202,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(verticalClearanceOpen);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Open";
-		public verticalClearanceUnlimited verticalClearanceUnlimited { get; set; } = new verticalClearanceUnlimited();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceUnlimited,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6296,14 +6227,19 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue_optional {
+		public Boolean? verticalClearanceUnlimited {
+			set { base.SetAttribute(new verticalClearanceUnlimited { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceUnlimited>(nameof(verticalClearanceUnlimited))!.value; }
+		}
+		[JsonIgnore]
+		public double? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -6319,13 +6255,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(verticalClearanceSafe);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Safe";
-		public verticalClearanceValue verticalClearanceValue { get; set; } = new verticalClearanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6345,9 +6274,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -6363,13 +6297,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(lightSector);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Sector";
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6421,39 +6348,39 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public directionalCharacter? directionalCharacter_optional {
+		public directionalCharacter? directionalCharacter {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<directionalCharacter>(nameof(directionalCharacter)); }
 		}
 		[JsonIgnore]
-		public int?[] lightVisibility_optional {
+		public int?[] lightVisibility {
 			set { base.SetAttribute([.. value.Select(e=> new lightVisibility { value = e })]); }
 			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public sectorLimit? sectorLimit_optional {
+		public sectorLimit? sectorLimit {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<sectorLimit>(nameof(sectorLimit)); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange_optional {
+		public double? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
 		[JsonIgnore]
-		public sectorInformation?[] sectorInformation_optional {
+		public sectorInformation?[] sectorInformation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sectorInformation>(nameof(sectorInformation)); } 
-	}
+			get { return base.GetAttributeValues<sectorInformation>(nameof(sectorInformation)); }
+		}
 		[JsonIgnore]
-		public Boolean? sectorArcExtension_optional {
+		public Boolean? sectorArcExtension {
 			set { base.SetAttribute(new sectorArcExtension { value = value }); }
 			get { return base.GetAttributeValue<sectorArcExtension>(nameof(sectorArcExtension))?.value; }
 		}
@@ -6469,15 +6396,6 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		public override string S100FC_code => nameof(sectorCharacteristics);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Characteristics";
-		public lightCharacteristic lightCharacteristic { get; set; } = new lightCharacteristic();
-		public lightSector lightSector { get; set; } = new lightSector();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				lightCharacteristic,
-				lightSector,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6516,27 +6434,32 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public lightSector?[] lightSector_optional {
+		public int? lightCharacteristic {
+			set { base.SetAttribute(new lightCharacteristic { value = value }); }
+			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))!.value; }
+		}
+		[JsonIgnore]
+		public lightSector?[] lightSector {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<lightSector>(nameof(lightSector)); } 
-	}
+			get { return base.GetAttributeValues<lightSector>(nameof(lightSector))!; }
+		}
 		[JsonIgnore]
-		public String?[] signalGroup_optional {
+		public String?[] signalGroup {
 			set { base.SetAttribute([.. value.Select(e=> new signalGroup { value = e })]); }
 			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? signalPeriod_optional {
+		public double? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
 		[JsonIgnore]
-		public signalSequence?[] signalSequence_optional {
+		public signalSequence?[] signalSequence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
-	}
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); }
+		}
 		#endregion
 	}
 
@@ -6551,22 +6474,16 @@ namespace S100Framework.AttributeModel.S101.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theInformation";
-		
-		
 	}
 	public class QualityOfBathymetricDataComposition : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theQualityInformation";
-		
-		
 	}
 	public class SpatialAssociation : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theQualityInformation";
-		
-		
 	}
 }
 
@@ -6579,109 +6496,91 @@ namespace S100Framework.AttributeModel.S101.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class ASLAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class BridgeAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class CautionAreaAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class DeepWaterRouteAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class FairwayAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class FairwayAuxiliary : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["thePrimaryFeature","theAuxiliaryFeature"];
-
 	}
 	public class IslandAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class MooringTrotAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class PilotageDistrictAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class RangeSystemAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class RoofedStructureAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theRoofedStructure","theSupport"];
-
 	}
 	public class StructureEquipment : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theStructure","theEquipment"];
-
 	}
 	public class TextAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCartographicText","thePositionProvider"];
-
 	}
 	public class TrafficSeparationSchemeAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class TwoWayRouteAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class UpdateAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class UpdatedInformation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theUpdate","theUpdatedObject"];
-
 	}
 }
 
@@ -6699,11 +6598,6 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		public override string S100FC_code => nameof(ContactDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Details";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6759,47 +6653,47 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? callSign_optional {
+		public String? callSign {
 			set { base.SetAttribute(new callSign { value = value }); }
 			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? contactInstructions_optional {
+		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
 			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public frequencyPair?[] frequencyPair_optional {
+		public frequencyPair?[] frequencyPair {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
-	}
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); }
+		}
 		[JsonIgnore]
-		public String? mMSICode_optional {
+		public String? mMSICode {
 			set { base.SetAttribute(new mMSICode { value = value }); }
 			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
 		}
 		[JsonIgnore]
-		public onlineResource?[] onlineResource_optional {
+		public onlineResource?[] onlineResource {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
-	}
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
 		[JsonIgnore]
-		public telecommunications?[] telecommunications_optional {
+		public telecommunications?[] telecommunications {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
-	}
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
+		}
 		#endregion
 	}
 
@@ -6812,13 +6706,6 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		public override string S100FC_code => nameof(ServiceHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Hours";
-		public scheduleByDayOfWeek scheduleByDayOfWeek { get; set; } = new scheduleByDayOfWeek();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				scheduleByDayOfWeek,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6850,27 +6737,27 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional {
+		public scheduleByDayOfWeek?[] scheduleByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); } 
-	}
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek))!; }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -6883,11 +6770,6 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
 		[JsonIgnore]
 		public override string S100FC_name => "Non-Standard Working Day";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6925,32 +6807,32 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] dateFixed_optional {
+		public String?[] dateFixed {
 			set { base.SetAttribute([.. value.Select(e=> new dateFixed { value = e })]); }
 			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] dateVariable_optional {
+		public String?[] dateVariable {
 			set { base.SetAttribute([.. value.Select(e=> new dateVariable { value = e })]); }
 			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -6963,11 +6845,6 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		public override string S100FC_code => nameof(NauticalInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Nautical Information";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6999,24 +6876,24 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -7032,11 +6909,6 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		public override string S100FC_code => nameof(SpatialQuality);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Quality";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7057,17 +6929,17 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? qualityOfHorizontalMeasurement_optional {
+		public int? qualityOfHorizontalMeasurement {
 			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
 		}
 		[JsonIgnore]
-		public spatialAccuracy?[] spatialAccuracy_optional {
+		public spatialAccuracy?[] spatialAccuracy {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<spatialAccuracy>(nameof(spatialAccuracy)); } 
-	}
+			get { return base.GetAttributeValues<spatialAccuracy>(nameof(spatialAccuracy)); }
+		}
 		#endregion
 	}
 
@@ -7087,13 +6959,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Non-Bathymetric Data";
-		public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; } = new horizontalPositionUncertainty();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				horizontalPositionUncertainty,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7150,42 +7015,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfTemporalVariation_optional {
+		public int? categoryOfTemporalVariation {
 			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
 			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty_optional {
+		public double? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty))!; }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationUncertainty_optional {
+		public double? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public surveyDateRange? surveyDateRange_optional {
+		public surveyDateRange? surveyDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7198,17 +7068,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
-		public maximumDisplayScale maximumDisplayScale { get; set; } = new maximumDisplayScale();
-		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
-		public optimumDisplayScale optimumDisplayScale { get; set; } = new optimumDisplayScale();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				maximumDisplayScale,
-				minimumDisplayScale,
-				optimumDisplayScale,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7252,22 +7111,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? drawingIndex_optional {
+		public int? drawingIndex {
 			set { base.SetAttribute(new drawingIndex { value = value }); }
 			get { return base.GetAttributeValue<drawingIndex>(nameof(drawingIndex))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public int? maximumDisplayScale {
+			set { base.SetAttribute(new maximumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))!.value; }
+		}
+		[JsonIgnore]
+		public int? minimumDisplayScale {
+			set { base.SetAttribute(new minimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))!.value; }
+		}
+		[JsonIgnore]
+		public int? optimumDisplayScale {
+			set { base.SetAttribute(new optimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))!.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7280,13 +7154,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(NavigationalSystemOfMarks);
 		[JsonIgnore]
 		public override string S100FC_name => "Navigational System of Marks";
-		public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; } = new marksNavigationalSystemOf();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				marksNavigationalSystemOf,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7313,17 +7180,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public int? marksNavigationalSystemOf {
+			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))!.value; }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7336,15 +7208,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LocalDirectionOfBuoyage);
 		[JsonIgnore]
 		public override string S100FC_name => "Local Direction of Buoyage";
-		public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; } = new marksNavigationalSystemOf();
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				marksNavigationalSystemOf,
-				orientationValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7383,22 +7246,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? marksNavigationalSystemOf {
+			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))!.value; }
+		}
+		[JsonIgnore]
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7411,21 +7284,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfBathymetricData);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Bathymetric Data";
-		public categoryOfTemporalVariation categoryOfTemporalVariation { get; set; } = new categoryOfTemporalVariation();
-		public dataAssessment dataAssessment { get; set; } = new dataAssessment();
-		public featuresDetected featuresDetected { get; set; } = new featuresDetected();
-		public fullSeafloorCoverageAchieved fullSeafloorCoverageAchieved { get; set; } = new fullSeafloorCoverageAchieved();
-		public zoneOfConfidence zoneOfConfidence { get; set; } = new zoneOfConfidence();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfTemporalVariation,
-				dataAssessment,
-				featuresDetected,
-				fullSeafloorCoverageAchieved,
-				zoneOfConfidence,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7495,37 +7353,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMaximumValue_optional {
+		public int? categoryOfTemporalVariation {
+			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))!.value; }
+		}
+		[JsonIgnore]
+		public int? dataAssessment {
+			set { base.SetAttribute(new dataAssessment { value = value }); }
+			get { return base.GetAttributeValue<dataAssessment>(nameof(dataAssessment))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public featuresDetected? featuresDetected {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<featuresDetected>(nameof(featuresDetected))!; }
+		}
+		[JsonIgnore]
+		public Boolean? fullSeafloorCoverageAchieved {
+			set { base.SetAttribute(new fullSeafloorCoverageAchieved { value = value }); }
+			get { return base.GetAttributeValue<fullSeafloorCoverageAchieved>(nameof(fullSeafloorCoverageAchieved))!.value; }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public surveyDateRange? surveyDateRange_optional {
+		public surveyDateRange? surveyDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
 		}
 		[JsonIgnore]
-		public zoneOfConfidence?[] zoneOfConfidence_optional {
+		public zoneOfConfidence?[] zoneOfConfidence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<zoneOfConfidence>(nameof(zoneOfConfidence)); } 
-	}
+			get { return base.GetAttributeValues<zoneOfConfidence>(nameof(zoneOfConfidence))!; }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7538,13 +7416,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SoundingDatum);
 		[JsonIgnore]
 		public override string S100FC_name => "Sounding Datum";
-		public verticalDatum verticalDatum { get; set; } = new verticalDatum();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalDatum,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7571,17 +7442,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public int? verticalDatum {
+			set { base.SetAttribute(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))!.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7594,13 +7470,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(VerticalDatumOfData);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Datum of Data";
-		public verticalDatum verticalDatum { get; set; } = new verticalDatum();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalDatum,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7627,17 +7496,22 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public int? verticalDatum {
+			set { base.SetAttribute(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))!.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7650,17 +7524,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfSurvey);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Survey";
-		public surveyAuthority surveyAuthority { get; set; } = new surveyAuthority();
-		public surveyDateRange surveyDateRange { get; set; } = new surveyDateRange();
-		public surveyType surveyType { get; set; } = new surveyType();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				surveyAuthority,
-				surveyDateRange,
-				surveyType,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7780,87 +7643,97 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMaximumValue_optional {
+		public double? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featuresDetected? featuresDetected_optional {
+		public featuresDetected? featuresDetected {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<featuresDetected>(nameof(featuresDetected)); }
 		}
 		[JsonIgnore]
-		public Boolean? fullSeafloorCoverageAchieved_optional {
+		public Boolean? fullSeafloorCoverageAchieved {
 			set { base.SetAttribute(new fullSeafloorCoverageAchieved { value = value }); }
 			get { return base.GetAttributeValue<fullSeafloorCoverageAchieved>(nameof(fullSeafloorCoverageAchieved))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? lineSpacingMaximum_optional {
+		public int? lineSpacingMaximum {
 			set { base.SetAttribute(new lineSpacingMaximum { value = value }); }
 			get { return base.GetAttributeValue<lineSpacingMaximum>(nameof(lineSpacingMaximum))?.value; }
 		}
 		[JsonIgnore]
-		public int? lineSpacingMinimum_optional {
+		public int? lineSpacingMinimum {
 			set { base.SetAttribute(new lineSpacingMinimum { value = value }); }
 			get { return base.GetAttributeValue<lineSpacingMinimum>(nameof(lineSpacingMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public int? measurementDistanceMaximum_optional {
+		public int? measurementDistanceMaximum {
 			set { base.SetAttribute(new measurementDistanceMaximum { value = value }); }
 			get { return base.GetAttributeValue<measurementDistanceMaximum>(nameof(measurementDistanceMaximum))?.value; }
 		}
 		[JsonIgnore]
-		public int? measurementDistanceMinimum_optional {
+		public int? measurementDistanceMinimum {
 			set { base.SetAttribute(new measurementDistanceMinimum { value = value }); }
 			get { return base.GetAttributeValue<measurementDistanceMinimum>(nameof(measurementDistanceMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public int? qualityOfHorizontalMeasurement_optional {
+		public int? qualityOfHorizontalMeasurement {
 			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleValueMaximum_optional {
+		public int? scaleValueMaximum {
 			set { base.SetAttribute(new scaleValueMaximum { value = value }); }
 			get { return base.GetAttributeValue<scaleValueMaximum>(nameof(scaleValueMaximum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleValueMinimum_optional {
+		public int? scaleValueMinimum {
 			set { base.SetAttribute(new scaleValueMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleValueMinimum>(nameof(scaleValueMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] surveyType_optional {
+		public String? surveyAuthority {
+			set { base.SetAttribute(new surveyAuthority { value = value }); }
+			get { return base.GetAttributeValue<surveyAuthority>(nameof(surveyAuthority))!.value; }
+		}
+		[JsonIgnore]
+		public surveyDateRange? surveyDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange))!; }
+		}
+		[JsonIgnore]
+		public int?[] surveyType {
 			set { base.SetAttribute([.. value.Select(e=> new surveyType { value = e })]); }
 			get { return base.GetAttributeValues<surveyType>(nameof(surveyType)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7873,15 +7746,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(UpdateInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Update Information";
-		public updateNumber updateNumber { get; set; } = new updateNumber();
-		public updateType updateType { get; set; } = new updateType();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				updateNumber,
-				updateType,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7932,32 +7796,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? updateNumber {
+			set { base.SetAttribute(new updateNumber { value = value }); }
+			get { return base.GetAttributeValue<updateNumber>(nameof(updateNumber))!.value; }
+		}
+		[JsonIgnore]
+		public int? updateType {
+			set { base.SetAttribute(new updateType { value = value }); }
+			get { return base.GetAttributeValue<updateType>(nameof(updateType))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public String? source_optional {
+		public String? source {
 			set { base.SetAttribute(new source { value = value }); }
 			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -7970,17 +7844,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MagneticVariation);
 		[JsonIgnore]
 		public override string S100FC_name => "Magnetic Variation";
-		public referenceYearForMagneticVariation referenceYearForMagneticVariation { get; set; } = new referenceYearForMagneticVariation();
-		public valueOfAnnualChangeInMagneticVariation valueOfAnnualChangeInMagneticVariation { get; set; } = new valueOfAnnualChangeInMagneticVariation();
-		public valueOfMagneticVariation valueOfMagneticVariation { get; set; } = new valueOfMagneticVariation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				referenceYearForMagneticVariation,
-				valueOfAnnualChangeInMagneticVariation,
-				valueOfMagneticVariation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8024,22 +7887,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public String? referenceYearForMagneticVariation {
+			set { base.SetAttribute(new referenceYearForMagneticVariation { value = value }); }
+			get { return base.GetAttributeValue<referenceYearForMagneticVariation>(nameof(referenceYearForMagneticVariation))!.value; }
+		}
+		[JsonIgnore]
+		public double? valueOfAnnualChangeInMagneticVariation {
+			set { base.SetAttribute(new valueOfAnnualChangeInMagneticVariation { value = value }); }
+			get { return base.GetAttributeValue<valueOfAnnualChangeInMagneticVariation>(nameof(valueOfAnnualChangeInMagneticVariation))!.value; }
+		}
+		[JsonIgnore]
+		public double? valueOfMagneticVariation {
+			set { base.SetAttribute(new valueOfMagneticVariation { value = value }); }
+			get { return base.GetAttributeValue<valueOfMagneticVariation>(nameof(valueOfMagneticVariation))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8052,13 +7930,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LocalMagneticAnomaly);
 		[JsonIgnore]
 		public override string S100FC_name => "Local Magnetic Anomaly";
-		public valueOfLocalMagneticAnomaly valueOfLocalMagneticAnomaly { get; set; } = new valueOfLocalMagneticAnomaly();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				valueOfLocalMagneticAnomaly,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8102,37 +7973,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public valueOfLocalMagneticAnomaly?[] valueOfLocalMagneticAnomaly_optional {
+		public valueOfLocalMagneticAnomaly?[] valueOfLocalMagneticAnomaly {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<valueOfLocalMagneticAnomaly>(nameof(valueOfLocalMagneticAnomaly)); } 
-	}
+			get { return base.GetAttributeValues<valueOfLocalMagneticAnomaly>(nameof(valueOfLocalMagneticAnomaly))!; }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8145,11 +8016,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Coastline);
 		[JsonIgnore]
 		public override string S100FC_name => "Coastline";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8221,54 +8087,54 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfCoastline_optional {
+		public int? categoryOfCoastline {
 			set { base.SetAttribute(new categoryOfCoastline { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCoastline>(nameof(categoryOfCoastline))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurface_optional {
+		public int?[] natureOfSurface {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurface { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -8284,11 +8150,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LandArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Land Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8340,42 +8201,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8388,13 +8249,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(IslandGroup);
 		[JsonIgnore]
 		public override string S100FC_name => "Island Group";
-		public featureName featureName { get; set; } = new featureName();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				featureName,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8426,27 +8280,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName))!; }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8459,13 +8313,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LandElevation);
 		[JsonIgnore]
 		public override string S100FC_name => "Land Elevation";
-		public elevation elevation { get; set; } = new elevation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				elevation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8510,32 +8357,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public double? elevation {
+			set { base.SetAttribute(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8549,11 +8401,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "River";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -8591,32 +8438,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8629,11 +8476,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Rapids);
 		[JsonIgnore]
 		public override string S100FC_name => "Rapids";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8671,32 +8513,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8709,11 +8551,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Waterfall);
 		[JsonIgnore]
 		public override string S100FC_name => "Waterfall";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8758,37 +8595,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8801,11 +8638,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Lake);
 		[JsonIgnore]
 		public override string S100FC_name => "Lake";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8850,37 +8682,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8893,11 +8725,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LandRegion);
 		[JsonIgnore]
 		public override string S100FC_name => "Land Region";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8950,42 +8777,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfLandRegion_optional {
+		public int?[] categoryOfLandRegion {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfLandRegion { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfLandRegion>(nameof(categoryOfLandRegion)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurface_optional {
+		public int?[] natureOfSurface {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurface { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -8998,13 +8825,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Vegetation);
 		[JsonIgnore]
 		public override string S100FC_name => "Vegetation";
-		public categoryOfVegetation categoryOfVegetation { get; set; } = new categoryOfVegetation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfVegetation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9068,47 +8888,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? elevation_optional {
+		public int? categoryOfVegetation {
+			set { base.SetAttribute(new categoryOfVegetation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfVegetation>(nameof(categoryOfVegetation))!.value; }
+		}
+		[JsonIgnore]
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -9121,13 +8946,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(IceArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Ice Area";
-		public categoryOfIce categoryOfIce { get; set; } = new categoryOfIce();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfIce,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9210,62 +9028,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? elevation_optional {
+		public int? categoryOfIce {
+			set { base.SetAttribute(new categoryOfIce { value = value }); }
+			get { return base.GetAttributeValue<categoryOfIce>(nameof(categoryOfIce))!.value; }
+		}
+		[JsonIgnore]
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -9278,11 +9101,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SlopingGround);
 		[JsonIgnore]
 		public override string S100FC_name => "Sloping Ground";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9348,52 +9166,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfSlope_optional {
+		public int? categoryOfSlope {
 			set { base.SetAttribute(new categoryOfSlope { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSlope>(nameof(categoryOfSlope))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurface_optional {
+		public int?[] natureOfSurface {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurface { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -9406,11 +9224,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SlopeTopline);
 		[JsonIgnore]
 		public override string S100FC_name => "Slope Topline";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9482,57 +9295,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfSlope_optional {
+		public int? categoryOfSlope {
 			set { base.SetAttribute(new categoryOfSlope { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSlope>(nameof(categoryOfSlope))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurface_optional {
+		public int?[] natureOfSurface {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurface { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -9545,11 +9358,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Tideway);
 		[JsonIgnore]
 		public override string S100FC_name => "Tideway";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9581,27 +9389,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -9614,11 +9422,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(BuiltUpArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Built-Up Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9701,64 +9504,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfBuiltUpArea_optional {
+		public int? categoryOfBuiltUpArea {
 			set { base.SetAttribute(new categoryOfBuiltUpArea { value = value }); }
 			get { return base.GetAttributeValue<categoryOfBuiltUpArea>(nameof(categoryOfBuiltUpArea))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -9774,11 +9577,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Building);
 		[JsonIgnore]
 		public override string S100FC_name => "Building";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -9914,104 +9712,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? buildingShape_optional {
+		public int? buildingShape {
 			set { base.SetAttribute(new buildingShape { value = value }); }
 			get { return base.GetAttributeValue<buildingShape>(nameof(buildingShape))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public int?[] function_optional {
+		public int?[] function {
 			set { base.SetAttribute([.. value.Select(e=> new function { value = e })]); }
 			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -10027,11 +9825,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(AirportAirfield);
 		[JsonIgnore]
 		public override string S100FC_name => "Airport/Airfield";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -10096,49 +9889,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfAirportAirfield_optional {
+		public int?[] categoryOfAirportAirfield {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfAirportAirfield { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfAirportAirfield>(nameof(categoryOfAirportAirfield)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -10155,11 +9948,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Runway";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -10223,52 +10011,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -10282,11 +10070,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Helipad";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -10350,52 +10133,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -10408,11 +10191,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Bridge);
 		[JsonIgnore]
 		public override string S100FC_name => "Bridge";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -10543,99 +10321,99 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? bridgeConstruction_optional {
+		public int? bridgeConstruction {
 			set { base.SetAttribute(new bridgeConstruction { value = value }); }
 			get { return base.GetAttributeValue<bridgeConstruction>(nameof(bridgeConstruction))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] bridgeFunction_optional {
+		public int?[] bridgeFunction {
 			set { base.SetAttribute([.. value.Select(e=> new bridgeFunction { value = e })]); }
 			get { return base.GetAttributeValues<bridgeFunction>(nameof(bridgeFunction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? categoryOfOpeningBridge_optional {
+		public int? categoryOfOpeningBridge {
 			set { base.SetAttribute(new categoryOfOpeningBridge { value = value }); }
 			get { return base.GetAttributeValue<categoryOfOpeningBridge>(nameof(categoryOfOpeningBridge))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? openingBridge_optional {
+		public Boolean? openingBridge {
 			set { base.SetAttribute(new openingBridge { value = value }); }
 			get { return base.GetAttributeValue<openingBridge>(nameof(openingBridge))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -10651,13 +10429,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SpanFixed);
 		[JsonIgnore]
 		public override string S100FC_name => "Span Fixed";
-		public verticalClearanceFixed verticalClearanceFixed { get; set; } = new verticalClearanceFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -10714,39 +10485,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed))!; }
+		}
+		[JsonIgnore]
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -10762,15 +10538,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SpanOpening);
 		[JsonIgnore]
 		public override string S100FC_name => "Span Opening";
-		public verticalClearanceClosed verticalClearanceClosed { get; set; } = new verticalClearanceClosed();
-		public verticalClearanceOpen verticalClearanceOpen { get; set; } = new verticalClearanceOpen();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				verticalClearanceClosed,
-				verticalClearanceOpen,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -10833,39 +10600,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public verticalClearanceClosed? verticalClearanceClosed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalClearanceClosed>(nameof(verticalClearanceClosed))!; }
+		}
+		[JsonIgnore]
+		public verticalClearanceOpen? verticalClearanceOpen {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalClearanceOpen>(nameof(verticalClearanceOpen))!; }
+		}
+		[JsonIgnore]
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -10881,11 +10658,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Conveyor);
 		[JsonIgnore]
 		public override string S100FC_name => "Conveyor";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -11027,109 +10799,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfConveyor_optional {
+		public int? categoryOfConveyor {
 			set { base.SetAttribute(new categoryOfConveyor { value = value }); }
 			get { return base.GetAttributeValue<categoryOfConveyor>(nameof(categoryOfConveyor))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity_optional {
+		public double? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -11145,11 +10917,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CableOverhead);
 		[JsonIgnore]
 		public override string S100FC_name => "Cable Overhead";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -11258,87 +11025,87 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfCable_optional {
+		public int? categoryOfCable {
 			set { base.SetAttribute(new categoryOfCable { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCable>(nameof(categoryOfCable))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? iceFactor_optional {
+		public double? iceFactor {
 			set { base.SetAttribute(new iceFactor { value = value }); }
 			get { return base.GetAttributeValue<iceFactor>(nameof(iceFactor))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public verticalClearanceSafe? verticalClearanceSafe_optional {
+		public verticalClearanceSafe? verticalClearanceSafe {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceSafe>(nameof(verticalClearanceSafe)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -11351,11 +11118,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PipelineOverhead);
 		[JsonIgnore]
 		public override string S100FC_name => "Pipeline Overhead";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -11459,82 +11221,82 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfPipelinePipe_optional {
+		public int? categoryOfPipelinePipe {
 			set { base.SetAttribute(new categoryOfPipelinePipe { value = value }); }
 			get { return base.GetAttributeValue<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -11547,13 +11309,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PylonBridgeSupport);
 		[JsonIgnore]
 		public override string S100FC_name => "Pylon/Bridge Support";
-		public categoryOfPylon categoryOfPylon { get; set; } = new categoryOfPylon();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfPylon,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -11683,94 +11438,99 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? categoryOfPylon {
+			set { base.SetAttribute(new categoryOfPylon { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPylon>(nameof(categoryOfPylon))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -11786,11 +11546,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FenceWall);
 		[JsonIgnore]
 		public override string S100FC_name => "Fence/Wall";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -11901,87 +11656,87 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfFence_optional {
+		public int? categoryOfFence {
 			set { base.SetAttribute(new categoryOfFence { value = value }); }
 			get { return base.GetAttributeValue<categoryOfFence>(nameof(categoryOfFence))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -11994,11 +11749,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Railway);
 		[JsonIgnore]
 		public override string S100FC_name => "Railway";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -12056,47 +11806,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -12109,11 +11859,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Road);
 		[JsonIgnore]
 		public override string S100FC_name => "Road";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -12179,52 +11924,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfRoad_optional {
+		public int? categoryOfRoad {
 			set { base.SetAttribute(new categoryOfRoad { value = value }); }
 			get { return base.GetAttributeValue<categoryOfRoad>(nameof(categoryOfRoad))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -12237,11 +11982,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Tunnel);
 		[JsonIgnore]
 		public override string S100FC_name => "Tunnel";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -12318,59 +12058,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -12386,15 +12126,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Landmark);
 		[JsonIgnore]
 		public override string S100FC_name => "Landmark";
-		public categoryOfLandmark categoryOfLandmark { get; set; } = new categoryOfLandmark();
-		public visualProminence visualProminence { get; set; } = new visualProminence();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfLandmark,
-				visualProminence,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -12537,104 +12268,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfLandmark_optional {
+		public int?[] categoryOfLandmark {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfLandmark { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfLandmark>(nameof(categoryOfLandmark)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfSpecialPurposeMark_optional {
+		public int?[] categoryOfSpecialPurposeMark {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public int?[] function_optional {
+		public int?[] function {
 			set { base.SetAttribute([.. value.Select(e=> new function { value = e })]); }
 			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? visualProminence {
+			set { base.SetAttribute(new visualProminence { value = value }); }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -12650,11 +12386,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SiloTank);
 		[JsonIgnore]
 		public override string S100FC_name => "Silo/Tank";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -12797,109 +12528,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? buildingShape_optional {
+		public int? buildingShape {
 			set { base.SetAttribute(new buildingShape { value = value }); }
 			get { return base.GetAttributeValue<buildingShape>(nameof(buildingShape))?.value; }
 		}
 		[JsonIgnore]
-		public int? categoryOfSiloTank_optional {
+		public int? categoryOfSiloTank {
 			set { base.SetAttribute(new categoryOfSiloTank { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSiloTank>(nameof(categoryOfSiloTank))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -12915,11 +12646,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(WindTurbine);
 		[JsonIgnore]
 		public override string S100FC_name => "Wind Turbine";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -13067,114 +12793,114 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -13190,11 +12916,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FortifiedStructure);
 		[JsonIgnore]
 		public override string S100FC_name => "Fortified Structure";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -13297,79 +13018,79 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfFortifiedStructure_optional {
+		public int? categoryOfFortifiedStructure {
 			set { base.SetAttribute(new categoryOfFortifiedStructure { value = value }); }
 			get { return base.GetAttributeValue<categoryOfFortifiedStructure>(nameof(categoryOfFortifiedStructure))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -13385,13 +13106,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ProductionStorageArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Production/Storage Area";
-		public categoryOfProductionArea categoryOfProductionArea { get; set; } = new categoryOfProductionArea();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfProductionArea,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -13500,79 +13214,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? categoryOfProductionArea {
+			set { base.SetAttribute(new categoryOfProductionArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfProductionArea>(nameof(categoryOfProductionArea))!.value; }
+		}
+		[JsonIgnore]
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -13588,11 +13307,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Checkpoint);
 		[JsonIgnore]
 		public override string S100FC_name => "Checkpoint";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -13638,37 +13352,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfCheckpoint_optional {
+		public int? categoryOfCheckpoint {
 			set { base.SetAttribute(new categoryOfCheckpoint { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCheckpoint>(nameof(categoryOfCheckpoint))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -13681,11 +13395,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Hulk);
 		[JsonIgnore]
 		public override string S100FC_name => "Hulk";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -13800,89 +13509,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfHulk_optional {
+		public int?[] categoryOfHulk {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfHulk { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfHulk>(nameof(categoryOfHulk)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -13898,11 +13607,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Pile);
 		[JsonIgnore]
 		public override string S100FC_name => "Pile";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -14012,84 +13716,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfPile_optional {
+		public int? categoryOfPile {
 			set { base.SetAttribute(new categoryOfPile { value = value }); }
 			get { return base.GetAttributeValue<categoryOfPile>(nameof(categoryOfPile))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -14105,11 +13809,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Dyke);
 		[JsonIgnore]
 		public override string S100FC_name => "Dyke";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -14192,67 +13891,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -14265,11 +13964,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ShorelineConstruction);
 		[JsonIgnore]
 		public override string S100FC_name => "Shoreline Construction";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -14405,107 +14099,107 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfShorelineConstruction_optional {
+		public int? categoryOfShorelineConstruction {
 			set { base.SetAttribute(new categoryOfShorelineConstruction { value = value }); }
 			get { return base.GetAttributeValue<categoryOfShorelineConstruction>(nameof(categoryOfShorelineConstruction))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -14518,15 +14212,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(StructureOverNavigableWater);
 		[JsonIgnore]
 		public override string S100FC_name => "Structure Over Navigable Water";
-		public horizontalClearanceFixed horizontalClearanceFixed { get; set; } = new horizontalClearanceFixed();
-		public verticalClearanceFixed verticalClearanceFixed { get; set; } = new verticalClearanceFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				horizontalClearanceFixed,
-				verticalClearanceFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -14687,114 +14372,124 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfStructure_optional {
+		public int?[] categoryOfStructure {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfStructure { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfStructure>(nameof(categoryOfStructure)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed))!; }
+		}
+		[JsonIgnore]
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? product_optional {
+		public int? product {
 			set { base.SetAttribute(new product { value = value }); }
 			get { return base.GetAttributeValue<product>(nameof(product))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed))!; }
+		}
+		[JsonIgnore]
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -14810,11 +14505,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Causeway);
 		[JsonIgnore]
 		public override string S100FC_name => "Causeway";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -14880,52 +14570,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -14938,11 +14628,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Canal);
 		[JsonIgnore]
 		public override string S100FC_name => "Canal";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15019,62 +14704,62 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfCanal_optional {
+		public int? categoryOfCanal {
 			set { base.SetAttribute(new categoryOfCanal { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCanal>(nameof(categoryOfCanal))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -15087,15 +14772,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DistanceMark);
 		[JsonIgnore]
 		public override string S100FC_name => "Distance Mark";
-		public distanceMarkVisible distanceMarkVisible { get; set; } = new distanceMarkVisible();
-		public measuredDistanceValue measuredDistanceValue { get; set; } = new measuredDistanceValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				distanceMarkVisible,
-				measuredDistanceValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15145,32 +14821,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public Boolean? distanceMarkVisible {
+			set { base.SetAttribute(new distanceMarkVisible { value = value }); }
+			get { return base.GetAttributeValue<distanceMarkVisible>(nameof(distanceMarkVisible))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public measuredDistanceValue? measuredDistanceValue {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<measuredDistanceValue>(nameof(measuredDistanceValue))!; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -15183,11 +14869,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Gate);
 		[JsonIgnore]
 		public override string S100FC_name => "Gate";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15285,77 +14966,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfGate_optional {
+		public int? categoryOfGate {
 			set { base.SetAttribute(new categoryOfGate { value = value }); }
 			get { return base.GetAttributeValue<categoryOfGate>(nameof(categoryOfGate))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public horizontalClearanceOpen? horizontalClearanceOpen_optional {
+		public horizontalClearanceOpen? horizontalClearanceOpen {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceOpen>(nameof(horizontalClearanceOpen)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceOpen? verticalClearanceOpen_optional {
+		public verticalClearanceOpen? verticalClearanceOpen {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceOpen>(nameof(verticalClearanceOpen)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -15368,11 +15049,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Dam);
 		[JsonIgnore]
 		public override string S100FC_name => "Dam";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15484,87 +15160,87 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfDam_optional {
+		public int? categoryOfDam {
 			set { base.SetAttribute(new categoryOfDam { value = value }); }
 			get { return base.GetAttributeValue<categoryOfDam>(nameof(categoryOfDam))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -15577,11 +15253,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Crane);
 		[JsonIgnore]
 		public override string S100FC_name => "Crane";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15716,104 +15387,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfCrane_optional {
+		public int? categoryOfCrane {
 			set { base.SetAttribute(new categoryOfCrane { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCrane>(nameof(categoryOfCrane))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity_optional {
+		public double? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
 		[JsonIgnore]
-		public orientation? orientation_optional {
+		public orientation? orientation {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public double? radius_optional {
+		public double? radius {
 			set { base.SetAttribute(new radius { value = value }); }
 			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalClearanceFixed? verticalClearanceFixed_optional {
+		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? inTheWater_optional {
+		public Boolean? inTheWater {
 			set { base.SetAttribute(new inTheWater { value = value }); }
 			get { return base.GetAttributeValue<inTheWater>(nameof(inTheWater))?.value; }
 		}
@@ -15829,13 +15500,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Berth);
 		[JsonIgnore]
 		public override string S100FC_name => "Berth";
-		public featureName featureName { get; set; } = new featureName();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				featureName,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -15930,77 +15594,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfCargo_optional {
+		public int?[] categoryOfCargo {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName))!; }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength_optional {
+		public double? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth_optional {
+		public double? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? minimumBerthDepth_optional {
+		public double? minimumBerthDepth {
 			set { base.SetAttribute(new minimumBerthDepth { value = value }); }
 			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -16013,13 +15677,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Dolphin);
 		[JsonIgnore]
 		public override string S100FC_name => "Dolphin";
-		public categoryOfDolphin categoryOfDolphin { get; set; } = new categoryOfDolphin();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfDolphin,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -16148,99 +15805,99 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfDolphin_optional {
+		public int?[] categoryOfDolphin {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfDolphin { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfDolphin>(nameof(categoryOfDolphin)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -16256,11 +15913,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Bollard);
 		[JsonIgnore]
 		public override string S100FC_name => "Bollard";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -16330,54 +15982,54 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -16393,11 +16045,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DryDock);
 		[JsonIgnore]
 		public override string S100FC_name => "Dry Dock";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -16504,87 +16151,87 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength_optional {
+		public double? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth_optional {
+		public double? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -16597,11 +16244,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FloatingDock);
 		[JsonIgnore]
 		public override string S100FC_name => "Floating Dock";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -16734,104 +16376,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength_optional {
+		public double? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth_optional {
+		public double? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity_optional {
+		public double? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -16847,11 +16489,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Pontoon);
 		[JsonIgnore]
 		public override string S100FC_name => "Pontoon";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -16934,64 +16571,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -17007,11 +16644,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DockArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Dock Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17100,72 +16732,72 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfDock_optional {
+		public int? categoryOfDock {
 			set { base.SetAttribute(new categoryOfDock { value = value }); }
 			get { return base.GetAttributeValue<categoryOfDock>(nameof(categoryOfDock))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength_optional {
+		public double? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth_optional {
+		public double? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17178,11 +16810,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Gridiron);
 		[JsonIgnore]
 		public override string S100FC_name => "Gridiron";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17253,57 +16880,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17316,11 +16943,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LockBasin);
 		[JsonIgnore]
 		public override string S100FC_name => "Lock Basin";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17389,57 +17011,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public horizontalClearanceFixed? horizontalClearanceFixed_optional {
+		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17452,11 +17074,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MooringTrot);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring Trot";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17494,32 +17111,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17532,11 +17149,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SeaAreaNamedWaterArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Sea Area/Named Water Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17575,32 +17187,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfSeaArea_optional {
+		public int? categoryOfSeaArea {
 			set { base.SetAttribute(new categoryOfSeaArea { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSeaArea>(nameof(categoryOfSeaArea))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17613,17 +17225,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TidalStreamFloodEbb);
 		[JsonIgnore]
 		public override string S100FC_name => "Tidal Stream - Flood/Ebb";
-		public categoryOfTidalStream categoryOfTidalStream { get; set; } = new categoryOfTidalStream();
-		public orientation orientation { get; set; } = new orientation();
-		public speed speed { get; set; } = new speed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfTidalStream,
-				orientation,
-				speed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17680,32 +17281,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public int? categoryOfTidalStream {
+			set { base.SetAttribute(new categoryOfTidalStream { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTidalStream>(nameof(categoryOfTidalStream))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+		}
+		[JsonIgnore]
+		public speed? speed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<speed>(nameof(speed))!; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17718,15 +17334,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CurrentNonGravitational);
 		[JsonIgnore]
 		public override string S100FC_name => "Current - Non-Gravitational";
-		public orientation orientation { get; set; } = new orientation();
-		public speed speed { get; set; } = new speed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientation,
-				speed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17789,42 +17396,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+		}
 		[JsonIgnore]
-		public int? status_optional {
+		public periodicDateRange?[] periodicDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
+		[JsonIgnore]
+		public speed? speed {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<speed>(nameof(speed))!; }
+		}
+		[JsonIgnore]
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17837,13 +17454,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(WaterTurbulence);
 		[JsonIgnore]
 		public override string S100FC_name => "Water Turbulence";
-		public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; } = new categoryOfWaterTurbulence();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfWaterTurbulence,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17882,27 +17492,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public int? categoryOfWaterTurbulence {
+			set { base.SetAttribute(new categoryOfWaterTurbulence { value = value }); }
+			get { return base.GetAttributeValue<categoryOfWaterTurbulence>(nameof(categoryOfWaterTurbulence))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -17915,15 +17530,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TidalStreamPanelData);
 		[JsonIgnore]
 		public override string S100FC_name => "Tidal Stream Panel Data";
-		public stationName stationName { get; set; } = new stationName();
-		public tidalStreamPanelValues tidalStreamPanelValues { get; set; } = new tidalStreamPanelValues();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				stationName,
-				tidalStreamPanelValues,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -17973,37 +17579,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? stationNumber_optional {
+		public String? stationName {
+			set { base.SetAttribute(new stationName { value = value }); }
+			get { return base.GetAttributeValue<stationName>(nameof(stationName))!.value; }
+		}
+		[JsonIgnore]
+		public String? stationNumber {
 			set { base.SetAttribute(new stationNumber { value = value }); }
 			get { return base.GetAttributeValue<stationNumber>(nameof(stationNumber))?.value; }
 		}
 		[JsonIgnore]
-		public tidalStreamPanelValues?[] tidalStreamPanelValues_optional {
+		public tidalStreamPanelValues?[] tidalStreamPanelValues {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<tidalStreamPanelValues>(nameof(tidalStreamPanelValues)); } 
-	}
+			get { return base.GetAttributeValues<tidalStreamPanelValues>(nameof(tidalStreamPanelValues))!; }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18016,11 +17627,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Sounding);
 		[JsonIgnore]
 		public override string S100FC_name => "Sounding";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18079,47 +17685,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18132,13 +17738,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DredgedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Dredged Area";
-		public depthRangeMinimumValue depthRangeMinimumValue { get; set; } = new depthRangeMinimumValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				depthRangeMinimumValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18221,62 +17820,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMaximumValue_optional {
+		public double? depthRangeMinimumValue {
+			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public String? dredgedDate_optional {
+		public String? dredgedDate {
 			set { base.SetAttribute(new dredgedDate { value = value }); }
 			get { return base.GetAttributeValue<dredgedDate>(nameof(dredgedDate))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int? qualityOfVerticalMeasurement_optional {
+		public int? qualityOfVerticalMeasurement {
 			set { base.SetAttribute(new qualityOfVerticalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18289,13 +17893,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SweptArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Swept Area";
-		public depthRangeMinimumValue depthRangeMinimumValue { get; set; } = new depthRangeMinimumValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				depthRangeMinimumValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18333,27 +17930,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public double? depthRangeMinimumValue {
+			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? sweptDate_optional {
+		public String? sweptDate {
 			set { base.SetAttribute(new sweptDate { value = value }); }
 			get { return base.GetAttributeValue<sweptDate>(nameof(sweptDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18366,13 +17968,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DepthContour);
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Contour";
-		public valueOfDepthContour valueOfDepthContour { get; set; } = new valueOfDepthContour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				valueOfDepthContour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18404,22 +17999,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public double? valueOfDepthContour {
+			set { base.SetAttribute(new valueOfDepthContour { value = value }); }
+			get { return base.GetAttributeValue<valueOfDepthContour>(nameof(valueOfDepthContour))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18432,15 +18032,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DepthArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Area";
-		public depthRangeMinimumValue depthRangeMinimumValue { get; set; } = new depthRangeMinimumValue();
-		public depthRangeMaximumValue depthRangeMaximumValue { get; set; } = new depthRangeMaximumValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				depthRangeMinimumValue,
-				depthRangeMaximumValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18472,17 +18063,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public double? depthRangeMinimumValue {
+			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMaximumValue {
+			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))!.value; }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18495,11 +18096,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DepthNoBottomFound);
 		[JsonIgnore]
 		public override string S100FC_name => "Depth - No Bottom Found";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18532,27 +18128,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18565,11 +18161,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(UnsurveyedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Unsurveyed Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18589,17 +18180,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18612,13 +18203,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SeabedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Seabed Area";
-		public surfaceCharacteristics surfaceCharacteristics { get; set; } = new surfaceCharacteristics();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				surfaceCharacteristics,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18663,37 +18247,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public surfaceCharacteristics?[] surfaceCharacteristics_optional {
+		public surfaceCharacteristics?[] surfaceCharacteristics {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<surfaceCharacteristics>(nameof(surfaceCharacteristics)); } 
-	}
+			get { return base.GetAttributeValues<surfaceCharacteristics>(nameof(surfaceCharacteristics))!; }
+		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18706,11 +18290,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(WeedKelp);
 		[JsonIgnore]
 		public override string S100FC_name => "Weed/Kelp";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18749,32 +18328,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfWeedKelp_optional {
+		public int? categoryOfWeedKelp {
 			set { base.SetAttribute(new categoryOfWeedKelp { value = value }); }
 			get { return base.GetAttributeValue<categoryOfWeedKelp>(nameof(categoryOfWeedKelp))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18787,11 +18366,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Seagrass);
 		[JsonIgnore]
 		public override string S100FC_name => "Seagrass";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18823,27 +18397,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18856,11 +18430,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Sandwave);
 		[JsonIgnore]
 		public override string S100FC_name => "Sandwave";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18892,27 +18461,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18925,11 +18494,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Spring);
 		[JsonIgnore]
 		public override string S100FC_name => "Spring";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -18961,27 +18525,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -18994,17 +18558,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(UnderwaterAwashRock);
 		[JsonIgnore]
 		public override string S100FC_name => "Underwater/Awash Rock";
-		public valueOfSounding valueOfSounding { get; set; } = new valueOfSounding();
-		public waterLevelEffect waterLevelEffect { get; set; } = new waterLevelEffect();
-		public surroundingDepth surroundingDepth { get; set; } = new surroundingDepth();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				valueOfSounding,
-				waterLevelEffect,
-				surroundingDepth,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19102,61 +18655,76 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? expositionOfSounding_optional {
+		public int? expositionOfSounding {
 			set { base.SetAttribute(new expositionOfSounding { value = value }); }
 			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? natureOfSurface_optional {
+		public int? natureOfSurface {
 			set { base.SetAttribute(new natureOfSurface { value = value }); }
 			get { return base.GetAttributeValue<natureOfSurface>(nameof(natureOfSurface))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public double? valueOfSounding {
+			set { base.SetAttribute(new valueOfSounding { value = value }); }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))!.value; }
+		}
+		[JsonIgnore]
+		public int? waterLevelEffect {
+			set { base.SetAttribute(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth_optional {
+		public double? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? surroundingDepth {
+			set { base.SetAttribute(new surroundingDepth { value = value }); }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
 		}
 		#endregion
 	}
@@ -19170,15 +18738,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Wreck);
 		[JsonIgnore]
 		public override string S100FC_name => "Wreck";
-		public waterLevelEffect waterLevelEffect { get; set; } = new waterLevelEffect();
-		public surroundingDepth surroundingDepth { get; set; } = new surroundingDepth();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				waterLevelEffect,
-				surroundingDepth,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19301,86 +18860,96 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfWreck_optional {
+		public int? categoryOfWreck {
 			set { base.SetAttribute(new categoryOfWreck { value = value }); }
 			get { return base.GetAttributeValue<categoryOfWreck>(nameof(categoryOfWreck))?.value; }
 		}
 		[JsonIgnore]
-		public int? expositionOfSounding_optional {
+		public int? expositionOfSounding {
 			set { base.SetAttribute(new expositionOfSounding { value = value }); }
 			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding_optional {
+		public double? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? waterLevelEffect {
+			set { base.SetAttribute(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth_optional {
+		public double? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? surroundingDepth {
+			set { base.SetAttribute(new surroundingDepth { value = value }); }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
 		}
 		#endregion
 	}
@@ -19394,15 +18963,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Obstruction);
 		[JsonIgnore]
 		public override string S100FC_name => "Obstruction";
-		public waterLevelEffect waterLevelEffect { get; set; } = new waterLevelEffect();
-		public surroundingDepth surroundingDepth { get; set; } = new surroundingDepth();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				waterLevelEffect,
-				surroundingDepth,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19539,96 +19099,106 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfObstruction_optional {
+		public int? categoryOfObstruction {
 			set { base.SetAttribute(new categoryOfObstruction { value = value }); }
 			get { return base.GetAttributeValue<categoryOfObstruction>(nameof(categoryOfObstruction))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public int? expositionOfSounding_optional {
+		public int? expositionOfSounding {
 			set { base.SetAttribute(new expositionOfSounding { value = value }); }
 			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfSurface_optional {
+		public int?[] natureOfSurface {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfSurface { value = e })]); }
 			get { return base.GetAttributeValues<natureOfSurface>(nameof(natureOfSurface)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding_optional {
+		public double? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? waterLevelEffect {
+			set { base.SetAttribute(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth_optional {
+		public double? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? surroundingDepth {
+			set { base.SetAttribute(new surroundingDepth { value = value }); }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
 		}
 		#endregion
 	}
@@ -19642,11 +19212,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FoulGround);
 		[JsonIgnore]
 		public override string S100FC_name => "Foul Ground";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19717,57 +19282,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding_optional {
+		public double? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -19780,11 +19345,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DiscolouredWater);
 		[JsonIgnore]
 		public override string S100FC_name => "Discoloured Water";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19816,27 +19376,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -19849,11 +19409,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FishingFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Fishing Facility";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -19924,57 +19479,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfFishingFacility_optional {
+		public int? categoryOfFishingFacility {
 			set { base.SetAttribute(new categoryOfFishingFacility { value = value }); }
 			get { return base.GetAttributeValue<categoryOfFishingFacility>(nameof(categoryOfFishingFacility))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -19987,13 +19542,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MarineFarmCulture);
 		[JsonIgnore]
 		public override string S100FC_name => "Marine Farm/Culture";
-		public waterLevelEffect waterLevelEffect { get; set; } = new waterLevelEffect();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				waterLevelEffect,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20109,87 +19657,92 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfMarineFarmCulture_optional {
+		public int? categoryOfMarineFarmCulture {
 			set { base.SetAttribute(new categoryOfMarineFarmCulture { value = value }); }
 			get { return base.GetAttributeValue<categoryOfMarineFarmCulture>(nameof(categoryOfMarineFarmCulture))?.value; }
 		}
 		[JsonIgnore]
-		public int? expositionOfSounding_optional {
+		public int? expositionOfSounding {
 			set { base.SetAttribute(new expositionOfSounding { value = value }); }
 			get { return base.GetAttributeValue<expositionOfSounding>(nameof(expositionOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding_optional {
+		public double? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? waterLevelEffect {
+			set { base.SetAttribute(new waterLevelEffect { value = value }); }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -20202,11 +19755,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(OffshorePlatform);
 		[JsonIgnore]
 		public override string S100FC_name => "Offshore Platform";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20329,94 +19877,94 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfOffshorePlatform_optional {
+		public int? categoryOfOffshorePlatform {
 			set { base.SetAttribute(new categoryOfOffshorePlatform { value = value }); }
 			get { return base.GetAttributeValue<categoryOfOffshorePlatform>(nameof(categoryOfOffshorePlatform))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? flareStack_optional {
+		public Boolean? flareStack {
 			set { base.SetAttribute(new flareStack { value = value }); }
 			get { return base.GetAttributeValue<flareStack>(nameof(flareStack))?.value; }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -20432,11 +19980,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CableSubmarine);
 		[JsonIgnore]
 		public override string S100FC_name => "Cable Submarine";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20501,52 +20044,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? buriedDepth_optional {
+		public double? buriedDepth {
 			set { base.SetAttribute(new buriedDepth { value = value }); }
 			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
 		}
 		[JsonIgnore]
-		public int? categoryOfCable_optional {
+		public int? categoryOfCable {
 			set { base.SetAttribute(new categoryOfCable { value = value }); }
 			get { return base.GetAttributeValue<categoryOfCable>(nameof(categoryOfCable))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -20559,11 +20102,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CableArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Cable Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20628,52 +20166,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfCable_optional {
+		public int?[] categoryOfCable {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfCable { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfCable>(nameof(categoryOfCable)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -20686,11 +20224,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PipelineSubmarineOnLand);
 		[JsonIgnore]
 		public override string S100FC_name => "Pipeline Submarine/On Land";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20799,84 +20332,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? buriedDepth_optional {
+		public double? buriedDepth {
 			set { base.SetAttribute(new buriedDepth { value = value }); }
 			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfPipelinePipe_optional {
+		public int?[] categoryOfPipelinePipe {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMaximumValue_optional {
+		public double? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -20892,11 +20425,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SubmarinePipelineArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Submarine Pipeline Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -20968,57 +20496,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfPipelinePipe_optional {
+		public int?[] categoryOfPipelinePipe {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfPipelinePipe { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfPipelinePipe>(nameof(categoryOfPipelinePipe)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21031,11 +20559,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(OffshoreProductionArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Offshore Production Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21152,92 +20675,92 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfOffshoreProductionArea_optional {
+		public int? categoryOfOffshoreProductionArea {
 			set { base.SetAttribute(new categoryOfOffshoreProductionArea { value = value }); }
 			get { return base.GetAttributeValue<categoryOfOffshoreProductionArea>(nameof(categoryOfOffshoreProductionArea))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? waterLevelEffect_optional {
+		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
 			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21250,15 +20773,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(NavigationLine);
 		[JsonIgnore]
 		public override string S100FC_name => "Navigation Line";
-		public categoryOfNavigationLine categoryOfNavigationLine { get; set; } = new categoryOfNavigationLine();
-		public orientation orientation { get; set; } = new orientation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfNavigationLine,
-				orientation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21322,42 +20836,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public int? categoryOfNavigationLine {
+			set { base.SetAttribute(new categoryOfNavigationLine { value = value }); }
+			get { return base.GetAttributeValue<categoryOfNavigationLine>(nameof(categoryOfNavigationLine))!.value; }
+		}
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? measuredDistance_optional {
+		public int? measuredDistance {
 			set { base.SetAttribute(new measuredDistance { value = value }); }
 			get { return base.GetAttributeValue<measuredDistance>(nameof(measuredDistance))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public periodicDateRange?[] periodicDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
+		[JsonIgnore]
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21370,17 +20894,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RecommendedTrack);
 		[JsonIgnore]
 		public override string S100FC_name => "Recommended Track";
-		public basedOnFixedMarks basedOnFixedMarks { get; set; } = new basedOnFixedMarks();
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				basedOnFixedMarks,
-				orientationValue,
-				trafficFlow,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21482,67 +20995,82 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public Boolean? basedOnFixedMarks {
+			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public periodicDateRange?[] periodicDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
+		[JsonIgnore]
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21555,11 +21083,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RangeSystem);
 		[JsonIgnore]
 		public override string S100FC_name => "Range System";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21603,37 +21126,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21646,11 +21169,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Fairway);
 		[JsonIgnore]
 		public override string S100FC_name => "Fairway";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21746,77 +21264,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue_optional {
+		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? trafficFlow_optional {
+		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
 			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21829,11 +21347,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FairwaySystem);
 		[JsonIgnore]
 		public override string S100FC_name => "Fairway System";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -21883,42 +21396,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -21931,13 +21444,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RecommendedRouteCentreline);
 		[JsonIgnore]
 		public override string S100FC_name => "Recommended Route Centreline";
-		public basedOnFixedMarks basedOnFixedMarks { get; set; } = new basedOnFixedMarks();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				basedOnFixedMarks,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22033,72 +21539,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public Boolean? basedOnFixedMarks {
+			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue_optional {
+		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? trafficFlow_optional {
+		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
 			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22111,15 +21622,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TwoWayRoutePart);
 		[JsonIgnore]
 		public override string S100FC_name => "Two-Way Route Part";
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientationValue,
-				trafficFlow,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22203,57 +21705,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? basedOnFixedMarks_optional {
+		public Boolean? basedOnFixedMarks {
 			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
 			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22266,11 +21778,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TwoWayRoute);
 		[JsonIgnore]
 		public override string S100FC_name => "Two-Way Route";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22314,37 +21821,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22357,13 +21864,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RecommendedTrafficLanePart);
 		[JsonIgnore]
 		public override string S100FC_name => "Recommended Traffic Lane Part";
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientationValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22408,32 +21908,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22446,17 +21951,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DeepWaterRouteCentreline);
 		[JsonIgnore]
 		public override string S100FC_name => "Deep Water Route Centreline";
-		public basedOnFixedMarks basedOnFixedMarks { get; set; } = new basedOnFixedMarks();
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				basedOnFixedMarks,
-				orientationValue,
-				trafficFlow,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22552,62 +22046,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue_optional {
+		public Boolean? basedOnFixedMarks {
+			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+		}
+		[JsonIgnore]
+		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? iMOAdopted_optional {
+		public Boolean? iMOAdopted {
 			set { base.SetAttribute(new iMOAdopted { value = value }); }
 			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22620,17 +22129,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DeepWaterRoutePart);
 		[JsonIgnore]
 		public override string S100FC_name => "Deep Water Route Part";
-		public depthRangeMinimumValue depthRangeMinimumValue { get; set; } = new depthRangeMinimumValue();
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				depthRangeMinimumValue,
-				orientationValue,
-				trafficFlow,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22733,67 +22231,82 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public double? depthRangeMinimumValue {
+			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? iMOAdopted_optional {
+		public Boolean? iMOAdopted {
 			set { base.SetAttribute(new iMOAdopted { value = value }); }
 			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement_optional {
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] qualityOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement_optional {
+		public int?[] techniqueOfVerticalMeasurement {
 			set { base.SetAttribute([.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22806,11 +22319,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DeepWaterRoute);
 		[JsonIgnore]
 		public override string S100FC_name => "Deep Water Route";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22854,37 +22362,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? iMOAdopted_optional {
+		public Boolean? iMOAdopted {
 			set { base.SetAttribute(new iMOAdopted { value = value }); }
 			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -22897,11 +22405,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(InshoreTrafficZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Inshore Traffic Zone";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -22953,42 +22456,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23001,13 +22504,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PrecautionaryArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Precautionary Area";
-		public information information { get; set; } = new information();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				information,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -23071,52 +22567,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? iMOAdopted_optional {
+		public Boolean? iMOAdopted {
 			set { base.SetAttribute(new iMOAdopted { value = value }); }
 			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information))!; }
+		}
 		#endregion
 	}
 
@@ -23129,11 +22625,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TrafficSeparationSchemeLanePart);
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme Lane Part";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -23191,47 +22682,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue_optional {
+		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23245,11 +22736,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Separation Zone or Line";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23287,32 +22773,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23326,11 +22812,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme Boundary";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23368,32 +22849,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23407,11 +22888,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme Crossing";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23462,42 +22938,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23511,11 +22987,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme Roundabout";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23566,42 +23037,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23614,11 +23085,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TrafficSeparationScheme);
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -23668,42 +23134,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? iMOAdopted_optional {
+		public Boolean? iMOAdopted {
 			set { base.SetAttribute(new iMOAdopted { value = value }); }
 			get { return base.GetAttributeValue<iMOAdopted>(nameof(iMOAdopted))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23717,11 +23183,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Archipelagic Sea Lane Area";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23764,37 +23225,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23808,11 +23269,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Archipelagic Sea Lane Axis";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -23855,37 +23311,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23898,13 +23354,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ArchipelagicSeaLane);
 		[JsonIgnore]
 		public override string S100FC_name => "Archipelagic Sea Lane";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -23948,32 +23397,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public String? nationality {
+			set { base.SetAttribute(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -23986,13 +23440,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadioCallingInPoint);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Calling-In Point";
-		public trafficFlow trafficFlow { get; set; } = new trafficFlow();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				trafficFlow,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24062,52 +23509,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double?[] orientationValue_optional {
+		public double?[] orientationValue {
 			set { base.SetAttribute([.. value.Select(e=> new orientationValue { value = e })]); }
 			get { return base.GetAttributeValues<orientationValue>(nameof(orientationValue)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24120,13 +23572,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FerryRoute);
 		[JsonIgnore]
 		public override string S100FC_name => "Ferry Route";
-		public categoryOfFerry categoryOfFerry { get; set; } = new categoryOfFerry();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfFerry,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24184,47 +23629,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfFerry_optional {
+		public int?[] categoryOfFerry {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfFerry { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfFerry>(nameof(categoryOfFerry)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24237,13 +23682,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadarLine);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Line";
-		public orientationValue orientationValue { get; set; } = new orientationValue();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				orientationValue,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24288,32 +23726,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24326,11 +23769,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadarRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Range";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24381,42 +23819,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24429,11 +23867,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadarStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Station";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24509,62 +23942,62 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? callSign_optional {
+		public String? callSign {
 			set { base.SetAttribute(new callSign { value = value }); }
 			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfRadarStation_optional {
+		public int?[] categoryOfRadarStation {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfRadarStation { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfRadarStation>(nameof(categoryOfRadarStation)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange_optional {
+		public double? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24577,11 +24010,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(AnchorageArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Anchorage Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24659,62 +24087,62 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfAnchorage_optional {
+		public int?[] categoryOfAnchorage {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfCargo_optional {
+		public int?[] categoryOfCargo {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -24727,11 +24155,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MooringArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24814,67 +24237,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfMooringArea_optional {
+		public int?[] categoryOfMooringArea {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfMooringArea { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfMooringArea>(nameof(categoryOfMooringArea)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedVesselLength_optional {
+		public double? maximumPermittedVesselLength {
 			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		#endregion
 	}
 
@@ -24887,11 +24310,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(AnchorBerth);
 		[JsonIgnore]
 		public override string S100FC_name => "Anchor Berth";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -24962,57 +24380,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfAnchorage_optional {
+		public int?[] categoryOfAnchorage {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfCargo_optional {
+		public int?[] categoryOfCargo {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public double? radius_optional {
+		public double? radius {
 			set { base.SetAttribute(new radius { value = value }); }
 			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25025,11 +24443,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SeaplaneLandingArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Seaplane Landing Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25087,47 +24500,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25140,11 +24553,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(DumpingGround);
 		[JsonIgnore]
 		public override string S100FC_name => "Dumping Ground";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25209,52 +24617,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfDumpingGround_optional {
+		public int?[] categoryOfDumpingGround {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfDumpingGround { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfDumpingGround>(nameof(categoryOfDumpingGround)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? dateDisused_optional {
+		public String? dateDisused {
 			set { base.SetAttribute(new dateDisused { value = value }); }
 			get { return base.GetAttributeValue<dateDisused>(nameof(dateDisused))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25267,11 +24675,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MilitaryPracticeArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Military Practice Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25348,62 +24751,62 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfMilitaryPracticeArea_optional {
+		public int?[] categoryOfMilitaryPracticeArea {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfMilitaryPracticeArea { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfMilitaryPracticeArea>(nameof(categoryOfMilitaryPracticeArea)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25416,13 +24819,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(AdministrationArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Administration Area";
-		public jurisdiction jurisdiction { get; set; } = new jurisdiction();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				jurisdiction,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25479,39 +24875,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? inDispute_optional {
+		public Boolean? inDispute {
 			set { base.SetAttribute(new inDispute { value = value }); }
 			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+		public int? jurisdiction {
+			set { base.SetAttribute(new jurisdiction { value = value }); }
+			get { return base.GetAttributeValue<jurisdiction>(nameof(jurisdiction))!.value; }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public featureName?[] featureName {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
+		[JsonIgnore]
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] nationality_optional {
+		public String?[] nationality {
 			set { base.SetAttribute([.. value.Select(e=> new nationality { value = e })]); }
 			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -25527,11 +24928,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CargoTranshipmentArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Cargo Transhipment Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25595,52 +24991,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25653,11 +25049,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CautionArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Caution Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25721,49 +25112,49 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -25779,11 +25170,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(InformationArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Information Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25839,44 +25225,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -25892,13 +25278,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ContiguousZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Contiguous Zone";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -25942,37 +25321,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public Boolean? inDispute_optional {
+		public Boolean? inDispute {
 			set { base.SetAttribute(new inDispute { value = value }); }
 			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] nationality_optional {
+		public String?[] nationality {
 			set { base.SetAttribute([.. value.Select(e=> new nationality { value = e })]); }
 			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -25985,13 +25364,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ContinentalShelfArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Continental Shelf Area";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26029,32 +25401,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] nationality_optional {
+		public String?[] nationality {
 			set { base.SetAttribute([.. value.Select(e=> new nationality { value = e })]); }
 			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26067,13 +25439,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CustomZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Custom Zone";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26105,22 +25470,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public String? nationality {
+			set { base.SetAttribute(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26133,13 +25503,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(ExclusiveEconomicZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Exclusive Economic Zone";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26177,32 +25540,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? inDispute_optional {
+		public Boolean? inDispute {
 			set { base.SetAttribute(new inDispute { value = value }); }
 			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] nationality_optional {
+		public String?[] nationality {
 			set { base.SetAttribute([.. value.Select(e=> new nationality { value = e })]); }
 			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26215,13 +25578,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FisheryZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Fishery Zone";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26266,32 +25622,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public String? nationality {
+			set { base.SetAttribute(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26304,11 +25665,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FishingGround);
 		[JsonIgnore]
 		public override string S100FC_name => "Fishing Ground";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26366,47 +25722,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26419,11 +25775,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FreePortArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Free Port Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26462,32 +25813,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26500,11 +25851,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(HarbourAreaAdministrative);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Area (Administrative)";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26543,32 +25889,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26581,11 +25927,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LogPond);
 		[JsonIgnore]
 		public override string S100FC_name => "Log Pond";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26630,37 +25971,37 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26673,11 +26014,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(OilBarrier);
 		[JsonIgnore]
 		public override string S100FC_name => "Oil Barrier";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26742,52 +26078,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfOilBarrier_optional {
+		public int? categoryOfOilBarrier {
 			set { base.SetAttribute(new categoryOfOilBarrier { value = value }); }
 			get { return base.GetAttributeValue<categoryOfOilBarrier>(nameof(categoryOfOilBarrier))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26800,13 +26136,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(StraightTerritorialSeaBaseline);
 		[JsonIgnore]
 		public override string S100FC_name => "Straight Territorial Sea Baseline";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26838,22 +26167,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public String? nationality {
+			set { base.SetAttribute(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26866,13 +26200,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TerritorialSeaArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Territorial Sea Area";
-		public nationality nationality { get; set; } = new nationality();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				nationality,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -26923,42 +26250,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? inDispute_optional {
+		public Boolean? inDispute {
 			set { base.SetAttribute(new inDispute { value = value }); }
 			get { return base.GetAttributeValue<inDispute>(nameof(inDispute))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] nationality_optional {
+		public String?[] nationality {
 			set { base.SetAttribute([.. value.Select(e=> new nationality { value = e })]); }
 			get { return base.GetAttributeValues<nationality>(nameof(nationality)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -26971,11 +26298,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SubmarineTransitLane);
 		[JsonIgnore]
 		public override string S100FC_name => "Submarine Transit Lane";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27026,42 +26348,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27074,11 +26396,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PilotageDistrict);
 		[JsonIgnore]
 		public override string S100FC_name => "Pilotage District";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27116,32 +26433,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27154,11 +26471,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CollisionRegulationsLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Collision Regulations Limit";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27208,42 +26520,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? regulationCitation_optional {
+		public String? regulationCitation {
 			set { base.SetAttribute(new regulationCitation { value = value }); }
 			get { return base.GetAttributeValue<regulationCitation>(nameof(regulationCitation))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27256,11 +26568,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MarinePollutionRegulationsArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Marine Pollution Regulations Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27298,32 +26605,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? regulationCitation_optional {
+		public String? regulationCitation {
 			set { base.SetAttribute(new regulationCitation { value = value }); }
 			get { return base.GetAttributeValue<regulationCitation>(nameof(regulationCitation))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27336,13 +26643,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RestrictedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Restricted Area";
-		public restriction restriction { get; set; } = new restriction();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				restriction,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27413,57 +26713,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfRestrictedArea_optional {
+		public int?[] categoryOfRestrictedArea {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfRestrictedArea { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfRestrictedArea>(nameof(categoryOfRestrictedArea)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27476,15 +26776,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightAllAround);
 		[JsonIgnore]
 		public override string S100FC_name => "Light All Around";
-		public colour colour { get; set; } = new colour();
-		public rhythmOfLight rhythmOfLight { get; set; } = new rhythmOfLight();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				colour,
-				rhythmOfLight,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27626,107 +26917,112 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfLight_optional {
+		public int?[] categoryOfLight {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfLight { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? exhibitionConditionOfLight_optional {
+		public int? exhibitionConditionOfLight {
 			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
 			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public int? flareBearing_optional {
+		public int? flareBearing {
 			set { base.SetAttribute(new flareBearing { value = value }); }
 			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? lightVisibility_optional {
+		public int? lightVisibility {
 			set { base.SetAttribute(new lightVisibility { value = value }); }
 			get { return base.GetAttributeValue<lightVisibility>(nameof(lightVisibility))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? majorLight_optional {
+		public Boolean? majorLight {
 			set { base.SetAttribute(new majorLight { value = value }); }
 			get { return base.GetAttributeValue<majorLight>(nameof(majorLight))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? signalGeneration_optional {
+		public rhythmOfLight? rhythmOfLight {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight))!; }
+		}
+		[JsonIgnore]
+		public int? signalGeneration {
 			set { base.SetAttribute(new signalGeneration { value = value }); }
 			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange_optional {
+		public double? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27739,13 +27035,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightSectored);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Sectored";
-		public sectorCharacteristics sectorCharacteristics { get; set; } = new sectorCharacteristics();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorCharacteristics,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -27849,82 +27138,82 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfLight_optional {
+		public int?[] categoryOfLight {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfLight { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? exhibitionConditionOfLight_optional {
+		public int? exhibitionConditionOfLight {
 			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
 			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public sectorCharacteristics?[] sectorCharacteristics_optional {
+		public sectorCharacteristics?[] sectorCharacteristics {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics)); } 
-	}
+			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics))!; }
+		}
 		[JsonIgnore]
-		public int? signalGeneration_optional {
+		public int? signalGeneration {
 			set { base.SetAttribute(new signalGeneration { value = value }); }
 			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -27937,11 +27226,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightFogDetector);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Fog Detector";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -28037,77 +27321,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public int? flareBearing_optional {
+		public int? flareBearing {
 			set { base.SetAttribute(new flareBearing { value = value }); }
 			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public rhythmOfLight? rhythmOfLight_optional {
+		public rhythmOfLight? rhythmOfLight {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
 		}
 		[JsonIgnore]
-		public int? signalGeneration_optional {
+		public int? signalGeneration {
 			set { base.SetAttribute(new signalGeneration { value = value }); }
 			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -28120,11 +27404,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightAirObstruction);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Air Obstruction";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -28233,87 +27512,87 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? exhibitionConditionOfLight_optional {
+		public int? exhibitionConditionOfLight {
 			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
 			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public int? flareBearing_optional {
+		public int? flareBearing {
 			set { base.SetAttribute(new flareBearing { value = value }); }
 			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] lightVisibility_optional {
+		public int?[] lightVisibility {
 			set { base.SetAttribute([.. value.Select(e=> new lightVisibility { value = e })]); }
 			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures_optional {
+		public multiplicityOfFeatures? multiplicityOfFeatures {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public rhythmOfLight? rhythmOfLight_optional {
+		public rhythmOfLight? rhythmOfLight {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange_optional {
+		public double? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
 		[JsonIgnore]
-		public int? verticalDatum_optional {
+		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -28326,17 +27605,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LateralBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Lateral Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public categoryOfLateralMark categoryOfLateralMark { get; set; } = new categoryOfLateralMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				categoryOfLateralMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -28453,79 +27721,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfLateralMark {
+			set { base.SetAttribute(new categoryOfLateralMark { value = value }); }
+			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -28541,17 +27819,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CardinalBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Cardinal Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public categoryOfCardinalMark categoryOfCardinalMark { get; set; } = new categoryOfCardinalMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				categoryOfCardinalMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -28668,79 +27935,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfCardinalMark {
+			set { base.SetAttribute(new categoryOfCardinalMark { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -28756,15 +28033,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(IsolatedDangerBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Isolated Danger Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -28874,79 +28142,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -28962,15 +28235,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SafeWaterBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Safe Water Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -29080,79 +28344,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -29168,17 +28437,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Special Purpose/General Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; set; } = new categoryOfSpecialPurposeMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				categoryOfSpecialPurposeMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -29295,84 +28553,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSpecialPurposeMark_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfSpecialPurposeMark {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -29388,15 +28651,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(EmergencyWreckMarkingBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Emergency Wreck Marking Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -29493,69 +28747,74 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -29571,15 +28830,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(InstallationBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Installation Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -29691,79 +28941,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfInstallationBuoy_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfInstallationBuoy {
 			set { base.SetAttribute(new categoryOfInstallationBuoy { value = value }); }
 			get { return base.GetAttributeValue<categoryOfInstallationBuoy>(nameof(categoryOfInstallationBuoy))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] product_optional {
+		public int?[] product {
 			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
 			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -29779,13 +29034,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(MooringBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring Buoy";
-		public buoyShape buoyShape { get; set; } = new buoyShape();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				buoyShape,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -29894,79 +29142,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? buoyShape {
+			set { base.SetAttribute(new buoyShape { value = value }); }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught_optional {
+		public double? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedVesselLength_optional {
+		public double? maximumPermittedVesselLength {
 			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? visitorsMooring_optional {
+		public Boolean? visitorsMooring {
 			set { base.SetAttribute(new visitorsMooring { value = value }); }
 			get { return base.GetAttributeValue<visitorsMooring>(nameof(visitorsMooring))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -29982,17 +29235,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LateralBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Lateral Beacon";
-		public beaconShape beaconShape { get; set; } = new beaconShape();
-		public categoryOfLateralMark categoryOfLateralMark { get; set; } = new categoryOfLateralMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				beaconShape,
-				categoryOfLateralMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -30141,104 +29383,114 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? beaconShape {
+			set { base.SetAttribute(new beaconShape { value = value }); }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfLateralMark {
+			set { base.SetAttribute(new categoryOfLateralMark { value = value }); }
+			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -30254,17 +29506,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CardinalBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Cardinal Beacon";
-		public beaconShape beaconShape { get; set; } = new beaconShape();
-		public categoryOfCardinalMark categoryOfCardinalMark { get; set; } = new categoryOfCardinalMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				beaconShape,
-				categoryOfCardinalMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -30413,104 +29654,114 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? beaconShape {
+			set { base.SetAttribute(new beaconShape { value = value }); }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfCardinalMark {
+			set { base.SetAttribute(new categoryOfCardinalMark { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -30526,15 +29777,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(IsolatedDangerBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Isolated Danger Beacon";
-		public beaconShape beaconShape { get; set; } = new beaconShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				beaconShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -30676,104 +29918,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? beaconShape {
+			set { base.SetAttribute(new beaconShape { value = value }); }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -30789,15 +30036,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SafeWaterBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Safe Water Beacon";
-		public beaconShape beaconShape { get; set; } = new beaconShape();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				beaconShape,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -30939,104 +30177,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int? beaconShape {
+			set { base.SetAttribute(new beaconShape { value = value }); }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -31052,17 +30295,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Special Purpose/General Beacon";
-		public beaconShape beaconShape { get; set; } = new beaconShape();
-		public categoryOfSpecialPurposeMark categoryOfSpecialPurposeMark { get; set; } = new categoryOfSpecialPurposeMark();
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				beaconShape,
-				categoryOfSpecialPurposeMark,
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -31211,109 +30443,114 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSpecialPurposeMark_optional {
+		public int? beaconShape {
+			set { base.SetAttribute(new beaconShape { value = value }); }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfSpecialPurposeMark {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? marksNavigationalSystemOf_optional {
+		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -31329,15 +30566,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Daymark);
 		[JsonIgnore]
 		public override string S100FC_name => "Daymark";
-		public colour colour { get; set; } = new colour();
-		public topmarkDaymarkShape topmarkDaymarkShape { get; set; } = new topmarkDaymarkShape();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				colour,
-				topmarkDaymarkShape,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -31459,89 +30687,94 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSpecialPurposeMark_optional {
+		public int?[] categoryOfSpecialPurposeMark {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSpecialPurposeMark { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSpecialPurposeMark>(nameof(categoryOfSpecialPurposeMark)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation_optional {
+		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public int? topmarkDaymarkShape {
+			set { base.SetAttribute(new topmarkDaymarkShape { value = value }); }
+			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))!.value; }
+		}
+		[JsonIgnore]
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public shapeInformation?[] shapeInformation_optional {
+		public shapeInformation?[] shapeInformation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); } 
-	}
+			get { return base.GetAttributeValues<shapeInformation>(nameof(shapeInformation)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -31557,13 +30790,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightFloat);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Float";
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -31678,89 +30904,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public topmark? topmark_optional {
+		public topmark? topmark {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -31776,13 +31002,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(LightVessel);
 		[JsonIgnore]
 		public override string S100FC_name => "Light Vessel";
-		public colour colour { get; set; } = new colour();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				colour,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -31891,84 +31110,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength_optional {
+		public double? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth_optional {
+		public double? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public Boolean? radarConspicuous_optional {
+		public Boolean? radarConspicuous {
 			set { base.SetAttribute(new radarConspicuous { value = value }); }
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength_optional {
+		public double? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public int? visualProminence_optional {
+		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
 			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -31984,11 +31203,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Retroreflector);
 		[JsonIgnore]
 		public override string S100FC_name => "Retroreflector";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32053,52 +31267,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] colour_optional {
+		public int?[] colour {
 			set { base.SetAttribute([.. value.Select(e=> new colour { value = e })]); }
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? colourPattern_optional {
+		public int? colourPattern {
 			set { base.SetAttribute(new colourPattern { value = value }); }
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32111,11 +31325,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadarReflector);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Reflector";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32166,42 +31375,42 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height_optional {
+		public double? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32214,13 +31423,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(FogSignal);
 		[JsonIgnore]
 		public override string S100FC_name => "Fog Signal";
-		public categoryOfFogSignal categoryOfFogSignal { get; set; } = new categoryOfFogSignal();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfFogSignal,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32315,72 +31517,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public int? categoryOfFogSignal {
+			set { base.SetAttribute(new categoryOfFogSignal { value = value }); }
+			get { return base.GetAttributeValue<categoryOfFogSignal>(nameof(categoryOfFogSignal))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? signalFrequency_optional {
+		public int? signalFrequency {
 			set { base.SetAttribute(new signalFrequency { value = value }); }
 			get { return base.GetAttributeValue<signalFrequency>(nameof(signalFrequency))?.value; }
 		}
 		[JsonIgnore]
-		public int? signalGeneration_optional {
+		public int? signalGeneration {
 			set { base.SetAttribute(new signalGeneration { value = value }); }
 			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
 		}
 		[JsonIgnore]
-		public String? signalGroup_optional {
+		public String? signalGroup {
 			set { base.SetAttribute(new signalGroup { value = value }); }
 			get { return base.GetAttributeValue<signalGroup>(nameof(signalGroup))?.value; }
 		}
 		[JsonIgnore]
-		public double? signalPeriod_optional {
+		public double? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
 		[JsonIgnore]
-		public signalSequence?[] signalSequence_optional {
+		public signalSequence?[] signalSequence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
-	}
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange_optional {
+		public double? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32393,11 +31600,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Physical AIS Aid to Navigation";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32460,52 +31662,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission_optional {
+		public double? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? mMSICode_optional {
+		public String? mMSICode {
 			set { base.SetAttribute(new mMSICode { value = value }); }
 			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32518,13 +31720,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Virtual AIS Aid to Navigation";
-		public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; set; } = new virtualAISAidToNavigationType();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				virtualAISAidToNavigationType,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32594,52 +31789,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission_optional {
+		public double? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public String? mMSICode_optional {
+		public String? mMSICode {
 			set { base.SetAttribute(new mMSICode { value = value }); }
 			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? virtualAISAidToNavigationType {
+			set { base.SetAttribute(new virtualAISAidToNavigationType { value = value }); }
+			get { return base.GetAttributeValue<virtualAISAidToNavigationType>(nameof(virtualAISAidToNavigationType))!.value; }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32652,11 +31852,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadioStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Station";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32738,67 +31933,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? callSign_optional {
+		public String? callSign {
 			set { base.SetAttribute(new callSign { value = value }); }
 			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfRadioStation_optional {
+		public int?[] categoryOfRadioStation {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfRadioStation { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfRadioStation>(nameof(categoryOfRadioStation)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission_optional {
+		public double? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public frequencyPair? frequencyPair_optional {
+		public frequencyPair? frequencyPair {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<frequencyPair>(nameof(frequencyPair)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32811,13 +32006,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RadarTransponderBeacon);
 		[JsonIgnore]
 		public override string S100FC_name => "Radar Transponder Beacon";
-		public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; } = new categoryOfRadarTransponderBeacon();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfRadarTransponderBeacon,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -32905,67 +32093,72 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public int? categoryOfRadarTransponderBeacon {
+			set { base.SetAttribute(new categoryOfRadarTransponderBeacon { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRadarTransponderBeacon>(nameof(categoryOfRadarTransponderBeacon))!.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public radarWaveLength?[] radarWaveLength_optional {
+		public radarWaveLength?[] radarWaveLength {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<radarWaveLength>(nameof(radarWaveLength)); } 
-	}
+			get { return base.GetAttributeValues<radarWaveLength>(nameof(radarWaveLength)); }
+		}
 		[JsonIgnore]
-		public sectorLimit? sectorLimit_optional {
+		public sectorLimit? sectorLimit {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<sectorLimit>(nameof(sectorLimit)); }
 		}
 		[JsonIgnore]
-		public String? signalGroup_optional {
+		public String? signalGroup {
 			set { base.SetAttribute(new signalGroup { value = value }); }
 			get { return base.GetAttributeValue<signalGroup>(nameof(signalGroup))?.value; }
 		}
 		[JsonIgnore]
-		public signalSequence?[] signalSequence_optional {
+		public signalSequence?[] signalSequence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); } 
-	}
+			get { return base.GetAttributeValues<signalSequence>(nameof(signalSequence)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange_optional {
+		public double? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -32978,11 +32171,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(PilotBoardingPlace);
 		[JsonIgnore]
 		public override string S100FC_name => "Pilot Boarding Place";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33066,67 +32254,67 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfPilotBoardingPlace_optional {
+		public int? categoryOfPilotBoardingPlace {
 			set { base.SetAttribute(new categoryOfPilotBoardingPlace { value = value }); }
 			get { return base.GetAttributeValue<categoryOfPilotBoardingPlace>(nameof(categoryOfPilotBoardingPlace))?.value; }
 		}
 		[JsonIgnore]
-		public int? categoryOfPreference_optional {
+		public int? categoryOfPreference {
 			set { base.SetAttribute(new categoryOfPreference { value = value }); }
 			get { return base.GetAttributeValue<categoryOfPreference>(nameof(categoryOfPreference))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] destination_optional {
+		public String?[] destination {
 			set { base.SetAttribute([.. value.Select(e=> new destination { value = e })]); }
 			get { return base.GetAttributeValues<destination>(nameof(destination)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] pilotMovement_optional {
+		public int?[] pilotMovement {
 			set { base.SetAttribute([.. value.Select(e=> new pilotMovement { value = e })]); }
 			get { return base.GetAttributeValues<pilotMovement>(nameof(pilotMovement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33139,11 +32327,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(VesselTrafficServiceArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Traffic Service Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33175,27 +32358,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33208,11 +32391,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(CoastGuardStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Coast Guard Station";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33275,52 +32453,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? isMRCC_optional {
+		public Boolean? isMRCC {
 			set { base.SetAttribute(new isMRCC { value = value }); }
 			get { return base.GetAttributeValue<isMRCC>(nameof(isMRCC))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33333,13 +32511,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SignalStationWarning);
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Station Warning";
-		public categoryOfSignalStationWarning categoryOfSignalStationWarning { get; set; } = new categoryOfSignalStationWarning();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfSignalStationWarning,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33403,52 +32574,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSignalStationWarning_optional {
+		public int?[] categoryOfSignalStationWarning {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSignalStationWarning { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSignalStationWarning>(nameof(categoryOfSignalStationWarning)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33461,13 +32632,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SignalStationTraffic);
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Station Traffic";
-		public categoryOfSignalStationTraffic categoryOfSignalStationTraffic { get; set; } = new categoryOfSignalStationTraffic();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfSignalStationTraffic,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33531,52 +32695,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSignalStationTraffic_optional {
+		public int?[] categoryOfSignalStationTraffic {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSignalStationTraffic { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSignalStationTraffic>(nameof(categoryOfSignalStationTraffic)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33589,11 +32753,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(RescueStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Rescue Station";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33657,52 +32816,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfRescueStation_optional {
+		public int?[] categoryOfRescueStation {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfRescueStation { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfRescueStation>(nameof(categoryOfRescueStation)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -33715,13 +32874,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(HarbourFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Facility";
-		public categoryOfHarbourFacility categoryOfHarbourFacility { get; set; } = new categoryOfHarbourFacility();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfHarbourFacility,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33831,84 +32983,84 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfHarbourFacility_optional {
+		public int?[] categoryOfHarbourFacility {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? condition_optional {
+		public int? condition {
 			set { base.SetAttribute(new condition { value = value }); }
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] natureOfConstruction_optional {
+		public int?[] natureOfConstruction {
 			set { base.SetAttribute([.. value.Select(e=> new natureOfConstruction { value = e })]); }
 			get { return base.GetAttributeValues<natureOfConstruction>(nameof(natureOfConstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int? product_optional {
+		public int? product {
 			set { base.SetAttribute(new product { value = value }); }
 			get { return base.GetAttributeValue<product>(nameof(product))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] restriction_optional {
+		public int?[] restriction {
 			set { base.SetAttribute([.. value.Select(e=> new restriction { value = e })]); }
 			get { return base.GetAttributeValues<restriction>(nameof(restriction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public vesselSpeedLimit?[] vesselSpeedLimit_optional {
+		public vesselSpeedLimit?[] vesselSpeedLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); } 
-	}
+			get { return base.GetAttributeValues<vesselSpeedLimit>(nameof(vesselSpeedLimit)); }
+		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -33924,13 +33076,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(SmallCraftFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Small Craft Facility";
-		public categoryOfSmallCraftFacility categoryOfSmallCraftFacility { get; set; } = new categoryOfSmallCraftFacility();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				categoryOfSmallCraftFacility,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -33988,44 +33133,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfSmallCraftFacility_optional {
+		public int?[] categoryOfSmallCraftFacility {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfSmallCraftFacility { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfSmallCraftFacility>(nameof(categoryOfSmallCraftFacility)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? pictorialRepresentation_optional {
+		public String? pictorialRepresentation {
 			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
@@ -34041,17 +33186,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(TextPlacement);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Placement";
-		public textOffsetBearing textOffsetBearing { get; set; } = new textOffsetBearing();
-		public textOffsetDistance textOffsetDistance { get; set; } = new textOffsetDistance();
-		public textType textType { get; set; } = new textType();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				textOffsetBearing,
-				textOffsetDistance,
-				textType,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -34090,19 +33224,29 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? textRotation_optional {
+		public int? textOffsetBearing {
+			set { base.SetAttribute(new textOffsetBearing { value = value }); }
+			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))!.value; }
+		}
+		[JsonIgnore]
+		public int? textOffsetDistance {
+			set { base.SetAttribute(new textOffsetDistance { value = value }); }
+			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))!.value; }
+		}
+		[JsonIgnore]
+		public Boolean? textRotation {
 			set { base.SetAttribute(new textRotation { value = value }); }
 			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] textType_optional {
+		public int?[] textType {
 			set { base.SetAttribute([.. value.Select(e=> new textType { value = e })]); }
 			get { return base.GetAttributeValues<textType>(nameof(textType)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? scaleMinimum_optional {
+		public int? scaleMinimum {
 			set { base.SetAttribute(new scaleMinimum { value = value }); }
 			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
 		}
@@ -34118,11 +33262,6 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		public override string S100FC_code => nameof(Chart1Feature);
 		[JsonIgnore]
 		public override string S100FC_name => "Chart 1 Feature";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -34142,17 +33281,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] drawingInstruction_optional {
+		public String?[] drawingInstruction {
 			set { base.SetAttribute([.. value.Select(e=> new drawingInstruction { value = e })]); }
 			get { return base.GetAttributeValues<drawingInstruction>(nameof(drawingInstruction)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		#endregion
 	}
 

@@ -272,8 +272,8 @@ namespace S100Framework.Applications.Singletons
 
                     //S100Framework.AttributeModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.AttributeModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 
-                    bridge.openingBridge_optional = canOpen;
-                    bridge.featureName_optional = ImporterNIS.GetFeatureName(displayName, ndisplayName);
+                    bridge.openingBridge = canOpen;
+                    bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
                     row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge);
 

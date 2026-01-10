@@ -12,23 +12,23 @@ namespace S100Framework.Applications
             var instance = new RadarStation();
 
             if (current.CALSGN != default) {
-                instance.callSign_optional = current.CALSGN;
+                instance.callSign = current.CALSGN;
             }
 
             if (current.CATRAS != null) {
                 var categoryOfRadarStation = EnumHelper.GetEnumValues(current.CATRAS);
                 if (categoryOfRadarStation is not null && categoryOfRadarStation.Any())
-                    instance.categoryOfRadarStation_optional = categoryOfRadarStation;
+                    instance.categoryOfRadarStation = categoryOfRadarStation;
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel_optional = ImporterNIS.GetCommunicationChannel(current.COMCHA);
+                instance.communicationChannel = ImporterNIS.GetCommunicationChannel(current.COMCHA);
             }
 
-            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height_optional = current.HEIGHT.Value;
+                instance.height = current.HEIGHT.Value;
             }
             else {
 
@@ -39,15 +39,15 @@ namespace S100Framework.Applications
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
-                instance.periodicDateRange_optional = periodicDateRange;
+                instance.periodicDateRange = periodicDateRange;
             }
 
             if (current.STATUS != default) {
-                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
             if (current.VALMXR.HasValue) {
-                instance.valueOfMaximumRange_optional = current.VALMXR.Value;
+                instance.valueOfMaximumRange = current.VALMXR.Value;
             }
 
 
@@ -55,11 +55,11 @@ namespace S100Framework.Applications
                 string subtype = "";
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-            instance.information_optional = result.information.ToArray();
+            instance.information = result.information.ToArray();
             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;

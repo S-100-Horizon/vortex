@@ -1875,13 +1875,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(areaA3ServiceDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Area A3 Service Description";
-		public servingMobileSatelliteService servingMobileSatelliteService { get; set; } = new servingMobileSatelliteService();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				servingMobileSatelliteService,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -1908,19 +1901,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] servingMobileSatelliteService_optional {
+		public int?[] servingMobileSatelliteService {
 			set { base.SetAttribute([.. value.Select(e=> new servingMobileSatelliteService { value = e })]); }
 			get { return base.GetAttributeValues<servingMobileSatelliteService>(nameof(servingMobileSatelliteService)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? satelliteOceanRegion_optional {
+		public String? satelliteOceanRegion {
 			set { base.SetAttribute(new satelliteOceanRegion { value = value }); }
 			get { return base.GetAttributeValue<satelliteOceanRegion>(nameof(satelliteOceanRegion))?.value; }
 		}
 		[JsonIgnore]
-		public String? mSICoastalWarningArea_optional {
+		public String? mSICoastalWarningArea {
 			set { base.SetAttribute(new mSICoastalWarningArea { value = value }); }
 			get { return base.GetAttributeValue<mSICoastalWarningArea>(nameof(mSICoastalWarningArea))?.value; }
 		}
@@ -1936,13 +1929,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(broadcastContent);
 		[JsonIgnore]
 		public override string S100FC_name => "Broadcast Content";
-		public typeOfBroadcastContent typeOfBroadcastContent { get; set; } = new typeOfBroadcastContent();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				typeOfBroadcastContent,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -1982,29 +1968,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] typeOfBroadcastContent_optional {
+		public int?[] typeOfBroadcastContent {
 			set { base.SetAttribute([.. value.Select(e=> new typeOfBroadcastContent { value = e })]); }
 			get { return base.GetAttributeValues<typeOfBroadcastContent>(nameof(typeOfBroadcastContent)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] subjectOrMessageTypeCode_optional {
+		public String?[] subjectOrMessageTypeCode {
 			set { base.SetAttribute([.. value.Select(e=> new subjectOrMessageTypeCode { value = e })]); }
 			get { return base.GetAttributeValues<subjectOrMessageTypeCode>(nameof(subjectOrMessageTypeCode)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? subjectDescription_optional {
+		public String? subjectDescription {
 			set { base.SetAttribute(new subjectDescription { value = value }); }
 			get { return base.GetAttributeValue<subjectDescription>(nameof(subjectDescription))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time? observationTime_optional {
+		public S100Framework.DomainModel.S100.Time? observationTime {
 			set { base.SetAttribute(new observationTime { value = value }); }
 			get { return base.GetAttributeValue<observationTime>(nameof(observationTime))?.value; }
 		}
 		[JsonIgnore]
-		public int? transmissionRegularity_optional {
+		public int? transmissionRegularity {
 			set { base.SetAttribute(new transmissionRegularity { value = value }); }
 			get { return base.GetAttributeValue<transmissionRegularity>(nameof(transmissionRegularity))?.value; }
 		}
@@ -2020,11 +2006,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(contactAddress);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Address";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2062,29 +2043,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? deliveryPoint_optional {
+		public String? deliveryPoint {
 			set { base.SetAttribute(new deliveryPoint { value = value }); }
 			get { return base.GetAttributeValue<deliveryPoint>(nameof(deliveryPoint))?.value; }
 		}
 		[JsonIgnore]
-		public String? cityName_optional {
+		public String? cityName {
 			set { base.SetAttribute(new cityName { value = value }); }
 			get { return base.GetAttributeValue<cityName>(nameof(cityName))?.value; }
 		}
 		[JsonIgnore]
-		public String? administrativeDivision_optional {
+		public String? administrativeDivision {
 			set { base.SetAttribute(new administrativeDivision { value = value }); }
 			get { return base.GetAttributeValue<administrativeDivision>(nameof(administrativeDivision))?.value; }
 		}
 		[JsonIgnore]
-		public String? countryName_optional {
+		public String? countryName {
 			set { base.SetAttribute(new countryName { value = value }); }
 			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
 		}
 		[JsonIgnore]
-		public String? postalCode_optional {
+		public String? postalCode {
 			set { base.SetAttribute(new postalCode { value = value }); }
 			get { return base.GetAttributeValue<postalCode>(nameof(postalCode))?.value; }
 		}
@@ -2100,11 +2081,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(coverageIndication);
 		[JsonIgnore]
 		public override string S100FC_name => "Coverage Indication";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2143,29 +2119,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? minimumReceivedPower_optional {
+		public double? minimumReceivedPower {
 			set { base.SetAttribute(new minimumReceivedPower { value = value }); }
 			get { return base.GetAttributeValue<minimumReceivedPower>(nameof(minimumReceivedPower))?.value; }
 		}
 		[JsonIgnore]
-		public double? presumedReceiverAntennaHeight_optional {
+		public double? presumedReceiverAntennaHeight {
 			set { base.SetAttribute(new presumedReceiverAntennaHeight { value = value }); }
 			get { return base.GetAttributeValue<presumedReceiverAntennaHeight>(nameof(presumedReceiverAntennaHeight))?.value; }
 		}
 		[JsonIgnore]
-		public double? minimumSignalToInterferenceNoiseRatio_optional {
+		public double? minimumSignalToInterferenceNoiseRatio {
 			set { base.SetAttribute(new minimumSignalToInterferenceNoiseRatio { value = value }); }
 			get { return base.GetAttributeValue<minimumSignalToInterferenceNoiseRatio>(nameof(minimumSignalToInterferenceNoiseRatio))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] text_optional {
+		public String?[] text {
 			set { base.SetAttribute([.. value.Select(e=> new text { value = e })]); }
 			get { return base.GetAttributeValues<text>(nameof(text)).Select(e=>e.value).ToArray(); }
 		}
@@ -2181,15 +2157,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
-		public language language { get; set; } = new language();
-		public name name { get; set; } = new name();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				language,
-				name,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2216,9 +2183,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? nameUsage_optional {
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+		}
+		[JsonIgnore]
+		public String? name {
+			set { base.SetAttribute(new name { value = value }); }
+			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+		}
+		[JsonIgnore]
+		public int? nameUsage {
 			set { base.SetAttribute(new nameUsage { value = value }); }
 			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
 		}
@@ -2234,11 +2211,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(fixedDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Fixed Date Range";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2270,24 +2242,24 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? dateStart_optional {
+		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
 		[JsonIgnore]
-		public String? dateEnd_optional {
+		public String? dateEnd {
 			set { base.SetAttribute(new dateEnd { value = value }); }
 			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time? timeOfDayStart_optional {
+		public S100Framework.DomainModel.S100.Time? timeOfDayStart {
 			set { base.SetAttribute(new timeOfDayStart { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayStart>(nameof(timeOfDayStart))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time? timeOfDayEnd_optional {
+		public S100Framework.DomainModel.S100.Time? timeOfDayEnd {
 			set { base.SetAttribute(new timeOfDayEnd { value = value }); }
 			get { return base.GetAttributeValue<timeOfDayEnd>(nameof(timeOfDayEnd))?.value; }
 		}
@@ -2303,13 +2275,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyPair);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Pair";
-		public frequencyShoreStationTransmits frequencyShoreStationTransmits { get; set; } = new frequencyShoreStationTransmits();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				frequencyShoreStationTransmits,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2329,11 +2294,16 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? frequencyShoreStationReceives_optional {
+		public int? frequencyShoreStationReceives {
 			set { base.SetAttribute(new frequencyShoreStationReceives { value = value }); }
 			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
+		}
+		[JsonIgnore]
+		public int? frequencyShoreStationTransmits {
+			set { base.SetAttribute(new frequencyShoreStationTransmits { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))!.value; }
 		}
 		#endregion
 	}
@@ -2347,15 +2317,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Range";
-		public frequencyLimitLower frequencyLimitLower { get; set; } = new frequencyLimitLower();
-		public frequencyLimitUpper frequencyLimitUpper { get; set; } = new frequencyLimitUpper();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				frequencyLimitLower,
-				frequencyLimitUpper,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2375,7 +2336,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public int? frequencyLimitLower {
+			set { base.SetAttribute(new frequencyLimitLower { value = value }); }
+			get { return base.GetAttributeValue<frequencyLimitLower>(nameof(frequencyLimitLower))!.value; }
+		}
+		[JsonIgnore]
+		public int? frequencyLimitUpper {
+			set { base.SetAttribute(new frequencyLimitUpper { value = value }); }
+			get { return base.GetAttributeValue<frequencyLimitUpper>(nameof(frequencyLimitUpper))!.value; }
+		}
 		#endregion
 	}
 
@@ -2388,13 +2359,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(graphic);
 		[JsonIgnore]
 		public override string S100FC_name => "Graphic";
-		public pictorialRepresentation pictorialRepresentation { get; set; } = new pictorialRepresentation();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				pictorialRepresentation,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2426,19 +2390,24 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? pictureCaption_optional {
+		public String? pictorialRepresentation {
+			set { base.SetAttribute(new pictorialRepresentation { value = value }); }
+			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))!.value; }
+		}
+		[JsonIgnore]
+		public String? pictureCaption {
 			set { base.SetAttribute(new pictureCaption { value = value }); }
 			get { return base.GetAttributeValue<pictureCaption>(nameof(pictureCaption))?.value; }
 		}
 		[JsonIgnore]
-		public DateOnly? sourceDate_optional {
+		public DateOnly? sourceDate {
 			set { base.SetAttribute(new sourceDate { value = value }); }
 			get { return base.GetAttributeValue<sourceDate>(nameof(sourceDate))?.value; }
 		}
 		[JsonIgnore]
-		public String? pictureInformation_optional {
+		public String? pictureInformation {
 			set { base.SetAttribute(new pictureInformation { value = value }); }
 			get { return base.GetAttributeValue<pictureInformation>(nameof(pictureInformation))?.value; }
 		}
@@ -2454,13 +2423,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				uncertaintyFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2480,9 +2442,14 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor_optional {
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -2498,13 +2465,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
-		public language language { get; set; } = new language();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				language,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2542,24 +2502,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? fileLocator_optional {
+		public String? fileLocator {
 			set { base.SetAttribute(new fileLocator { value = value }); }
 			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
 		}
 		[JsonIgnore]
-		public String? fileReference_optional {
+		public String? fileReference {
 			set { base.SetAttribute(new fileReference { value = value }); }
 			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
 		}
 		[JsonIgnore]
-		public String? headline_optional {
+		public String? headline {
 			set { base.SetAttribute(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
 		[JsonIgnore]
-		public String? text_optional {
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+		}
+		[JsonIgnore]
+		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
 			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
@@ -2575,13 +2540,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
-		public linkage linkage { get; set; } = new linkage();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				linkage,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2607,14 +2565,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? headline_optional {
+		public String? headline {
 			set { base.SetAttribute(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
 		[JsonIgnore]
-		public String? nameOfResource_optional {
+		public String? linkage {
+			set { base.SetAttribute(new linkage { value = value }); }
+			get { return base.GetAttributeValue<linkage>(nameof(linkage))!.value; }
+		}
+		[JsonIgnore]
+		public String? nameOfResource {
 			set { base.SetAttribute(new nameOfResource { value = value }); }
 			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
 		}
@@ -2630,15 +2593,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
-		public dateStart dateStart { get; set; } = new dateStart();
-		public dateEnd dateEnd { get; set; } = new dateEnd();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				dateStart,
-				dateEnd,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2658,7 +2612,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public String? dateStart {
+			set { base.SetAttribute(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))!.value; }
+		}
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+		}
 		#endregion
 	}
 
@@ -2671,13 +2635,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(radioChannelDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Channel Details";
-		public transmissionOfTrafficLists transmissionOfTrafficLists { get; set; } = new transmissionOfTrafficLists();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				transmissionOfTrafficLists,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2715,24 +2672,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public frequencyPair?[] frequencyPair_optional {
+		public frequencyPair?[] frequencyPair {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
-	}
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); }
+		}
 		[JsonIgnore]
-		public int?[] dataTransmissionRate_optional {
+		public int?[] dataTransmissionRate {
 			set { base.SetAttribute([.. value.Select(e=> new dataTransmissionRate { value = e })]); }
 			get { return base.GetAttributeValues<dataTransmissionRate>(nameof(dataTransmissionRate)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? hoursOfWatch_optional {
+		public Boolean? transmissionOfTrafficLists {
+			set { base.SetAttribute(new transmissionOfTrafficLists { value = value }); }
+			get { return base.GetAttributeValue<transmissionOfTrafficLists>(nameof(transmissionOfTrafficLists))!.value; }
+		}
+		[JsonIgnore]
+		public String? hoursOfWatch {
 			set { base.SetAttribute(new hoursOfWatch { value = value }); }
 			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
 		}
@@ -2748,11 +2710,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(radiocommunicationIdentifier);
 		[JsonIgnore]
 		public override string S100FC_name => "Radiocommunication Identifier";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2784,24 +2741,24 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] callSign_optional {
+		public String?[] callSign {
 			set { base.SetAttribute([.. value.Select(e=> new callSign { value = e })]); }
 			get { return base.GetAttributeValues<callSign>(nameof(callSign)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] mMSICode_optional {
+		public String?[] mMSICode {
 			set { base.SetAttribute([.. value.Select(e=> new mMSICode { value = e })]); }
 			get { return base.GetAttributeValues<mMSICode>(nameof(mMSICode)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] selectiveCallNumber_optional {
+		public int?[] selectiveCallNumber {
 			set { base.SetAttribute([.. value.Select(e=> new selectiveCallNumber { value = e })]); }
 			get { return base.GetAttributeValues<selectiveCallNumber>(nameof(selectiveCallNumber)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] coastStationIdentificationCode_optional {
+		public String?[] coastStationIdentificationCode {
 			set { base.SetAttribute([.. value.Select(e=> new coastStationIdentificationCode { value = e })]); }
 			get { return base.GetAttributeValues<coastStationIdentificationCode>(nameof(coastStationIdentificationCode)).Select(e=>e.value).ToArray(); }
 		}
@@ -2817,11 +2774,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(rxNCode);
 		[JsonIgnore]
 		public override string S100FC_name => "RxN Code";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2847,19 +2799,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? headline_optional {
+		public String? headline {
 			set { base.SetAttribute(new headline { value = value }); }
 			get { return base.GetAttributeValue<headline>(nameof(headline))?.value; }
 		}
 		[JsonIgnore]
-		public int? categoryOfRxN_optional {
+		public int? categoryOfRxN {
 			set { base.SetAttribute(new categoryOfRxN { value = value }); }
 			get { return base.GetAttributeValue<categoryOfRxN>(nameof(categoryOfRxN))?.value; }
 		}
 		[JsonIgnore]
-		public int? actionOrActivity_optional {
+		public int? actionOrActivity {
 			set { base.SetAttribute(new actionOrActivity { value = value }); }
 			get { return base.GetAttributeValue<actionOrActivity>(nameof(actionOrActivity))?.value; }
 		}
@@ -2875,13 +2827,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitOne);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit One";
-		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorBearing,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2901,9 +2846,14 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? sectorLineLength_optional {
+		public double? sectorBearing {
+			set { base.SetAttribute(new sectorBearing { value = value }); }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+		}
+		[JsonIgnore]
+		public double? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -2919,13 +2869,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimitTwo);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit Two";
-		public sectorBearing sectorBearing { get; set; } = new sectorBearing();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorBearing,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2945,9 +2888,14 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? sectorLineLength_optional {
+		public double? sectorBearing {
+			set { base.SetAttribute(new sectorBearing { value = value }); }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+		}
+		[JsonIgnore]
+		public double? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -2963,13 +2911,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(surveyDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Date Range";
-		public dateEnd dateEnd { get; set; } = new dateEnd();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				dateEnd,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2989,11 +2930,16 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? dateStart_optional {
+		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
 			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
 		}
 		#endregion
 	}
@@ -3007,13 +2953,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
-		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				telecommunicationIdentifier,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3040,14 +2979,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? contactInstructions_optional {
+		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
 			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
-		public int? telecommunicationService_optional {
+		public String? telecommunicationIdentifier {
+			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))!.value; }
+		}
+		[JsonIgnore]
+		public int? telecommunicationService {
 			set { base.SetAttribute(new telecommunicationService { value = value }); }
 			get { return base.GetAttributeValue<telecommunicationService>(nameof(telecommunicationService))?.value; }
 		}
@@ -3063,11 +3007,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(textContent);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Content";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3106,29 +3045,29 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfText_optional {
+		public int? categoryOfText {
 			set { base.SetAttribute(new categoryOfText { value = value }); }
 			get { return base.GetAttributeValue<categoryOfText>(nameof(categoryOfText))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public onlineResource? onlineResource_optional {
+		public onlineResource? onlineResource {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
 		}
 		[JsonIgnore]
-		public String? source_optional {
+		public String? source {
 			set { base.SetAttribute(new source { value = value }); }
 			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
@@ -3144,11 +3083,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Intervals by Day of Week";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3181,24 +3115,24 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] dayOfWeek_optional {
+		public int?[] dayOfWeek {
 			set { base.SetAttribute([.. value.Select(e=> new dayOfWeek { value = e })]); }
 			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public Boolean? dayOfWeekIsRange_optional {
+		public Boolean? dayOfWeekIsRange {
 			set { base.SetAttribute(new dayOfWeekIsRange { value = value }); }
 			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart_optional {
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart {
 			set { base.SetAttribute([.. value.Select(e=> new timeOfDayStart { value = e })]); }
 			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd_optional {
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd {
 			set { base.SetAttribute([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
 			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
 		}
@@ -3214,11 +3148,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(timesOfTransmission);
 		[JsonIgnore]
 		public override string S100FC_name => "Times of Transmission";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3250,24 +3179,24 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? minutePastEvenHours_optional {
+		public int? minutePastEvenHours {
 			set { base.SetAttribute(new minutePastEvenHours { value = value }); }
 			get { return base.GetAttributeValue<minutePastEvenHours>(nameof(minutePastEvenHours))?.value; }
 		}
 		[JsonIgnore]
-		public int? minutePastOddHours_optional {
+		public int? minutePastOddHours {
 			set { base.SetAttribute(new minutePastOddHours { value = value }); }
 			get { return base.GetAttributeValue<minutePastOddHours>(nameof(minutePastOddHours))?.value; }
 		}
 		[JsonIgnore]
-		public int? minutePastEveryHour_optional {
+		public int? minutePastEveryHour {
 			set { base.SetAttribute(new minutePastEveryHour { value = value }); }
 			get { return base.GetAttributeValue<minutePastEveryHour>(nameof(minutePastEveryHour))?.value; }
 		}
 		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] transmissionTime_optional {
+		public S100Framework.DomainModel.S100.Time?[] transmissionTime {
 			set { base.SetAttribute([.. value.Select(e=> new transmissionTime { value = e })]); }
 			get { return base.GetAttributeValues<transmissionTime>(nameof(transmissionTime)).Select(e=>e.value).ToArray(); }
 		}
@@ -3283,13 +3212,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
-		public uncertaintyFixed uncertaintyFixed { get; set; } = new uncertaintyFixed();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				uncertaintyFixed,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3309,9 +3231,14 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor_optional {
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -3327,19 +3254,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Measurements Specification";
-		public vesselsCharacteristics vesselsCharacteristics { get; set; } = new vesselsCharacteristics();
-		public vesselsCharacteristicsValue vesselsCharacteristicsValue { get; set; } = new vesselsCharacteristicsValue();
-		public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; } = new vesselsCharacteristicsUnit();
-		public comparisonOperator comparisonOperator { get; set; } = new comparisonOperator();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				vesselsCharacteristics,
-				vesselsCharacteristicsValue,
-				vesselsCharacteristicsUnit,
-				comparisonOperator,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3374,7 +3288,27 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public int? vesselsCharacteristics {
+			set { base.SetAttribute(new vesselsCharacteristics { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristics>(nameof(vesselsCharacteristics))!.value; }
+		}
+		[JsonIgnore]
+		public double? vesselsCharacteristicsValue {
+			set { base.SetAttribute(new vesselsCharacteristicsValue { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristicsValue>(nameof(vesselsCharacteristicsValue))!.value; }
+		}
+		[JsonIgnore]
+		public int? vesselsCharacteristicsUnit {
+			set { base.SetAttribute(new vesselsCharacteristicsUnit { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristicsUnit>(nameof(vesselsCharacteristicsUnit))!.value; }
+		}
+		[JsonIgnore]
+		public int? comparisonOperator {
+			set { base.SetAttribute(new comparisonOperator { value = value }); }
+			get { return base.GetAttributeValue<comparisonOperator>(nameof(comparisonOperator))!.value; }
+		}
 		#endregion
 	}
 
@@ -3387,13 +3321,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(scheduleByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Schedule by Day of Week";
-		public timeIntervalsByDayOfWeek timeIntervalsByDayOfWeek { get; set; } = new timeIntervalsByDayOfWeek();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				timeIntervalsByDayOfWeek,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3414,17 +3341,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfSchedule_optional {
+		public int? categoryOfSchedule {
 			set { base.SetAttribute(new categoryOfSchedule { value = value }); }
 			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
 		}
 		[JsonIgnore]
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
-	}
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek))!; }
+		}
 		#endregion
 	}
 
@@ -3437,15 +3364,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(sectorLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Limit";
-		public sectorLimitOne sectorLimitOne { get; set; } = new sectorLimitOne();
-		public sectorLimitTwo sectorLimitTwo { get; set; } = new sectorLimitTwo();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				sectorLimitOne,
-				sectorLimitTwo,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3465,7 +3383,17 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
+		[JsonIgnore]
+		public sectorLimitOne? sectorLimitOne {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<sectorLimitOne>(nameof(sectorLimitOne))!; }
+		}
+		[JsonIgnore]
+		public sectorLimitTwo? sectorLimitTwo {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<sectorLimitTwo>(nameof(sectorLimitTwo))!; }
+		}
 		#endregion
 	}
 
@@ -3478,11 +3406,6 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 		public override string S100FC_code => nameof(spatialAccuracy);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Accuracy";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3508,19 +3431,19 @@ namespace S100Framework.AttributeModel.S123.ComplexAttributes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
@@ -3538,134 +3461,112 @@ namespace S100Framework.AttributeModel.S123.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theInformation";
-		
-		
 	}
 	public class AssociatedRxN : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theRxN";
-		
-		
 	}
 	public class AuthorityContact : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theContactDetails";
-		
-		
 	}
 	public class AuthorityHours : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theServiceHours";
-		
-		
 	}
 	public class AvailableQoS : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theQoS";
-		
-		
 	}
 	public class BroadcastService : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theBroadcastDetails";
-		
-		
 	}
 	public class BroadcastTransmission : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theTransmissionDetails";
-		
-		
 	}
 	public class ConnectivityService : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "connectivityServiceProvider";
-		
-		
 	}
 	public class ExceptionalWorkday : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "partialWorkingDay";
-		
-		
 	}
 	public class InclusionType : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theApplicableRxN";
-		
-		
+
+		#region Attributes
+		[JsonIgnore]
+		public int? membership {
+			set { base.SetAttribute(new membership { value = value }); }
+			get { return base.GetAttributeValue<membership>(nameof(membership))!.value; }
+		}
+		#endregion
 	}
 	public class LocationHours : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theServiceHours";
-		
-		
 	}
 	public class PermissionType : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "permission";
-		
-		
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfRelationship {
+			set { base.SetAttribute(new categoryOfRelationship { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRelationship>(nameof(categoryOfRelationship))!.value; }
+		}
+		#endregion
 	}
 	public class RadioServiceControl : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theControlCentre";
-		
-		
 	}
 	public class relatedOrganisation : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theInformation";
-		
-		
 	}
 	public class ServiceContact : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theContactDetails";
-		
-		
 	}
 	public class ServiceCoordination : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "coordinatingAuthority";
-		
-		
 	}
 	public class SpatialAssociation : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theQualityInformation";
-		
-		
 	}
 	public class TMAS : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theTMAS";
-		
-		
 	}
 	public class TransmissionService : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
 		public override string role => "theTransmissionDetails";
-		
-		
 	}
 }
 
@@ -3678,19 +3579,16 @@ namespace S100Framework.AttributeModel.S123.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class fuzzyZoneAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
-
 	}
 	public class ServiceProvisionArea : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string[] roles => ["serviceArea","serviceProvider"];
-
 	}
 }
 
@@ -3708,11 +3606,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(InformationType);
 		[JsonIgnore]
 		public override string S100FC_name => "Information Type";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3750,29 +3643,29 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public String? source_optional {
+		public String? source {
 			set { base.SetAttribute(new source { value = value }); }
 			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
@@ -3788,12 +3681,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(AbstractRxN);
 		[JsonIgnore]
 		public override string S100FC_name => "AbstractRxN";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3827,27 +3714,27 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfAuthority_optional {
+		public int? categoryOfAuthority {
 			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
 			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
 		}
 		[JsonIgnore]
-		public textContent? textContent_optional {
+		public textContent? textContent {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
 		}
 		[JsonIgnore]
-		public graphic? graphic_optional {
+		public graphic? graphic {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<graphic>(nameof(graphic)); }
 		}
 		[JsonIgnore]
-		public rxNCode?[] rxNCode_optional {
+		public rxNCode?[] rxNCode {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); } 
-	}
+			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); }
+		}
 		#endregion
 	}
 
@@ -3860,12 +3747,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(Applicability);
 		[JsonIgnore]
 		public override string S100FC_name => "Applicability";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3939,57 +3820,57 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public Boolean? inBallast_optional {
+		public Boolean? inBallast {
 			set { base.SetAttribute(new inBallast { value = value }); }
 			get { return base.GetAttributeValue<inBallast>(nameof(inBallast))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfVessel_optional {
+		public int?[] categoryOfVessel {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfVessel { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfVessel>(nameof(categoryOfVessel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? categoryOfVesselRegistry_optional {
+		public int? categoryOfVesselRegistry {
 			set { base.SetAttribute(new categoryOfVesselRegistry { value = value }); }
 			get { return base.GetAttributeValue<categoryOfVesselRegistry>(nameof(categoryOfVesselRegistry))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfCargo_optional {
+		public int?[] categoryOfCargo {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int?[] categoryOfDangerousOrHazardousCargo_optional {
+		public int?[] categoryOfDangerousOrHazardousCargo {
 			set { base.SetAttribute([.. value.Select(e=> new categoryOfDangerousOrHazardousCargo { value = e })]); }
 			get { return base.GetAttributeValues<categoryOfDangerousOrHazardousCargo>(nameof(categoryOfDangerousOrHazardousCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? logicalConnectives_optional {
+		public int? logicalConnectives {
 			set { base.SetAttribute(new logicalConnectives { value = value }); }
 			get { return base.GetAttributeValue<logicalConnectives>(nameof(logicalConnectives))?.value; }
 		}
 		[JsonIgnore]
-		public int? thicknessOfIceCapability_optional {
+		public int? thicknessOfIceCapability {
 			set { base.SetAttribute(new thicknessOfIceCapability { value = value }); }
 			get { return base.GetAttributeValue<thicknessOfIceCapability>(nameof(thicknessOfIceCapability))?.value; }
 		}
 		[JsonIgnore]
-		public String? vesselPerformance_optional {
+		public String? vesselPerformance {
 			set { base.SetAttribute(new vesselPerformance { value = value }); }
 			get { return base.GetAttributeValue<vesselPerformance>(nameof(vesselPerformance))?.value; }
 		}
 		[JsonIgnore]
-		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification_optional {
+		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselMeasurementsSpecification>(nameof(vesselMeasurementsSpecification)); } 
-	}
+			get { return base.GetAttributeValues<vesselMeasurementsSpecification>(nameof(vesselMeasurementsSpecification)); }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -4002,12 +3883,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(Authority);
 		[JsonIgnore]
 		public override string S100FC_name => "Authority";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4029,14 +3904,14 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfAuthority_optional {
+		public int? categoryOfAuthority {
 			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
 			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
 		}
 		[JsonIgnore]
-		public textContent? textContent_optional {
+		public textContent? textContent {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
 		}
@@ -4052,14 +3927,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(BroadcastDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Broadcast Details";
-		public broadcastContent broadcastContent { get; set; } = new broadcastContent();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				broadcastContent,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4105,34 +3972,34 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String?[] language_optional {
+		public String?[] language {
 			set { base.SetAttribute([.. value.Select(e=> new language { value = e })]); }
 			get { return base.GetAttributeValues<language>(nameof(language)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public int? categoryOfBroadcastCommunication_optional {
+		public int? categoryOfBroadcastCommunication {
 			set { base.SetAttribute(new categoryOfBroadcastCommunication { value = value }); }
 			get { return base.GetAttributeValue<categoryOfBroadcastCommunication>(nameof(categoryOfBroadcastCommunication))?.value; }
 		}
 		[JsonIgnore]
-		public broadcastContent?[] broadcastContent_optional {
+		public broadcastContent?[] broadcastContent {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<broadcastContent>(nameof(broadcastContent)); } 
-	}
+			get { return base.GetAttributeValues<broadcastContent>(nameof(broadcastContent))!; }
+		}
 		[JsonIgnore]
-		public timesOfTransmission?[] timesOfTransmission_optional {
+		public timesOfTransmission?[] timesOfTransmission {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timesOfTransmission>(nameof(timesOfTransmission)); } 
-	}
+			get { return base.GetAttributeValues<timesOfTransmission>(nameof(timesOfTransmission)); }
+		}
 		[JsonIgnore]
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek_optional {
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); } 
-	}
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); }
+		}
 		[JsonIgnore]
-		public onlineResource? onlineResource_optional {
+		public onlineResource? onlineResource {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
 		}
@@ -4148,12 +4015,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(ConnectivityQualityOfService);
 		[JsonIgnore]
 		public override string S100FC_name => "Connectivity Quality of Service";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4206,42 +4067,42 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int?[] typeOfConnectivityResource_optional {
+		public int?[] typeOfConnectivityResource {
 			set { base.SetAttribute([.. value.Select(e=> new typeOfConnectivityResource { value = e })]); }
 			get { return base.GetAttributeValues<typeOfConnectivityResource>(nameof(typeOfConnectivityResource)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? uplinkBandwidth_optional {
+		public double? uplinkBandwidth {
 			set { base.SetAttribute(new uplinkBandwidth { value = value }); }
 			get { return base.GetAttributeValue<uplinkBandwidth>(nameof(uplinkBandwidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? downlinkBandwidth_optional {
+		public double? downlinkBandwidth {
 			set { base.SetAttribute(new downlinkBandwidth { value = value }); }
 			get { return base.GetAttributeValue<downlinkBandwidth>(nameof(downlinkBandwidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? packetDelay_optional {
+		public double? packetDelay {
 			set { base.SetAttribute(new packetDelay { value = value }); }
 			get { return base.GetAttributeValue<packetDelay>(nameof(packetDelay))?.value; }
 		}
 		[JsonIgnore]
-		public int? maximumDataBurstVolume_optional {
+		public int? maximumDataBurstVolume {
 			set { base.SetAttribute(new maximumDataBurstVolume { value = value }); }
 			get { return base.GetAttributeValue<maximumDataBurstVolume>(nameof(maximumDataBurstVolume))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] status_optional {
+		public int?[] status {
 			set { base.SetAttribute([.. value.Select(e=> new status { value = e })]); }
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -4254,12 +4115,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(ContactDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Details";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4334,59 +4189,59 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? contactInstructions_optional {
+		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
 			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
-		public contactAddress?[] contactAddress_optional {
+		public contactAddress?[] contactAddress {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); } 
-	}
+			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); }
+		}
 		[JsonIgnore]
-		public frequencyPair?[] frequencyPair_optional {
+		public frequencyPair?[] frequencyPair {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); } 
-	}
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); }
+		}
 		[JsonIgnore]
-		public information? information_optional {
+		public information? information {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<information>(nameof(information)); }
 		}
 		[JsonIgnore]
-		public onlineResource?[] onlineResource_optional {
+		public onlineResource?[] onlineResource {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
-	}
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
 		[JsonIgnore]
-		public telecommunications?[] telecommunications_optional {
+		public telecommunications?[] telecommunications {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
-	}
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
+		}
 		[JsonIgnore]
-		public String? callName_optional {
+		public String? callName {
 			set { base.SetAttribute(new callName { value = value }); }
 			get { return base.GetAttributeValue<callName>(nameof(callName))?.value; }
 		}
 		[JsonIgnore]
-		public String? callSign_optional {
+		public String? callSign {
 			set { base.SetAttribute(new callSign { value = value }); }
 			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
 		}
 		[JsonIgnore]
-		public String?[] communicationChannel_optional {
+		public String?[] communicationChannel {
 			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String? mMSICode_optional {
+		public String? mMSICode {
 			set { base.SetAttribute(new mMSICode { value = value }); }
 			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
 		}
 		[JsonIgnore]
-		public String? language_optional {
+		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
 			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
@@ -4403,12 +4258,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Nautical Information";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -4416,7 +4265,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -4429,12 +4278,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
 		[JsonIgnore]
 		public override string S100FC_name => "Non-Standard Working Day";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4461,19 +4304,19 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String?[] dateFixed_optional {
+		public String?[] dateFixed {
 			set { base.SetAttribute([.. value.Select(e=> new dateFixed { value = e })]); }
 			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public String?[] dateVariable_optional {
+		public String?[] dateVariable {
 			set { base.SetAttribute([.. value.Select(e=> new dateVariable { value = e })]); }
 			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
 		}
@@ -4489,16 +4332,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(RadioControlCentre);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Control Centre";
-		public isMRCC isMRCC { get; set; } = new isMRCC();
-		public acceptAMVER acceptAMVER { get; set; } = new acceptAMVER();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				isMRCC,
-				acceptAMVER,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4531,14 +4364,24 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public information?[] information_optional {
+		public Boolean? isMRCC {
+			set { base.SetAttribute(new isMRCC { value = value }); }
+			get { return base.GetAttributeValue<isMRCC>(nameof(isMRCC))!.value; }
+		}
+		[JsonIgnore]
+		public Boolean? acceptAMVER {
+			set { base.SetAttribute(new acceptAMVER { value = value }); }
+			get { return base.GetAttributeValue<acceptAMVER>(nameof(acceptAMVER))!.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		[JsonIgnore]
-		public String? hoursOfWatch_optional {
+		public String? hoursOfWatch {
 			set { base.SetAttribute(new hoursOfWatch { value = value }); }
 			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
 		}
@@ -4555,12 +4398,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Recommendations";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -4568,7 +4405,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -4582,12 +4419,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Regulations";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -4595,7 +4426,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -4609,12 +4440,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Restrictions";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -4622,7 +4447,7 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -4635,14 +4460,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(ServiceHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Hours";
-		public scheduleByDayOfWeek scheduleByDayOfWeek { get; set; } = new scheduleByDayOfWeek();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				scheduleByDayOfWeek,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4663,17 +4480,17 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public scheduleByDayOfWeek?[] scheduleByDayOfWeek_optional {
+		public scheduleByDayOfWeek?[] scheduleByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); } 
-	}
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek))!; }
+		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -4686,11 +4503,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(SpatialQuality);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Quality";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4711,14 +4523,14 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? qualityOfHorizontalMeasurement_optional {
+		public int? qualityOfHorizontalMeasurement {
 			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
 			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
 		}
 		[JsonIgnore]
-		public spatialAccuracy? spatialAccuracy_optional {
+		public spatialAccuracy? spatialAccuracy {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<spatialAccuracy>(nameof(spatialAccuracy)); }
 		}
@@ -4734,12 +4546,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(TelemedicalAssistanceService);
 		[JsonIgnore]
 		public override string S100FC_name => "Telemedical Assistance Service";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4778,29 +4584,29 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? contactInstructions_optional {
+		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
 			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
-		public information? information_optional {
+		public information? information {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<information>(nameof(information)); }
 		}
 		[JsonIgnore]
-		public onlineResource?[] onlineResource_optional {
+		public onlineResource?[] onlineResource {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
-	}
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
 		[JsonIgnore]
-		public telecommunications?[] telecommunications_optional {
+		public telecommunications?[] telecommunications {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); } 
-	}
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
+		}
 		[JsonIgnore]
-		public String? languageInformation_optional {
+		public String? languageInformation {
 			set { base.SetAttribute(new languageInformation { value = value }); }
 			get { return base.GetAttributeValue<languageInformation>(nameof(languageInformation))?.value; }
 		}
@@ -4816,14 +4622,6 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 		public override string S100FC_code => nameof(TransmissionDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Transmission Details";
-		public radioChannelDetails radioChannelDetails { get; set; } = new radioChannelDetails();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				radioChannelDetails,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4864,32 +4662,32 @@ namespace S100Framework.AttributeModel.S123.InformationTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? typeOfRadioService_optional {
+		public int? typeOfRadioService {
 			set { base.SetAttribute(new typeOfRadioService { value = value }); }
 			get { return base.GetAttributeValue<typeOfRadioService>(nameof(typeOfRadioService))?.value; }
 		}
 		[JsonIgnore]
-		public int? frequencyBand_optional {
+		public int? frequencyBand {
 			set { base.SetAttribute(new frequencyBand { value = value }); }
 			get { return base.GetAttributeValue<frequencyBand>(nameof(frequencyBand))?.value; }
 		}
 		[JsonIgnore]
-		public String? classOfEmission_optional {
+		public String? classOfEmission {
 			set { base.SetAttribute(new classOfEmission { value = value }); }
 			get { return base.GetAttributeValue<classOfEmission>(nameof(classOfEmission))?.value; }
 		}
 		[JsonIgnore]
-		public String? communicationStandard_optional {
+		public String? communicationStandard {
 			set { base.SetAttribute(new communicationStandard { value = value }); }
 			get { return base.GetAttributeValue<communicationStandard>(nameof(communicationStandard))?.value; }
 		}
 		[JsonIgnore]
-		public radioChannelDetails?[] radioChannelDetails_optional {
+		public radioChannelDetails?[] radioChannelDetails {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<radioChannelDetails>(nameof(radioChannelDetails)); } 
-	}
+			get { return base.GetAttributeValues<radioChannelDetails>(nameof(radioChannelDetails))!; }
+		}
 		#endregion
 	}
 
@@ -4909,11 +4707,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(FeatureType);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Type";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4963,39 +4756,39 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public textContent?[] textContent_optional {
+		public textContent?[] textContent {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); } 
-	}
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
 		[JsonIgnore]
-		public featureName?[] featureName_optional {
+		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); } 
-	}
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
 		[JsonIgnore]
-		public fixedDateRange? fixedDateRange_optional {
+		public fixedDateRange? fixedDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange_optional {
+		public periodicDateRange?[] periodicDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); } 
-	}
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
 		[JsonIgnore]
-		public String? source_optional {
+		public String? source {
 			set { base.SetAttribute(new source { value = value }); }
 			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
 		}
 		[JsonIgnore]
-		public String? reportedDate_optional {
+		public String? reportedDate {
 			set { base.SetAttribute(new reportedDate { value = value }); }
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public String? interoperabilityIdentifier_optional {
+		public String? interoperabilityIdentifier {
 			set { base.SetAttribute(new interoperabilityIdentifier { value = value }); }
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
@@ -5011,12 +4804,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(ConnectivitySubscriptionArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Connectivity Subscription Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5068,39 +4855,39 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfConnectivitySubscription_optional {
+		public int? categoryOfConnectivitySubscription {
 			set { base.SetAttribute(new categoryOfConnectivitySubscription { value = value }); }
 			get { return base.GetAttributeValue<categoryOfConnectivitySubscription>(nameof(categoryOfConnectivitySubscription))?.value; }
 		}
 		[JsonIgnore]
-		public String? communicationStandard_optional {
+		public String? communicationStandard {
 			set { base.SetAttribute(new communicationStandard { value = value }); }
 			get { return base.GetAttributeValue<communicationStandard>(nameof(communicationStandard))?.value; }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission_optional {
+		public double? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public double? baseStationAntennaHeight_optional {
+		public double? baseStationAntennaHeight {
 			set { base.SetAttribute(new baseStationAntennaHeight { value = value }); }
 			get { return base.GetAttributeValue<baseStationAntennaHeight>(nameof(baseStationAntennaHeight))?.value; }
 		}
 		[JsonIgnore]
-		public frequencyRange?[] frequencyRange_optional {
+		public frequencyRange?[] frequencyRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<frequencyRange>(nameof(frequencyRange)); } 
-	}
+			get { return base.GetAttributeValues<frequencyRange>(nameof(frequencyRange)); }
+		}
 		[JsonIgnore]
-		public sectorLimit?[] sectorLimit_optional {
+		public sectorLimit?[] sectorLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); } 
-	}
+			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); }
+		}
 		[JsonIgnore]
-		public coverageIndication? coverageIndication_optional {
+		public coverageIndication? coverageIndication {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<coverageIndication>(nameof(coverageIndication)); }
 		}
@@ -5116,16 +4903,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(GMDSSArea);
 		[JsonIgnore]
 		public override string S100FC_name => "GMDSS Area";
-		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
-		public categoryOfGMDSSArea categoryOfGMDSSArea { get; set; } = new categoryOfGMDSSArea();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				idNAVAREA,
-				categoryOfGMDSSArea,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5159,17 +4936,27 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? idNAVAREA {
+			set { base.SetAttribute(new idNAVAREA { value = value }); }
+			get { return base.GetAttributeValue<idNAVAREA>(nameof(idNAVAREA))!.value; }
+		}
+		[JsonIgnore]
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public areaA3ServiceDescription?[] areaA3ServiceDescription_optional {
+		public int? categoryOfGMDSSArea {
+			set { base.SetAttribute(new categoryOfGMDSSArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfGMDSSArea>(nameof(categoryOfGMDSSArea))!.value; }
+		}
+		[JsonIgnore]
+		public areaA3ServiceDescription?[] areaA3ServiceDescription {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<areaA3ServiceDescription>(nameof(areaA3ServiceDescription)); } 
-	}
+			get { return base.GetAttributeValues<areaA3ServiceDescription>(nameof(areaA3ServiceDescription)); }
+		}
 		#endregion
 	}
 
@@ -5182,12 +4969,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(IndeterminateZone);
 		[JsonIgnore]
 		public override string S100FC_name => "Indeterminate Zone";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5203,9 +4984,9 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? informationConfidence_optional {
+		public int? informationConfidence {
 			set { base.SetAttribute(new informationConfidence { value = value }); }
 			get { return base.GetAttributeValue<informationConfidence>(nameof(informationConfidence))?.value; }
 		}
@@ -5221,14 +5002,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(METAREA);
 		[JsonIgnore]
 		public override string S100FC_name => "METAREA";
-		public idMETAREA idMETAREA { get; set; } = new idMETAREA();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				idMETAREA,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5249,12 +5022,17 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public onlineResource?[] onlineResource_optional {
+		public String? idMETAREA {
+			set { base.SetAttribute(new idMETAREA { value = value }); }
+			get { return base.GetAttributeValue<idMETAREA>(nameof(idMETAREA))!.value; }
+		}
+		[JsonIgnore]
+		public onlineResource?[] onlineResource {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
-	}
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
 		#endregion
 	}
 
@@ -5267,14 +5045,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(NAVAREA);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVAREA";
-		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				idNAVAREA,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5295,12 +5065,17 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public onlineResource?[] onlineResource_optional {
+		public String? idNAVAREA {
+			set { base.SetAttribute(new idNAVAREA { value = value }); }
+			get { return base.GetAttributeValue<idNAVAREA>(nameof(idNAVAREA))!.value; }
+		}
+		[JsonIgnore]
+		public onlineResource?[] onlineResource {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); } 
-	}
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
 		#endregion
 	}
 
@@ -5313,18 +5088,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(NAVTEXServiceArea);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVTEX Service Area";
-		public typeOfNAVTEXService typeOfNAVTEXService { get; set; } = new typeOfNAVTEXService();
-		public idNAVAREA idNAVAREA { get; set; } = new idNAVAREA();
-		public transmitterIdentificationCharacter transmitterIdentificationCharacter { get; set; } = new transmitterIdentificationCharacter();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				typeOfNAVTEXService,
-				idNAVAREA,
-				transmitterIdentificationCharacter,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5365,14 +5128,29 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? nationality_optional {
+		public int? typeOfNAVTEXService {
+			set { base.SetAttribute(new typeOfNAVTEXService { value = value }); }
+			get { return base.GetAttributeValue<typeOfNAVTEXService>(nameof(typeOfNAVTEXService))!.value; }
+		}
+		[JsonIgnore]
+		public String? idNAVAREA {
+			set { base.SetAttribute(new idNAVAREA { value = value }); }
+			get { return base.GetAttributeValue<idNAVAREA>(nameof(idNAVAREA))!.value; }
+		}
+		[JsonIgnore]
+		public String? transmitterIdentificationCharacter {
+			set { base.SetAttribute(new transmitterIdentificationCharacter { value = value }); }
+			get { return base.GetAttributeValue<transmitterIdentificationCharacter>(nameof(transmitterIdentificationCharacter))!.value; }
+		}
+		[JsonIgnore]
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
@@ -5388,12 +5166,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(RadioServiceArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Service Area";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5433,29 +5205,29 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? languageInformation_optional {
+		public String? languageInformation {
 			set { base.SetAttribute(new languageInformation { value = value }); }
 			get { return base.GetAttributeValue<languageInformation>(nameof(languageInformation))?.value; }
 		}
 		[JsonIgnore]
-		public double? transmissionPower_optional {
+		public double? transmissionPower {
 			set { base.SetAttribute(new transmissionPower { value = value }); }
 			get { return base.GetAttributeValue<transmissionPower>(nameof(transmissionPower))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? transmissionOfTrafficLists_optional {
+		public Boolean? transmissionOfTrafficLists {
 			set { base.SetAttribute(new transmissionOfTrafficLists { value = value }); }
 			get { return base.GetAttributeValue<transmissionOfTrafficLists>(nameof(transmissionOfTrafficLists))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public String? hoursOfWatch_optional {
+		public String? hoursOfWatch {
 			set { base.SetAttribute(new hoursOfWatch { value = value }); }
 			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
 		}
@@ -5471,12 +5243,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(RadioStation);
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Station";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5535,44 +5301,44 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfRadioStation_optional {
+		public int? categoryOfRadioStation {
 			set { base.SetAttribute(new categoryOfRadioStation { value = value }); }
 			get { return base.GetAttributeValue<categoryOfRadioStation>(nameof(categoryOfRadioStation))?.value; }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission_optional {
+		public double? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public String? transmissionContent_optional {
+		public String? transmissionContent {
 			set { base.SetAttribute(new transmissionContent { value = value }); }
 			get { return base.GetAttributeValue<transmissionContent>(nameof(transmissionContent))?.value; }
 		}
 		[JsonIgnore]
-		public Boolean? remoteControlled_optional {
+		public Boolean? remoteControlled {
 			set { base.SetAttribute(new remoteControlled { value = value }); }
 			get { return base.GetAttributeValue<remoteControlled>(nameof(remoteControlled))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
 		[JsonIgnore]
-		public radiocommunicationIdentifier? radiocommunicationIdentifier_optional {
+		public radiocommunicationIdentifier? radiocommunicationIdentifier {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<radiocommunicationIdentifier>(nameof(radiocommunicationIdentifier)); }
 		}
 		[JsonIgnore]
-		public sectorLimit?[] sectorLimit_optional {
+		public sectorLimit?[] sectorLimit {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); } 
-	}
+			get { return base.GetAttributeValues<sectorLimit>(nameof(sectorLimit)); }
+		}
 		[JsonIgnore]
-		public String? hoursOfWatch_optional {
+		public String? hoursOfWatch {
 			set { base.SetAttribute(new hoursOfWatch { value = value }); }
 			get { return base.GetAttributeValue<hoursOfWatch>(nameof(hoursOfWatch))?.value; }
 		}
@@ -5589,12 +5355,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Search and Rescue Region";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -5608,9 +5368,9 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
@@ -5626,14 +5386,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(WeatherForecastAndWarningArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Weather Forecast and Warning Area";
-		public categoryOfForecastOrWarningArea categoryOfForecastOrWarningArea { get; set; } = new categoryOfForecastOrWarningArea();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				categoryOfForecastOrWarningArea,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5668,19 +5420,24 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public String? idMETAREA_optional {
+		public int? categoryOfForecastOrWarningArea {
+			set { base.SetAttribute(new categoryOfForecastOrWarningArea { value = value }); }
+			get { return base.GetAttributeValue<categoryOfForecastOrWarningArea>(nameof(categoryOfForecastOrWarningArea))!.value; }
+		}
+		[JsonIgnore]
+		public String? idMETAREA {
 			set { base.SetAttribute(new idMETAREA { value = value }); }
 			get { return base.GetAttributeValue<idMETAREA>(nameof(idMETAREA))?.value; }
 		}
 		[JsonIgnore]
-		public String? nationality_optional {
+		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
 			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
-		public int? status_optional {
+		public int? status {
 			set { base.SetAttribute(new status { value = value }); }
 			get { return base.GetAttributeValue<status>(nameof(status))?.value; }
 		}
@@ -5697,12 +5454,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Fuzzy Area Aggregate";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -5710,7 +5461,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -5724,12 +5475,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Radio Service Area Aggregate";
 
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributes,
-				.. base.attributesOptional,
-			];
-
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBinding[] attributeBindingsCatalogue => [
@@ -5737,7 +5482,7 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		#endregion
 	}
 
@@ -5750,15 +5495,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
-		public maximumDisplayScale maximumDisplayScale { get; set; } = new maximumDisplayScale();
-		public minimumDisplayScale minimumDisplayScale { get; set; } = new minimumDisplayScale();
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				maximumDisplayScale,
-				minimumDisplayScale,
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5790,17 +5526,27 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? optimumDisplayScale_optional {
+		public int? maximumDisplayScale {
+			set { base.SetAttribute(new maximumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))!.value; }
+		}
+		[JsonIgnore]
+		public int? minimumDisplayScale {
+			set { base.SetAttribute(new minimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))!.value; }
+		}
+		[JsonIgnore]
+		public int? optimumDisplayScale {
 			set { base.SetAttribute(new optimumDisplayScale { value = value }); }
 			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 
@@ -5813,11 +5559,6 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Non-Bathymetric Data";
-
-		[JsonIgnore]
-		public override Attribute[] attributes => [
-				.. base.attributesOptional,
-			];
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5868,42 +5609,42 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 		#endregion
 
-		#region Optional Attributes
+		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfTemporalVariation_optional {
+		public int? categoryOfTemporalVariation {
 			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
 			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty_optional {
+		public double? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty_optional {
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public double? orientationUncertainty_optional {
+		public double? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public surveyDateRange? surveyDateRange_optional {
+		public surveyDateRange? surveyDateRange {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
 		}
 		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty_optional {
+		public verticalUncertainty? verticalUncertainty {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
 		}
 		[JsonIgnore]
-		public information?[] information_optional {
+		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); } 
-	}
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
 		#endregion
 	}
 

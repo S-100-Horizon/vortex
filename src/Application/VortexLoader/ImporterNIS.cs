@@ -732,13 +732,13 @@ namespace S100Framework.Applications
                 //signalSequence = [.. signalSequences],
             };
             if (lightCharacteristicsValue != null)
-                rhythmOfLight.lightCharacteristic.value = EnumHelper.GetEnumValue(current.LITCHR);
+                rhythmOfLight.lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR);
             if (parenthesisParts.Any())
-                rhythmOfLight.signalGroup_optional = parenthesisParts.ToArray();
+                rhythmOfLight.signalGroup = parenthesisParts.ToArray();
             if (signalPeriodN.HasValue)
-                rhythmOfLight.signalPeriod_optional = signalPeriodN.Value;
+                rhythmOfLight.signalPeriod = signalPeriodN.Value;
             if (signalSequences.Any())
-                rhythmOfLight.signalSequence_optional = signalSequences.ToArray();
+                rhythmOfLight.signalSequence = signalSequences.ToArray();
             return rhythmOfLight;
         }
 
@@ -989,7 +989,7 @@ namespace S100Framework.Applications
                     var item = new featureName {
                         language = "eng",
                         name = objnam,
-                        nameUsage_optional = 1    //nameUsage.DefaultNameDisplay,
+                        nameUsage = 1    //nameUsage.DefaultNameDisplay,
                     };
                     featureName.Add(item);
                 }
@@ -1000,7 +1000,7 @@ namespace S100Framework.Applications
                     var item = new featureName {
                         language = "dan",
                         name = nobjnm,
-                        nameUsage_optional = 2    //nameUsage.AlternateNameDisplay,
+                        nameUsage = 2    //nameUsage.AlternateNameDisplay,
                     };
                     featureName.Add(item);
                 }
@@ -1021,21 +1021,21 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new NauticalInformation {
-                        information_optional = [
+                        information = [
                                 new information() {
-                                fileLocator_optional = fileLocator,
-                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(fileReference) ?? default,
                                 language = language
                                 }]
                     };
-                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
                 }
                 else if (!string.IsNullOrEmpty(ntxtds)) {
                     string language = "eng";
 
                     var instance = new information {
                         language = language,
-                        text_optional = ntxtds,
+                        text = ntxtds,
                     };
                     result.information.Add(instance);
                 }
@@ -1052,15 +1052,15 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new NauticalInformation {
-                        information_optional = [
+                        information = [
                                 new information() {
-                                fileLocator_optional = fileLocator,
-                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(fileReference) ?? default,
                                 language = language,
                             }]
                     };
 
-                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
+                    result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
                     // information.Add(instance);
                 }
@@ -1070,9 +1070,9 @@ namespace S100Framework.Applications
                     string language = "eng";
 
                     var instance = new information {
-                        fileLocator_optional = fileLocator,
+                        fileLocator = fileLocator,
                         language = language,
-                        text_optional = txtdsc,
+                        text = txtdsc,
                     };
                     result.information.Add(instance);
                 }
@@ -1094,15 +1094,15 @@ namespace S100Framework.Applications
                         string language = "eng";
 
                         var instance = new NauticalInformation {
-                            information_optional = [
+                            information = [
                                 new information() {
-                                fileLocator_optional = fileLocator,
-                                fileReference_optional = FixFilename(fileReference) ?? default,
+                                fileLocator = fileLocator,
+                                fileReference = FixFilename(fileReference) ?? default,
                                 language = language
                             }]
                         };
 
-                        result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information_optional[0]!.fileReference_optional!, instance));
+                        result.InformationBindings.Add(NauticalInformations.Instance.Add(instance.information[0]!.fileReference!, instance));
 
                     }
                     else if (!string.IsNullOrEmpty(value)) {
@@ -1111,9 +1111,9 @@ namespace S100Framework.Applications
                         string language = "eng";
 
                         var instance = new information {
-                            fileLocator_optional = fileLocator,
+                            fileLocator = fileLocator,
                             language = language,
-                            text_optional = value,
+                            text = value,
                         };
                         result.information.Add(instance);
                     }
@@ -1137,9 +1137,9 @@ namespace S100Framework.Applications
                             string language = "dan";
 
                             var instance = new NauticalInformation {
-                                information_optional = [new information() {
-                                    fileLocator_optional = fileLocator,
-                                    fileReference_optional = FixFilename(fileReference) ?? default,
+                                information = [new information() {
+                                    fileLocator = fileLocator,
+                                    fileReference = FixFilename(fileReference) ?? default,
                                     language = language
                                 }]
                             };
@@ -1150,9 +1150,9 @@ namespace S100Framework.Applications
                             string language = "dan";
 
                             var instance = new information {
-                                fileLocator_optional = fileLocator,
+                                fileLocator = fileLocator,
                                 language = language,
-                                text_optional = value,
+                                text = value,
                             };
                             result.information.Add(instance);
                         }

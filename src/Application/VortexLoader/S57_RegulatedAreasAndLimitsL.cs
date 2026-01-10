@@ -56,18 +56,18 @@ namespace S100Framework.Applications
                             };
 
                             if (current.CATMFA != null) {
-                                instance.categoryOfMarineFarmCulture_optional = EnumHelper.GetEnumValue(current.CATMFA);
+                                instance.categoryOfMarineFarmCulture = EnumHelper.GetEnumValue(current.CATMFA);
                             }
 
                             if (current.EXPSOU.HasValue) {
-                                instance.expositionOfSounding_optional = EnumHelper.GetEnumValue(current.EXPSOU.Value);
+                                instance.expositionOfSounding = EnumHelper.GetEnumValue(current.EXPSOU.Value);
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: HEIGHT
@@ -76,34 +76,34 @@ namespace S100Framework.Applications
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
                             if (periodicDateRange != default) {
-                                instance.periodicDateRange_optional = periodicDateRange;
+                                instance.periodicDateRange = periodicDateRange;
                             }
 
                             if (current.QUASOU != default) {
                                 var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                                 if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
-                                    instance.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
+                                    instance.qualityOfVerticalMeasurement = qualityOfVerticalMeasurement;
                             }
 
                             if (current.RESTRN != default) {
                                 var restriction = EnumHelper.GetEnumValues(current.RESTRN);
                                 if (restriction is not null && restriction.Any())
-                                    instance.restriction_optional = restriction;
+                                    instance.restriction = restriction;
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                instance.valueOfSounding_optional = current.VALSOU.Value;
+                                instance.valueOfSounding = current.VALSOU.Value;
                             }
                             else {
 
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
                             else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
                                 //instance.verticalLength = default(double?);
@@ -111,8 +111,8 @@ namespace S100Framework.Applications
 
                             // TODO: VerticalUncertainty
 
-                            if (current.INFORM is not null && instance.restriction_optional is not null && instance.restriction_optional.Contains(27 /*restriction.SpeedRestricted*/)) {
-                                instance.vesselSpeedLimit_optional = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
+                            if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(27 /*restriction.SpeedRestricted*/)) {
+                                instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
                             if (current.WATLEV.HasValue) {
@@ -125,11 +125,11 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -168,11 +168,11 @@ namespace S100Framework.Applications
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;

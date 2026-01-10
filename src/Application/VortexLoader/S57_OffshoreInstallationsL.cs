@@ -54,7 +54,7 @@ namespace S100Framework.Applications
                             var instance = new CableSubmarine();
 
                             if (current.BURDEP.HasValue) {
-                                instance.buriedDepth_optional = current.BURDEP.Value;
+                                instance.buriedDepth = current.BURDEP.Value;
                             }
 
                             if (current.CATCBL.HasValue) {
@@ -66,28 +66,28 @@ namespace S100Framework.Applications
                                         11.5.1, 11.5.3, A-2
                                      */
 
-                                    instance.categoryOfCable_optional = 10; //categoryOfCable.TelecommunicationsCable;
+                                    instance.categoryOfCable = 10; //categoryOfCable.TelecommunicationsCable;
                                 }
                                 else {
-                                    instance.categoryOfCable_optional = EnumHelper.GetEnumValue(current.CATCBL.Value);
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
                                 }
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -96,11 +96,11 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -130,32 +130,32 @@ namespace S100Framework.Applications
                             var instance = new PipelineSubmarineOnLand();
 
                             if (current.BURDEP.HasValue) {
-                                instance.buriedDepth_optional = current.BURDEP.Value;
+                                instance.buriedDepth = current.BURDEP.Value;
                             }
 
                             if (current.CATPIP != default) {
                                 var categoryOfPipelinePipe = EnumHelper.GetEnumValues(current.CATPIP);
                                 if (categoryOfPipelinePipe is not null && categoryOfPipelinePipe.Any())
-                                    instance.categoryOfPipelinePipe_optional = categoryOfPipelinePipe;
+                                    instance.categoryOfPipelinePipe = categoryOfPipelinePipe;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
                             if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue_optional = current.DRVAL1.Value;
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
                             }
 
                             if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue_optional = current.DRVAL2.Value;
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -165,11 +165,11 @@ namespace S100Framework.Applications
                             if (current.PRODCT != null) {
                                 var product = EnumHelper.GetEnumValues(current.PRODCT);
                                 if (product is not null && product.Any())
-                                    instance.product_optional = product;
+                                    instance.product = product;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -179,22 +179,22 @@ namespace S100Framework.Applications
                             // TODO: restriction
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
-                                instance.pictorialRepresentation_optional = FixFilename(current.PICREP);
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
                             buffer["ps"] = ps101;

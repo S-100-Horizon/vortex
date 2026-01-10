@@ -75,21 +75,21 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException($"catcoa to categoryOfCoastLine: {catcoa}")
                                 };
                                 if (e is not null) {
-                                    instance.categoryOfCoastline_optional = e.value;
+                                    instance.categoryOfCoastline = e.value;
                                 }
                             }
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.ELEVAT.HasValue) {
-                                instance.elevation_optional = current.ELEVAT.Value;
+                                instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             /*
                                 • The attribute nature of surface has been included as an allowable attribute for Coastline in S-101.
@@ -112,21 +112,21 @@ namespace S100Framework.Applications
                                     _ => null //lthrow new IndexOutOfRangeException($"catcoa to natureOfSurface: {catcoa}")
                                 };
                                 if (e is not null) {
-                                    instance.natureOfSurface_optional = [e.value];
+                                    instance.natureOfSurface = [e.value];
 
                                 }
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -161,32 +161,32 @@ namespace S100Framework.Applications
                             var instance = new ShorelineConstruction();
 
                             if (current.CATSLC.HasValue) {
-                                instance.categoryOfShorelineConstruction_optional = EnumHelper.GetEnumValue(current.CATSLC.Value);
+                                instance.categoryOfShorelineConstruction = EnumHelper.GetEnumValue(current.CATSLC.Value);
                             }
 
                             if (current.COLOUR != default) {
                                 var colour = GetColours(current.COLOUR);
                                 if (colour is not null && colour.Any())
-                                    instance.colour_optional = colour;
+                                    instance.colour = colour;
                             }
 
                             if (current.COLPAT != default) {
-                                instance.colourPattern_optional = GetColourPattern(current.COLPAT)!.value;
+                                instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                             }
 
                             if (current.CONDTN.HasValue) {
-                                instance.condition_optional = GetCondition(current.CONDTN.Value)?.value;
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
-                                instance.fixedDateRange_optional = dateRange;
+                                instance.fixedDateRange = dateRange;
                             }
 
                             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height_optional = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value;
                             }
                             else {
 
@@ -196,18 +196,18 @@ namespace S100Framework.Applications
                             var horacc = current.HORACC ?? default;
 
                             if (horclr != default) {
-                                instance.horizontalClearanceFixed_optional = new() {
+                                instance.horizontalClearanceFixed = new() {
                                     horizontalClearanceValue = horclr,
-                                    horizontalDistanceUncertainty_optional = horacc,
+                                    horizontalDistanceUncertainty = horacc,
                                 };
                             }
 
                             if (current.HORLEN.HasValue) {
-                                instance.horizontalLength_optional = current.HORLEN.Value;
+                                instance.horizontalLength = current.HORLEN.Value;
                             }
 
                             if (current.HORWID.HasValue) {
-                                instance.horizontalWidth_optional = current.HORWID.Value;
+                                instance.horizontalWidth = current.HORWID.Value;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -215,15 +215,15 @@ namespace S100Framework.Applications
                             if (current.NATCON != default) {
                                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                                 if (natureOfConstruction is not null && natureOfConstruction.Any())
-                                    instance.natureOfConstruction_optional = natureOfConstruction;
+                                    instance.natureOfConstruction = natureOfConstruction;
                             }
 
                             if (current.CONRAD.HasValue) {
-                                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
                             }
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -231,22 +231,22 @@ namespace S100Framework.Applications
                             }
 
                             if (current.STATUS != default) {
-                                instance.status_optional = GetStatus(current.STATUS);
+                                instance.status = GetStatus(current.STATUS);
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength_optional = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
-                                instance.visualProminence_optional = EnumHelper.GetEnumValue(current.CONVIS.Value);
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS.Value);
                             }
 
                             if (current.WATLEV.HasValue) {
                                 if (current.WATLEV.Value == -32767)
-                                    instance.waterLevelEffect_optional = default;    // EnumHelper.GetEnumValue(-1);
+                                    instance.waterLevelEffect = default;    // EnumHelper.GetEnumValue(-1);
                                 else {
-                                    instance.waterLevelEffect_optional = EnumHelper.GetEnumValue(current.WATLEV);
+                                    instance.waterLevelEffect = EnumHelper.GetEnumValue(current.WATLEV);
                                 }
                             }
 
@@ -256,11 +256,11 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;

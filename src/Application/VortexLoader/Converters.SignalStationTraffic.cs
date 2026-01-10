@@ -15,47 +15,43 @@ namespace S100Framework.Applications
                 ;
             }
 
-
-
             if (current.CATSIT != default) {
                 var categoryOfSignalStationTraffic = EnumHelper.GetEnumValues(current.CATSIT);
-                if (categoryOfSignalStationTraffic != null && categoryOfSignalStationTraffic.Any()) {
-                    instance.categoryOfSignalStationTraffic = categoryOfSignalStationTraffic[0];
-                    instance.categoryOfSignalStationTraffic_optional = categoryOfSignalStationTraffic[1..];
-                }
+                if (categoryOfSignalStationTraffic != null)
+                    instance.categoryOfSignalStationTraffic = categoryOfSignalStationTraffic;
             }
 
             if (current.COMCHA != default) {
-                instance.communicationChannel_optional = current.COMCHA.Split(',').ToArray<string>();
+                instance.communicationChannel = current.COMCHA.Split(',').ToArray<string>();
             }
 
-            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange_optional = dateRange;
+                instance.fixedDateRange = dateRange;
             }
 
             // TODO: interoperabilityIdentifier
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
-                instance.periodicDateRange_optional = periodicDateRange;
+                instance.periodicDateRange = periodicDateRange;
             }
 
             if (current.STATUS != default) {
-                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-            instance.information_optional = result.information.ToArray();
+            instance.information = result.information.ToArray();
             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;

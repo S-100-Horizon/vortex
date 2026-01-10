@@ -67,10 +67,10 @@ namespace S100Framework.Applications
                                     var sounding = new Sounding {
                                     };
                                     if (quasou != default) {
-                                        sounding.qualityOfVerticalMeasurement_optional = [EnumHelper.GetEnumValue(quasou)];
+                                        sounding.qualityOfVerticalMeasurement = [EnumHelper.GetEnumValue(quasou)];
                                     }
                                     if (tecsou != default && !string.IsNullOrEmpty(tecsou)) {
-                                        sounding.techniqueOfVerticalMeasurement_optional = [EnumHelper.GetEnumValue(tecsou)];
+                                        sounding.techniqueOfVerticalMeasurement = [EnumHelper.GetEnumValue(tecsou)];
                                     }
 
                                     //if (objnam != default) {
@@ -95,7 +95,7 @@ namespace S100Framework.Applications
                                     //}
 
 
-                                    sounding.featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                    sounding.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
 
                                     // TODO: interoperabilityIdentifier
@@ -105,14 +105,14 @@ namespace S100Framework.Applications
                                         if (current.QUASOU != "-32767") {
                                             var qualityOfVerticalMeasurement = EnumHelper.GetEnumValues(current.QUASOU);
                                             if (qualityOfVerticalMeasurement is not null && qualityOfVerticalMeasurement.Any())
-                                                sounding.qualityOfVerticalMeasurement_optional = qualityOfVerticalMeasurement;
+                                                sounding.qualityOfVerticalMeasurement = qualityOfVerticalMeasurement;
                                         }
                                     }
 
 
                                     if (!string.IsNullOrEmpty(current.SORDAT)) {
                                         if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                            sounding.reportedDate_optional = reportedDate;
+                                            sounding.reportedDate = reportedDate;
                                         }
                                         else {
                                             Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -120,13 +120,13 @@ namespace S100Framework.Applications
                                     }
 
                                     if (current.STATUS != default) {
-                                        sounding.status_optional = ImporterNIS.GetSingleStatus(current.STATUS)?.value;
+                                        sounding.status = ImporterNIS.GetSingleStatus(current.STATUS)?.value;
                                     }
 
                                     if (current.TECSOU != null) {
                                         var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
                                         if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
-                                            sounding.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
+                                            sounding.techniqueOfVerticalMeasurement = techniqueOfVerticalMeasurement;
                                     }
 
                                     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -135,11 +135,11 @@ namespace S100Framework.Applications
                                         if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                             throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                        sounding.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                        sounding.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                     }
 
                                     var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                    sounding.information_optional = result.information.ToArray();
+                                    sounding.information = result.information.ToArray();
                                     sounding.SetInformationBindings(result.InformationBindings.ToArray());
 
                                     bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
@@ -189,7 +189,7 @@ namespace S100Framework.Applications
                                     if (current.TECSOU != null) {
                                         var techniqueOfVerticalMeasurement = EnumHelper.GetEnumValues(current.TECSOU);
                                         if (techniqueOfVerticalMeasurement is not null && techniqueOfVerticalMeasurement.Any())
-                                            instance.techniqueOfVerticalMeasurement_optional = techniqueOfVerticalMeasurement;
+                                            instance.techniqueOfVerticalMeasurement = techniqueOfVerticalMeasurement;
                                     }
 
                                     if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -198,11 +198,11 @@ namespace S100Framework.Applications
                                         if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                             throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                        instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                        instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                                     }
 
                                     var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                                    instance.information_optional = result.information.ToArray();
+                                    instance.information = result.information.ToArray();
                                     instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                     bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);

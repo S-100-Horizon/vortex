@@ -14,19 +14,19 @@ namespace S100Framework.Applications
             if (current.COLOUR != default) {
                 var colours = EnumHelper.GetEnumValues(current.COLOUR);
                 if ((colours is not null && colours.Any()))
-                    instance.colour_optional = colours;
+                    instance.colour = colours;
             }
 
             if (current.COLPAT != default) {
-                instance.colourPattern_optional = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
+                instance.colourPattern = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
             }
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange_optional = dateRange;
+                instance.fixedDateRange = dateRange;
             }
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height_optional = current.HEIGHT.Value;
+                instance.height = current.HEIGHT.Value;
             }
             else {
 
@@ -36,15 +36,15 @@ namespace S100Framework.Applications
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
-                instance.periodicDateRange_optional = periodicDateRange;
+                instance.periodicDateRange = periodicDateRange;
             }
 
             if (current.STATUS != default) {
-                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
             if (scaleMinimum.HasValue) {
-                instance.scaleMinimum_optional = scaleMinimum;
+                instance.scaleMinimum = scaleMinimum;
             }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -52,11 +52,11 @@ namespace S100Framework.Applications
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-            instance.information_optional = result.information.ToArray();
+            instance.information = result.information.ToArray();
             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;

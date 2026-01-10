@@ -15,13 +15,6 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public override string S100FC_name => "Features Detected Nested";
 
-        [JsonIgnore]
-        public featureName featureName { get; init; } = new featureName();
-
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
-                featureName,
-                .. base.attributes,
-            ];
         public override attributeBinding[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,
                 new attributeBinding {
@@ -39,12 +32,6 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public override string S100FC_name => "TestFeatureSimple";
 
-        [JsonIgnore]
-        public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
-
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
-                featuresDetectedNested,
-            ];
         public override attributeBinding[] attributeBindingsCatalogue => [
                  new attributeBinding {
                     attribute = nameof(featuresDetectedNested),
@@ -61,13 +48,6 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public override string S100FC_name => "TestFeature : QualityOfBathymetricData";
 
-        [JsonIgnore]
-        public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
-
-        public override S100Framework.AttributeModel.Attribute[] attributes => [
-                featuresDetectedNested,
-                .. base.attributes,
-            ];
         public override attributeBinding[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,
                 new attributeBinding {

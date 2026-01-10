@@ -113,12 +113,12 @@ namespace S100Framework.Applications.Singletons
                 using (var insertCursor = attachment.CreateInsertCursor()) {
                     foreach (var nauticalInformation in NauticalInformations.Instance._nauticalInformations.Values) {
 
-                        foreach (var info in nauticalInformation.information_optional) {
+                        foreach (var info in nauticalInformation.information) {
                             var supportFile = new S100Horizon.Settings.SupportFile {
-                                FileName = info!.fileReference_optional!
+                                FileName = info!.fileReference!
                             };
 
-                            var s57FileName = info.fileReference_optional!.Clone().ToString()!.Replace("101DK00", "DK");
+                            var s57FileName = info.fileReference!.Clone().ToString()!.Replace("101DK00", "DK");
 
                             string? filePath = default;
 

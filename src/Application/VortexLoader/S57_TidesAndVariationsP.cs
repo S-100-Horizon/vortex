@@ -77,14 +77,14 @@ anomaly values, remove the associated instance of the complex attribute informat
 */
 
 
-                                featureName_optional = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
 
                             // TODO: interoperabilityIdentifier
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
-                                    instance.reportedDate_optional = reportedDate;
+                                    instance.reportedDate = reportedDate;
                                 }
                                 else {
                                     Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
@@ -92,13 +92,13 @@ anomaly values, remove the associated instance of the complex attribute informat
                             }
 
                             if (current.VALLMA is not null) {
-                                instance.valueOfLocalMagneticAnomaly = new() {
+                                instance.valueOfLocalMagneticAnomaly = [new() {
                                     magneticAnomalyValue = current.VALLMA / 60,
-                                };
+                                }];
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -113,7 +113,7 @@ anomaly values, remove the associated instance of the complex attribute informat
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
@@ -155,11 +155,11 @@ anomaly values, remove the associated instance of the complex attribute informat
                                 string subtype = "";
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -174,7 +174,7 @@ anomaly values, remove the associated instance of the complex attribute informat
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
-                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum_optional);
+                                relatedEquipment!.CreateRelatedAreaEquipment(current, instance, featureN, instance.scaleMinimum);
                             }
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));

@@ -108,15 +108,15 @@ namespace S100Framework.Applications
                 };
 
                 var instance = new S100Framework.AttributeModel.S128.FeatureTypes.ElectronicProduct {
-                    catalogueElementClassification = 1, // catalogueElementClassification.Enc
-                    editionNumber_optional = edtn,
-                    updateNumber_optional = updn,
+                    catalogueElementClassification = [1], // catalogueElementClassification.Enc
+                    editionNumber = edtn,
+                    updateNumber = updn,
                     issueDate = DateOnly.FromDateTime(isdt),
                     notForNavigation = true,
                     typeOfProductFormat = 2,    //typeOfProductFormat.IsoIec8211,
-                    datasetName_optional = dsnm,
-                    specificUsage_optional = specificUsage,
-                    productSpecification_optional = new productSpecification {
+                    datasetName = dsnm,
+                    specificUsage = specificUsage,
+                    productSpecification = new productSpecification {
                         editionDate = AttributeModel.S101.Summary.VersionDate,
                         name = AttributeModel.S101.Summary.ProductId,
                         version = AttributeModel.S101.Summary.Version.ToString(),
@@ -224,14 +224,14 @@ namespace S100Framework.Applications
                                 var name = featureN.UID();
 
                                 // Registering vertical datum information for all areas
-                                VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum!.value);
+                                VerticalDatums.Instance.Add(productCoverage!.SHAPE!, vdat.verticalDatum);
 
                                 SoundingDatums.Instance.Add(productCoverage!.SHAPE!, GetSoundingDatum(current.SDAT!.Value)!);
 
                                 // TODO: Create relations
                                 ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
-                                VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum!.value);
+                                VerticalDatums.Instance.Add(productCoverage.SHAPE!.Clone(), vdat.verticalDatum);
 
                             }
                             break;

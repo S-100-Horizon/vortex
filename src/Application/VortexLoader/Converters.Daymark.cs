@@ -14,43 +14,40 @@ namespace S100Framework.Applications
 
             if (current.CATSPM != default) {
                 var categoryOfSpecialPurposeMark = EnumHelper.GetEnumValues(current.CATSPM);
-                if (categoryOfSpecialPurposeMark != null && categoryOfSpecialPurposeMark.Any())
-                    instance.categoryOfSpecialPurposeMark_optional = categoryOfSpecialPurposeMark;
+                if (categoryOfSpecialPurposeMark is not null)
+                    instance.categoryOfSpecialPurposeMark = categoryOfSpecialPurposeMark;
             }
 
             if (current.COLOUR != default) {
                 var colours = ImporterNIS.GetColours(current.COLOUR);
-                if (colours != null && colours.Any()) {
-                    instance.colour.value = colours[0];
-                    if (colours.Count() > 1)
-                        instance.colour_optional = colours[1..];
-                }
+                if (colours is not null)
+                    instance.colour = colours;                
             }
 
             if (current.COLPAT != default) {
                 if (current.COLPAT.Contains(",")) {
                     var colpats = current.COLPAT.Split(',');
                     Logger.Current.DataError(current.OBJECTID ?? -1, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Illegal COLPAT: {current.COLPAT}. Only {colpats[0]} is used. The colors needs reviewing.");
-                    instance.colourPattern_optional = ImporterNIS.GetColourPattern(colpats[0])?.value;
+                    instance.colourPattern = ImporterNIS.GetColourPattern(colpats[0])?.value;
                 }
                 else {
-                    instance.colourPattern_optional = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
+                    instance.colourPattern = ImporterNIS.GetColourPattern(current.COLPAT)?.value;
                 }
             }
 
             if (current.ELEVAT.HasValue) {
-                instance.elevation_optional = current.ELEVAT.Value;
+                instance.elevation = current.ELEVAT.Value;
             }
 
-            instance.featureName_optional = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
+            instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
             if (dateRange != default) {
-                instance.fixedDateRange_optional = dateRange;
+                instance.fixedDateRange = dateRange;
             }
 
             if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height_optional = current.HEIGHT.Value;
+                instance.height = current.HEIGHT.Value;
             }
 
             // TODO: interoperabilityidentifier
@@ -58,38 +55,38 @@ namespace S100Framework.Applications
             if (current.NATCON != default) {
                 var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
                 if (natureOfConstruction != null && natureOfConstruction.Any())
-                    instance.natureOfConstruction_optional = natureOfConstruction;
+                    instance.natureOfConstruction = natureOfConstruction;
             }
 
             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
             if (periodicDateRange != default) {
-                instance.periodicDateRange_optional = [.. periodicDateRange];
+                instance.periodicDateRange = [.. periodicDateRange];
             }
 
             if (current.CONRAD.HasValue) {
-                instance.radarConspicuous_optional = current.CONRAD.Value == 2 ? false : true;
+                instance.radarConspicuous = current.CONRAD.Value == 2 ? false : true;
             }
 
             if (current.STATUS != default) {
-                instance.status_optional = ImporterNIS.GetStatus(current.STATUS);
+                instance.status = ImporterNIS.GetStatus(current.STATUS);
             }
 
             if (current.TOPSHP.HasValue) {
-                instance.topmarkDaymarkShape!.value = EnumHelper.GetEnumValue(current.TOPSHP.Value);
+                instance.topmarkDaymarkShape = EnumHelper.GetEnumValue(current.TOPSHP.Value);
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength_optional = current.VERLEN.Value;
+                instance.verticalLength = current.VERLEN.Value;
             }
 
             // TODO: shapeInformation
 
             if (current.PICREP != default) {
-                instance.pictorialRepresentation_optional = ImporterNIS.FixFilename(current.PICREP);
+                instance.pictorialRepresentation = ImporterNIS.FixFilename(current.PICREP);
             }
 
             if (scaleMinimum.HasValue) {
-                instance.scaleMinimum_optional = scaleMinimum;
+                instance.scaleMinimum = scaleMinimum;
             }
             else if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                 string subtype = "";
@@ -97,11 +94,11 @@ namespace S100Framework.Applications
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-            instance.information_optional = result.information.ToArray();
+            instance.information = result.information.ToArray();
             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
             return instance;

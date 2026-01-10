@@ -37,14 +37,14 @@ namespace SelectorUI
             var featureType = new TestFeature {
 
             };
-            featureType.featuresDetectedNested.featureName.name.value = "Nested";
-            featureType.featuresDetectedNested.featureName.language.value = "eng";
+            featureType.featuresDetectedNested.featureName.name = "Nested";
+            featureType.featuresDetectedNested.featureName.language = "eng";
 
-            featureType.categoryOfTemporalVariation.value = 1;
-            featureType.dataAssessment.value = 1;
-            featureType.featuresDetected.significantFeaturesDetected.value = true;
-            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured.value = false;
-            featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData.value = 1;
+            featureType.categoryOfTemporalVariation = 1;
+            featureType.dataAssessment = 1;
+            featureType.featuresDetected.significantFeaturesDetected = true;
+            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured = false;
+            featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData = 1;
 
             var selectedObject = new S100AttributeEditorViewModel(featureType);
 

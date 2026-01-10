@@ -80,7 +80,7 @@ namespace S100Framework.Applications
                                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
 
-                                instance.scaleMinimum_optional = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                             }
 
                             /*
@@ -132,7 +132,7 @@ namespace S100Framework.Applications
                             //}
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information_optional = result.information.ToArray();
+                            instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
@@ -220,7 +220,7 @@ namespace S100Framework.Applications
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
             using var bufferInformationType = informationTypeTable.CreateRowBuffer();
 
-            spatialQuality101.qualityOfHorizontalMeasurement_optional = EnumHelper.GetEnumValue(4);
+            spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue(4);
 
             bufferInformationType["ps"] = ps101;
             bufferInformationType["code"] = spatialQuality101.S100FC_code;
