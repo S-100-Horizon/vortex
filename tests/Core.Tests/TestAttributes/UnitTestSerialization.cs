@@ -33,35 +33,47 @@ namespace TestAttributes.S101
         }
 
         [Fact]
-        public void S101_Serialization() {
+        public void S101_Serialization1() {
             var relatedFeature = new SpanFixed {
-                verticalClearanceFixed = new verticalClearanceFixed { verticalClearanceValue = new verticalClearanceValue { value = 0 } },
+                verticalClearanceFixed = new verticalClearanceFixed { verticalClearanceValue = 14d },
             };
             var feature = new Bridge {
             };
 
-            feature.featureName_optional = [new featureName {
+            feature.featureName = [new featureName {
                 language = "eng",
                 name = "No where!",
-                nameUsage_optional = 1,
+                nameUsage = 1,
             }];
 
-            feature.featureBindings = [new featureBinding<BridgeAggregation>{
+            feature.features = [new featureBinding<BridgeAggregation>{
                 featureId = "1234",
                 featureType = relatedFeature.S100FC_code,
                 role = "theComponent",
                 roleType = "association",
             }];
 
-            //var instance = complexAttribute.subAttributes[0] as lightCharacteristic;
-            //instance.value = 2;
-
             var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
 
             var reloaded = System.Text.Json.JsonSerializer.Deserialize<Bridge>(json, jsonSerializerOptions);
 
             System.Diagnostics.Debugger.Break();
-        }        
+        }
+
+        [Fact]
+        public void S101_Serialization2() {
+            var feature = new LocalDirectionOfBuoyage {
+            };
+
+            feature.marksNavigationalSystemOf = 1;
+            feature.orientationValue = 97d;
+
+            var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
+
+            var reloaded = System.Text.Json.JsonSerializer.Deserialize<LocalDirectionOfBuoyage>(json, jsonSerializerOptions);
+
+            System.Diagnostics.Debugger.Break();
+        }
 
         [Fact]
         public void Test_AttributeAssignment() {
@@ -71,7 +83,7 @@ namespace TestAttributes.S101
             var instance = new DepthArea {
                 depthRangeMinimumValue = drval1,
                 depthRangeMaximumValue = drval2.GetValueOrDefault(),
-                interoperabilityIdentifier_optional = "ID:1234",
+                interoperabilityIdentifier = "ID:1234",
             };
             //instance.interoperabilityIdentifier(new interoperabilityIdentifier {
             //    value = "ID:1234"
@@ -130,7 +142,7 @@ namespace TestAttributes.S128
             };
             featureBinding.association.categoryOfProductMapping = 2;    //Lower Priority Alternative
 
-            feature.featureBindings = [featureBinding];
+            feature.features = [featureBinding];
 
             var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
 

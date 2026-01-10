@@ -397,23 +397,19 @@ namespace TestAttributes
                             var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
 
                             if (attributesKnownComplex.Contains(referenceCode)) {
-                                var postfix = string.Empty;
-                                if (lower >= 1)
-                                    postfix = "!";
-
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
                                 roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                 if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                                 else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                 roslyn.AppendLine($"\t\t}}");
                             }
                             else {
                                 var postfix = "?";
-                                if (lower >= 1)
-                                    postfix = "!";
+                                //if (lower >= 1)
+                                //    postfix = "!";
 
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
@@ -470,23 +466,19 @@ namespace TestAttributes
                             var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
 
                             if (attributesKnownComplex.Contains(referenceCode)) {
-                                var postfix = string.Empty;
-                                if (lower >= 1)
-                                    postfix = "!";
-
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
                                 roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                 if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                                 else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                 roslyn.AppendLine($"\t\t}}");
                             }
                             else {
                                 var postfix = "?";
-                                if (lower >= 1)
-                                    postfix = "!";
+                                //if (lower >= 1)
+                                //    postfix = "!";
 
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
@@ -545,23 +537,19 @@ namespace TestAttributes
                             var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
 
                             if (attributesKnownComplex.Contains(referenceCode)) {
-                                var postfix = string.Empty;
-                                if (lower >= 1)
-                                    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
+                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
                                 roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                 if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                                 else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                 roslyn.AppendLine($"\t\t}}");
                             }
                             else {
                                 var postfix = "?";
-                                if (lower >= 1)
-                                    postfix = "!";
+                                //if (lower >= 1)
+                                //    postfix = "!";
 
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
@@ -676,23 +664,19 @@ namespace TestAttributes
                             var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
 
                             if (attributesKnownComplex.Contains(referenceCode)) {
-                                var postfix = string.Empty;
-                                if (lower >= 1)
-                                    postfix = "!";
-
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
                                 roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                 if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                                 else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                 roslyn.AppendLine($"\t\t}}");
                             }
                             else {
                                 var postfix = "?";
-                                if (lower >= 1)
-                                    postfix = "!";
+                                //if (lower >= 1)
+                                //    postfix = "!";
 
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
@@ -809,23 +793,19 @@ namespace TestAttributes
                             var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
 
                             if (attributesKnownComplex.Contains(referenceCode)) {
-                                var postfix = string.Empty;
-                                if (lower >= 1)
-                                    postfix = "!";
-
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
                                 roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                                 if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                                 else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}; }}");
+                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
                                 roslyn.AppendLine($"\t\t}}");
                             }
                             else {
                                 var postfix = "?";
-                                if (lower >= 1)
-                                    postfix = "!";
+                                //if (lower >= 1)
+                                //    postfix = "!";
 
                                 roslyn.AppendLine($"\t\t[JsonIgnore]");
                                 roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");

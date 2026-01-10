@@ -1571,12 +1571,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public double? paperWidth {
 			set { base.SetAttribute(new paperWidth { value = value }); }
-			get { return base.GetAttributeValue<paperWidth>(nameof(paperWidth))!.value; }
+			get { return base.GetAttributeValue<paperWidth>(nameof(paperWidth))?.value; }
 		}
 		[JsonIgnore]
 		public double? paperLength {
 			set { base.SetAttribute(new paperLength { value = value }); }
-			get { return base.GetAttributeValue<paperLength>(nameof(paperLength))!.value; }
+			get { return base.GetAttributeValue<paperLength>(nameof(paperLength))?.value; }
 		}
 		#endregion
 	}
@@ -1619,12 +1619,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? characterEncoding {
 			set { base.SetAttribute(new characterEncoding { value = value }); }
-			get { return base.GetAttributeValue<characterEncoding>(nameof(characterEncoding))!.value; }
+			get { return base.GetAttributeValue<characterEncoding>(nameof(characterEncoding))?.value; }
 		}
 		[JsonIgnore]
 		public String? countryName {
 			set { base.SetAttribute(new countryName { value = value }); }
-			get { return base.GetAttributeValue<countryName>(nameof(countryName))!.value; }
+			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
 		}
 		[JsonIgnore]
 		public String? language {
@@ -1677,7 +1677,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public int? nameUsage {
@@ -1823,7 +1823,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? linkage {
 			set { base.SetAttribute(new linkage { value = value }); }
-			get { return base.GetAttributeValue<linkage>(nameof(linkage))!.value; }
+			get { return base.GetAttributeValue<linkage>(nameof(linkage))?.value; }
 		}
 		[JsonIgnore]
 		public String? nameOfResource {
@@ -1880,12 +1880,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? dateEnd {
 			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
 		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
-			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))!.value; }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
 		#endregion
 	}
@@ -1933,12 +1933,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? currency {
 			set { base.SetAttribute(new currency { value = value }); }
-			get { return base.GetAttributeValue<currency>(nameof(currency))!.value; }
+			get { return base.GetAttributeValue<currency>(nameof(currency))?.value; }
 		}
 		[JsonIgnore]
 		public double? price {
 			set { base.SetAttribute(new price { value = value }); }
-			get { return base.GetAttributeValue<price>(nameof(price))!.value; }
+			get { return base.GetAttributeValue<price>(nameof(price))?.value; }
 		}
 		#endregion
 	}
@@ -2030,7 +2030,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? editionDate {
 			set { base.SetAttribute(new editionDate { value = value }); }
-			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))!.value; }
+			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))?.value; }
 		}
 		[JsonIgnore]
 		public String? iSSN {
@@ -2040,12 +2040,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public String? version {
 			set { base.SetAttribute(new version { value = value }); }
-			get { return base.GetAttributeValue<version>(nameof(version))!.value; }
+			get { return base.GetAttributeValue<version>(nameof(version))?.value; }
 		}
 		#endregion
 	}
@@ -2088,17 +2088,17 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? editionDate {
 			set { base.SetAttribute(new editionDate { value = value }); }
-			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))!.value; }
+			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))?.value; }
 		}
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public String? version {
 			set { base.SetAttribute(new version { value = value }); }
-			get { return base.GetAttributeValue<version>(nameof(version))!.value; }
+			get { return base.GetAttributeValue<version>(nameof(version))?.value; }
 		}
 		#endregion
 	}
@@ -2141,17 +2141,17 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? editionDate {
 			set { base.SetAttribute(new editionDate { value = value }); }
-			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))!.value; }
+			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))?.value; }
 		}
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public String? version {
 			set { base.SetAttribute(new version { value = value }); }
-			get { return base.GetAttributeValue<version>(nameof(version))!.value; }
+			get { return base.GetAttributeValue<version>(nameof(version))?.value; }
 		}
 		#endregion
 	}
@@ -2283,12 +2283,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
-			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))!.value; }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
 		public String? telecommunicationIdentifier {
 			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
-			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))!.value; }
+			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] telecommunicationService {
@@ -2336,7 +2336,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public int? valueOfTime {
 			set { base.SetAttribute(new valueOfTime { value = value }); }
-			get { return base.GetAttributeValue<valueOfTime>(nameof(valueOfTime))!.value; }
+			get { return base.GetAttributeValue<valueOfTime>(nameof(valueOfTime))?.value; }
 		}
 		#endregion
 	}
@@ -2373,12 +2373,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public int? weekNumber {
 			set { base.SetAttribute(new weekNumber { value = value }); }
-			get { return base.GetAttributeValue<weekNumber>(nameof(weekNumber))!.value; }
+			get { return base.GetAttributeValue<weekNumber>(nameof(weekNumber))?.value; }
 		}
 		[JsonIgnore]
 		public int? yearNumber {
 			set { base.SetAttribute(new yearNumber { value = value }); }
-			get { return base.GetAttributeValue<yearNumber>(nameof(yearNumber))!.value; }
+			get { return base.GetAttributeValue<yearNumber>(nameof(yearNumber))?.value; }
 		}
 		#endregion
 	}
@@ -2495,7 +2495,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public printSize? printSize {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<printSize>(nameof(printSize))!; }
+			get { return base.GetAttributeValue<printSize>(nameof(printSize)); }
 		}
 		#endregion
 	}
@@ -2601,7 +2601,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public int? digitalSignatureReference {
 			set { base.SetAttribute(new digitalSignatureReference { value = value }); }
-			get { return base.GetAttributeValue<digitalSignatureReference>(nameof(digitalSignatureReference))!.value; }
+			get { return base.GetAttributeValue<digitalSignatureReference>(nameof(digitalSignatureReference))?.value; }
 		}
 		[JsonIgnore]
 		public int? digitalSignatureValue {
@@ -2616,12 +2616,12 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public String? fileLocator {
 			set { base.SetAttribute(new fileLocator { value = value }); }
-			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))!.value; }
+			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
 		}
 		[JsonIgnore]
 		public String? fileName {
 			set { base.SetAttribute(new fileName { value = value }); }
-			get { return base.GetAttributeValue<fileName>(nameof(fileName))!.value; }
+			get { return base.GetAttributeValue<fileName>(nameof(fileName))?.value; }
 		}
 		[JsonIgnore]
 		public DateOnly? issueDate {
@@ -2636,22 +2636,22 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public int? supportFileFormat {
 			set { base.SetAttribute(new supportFileFormat { value = value }); }
-			get { return base.GetAttributeValue<supportFileFormat>(nameof(supportFileFormat))!.value; }
+			get { return base.GetAttributeValue<supportFileFormat>(nameof(supportFileFormat))?.value; }
 		}
 		[JsonIgnore]
 		public int? supportFilePurpose {
 			set { base.SetAttribute(new supportFilePurpose { value = value }); }
-			get { return base.GetAttributeValue<supportFilePurpose>(nameof(supportFilePurpose))!.value; }
+			get { return base.GetAttributeValue<supportFilePurpose>(nameof(supportFilePurpose))?.value; }
 		}
 		[JsonIgnore]
 		public defaultLocale? defaultLocale {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<defaultLocale>(nameof(defaultLocale))!; }
+			get { return base.GetAttributeValue<defaultLocale>(nameof(defaultLocale)); }
 		}
 		[JsonIgnore]
 		public supportFileSpecification? supportFileSpecification {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<supportFileSpecification>(nameof(supportFileSpecification))!; }
+			get { return base.GetAttributeValue<supportFileSpecification>(nameof(supportFileSpecification)); }
 		}
 		#endregion
 	}
@@ -2699,7 +2699,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? issueDate {
 			set { base.SetAttribute(new issueDate { value = value }); }
-			get { return base.GetAttributeValue<issueDate>(nameof(issueDate))!.value; }
+			get { return base.GetAttributeValue<issueDate>(nameof(issueDate))?.value; }
 		}
 		[JsonIgnore]
 		public issuanceCycle? issuanceCycle {
@@ -2741,7 +2741,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? publicationDate {
 			set { base.SetAttribute(new publicationDate { value = value }); }
-			get { return base.GetAttributeValue<publicationDate>(nameof(publicationDate))!.value; }
+			get { return base.GetAttributeValue<publicationDate>(nameof(publicationDate))?.value; }
 		}
 		[JsonIgnore]
 		public weekOfYear? weekOfYear {
@@ -2814,7 +2814,7 @@ namespace S100Framework.AttributeModel.S128.FeatureAssociation
 		[JsonIgnore]
 		public int? categoryOfProductMapping {
 			set { base.SetAttribute(new categoryOfProductMapping { value = value }); }
-			get { return base.GetAttributeValue<categoryOfProductMapping>(nameof(categoryOfProductMapping))!.value; }
+			get { return base.GetAttributeValue<categoryOfProductMapping>(nameof(categoryOfProductMapping))?.value; }
 		}
 		#endregion
 	}
@@ -2868,7 +2868,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		[JsonIgnore]
 		public int? catalogueSectionNumber {
 			set { base.SetAttribute(new catalogueSectionNumber { value = value }); }
-			get { return base.GetAttributeValue<catalogueSectionNumber>(nameof(catalogueSectionNumber))!.value; }
+			get { return base.GetAttributeValue<catalogueSectionNumber>(nameof(catalogueSectionNumber))?.value; }
 		}
 		[JsonIgnore]
 		public String? catalogueSectionTitle {
@@ -2939,7 +2939,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		[JsonIgnore]
 		public String? contactInstructions {
 			set { base.SetAttribute(new contactInstructions { value = value }); }
-			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))!.value; }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
 		}
 		[JsonIgnore]
 		public contactAddress?[] contactAddress {
@@ -3118,7 +3118,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		[JsonIgnore]
 		public String? agencyResponsibleForProduction {
 			set { base.SetAttribute(new agencyResponsibleForProduction { value = value }); }
-			get { return base.GetAttributeValue<agencyResponsibleForProduction>(nameof(agencyResponsibleForProduction))!.value; }
+			get { return base.GetAttributeValue<agencyResponsibleForProduction>(nameof(agencyResponsibleForProduction))?.value; }
 		}
 		[JsonIgnore]
 		public String? agencyName {
@@ -3154,7 +3154,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		[JsonIgnore]
 		public String? distributorName {
 			set { base.SetAttribute(new distributorName { value = value }); }
-			get { return base.GetAttributeValue<distributorName>(nameof(distributorName))!.value; }
+			get { return base.GetAttributeValue<distributorName>(nameof(distributorName))?.value; }
 		}
 		#endregion
 	}
@@ -3283,7 +3283,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		[JsonIgnore]
 		public Boolean? notForNavigation {
 			set { base.SetAttribute(new notForNavigation { value = value }); }
-			get { return base.GetAttributeValue<notForNavigation>(nameof(notForNavigation))!.value; }
+			get { return base.GetAttributeValue<notForNavigation>(nameof(notForNavigation))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -3587,7 +3587,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		[JsonIgnore]
 		public DateOnly? issueDate {
 			set { base.SetAttribute(new issueDate { value = value }); }
-			get { return base.GetAttributeValue<issueDate>(nameof(issueDate))!.value; }
+			get { return base.GetAttributeValue<issueDate>(nameof(issueDate))?.value; }
 		}
 		[JsonIgnore]
 		public S100Framework.DomainModel.S100.Time? issueTime {
@@ -3597,7 +3597,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		[JsonIgnore]
 		public int? typeOfProductFormat {
 			set { base.SetAttribute(new typeOfProductFormat { value = value }); }
-			get { return base.GetAttributeValue<typeOfProductFormat>(nameof(typeOfProductFormat))!.value; }
+			get { return base.GetAttributeValue<typeOfProductFormat>(nameof(typeOfProductFormat))?.value; }
 		}
 		[JsonIgnore]
 		public productSpecification? productSpecification {
@@ -3664,7 +3664,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		[JsonIgnore]
 		public DateOnly? editionDate {
 			set { base.SetAttribute(new editionDate { value = value }); }
-			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))!.value; }
+			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))?.value; }
 		}
 		[JsonIgnore]
 		public String? iSBN {
@@ -3768,7 +3768,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		[JsonIgnore]
 		public int? typeOfProductFormat {
 			set { base.SetAttribute(new typeOfProductFormat { value = value }); }
-			get { return base.GetAttributeValue<typeOfProductFormat>(nameof(typeOfProductFormat))!.value; }
+			get { return base.GetAttributeValue<typeOfProductFormat>(nameof(typeOfProductFormat))?.value; }
 		}
 		[JsonIgnore]
 		public serviceSpecification? serviceSpecification {

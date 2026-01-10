@@ -956,7 +956,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? chartNumber {
 			set { base.SetAttribute(new chartNumber { value = value }); }
-			get { return base.GetAttributeValue<chartNumber>(nameof(chartNumber))!.value; }
+			get { return base.GetAttributeValue<chartNumber>(nameof(chartNumber))?.value; }
 		}
 		[JsonIgnore]
 		public String? chartPlanNumber {
@@ -966,7 +966,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public DateOnly? editionDate {
 			set { base.SetAttribute(new editionDate { value = value }); }
-			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))!.value; }
+			get { return base.GetAttributeValue<editionDate>(nameof(editionDate))?.value; }
 		}
 		[JsonIgnore]
 		public DateOnly? lastNoticeDate {
@@ -1072,12 +1072,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		#endregion
 	}
@@ -1114,12 +1114,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		#endregion
 	}
@@ -1187,7 +1187,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? agencyResponsibleForProduction {
 			set { base.SetAttribute(new agencyResponsibleForProduction { value = value }); }
-			get { return base.GetAttributeValue<agencyResponsibleForProduction>(nameof(agencyResponsibleForProduction))!.value; }
+			get { return base.GetAttributeValue<agencyResponsibleForProduction>(nameof(agencyResponsibleForProduction))?.value; }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -1197,7 +1197,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? nameOfSeries {
 			set { base.SetAttribute(new nameOfSeries { value = value }); }
-			get { return base.GetAttributeValue<nameOfSeries>(nameof(nameOfSeries))!.value; }
+			get { return base.GetAttributeValue<nameOfSeries>(nameof(nameOfSeries))?.value; }
 		}
 		[JsonIgnore]
 		public String? nationality {
@@ -1207,17 +1207,17 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public int? warningNumber {
 			set { base.SetAttribute(new warningNumber { value = value }); }
-			get { return base.GetAttributeValue<warningNumber>(nameof(warningNumber))!.value; }
+			get { return base.GetAttributeValue<warningNumber>(nameof(warningNumber))?.value; }
 		}
 		[JsonIgnore]
 		public int? warningType {
 			set { base.SetAttribute(new warningType { value = value }); }
-			get { return base.GetAttributeValue<warningType>(nameof(warningType))!.value; }
+			get { return base.GetAttributeValue<warningType>(nameof(warningType))?.value; }
 		}
 		[JsonIgnore]
 		public int? year {
 			set { base.SetAttribute(new year { value = value }); }
-			get { return base.GetAttributeValue<year>(nameof(year))!.value; }
+			get { return base.GetAttributeValue<year>(nameof(year))?.value; }
 		}
 		#endregion
 	}
@@ -1254,12 +1254,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		#endregion
 	}
@@ -1387,12 +1387,12 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public int? nameUsage {
@@ -1428,7 +1428,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public double? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		#endregion
 	}
@@ -1459,7 +1459,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty))!; }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		#endregion
 	}
@@ -1529,7 +1529,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? publicationAffected {
@@ -1576,7 +1576,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public locationName?[] locationName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<locationName>(nameof(locationName))!; }
+			get { return base.GetAttributeValues<locationName>(nameof(locationName)); }
 		}
 		#endregion
 	}
@@ -1618,7 +1618,7 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 		[JsonIgnore]
 		public locationName?[] locationName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<locationName>(nameof(locationName))!; }
+			get { return base.GetAttributeValues<locationName>(nameof(locationName)); }
 		}
 		#endregion
 	}
@@ -1708,12 +1708,12 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		[JsonIgnore]
 		public Boolean? noMessageOnHand {
 			set { base.SetAttribute(new noMessageOnHand { value = value }); }
-			get { return base.GetAttributeValue<noMessageOnHand>(nameof(noMessageOnHand))!.value; }
+			get { return base.GetAttributeValue<noMessageOnHand>(nameof(noMessageOnHand))?.value; }
 		}
 		[JsonIgnore]
 		public int? referenceCategory {
 			set { base.SetAttribute(new referenceCategory { value = value }); }
-			get { return base.GetAttributeValue<referenceCategory>(nameof(referenceCategory))!.value; }
+			get { return base.GetAttributeValue<referenceCategory>(nameof(referenceCategory))?.value; }
 		}
 		#endregion
 	}
@@ -1798,7 +1798,7 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		[JsonIgnore]
 		public generalArea?[] generalArea {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<generalArea>(nameof(generalArea))!; }
+			get { return base.GetAttributeValues<generalArea>(nameof(generalArea)); }
 		}
 		[JsonIgnore]
 		public locality?[] locality {
@@ -1808,7 +1808,7 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		[JsonIgnore]
 		public messageSeriesIdentifier? messageSeriesIdentifier {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<messageSeriesIdentifier>(nameof(messageSeriesIdentifier))!; }
+			get { return base.GetAttributeValue<messageSeriesIdentifier>(nameof(messageSeriesIdentifier)); }
 		}
 		[JsonIgnore]
 		public navwarnTitle?[] navwarnTitle {
@@ -1823,17 +1823,17 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 		[JsonIgnore]
 		public Boolean? intService {
 			set { base.SetAttribute(new intService { value = value }); }
-			get { return base.GetAttributeValue<intService>(nameof(intService))!.value; }
+			get { return base.GetAttributeValue<intService>(nameof(intService))?.value; }
 		}
 		[JsonIgnore]
 		public int? navwarnTypeGeneral {
 			set { base.SetAttribute(new navwarnTypeGeneral { value = value }); }
-			get { return base.GetAttributeValue<navwarnTypeGeneral>(nameof(navwarnTypeGeneral))!.value; }
+			get { return base.GetAttributeValue<navwarnTypeGeneral>(nameof(navwarnTypeGeneral))?.value; }
 		}
 		[JsonIgnore]
 		public DateTime? publicationTime {
 			set { base.SetAttribute(new publicationTime { value = value }); }
-			get { return base.GetAttributeValue<publicationTime>(nameof(publicationTime))!.value; }
+			get { return base.GetAttributeValue<publicationTime>(nameof(publicationTime))?.value; }
 		}
 		#endregion
 	}
@@ -1949,7 +1949,7 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		[JsonIgnore]
 		public warningInformation? warningInformation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<warningInformation>(nameof(warningInformation))!; }
+			get { return base.GetAttributeValue<warningInformation>(nameof(warningInformation)); }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -2039,22 +2039,22 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		[JsonIgnore]
 		public int? textOffsetBearing {
 			set { base.SetAttribute(new textOffsetBearing { value = value }); }
-			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))!.value; }
+			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))?.value; }
 		}
 		[JsonIgnore]
 		public int? textOffsetDistance {
 			set { base.SetAttribute(new textOffsetDistance { value = value }); }
-			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))!.value; }
+			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))?.value; }
 		}
 		[JsonIgnore]
 		public Boolean? textRotation {
 			set { base.SetAttribute(new textRotation { value = value }); }
-			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))!.value; }
+			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))?.value; }
 		}
 		#endregion
 	}

@@ -922,10 +922,8 @@ namespace S100Framework.Applications
 
                             if (current.CATLMK != default) {
                                 var categoryOfLandmark = EnumHelper.GetEnumValues(current.CATLMK);
-                                if (categoryOfLandmark is not null && categoryOfLandmark.Any()) {
-                                    instance.categoryOfLandmark = categoryOfLandmark[0];
-                                    instance.categoryOfLandmark = categoryOfLandmark[1..];
-                                }
+                                if (categoryOfLandmark is not null)
+                                    instance.categoryOfLandmark = categoryOfLandmark;
                             }
 
                             // TODO: CATSPM

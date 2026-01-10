@@ -270,7 +270,8 @@ namespace S100Framework.AttributeModel
 
     public abstract class ComplexAttribute : Attribute, IAttributeBindings
     {
-        public Attribute[] attributes { get; private set; } = [];
+        [JsonInclude]
+        public Attribute[] attributes { get; protected set; } = [];
 
         [JsonIgnore]
         public abstract attributeBinding[] attributeBindingsCatalogue { get; }
@@ -340,7 +341,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
-        public Attribute[] attributes { get; private set; } = [];
+        [JsonInclude]
+        public Attribute[] attributes { get; protected set; } = [];
 
         [JsonIgnore]
         public informationBinding[] informations { get; set; } = [];
@@ -406,7 +408,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string S100FC_name { get; }
 
-        public Attribute[] attributes { get; private set; } = [];
+        [JsonInclude]
+        public Attribute[] attributes { get; protected set; } = [];
 
         [JsonIgnore]
         public informationBinding[] informations { get; set; } = [];
@@ -466,6 +469,13 @@ namespace S100Framework.AttributeModel
         protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : Attribute {
             return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
         }
+
+        public FeatureType() {
+            //foreach(var binding in attributeBindingsCatalogue.Where(e=>e.lower>0)) {
+            //    for (int i = 0; i < binding.lower; i++)
+            //        this.SetAttribute(binding.CreateInstance()!);
+            //}
+        }
     }
 
     public class attributeBinding
@@ -489,7 +499,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string role { get; }
 
-        public Attribute[] attributes { get; private set; } = [];
+        [JsonInclude]
+        public Attribute[] attributes { get; protected set; } = [];
 
         [JsonIgnore]
         public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];
@@ -546,7 +557,8 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public abstract string[] roles { get; }
 
-        public Attribute[] attributes { get; private set; } = [];
+        [JsonInclude]
+        public Attribute[] attributes { get; protected set; } = [];
 
         [JsonIgnore]
         public virtual attributeBinding[] attributeBindingsCatalogue { get; } = [];

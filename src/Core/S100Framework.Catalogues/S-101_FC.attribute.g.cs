@@ -4377,12 +4377,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? name {
 			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))!.value; }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
 		}
 		[JsonIgnore]
 		public int? nameUsage {
@@ -4430,12 +4430,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public Boolean? leastDepthOfDetectedFeaturesMeasured {
 			set { base.SetAttribute(new leastDepthOfDetectedFeaturesMeasured { value = value }); }
-			get { return base.GetAttributeValue<leastDepthOfDetectedFeaturesMeasured>(nameof(leastDepthOfDetectedFeaturesMeasured))!.value; }
+			get { return base.GetAttributeValue<leastDepthOfDetectedFeaturesMeasured>(nameof(leastDepthOfDetectedFeaturesMeasured))?.value; }
 		}
 		[JsonIgnore]
 		public Boolean? significantFeaturesDetected {
 			set { base.SetAttribute(new significantFeaturesDetected { value = value }); }
-			get { return base.GetAttributeValue<significantFeaturesDetected>(nameof(significantFeaturesDetected))!.value; }
+			get { return base.GetAttributeValue<significantFeaturesDetected>(nameof(significantFeaturesDetected))?.value; }
 		}
 		[JsonIgnore]
 		public double? sizeOfFeaturesDetected {
@@ -4524,7 +4524,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? frequencyShoreStationTransmits {
 			set { base.SetAttribute(new frequencyShoreStationTransmits { value = value }); }
-			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))!.value; }
+			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))?.value; }
 		}
 		#endregion
 	}
@@ -4561,7 +4561,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? horizontalClearanceValue {
 			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))!.value; }
+			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
 		public double? horizontalDistanceUncertainty {
@@ -4603,7 +4603,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? horizontalClearanceValue {
 			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))!.value; }
+			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
 		public double? horizontalDistanceUncertainty {
@@ -4645,7 +4645,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
 		public double? uncertaintyVariableFactor {
@@ -4720,7 +4720,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? language {
 			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))!.value; }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
 		}
 		[JsonIgnore]
 		public String? text {
@@ -4769,7 +4769,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? distanceUnitOfMeasurement {
 			set { base.SetAttribute(new distanceUnitOfMeasurement { value = value }); }
-			get { return base.GetAttributeValue<distanceUnitOfMeasurement>(nameof(distanceUnitOfMeasurement))!.value; }
+			get { return base.GetAttributeValue<distanceUnitOfMeasurement>(nameof(distanceUnitOfMeasurement))?.value; }
 		}
 		[JsonIgnore]
 		public String? referenceLocation {
@@ -4779,7 +4779,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? waterwayDistance {
 			set { base.SetAttribute(new waterwayDistance { value = value }); }
-			get { return base.GetAttributeValue<waterwayDistance>(nameof(waterwayDistance))!.value; }
+			get { return base.GetAttributeValue<waterwayDistance>(nameof(waterwayDistance))?.value; }
 		}
 		#endregion
 	}
@@ -4816,7 +4816,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public Boolean? multiplicityKnown {
 			set { base.SetAttribute(new multiplicityKnown { value = value }); }
-			get { return base.GetAttributeValue<multiplicityKnown>(nameof(multiplicityKnown))!.value; }
+			get { return base.GetAttributeValue<multiplicityKnown>(nameof(multiplicityKnown))?.value; }
 		}
 		[JsonIgnore]
 		public int? numberOfFeatures {
@@ -4869,7 +4869,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? linkage {
 			set { base.SetAttribute(new linkage { value = value }); }
-			get { return base.GetAttributeValue<linkage>(nameof(linkage))!.value; }
+			get { return base.GetAttributeValue<linkage>(nameof(linkage))?.value; }
 		}
 		[JsonIgnore]
 		public String? nameOfResource {
@@ -4916,7 +4916,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		#endregion
 	}
@@ -4953,12 +4953,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? dateEnd {
 			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
 		public String? dateStart {
 			set { base.SetAttribute(new dateStart { value = value }); }
-			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))!.value; }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
 		}
 		#endregion
 	}
@@ -4995,12 +4995,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? radarBand {
 			set { base.SetAttribute(new radarBand { value = value }); }
-			get { return base.GetAttributeValue<radarBand>(nameof(radarBand))!.value; }
+			get { return base.GetAttributeValue<radarBand>(nameof(radarBand))?.value; }
 		}
 		[JsonIgnore]
 		public double? waveLengthValue {
 			set { base.SetAttribute(new waveLengthValue { value = value }); }
-			get { return base.GetAttributeValue<waveLengthValue>(nameof(waveLengthValue))!.value; }
+			get { return base.GetAttributeValue<waveLengthValue>(nameof(waveLengthValue))?.value; }
 		}
 		#endregion
 	}
@@ -5042,7 +5042,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		#endregion
 	}
@@ -5079,7 +5079,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
-			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
 		public double? sectorLineLength {
@@ -5121,7 +5121,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
-			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))!.value; }
+			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
 		public double? sectorLineLength {
@@ -5168,7 +5168,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? text {
 			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))!.value; }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
 		}
 		#endregion
 	}
@@ -5206,12 +5206,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? signalDuration {
 			set { base.SetAttribute(new signalDuration { value = value }); }
-			get { return base.GetAttributeValue<signalDuration>(nameof(signalDuration))!.value; }
+			get { return base.GetAttributeValue<signalDuration>(nameof(signalDuration))?.value; }
 		}
 		[JsonIgnore]
 		public int? signalStatus {
 			set { base.SetAttribute(new signalStatus { value = value }); }
-			get { return base.GetAttributeValue<signalStatus>(nameof(signalStatus))!.value; }
+			get { return base.GetAttributeValue<signalStatus>(nameof(signalStatus))?.value; }
 		}
 		#endregion
 	}
@@ -5248,7 +5248,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? speedMaximum {
 			set { base.SetAttribute(new speedMaximum { value = value }); }
-			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))!.value; }
+			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))?.value; }
 		}
 		[JsonIgnore]
 		public double? speedMinimum {
@@ -5345,7 +5345,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? dateEnd {
 			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))!.value; }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
 		}
 		[JsonIgnore]
 		public String? dateStart {
@@ -5399,7 +5399,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public String? telecommunicationIdentifier {
 			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
-			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))!.value; }
+			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))?.value; }
 		}
 		[JsonIgnore]
 		public int? telecommunicationService {
@@ -5447,17 +5447,17 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
 		public double? speedMaximum {
 			set { base.SetAttribute(new speedMaximum { value = value }); }
-			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))!.value; }
+			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))?.value; }
 		}
 		[JsonIgnore]
 		public double? timeRelativeToTide {
 			set { base.SetAttribute(new timeRelativeToTide { value = value }); }
-			get { return base.GetAttributeValue<timeRelativeToTide>(nameof(timeRelativeToTide))!.value; }
+			get { return base.GetAttributeValue<timeRelativeToTide>(nameof(timeRelativeToTide))?.value; }
 		}
 		#endregion
 	}
@@ -5584,7 +5584,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? topmarkDaymarkShape {
 			set { base.SetAttribute(new topmarkDaymarkShape { value = value }); }
-			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))!.value; }
+			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))?.value; }
 		}
 		[JsonIgnore]
 		public shapeInformation?[] shapeInformation {
@@ -5627,7 +5627,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? magneticAnomalyValue {
 			set { base.SetAttribute(new magneticAnomalyValue { value = value }); }
-			get { return base.GetAttributeValue<magneticAnomalyValue>(nameof(magneticAnomalyValue))!.value; }
+			get { return base.GetAttributeValue<magneticAnomalyValue>(nameof(magneticAnomalyValue))?.value; }
 		}
 		[JsonIgnore]
 		public int? referenceDirection {
@@ -5669,7 +5669,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))!.value; }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
 		public double? uncertaintyVariableFactor {
@@ -5718,12 +5718,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? speedLimit {
 			set { base.SetAttribute(new speedLimit { value = value }); }
-			get { return base.GetAttributeValue<speedLimit>(nameof(speedLimit))!.value; }
+			get { return base.GetAttributeValue<speedLimit>(nameof(speedLimit))?.value; }
 		}
 		[JsonIgnore]
 		public int? speedUnits {
 			set { base.SetAttribute(new speedUnits { value = value }); }
-			get { return base.GetAttributeValue<speedUnits>(nameof(speedUnits))!.value; }
+			get { return base.GetAttributeValue<speedUnits>(nameof(speedUnits))?.value; }
 		}
 		[JsonIgnore]
 		public String? vesselClass {
@@ -5778,7 +5778,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? categoryOfZoneOfConfidenceInData {
 			set { base.SetAttribute(new categoryOfZoneOfConfidenceInData { value = value }); }
-			get { return base.GetAttributeValue<categoryOfZoneOfConfidenceInData>(nameof(categoryOfZoneOfConfidenceInData))!.value; }
+			get { return base.GetAttributeValue<categoryOfZoneOfConfidenceInData>(nameof(categoryOfZoneOfConfidenceInData))?.value; }
 		}
 		[JsonIgnore]
 		public fixedDateRange? fixedDateRange {
@@ -5835,7 +5835,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		#endregion
 	}
@@ -5885,7 +5885,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? lightCharacteristic {
 			set { base.SetAttribute(new lightCharacteristic { value = value }); }
-			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))!.value; }
+			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))?.value; }
 		}
 		[JsonIgnore]
 		public String?[] signalGroup {
@@ -5943,7 +5943,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek))!; }
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); }
 		}
 		#endregion
 	}
@@ -5980,12 +5980,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public sectorLimitOne? sectorLimitOne {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<sectorLimitOne>(nameof(sectorLimitOne))!; }
+			get { return base.GetAttributeValue<sectorLimitOne>(nameof(sectorLimitOne)); }
 		}
 		[JsonIgnore]
 		public sectorLimitTwo? sectorLimitTwo {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<sectorLimitTwo>(nameof(sectorLimitTwo))!; }
+			get { return base.GetAttributeValue<sectorLimitTwo>(nameof(sectorLimitTwo)); }
 		}
 		#endregion
 	}
@@ -6089,12 +6089,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? referenceTide {
 			set { base.SetAttribute(new referenceTide { value = value }); }
-			get { return base.GetAttributeValue<referenceTide>(nameof(referenceTide))!.value; }
+			get { return base.GetAttributeValue<referenceTide>(nameof(referenceTide))?.value; }
 		}
 		[JsonIgnore]
 		public int? referenceTideType {
 			set { base.SetAttribute(new referenceTideType { value = value }); }
-			get { return base.GetAttributeValue<referenceTideType>(nameof(referenceTideType))!.value; }
+			get { return base.GetAttributeValue<referenceTideType>(nameof(referenceTideType))?.value; }
 		}
 		[JsonIgnore]
 		public double? streamDepth {
@@ -6104,7 +6104,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public tidalStreamValue?[] tidalStreamValue {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<tidalStreamValue>(nameof(tidalStreamValue))!; }
+			get { return base.GetAttributeValues<tidalStreamValue>(nameof(tidalStreamValue)); }
 		}
 		#endregion
 	}
@@ -6141,7 +6141,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -6183,7 +6183,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -6231,7 +6231,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public Boolean? verticalClearanceUnlimited {
 			set { base.SetAttribute(new verticalClearanceUnlimited { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceUnlimited>(nameof(verticalClearanceUnlimited))!.value; }
+			get { return base.GetAttributeValue<verticalClearanceUnlimited>(nameof(verticalClearanceUnlimited))?.value; }
 		}
 		[JsonIgnore]
 		public double? verticalClearanceValue {
@@ -6278,7 +6278,7 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public double? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))!.value; }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -6438,12 +6438,12 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 		[JsonIgnore]
 		public int? lightCharacteristic {
 			set { base.SetAttribute(new lightCharacteristic { value = value }); }
-			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))!.value; }
+			get { return base.GetAttributeValue<lightCharacteristic>(nameof(lightCharacteristic))?.value; }
 		}
 		[JsonIgnore]
 		public lightSector?[] lightSector {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<lightSector>(nameof(lightSector))!; }
+			get { return base.GetAttributeValues<lightSector>(nameof(lightSector)); }
 		}
 		[JsonIgnore]
 		public String?[] signalGroup {
@@ -6751,7 +6751,7 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 		[JsonIgnore]
 		public scheduleByDayOfWeek?[] scheduleByDayOfWeek {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek))!; }
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); }
 		}
 		[JsonIgnore]
 		public information?[] information {
@@ -7029,7 +7029,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public horizontalPositionUncertainty? horizontalPositionUncertainty {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty))!; }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -7125,17 +7125,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? maximumDisplayScale {
 			set { base.SetAttribute(new maximumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))!.value; }
+			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))?.value; }
 		}
 		[JsonIgnore]
 		public int? minimumDisplayScale {
 			set { base.SetAttribute(new minimumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))!.value; }
+			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))?.value; }
 		}
 		[JsonIgnore]
 		public int? optimumDisplayScale {
 			set { base.SetAttribute(new optimumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))!.value; }
+			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
 		}
 		[JsonIgnore]
 		public information?[] information {
@@ -7184,7 +7184,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
-			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))!.value; }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -7255,12 +7255,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? marksNavigationalSystemOf {
 			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
-			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))!.value; }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -7357,12 +7357,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfTemporalVariation {
 			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))!.value; }
+			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
 		public int? dataAssessment {
 			set { base.SetAttribute(new dataAssessment { value = value }); }
-			get { return base.GetAttributeValue<dataAssessment>(nameof(dataAssessment))!.value; }
+			get { return base.GetAttributeValue<dataAssessment>(nameof(dataAssessment))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMaximumValue {
@@ -7377,12 +7377,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public featuresDetected? featuresDetected {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<featuresDetected>(nameof(featuresDetected))!; }
+			get { return base.GetAttributeValue<featuresDetected>(nameof(featuresDetected)); }
 		}
 		[JsonIgnore]
 		public Boolean? fullSeafloorCoverageAchieved {
 			set { base.SetAttribute(new fullSeafloorCoverageAchieved { value = value }); }
-			get { return base.GetAttributeValue<fullSeafloorCoverageAchieved>(nameof(fullSeafloorCoverageAchieved))!.value; }
+			get { return base.GetAttributeValue<fullSeafloorCoverageAchieved>(nameof(fullSeafloorCoverageAchieved))?.value; }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -7397,7 +7397,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public zoneOfConfidence?[] zoneOfConfidence {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<zoneOfConfidence>(nameof(zoneOfConfidence))!; }
+			get { return base.GetAttributeValues<zoneOfConfidence>(nameof(zoneOfConfidence)); }
 		}
 		[JsonIgnore]
 		public information?[] information {
@@ -7451,7 +7451,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
-			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))!.value; }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
 		public information?[] information {
@@ -7505,7 +7505,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? verticalDatum {
 			set { base.SetAttribute(new verticalDatum { value = value }); }
-			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))!.value; }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
 		public information?[] information {
@@ -7712,12 +7712,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? surveyAuthority {
 			set { base.SetAttribute(new surveyAuthority { value = value }); }
-			get { return base.GetAttributeValue<surveyAuthority>(nameof(surveyAuthority))!.value; }
+			get { return base.GetAttributeValue<surveyAuthority>(nameof(surveyAuthority))?.value; }
 		}
 		[JsonIgnore]
 		public surveyDateRange? surveyDateRange {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange))!; }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
 		}
 		[JsonIgnore]
 		public int?[] surveyType {
@@ -7810,12 +7810,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? updateNumber {
 			set { base.SetAttribute(new updateNumber { value = value }); }
-			get { return base.GetAttributeValue<updateNumber>(nameof(updateNumber))!.value; }
+			get { return base.GetAttributeValue<updateNumber>(nameof(updateNumber))?.value; }
 		}
 		[JsonIgnore]
 		public int? updateType {
 			set { base.SetAttribute(new updateType { value = value }); }
-			get { return base.GetAttributeValue<updateType>(nameof(updateType))!.value; }
+			get { return base.GetAttributeValue<updateType>(nameof(updateType))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -7896,17 +7896,17 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? referenceYearForMagneticVariation {
 			set { base.SetAttribute(new referenceYearForMagneticVariation { value = value }); }
-			get { return base.GetAttributeValue<referenceYearForMagneticVariation>(nameof(referenceYearForMagneticVariation))!.value; }
+			get { return base.GetAttributeValue<referenceYearForMagneticVariation>(nameof(referenceYearForMagneticVariation))?.value; }
 		}
 		[JsonIgnore]
 		public double? valueOfAnnualChangeInMagneticVariation {
 			set { base.SetAttribute(new valueOfAnnualChangeInMagneticVariation { value = value }); }
-			get { return base.GetAttributeValue<valueOfAnnualChangeInMagneticVariation>(nameof(valueOfAnnualChangeInMagneticVariation))!.value; }
+			get { return base.GetAttributeValue<valueOfAnnualChangeInMagneticVariation>(nameof(valueOfAnnualChangeInMagneticVariation))?.value; }
 		}
 		[JsonIgnore]
 		public double? valueOfMagneticVariation {
 			set { base.SetAttribute(new valueOfMagneticVariation { value = value }); }
-			get { return base.GetAttributeValue<valueOfMagneticVariation>(nameof(valueOfMagneticVariation))!.value; }
+			get { return base.GetAttributeValue<valueOfMagneticVariation>(nameof(valueOfMagneticVariation))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -7992,7 +7992,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public valueOfLocalMagneticAnomaly?[] valueOfLocalMagneticAnomaly {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<valueOfLocalMagneticAnomaly>(nameof(valueOfLocalMagneticAnomaly))!; }
+			get { return base.GetAttributeValues<valueOfLocalMagneticAnomaly>(nameof(valueOfLocalMagneticAnomaly)); }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -8284,7 +8284,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName))!; }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -8361,7 +8361,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
-			get { return base.GetAttributeValue<elevation>(nameof(elevation))!.value; }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -8892,7 +8892,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfVegetation {
 			set { base.SetAttribute(new categoryOfVegetation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfVegetation>(nameof(categoryOfVegetation))!.value; }
+			get { return base.GetAttributeValue<categoryOfVegetation>(nameof(categoryOfVegetation))?.value; }
 		}
 		[JsonIgnore]
 		public double? elevation {
@@ -9032,7 +9032,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfIce {
 			set { base.SetAttribute(new categoryOfIce { value = value }); }
-			get { return base.GetAttributeValue<categoryOfIce>(nameof(categoryOfIce))!.value; }
+			get { return base.GetAttributeValue<categoryOfIce>(nameof(categoryOfIce))?.value; }
 		}
 		[JsonIgnore]
 		public double? elevation {
@@ -10504,7 +10504,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed))!; }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
 		public int? verticalDatum {
@@ -10619,12 +10619,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public verticalClearanceClosed? verticalClearanceClosed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalClearanceClosed>(nameof(verticalClearanceClosed))!; }
+			get { return base.GetAttributeValue<verticalClearanceClosed>(nameof(verticalClearanceClosed)); }
 		}
 		[JsonIgnore]
 		public verticalClearanceOpen? verticalClearanceOpen {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalClearanceOpen>(nameof(verticalClearanceOpen))!; }
+			get { return base.GetAttributeValue<verticalClearanceOpen>(nameof(verticalClearanceOpen)); }
 		}
 		[JsonIgnore]
 		public int? verticalDatum {
@@ -11442,7 +11442,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfPylon {
 			set { base.SetAttribute(new categoryOfPylon { value = value }); }
-			get { return base.GetAttributeValue<categoryOfPylon>(nameof(categoryOfPylon))!.value; }
+			get { return base.GetAttributeValue<categoryOfPylon>(nameof(categoryOfPylon))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -12352,7 +12352,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? visualProminence {
 			set { base.SetAttribute(new visualProminence { value = value }); }
-			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))!.value; }
+			get { return base.GetAttributeValue<visualProminence>(nameof(visualProminence))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -13218,7 +13218,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfProductionArea {
 			set { base.SetAttribute(new categoryOfProductionArea { value = value }); }
-			get { return base.GetAttributeValue<categoryOfProductionArea>(nameof(categoryOfProductionArea))!.value; }
+			get { return base.GetAttributeValue<categoryOfProductionArea>(nameof(categoryOfProductionArea))?.value; }
 		}
 		[JsonIgnore]
 		public int? condition {
@@ -14411,7 +14411,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public horizontalClearanceFixed? horizontalClearanceFixed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed))!; }
+			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
 		public double? horizontalLength {
@@ -14461,7 +14461,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public verticalClearanceFixed? verticalClearanceFixed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed))!; }
+			get { return base.GetAttributeValue<verticalClearanceFixed>(nameof(verticalClearanceFixed)); }
 		}
 		[JsonIgnore]
 		public int? verticalDatum {
@@ -14825,7 +14825,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public Boolean? distanceMarkVisible {
 			set { base.SetAttribute(new distanceMarkVisible { value = value }); }
-			get { return base.GetAttributeValue<distanceMarkVisible>(nameof(distanceMarkVisible))!.value; }
+			get { return base.GetAttributeValue<distanceMarkVisible>(nameof(distanceMarkVisible))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -14845,7 +14845,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public measuredDistanceValue? measuredDistanceValue {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<measuredDistanceValue>(nameof(measuredDistanceValue))!; }
+			get { return base.GetAttributeValue<measuredDistanceValue>(nameof(measuredDistanceValue)); }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -15603,7 +15603,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public featureName?[] featureName {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName))!; }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
 		public fixedDateRange? fixedDateRange {
@@ -17285,7 +17285,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfTidalStream {
 			set { base.SetAttribute(new categoryOfTidalStream { value = value }); }
-			get { return base.GetAttributeValue<categoryOfTidalStream>(nameof(categoryOfTidalStream))!.value; }
+			get { return base.GetAttributeValue<categoryOfTidalStream>(nameof(categoryOfTidalStream))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -17305,12 +17305,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
 		public speed? speed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<speed>(nameof(speed))!; }
+			get { return base.GetAttributeValue<speed>(nameof(speed)); }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -17415,7 +17415,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
 		public periodicDateRange?[] periodicDateRange {
@@ -17425,7 +17425,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public speed? speed {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<speed>(nameof(speed))!; }
+			get { return base.GetAttributeValue<speed>(nameof(speed)); }
 		}
 		[JsonIgnore]
 		public int? status {
@@ -17496,7 +17496,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfWaterTurbulence {
 			set { base.SetAttribute(new categoryOfWaterTurbulence { value = value }); }
-			get { return base.GetAttributeValue<categoryOfWaterTurbulence>(nameof(categoryOfWaterTurbulence))!.value; }
+			get { return base.GetAttributeValue<categoryOfWaterTurbulence>(nameof(categoryOfWaterTurbulence))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -17593,7 +17593,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? stationName {
 			set { base.SetAttribute(new stationName { value = value }); }
-			get { return base.GetAttributeValue<stationName>(nameof(stationName))!.value; }
+			get { return base.GetAttributeValue<stationName>(nameof(stationName))?.value; }
 		}
 		[JsonIgnore]
 		public String? stationNumber {
@@ -17603,7 +17603,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public tidalStreamPanelValues?[] tidalStreamPanelValues {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<tidalStreamPanelValues>(nameof(tidalStreamPanelValues))!; }
+			get { return base.GetAttributeValues<tidalStreamPanelValues>(nameof(tidalStreamPanelValues)); }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -17824,7 +17824,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMaximumValue {
@@ -17934,7 +17934,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -18008,7 +18008,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? valueOfDepthContour {
 			set { base.SetAttribute(new valueOfDepthContour { value = value }); }
-			get { return base.GetAttributeValue<valueOfDepthContour>(nameof(valueOfDepthContour))!.value; }
+			get { return base.GetAttributeValue<valueOfDepthContour>(nameof(valueOfDepthContour))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -18067,12 +18067,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))!.value; }
+			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
 		public String? interoperabilityIdentifier {
@@ -18261,7 +18261,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public surfaceCharacteristics?[] surfaceCharacteristics {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<surfaceCharacteristics>(nameof(surfaceCharacteristics))!; }
+			get { return base.GetAttributeValues<surfaceCharacteristics>(nameof(surfaceCharacteristics)); }
 		}
 		[JsonIgnore]
 		public int? waterLevelEffect {
@@ -18699,12 +18699,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
-			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))!.value; }
+			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
 		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
-			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -18724,7 +18724,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
-			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
 		#endregion
 	}
@@ -18924,7 +18924,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
-			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -18949,7 +18949,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
-			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
 		#endregion
 	}
@@ -19178,7 +19178,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
-			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -19198,7 +19198,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
-			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))!.value; }
+			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
 		#endregion
 	}
@@ -19731,7 +19731,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? waterLevelEffect {
 			set { base.SetAttribute(new waterLevelEffect { value = value }); }
-			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))!.value; }
+			get { return base.GetAttributeValue<waterLevelEffect>(nameof(waterLevelEffect))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -20840,7 +20840,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfNavigationLine {
 			set { base.SetAttribute(new categoryOfNavigationLine { value = value }); }
-			get { return base.GetAttributeValue<categoryOfNavigationLine>(nameof(categoryOfNavigationLine))!.value; }
+			get { return base.GetAttributeValue<categoryOfNavigationLine>(nameof(categoryOfNavigationLine))?.value; }
 		}
 		[JsonIgnore]
 		public fixedDateRange? fixedDateRange {
@@ -20860,7 +20860,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public orientation? orientation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation))!; }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
 		public periodicDateRange?[] periodicDateRange {
@@ -20999,7 +20999,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public Boolean? basedOnFixedMarks {
 			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
-			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
@@ -21029,7 +21029,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public periodicDateRange?[] periodicDateRange {
@@ -21054,7 +21054,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -21543,7 +21543,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public Boolean? basedOnFixedMarks {
 			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
-			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
@@ -21729,7 +21729,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] qualityOfVerticalMeasurement {
@@ -21749,7 +21749,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -21922,7 +21922,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] status {
@@ -22050,7 +22050,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public Boolean? basedOnFixedMarks {
 			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
-			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))!.value; }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
@@ -22080,7 +22080,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] qualityOfVerticalMeasurement {
@@ -22100,7 +22100,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -22235,7 +22235,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))!.value; }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -22260,7 +22260,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] qualityOfVerticalMeasurement {
@@ -22285,7 +22285,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
 		public verticalUncertainty? verticalUncertainty {
@@ -22611,7 +22611,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public information?[] information {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information))!; }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		#endregion
 	}
@@ -23416,7 +23416,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
-			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -23548,7 +23548,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? trafficFlow {
 			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))!.value; }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -23740,7 +23740,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public double? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))!.value; }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] status {
@@ -24884,7 +24884,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? jurisdiction {
 			set { base.SetAttribute(new jurisdiction { value = value }); }
-			get { return base.GetAttributeValue<jurisdiction>(nameof(jurisdiction))!.value; }
+			get { return base.GetAttributeValue<jurisdiction>(nameof(jurisdiction))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -25479,7 +25479,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
-			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -25636,7 +25636,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
-			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] status {
@@ -26176,7 +26176,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public String? nationality {
 			set { base.SetAttribute(new nationality { value = value }); }
-			get { return base.GetAttributeValue<nationality>(nameof(nationality))!.value; }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -26986,7 +26986,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public rhythmOfLight? rhythmOfLight {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight))!; }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
 		}
 		[JsonIgnore]
 		public int? signalGeneration {
@@ -27187,7 +27187,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public sectorCharacteristics?[] sectorCharacteristics {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics))!; }
+			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics)); }
 		}
 		[JsonIgnore]
 		public int? signalGeneration {
@@ -27725,12 +27725,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int? categoryOfLateralMark {
 			set { base.SetAttribute(new categoryOfLateralMark { value = value }); }
-			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))!.value; }
+			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -27939,12 +27939,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int? categoryOfCardinalMark {
 			set { base.SetAttribute(new categoryOfCardinalMark { value = value }); }
-			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))!.value; }
+			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -28146,7 +28146,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -28348,7 +28348,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -28557,7 +28557,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] categoryOfSpecialPurposeMark {
@@ -28751,7 +28751,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -28945,7 +28945,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int? categoryOfInstallationBuoy {
@@ -29146,7 +29146,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? buoyShape {
 			set { base.SetAttribute(new buoyShape { value = value }); }
-			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))!.value; }
+			get { return base.GetAttributeValue<buoyShape>(nameof(buoyShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -29387,12 +29387,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? beaconShape {
 			set { base.SetAttribute(new beaconShape { value = value }); }
-			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))?.value; }
 		}
 		[JsonIgnore]
 		public int? categoryOfLateralMark {
 			set { base.SetAttribute(new categoryOfLateralMark { value = value }); }
-			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))!.value; }
+			get { return base.GetAttributeValue<categoryOfLateralMark>(nameof(categoryOfLateralMark))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -29658,12 +29658,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? beaconShape {
 			set { base.SetAttribute(new beaconShape { value = value }); }
-			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))?.value; }
 		}
 		[JsonIgnore]
 		public int? categoryOfCardinalMark {
 			set { base.SetAttribute(new categoryOfCardinalMark { value = value }); }
-			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))!.value; }
+			get { return base.GetAttributeValue<categoryOfCardinalMark>(nameof(categoryOfCardinalMark))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -29922,7 +29922,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? beaconShape {
 			set { base.SetAttribute(new beaconShape { value = value }); }
-			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -30181,7 +30181,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? beaconShape {
 			set { base.SetAttribute(new beaconShape { value = value }); }
-			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] colour {
@@ -30447,7 +30447,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? beaconShape {
 			set { base.SetAttribute(new beaconShape { value = value }); }
-			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))!.value; }
+			get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape))?.value; }
 		}
 		[JsonIgnore]
 		public int?[] categoryOfSpecialPurposeMark {
@@ -30751,7 +30751,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? topmarkDaymarkShape {
 			set { base.SetAttribute(new topmarkDaymarkShape { value = value }); }
-			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))!.value; }
+			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))?.value; }
 		}
 		[JsonIgnore]
 		public double? verticalLength {
@@ -31521,7 +31521,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfFogSignal {
 			set { base.SetAttribute(new categoryOfFogSignal { value = value }); }
-			get { return base.GetAttributeValue<categoryOfFogSignal>(nameof(categoryOfFogSignal))!.value; }
+			get { return base.GetAttributeValue<categoryOfFogSignal>(nameof(categoryOfFogSignal))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -31828,7 +31828,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? virtualAISAidToNavigationType {
 			set { base.SetAttribute(new virtualAISAidToNavigationType { value = value }); }
-			get { return base.GetAttributeValue<virtualAISAidToNavigationType>(nameof(virtualAISAidToNavigationType))!.value; }
+			get { return base.GetAttributeValue<virtualAISAidToNavigationType>(nameof(virtualAISAidToNavigationType))?.value; }
 		}
 		[JsonIgnore]
 		public int? scaleMinimum {
@@ -32097,7 +32097,7 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? categoryOfRadarTransponderBeacon {
 			set { base.SetAttribute(new categoryOfRadarTransponderBeacon { value = value }); }
-			get { return base.GetAttributeValue<categoryOfRadarTransponderBeacon>(nameof(categoryOfRadarTransponderBeacon))!.value; }
+			get { return base.GetAttributeValue<categoryOfRadarTransponderBeacon>(nameof(categoryOfRadarTransponderBeacon))?.value; }
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
@@ -33228,12 +33228,12 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 		[JsonIgnore]
 		public int? textOffsetBearing {
 			set { base.SetAttribute(new textOffsetBearing { value = value }); }
-			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))!.value; }
+			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))?.value; }
 		}
 		[JsonIgnore]
 		public int? textOffsetDistance {
 			set { base.SetAttribute(new textOffsetDistance { value = value }); }
-			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))!.value; }
+			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))?.value; }
 		}
 		[JsonIgnore]
 		public Boolean? textRotation {
