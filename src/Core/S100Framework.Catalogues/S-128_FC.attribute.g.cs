@@ -1475,7 +1475,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_name => "Contact Address";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -1557,7 +1557,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public paperLength paperLength { get; set; } = new paperLength();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				paperWidth,
 				paperLength,
 				.. base.attributesOptional,
@@ -1598,7 +1598,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public countryName countryName { get; set; } = new countryName();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				characterEncoding,
 				countryName,
 				.. base.attributesOptional,
@@ -1649,7 +1649,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public name name { get; set; } = new name();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				name,
 				.. base.attributesOptional,
 			];
@@ -1703,7 +1703,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_name => "Information";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -1784,7 +1784,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public linkage linkage { get; set; } = new linkage();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				linkage,
 				.. base.attributesOptional,
 			];
@@ -1873,7 +1873,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public dateStart dateStart { get; set; } = new dateStart();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				dateEnd,
 				dateStart,
 				.. base.attributesOptional,
@@ -1914,7 +1914,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public price price { get; set; } = new price();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				currency,
 				price,
 				.. base.attributesOptional,
@@ -1964,7 +1964,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_name => "Print Size";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -2015,7 +2015,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public version version { get; set; } = new version();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				editionDate,
 				name,
 				version,
@@ -2075,7 +2075,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public version version { get; set; } = new version();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				editionDate,
 				name,
 				version,
@@ -2124,7 +2124,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public version version { get; set; } = new version();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				editionDate,
 				name,
 				version,
@@ -2170,7 +2170,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_name => "Source Indication";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -2265,7 +2265,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public telecommunicationIdentifier telecommunicationIdentifier { get; set; } = new telecommunicationIdentifier();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				contactInstructions,
 				telecommunicationIdentifier,
 				.. base.attributesOptional,
@@ -2318,7 +2318,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public valueOfTime valueOfTime { get; set; } = new valueOfTime();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				typeOfTimeIntervalUnit,
 				valueOfTime,
 				.. base.attributesOptional,
@@ -2365,7 +2365,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public yearNumber yearNumber { get; set; } = new yearNumber();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				weekNumber,
 				yearNumber,
 				.. base.attributesOptional,
@@ -2404,7 +2404,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public override string S100FC_name => "Issuance Cycle";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -2452,7 +2452,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public printSize printSize { get; set; } = new printSize();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				printSize,
 				.. base.attributesOptional,
 			];
@@ -2535,7 +2535,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public supportFileSpecification supportFileSpecification { get; set; } = new supportFileSpecification();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				digitalSignatureReference,
 				fileLocator,
 				fileName,
@@ -2669,7 +2669,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public issueDate issueDate { get; set; } = new issueDate();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				issueDate,
 				.. base.attributesOptional,
 			];
@@ -2724,7 +2724,7 @@ namespace S100Framework.AttributeModel.S128.ComplexAttributes
 		public publicationDate publicationDate { get; set; } = new publicationDate();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				publicationDate,
 				.. base.attributesOptional,
 			];
@@ -2879,7 +2879,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public catalogueSectionNumber catalogueSectionNumber { get; set; } = new catalogueSectionNumber();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				catalogueSectionNumber,
 				.. base.attributesOptional,
 			];
@@ -2934,7 +2934,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public contactInstructions contactInstructions { get; set; } = new contactInstructions();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				contactInstructions,
 				.. base.attributesOptional,
 			];
@@ -3021,7 +3021,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_name => "Indication of Carriage Requirement";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -3079,7 +3079,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public override string S100FC_name => "Price Information";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				.. base.attributesOptional,
 			];
 
@@ -3149,7 +3149,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public agencyResponsibleForProduction agencyResponsibleForProduction { get; set; } = new agencyResponsibleForProduction();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				agencyResponsibleForProduction,
 				.. base.attributesOptional,
 			];
@@ -3193,7 +3193,7 @@ namespace S100Framework.AttributeModel.S128.InformationTypes
 		public distributorName distributorName { get; set; } = new distributorName();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				distributorName,
 				.. base.attributesOptional,
 			];
@@ -3234,7 +3234,7 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public notForNavigation notForNavigation { get; set; } = new notForNavigation();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
+		public override Attribute[] attributes => [
 				catalogueElementClassification,
 				notForNavigation,
 				.. base.attributesOptional,
@@ -3388,8 +3388,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public override string S100FC_name => "Navigational Product";
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
-				.. base.attributeBindings,
+		public override Attribute[] attributes => [
+				.. base.attributes,
 				.. base.attributesOptional,
 			];
 
@@ -3597,8 +3597,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public typeOfProductFormat typeOfProductFormat { get; set; } = new typeOfProductFormat();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
-				.. base.attributeBindings,
+		public override Attribute[] attributes => [
+				.. base.attributes,
 				issueDate,
 				typeOfProductFormat,
 				.. base.attributesOptional,
@@ -3684,8 +3684,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public editionDate editionDate { get; set; } = new editionDate();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
-				.. base.attributeBindings,
+		public override Attribute[] attributes => [
+				.. base.attributes,
 				editionDate,
 				.. base.attributesOptional,
 			];
@@ -3774,8 +3774,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 		public typeOfProductFormat typeOfProductFormat { get; set; } = new typeOfProductFormat();
 
 		[JsonIgnore]
-		public override Attribute[] attributeBindings => [
-				.. base.attributeBindings,
+		public override Attribute[] attributes => [
+				.. base.attributes,
 				typeOfProductFormat,
 				.. base.attributesOptional,
 			];

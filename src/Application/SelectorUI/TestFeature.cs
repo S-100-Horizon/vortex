@@ -18,9 +18,9 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featureName featureName { get; init; } = new featureName();
 
-        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
+        public override S100Framework.AttributeModel.Attribute[] attributes => [
                 featureName,
-                .. base.attributeBindings,
+                .. base.attributes,
             ];
         public override attributeBinding[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,
@@ -42,7 +42,7 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
 
-        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
+        public override S100Framework.AttributeModel.Attribute[] attributes => [
                 featuresDetectedNested,
             ];
         public override attributeBinding[] attributeBindingsCatalogue => [
@@ -64,9 +64,9 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featuresDetectedNested featuresDetectedNested { get; init; } = new featuresDetectedNested();
 
-        public override S100Framework.AttributeModel.Attribute[] attributeBindings => [
+        public override S100Framework.AttributeModel.Attribute[] attributes => [
                 featuresDetectedNested,
-                .. base.attributeBindings,
+                .. base.attributes,
             ];
         public override attributeBinding[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,

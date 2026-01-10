@@ -386,7 +386,7 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
                         foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
                             var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                             var lower = int.Parse(subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
@@ -751,9 +751,9 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
                         if (superType != null) {
-                            roslyn.AppendLine($"\t\t\t\t.. base.attributeBindings,");
+                            roslyn.AppendLine($"\t\t\t\t.. base.attributes,");
                         }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -949,9 +949,9 @@ namespace TestAttributes
 
                         roslyn.AppendLine();
                         roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributeBindings => [");
+                        roslyn.AppendLine($"\t\tpublic override Attribute[] attributes => [");
                         if (superType != null) {
-                            roslyn.AppendLine($"\t\t\t\t.. base.attributeBindings,");
+                            roslyn.AppendLine($"\t\t\t\t.. base.attributes,");
                         }
                         foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;

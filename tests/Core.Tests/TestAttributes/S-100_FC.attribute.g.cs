@@ -271,7 +271,7 @@ namespace S100Framework.AttributeModel
     public abstract class ComplexAttribute : Attribute, IAttributeBindings
     {
         [JsonIgnore]
-        public abstract Attribute[] attributeBindings { get; }
+        public abstract Attribute[] attributes { get; }
 
         public Attribute[] attributesOptional { get; set; } = [];
 
@@ -286,7 +286,7 @@ namespace S100Framework.AttributeModel
             var binding = attributeBindingsCatalogue!.SingleOrDefault(e => e.attribute.Equals(code));
             if (binding == null)
                 return null;
-            return (binding.upper - this.attributeBindings.Where(e => e.GetType().Name.Equals(code)).Count());
+            return (binding.upper - this.attributes.Where(e => e.GetType().Name.Equals(code)).Count());
         }
 
         protected void AddAttributeValue(Attribute? attribute) {
@@ -344,9 +344,12 @@ namespace S100Framework.AttributeModel
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract Attribute[] attributeBindings { get; }
+        public abstract Attribute[] attributes { get; }
 
         public Attribute[] attributesOptional { get; set; } = [];
+
+        [JsonIgnore]
+        public informationBinding[] informations { get; set; } = [];
 
         [JsonIgnore]
         public abstract attributeBinding[] attributeBindingsCatalogue { get; }
@@ -410,15 +413,15 @@ namespace S100Framework.AttributeModel
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract Attribute[] attributeBindings { get; }
+        public abstract Attribute[] attributes { get; }
 
         public Attribute[] attributesOptional { get; set; } = [];
 
         [JsonIgnore]
-        public informationBinding[] informationBindings { get; set; } = [];
+        public informationBinding[] informations { get; set; } = [];
 
         [JsonIgnore]
-        public featureBinding[] featureBindings { get; set; } = [];
+        public featureBinding[] features { get; set; } = [];
 
         [JsonIgnore]
         public abstract attributeBinding[] attributeBindingsCatalogue { get; }
