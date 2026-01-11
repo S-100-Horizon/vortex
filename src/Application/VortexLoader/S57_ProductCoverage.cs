@@ -4,13 +4,22 @@ using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S128.ComplexAttributes;
+using System.Text.Json;
 using VortexLoader.Singletons;
 
 namespace S100Framework.Applications
 {
+    using S100Framework.AttributeModel.S128;
+
     internal static partial class ImporterNIS
     {
         private static void S57_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter, bool s128) {
+            JsonSerializerOptions jsonSerializerOptions128 = new JsonSerializerOptions {
+                WriteIndented = false,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true,
+            }.AppendTypeInfoResolver();
+
             var tableName = "ProductCoverage";
 
             using var productDefinitionsTable = source.OpenDataset<Table>(source.GetName("ProductDefinitions"));
@@ -61,7 +70,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl, ImporterNIS.jsonSerializerOptions);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl, jsonSerializerOptions128);
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
@@ -243,7 +252,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions128);
                     buffer["informationbindings"] = "[]";
 
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));
@@ -254,7 +263,7 @@ namespace S100Framework.Applications
                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                 }
 
-                Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
+                Logger.Current.DataObject(objectid, tableName, dsnm, System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions128));
             }
             Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
         }
