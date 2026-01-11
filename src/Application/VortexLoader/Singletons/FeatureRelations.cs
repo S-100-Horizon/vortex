@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using S100Framework.Applications.S57.esri;
 using S100Framework.AttributeModel;
 using S100Framework.AttributeModel.S101.ComplexAttributes;

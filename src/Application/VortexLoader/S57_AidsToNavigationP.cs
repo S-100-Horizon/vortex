@@ -1984,7 +1984,7 @@ namespace S100Framework.Applications
                             valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
                             sectorLimit = null
                         };
-                        if(light.SECTR1 != null && light.SECTR2 != null) {
+                        if (light.SECTR1 != null && light.SECTR2 != null) {
                             lightSector.sectorLimit = new sectorLimit() {
                                 sectorLimitOne = new sectorLimitOne() {
                                     sectorBearing = light.SECTR1.Value,

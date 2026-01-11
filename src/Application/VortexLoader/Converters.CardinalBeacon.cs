@@ -23,7 +23,7 @@ namespace S100Framework.Applications
 
             if (current.COLOUR != default) {
                 var colours = ImporterNIS.GetColours(current.COLOUR);
-                if(colours is not null)
+                if (colours is not null)
                     instance.colour = colours;
             }
 

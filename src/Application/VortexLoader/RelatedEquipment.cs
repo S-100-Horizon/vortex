@@ -7,7 +7,6 @@ using S100Framework.AttributeModel.S101.ComplexAttributes;
 using S100Framework.AttributeModel.S101.FeatureTypes;
 using S100Framework.AttributeModel.S101.SimpleAttributes;
 using System.Data;
-using System.Text.Json;
 
 namespace S100Framework.Applications
 {

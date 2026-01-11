@@ -59,7 +59,7 @@ namespace S100Framework.Applications
                             if (current.CATFRY.HasValue) {
                                 var categoryOfFerry = EnumHelper.GetEnumValues(current.CATFRY.Value);
                                 if (categoryOfFerry is not null)
-                                    instance.categoryOfFerry = categoryOfFerry;                                
+                                    instance.categoryOfFerry = categoryOfFerry;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

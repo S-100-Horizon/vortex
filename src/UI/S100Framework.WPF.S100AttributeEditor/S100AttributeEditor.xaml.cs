@@ -59,7 +59,7 @@ namespace S100Framework.WPF
 
         #endregion
 
-        public AttributeViewModel(S100Framework.AttributeModel.Attribute attribute) {
+        public AttributeViewModel(S100Framework.AttributeModel.attributeBinding attribute) {
             this.code = attribute.S100FC_code;
         }
     }
@@ -98,7 +98,7 @@ namespace S100Framework.WPF
             this._attribute = attribute;
 
             this.attributeBindings = this._attribute.attributeBindingsCatalogue;
-            foreach (var e in attribute.attributes) {
+            foreach (var e in attribute.attributeBindings) {
                 if (e is SimpleAttribute simpleAttribute)
                     this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)
@@ -132,7 +132,7 @@ namespace S100Framework.WPF
             this._feature = feature;
             this.code = this._feature.S100FC_code;
             this.attributeBindings = this._feature.attributeBindingsCatalogue;
-            foreach (var e in this._feature.attributes)
+            foreach (var e in this._feature.attributeBindings)
                 if (e is SimpleAttribute simpleAttribute)
                     this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)

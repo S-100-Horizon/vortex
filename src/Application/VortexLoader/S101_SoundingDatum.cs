@@ -91,7 +91,7 @@ namespace S100Framework.Applications
                     if (item.IsEmpty) {
                         continue;
                     }
-                    
+
                     var instance = new SoundingDatum {
                     };
 
