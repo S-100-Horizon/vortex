@@ -4806,6 +4806,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -4833,6 +4835,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -4860,6 +4864,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -4887,6 +4893,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -4933,6 +4941,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -4979,6 +4989,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5013,6 +5025,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -5070,6 +5084,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5152,6 +5168,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -5299,6 +5317,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -5412,6 +5432,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5466,6 +5488,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5512,6 +5536,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -5557,6 +5583,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -5615,6 +5643,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5731,6 +5761,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve];
 	}
 
 	/// <summary>
@@ -5789,6 +5821,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5847,6 +5881,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.curve];
 	}
 
 	/// <summary>
@@ -5904,6 +5940,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5974,6 +6012,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -6044,6 +6084,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -6089,6 +6131,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6123,6 +6167,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6180,6 +6226,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6237,6 +6285,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6302,6 +6352,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6412,6 +6464,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6501,6 +6555,8 @@ namespace S100Framework.AttributeModel.S127.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 }
@@ -6520,6 +6576,11 @@ namespace S100Framework.AttributeModel.S127
 		public static string ProductId => "S-127";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-07", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["contactAddress","featureName","fixedDateRange","frequencyPair","horizontalPositionUncertainty","information","noticeTime","onlineResource","orientation","periodicDateRange","rxNCode","sourceIndication","surveyDateRange","spatialAccuracy","telecommunications","textContent","timeIntervalsByDayOfWeek","underKeelAllowance","vesselMeasurementsSpecification","bearingInformation","graphic","scheduleByDayOfWeek"];
+		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","InclusionType","PermissionType","RelatedOrganisation","ReportingAuthority","ReportingRequirement","ServiceContact","ServiceControl","SpatialAssociation","LocationHours","TrafficServiceReport"];
+		public static string[] FeatureAssociationTypes => ["ServiceProvisionArea","PilotageDistrictAssociation","TextAssociation","TrafficControlServiceAggregation"];
+		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","ShipReport","SpatialQuality"];
+		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","ShipReport","SpatialQuality"];
 	}
 
 	public static class Extensions {

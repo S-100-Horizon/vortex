@@ -7349,6 +7349,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7436,6 +7438,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7503,6 +7507,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7592,6 +7598,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7749,6 +7757,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7816,6 +7826,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -7883,6 +7895,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -8118,6 +8132,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -8253,6 +8269,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -8364,6 +8382,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -8483,6 +8503,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -8650,6 +8672,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -8790,6 +8814,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -8903,6 +8929,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -9023,6 +9051,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve];
 	}
 
 	/// <summary>
@@ -9132,6 +9162,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -9240,6 +9272,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -9360,6 +9394,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve];
 	}
 
 	/// <summary>
@@ -9480,6 +9516,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -9613,6 +9651,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -9767,6 +9807,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -9955,6 +9997,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -10111,6 +10155,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -10278,6 +10324,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -10375,6 +10423,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -10563,6 +10613,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -10868,6 +10920,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -11023,6 +11077,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -11178,6 +11234,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -11341,6 +11399,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -11636,6 +11696,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -11802,6 +11864,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -11979,6 +12043,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -12287,6 +12353,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -12529,6 +12597,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -12769,6 +12839,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -13071,6 +13143,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -13307,6 +13381,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -13450,6 +13526,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -13606,6 +13684,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -13783,6 +13863,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -14108,6 +14190,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -14425,6 +14509,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -14744,6 +14830,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -14991,6 +15079,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -15225,6 +15315,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -15346,6 +15438,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -15607,6 +15701,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -15874,6 +15970,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -16062,6 +16160,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -16359,6 +16459,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -16709,6 +16811,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -16865,6 +16969,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -17042,6 +17148,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -17180,6 +17288,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -17393,6 +17503,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -17630,6 +17742,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -17926,6 +18040,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -18144,6 +18260,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -18437,6 +18555,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -18610,6 +18730,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -18842,6 +18964,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -19136,6 +19260,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -19348,6 +19474,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -19547,6 +19675,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -19713,6 +19843,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -19877,6 +20009,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -19993,6 +20127,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -20102,6 +20238,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -20244,6 +20382,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -20397,6 +20537,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -20506,6 +20648,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -20636,6 +20780,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -20780,6 +20926,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.pointSet];
 	}
 
 	/// <summary>
@@ -20976,6 +21124,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -21092,6 +21242,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -21181,6 +21333,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -21270,6 +21424,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -21360,6 +21516,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.pointSet];
 	}
 
 	/// <summary>
@@ -21427,6 +21585,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -21547,6 +21707,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -21656,6 +21818,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -21753,6 +21917,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -21842,6 +22008,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -21939,6 +22107,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -22152,6 +22322,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -22418,6 +22590,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -22708,6 +22882,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -22874,6 +23050,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -22963,6 +23141,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -23145,6 +23325,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -23391,6 +23573,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -23665,6 +23849,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -23828,6 +24014,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -23983,6 +24171,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -24217,6 +24407,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -24384,6 +24576,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -24631,6 +24825,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -24785,6 +24981,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -25023,6 +25221,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -25166,6 +25366,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -25393,6 +25595,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -25539,6 +25743,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -25766,6 +25972,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -25963,6 +26171,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -26106,6 +26316,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -26218,6 +26430,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -26445,6 +26659,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -26684,6 +26900,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -26827,6 +27045,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -26959,6 +27179,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -27121,6 +27343,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -27264,6 +27488,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -27373,6 +27599,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -27482,6 +27710,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -27614,6 +27844,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -27746,6 +27978,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -27908,6 +28142,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -28035,6 +28271,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -28162,6 +28400,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -28305,6 +28545,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -28470,6 +28712,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve];
 	}
 
 	/// <summary>
@@ -28613,6 +28857,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -28733,6 +28979,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -28864,6 +29112,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -29040,6 +29290,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -29218,6 +29470,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -29406,6 +29660,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -29572,6 +29828,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -29715,6 +29973,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -29870,6 +30130,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30047,6 +30309,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30189,6 +30453,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30343,6 +30609,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30505,6 +30773,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30646,6 +30916,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30757,6 +31029,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30865,6 +31139,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -30954,6 +31230,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -31054,6 +31332,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -31174,6 +31454,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -31317,6 +31599,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -31426,6 +31710,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -31535,6 +31821,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -31655,6 +31943,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -31810,6 +32100,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -31899,6 +32191,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -32022,6 +32316,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -32153,6 +32449,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -32269,6 +32567,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -32399,6 +32699,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -32507,6 +32809,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -32689,6 +32993,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -33005,6 +33311,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -33253,6 +33561,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -33472,6 +33782,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -33714,6 +34026,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -33985,6 +34299,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -34256,6 +34572,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -34515,6 +34833,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -34774,6 +35094,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -35045,6 +35367,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -35273,6 +35597,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -35518,6 +35844,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -35776,6 +36104,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -36112,6 +36442,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -36448,6 +36780,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -36772,6 +37106,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -37096,6 +37432,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -37432,6 +37770,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -37729,6 +38069,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -37998,6 +38340,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -38256,6 +38600,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -38411,6 +38757,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -38542,6 +38890,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -38760,6 +39110,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -38921,6 +39273,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -39086,6 +39440,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -39273,6 +39629,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -39487,6 +39845,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -39684,6 +40044,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -39781,6 +40143,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -39934,6 +40298,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40096,6 +40462,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40258,6 +40626,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40412,6 +40782,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40647,6 +41019,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40790,6 +41164,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
 	/// <summary>
@@ -40879,6 +41255,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -40934,6 +41312,8 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.pointSet,Primitives.curve,Primitives.surface];
 	}
 
 }
@@ -40953,6 +41333,11 @@ namespace S100Framework.AttributeModel.S101
 		public static string ProductId => "S-101";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2024-10-16", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["featureName","featuresDetected","fixedDateRange","frequencyPair","horizontalClearanceFixed","horizontalClearanceOpen","horizontalPositionUncertainty","information","measuredDistanceValue","multiplicityOfFeatures","onlineResource","orientation","periodicDateRange","radarWaveLength","sectorInformation","sectorLimitOne","sectorLimitTwo","shapeInformation","signalSequence","speed","surfaceCharacteristics","surveyDateRange","telecommunications","tidalStreamValue","timeIntervalsByDayOfWeek","topmark","valueOfLocalMagneticAnomaly","verticalUncertainty","vesselSpeedLimit","zoneOfConfidence","directionalCharacter","rhythmOfLight","scheduleByDayOfWeek","sectorLimit","spatialAccuracy","tidalStreamPanelValues","verticalClearanceClosed","verticalClearanceFixed","verticalClearanceOpen","verticalClearanceSafe","lightSector","sectorCharacteristics"];
+		public static string[] InformationAssociationTypes => ["AdditionalInformation","QualityOfBathymetricDataComposition","SpatialAssociation"];
+		public static string[] FeatureAssociationTypes => ["AidsToNavigationAssociation","ASLAggregation","BridgeAggregation","CautionAreaAssociation","DeepWaterRouteAggregation","FairwayAggregation","FairwayAuxiliary","IslandAggregation","MooringTrotAggregation","PilotageDistrictAssociation","RangeSystemAggregation","RoofedStructureAggregation","StructureEquipment","TextAssociation","TrafficSeparationSchemeAggregation","TwoWayRouteAggregation","UpdateAggregation","UpdatedInformation"];
+		public static string[] InformationTypes => ["ContactDetails","ServiceHours","NonStandardWorkingDay","NauticalInformation","SpatialQuality"];
+		public static string[] FeatureTypes => ["ContactDetails","ServiceHours","NonStandardWorkingDay","NauticalInformation","SpatialQuality"];
 	}
 
 	public static class Extensions {

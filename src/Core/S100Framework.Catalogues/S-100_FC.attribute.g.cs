@@ -135,6 +135,15 @@ namespace S100Framework.DomainModel.S100
 
 namespace S100Framework.AttributeModel
 {
+    public enum Primitives
+    {
+        noGeometry,
+        point,
+        pointSet,
+        curve,
+        surface,
+    }
+
     public record listedValue(string label, string defintion, int code);
 
     public abstract class attributeBinding
@@ -433,6 +442,9 @@ namespace S100Framework.AttributeModel
 
         [JsonIgnore]
         public featureBinding[] featureBindings { get; set; } = [];
+
+        [JsonIgnore]
+        public virtual Primitives[] permittedPrimitives { get; }
 
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];

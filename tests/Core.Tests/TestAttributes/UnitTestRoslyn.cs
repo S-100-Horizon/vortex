@@ -371,9 +371,9 @@ namespace TestAttributes
             #endregion
 
             #region S100_FC_InformationAssociation
+            var informationAssociationTypesKnown = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
-                var informationAssociationTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationAssociation");
@@ -409,9 +409,9 @@ namespace TestAttributes
             #endregion
 
             #region S100_FC_FeatureAssociation
+            var featureAssociationTypesKnown = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
-                var featureAssociationTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.FeatureAssociation");
@@ -447,9 +447,9 @@ namespace TestAttributes
             #endregion
 
             #region S100_FC_InformationType
+            var informationTypesKnown = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
-                var informationTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationTypes");
@@ -483,9 +483,9 @@ namespace TestAttributes
             var featureBindingsCreator = new StringBuilder();
 
             #region S100_FC_FeatureType
+            var featureTypesKnown = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
-                var featureTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.FeatureTypes");
@@ -505,6 +505,15 @@ namespace TestAttributes
                             KnownTypesComplex = attributesKnownComplex,
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        }, (b) => {
+
+                        }, (b) => {
+                            //  permittedPrimitives
+                            var permittedValues = element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Select(e => $"Primitives.{e.Value!}");
+                            if (permittedValues.Any()) {
+                                b.AppendLine();
+                                b.AppendLine($"\t\tpublic override Primitives[] permittedPrimitives => [{string.Join(',', permittedValues)}];");
+                            }
                         });
                         if (!success) {
                             notFinished = true;
@@ -535,6 +544,22 @@ namespace TestAttributes
                 roslyn.AppendLine($"\t\tpublic static string ProductId => \"{ps.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value}\";");
                 roslyn.AppendLine($"\t\tpublic static Version Version => new Version(\"{versionNumber}\");");
                 roslyn.AppendLine($"\t\tpublic static DateOnly VersionDate => DateOnly.ParseExact(\"{versionDate}\", \"yyyy-MM-dd\");");
+
+                var types = attributesKnownComplex.Select(e => $"\"{e}\"");
+                roslyn.AppendLine($"\t\tpublic static string[] ComplexTypes => [{string.Join(',', types)}];");
+
+                types = informationAssociationTypesKnown.Select(e => $"\"{e}\"");
+                roslyn.AppendLine($"\t\tpublic static string[] InformationAssociationTypes => [{string.Join(',', types)}];");
+
+                types = featureAssociationTypesKnown.Select(e => $"\"{e}\"");
+                roslyn.AppendLine($"\t\tpublic static string[] FeatureAssociationTypes => [{string.Join(',', types)}];");
+
+                types = informationTypesKnown.Select(e => $"\"{e}\"");
+                roslyn.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', types)}];");
+
+                types = informationTypesKnown.Select(e => $"\"{e}\"");
+                roslyn.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', types)}];");
+
                 roslyn.AppendLine("\t}");
                 roslyn.AppendLine();
 

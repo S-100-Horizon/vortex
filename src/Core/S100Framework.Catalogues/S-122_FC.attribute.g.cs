@@ -4040,6 +4040,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -4086,6 +4088,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4192,6 +4196,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -4250,6 +4256,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4277,6 +4285,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4342,6 +4352,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4452,6 +4464,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4541,6 +4555,8 @@ namespace S100Framework.AttributeModel.S122.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 }
@@ -4560,6 +4576,11 @@ namespace S100Framework.AttributeModel.S122
 		public static string ProductId => "S-122";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-07", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["contactAddress","designation","featureName","fixedDateRange","frequencyPair","horizontalPositionUncertainty","information","onlineResource","orientation","periodicDateRange","rxNCode","sourceIndication","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","verticalUncertainty","vesselMeasurementsSpecification","bearingInformation","graphic","scheduleByDayOfWeek","spatialAccuracy"];
+		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ProtectedAreaAuthority","RelatedOrganisation","InclusionType","PermissionType","ServiceControl","SpatialAssociation"];
+		public static string[] FeatureAssociationTypes => ["TextAssociation"];
+		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
+		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
 	}
 
 	public static class Extensions {

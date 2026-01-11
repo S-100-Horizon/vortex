@@ -10,7 +10,6 @@
   <ItemGroup>
     <Compile Remove="Dataset.cs" />
     <Compile Remove="DomainModelBase.cs" />
-    <Compile Remove="FeatureCatalogue.cs" />
     <Compile Remove="Helper.cs" />
     <Compile Remove="S-100_FC.g.cs" />
     <Compile Remove="S-101_FC.g.cs" />

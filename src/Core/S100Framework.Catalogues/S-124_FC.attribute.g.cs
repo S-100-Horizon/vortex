@@ -2081,6 +2081,8 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -2107,6 +2109,8 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
 	/// <summary>
@@ -2195,6 +2199,8 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 }
@@ -2214,6 +2220,11 @@ namespace S100Framework.AttributeModel.S124
 		public static string ProductId => "S-124";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2025-07-10", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["chartAffected","fixedDateRange","information","locationName","messageSeriesIdentifier","navwarnTitle","warningInformation","featureReference","featureName","horizontalPositionUncertainty","spatialAccuracy","affectedChartPublications","generalArea","locality"];
+		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
+		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
+		public static string[] InformationTypes => ["References","NavwarnPreamble","SpatialQuality"];
+		public static string[] FeatureTypes => ["References","NavwarnPreamble","SpatialQuality"];
 	}
 
 	public static class Extensions {

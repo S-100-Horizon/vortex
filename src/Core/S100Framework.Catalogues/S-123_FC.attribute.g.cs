@@ -5282,6 +5282,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -5432,6 +5434,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.point];
 	}
 
 	/// <summary>
@@ -5549,6 +5553,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5596,6 +5602,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5698,6 +5706,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5800,6 +5810,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -5937,6 +5949,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6089,6 +6103,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6267,6 +6283,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
 	/// <summary>
@@ -6337,6 +6355,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6463,6 +6483,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6490,6 +6512,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6517,6 +6541,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6582,6 +6608,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -6681,6 +6709,8 @@ namespace S100Framework.AttributeModel.S123.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 }
@@ -6700,6 +6730,11 @@ namespace S100Framework.AttributeModel.S123
 		public static string ProductId => "S-123";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2025-12-10", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["areaA3ServiceDescription","broadcastContent","contactAddress","coverageIndication","featureName","fixedDateRange","frequencyPair","frequencyRange","graphic","horizontalPositionUncertainty","information","onlineResource","periodicDateRange","radioChannelDetails","radiocommunicationIdentifier","rxNCode","sectorLimitOne","sectorLimitTwo","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","timesOfTransmission","verticalUncertainty","vesselMeasurementsSpecification","scheduleByDayOfWeek","sectorLimit","spatialAccuracy"];
+		public static string[] InformationAssociationTypes => ["AdditionalInformation","AssociatedRxN","AuthorityContact","AuthorityHours","AvailableQoS","BroadcastService","BroadcastTransmission","ConnectivityService","ExceptionalWorkday","InclusionType","LocationHours","PermissionType","RadioServiceControl","relatedOrganisation","ServiceContact","ServiceCoordination","SpatialAssociation","TMAS","TransmissionService"];
+		public static string[] FeatureAssociationTypes => ["coreAggregation","fuzzyZoneAggregation","ServiceProvisionArea"];
+		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
+		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
 	}
 
 	public static class Extensions {

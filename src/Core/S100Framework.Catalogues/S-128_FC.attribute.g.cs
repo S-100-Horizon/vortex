@@ -3607,6 +3607,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -3830,6 +3832,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -3919,6 +3923,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4007,6 +4013,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 	/// <summary>
@@ -4097,6 +4105,8 @@ namespace S100Framework.AttributeModel.S128.FeatureTypes
 			];
 
 		#endregion
+
+		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
 }
@@ -4116,6 +4126,11 @@ namespace S100Framework.AttributeModel.S128
 		public static string ProductId => "S-128";
 		public static Version Version => new Version("2.0.0");
 		public static DateOnly VersionDate => DateOnly.ParseExact("2025-04-30", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["contactAddress","customPaperSize","defaultLocale","featureName","information","onlineResource","periodicDateRange","pricing","printSize","productSpecification","supportFileSpecification","serviceSpecification","sourceIndication","telecommunications","timeIntervalOfCycle","weekOfYear","issuanceCycle","printInformation","supportFile","timeIntervalOfProduct","referenceToNM"];
+		public static string[] InformationAssociationTypes => ["CarriageRequirement","DistributionDetails","DistributorContact","PriceOfElement","PriceOfNauticalProduct","ProducerContact","ProductionDetails","ProductPackage"];
+		public static string[] FeatureAssociationTypes => ["ProductMapping","Correlated"];
+		public static string[] InformationTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
+		public static string[] FeatureTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
 	}
 
 	public static class Extensions {
