@@ -9159,7 +9159,7 @@ namespace S100Framework.AttributeModel.S131
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.JurisdictionalLimit>), typeDiscriminator: "JurisdictionalLimit"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.LayoutDivision>), typeDiscriminator: "LayoutDivision"));
 				}
-				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.attributeBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
 						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,

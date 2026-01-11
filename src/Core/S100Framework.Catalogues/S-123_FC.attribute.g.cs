@@ -6740,7 +6740,7 @@ namespace S100Framework.AttributeModel.S123
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.fuzzyZoneAggregation>), typeDiscriminator: "fuzzyZoneAggregation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.ServiceProvisionArea>), typeDiscriminator: "ServiceProvisionArea"));
 				}
-				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.attributeBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
 						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,

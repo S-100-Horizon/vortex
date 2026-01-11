@@ -6557,7 +6557,7 @@ namespace S100Framework.AttributeModel.S127
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.TextAssociation>), typeDiscriminator: "TextAssociation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.TrafficControlServiceAggregation>), typeDiscriminator: "TrafficControlServiceAggregation"));
 				}
-				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
+				if (typeInfo.Type == typeof(S100Framework.AttributeModel.attributeBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
 						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
