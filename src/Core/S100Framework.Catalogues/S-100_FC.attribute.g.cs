@@ -357,6 +357,9 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
 
+        [JsonIgnore]
+        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+
         public attributeBindingDefinition[] mandatoryBindings() {
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
@@ -434,6 +437,12 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
 
+        [JsonIgnore]
+        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+
+        [JsonIgnore]
+        public virtual featureBindingDefinition[] featureBindingsCatalogue { get; } = [];
+
         public attributeBindingDefinition[] mandatoryBindings() {
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
@@ -508,7 +517,40 @@ namespace S100Framework.AttributeModel
         public Func<Attribute?> CreateInstance { get; init; } = () => null;
     }
 
-    public abstract class Association {
+    public class informationBindingDefinition
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string association { get; init; } = string.Empty;
+
+        public int lower { get; init; } = 0;
+        public int upper { get; init; } = int.MaxValue;
+
+        public bool IsCollection => this.upper > 1;
+        public bool IsMandatory => this.lower > 0;
+        public bool IsOptional => this.lower == 0;
+
+        public string[] informationTypes { get; init; } = [];
+    }
+
+    public class featureBindingDefinition
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string association { get; init; } = string.Empty;
+
+        public int lower { get; init; } = 0;
+        public int upper { get; init; } = int.MaxValue;
+
+        public bool IsCollection => this.upper > 1;
+        public bool IsMandatory => this.lower > 0;
+        public bool IsOptional => this.lower == 0;
+
+        public string[] featureTypes { get; init; } = [];
+    }
+
+    public abstract class Association
+    {
         [JsonIgnore]
         public abstract string S100FC_code { get; }
 

@@ -400,7 +400,7 @@ namespace TestAttributes
                     });
                     if (!success) {
                         throw new InvalidOperationException();
-                    }                    
+                    }
 
                     derivedTypesInformationBindings.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.{code}>), typeDiscriminator: \"{code}\"));");
                 }
@@ -438,7 +438,7 @@ namespace TestAttributes
                     });
                     if (!success) {
                         throw new InvalidOperationException();
-                    }                    
+                    }
 
                     derivedTypesFeatureBindings.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.{code}>), typeDiscriminator: \"{code}\"));");
                 }
@@ -492,6 +492,7 @@ namespace TestAttributes
                 roslyn.AppendLine("{");
                 roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
                 roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.InformationTypes;");
                 roslyn.AppendLine();
 
                 var notFinished = false;
@@ -653,34 +654,6 @@ namespace TestAttributes
 
             if (hasAttributes) {
                 roslyn.AppendLine();
-                roslyn.AppendLine("\t\t#region Catalogue");
-                roslyn.AppendLine("\t\t[JsonIgnore]");
-                roslyn.AppendLine($"\t\tpublic override attributeBindingDefinition[] attributeBindingsCatalogue => [");
-                if (superType != null) {
-                    roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
-                }
-                foreach (var attributeBinding in host.Attributes) {
-                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                    roslyn.AppendLine($"\t\t\t\tnew attributeBindingDefinition {{");
-                    roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
-                    roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
-                    roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
-                    if (permittedValues is not null)
-                        roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
-                    roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
-                    roslyn.AppendLine($"\t\t\t\t}},");
-                }
-                roslyn.AppendLine($"\t\t\t];");
-                roslyn.AppendLine("\t\t#endregion");
-            }
-
-            if (hasAttributes) {
-                roslyn.AppendLine();
                 roslyn.AppendLine("\t\t#region Attributes");
                 foreach (var attributeBinding in host.Attributes) {
                     var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
@@ -722,25 +695,120 @@ namespace TestAttributes
                 roslyn.AppendLine("\t\t#endregion");
             }
 
+            roslyn.AppendLine();
+            roslyn.AppendLine("\t\t#region Catalogue");
+
+            if (hasAttributes) {
+                roslyn.AppendLine("\t\t[JsonIgnore]");
+                roslyn.AppendLine($"\t\tpublic override attributeBindingDefinition[] attributeBindingsCatalogue => [");
+                if (superType != null) {
+                    roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
+                }
+                foreach (var attributeBinding in host.Attributes) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
+
+                    roslyn.AppendLine($"\t\t\t\tnew attributeBindingDefinition {{");
+                    roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
+                    roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
+                    roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
+                    if (permittedValues is not null)
+                        roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
+                    roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
+                    roslyn.AppendLine($"\t\t\t\t}},");
+                }
+                roslyn.AppendLine($"\t\t\t];");
+                roslyn.AppendLine();
+            }
+
+            var informationBindings = element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager);
+            if (informationBindings.Any()) {
+                roslyn.AppendLine("\t\t[JsonIgnore]");
+                roslyn.AppendLine($"\t\tpublic override informationBindingDefinition[] informationBindingsCatalogue => [");
+                if (superType != null) {
+                    roslyn.AppendLine("\t\t\t\t.. base.informationBindingsCatalogue,");
+                }
+
+                foreach (var informationBinding in informationBindings) {
+                    var association = informationBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var role = informationBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var roleType = informationBinding.Attribute("roleType")!.Value!;
+
+                    var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
+
+                    var informationTypes = informationBinding.XPathSelectElements("S100FC:informationType", xmlNamespaceManager);
+
+                    roslyn.AppendLine($"\t\t\t\tnew informationBindingDefinition {{");
+                    roslyn.AppendLine($"\t\t\t\t\troleType = \"{roleType}\",");
+                    roslyn.AppendLine($"\t\t\t\t\trole = \"{role}\",");
+                    roslyn.AppendLine($"\t\t\t\t\tassociation = \"{association}\",");
+                    roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
+                    roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
+                    roslyn.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationTypes.Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
+                    roslyn.AppendLine($"\t\t\t\t}},");
+                }
+                roslyn.AppendLine($"\t\t\t];");
+                roslyn.AppendLine();
+            }
+
+            var featureBindings = element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager);
+            if (featureBindings.Any()) {
+                roslyn.AppendLine("\t\t[JsonIgnore]");
+                roslyn.AppendLine($"\t\tpublic override featureBindingDefinition[] featureBindingsCatalogue => [");
+                if (superType != null) {
+                    roslyn.AppendLine("\t\t\t\t.. base.featureBindingsCatalogue,");
+                }
+
+                foreach (var featureBinding in featureBindings) {
+                    var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var roleType = featureBinding.Attribute("roleType")!.Value!;
+
+                    var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
+
+                    var featureTypes = featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager);
+
+                    roslyn.AppendLine($"\t\t\t\tnew featureBindingDefinition {{");
+                    roslyn.AppendLine($"\t\t\t\t\troleType = \"{roleType}\",");
+                    roslyn.AppendLine($"\t\t\t\t\trole = \"{role}\",");
+                    roslyn.AppendLine($"\t\t\t\t\tassociation = \"{association}\",");
+                    roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
+                    roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
+                    roslyn.AppendLine($"\t\t\t\t\tfeatureTypes = [{string.Join(',', featureTypes.Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
+                    roslyn.AppendLine($"\t\t\t\t}},");
+                }
+                roslyn.AppendLine($"\t\t\t];");
+                roslyn.AppendLine();
+            }
+
+            roslyn.AppendLine("\t\t#endregion");
+
             post?.Invoke(roslyn);
 
             roslyn.AppendLine($"\t}}");
             roslyn.AppendLine();
 
-            foreach (var featureBinding in element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
-                var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                var roleType = featureBinding.Attribute("roleType")!.Value!;
+            //foreach (var featureBinding in element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
+            //    var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+            //    var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+            //    var roleType = featureBinding.Attribute("roleType")!.Value!;
 
-                foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
-                    var featureType = e.Attribute("ref")!.Value!;
+            //    foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
+            //        var featureType = e.Attribute("ref")!.Value!;
 
-                    //if (!featureBindingsCreatorKeys.Contains($"{code}::{featureType}")) {
-                    //    featureBindingsCreatorKeys.Add($"{code}::{featureType}");
-                    //    featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
-                    //}
-                }
-            }
+            //        //if (!featureBindingsCreatorKeys.Contains($"{code}::{featureType}")) {
+            //        //    featureBindingsCreatorKeys.Add($"{code}::{featureType}");
+            //        //    featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
+            //        //}
+            //    }
+            //}
             return true;
         }
     }

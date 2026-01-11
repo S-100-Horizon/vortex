@@ -2539,6 +2539,34 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Address";
 
+		#region Attributes
+		[JsonIgnore]
+		public String?[] deliveryPoint {
+			set { base.SetAttribute([.. value.Select(e=> new deliveryPoint { value = e })]); }
+			get { return base.GetAttributeValues<deliveryPoint>(nameof(deliveryPoint)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? cityName {
+			set { base.SetAttribute(new cityName { value = value }); }
+			get { return base.GetAttributeValue<cityName>(nameof(cityName))?.value; }
+		}
+		[JsonIgnore]
+		public String? administrativeDivision {
+			set { base.SetAttribute(new administrativeDivision { value = value }); }
+			get { return base.GetAttributeValue<administrativeDivision>(nameof(administrativeDivision))?.value; }
+		}
+		[JsonIgnore]
+		public String? countryName {
+			set { base.SetAttribute(new countryName { value = value }); }
+			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
+		}
+		[JsonIgnore]
+		public String? postalCode {
+			set { base.SetAttribute(new postalCode { value = value }); }
+			get { return base.GetAttributeValue<postalCode>(nameof(postalCode))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -2573,34 +2601,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new postalCode(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String?[] deliveryPoint {
-			set { base.SetAttribute([.. value.Select(e=> new deliveryPoint { value = e })]); }
-			get { return base.GetAttributeValues<deliveryPoint>(nameof(deliveryPoint)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? cityName {
-			set { base.SetAttribute(new cityName { value = value }); }
-			get { return base.GetAttributeValue<cityName>(nameof(cityName))?.value; }
-		}
-		[JsonIgnore]
-		public String? administrativeDivision {
-			set { base.SetAttribute(new administrativeDivision { value = value }); }
-			get { return base.GetAttributeValue<administrativeDivision>(nameof(administrativeDivision))?.value; }
-		}
-		[JsonIgnore]
-		public String? countryName {
-			set { base.SetAttribute(new countryName { value = value }); }
-			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
-		}
-		[JsonIgnore]
-		public String? postalCode {
-			set { base.SetAttribute(new postalCode { value = value }); }
-			get { return base.GetAttributeValue<postalCode>(nameof(postalCode))?.value; }
-		}
 		#endregion
 	}
 
@@ -2613,6 +2614,24 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(featureName);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Name";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
+		[JsonIgnore]
+		public String? name {
+			set { base.SetAttribute(new name { value = value }); }
+			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
+		}
+		[JsonIgnore]
+		public int? nameUsage {
+			set { base.SetAttribute(new nameUsage { value = value }); }
+			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2637,24 +2656,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new nameUsage(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? language {
-			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
-		}
-		[JsonIgnore]
-		public String? name {
-			set { base.SetAttribute(new name { value = value }); }
-			get { return base.GetAttributeValue<name>(nameof(name))?.value; }
-		}
-		[JsonIgnore]
-		public int? nameUsage {
-			set { base.SetAttribute(new nameUsage { value = value }); }
-			get { return base.GetAttributeValue<nameUsage>(nameof(nameUsage))?.value; }
-		}
 		#endregion
 	}
 
@@ -2667,6 +2669,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(fixedDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Fixed Date Range";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? dateStart {
+			set { base.SetAttribute(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2684,19 +2699,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new dateEnd(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? dateStart {
-			set { base.SetAttribute(new dateStart { value = value }); }
-			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
-		}
-		[JsonIgnore]
-		public String? dateEnd {
-			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
-		}
 		#endregion
 	}
 
@@ -2709,6 +2712,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(frequencyPair);
 		[JsonIgnore]
 		public override string S100FC_name => "Frequency Pair";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? frequencyShoreStationReceives {
+			set { base.SetAttribute(new frequencyShoreStationReceives { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
+		}
+		[JsonIgnore]
+		public int? frequencyShoreStationTransmits {
+			set { base.SetAttribute(new frequencyShoreStationTransmits { value = value }); }
+			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2726,19 +2742,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new frequencyShoreStationTransmits(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? frequencyShoreStationReceives {
-			set { base.SetAttribute(new frequencyShoreStationReceives { value = value }); }
-			get { return base.GetAttributeValue<frequencyShoreStationReceives>(nameof(frequencyShoreStationReceives))?.value; }
-		}
-		[JsonIgnore]
-		public int? frequencyShoreStationTransmits {
-			set { base.SetAttribute(new frequencyShoreStationTransmits { value = value }); }
-			get { return base.GetAttributeValue<frequencyShoreStationTransmits>(nameof(frequencyShoreStationTransmits))?.value; }
-		}
 		#endregion
 	}
 
@@ -2751,6 +2755,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(horizontalPositionUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Position Uncertainty";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
+			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2768,19 +2785,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public double? uncertaintyFixed {
-			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
-		}
-		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
-			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
-		}
 		#endregion
 	}
 
@@ -2793,6 +2798,34 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(information);
 		[JsonIgnore]
 		public override string S100FC_name => "Information";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? fileLocator {
+			set { base.SetAttribute(new fileLocator { value = value }); }
+			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
+		}
+		[JsonIgnore]
+		public String? fileReference {
+			set { base.SetAttribute(new fileReference { value = value }); }
+			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] headline {
+			set { base.SetAttribute([.. value.Select(e=> new headline { value = e })]); }
+			get { return base.GetAttributeValues<headline>(nameof(headline)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? language {
+			set { base.SetAttribute(new language { value = value }); }
+			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
+		}
+		[JsonIgnore]
+		public String? text {
+			set { base.SetAttribute(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2828,34 +2861,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new text(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? fileLocator {
-			set { base.SetAttribute(new fileLocator { value = value }); }
-			get { return base.GetAttributeValue<fileLocator>(nameof(fileLocator))?.value; }
-		}
-		[JsonIgnore]
-		public String? fileReference {
-			set { base.SetAttribute(new fileReference { value = value }); }
-			get { return base.GetAttributeValue<fileReference>(nameof(fileReference))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] headline {
-			set { base.SetAttribute([.. value.Select(e=> new headline { value = e })]); }
-			get { return base.GetAttributeValues<headline>(nameof(headline)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? language {
-			set { base.SetAttribute(new language { value = value }); }
-			get { return base.GetAttributeValue<language>(nameof(language))?.value; }
-		}
-		[JsonIgnore]
-		public String? text {
-			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
-		}
 		#endregion
 	}
 
@@ -2868,6 +2874,44 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(onlineResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Online Resource";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? linkage {
+			set { base.SetAttribute(new linkage { value = value }); }
+			get { return base.GetAttributeValue<linkage>(nameof(linkage))?.value; }
+		}
+		[JsonIgnore]
+		public String? protocol {
+			set { base.SetAttribute(new protocol { value = value }); }
+			get { return base.GetAttributeValue<protocol>(nameof(protocol))?.value; }
+		}
+		[JsonIgnore]
+		public String? applicationProfile {
+			set { base.SetAttribute(new applicationProfile { value = value }); }
+			get { return base.GetAttributeValue<applicationProfile>(nameof(applicationProfile))?.value; }
+		}
+		[JsonIgnore]
+		public String? nameOfResource {
+			set { base.SetAttribute(new nameOfResource { value = value }); }
+			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
+		}
+		[JsonIgnore]
+		public String? onlineResourceDescription {
+			set { base.SetAttribute(new onlineResourceDescription { value = value }); }
+			get { return base.GetAttributeValue<onlineResourceDescription>(nameof(onlineResourceDescription))?.value; }
+		}
+		[JsonIgnore]
+		public int? onlineFunction {
+			set { base.SetAttribute(new onlineFunction { value = value }); }
+			get { return base.GetAttributeValue<onlineFunction>(nameof(onlineFunction))?.value; }
+		}
+		[JsonIgnore]
+		public String? protocolRequest {
+			set { base.SetAttribute(new protocolRequest { value = value }); }
+			get { return base.GetAttributeValue<protocolRequest>(nameof(protocolRequest))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2916,44 +2960,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new protocolRequest(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? linkage {
-			set { base.SetAttribute(new linkage { value = value }); }
-			get { return base.GetAttributeValue<linkage>(nameof(linkage))?.value; }
-		}
-		[JsonIgnore]
-		public String? protocol {
-			set { base.SetAttribute(new protocol { value = value }); }
-			get { return base.GetAttributeValue<protocol>(nameof(protocol))?.value; }
-		}
-		[JsonIgnore]
-		public String? applicationProfile {
-			set { base.SetAttribute(new applicationProfile { value = value }); }
-			get { return base.GetAttributeValue<applicationProfile>(nameof(applicationProfile))?.value; }
-		}
-		[JsonIgnore]
-		public String? nameOfResource {
-			set { base.SetAttribute(new nameOfResource { value = value }); }
-			get { return base.GetAttributeValue<nameOfResource>(nameof(nameOfResource))?.value; }
-		}
-		[JsonIgnore]
-		public String? onlineResourceDescription {
-			set { base.SetAttribute(new onlineResourceDescription { value = value }); }
-			get { return base.GetAttributeValue<onlineResourceDescription>(nameof(onlineResourceDescription))?.value; }
-		}
-		[JsonIgnore]
-		public int? onlineFunction {
-			set { base.SetAttribute(new onlineFunction { value = value }); }
-			get { return base.GetAttributeValue<onlineFunction>(nameof(onlineFunction))?.value; }
-		}
-		[JsonIgnore]
-		public String? protocolRequest {
-			set { base.SetAttribute(new protocolRequest { value = value }); }
-			get { return base.GetAttributeValue<protocolRequest>(nameof(protocolRequest))?.value; }
-		}
 		#endregion
 	}
 
@@ -2966,6 +2973,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(orientation);
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? orientationUncertainty {
+			set { base.SetAttribute(new orientationUncertainty { value = value }); }
+			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
+		[JsonIgnore]
+		public double? orientationValue {
+			set { base.SetAttribute(new orientationValue { value = value }); }
+			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -2983,19 +3003,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new orientationValue(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public double? orientationUncertainty {
-			set { base.SetAttribute(new orientationUncertainty { value = value }); }
-			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
-		}
-		[JsonIgnore]
-		public double? orientationValue {
-			set { base.SetAttribute(new orientationValue { value = value }); }
-			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
-		}
 		#endregion
 	}
 
@@ -3008,6 +3016,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(periodicDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Periodic Date Range";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? dateStart {
+			set { base.SetAttribute(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3025,19 +3046,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new dateEnd(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? dateStart {
-			set { base.SetAttribute(new dateStart { value = value }); }
-			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
-		}
-		[JsonIgnore]
-		public String? dateEnd {
-			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
-		}
 		#endregion
 	}
 
@@ -3050,6 +3059,24 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(rxNCode);
 		[JsonIgnore]
 		public override string S100FC_name => "RxN Code";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfRxN {
+			set { base.SetAttribute(new categoryOfRxN { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRxN>(nameof(categoryOfRxN))?.value; }
+		}
+		[JsonIgnore]
+		public int? actionOrActivity {
+			set { base.SetAttribute(new actionOrActivity { value = value }); }
+			get { return base.GetAttributeValue<actionOrActivity>(nameof(actionOrActivity))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] headline {
+			set { base.SetAttribute([.. value.Select(e=> new headline { value = e })]); }
+			get { return base.GetAttributeValues<headline>(nameof(headline)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3075,24 +3102,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new headline(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfRxN {
-			set { base.SetAttribute(new categoryOfRxN { value = value }); }
-			get { return base.GetAttributeValue<categoryOfRxN>(nameof(categoryOfRxN))?.value; }
-		}
-		[JsonIgnore]
-		public int? actionOrActivity {
-			set { base.SetAttribute(new actionOrActivity { value = value }); }
-			get { return base.GetAttributeValue<actionOrActivity>(nameof(actionOrActivity))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] headline {
-			set { base.SetAttribute([.. value.Select(e=> new headline { value = e })]); }
-			get { return base.GetAttributeValues<headline>(nameof(headline)).Select(e=>e.value).ToArray(); }
-		}
 		#endregion
 	}
 
@@ -3105,6 +3115,39 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(sourceIndication);
 		[JsonIgnore]
 		public override string S100FC_name => "Source Indication";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfAuthority {
+			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
+			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
+		}
+		[JsonIgnore]
+		public String? countryName {
+			set { base.SetAttribute(new countryName { value = value }); }
+			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
+		}
+		[JsonIgnore]
+		public String? source {
+			set { base.SetAttribute(new source { value = value }); }
+			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
+		}
+		[JsonIgnore]
+		public int? sourceType {
+			set { base.SetAttribute(new sourceType { value = value }); }
+			get { return base.GetAttributeValue<sourceType>(nameof(sourceType))?.value; }
+		}
+		[JsonIgnore]
+		public String? reportedDate {
+			set { base.SetAttribute(new reportedDate { value = value }); }
+			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3147,39 +3190,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new featureName(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfAuthority {
-			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
-			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
-		}
-		[JsonIgnore]
-		public String? countryName {
-			set { base.SetAttribute(new countryName { value = value }); }
-			get { return base.GetAttributeValue<countryName>(nameof(countryName))?.value; }
-		}
-		[JsonIgnore]
-		public String? source {
-			set { base.SetAttribute(new source { value = value }); }
-			get { return base.GetAttributeValue<source>(nameof(source))?.value; }
-		}
-		[JsonIgnore]
-		public int? sourceType {
-			set { base.SetAttribute(new sourceType { value = value }); }
-			get { return base.GetAttributeValue<sourceType>(nameof(sourceType))?.value; }
-		}
-		[JsonIgnore]
-		public String? reportedDate {
-			set { base.SetAttribute(new reportedDate { value = value }); }
-			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
-		}
-		[JsonIgnore]
-		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
-		}
 		#endregion
 	}
 
@@ -3192,6 +3203,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(surveyDateRange);
 		[JsonIgnore]
 		public override string S100FC_name => "Survey Date Range";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? dateStart {
+			set { base.SetAttribute(new dateStart { value = value }); }
+			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
+		}
+		[JsonIgnore]
+		public String? dateEnd {
+			set { base.SetAttribute(new dateEnd { value = value }); }
+			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3209,19 +3233,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new dateEnd(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? dateStart {
-			set { base.SetAttribute(new dateStart { value = value }); }
-			get { return base.GetAttributeValue<dateStart>(nameof(dateStart))?.value; }
-		}
-		[JsonIgnore]
-		public String? dateEnd {
-			set { base.SetAttribute(new dateEnd { value = value }); }
-			get { return base.GetAttributeValue<dateEnd>(nameof(dateEnd))?.value; }
-		}
 		#endregion
 	}
 
@@ -3234,6 +3246,34 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(telecommunications);
 		[JsonIgnore]
 		public override string S100FC_name => "Telecommunications";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfCommunicationPreference {
+			set { base.SetAttribute(new categoryOfCommunicationPreference { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCommunicationPreference>(nameof(categoryOfCommunicationPreference))?.value; }
+		}
+		[JsonIgnore]
+		public String? telecommunicationIdentifier {
+			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))?.value; }
+		}
+		[JsonIgnore]
+		public String? telecommunicationCarrier {
+			set { base.SetAttribute(new telecommunicationCarrier { value = value }); }
+			get { return base.GetAttributeValue<telecommunicationCarrier>(nameof(telecommunicationCarrier))?.value; }
+		}
+		[JsonIgnore]
+		public String? contactInstructions {
+			set { base.SetAttribute(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] telecommunicationService {
+			set { base.SetAttribute([.. value.Select(e=> new telecommunicationService { value = e })]); }
+			get { return base.GetAttributeValues<telecommunicationService>(nameof(telecommunicationService)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3271,34 +3311,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new telecommunicationService(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfCommunicationPreference {
-			set { base.SetAttribute(new categoryOfCommunicationPreference { value = value }); }
-			get { return base.GetAttributeValue<categoryOfCommunicationPreference>(nameof(categoryOfCommunicationPreference))?.value; }
-		}
-		[JsonIgnore]
-		public String? telecommunicationIdentifier {
-			set { base.SetAttribute(new telecommunicationIdentifier { value = value }); }
-			get { return base.GetAttributeValue<telecommunicationIdentifier>(nameof(telecommunicationIdentifier))?.value; }
-		}
-		[JsonIgnore]
-		public String? telecommunicationCarrier {
-			set { base.SetAttribute(new telecommunicationCarrier { value = value }); }
-			get { return base.GetAttributeValue<telecommunicationCarrier>(nameof(telecommunicationCarrier))?.value; }
-		}
-		[JsonIgnore]
-		public String? contactInstructions {
-			set { base.SetAttribute(new contactInstructions { value = value }); }
-			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] telecommunicationService {
-			set { base.SetAttribute([.. value.Select(e=> new telecommunicationService { value = e })]); }
-			get { return base.GetAttributeValues<telecommunicationService>(nameof(telecommunicationService)).Select(e=>e.value).ToArray(); }
-		}
 		#endregion
 	}
 
@@ -3311,6 +3324,29 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(textContent);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Content";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfText {
+			set { base.SetAttribute(new categoryOfText { value = value }); }
+			get { return base.GetAttributeValue<categoryOfText>(nameof(categoryOfText))?.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		[JsonIgnore]
+		public onlineResource? onlineResource {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
+		}
+		[JsonIgnore]
+		public sourceIndication?[] sourceIndication {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3341,29 +3377,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new sourceIndication(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfText {
-			set { base.SetAttribute(new categoryOfText { value = value }); }
-			get { return base.GetAttributeValue<categoryOfText>(nameof(categoryOfText))?.value; }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
-		[JsonIgnore]
-		public onlineResource? onlineResource {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
-		}
-		[JsonIgnore]
-		public sourceIndication?[] sourceIndication {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
-		}
 		#endregion
 	}
 
@@ -3376,6 +3390,29 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(timeIntervalsByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Time Intervals by Day of Week";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] dayOfWeek {
+			set { base.SetAttribute([.. value.Select(e=> new dayOfWeek { value = e })]); }
+			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public Boolean? dayOfWeekIsRange {
+			set { base.SetAttribute(new dayOfWeekIsRange { value = value }); }
+			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
+		}
+		[JsonIgnore]
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart {
+			set { base.SetAttribute([.. value.Select(e=> new timeOfDayStart { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd {
+			set { base.SetAttribute([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
+			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3406,29 +3443,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new timeOfDayEnd(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int?[] dayOfWeek {
-			set { base.SetAttribute([.. value.Select(e=> new dayOfWeek { value = e })]); }
-			get { return base.GetAttributeValues<dayOfWeek>(nameof(dayOfWeek)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public Boolean? dayOfWeekIsRange {
-			set { base.SetAttribute(new dayOfWeekIsRange { value = value }); }
-			get { return base.GetAttributeValue<dayOfWeekIsRange>(nameof(dayOfWeekIsRange))?.value; }
-		}
-		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayStart {
-			set { base.SetAttribute([.. value.Select(e=> new timeOfDayStart { value = e })]); }
-			get { return base.GetAttributeValues<timeOfDayStart>(nameof(timeOfDayStart)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public S100Framework.DomainModel.S100.Time?[] timeOfDayEnd {
-			set { base.SetAttribute([.. value.Select(e=> new timeOfDayEnd { value = e })]); }
-			get { return base.GetAttributeValues<timeOfDayEnd>(nameof(timeOfDayEnd)).Select(e=>e.value).ToArray(); }
-		}
 		#endregion
 	}
 
@@ -3442,6 +3457,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Useful Mark Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -3452,14 +3475,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3472,6 +3488,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(verticalUncertainty);
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Uncertainty";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? uncertaintyFixed {
+			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
+		}
+		[JsonIgnore]
+		public double? uncertaintyVariableFactor {
+			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
+			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3489,19 +3518,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new uncertaintyVariableFactor(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public double? uncertaintyFixed {
-			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
-		}
-		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
-			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
-			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
-		}
 		#endregion
 	}
 
@@ -3514,6 +3531,29 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(vesselMeasurementsSpecification);
 		[JsonIgnore]
 		public override string S100FC_name => "Vessel Measurements Specification";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? comparisonOperator {
+			set { base.SetAttribute(new comparisonOperator { value = value }); }
+			get { return base.GetAttributeValue<comparisonOperator>(nameof(comparisonOperator))?.value; }
+		}
+		[JsonIgnore]
+		public int? vesselsCharacteristics {
+			set { base.SetAttribute(new vesselsCharacteristics { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristics>(nameof(vesselsCharacteristics))?.value; }
+		}
+		[JsonIgnore]
+		public double? vesselsCharacteristicsValue {
+			set { base.SetAttribute(new vesselsCharacteristicsValue { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristicsValue>(nameof(vesselsCharacteristicsValue))?.value; }
+		}
+		[JsonIgnore]
+		public int? vesselsCharacteristicsUnit {
+			set { base.SetAttribute(new vesselsCharacteristicsUnit { value = value }); }
+			get { return base.GetAttributeValue<vesselsCharacteristicsUnit>(nameof(vesselsCharacteristicsUnit))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3546,29 +3586,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new vesselsCharacteristicsUnit(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? comparisonOperator {
-			set { base.SetAttribute(new comparisonOperator { value = value }); }
-			get { return base.GetAttributeValue<comparisonOperator>(nameof(comparisonOperator))?.value; }
-		}
-		[JsonIgnore]
-		public int? vesselsCharacteristics {
-			set { base.SetAttribute(new vesselsCharacteristics { value = value }); }
-			get { return base.GetAttributeValue<vesselsCharacteristics>(nameof(vesselsCharacteristics))?.value; }
-		}
-		[JsonIgnore]
-		public double? vesselsCharacteristicsValue {
-			set { base.SetAttribute(new vesselsCharacteristicsValue { value = value }); }
-			get { return base.GetAttributeValue<vesselsCharacteristicsValue>(nameof(vesselsCharacteristicsValue))?.value; }
-		}
-		[JsonIgnore]
-		public int? vesselsCharacteristicsUnit {
-			set { base.SetAttribute(new vesselsCharacteristicsUnit { value = value }); }
-			get { return base.GetAttributeValue<vesselsCharacteristicsUnit>(nameof(vesselsCharacteristicsUnit))?.value; }
-		}
 		#endregion
 	}
 
@@ -3581,6 +3599,24 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(weatherResource);
 		[JsonIgnore]
 		public override string S100FC_name => "Weather Resource";
+
+		#region Attributes
+		[JsonIgnore]
+		public onlineResource? onlineResource {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
+		}
+		[JsonIgnore]
+		public int? dynamicResource {
+			set { base.SetAttribute(new dynamicResource { value = value }); }
+			get { return base.GetAttributeValue<dynamicResource>(nameof(dynamicResource))?.value; }
+		}
+		[JsonIgnore]
+		public textContent? textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3605,24 +3641,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public onlineResource? onlineResource {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<onlineResource>(nameof(onlineResource)); }
-		}
-		[JsonIgnore]
-		public int? dynamicResource {
-			set { base.SetAttribute(new dynamicResource { value = value }); }
-			get { return base.GetAttributeValue<dynamicResource>(nameof(dynamicResource))?.value; }
-		}
-		[JsonIgnore]
-		public textContent? textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3635,6 +3654,29 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(bearingInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Bearing Information";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? cardinalDirection {
+			set { base.SetAttribute(new cardinalDirection { value = value }); }
+			get { return base.GetAttributeValue<cardinalDirection>(nameof(cardinalDirection))?.value; }
+		}
+		[JsonIgnore]
+		public double? distance {
+			set { base.SetAttribute(new distance { value = value }); }
+			get { return base.GetAttributeValue<distance>(nameof(distance))?.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3665,29 +3707,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new orientation(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? cardinalDirection {
-			set { base.SetAttribute(new cardinalDirection { value = value }); }
-			get { return base.GetAttributeValue<cardinalDirection>(nameof(cardinalDirection))?.value; }
-		}
-		[JsonIgnore]
-		public double? distance {
-			set { base.SetAttribute(new distance { value = value }); }
-			get { return base.GetAttributeValue<distance>(nameof(distance))?.value; }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
-		[JsonIgnore]
-		public orientation? orientation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
-		}
 		#endregion
 	}
 
@@ -3701,6 +3721,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Cargo Services Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -3711,14 +3739,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3731,6 +3752,34 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(constructionInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Construction Information";
+
+		#region Attributes
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		[JsonIgnore]
+		public int? condition {
+			set { base.SetAttribute(new condition { value = value }); }
+			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
+		}
+		[JsonIgnore]
+		public String? development {
+			set { base.SetAttribute(new development { value = value }); }
+			get { return base.GetAttributeValue<development>(nameof(development))?.value; }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3767,34 +3816,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public fixedDateRange? fixedDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
-		}
-		[JsonIgnore]
-		public int? condition {
-			set { base.SetAttribute(new condition { value = value }); }
-			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
-		}
-		[JsonIgnore]
-		public String? development {
-			set { base.SetAttribute(new development { value = value }); }
-			get { return base.GetAttributeValue<development>(nameof(development))?.value; }
-		}
-		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3807,6 +3829,19 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(depthsDescription);
 		[JsonIgnore]
 		public override string S100FC_name => "Depths Description";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfDepthsDescription {
+			set { base.SetAttribute(new categoryOfDepthsDescription { value = value }); }
+			get { return base.GetAttributeValue<categoryOfDepthsDescription>(nameof(categoryOfDepthsDescription))?.value; }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3825,19 +3860,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfDepthsDescription {
-			set { base.SetAttribute(new categoryOfDepthsDescription { value = value }); }
-			get { return base.GetAttributeValue<categoryOfDepthsDescription>(nameof(categoryOfDepthsDescription))?.value; }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3851,6 +3874,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Facilities Layout Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -3861,14 +3892,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3882,6 +3906,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "General Port Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -3892,14 +3924,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -3912,6 +3937,34 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(graphic);
 		[JsonIgnore]
 		public override string S100FC_name => "Graphic";
+
+		#region Attributes
+		[JsonIgnore]
+		public String?[] pictorialRepresentation {
+			set { base.SetAttribute([.. value.Select(e=> new pictorialRepresentation { value = e })]); }
+			get { return base.GetAttributeValues<pictorialRepresentation>(nameof(pictorialRepresentation)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? pictureCaption {
+			set { base.SetAttribute(new pictureCaption { value = value }); }
+			get { return base.GetAttributeValue<pictureCaption>(nameof(pictureCaption))?.value; }
+		}
+		[JsonIgnore]
+		public DateOnly? sourceDate {
+			set { base.SetAttribute(new sourceDate { value = value }); }
+			get { return base.GetAttributeValue<sourceDate>(nameof(sourceDate))?.value; }
+		}
+		[JsonIgnore]
+		public String? pictureInformation {
+			set { base.SetAttribute(new pictureInformation { value = value }); }
+			get { return base.GetAttributeValue<pictureInformation>(nameof(pictureInformation))?.value; }
+		}
+		[JsonIgnore]
+		public bearingInformation? bearingInformation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<bearingInformation>(nameof(bearingInformation)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -3947,34 +4000,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new bearingInformation(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String?[] pictorialRepresentation {
-			set { base.SetAttribute([.. value.Select(e=> new pictorialRepresentation { value = e })]); }
-			get { return base.GetAttributeValues<pictorialRepresentation>(nameof(pictorialRepresentation)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? pictureCaption {
-			set { base.SetAttribute(new pictureCaption { value = value }); }
-			get { return base.GetAttributeValue<pictureCaption>(nameof(pictureCaption))?.value; }
-		}
-		[JsonIgnore]
-		public DateOnly? sourceDate {
-			set { base.SetAttribute(new sourceDate { value = value }); }
-			get { return base.GetAttributeValue<sourceDate>(nameof(sourceDate))?.value; }
-		}
-		[JsonIgnore]
-		public String? pictureInformation {
-			set { base.SetAttribute(new pictureInformation { value = value }); }
-			get { return base.GetAttributeValue<pictureInformation>(nameof(pictureInformation))?.value; }
-		}
-		[JsonIgnore]
-		public bearingInformation? bearingInformation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<bearingInformation>(nameof(bearingInformation)); }
-		}
 		#endregion
 	}
 
@@ -3988,6 +4014,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Landmark Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -3998,14 +4032,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -4019,6 +4046,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Limits Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4029,14 +4064,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -4050,6 +4078,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Major Light Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4060,14 +4096,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -4081,6 +4110,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Marked By";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4091,14 +4128,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -4112,6 +4142,14 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Offshore Mark Description";
 
+		#region Attributes
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4122,14 +4160,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -4142,6 +4173,24 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(scheduleByDayOfWeek);
 		[JsonIgnore]
 		public override string S100FC_name => "Schedule by Day of Week";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfSchedule {
+			set { base.SetAttribute(new categoryOfSchedule { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
+		}
+		[JsonIgnore]
+		public String? text {
+			set { base.SetAttribute(new text { value = value }); }
+			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
+		}
+		[JsonIgnore]
+		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4166,24 +4215,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new timeIntervalsByDayOfWeek(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfSchedule {
-			set { base.SetAttribute(new categoryOfSchedule { value = value }); }
-			get { return base.GetAttributeValue<categoryOfSchedule>(nameof(categoryOfSchedule))?.value; }
-		}
-		[JsonIgnore]
-		public String? text {
-			set { base.SetAttribute(new text { value = value }); }
-			get { return base.GetAttributeValue<text>(nameof(text))?.value; }
-		}
-		[JsonIgnore]
-		public timeIntervalsByDayOfWeek?[] timeIntervalsByDayOfWeek {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<timeIntervalsByDayOfWeek>(nameof(timeIntervalsByDayOfWeek)); }
-		}
 		#endregion
 	}
 
@@ -4196,6 +4228,24 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(spatialAccuracy);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Accuracy";
+
+		#region Attributes
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		[JsonIgnore]
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4219,24 +4269,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new verticalUncertainty(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public fixedDateRange? fixedDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
-		}
-		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
-		}
-		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
-		}
 		#endregion
 	}
 
@@ -4249,6 +4282,39 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 		public override string S100FC_code => nameof(generalHarbourInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "General Harbour Information";
+
+		#region Attributes
+		[JsonIgnore]
+		public generalPortDescription? generalPortDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<generalPortDescription>(nameof(generalPortDescription)); }
+		}
+		[JsonIgnore]
+		public facilitiesLayoutDescription? facilitiesLayoutDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<facilitiesLayoutDescription>(nameof(facilitiesLayoutDescription)); }
+		}
+		[JsonIgnore]
+		public limitsDescription? limitsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<limitsDescription>(nameof(limitsDescription)); }
+		}
+		[JsonIgnore]
+		public constructionInformation? constructionInformation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<constructionInformation>(nameof(constructionInformation)); }
+		}
+		[JsonIgnore]
+		public cargoServicesDescription? cargoServicesDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<cargoServicesDescription>(nameof(cargoServicesDescription)); }
+		}
+		[JsonIgnore]
+		public weatherResource?[] weatherResource {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<weatherResource>(nameof(weatherResource)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4290,39 +4356,7 @@ namespace S100Framework.AttributeModel.S131.ComplexAttributes
 					CreateInstance = () => new weatherResource(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public generalPortDescription? generalPortDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<generalPortDescription>(nameof(generalPortDescription)); }
-		}
-		[JsonIgnore]
-		public facilitiesLayoutDescription? facilitiesLayoutDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<facilitiesLayoutDescription>(nameof(facilitiesLayoutDescription)); }
-		}
-		[JsonIgnore]
-		public limitsDescription? limitsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<limitsDescription>(nameof(limitsDescription)); }
-		}
-		[JsonIgnore]
-		public constructionInformation? constructionInformation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<constructionInformation>(nameof(constructionInformation)); }
-		}
-		[JsonIgnore]
-		public cargoServicesDescription? cargoServicesDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<cargoServicesDescription>(nameof(cargoServicesDescription)); }
-		}
-		[JsonIgnore]
-		public weatherResource?[] weatherResource {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<weatherResource>(nameof(weatherResource)); }
-		}
 		#endregion
 	}
 
@@ -4344,6 +4378,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Additional information";
 		[JsonIgnore]
 		public override string role => "theInformation";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4357,6 +4394,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Authority contact";
 		[JsonIgnore]
 		public override string role => "theAuthority";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4370,6 +4410,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Authority hours";
 		[JsonIgnore]
 		public override string role => "theAuthority_srvHrs";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4383,6 +4426,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Associated RxN";
 		[JsonIgnore]
 		public override string role => "theRxN";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4396,6 +4442,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Exceptional workday";
 		[JsonIgnore]
 		public override string role => "theServiceHours_nsdy";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4409,6 +4458,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Service control";
 		[JsonIgnore]
 		public override string role => "controlAuthority";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4422,6 +4474,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Service contact";
 		[JsonIgnore]
 		public override string role => "theContactDetails";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4435,6 +4490,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Location hours";
 		[JsonIgnore]
 		public override string role => "facilityOperatingHours";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4448,6 +4506,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Related organisation";
 		[JsonIgnore]
 		public override string role => "organisationRelatedRxN";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4462,6 +4523,14 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		[JsonIgnore]
 		public override string role => "theApplicableRxN";
 
+		#region Attributes
+		[JsonIgnore]
+		public int? membership {
+			set { base.SetAttribute(new membership { value = value }); }
+			get { return base.GetAttributeValue<membership>(nameof(membership))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4473,14 +4542,7 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 					CreateInstance = () => new membership(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? membership {
-			set { base.SetAttribute(new membership { value = value }); }
-			get { return base.GetAttributeValue<membership>(nameof(membership))?.value; }
-		}
 		#endregion
 	}
 
@@ -4496,6 +4558,14 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		[JsonIgnore]
 		public override string role => "permission";
 
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfRelationship {
+			set { base.SetAttribute(new categoryOfRelationship { value = value }); }
+			get { return base.GetAttributeValue<categoryOfRelationship>(nameof(categoryOfRelationship))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -4507,14 +4577,7 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 					CreateInstance = () => new categoryOfRelationship(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfRelationship {
-			set { base.SetAttribute(new categoryOfRelationship { value = value }); }
-			get { return base.GetAttributeValue<categoryOfRelationship>(nameof(categoryOfRelationship))?.value; }
-		}
 		#endregion
 	}
 
@@ -4529,6 +4592,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Spatial Association";
 		[JsonIgnore]
 		public override string role => "theQualityInformation";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4542,6 +4608,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Limit Entrance";
 		[JsonIgnore]
 		public override string role => "entranceReference";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4555,6 +4624,9 @@ namespace S100Framework.AttributeModel.S131.InformationAssociation
 		public override string S100FC_name => "Service Availability";
 		[JsonIgnore]
 		public override string role => "serviceDescriptionReference";
+
+		#region Catalogue
+		#endregion
 	}
 
 }
@@ -4575,6 +4647,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Text association";
 		[JsonIgnore]
 		public override string[] roles => ["thePositionProvider","theCartographicText"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4588,6 +4663,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Subsection";
 		[JsonIgnore]
 		public override string[] roles => ["subUnit","constitute"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4601,6 +4679,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Infrastructure";
 		[JsonIgnore]
 		public override string[] roles => ["infrastructureLocation","hasInfrastructure"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4614,6 +4695,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Primary/Auxiliary Facility";
 		[JsonIgnore]
 		public override string[] roles => ["primaryFacility","auxiliaryFacility"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4627,6 +4711,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Demarcation";
 		[JsonIgnore]
 		public override string[] roles => ["demarcationIndicator","demarcatedFeature"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4640,6 +4727,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Jurisdictional Limit";
 		[JsonIgnore]
 		public override string[] roles => ["limitReference","limitExtent"];
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -4653,6 +4743,9 @@ namespace S100Framework.AttributeModel.S131.FeatureAssociation
 		public override string S100FC_name => "Layout Division";
 		[JsonIgnore]
 		public override string[] roles => ["layoutUnit","componentOf"];
+
+		#region Catalogue
+		#endregion
 	}
 
 }
@@ -4671,6 +4764,34 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(InformationType);
 		[JsonIgnore]
 		public override string S100FC_name => "Information Type";
+
+		#region Attributes
+		[JsonIgnore]
+		public featureName?[] featureName {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		[JsonIgnore]
+		public periodicDateRange?[] periodicDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
+		[JsonIgnore]
+		public graphic?[] graphic {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<graphic>(nameof(graphic)); }
+		}
+		[JsonIgnore]
+		public sourceIndication?[] sourceIndication {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4706,34 +4827,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new sourceIndication(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
-		}
-		[JsonIgnore]
-		public fixedDateRange? fixedDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
-		}
-		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
-		}
-		[JsonIgnore]
-		public graphic?[] graphic {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<graphic>(nameof(graphic)); }
-		}
-		[JsonIgnore]
-		public sourceIndication?[] sourceIndication {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
-		}
 		#endregion
 	}
 
@@ -4746,6 +4840,24 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(AbstractRxN);
 		[JsonIgnore]
 		public override string S100FC_name => "AbstractRxN";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfAuthority {
+			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
+			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
+		}
+		[JsonIgnore]
+		public rxNCode?[] rxNCode {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4771,24 +4883,28 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfAuthority {
-			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
-			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
-		}
-		[JsonIgnore]
-		public rxNCode?[] rxNCode {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "isApplicableTo",
+					association = "InclusionType",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(Applicability)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theOrganisation",
+					association = "RelatedOrganisation",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -4801,6 +4917,64 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Applicability);
 		[JsonIgnore]
 		public override string S100FC_name => "Applicability";
+
+		#region Attributes
+		[JsonIgnore]
+		public Boolean? inBallast {
+			set { base.SetAttribute(new inBallast { value = value }); }
+			get { return base.GetAttributeValue<inBallast>(nameof(inBallast))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfDangerousOrHazardousCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfDangerousOrHazardousCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfDangerousOrHazardousCargo>(nameof(categoryOfDangerousOrHazardousCargo)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? categoryOfVessel {
+			set { base.SetAttribute(new categoryOfVessel { value = value }); }
+			get { return base.GetAttributeValue<categoryOfVessel>(nameof(categoryOfVessel))?.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfVesselRegistry {
+			set { base.SetAttribute(new categoryOfVesselRegistry { value = value }); }
+			get { return base.GetAttributeValue<categoryOfVesselRegistry>(nameof(categoryOfVesselRegistry))?.value; }
+		}
+		[JsonIgnore]
+		public int? logicalConnectives {
+			set { base.SetAttribute(new logicalConnectives { value = value }); }
+			get { return base.GetAttributeValue<logicalConnectives>(nameof(logicalConnectives))?.value; }
+		}
+		[JsonIgnore]
+		public int? thicknessOfIceCapability {
+			set { base.SetAttribute(new thicknessOfIceCapability { value = value }); }
+			get { return base.GetAttributeValue<thicknessOfIceCapability>(nameof(thicknessOfIceCapability))?.value; }
+		}
+		[JsonIgnore]
+		public String? vesselPerformance {
+			set { base.SetAttribute(new vesselPerformance { value = value }); }
+			get { return base.GetAttributeValue<vesselPerformance>(nameof(vesselPerformance))?.value; }
+		}
+		[JsonIgnore]
+		public String? destination {
+			set { base.SetAttribute(new destination { value = value }); }
+			get { return base.GetAttributeValue<destination>(nameof(destination))?.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		[JsonIgnore]
+		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<vesselMeasurementsSpecification>(nameof(vesselMeasurementsSpecification)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4878,64 +5052,20 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new vesselMeasurementsSpecification(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public Boolean? inBallast {
-			set { base.SetAttribute(new inBallast { value = value }); }
-			get { return base.GetAttributeValue<inBallast>(nameof(inBallast))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfDangerousOrHazardousCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfDangerousOrHazardousCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfDangerousOrHazardousCargo>(nameof(categoryOfDangerousOrHazardousCargo)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? categoryOfVessel {
-			set { base.SetAttribute(new categoryOfVessel { value = value }); }
-			get { return base.GetAttributeValue<categoryOfVessel>(nameof(categoryOfVessel))?.value; }
-		}
-		[JsonIgnore]
-		public int? categoryOfVesselRegistry {
-			set { base.SetAttribute(new categoryOfVesselRegistry { value = value }); }
-			get { return base.GetAttributeValue<categoryOfVesselRegistry>(nameof(categoryOfVesselRegistry))?.value; }
-		}
-		[JsonIgnore]
-		public int? logicalConnectives {
-			set { base.SetAttribute(new logicalConnectives { value = value }); }
-			get { return base.GetAttributeValue<logicalConnectives>(nameof(logicalConnectives))?.value; }
-		}
-		[JsonIgnore]
-		public int? thicknessOfIceCapability {
-			set { base.SetAttribute(new thicknessOfIceCapability { value = value }); }
-			get { return base.GetAttributeValue<thicknessOfIceCapability>(nameof(thicknessOfIceCapability))?.value; }
-		}
-		[JsonIgnore]
-		public String? vesselPerformance {
-			set { base.SetAttribute(new vesselPerformance { value = value }); }
-			get { return base.GetAttributeValue<vesselPerformance>(nameof(vesselPerformance))?.value; }
-		}
-		[JsonIgnore]
-		public String? destination {
-			set { base.SetAttribute(new destination { value = value }); }
-			get { return base.GetAttributeValue<destination>(nameof(destination))?.value; }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
-		[JsonIgnore]
-		public vesselMeasurementsSpecification?[] vesselMeasurementsSpecification {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<vesselMeasurementsSpecification>(nameof(vesselMeasurementsSpecification)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theApplicableRxN",
+					association = "InclusionType",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(AbstractRxN)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -4948,6 +5078,19 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Authority);
 		[JsonIgnore]
 		public override string S100FC_name => "Authority";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfAuthority {
+			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
+			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
+		}
+		[JsonIgnore]
+		public textContent? textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -4967,19 +5110,36 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfAuthority {
-			set { base.SetAttribute(new categoryOfAuthority { value = value }); }
-			get { return base.GetAttributeValue<categoryOfAuthority>(nameof(categoryOfAuthority))?.value; }
-		}
-		[JsonIgnore]
-		public textContent? textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<textContent>(nameof(textContent)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theContactDetails",
+					association = "AuthorityContact",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(ContactDetails)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "organisationRelatedRxN",
+					association = "RelatedOrganisation",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(AbstractRxN)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theServiceHours",
+					association = "AuthorityHours",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -4992,6 +5152,74 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(AvailablePortServices);
 		[JsonIgnore]
 		public override string S100FC_name => "Available Port Services";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] firefightingService {
+			set { base.SetAttribute([.. value.Select(e=> new firefightingService { value = e })]); }
+			get { return base.GetAttributeValues<firefightingService>(nameof(firefightingService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] medicalService {
+			set { base.SetAttribute([.. value.Select(e=> new medicalService { value = e })]); }
+			get { return base.GetAttributeValues<medicalService>(nameof(medicalService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] repairService {
+			set { base.SetAttribute([.. value.Select(e=> new repairService { value = e })]); }
+			get { return base.GetAttributeValues<repairService>(nameof(repairService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] technicalPortService {
+			set { base.SetAttribute([.. value.Select(e=> new technicalPortService { value = e })]); }
+			get { return base.GetAttributeValues<technicalPortService>(nameof(technicalPortService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] shipSanitationControl {
+			set { base.SetAttribute([.. value.Select(e=> new shipSanitationControl { value = e })]); }
+			get { return base.GetAttributeValues<shipSanitationControl>(nameof(shipSanitationControl)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] transportConnection {
+			set { base.SetAttribute([.. value.Select(e=> new transportConnection { value = e })]); }
+			get { return base.GetAttributeValues<transportConnection>(nameof(transportConnection)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] berthingAssistance {
+			set { base.SetAttribute([.. value.Select(e=> new berthingAssistance { value = e })]); }
+			get { return base.GetAttributeValues<berthingAssistance>(nameof(berthingAssistance)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] cargoService {
+			set { base.SetAttribute([.. value.Select(e=> new cargoService { value = e })]); }
+			get { return base.GetAttributeValues<cargoService>(nameof(cargoService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] securitySafetyEmergencyService {
+			set { base.SetAttribute([.. value.Select(e=> new securitySafetyEmergencyService { value = e })]); }
+			get { return base.GetAttributeValues<securitySafetyEmergencyService>(nameof(securitySafetyEmergencyService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] wasteDisposalService {
+			set { base.SetAttribute([.. value.Select(e=> new wasteDisposalService { value = e })]); }
+			get { return base.GetAttributeValues<wasteDisposalService>(nameof(wasteDisposalService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] supplyService {
+			set { base.SetAttribute([.. value.Select(e=> new supplyService { value = e })]); }
+			get { return base.GetAttributeValues<supplyService>(nameof(supplyService)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? tugInformation {
+			set { base.SetAttribute(new tugInformation { value = value }); }
+			get { return base.GetAttributeValue<tugInformation>(nameof(tugInformation))?.value; }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5087,74 +5315,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int?[] firefightingService {
-			set { base.SetAttribute([.. value.Select(e=> new firefightingService { value = e })]); }
-			get { return base.GetAttributeValues<firefightingService>(nameof(firefightingService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] medicalService {
-			set { base.SetAttribute([.. value.Select(e=> new medicalService { value = e })]); }
-			get { return base.GetAttributeValues<medicalService>(nameof(medicalService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] repairService {
-			set { base.SetAttribute([.. value.Select(e=> new repairService { value = e })]); }
-			get { return base.GetAttributeValues<repairService>(nameof(repairService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] technicalPortService {
-			set { base.SetAttribute([.. value.Select(e=> new technicalPortService { value = e })]); }
-			get { return base.GetAttributeValues<technicalPortService>(nameof(technicalPortService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] shipSanitationControl {
-			set { base.SetAttribute([.. value.Select(e=> new shipSanitationControl { value = e })]); }
-			get { return base.GetAttributeValues<shipSanitationControl>(nameof(shipSanitationControl)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] transportConnection {
-			set { base.SetAttribute([.. value.Select(e=> new transportConnection { value = e })]); }
-			get { return base.GetAttributeValues<transportConnection>(nameof(transportConnection)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] berthingAssistance {
-			set { base.SetAttribute([.. value.Select(e=> new berthingAssistance { value = e })]); }
-			get { return base.GetAttributeValues<berthingAssistance>(nameof(berthingAssistance)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] cargoService {
-			set { base.SetAttribute([.. value.Select(e=> new cargoService { value = e })]); }
-			get { return base.GetAttributeValues<cargoService>(nameof(cargoService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] securitySafetyEmergencyService {
-			set { base.SetAttribute([.. value.Select(e=> new securitySafetyEmergencyService { value = e })]); }
-			get { return base.GetAttributeValues<securitySafetyEmergencyService>(nameof(securitySafetyEmergencyService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] wasteDisposalService {
-			set { base.SetAttribute([.. value.Select(e=> new wasteDisposalService { value = e })]); }
-			get { return base.GetAttributeValues<wasteDisposalService>(nameof(wasteDisposalService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] supplyService {
-			set { base.SetAttribute([.. value.Select(e=> new supplyService { value = e })]); }
-			get { return base.GetAttributeValues<supplyService>(nameof(supplyService)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? tugInformation {
-			set { base.SetAttribute(new tugInformation { value = value }); }
-			get { return base.GetAttributeValue<tugInformation>(nameof(tugInformation))?.value; }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -5167,6 +5328,69 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(ContactDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Contact Details";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? callName {
+			set { base.SetAttribute(new callName { value = value }); }
+			get { return base.GetAttributeValue<callName>(nameof(callName))?.value; }
+		}
+		[JsonIgnore]
+		public String? callSign {
+			set { base.SetAttribute(new callSign { value = value }); }
+			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfCommunicationPreference {
+			set { base.SetAttribute(new categoryOfCommunicationPreference { value = value }); }
+			get { return base.GetAttributeValue<categoryOfCommunicationPreference>(nameof(categoryOfCommunicationPreference))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] communicationChannel {
+			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
+			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? contactInstructions {
+			set { base.SetAttribute(new contactInstructions { value = value }); }
+			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] language {
+			set { base.SetAttribute([.. value.Select(e=> new language { value = e })]); }
+			get { return base.GetAttributeValues<language>(nameof(language)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? mMSICode {
+			set { base.SetAttribute(new mMSICode { value = value }); }
+			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
+		}
+		[JsonIgnore]
+		public contactAddress?[] contactAddress {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); }
+		}
+		[JsonIgnore]
+		public frequencyPair?[] frequencyPair {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		[JsonIgnore]
+		public onlineResource?[] onlineResource {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
+		}
+		[JsonIgnore]
+		public telecommunications?[] telecommunications {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5246,69 +5470,20 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new telecommunications(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public String? callName {
-			set { base.SetAttribute(new callName { value = value }); }
-			get { return base.GetAttributeValue<callName>(nameof(callName))?.value; }
-		}
-		[JsonIgnore]
-		public String? callSign {
-			set { base.SetAttribute(new callSign { value = value }); }
-			get { return base.GetAttributeValue<callSign>(nameof(callSign))?.value; }
-		}
-		[JsonIgnore]
-		public int? categoryOfCommunicationPreference {
-			set { base.SetAttribute(new categoryOfCommunicationPreference { value = value }); }
-			get { return base.GetAttributeValue<categoryOfCommunicationPreference>(nameof(categoryOfCommunicationPreference))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] communicationChannel {
-			set { base.SetAttribute([.. value.Select(e=> new communicationChannel { value = e })]); }
-			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? contactInstructions {
-			set { base.SetAttribute(new contactInstructions { value = value }); }
-			get { return base.GetAttributeValue<contactInstructions>(nameof(contactInstructions))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] language {
-			set { base.SetAttribute([.. value.Select(e=> new language { value = e })]); }
-			get { return base.GetAttributeValues<language>(nameof(language)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? mMSICode {
-			set { base.SetAttribute(new mMSICode { value = value }); }
-			get { return base.GetAttributeValue<mMSICode>(nameof(mMSICode))?.value; }
-		}
-		[JsonIgnore]
-		public contactAddress?[] contactAddress {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); }
-		}
-		[JsonIgnore]
-		public frequencyPair?[] frequencyPair {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<frequencyPair>(nameof(frequencyPair)); }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
-		[JsonIgnore]
-		public onlineResource?[] onlineResource {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
-		}
-		[JsonIgnore]
-		public telecommunications?[] telecommunications {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theAuthority",
+					association = "AuthorityContact",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -5321,6 +5496,59 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Entrance);
 		[JsonIgnore]
 		public override string S100FC_name => "Entrance";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? entranceDescription {
+			set { base.SetAttribute(new entranceDescription { value = value }); }
+			get { return base.GetAttributeValue<entranceDescription>(nameof(entranceDescription))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] associatedFeatureName {
+			set { base.SetAttribute([.. value.Select(e=> new associatedFeatureName { value = e })]); }
+			get { return base.GetAttributeValues<associatedFeatureName>(nameof(associatedFeatureName)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? localKnowledgeDescription {
+			set { base.SetAttribute(new localKnowledgeDescription { value = value }); }
+			get { return base.GetAttributeValue<localKnowledgeDescription>(nameof(localKnowledgeDescription))?.value; }
+		}
+		[JsonIgnore]
+		public String? approachDescription {
+			set { base.SetAttribute(new approachDescription { value = value }); }
+			get { return base.GetAttributeValue<approachDescription>(nameof(approachDescription))?.value; }
+		}
+		[JsonIgnore]
+		public markedBy?[] markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public landmarkDescription?[] landmarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<landmarkDescription>(nameof(landmarkDescription)); }
+		}
+		[JsonIgnore]
+		public offshoreMarkDescription?[] offshoreMarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<offshoreMarkDescription>(nameof(offshoreMarkDescription)); }
+		}
+		[JsonIgnore]
+		public majorLightDescription?[] majorLightDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<majorLightDescription>(nameof(majorLightDescription)); }
+		}
+		[JsonIgnore]
+		public usefulMarkDescription?[] usefulMarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<usefulMarkDescription>(nameof(usefulMarkDescription)); }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5387,59 +5615,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String? entranceDescription {
-			set { base.SetAttribute(new entranceDescription { value = value }); }
-			get { return base.GetAttributeValue<entranceDescription>(nameof(entranceDescription))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] associatedFeatureName {
-			set { base.SetAttribute([.. value.Select(e=> new associatedFeatureName { value = e })]); }
-			get { return base.GetAttributeValues<associatedFeatureName>(nameof(associatedFeatureName)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? localKnowledgeDescription {
-			set { base.SetAttribute(new localKnowledgeDescription { value = value }); }
-			get { return base.GetAttributeValue<localKnowledgeDescription>(nameof(localKnowledgeDescription))?.value; }
-		}
-		[JsonIgnore]
-		public String? approachDescription {
-			set { base.SetAttribute(new approachDescription { value = value }); }
-			get { return base.GetAttributeValue<approachDescription>(nameof(approachDescription))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy?[] markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public landmarkDescription?[] landmarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<landmarkDescription>(nameof(landmarkDescription)); }
-		}
-		[JsonIgnore]
-		public offshoreMarkDescription?[] offshoreMarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<offshoreMarkDescription>(nameof(offshoreMarkDescription)); }
-		}
-		[JsonIgnore]
-		public majorLightDescription?[] majorLightDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<majorLightDescription>(nameof(majorLightDescription)); }
-		}
-		[JsonIgnore]
-		public usefulMarkDescription?[] usefulMarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<usefulMarkDescription>(nameof(usefulMarkDescription)); }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
 		#endregion
 	}
 
@@ -5452,6 +5628,9 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(NauticalInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Nautical Information";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -5463,6 +5642,24 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
 		[JsonIgnore]
 		public override string S100FC_name => "Non-Standard Working Day";
+
+		#region Attributes
+		[JsonIgnore]
+		public String?[] dateFixed {
+			set { base.SetAttribute([.. value.Select(e=> new dateFixed { value = e })]); }
+			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String?[] dateVariable {
+			set { base.SetAttribute([.. value.Select(e=> new dateVariable { value = e })]); }
+			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5487,24 +5684,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public String?[] dateFixed {
-			set { base.SetAttribute([.. value.Select(e=> new dateFixed { value = e })]); }
-			get { return base.GetAttributeValues<dateFixed>(nameof(dateFixed)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String?[] dateVariable {
-			set { base.SetAttribute([.. value.Select(e=> new dateVariable { value = e })]); }
-			get { return base.GetAttributeValues<dateVariable>(nameof(dateVariable)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
 		#endregion
 	}
 
@@ -5517,6 +5697,9 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Recommendations);
 		[JsonIgnore]
 		public override string S100FC_name => "Recommendations";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -5528,6 +5711,9 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Regulations);
 		[JsonIgnore]
 		public override string S100FC_name => "Regulations";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -5539,6 +5725,9 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(Restrictions);
 		[JsonIgnore]
 		public override string S100FC_name => "Restrictions";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -5550,6 +5739,19 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(ServiceHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Hours";
+
+		#region Attributes
+		[JsonIgnore]
+		public scheduleByDayOfWeek?[] scheduleByDayOfWeek {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5568,19 +5770,28 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public scheduleByDayOfWeek?[] scheduleByDayOfWeek {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<scheduleByDayOfWeek>(nameof(scheduleByDayOfWeek)); }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "partialWorkingDay",
+					association = "ExceptionalWorkday",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(NonStandardWorkingDay)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theAuthority_srvHrs",
+					association = "AuthorityHours",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -5593,6 +5804,19 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 		public override string S100FC_code => nameof(SpatialQuality);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Quality";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? qualityOfHorizontalMeasurement {
+			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
+			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
+		}
+		[JsonIgnore]
+		public spatialAccuracy?[] spatialAccuracy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<spatialAccuracy>(nameof(spatialAccuracy)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5611,19 +5835,7 @@ namespace S100Framework.AttributeModel.S131.InformationTypes
 					CreateInstance = () => new spatialAccuracy(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? qualityOfHorizontalMeasurement {
-			set { base.SetAttribute(new qualityOfHorizontalMeasurement { value = value }); }
-			get { return base.GetAttributeValue<qualityOfHorizontalMeasurement>(nameof(qualityOfHorizontalMeasurement))?.value; }
-		}
-		[JsonIgnore]
-		public spatialAccuracy?[] spatialAccuracy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<spatialAccuracy>(nameof(spatialAccuracy)); }
-		}
 		#endregion
 	}
 
@@ -5633,6 +5845,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 {
 	using S100Framework.AttributeModel.S131.SimpleAttributes;
 	using S100Framework.AttributeModel.S131.ComplexAttributes;
+	using S100Framework.AttributeModel.S131.InformationTypes;
 
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
@@ -5643,6 +5856,59 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(FeatureType);
 		[JsonIgnore]
 		public override string S100FC_name => "Feature Type";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? locationMRN {
+			set { base.SetAttribute(new locationMRN { value = value }); }
+			get { return base.GetAttributeValue<locationMRN>(nameof(locationMRN))?.value; }
+		}
+		[JsonIgnore]
+		public String? globalLocationNumber {
+			set { base.SetAttribute(new globalLocationNumber { value = value }); }
+			get { return base.GetAttributeValue<globalLocationNumber>(nameof(globalLocationNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] interoperabilityIdentifier {
+			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
+			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public featureName?[] featureName {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+		}
+		[JsonIgnore]
+		public fixedDateRange? fixedDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
+		}
+		[JsonIgnore]
+		public periodicDateRange?[] periodicDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
+		}
+		[JsonIgnore]
+		public rxNCode?[] rxNCode {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); }
+		}
+		[JsonIgnore]
+		public graphic?[] graphic {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<graphic>(nameof(graphic)); }
+		}
+		[JsonIgnore]
+		public sourceIndication?[] sourceIndication {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
+		}
+		[JsonIgnore]
+		public textContent?[] textContent {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5708,59 +5974,47 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public String? locationMRN {
-			set { base.SetAttribute(new locationMRN { value = value }); }
-			get { return base.GetAttributeValue<locationMRN>(nameof(locationMRN))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "permission",
+					association = "PermissionType",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(Applicability)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theRxN",
+					association = "AssociatedRxN",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(AbstractRxN)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theInformation",
+					association = "AdditionalInformation",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(NauticalInformation)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? globalLocationNumber {
-			set { base.SetAttribute(new globalLocationNumber { value = value }); }
-			get { return base.GetAttributeValue<globalLocationNumber>(nameof(globalLocationNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] interoperabilityIdentifier {
-			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
-			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
-		}
-		[JsonIgnore]
-		public fixedDateRange? fixedDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
-		}
-		[JsonIgnore]
-		public periodicDateRange?[] periodicDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
-		}
-		[JsonIgnore]
-		public rxNCode?[] rxNCode {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<rxNCode>(nameof(rxNCode)); }
-		}
-		[JsonIgnore]
-		public graphic?[] graphic {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<graphic>(nameof(graphic)); }
-		}
-		[JsonIgnore]
-		public sourceIndication?[] sourceIndication {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
-		}
-		[JsonIgnore]
-		public textContent?[] textContent {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<textContent>(nameof(textContent)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "theCartographicText",
+					association = "TextAssociation",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(TextPlacement)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -5773,6 +6027,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(OrganizationContactArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Organization Contact Area";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theContactDetails",
+					association = "ServiceContact",
+					lower = 0,
+					upper = 2147483647,
+					informationTypes = [nameof(ContactDetails)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -5784,6 +6054,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(SupervisedArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Supervised Area";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "controlAuthority",
+					association = "ServiceControl",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(Authority)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -5795,6 +6081,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(HarbourPhysicalInfrastructure);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Physical Infrastructure";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "infrastructureLocation",
+					association = "Infrastructure",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -5806,6 +6108,9 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(Layout);
 		[JsonIgnore]
 		public override string S100FC_name => "Layout";
+
+		#region Catalogue
+		#endregion
 	}
 
 	/// <summary>
@@ -5817,6 +6122,24 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(AnchorBerth);
 		[JsonIgnore]
 		public override string S100FC_name => "Anchor Berth";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] categoryOfAnchorage {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public double? radius {
+			set { base.SetAttribute(new radius { value = value }); }
+			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5843,24 +6166,41 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new radius(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfAnchorage {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public int?[] categoryOfCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public double? radius {
-			set { base.SetAttribute(new radius { value = value }); }
-			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "auxiliaryFacility",
+					association = "PrimaryAuxiliaryFacility",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(MooringWarpingFacility)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -5873,6 +6213,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(AnchorageArea);
 		[JsonIgnore]
 		public override string S100FC_name => "Anchorage Area";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] categoryOfAnchorage {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -5918,39 +6291,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new markedBy(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int?[] categoryOfAnchorage {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfAnchorage { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfAnchorage>(nameof(categoryOfAnchorage)).Select(e=>e.value).ToArray(); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -5963,6 +6330,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(AutomatedGuidedVehicle);
 		[JsonIgnore]
 		public override string S100FC_name => "Automated Guided Vehicle";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -5974,6 +6357,119 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(Berth);
 		[JsonIgnore]
 		public override string S100FC_name => "Berth";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? availableBerthingLength {
+			set { base.SetAttribute(new availableBerthingLength { value = value }); }
+			get { return base.GetAttributeValue<availableBerthingLength>(nameof(availableBerthingLength))?.value; }
+		}
+		[JsonIgnore]
+		public String? bollardDescription {
+			set { base.SetAttribute(new bollardDescription { value = value }); }
+			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
+		}
+		[JsonIgnore]
+		public double? safeWorkingLoad {
+			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
+			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
+		}
+		[JsonIgnore]
+		public double? minimumBerthDepth {
+			set { base.SetAttribute(new minimumBerthDepth { value = value }); }
+			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? elevation {
+			set { base.SetAttribute(new elevation { value = value }); }
+			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
+		}
+		[JsonIgnore]
+		public Boolean? cathodicProtectionSystem {
+			set { base.SetAttribute(new cathodicProtectionSystem { value = value }); }
+			get { return base.GetAttributeValue<cathodicProtectionSystem>(nameof(cathodicProtectionSystem))?.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfBerthLocation {
+			set { base.SetAttribute(new categoryOfBerthLocation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfBerthLocation>(nameof(categoryOfBerthLocation))?.value; }
+		}
+		[JsonIgnore]
+		public String? portFacilityNumber {
+			set { base.SetAttribute(new portFacilityNumber { value = value }); }
+			get { return base.GetAttributeValue<portFacilityNumber>(nameof(portFacilityNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] bollardNumber {
+			set { base.SetAttribute([.. value.Select(e=> new bollardNumber { value = e })]); }
+			get { return base.GetAttributeValues<bollardNumber>(nameof(bollardNumber)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? gLNExtension {
+			set { base.SetAttribute(new gLNExtension { value = value }); }
+			get { return base.GetAttributeValue<gLNExtension>(nameof(gLNExtension))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] metreMarkNumber {
+			set { base.SetAttribute([.. value.Select(e=> new metreMarkNumber { value = e })]); }
+			get { return base.GetAttributeValues<metreMarkNumber>(nameof(metreMarkNumber)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String?[] manifoldNumber {
+			set { base.SetAttribute([.. value.Select(e=> new manifoldNumber { value = e })]); }
+			get { return base.GetAttributeValues<manifoldNumber>(nameof(manifoldNumber)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? rampNumber {
+			set { base.SetAttribute(new rampNumber { value = value }); }
+			get { return base.GetAttributeValue<rampNumber>(nameof(rampNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public int? methodOfSecuring {
+			set { base.SetAttribute(new methodOfSecuring { value = value }); }
+			get { return base.GetAttributeValue<methodOfSecuring>(nameof(methodOfSecuring))?.value; }
+		}
+		[JsonIgnore]
+		public String? uNLocationCode {
+			set { base.SetAttribute(new uNLocationCode { value = value }); }
+			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
+		}
+		[JsonIgnore]
+		public String? terminalIdentifier {
+			set { base.SetAttribute(new terminalIdentifier { value = value }); }
+			get { return base.GetAttributeValue<terminalIdentifier>(nameof(terminalIdentifier))?.value; }
+		}
+		[JsonIgnore]
+		public String? shorePowerDescription {
+			set { base.SetAttribute(new shorePowerDescription { value = value }); }
+			get { return base.GetAttributeValue<shorePowerDescription>(nameof(shorePowerDescription))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfFrequency {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfFrequency { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfFrequency>(nameof(categoryOfFrequency)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfVoltage {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfVoltage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfVoltage>(nameof(categoryOfVoltage)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String?[] categoryOfPlug {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfPlug { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfPlug>(nameof(categoryOfPlug)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6117,119 +6613,49 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new categoryOfCargo(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? availableBerthingLength {
-			set { base.SetAttribute(new availableBerthingLength { value = value }); }
-			get { return base.GetAttributeValue<availableBerthingLength>(nameof(availableBerthingLength))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? bollardDescription {
-			set { base.SetAttribute(new bollardDescription { value = value }); }
-			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
-		}
-		[JsonIgnore]
-		public double? safeWorkingLoad {
-			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
-			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
-		}
-		[JsonIgnore]
-		public double? minimumBerthDepth {
-			set { base.SetAttribute(new minimumBerthDepth { value = value }); }
-			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
-		}
-		[JsonIgnore]
-		public double? elevation {
-			set { base.SetAttribute(new elevation { value = value }); }
-			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
-		}
-		[JsonIgnore]
-		public Boolean? cathodicProtectionSystem {
-			set { base.SetAttribute(new cathodicProtectionSystem { value = value }); }
-			get { return base.GetAttributeValue<cathodicProtectionSystem>(nameof(cathodicProtectionSystem))?.value; }
-		}
-		[JsonIgnore]
-		public int? categoryOfBerthLocation {
-			set { base.SetAttribute(new categoryOfBerthLocation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfBerthLocation>(nameof(categoryOfBerthLocation))?.value; }
-		}
-		[JsonIgnore]
-		public String? portFacilityNumber {
-			set { base.SetAttribute(new portFacilityNumber { value = value }); }
-			get { return base.GetAttributeValue<portFacilityNumber>(nameof(portFacilityNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] bollardNumber {
-			set { base.SetAttribute([.. value.Select(e=> new bollardNumber { value = e })]); }
-			get { return base.GetAttributeValues<bollardNumber>(nameof(bollardNumber)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? gLNExtension {
-			set { base.SetAttribute(new gLNExtension { value = value }); }
-			get { return base.GetAttributeValue<gLNExtension>(nameof(gLNExtension))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] metreMarkNumber {
-			set { base.SetAttribute([.. value.Select(e=> new metreMarkNumber { value = e })]); }
-			get { return base.GetAttributeValues<metreMarkNumber>(nameof(metreMarkNumber)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String?[] manifoldNumber {
-			set { base.SetAttribute([.. value.Select(e=> new manifoldNumber { value = e })]); }
-			get { return base.GetAttributeValues<manifoldNumber>(nameof(manifoldNumber)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? rampNumber {
-			set { base.SetAttribute(new rampNumber { value = value }); }
-			get { return base.GetAttributeValue<rampNumber>(nameof(rampNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public int? methodOfSecuring {
-			set { base.SetAttribute(new methodOfSecuring { value = value }); }
-			get { return base.GetAttributeValue<methodOfSecuring>(nameof(methodOfSecuring))?.value; }
-		}
-		[JsonIgnore]
-		public String? uNLocationCode {
-			set { base.SetAttribute(new uNLocationCode { value = value }); }
-			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
-		}
-		[JsonIgnore]
-		public String? terminalIdentifier {
-			set { base.SetAttribute(new terminalIdentifier { value = value }); }
-			get { return base.GetAttributeValue<terminalIdentifier>(nameof(terminalIdentifier))?.value; }
-		}
-		[JsonIgnore]
-		public String? shorePowerDescription {
-			set { base.SetAttribute(new shorePowerDescription { value = value }); }
-			get { return base.GetAttributeValue<shorePowerDescription>(nameof(shorePowerDescription))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfFrequency {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfFrequency { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfFrequency>(nameof(categoryOfFrequency)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfVoltage {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfVoltage { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfVoltage>(nameof(categoryOfVoltage)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String?[] categoryOfPlug {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfPlug { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfPlug>(nameof(categoryOfPlug)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "demarcationIndicator",
+					association = "Demarcation",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(BerthPosition)],
+				},
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6242,6 +6668,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(BerthPosition);
 		[JsonIgnore]
 		public override string S100FC_name => "Berth Position";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? bollardNumber {
+			set { base.SetAttribute(new bollardNumber { value = value }); }
+			get { return base.GetAttributeValue<bollardNumber>(nameof(bollardNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String? gLNExtension {
+			set { base.SetAttribute(new gLNExtension { value = value }); }
+			get { return base.GetAttributeValue<gLNExtension>(nameof(gLNExtension))?.value; }
+		}
+		[JsonIgnore]
+		public String? metreMarkNumber {
+			set { base.SetAttribute(new metreMarkNumber { value = value }); }
+			get { return base.GetAttributeValue<metreMarkNumber>(nameof(metreMarkNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String? manifoldNumber {
+			set { base.SetAttribute(new manifoldNumber { value = value }); }
+			get { return base.GetAttributeValue<manifoldNumber>(nameof(manifoldNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String? rampNumber {
+			set { base.SetAttribute(new rampNumber { value = value }); }
+			get { return base.GetAttributeValue<rampNumber>(nameof(rampNumber))?.value; }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6284,39 +6743,28 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new locationByText(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public String? bollardNumber {
-			set { base.SetAttribute(new bollardNumber { value = value }); }
-			get { return base.GetAttributeValue<bollardNumber>(nameof(bollardNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String? gLNExtension {
-			set { base.SetAttribute(new gLNExtension { value = value }); }
-			get { return base.GetAttributeValue<gLNExtension>(nameof(gLNExtension))?.value; }
-		}
-		[JsonIgnore]
-		public String? metreMarkNumber {
-			set { base.SetAttribute(new metreMarkNumber { value = value }); }
-			get { return base.GetAttributeValue<metreMarkNumber>(nameof(metreMarkNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String? manifoldNumber {
-			set { base.SetAttribute(new manifoldNumber { value = value }); }
-			get { return base.GetAttributeValue<manifoldNumber>(nameof(manifoldNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String? rampNumber {
-			set { base.SetAttribute(new rampNumber { value = value }); }
-			get { return base.GetAttributeValue<rampNumber>(nameof(rampNumber))?.value; }
-		}
-		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "composition",
+					role = "demarcatedFeature",
+					association = "Demarcation",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(Berth)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "auxiliaryFacility",
+					association = "PrimaryAuxiliaryFacility",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(MooringWarpingFacility)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6329,6 +6777,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(Bollard);
 		[JsonIgnore]
 		public override string S100FC_name => "Bollard";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? height {
+			set { base.SetAttribute(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		[JsonIgnore]
+		public double? verticalLength {
+			set { base.SetAttribute(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6347,19 +6808,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new verticalLength(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public double? height {
-			set { base.SetAttribute(new height { value = value }); }
-			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
-		}
-		[JsonIgnore]
-		public double? verticalLength {
-			set { base.SetAttribute(new verticalLength { value = value }); }
-			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
-		}
 		#endregion
 	}
 
@@ -6373,6 +6822,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Dock Area";
 
+		#region Attributes
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6403,29 +6875,41 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6439,6 +6923,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Dry Dock";
 
+		#region Attributes
+		[JsonIgnore]
+		public double? sillDepth {
+			set { base.SetAttribute(new sillDepth { value = value }); }
+			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6456,19 +6953,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
-			set { base.SetAttribute(new sillDepth { value = value }); }
-			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
-		}
-		[JsonIgnore]
-		public double? verticalClearanceValue {
-			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6482,6 +6980,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Dolphin";
 
+		#region Attributes
+		[JsonIgnore]
+		public int?[] categoryOfDolphin {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfDolphin { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfDolphin>(nameof(categoryOfDolphin)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6494,14 +7000,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new categoryOfDolphin(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int?[] categoryOfDolphin {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfDolphin { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfDolphin>(nameof(categoryOfDolphin)).Select(e=>e.value).ToArray(); }
-		}
 		#endregion
 	}
 
@@ -6514,6 +7013,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(DumpingGround);
 		[JsonIgnore]
 		public override string S100FC_name => "Dumping Ground";
+
+		#region Attributes
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6545,29 +7067,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6581,6 +7107,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Fender Line";
 
+		#region Attributes
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6592,14 +7126,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new orientation(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public orientation? orientation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6613,6 +7153,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Floating Dock";
 
+		#region Attributes
+		[JsonIgnore]
+		public double? sillDepth {
+			set { base.SetAttribute(new sillDepth { value = value }); }
+			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6624,14 +7172,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new sillDepth(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
-			set { base.SetAttribute(new sillDepth { value = value }); }
-			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6644,6 +7198,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(Gridiron);
 		[JsonIgnore]
 		public override string S100FC_name => "Gridiron";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? sillDepth {
+			set { base.SetAttribute(new sillDepth { value = value }); }
+			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
+		}
+		[JsonIgnore]
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6662,19 +7229,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
-			set { base.SetAttribute(new sillDepth { value = value }); }
-			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
-		}
-		[JsonIgnore]
-		public double? verticalClearanceValue {
-			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6687,6 +7255,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(HarbourAreaAdministrative);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Area (Administrative)";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? uNLocationCode {
+			set { base.SetAttribute(new uNLocationCode { value = value }); }
+			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
+		}
+		[JsonIgnore]
+		public String? nationality {
+			set { base.SetAttribute(new nationality { value = value }); }
+			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
+		}
+		[JsonIgnore]
+		public String? applicableLoadLineZone {
+			set { base.SetAttribute(new applicableLoadLineZone { value = value }); }
+			get { return base.GetAttributeValue<applicableLoadLineZone>(nameof(applicableLoadLineZone))?.value; }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfHarbourFacility {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public generalHarbourInformation? generalHarbourInformation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<generalHarbourInformation>(nameof(generalHarbourInformation)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6731,39 +7332,49 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new generalHarbourInformation(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public String? uNLocationCode {
-			set { base.SetAttribute(new uNLocationCode { value = value }); }
-			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? nationality {
-			set { base.SetAttribute(new nationality { value = value }); }
-			get { return base.GetAttributeValue<nationality>(nameof(nationality))?.value; }
-		}
-		[JsonIgnore]
-		public String? applicableLoadLineZone {
-			set { base.SetAttribute(new applicableLoadLineZone { value = value }); }
-			get { return base.GetAttributeValue<applicableLoadLineZone>(nameof(applicableLoadLineZone))?.value; }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfHarbourFacility {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public generalHarbourInformation? generalHarbourInformation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<generalHarbourInformation>(nameof(generalHarbourInformation)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "limitExtent",
+					association = "JurisdictionalLimit",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(OuterLimit)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "layoutUnit",
+					association = "LayoutDivision",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6776,6 +7387,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(HarbourAreaSection);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Area Section";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfPortSection {
+			set { base.SetAttribute(new categoryOfPortSection { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPortSection>(nameof(categoryOfPortSection))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfHarbourFacility {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		[JsonIgnore]
+		public facilitiesLayoutDescription? facilitiesLayoutDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<facilitiesLayoutDescription>(nameof(facilitiesLayoutDescription)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6809,29 +7443,73 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new facilitiesLayoutDescription(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfPortSection {
-			set { base.SetAttribute(new categoryOfPortSection { value = value }); }
-			get { return base.GetAttributeValue<categoryOfPortSection>(nameof(categoryOfPortSection))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public int?[] categoryOfHarbourFacility {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfHarbourFacility { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfHarbourFacility>(nameof(categoryOfHarbourFacility)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
-		[JsonIgnore]
-		public facilitiesLayoutDescription? facilitiesLayoutDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<facilitiesLayoutDescription>(nameof(facilitiesLayoutDescription)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaAdministrative)],
+				},
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "constitute",
+					association = "Subsection",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "subUnit",
+					association = "Subsection",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "hasInfrastructure",
+					association = "Infrastructure",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "layoutUnit",
+					association = "LayoutDivision",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(AnchorageArea),nameof(Berth),nameof(DockArea),nameof(DumpingGround),nameof(FenderLine),nameof(HarbourBasin),nameof(PilotBoardingPlace),nameof(SeaplaneLandingArea),nameof(Terminal),nameof(TurningBasin),nameof(WaterwayArea)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6844,6 +7522,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(HarbourBasin);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Basin";
+
+		#region Attributes
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -6875,29 +7576,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6910,6 +7615,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(HarbourFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Harbour Facility";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -6922,6 +7643,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Lock Basin";
 
+		#region Attributes
+		[JsonIgnore]
+		public double? sillDepth {
+			set { base.SetAttribute(new sillDepth { value = value }); }
+			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6933,14 +7662,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new sillDepth(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
-			set { base.SetAttribute(new sillDepth { value = value }); }
-			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6954,6 +7689,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Lock Basin Part";
 
+		#region Attributes
+		[JsonIgnore]
+		public double? sillDepth {
+			set { base.SetAttribute(new sillDepth { value = value }); }
+			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -6965,14 +7708,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new sillDepth(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
-			set { base.SetAttribute(new sillDepth { value = value }); }
-			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -6985,6 +7734,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(MooringBuoy);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring Buoy";
+
+		#region Attributes
+		[JsonIgnore]
+		public double? maximumPermittedDraught {
+			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
+		}
+		[JsonIgnore]
+		public double? maximumPermittedVesselLength {
+			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
+			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
+		}
+		[JsonIgnore]
+		public double? verticalLength {
+			set { base.SetAttribute(new verticalLength { value = value }); }
+			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
+		}
+		[JsonIgnore]
+		public Boolean? visitorsMooring {
+			set { base.SetAttribute(new visitorsMooring { value = value }); }
+			get { return base.GetAttributeValue<visitorsMooring>(nameof(visitorsMooring))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7015,29 +7787,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new visitorsMooring(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public double? maximumPermittedDraught {
-			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
-			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
-		}
-		[JsonIgnore]
-		public double? maximumPermittedVesselLength {
-			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
-			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
-		}
-		[JsonIgnore]
-		public double? verticalLength {
-			set { base.SetAttribute(new verticalLength { value = value }); }
-			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
-		}
-		[JsonIgnore]
-		public Boolean? visitorsMooring {
-			set { base.SetAttribute(new visitorsMooring { value = value }); }
-			get { return base.GetAttributeValue<visitorsMooring>(nameof(visitorsMooring))?.value; }
-		}
 		#endregion
 	}
 
@@ -7050,6 +7800,34 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(MooringWarpingFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring/Warping Facility";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfMooringWarpingFacility {
+			set { base.SetAttribute(new categoryOfMooringWarpingFacility { value = value }); }
+			get { return base.GetAttributeValue<categoryOfMooringWarpingFacility>(nameof(categoryOfMooringWarpingFacility))?.value; }
+		}
+		[JsonIgnore]
+		public String? iDCode {
+			set { base.SetAttribute(new iDCode { value = value }); }
+			get { return base.GetAttributeValue<iDCode>(nameof(iDCode))?.value; }
+		}
+		[JsonIgnore]
+		public String? bollardDescription {
+			set { base.SetAttribute(new bollardDescription { value = value }); }
+			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
+		}
+		[JsonIgnore]
+		public double? safeWorkingLoad {
+			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
+			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
+		}
+		[JsonIgnore]
+		public Boolean? heavingLinesFromShore {
+			set { base.SetAttribute(new heavingLinesFromShore { value = value }); }
+			get { return base.GetAttributeValue<heavingLinesFromShore>(nameof(heavingLinesFromShore))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7087,34 +7865,41 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new heavingLinesFromShore(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfMooringWarpingFacility {
-			set { base.SetAttribute(new categoryOfMooringWarpingFacility { value = value }); }
-			get { return base.GetAttributeValue<categoryOfMooringWarpingFacility>(nameof(categoryOfMooringWarpingFacility))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? iDCode {
-			set { base.SetAttribute(new iDCode { value = value }); }
-			get { return base.GetAttributeValue<iDCode>(nameof(iDCode))?.value; }
-		}
-		[JsonIgnore]
-		public String? bollardDescription {
-			set { base.SetAttribute(new bollardDescription { value = value }); }
-			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
-		}
-		[JsonIgnore]
-		public double? safeWorkingLoad {
-			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
-			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
-		}
-		[JsonIgnore]
-		public Boolean? heavingLinesFromShore {
-			set { base.SetAttribute(new heavingLinesFromShore { value = value }); }
-			get { return base.GetAttributeValue<heavingLinesFromShore>(nameof(heavingLinesFromShore))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "primaryFacility",
+					association = "PrimaryAuxiliaryFacility",
+					lower = 0,
+					upper = 1,
+					featureTypes = [nameof(AnchorBerth),nameof(BerthPosition)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7127,6 +7912,44 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(OnshorePowerFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Onshore Power Facility";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfShorePowerFacility {
+			set { base.SetAttribute(new categoryOfShorePowerFacility { value = value }); }
+			get { return base.GetAttributeValue<categoryOfShorePowerFacility>(nameof(categoryOfShorePowerFacility))?.value; }
+		}
+		[JsonIgnore]
+		public String? iDCode {
+			set { base.SetAttribute(new iDCode { value = value }); }
+			get { return base.GetAttributeValue<iDCode>(nameof(iDCode))?.value; }
+		}
+		[JsonIgnore]
+		public String? shorePowerDescription {
+			set { base.SetAttribute(new shorePowerDescription { value = value }); }
+			get { return base.GetAttributeValue<shorePowerDescription>(nameof(shorePowerDescription))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfVoltage {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfVoltage { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfVoltage>(nameof(categoryOfVoltage)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfFrequency {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfFrequency { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfFrequency>(nameof(categoryOfFrequency)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String?[] categoryOfPlug {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfPlug { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfPlug>(nameof(categoryOfPlug)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? shorePowerServiceProvider {
+			set { base.SetAttribute(new shorePowerServiceProvider { value = value }); }
+			get { return base.GetAttributeValue<shorePowerServiceProvider>(nameof(shorePowerServiceProvider))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7177,44 +8000,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new shorePowerServiceProvider(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfShorePowerFacility {
-			set { base.SetAttribute(new categoryOfShorePowerFacility { value = value }); }
-			get { return base.GetAttributeValue<categoryOfShorePowerFacility>(nameof(categoryOfShorePowerFacility))?.value; }
-		}
-		[JsonIgnore]
-		public String? iDCode {
-			set { base.SetAttribute(new iDCode { value = value }); }
-			get { return base.GetAttributeValue<iDCode>(nameof(iDCode))?.value; }
-		}
-		[JsonIgnore]
-		public String? shorePowerDescription {
-			set { base.SetAttribute(new shorePowerDescription { value = value }); }
-			get { return base.GetAttributeValue<shorePowerDescription>(nameof(shorePowerDescription))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfVoltage {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfVoltage { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfVoltage>(nameof(categoryOfVoltage)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfFrequency {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfFrequency { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfFrequency>(nameof(categoryOfFrequency)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String?[] categoryOfPlug {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfPlug { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfPlug>(nameof(categoryOfPlug)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? shorePowerServiceProvider {
-			set { base.SetAttribute(new shorePowerServiceProvider { value = value }); }
-			get { return base.GetAttributeValue<shorePowerServiceProvider>(nameof(shorePowerServiceProvider))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7227,6 +8026,39 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(OuterLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Outer Limit";
+
+		#region Attributes
+		[JsonIgnore]
+		public limitsDescription? limitsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<limitsDescription>(nameof(limitsDescription)); }
+		}
+		[JsonIgnore]
+		public markedBy?[] markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public landmarkDescription?[] landmarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<landmarkDescription>(nameof(landmarkDescription)); }
+		}
+		[JsonIgnore]
+		public offshoreMarkDescription?[] offshoreMarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<offshoreMarkDescription>(nameof(offshoreMarkDescription)); }
+		}
+		[JsonIgnore]
+		public majorLightDescription?[] majorLightDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<majorLightDescription>(nameof(majorLightDescription)); }
+		}
+		[JsonIgnore]
+		public usefulMarkDescription?[] usefulMarkDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<usefulMarkDescription>(nameof(usefulMarkDescription)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7269,39 +8101,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new usefulMarkDescription(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public limitsDescription? limitsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<limitsDescription>(nameof(limitsDescription)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "entranceReference",
+					association = "LimitEntrance",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(Entrance)],
+				},
+			];
+
 		[JsonIgnore]
-		public markedBy?[] markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public landmarkDescription?[] landmarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<landmarkDescription>(nameof(landmarkDescription)); }
-		}
-		[JsonIgnore]
-		public offshoreMarkDescription?[] offshoreMarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<offshoreMarkDescription>(nameof(offshoreMarkDescription)); }
-		}
-		[JsonIgnore]
-		public majorLightDescription?[] majorLightDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<majorLightDescription>(nameof(majorLightDescription)); }
-		}
-		[JsonIgnore]
-		public usefulMarkDescription?[] usefulMarkDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<usefulMarkDescription>(nameof(usefulMarkDescription)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "limitReference",
+					association = "JurisdictionalLimit",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaAdministrative)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7314,6 +8140,34 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(PilotBoardingPlace);
 		[JsonIgnore]
 		public override string S100FC_name => "Pilot Boarding Place";
+
+		#region Attributes
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] pilotMovement {
+			set { base.SetAttribute([.. value.Select(e=> new pilotMovement { value = e })]); }
+			get { return base.GetAttributeValues<pilotMovement>(nameof(pilotMovement)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7352,7 +8206,45 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
+
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
+		[JsonIgnore]
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
+	}
+
+	/// <summary>
+	/// A designated portion of water for the landing and take-off of seaplanes.
+	/// </summary>
+	public class SeaplaneLandingArea : Layout
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SeaplaneLandingArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Seaplane Landing Area";
 
 		#region Attributes
 		[JsonIgnore]
@@ -7366,11 +8258,6 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
 		}
 		[JsonIgnore]
-		public int?[] pilotMovement {
-			set { base.SetAttribute([.. value.Select(e=> new pilotMovement { value = e })]); }
-			get { return base.GetAttributeValues<pilotMovement>(nameof(pilotMovement)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
 		public markedBy? markedBy {
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
@@ -7381,17 +8268,6 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
 		}
 		#endregion
-	}
-
-	/// <summary>
-	/// A designated portion of water for the landing and take-off of seaplanes.
-	/// </summary>
-	public class SeaplaneLandingArea : Layout
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(SeaplaneLandingArea);
-		[JsonIgnore]
-		public override string S100FC_name => "Seaplane Landing Area";
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7423,29 +8299,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7459,6 +8339,14 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_name => "Ship Lift";
 
+		#region Attributes
+		[JsonIgnore]
+		public double? verticalClearanceValue {
+			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
+			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
+		}
+		#endregion
+
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
@@ -7470,14 +8358,20 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new verticalClearanceValue(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue {
-			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
-			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7490,6 +8384,22 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(StraddleCarrier);
 		[JsonIgnore]
 		public override string S100FC_name => "Straddle Carrier";
+
+		#region Catalogue
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
+		#endregion
 	}
 
 	/// <summary>
@@ -7501,6 +8411,44 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(Terminal);
 		[JsonIgnore]
 		public override string S100FC_name => "Terminal";
+
+		#region Attributes
+		[JsonIgnore]
+		public String? portFacilityNumber {
+			set { base.SetAttribute(new portFacilityNumber { value = value }); }
+			get { return base.GetAttributeValue<portFacilityNumber>(nameof(portFacilityNumber))?.value; }
+		}
+		[JsonIgnore]
+		public int? categoryOfTerminal {
+			set { base.SetAttribute(new categoryOfTerminal { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTerminal>(nameof(categoryOfTerminal))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfCargo {
+			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] product {
+			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
+			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public String? terminalIdentifier {
+			set { base.SetAttribute(new terminalIdentifier { value = value }); }
+			get { return base.GetAttributeValue<terminalIdentifier>(nameof(terminalIdentifier))?.value; }
+		}
+		[JsonIgnore]
+		public String? sMDGTerminalCode {
+			set { base.SetAttribute(new sMDGTerminalCode { value = value }); }
+			get { return base.GetAttributeValue<sMDGTerminalCode>(nameof(sMDGTerminalCode))?.value; }
+		}
+		[JsonIgnore]
+		public String? uNLocationCode {
+			set { base.SetAttribute(new uNLocationCode { value = value }); }
+			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7552,44 +8500,57 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new uNLocationCode(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public String? portFacilityNumber {
-			set { base.SetAttribute(new portFacilityNumber { value = value }); }
-			get { return base.GetAttributeValue<portFacilityNumber>(nameof(portFacilityNumber))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "serviceDescriptionReference",
+					association = "ServiceAvailability",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(AvailablePortServices)],
+				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public int? categoryOfTerminal {
-			set { base.SetAttribute(new categoryOfTerminal { value = value }); }
-			get { return base.GetAttributeValue<categoryOfTerminal>(nameof(categoryOfTerminal))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfCargo {
-			set { base.SetAttribute([.. value.Select(e=> new categoryOfCargo { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] product {
-			set { base.SetAttribute([.. value.Select(e=> new product { value = e })]); }
-			get { return base.GetAttributeValues<product>(nameof(product)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public String? terminalIdentifier {
-			set { base.SetAttribute(new terminalIdentifier { value = value }); }
-			get { return base.GetAttributeValue<terminalIdentifier>(nameof(terminalIdentifier))?.value; }
-		}
-		[JsonIgnore]
-		public String? sMDGTerminalCode {
-			set { base.SetAttribute(new sMDGTerminalCode { value = value }); }
-			get { return base.GetAttributeValue<sMDGTerminalCode>(nameof(sMDGTerminalCode))?.value; }
-		}
-		[JsonIgnore]
-		public String? uNLocationCode {
-			set { base.SetAttribute(new uNLocationCode { value = value }); }
-			get { return base.GetAttributeValue<uNLocationCode>(nameof(uNLocationCode))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "layoutUnit",
+					association = "LayoutDivision",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(Berth)],
+				},
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "hasInfrastructure",
+					association = "Infrastructure",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7602,6 +8563,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(TurningBasin);
 		[JsonIgnore]
 		public override string S100FC_name => "Turning Basin";
+
+		#region Attributes
+		[JsonIgnore]
+		public depthsDescription? depthsDescription {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
+		}
+		[JsonIgnore]
+		public String? locationByText {
+			set { base.SetAttribute(new locationByText { value = value }); }
+			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
+		}
+		[JsonIgnore]
+		public markedBy? markedBy {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
+		}
+		[JsonIgnore]
+		public int? iSPSLevel {
+			set { base.SetAttribute(new iSPSLevel { value = value }); }
+			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7633,9 +8617,52 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new iSPSLevel(),
 				},
 			];
+
+		[JsonIgnore]
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
+		[JsonIgnore]
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
+	}
+
+	/// <summary>
+	/// An area in which uniform general information of the waterway exists.
+	/// </summary>
+	public class WaterwayArea : Layout
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(WaterwayArea);
+		[JsonIgnore]
+		public override string S100FC_name => "Waterway Area";
 
 		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfPortSection {
+			set { base.SetAttribute(new categoryOfPortSection { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPortSection>(nameof(categoryOfPortSection))?.value; }
+		}
 		[JsonIgnore]
 		public depthsDescription? depthsDescription {
 			set { base.SetAttribute(value); }
@@ -7651,23 +8678,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 			set { base.SetAttribute(value); }
 			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
 		}
-		[JsonIgnore]
-		public int? iSPSLevel {
-			set { base.SetAttribute(new iSPSLevel { value = value }); }
-			get { return base.GetAttributeValue<iSPSLevel>(nameof(iSPSLevel))?.value; }
-		}
 		#endregion
-	}
-
-	/// <summary>
-	/// An area in which uniform general information of the waterway exists.
-	/// </summary>
-	public class WaterwayArea : Layout
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(WaterwayArea);
-		[JsonIgnore]
-		public override string S100FC_name => "Waterway Area";
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7699,29 +8710,33 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new markedBy(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? categoryOfPortSection {
-			set { base.SetAttribute(new categoryOfPortSection { value = value }); }
-			get { return base.GetAttributeValue<categoryOfPortSection>(nameof(categoryOfPortSection))?.value; }
-		}
+		public override informationBindingDefinition[] informationBindingsCatalogue => [
+				.. base.informationBindingsCatalogue,
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "facilityOperatingHours",
+					association = "LocationHours",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(ServiceHours)],
+				},
+			];
+
 		[JsonIgnore]
-		public depthsDescription? depthsDescription {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<depthsDescription>(nameof(depthsDescription)); }
-		}
-		[JsonIgnore]
-		public String? locationByText {
-			set { base.SetAttribute(new locationByText { value = value }); }
-			get { return base.GetAttributeValue<locationByText>(nameof(locationByText))?.value; }
-		}
-		[JsonIgnore]
-		public markedBy? markedBy {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<markedBy>(nameof(markedBy)); }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				.. base.featureBindingsCatalogue,
+				new featureBindingDefinition {
+					roleType = "aggregation",
+					role = "componentOf",
+					association = "LayoutDivision",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(HarbourAreaSection)],
+				},
+			];
+
 		#endregion
 	}
 
@@ -7734,6 +8749,29 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(DataCoverage);
 		[JsonIgnore]
 		public override string S100FC_name => "Data Coverage";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? maximumDisplayScale {
+			set { base.SetAttribute(new maximumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))?.value; }
+		}
+		[JsonIgnore]
+		public int? minimumDisplayScale {
+			set { base.SetAttribute(new minimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))?.value; }
+		}
+		[JsonIgnore]
+		public int? optimumDisplayScale {
+			set { base.SetAttribute(new optimumDisplayScale { value = value }); }
+			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] interoperabilityIdentifier {
+			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
+			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7763,29 +8801,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? maximumDisplayScale {
-			set { base.SetAttribute(new maximumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<maximumDisplayScale>(nameof(maximumDisplayScale))?.value; }
-		}
-		[JsonIgnore]
-		public int? minimumDisplayScale {
-			set { base.SetAttribute(new minimumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<minimumDisplayScale>(nameof(minimumDisplayScale))?.value; }
-		}
-		[JsonIgnore]
-		public int? optimumDisplayScale {
-			set { base.SetAttribute(new optimumDisplayScale { value = value }); }
-			get { return base.GetAttributeValue<optimumDisplayScale>(nameof(optimumDisplayScale))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] interoperabilityIdentifier {
-			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
-			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
-		}
 		#endregion
 	}
 
@@ -7798,6 +8814,54 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of Non-Bathymetric Data";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfTemporalVariation {
+			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
+		}
+		[JsonIgnore]
+		public double? horizontalDistanceUncertainty {
+			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
+			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
+		}
+		[JsonIgnore]
+		public horizontalPositionUncertainty? horizontalPositionUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
+		}
+		[JsonIgnore]
+		public double? orientationUncertainty {
+			set { base.SetAttribute(new orientationUncertainty { value = value }); }
+			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
+		}
+		[JsonIgnore]
+		public String?[] interoperabilityIdentifier {
+			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
+			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public sourceIndication? sourceIndication {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<sourceIndication>(nameof(sourceIndication)); }
+		}
+		[JsonIgnore]
+		public surveyDateRange? surveyDateRange {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7858,54 +8922,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfTemporalVariation {
-			set { base.SetAttribute(new categoryOfTemporalVariation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
-		}
-		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
-			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
-			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
-		}
-		[JsonIgnore]
-		public horizontalPositionUncertainty? horizontalPositionUncertainty {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
-		}
-		[JsonIgnore]
-		public double? orientationUncertainty {
-			set { base.SetAttribute(new orientationUncertainty { value = value }); }
-			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
-		}
-		[JsonIgnore]
-		public String?[] interoperabilityIdentifier {
-			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
-			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public sourceIndication? sourceIndication {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<sourceIndication>(nameof(sourceIndication)); }
-		}
-		[JsonIgnore]
-		public surveyDateRange? surveyDateRange {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<surveyDateRange>(nameof(surveyDateRange)); }
-		}
-		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
 		#endregion
 	}
 
@@ -7918,6 +8935,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(SoundingDatum);
 		[JsonIgnore]
 		public override string S100FC_name => "Sounding Datum";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? verticalDatum {
+			set { base.SetAttribute(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		[JsonIgnore]
+		public information?[] information {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValues<information>(nameof(information)); }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7936,7 +8966,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
+
 		#endregion
+	}
+
+	/// <summary>
+	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
+	/// </summary>
+	public class VerticalDatumOfData : S100Framework.AttributeModel.FeatureType
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(VerticalDatumOfData);
+		[JsonIgnore]
+		public override string S100FC_name => "Vertical Datum of Data";
 
 		#region Attributes
 		[JsonIgnore]
@@ -7950,17 +8992,6 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		#endregion
-	}
-
-	/// <summary>
-	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
-	/// </summary>
-	public class VerticalDatumOfData : S100Framework.AttributeModel.FeatureType
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(VerticalDatumOfData);
-		[JsonIgnore]
-		public override string S100FC_name => "Vertical Datum of Data";
 
 		#region Catalogue
 		[JsonIgnore]
@@ -7979,19 +9010,7 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new information(),
 				},
 			];
-		#endregion
 
-		#region Attributes
-		[JsonIgnore]
-		public int? verticalDatum {
-			set { base.SetAttribute(new verticalDatum { value = value }); }
-			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
-		}
-		[JsonIgnore]
-		public information?[] information {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValues<information>(nameof(information)); }
-		}
 		#endregion
 	}
 
@@ -8004,6 +9023,34 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 		public override string S100FC_code => nameof(TextPlacement);
 		[JsonIgnore]
 		public override string S100FC_name => "Text Placement";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? textOffsetBearing {
+			set { base.SetAttribute(new textOffsetBearing { value = value }); }
+			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))?.value; }
+		}
+		[JsonIgnore]
+		public int? textOffsetDistance {
+			set { base.SetAttribute(new textOffsetDistance { value = value }); }
+			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))?.value; }
+		}
+		[JsonIgnore]
+		public Boolean? textRotation {
+			set { base.SetAttribute(new textRotation { value = value }); }
+			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] textType {
+			set { base.SetAttribute([.. value.Select(e=> new textType { value = e })]); }
+			get { return base.GetAttributeValues<textType>(nameof(textType)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? scaleMinimum {
+			set { base.SetAttribute(new scaleMinimum { value = value }); }
+			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
+		}
+		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
@@ -8040,34 +9087,19 @@ namespace S100Framework.AttributeModel.S131.FeatureTypes
 					CreateInstance = () => new scaleMinimum(),
 				},
 			];
-		#endregion
 
-		#region Attributes
 		[JsonIgnore]
-		public int? textOffsetBearing {
-			set { base.SetAttribute(new textOffsetBearing { value = value }); }
-			get { return base.GetAttributeValue<textOffsetBearing>(nameof(textOffsetBearing))?.value; }
-		}
-		[JsonIgnore]
-		public int? textOffsetDistance {
-			set { base.SetAttribute(new textOffsetDistance { value = value }); }
-			get { return base.GetAttributeValue<textOffsetDistance>(nameof(textOffsetDistance))?.value; }
-		}
-		[JsonIgnore]
-		public Boolean? textRotation {
-			set { base.SetAttribute(new textRotation { value = value }); }
-			get { return base.GetAttributeValue<textRotation>(nameof(textRotation))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] textType {
-			set { base.SetAttribute([.. value.Select(e=> new textType { value = e })]); }
-			get { return base.GetAttributeValues<textType>(nameof(textType)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? scaleMinimum {
-			set { base.SetAttribute(new scaleMinimum { value = value }); }
-			get { return base.GetAttributeValue<scaleMinimum>(nameof(scaleMinimum))?.value; }
-		}
+		public override featureBindingDefinition[] featureBindingsCatalogue => [
+				new featureBindingDefinition {
+					roleType = "composition",
+					role = "thePositionProvider",
+					association = "TextAssociation",
+					lower = 1,
+					upper = 1,
+					featureTypes = [nameof(FeatureType)],
+				},
+			];
+
 		#endregion
 	}
 
