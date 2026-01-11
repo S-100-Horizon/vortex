@@ -874,7 +874,7 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
-                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$association\",");
+                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
                 roslyn.AppendLine("\t\t\t\t\t};");
                 roslyn.Append(derivedTypesInformationBindings.ToString());
@@ -882,7 +882,7 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
-                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$association\",");
+                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
                 roslyn.AppendLine("\t\t\t\t\t};");
                 roslyn.Append(derivedTypesFeatureBindings.ToString());
@@ -890,7 +890,7 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
-                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"$code\",");
+                roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
                 roslyn.AppendLine("\t\t\t\t\t};");
                 roslyn.Append(derivedTypesAttributes.ToString());
