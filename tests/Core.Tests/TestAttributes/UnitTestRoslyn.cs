@@ -315,6 +315,9 @@ namespace TestAttributes
 
             #region S100_FC_ComplexAttribute
             {
+                var abstractTypesKnown = new List<string>();
+                var complexTypesKnown = new List<string>();
+
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.ComplexAttributes");
                 roslyn.AppendLine("{");
@@ -349,85 +352,18 @@ namespace TestAttributes
 
                         derivedTypesAttributes.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof({code}), typeDiscriminator: \"{code}\"));");
 
-                        var definition = element.Element(XName.Get("definition", scopes["S100FC"]))!.Value;
-                        roslyn.AppendLine("\t/// <summary>");
-                        roslyn.AppendLine($"\t/// {definition}");
-                        roslyn.AppendLine("\t/// </summary>");
 
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.ComplexAttribute");
-                        roslyn.AppendLine($"\t{{");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Catalogue");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
-                        foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = subAttributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            roslyn.AppendLine($"\t\t\t\tnew attributeBinding {{");
-                            roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
-                            roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
-                            roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
-                            if (permittedValues is not null)
-                                roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
-                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
-                            //roslyn.AppendLine($"\t\t\t\t\tFreeSeats =");
-                            roslyn.AppendLine($"\t\t\t\t}},");
+                        var success = this.ClassBuilder(roslyn, element, "ComplexAttribute", new ClassBuilderHost {
+                            KnownTypes = complexTypesKnown,
+                            KnownTypesAbstract = abstractTypesKnown,
+                            KnownTypesComplex = attributesKnownComplex,
+                            KnownAttributeTypes = attributesKnownTypes,
+                            Attributes = element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager),
+                        });
+                        if (!success) {
+                            notFinished = true;
+                            continue;
                         }
-                        roslyn.AppendLine($"\t\t\t];");
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attributes");
-                        foreach (var subAttributeBinding in element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = subAttributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = subAttributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = subAttributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
-
-                            if (attributesKnownComplex.Contains(referenceCode)) {
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
-                                if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
-                                else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                            else {
-                                var postfix = "?";
-                                //if (lower >= 1)
-                                //    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                if (upper > 1) {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
-                                }
-                                else {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
-                                }
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                        }
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine($"\t}}");
-                        roslyn.AppendLine();
                     }
                 } while (notFinished);
                 roslyn.AppendLine("}");
@@ -436,6 +372,9 @@ namespace TestAttributes
 
             #region S100_FC_InformationAssociation
             {
+                var abstractTypesKnown = new List<string>();
+                var informationAssociationTypesKnown = new List<string>();
+
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationAssociation");
                 roslyn.AppendLine("{");
@@ -446,57 +385,22 @@ namespace TestAttributes
                 foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager)) {
                     var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
                     var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
+
                     var role = element.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value;
 
-                    roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.InformationAssociation");
-                    roslyn.AppendLine($"\t{{");
-                    roslyn.AppendLine("\t\t[JsonIgnore]");
-                    roslyn.AppendLine($"\t\tpublic override string role => \"{role}\";");
-
-                    if (element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager).Any()) {
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attributes");
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
-
-                            if (attributesKnownComplex.Contains(referenceCode)) {
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
-                                if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
-                                else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                            else {
-                                var postfix = "?";
-                                //if (lower >= 1)
-                                //    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                if (upper > 1) {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
-                                }
-                                else {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
-                                }
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                        }
-                        roslyn.AppendLine("\t\t#endregion");
-                    }
-
-                    roslyn.AppendLine($"\t}}");
+                    var success = this.ClassBuilder(roslyn, element, "InformationAssociation", new ClassBuilderHost {
+                        KnownTypes = informationAssociationTypesKnown,
+                        KnownTypesAbstract = abstractTypesKnown,
+                        KnownTypesComplex = attributesKnownComplex,
+                        KnownAttributeTypes = attributesKnownTypes,
+                        Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                    }, (b) => {
+                        b.AppendLine("\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic override string role => \"{role}\";");
+                    });
+                    if (!success) {
+                        throw new InvalidOperationException();
+                    }                    
 
                     derivedTypesInformationBindings.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.{code}>), typeDiscriminator: \"{code}\"));");
                 }
@@ -506,6 +410,9 @@ namespace TestAttributes
 
             #region S100_FC_FeatureAssociation
             {
+                var abstractTypesKnown = new List<string>();
+                var featureAssociationTypesKnown = new List<string>();
+
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.FeatureAssociation");
                 roslyn.AppendLine("{");
@@ -519,55 +426,19 @@ namespace TestAttributes
 
                     var roles = element.Elements(XName.Get("role", scopes["S100FC"])).Select(e => e.Attribute("ref")!.Value).Select(e => $"\"{e}\"");
 
-                    roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.FeatureAssociation");
-                    roslyn.AppendLine($"\t{{");
-                    roslyn.AppendLine("\t\t[JsonIgnore]");
-                    roslyn.AppendLine($"\t\tpublic override string[] roles => [{string.Join(',', roles)}];");
-
-                    if (element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager).Any()) {
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attributes");
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
-
-                            if (attributesKnownComplex.Contains(referenceCode)) {
-                                     roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
-                                if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
-                                else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                            else {
-                                var postfix = "?";
-                                //if (lower >= 1)
-                                //    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                if (upper > 1) {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
-                                }
-                                else {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
-                                }
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                        }
-                        roslyn.AppendLine("\t\t#endregion");
-                    }
-
-                    roslyn.AppendLine($"\t}}");
+                    var success = this.ClassBuilder(roslyn, element, "FeatureAssociation", new ClassBuilderHost {
+                        KnownTypes = featureAssociationTypesKnown,
+                        KnownTypesAbstract = abstractTypesKnown,
+                        KnownTypesComplex = attributesKnownComplex,
+                        KnownAttributeTypes = attributesKnownTypes,
+                        Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                    }, (b) => {
+                        b.AppendLine("\t\t[JsonIgnore]");
+                        b.AppendLine($"\t\tpublic override string[] roles => [{string.Join(',', roles)}];");
+                    });
+                    if (!success) {
+                        throw new InvalidOperationException();
+                    }                    
 
                     derivedTypesFeatureBindings.AppendLine($"\t\t\t\t\ttypeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.{code}>), typeDiscriminator: \"{code}\"));");
                 }
@@ -578,7 +449,7 @@ namespace TestAttributes
             #region S100_FC_InformationType
             {
                 var abstractTypesKnown = new List<string>();
-                var featureTypesKnown = new List<string>();
+                var informationTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
                 roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationTypes");
@@ -591,110 +462,17 @@ namespace TestAttributes
                 do {
                     notFinished = false;
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager)) {
-                        var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
-                        var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
-                        if (featureTypesKnown.Any(a => a.Equals(code)))
+                        var success = this.ClassBuilder(roslyn, element, "InformationType", new ClassBuilderHost {
+                            KnownTypes = informationTypesKnown,
+                            KnownTypesAbstract = abstractTypesKnown,
+                            KnownTypesComplex = attributesKnownComplex,
+                            KnownAttributeTypes = attributesKnownTypes,
+                            Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        });
+                        if (!success) {
+                            notFinished = true;
                             continue;
-
-                        var baseClass = "S100Framework.AttributeModel.InformationType";
-
-                        var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
-                        if (superType != null) {
-                            if (!featureTypesKnown.Contains(superType.Value)) {
-                                notFinished = true;
-                                continue;
-                            }
-
-                            baseClass = $"{superType.Value}";
                         }
-
-                        if (element.Attribute("isAbstract") != default && bool.Parse(element.Attribute("isAbstract")!.Value)) {
-                            abstractTypesKnown.Add(code);
-                        }
-
-                        featureTypesKnown.Add(code);
-
-                        var definition = element.Element(XName.Get("definition", scopes["S100FC"]))!.Value;
-                        roslyn.AppendLine("\t/// <summary>");
-                        roslyn.AppendLine($"\t/// {definition}");
-                        roslyn.AppendLine("\t/// </summary>");
-
-                        roslyn.AppendLine($"\tpublic class {code} : {baseClass}");
-                        roslyn.AppendLine($"\t{{");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Catalogue");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
-                        if (superType != null) {
-                            roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
-                        }
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            roslyn.AppendLine($"\t\t\t\tnew attributeBinding {{");
-                            roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
-                            roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
-                            roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
-                            if (permittedValues is not null)
-                                roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
-                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
-                            roslyn.AppendLine($"\t\t\t\t}},");
-                        }
-                        roslyn.AppendLine($"\t\t\t];");
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attributes");
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
-
-                            if (attributesKnownComplex.Contains(referenceCode)) {
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
-                                if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
-                                else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                            else {
-                                var postfix = "?";
-                                //if (lower >= 1)
-                                //    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                if (upper > 1) {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
-                                }
-                                else {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
-                                }
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                        }
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine($"\t}}");
-                        roslyn.AppendLine();
                     }
                 } while (notFinished);
                 roslyn.AppendLine("}");
@@ -720,124 +498,16 @@ namespace TestAttributes
                 do {
                     notFinished = false;
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
-                        var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
-                        var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
-                        if (featureTypesKnown.Any(a => a.Equals(code)))
+                        var success = this.ClassBuilder(roslyn, element, "FeatureType", new ClassBuilderHost {
+                            KnownTypes = featureTypesKnown,
+                            KnownTypesAbstract = abstractTypesKnown,
+                            KnownTypesComplex = attributesKnownComplex,
+                            KnownAttributeTypes = attributesKnownTypes,
+                            Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        });
+                        if (!success) {
+                            notFinished = true;
                             continue;
-
-                        var baseClass = "S100Framework.AttributeModel.FeatureType";
-
-                        var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
-                        if (superType != null) {
-                            if (!featureTypesKnown.Any(e => e.Equals(superType.Value, StringComparison.InvariantCultureIgnoreCase))) {
-                                notFinished = true;
-                                continue;
-                            }
-
-                            baseClass = $"{superType.Value}";
-                        }
-
-                        if (element.Attribute("isAbstract") != default && bool.Parse(element.Attribute("isAbstract")!.Value)) {
-                            abstractTypesKnown.Add(code);
-                        }
-
-                        featureTypesKnown.Add(code);
-
-                        var definition = element.Element(XName.Get("definition", scopes["S100FC"]))!.Value;
-                        roslyn.AppendLine("\t/// <summary>");
-                        roslyn.AppendLine($"\t/// {definition}");
-                        roslyn.AppendLine("\t/// </summary>");
-
-                        roslyn.AppendLine($"\tpublic class {code} : {baseClass}");
-                        roslyn.AppendLine($"\t{{");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");                    
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Catalogue");
-                        roslyn.AppendLine("\t\t[JsonIgnore]");
-                        roslyn.AppendLine($"\t\tpublic override attributeBinding[] attributeBindingsCatalogue => [");
-                        if (superType != null) {
-                            roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
-                        }
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            roslyn.AppendLine($"\t\t\t\tnew attributeBinding {{");
-                            roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
-                            roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
-                            roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
-                            if (permittedValues is not null)
-                                roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
-                            roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
-                            roslyn.AppendLine($"\t\t\t\t}},");
-                        }
-                        roslyn.AppendLine($"\t\t\t];");
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine();
-                        roslyn.AppendLine("\t\t#region Attributes");
-                        foreach (var attributeBinding in element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
-                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
-                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                            var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                            int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
-
-                            var type = (lower > 1 || upper > 1) ? $"{attributesKnownTypes[referenceCode]}?[]" : $"{attributesKnownTypes[referenceCode]}?";
-
-                            if (attributesKnownComplex.Contains(referenceCode)) {
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
-                                if (upper > 1)
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
-                                else
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                            else {
-                                var postfix = "?";
-                                //if (lower >= 1)
-                                //    postfix = "!";
-
-                                roslyn.AppendLine($"\t\t[JsonIgnore]");
-                                roslyn.AppendLine($"\t\tpublic {type} {referenceCode} {{");
-                                if (upper > 1) {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
-                                }
-                                else {
-                                    roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
-                                    roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
-                                }
-                                roslyn.AppendLine($"\t\t}}");
-                            }
-                        }
-                        roslyn.AppendLine("\t\t#endregion");
-
-                        roslyn.AppendLine($"\t}}");
-                        roslyn.AppendLine();
-
-                        foreach (var featureBinding in element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
-                            var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
-                            var roleType = featureBinding.Attribute("roleType")!.Value!;
-
-                            foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
-                                var featureType = e.Attribute("ref")!.Value!;
-
-                                if (!featureBindingsCreatorKeys.Contains($"{code}::{featureType}")) {
-                                    featureBindingsCreatorKeys.Add($"{code}::{featureType}");
-                                    featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
-                                }
-                            }
                         }
                     }
                 } while (notFinished);
@@ -921,6 +591,157 @@ namespace TestAttributes
             #endregion
 
             return roslyn;
+        }
+
+        public class ClassBuilderHost
+        {
+            public ICollection<string> KnownTypes { get; init; } = [];
+            public ICollection<string> KnownTypesAbstract { get; init; } = [];
+            public ICollection<string> KnownTypesComplex { get; init; } = [];
+            public IDictionary<string, string> KnownAttributeTypes { get; init; } = new Dictionary<string, string>();
+
+            public IEnumerable<XElement> Attributes { get; init; } = [];
+        }
+
+        private bool ClassBuilder(StringBuilder roslyn, XElement element, string type, ClassBuilderHost host, Action<StringBuilder>? pre = default, Action<StringBuilder>? post = default) {
+            var navigator = element.CreateNavigator();
+            navigator.MoveToFollowing(XPathNodeType.Element);
+
+            var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+            foreach (var s in scopes)
+                xmlNamespaceManager.AddNamespace(s.Key, s.Value);
+
+            var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
+            var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
+            if (host.KnownTypes.Any(a => a.Equals(code, StringComparison.InvariantCultureIgnoreCase)))
+                return true;
+
+            var baseClass = $"S100Framework.AttributeModel.{type}";
+
+            var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
+            if (superType != null) {
+                if (!host.KnownTypes.Any(e => e.Equals(superType.Value, StringComparison.InvariantCultureIgnoreCase))) {
+                    return false;
+                }
+
+                baseClass = $"{superType.Value}";
+            }
+
+            if (element.Attribute("isAbstract") != default && bool.Parse(element.Attribute("isAbstract")!.Value)) {
+                host.KnownTypesAbstract.Add(code);
+            }
+
+            host.KnownTypes.Add(code);
+
+            var definition = element.Element(XName.Get("definition", scopes["S100FC"]))!.Value;
+            roslyn.AppendLine("\t/// <summary>");
+            roslyn.AppendLine($"\t/// {definition}");
+            roslyn.AppendLine("\t/// </summary>");
+
+            roslyn.AppendLine($"\tpublic class {code} : {baseClass}");
+            roslyn.AppendLine($"\t{{");
+            roslyn.AppendLine("\t\t[JsonIgnore]");
+            roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
+            roslyn.AppendLine("\t\t[JsonIgnore]");
+            roslyn.AppendLine($"\t\tpublic override string S100FC_name => \"{name}\";");
+
+            pre?.Invoke(roslyn);
+
+            var hasAttributes = host.Attributes.Any();
+
+            if (hasAttributes) {
+                roslyn.AppendLine();
+                roslyn.AppendLine("\t\t#region Catalogue");
+                roslyn.AppendLine("\t\t[JsonIgnore]");
+                roslyn.AppendLine($"\t\tpublic override attributeBindingDefinition[] attributeBindingsCatalogue => [");
+                if (superType != null) {
+                    roslyn.AppendLine("\t\t\t\t.. base.attributeBindingsCatalogue,");
+                }
+                foreach (var attributeBinding in host.Attributes) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
+
+                    roslyn.AppendLine($"\t\t\t\tnew attributeBindingDefinition {{");
+                    roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
+                    roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
+                    roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
+                    if (permittedValues is not null)
+                        roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
+                    roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");
+                    roslyn.AppendLine($"\t\t\t\t}},");
+                }
+                roslyn.AppendLine($"\t\t\t];");
+                roslyn.AppendLine("\t\t#endregion");
+            }
+
+            if (hasAttributes) {
+                roslyn.AppendLine();
+                roslyn.AppendLine("\t\t#region Attributes");
+                foreach (var attributeBinding in host.Attributes) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    var permittedValues = attributeBinding.XPathSelectElement("S100FC:permittedValues", xmlNamespaceManager);
+                    var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                    var _ = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                    int upper = (_.Attribute(XName.Get("infinite")) != default && _.Attribute(XName.Get("infinite"))!.Value.Equals("true")) ? int.MaxValue : int.Parse(_.Value!);
+
+                    var prefix = (lower > 1 || upper > 1) ? $"{host.KnownAttributeTypes[referenceCode]}?[]" : $"{host.KnownAttributeTypes[referenceCode]}?";
+
+                    if (host.KnownTypesComplex.Contains(referenceCode)) {
+                        roslyn.AppendLine($"\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
+                        roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
+                        if (upper > 1)
+                            roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
+                        else
+                            roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})); }}");
+                        roslyn.AppendLine($"\t\t}}");
+                    }
+                    else {
+                        var postfix = "?";
+                        //if (lower >= 1)
+                        //    postfix = "!";
+
+                        roslyn.AppendLine($"\t\t[JsonIgnore]");
+                        roslyn.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
+                        if (upper > 1) {
+                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                            roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
+                        }
+                        else {
+                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(new {referenceCode} {{ value = value }}); }}");
+                            roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValue<{referenceCode}>(nameof({referenceCode})){postfix}.value; }}");
+                        }
+                        roslyn.AppendLine($"\t\t}}");
+                    }
+                }
+                roslyn.AppendLine("\t\t#endregion");
+            }
+
+            post?.Invoke(roslyn);
+
+            roslyn.AppendLine($"\t}}");
+            roslyn.AppendLine();
+
+            foreach (var featureBinding in element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
+                var association = featureBinding.Element(XName.Get("association", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                var role = featureBinding.Element(XName.Get("role", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                var roleType = featureBinding.Attribute("roleType")!.Value!;
+
+                foreach (var e in featureBinding.XPathSelectElements("S100FC:featureType", xmlNamespaceManager)) {
+                    var featureType = e.Attribute("ref")!.Value!;
+
+                    //if (!featureBindingsCreatorKeys.Contains($"{code}::{featureType}")) {
+                    //    featureBindingsCreatorKeys.Add($"{code}::{featureType}");
+                    //    featureBindingsCreator.AppendLine($"\t\t\t{{ \"{code}::{featureType}\", () => new featureBinding<{association}> {{ role = \"{role}\", roleType=\"{roleType}\", }} }},");
+                    //}
+                }
+            }
+            return true;
         }
     }
 }

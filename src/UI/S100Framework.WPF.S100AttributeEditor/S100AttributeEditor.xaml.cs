@@ -90,7 +90,7 @@ namespace S100Framework.WPF
 
     public class ComplexAttributeViewModel : AttributeViewModel
     {
-        public attributeBinding[] attributeBindings { get; init; } = [];
+        public attributeBindingDefinition[] attributeBindings { get; init; } = [];
 
         public ObservableCollection<AttributeViewModel> attributeValues { get; set; } = [];
 
@@ -156,7 +156,7 @@ namespace S100Framework.WPF
 
         public ObservableCollection<AttributeViewModel> attributeValues { get; set; } = [];
 
-        public attributeBinding[] attributeBindings { get; init; } = [];
+        public attributeBindingDefinition[] attributeBindings { get; init; } = [];
         #endregion
 
         private S100Framework.AttributeModel.FeatureType? _feature = default;
@@ -177,7 +177,7 @@ namespace S100Framework.WPF
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         protected void OnCreateAttributeCommand(object? parameter) {
-            if (parameter is attributeBinding attributeBinding) {
+            if (parameter is attributeBindingDefinition attributeBinding) {
                 var instance = attributeBinding.CreateInstance();
                 if (instance is SimpleAttribute simpleAttribute)
                     this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));

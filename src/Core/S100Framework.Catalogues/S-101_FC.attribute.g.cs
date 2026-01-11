@@ -4350,20 +4350,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
@@ -4404,20 +4404,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(leastDepthOfDetectedFeaturesMeasured),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new leastDepthOfDetectedFeaturesMeasured(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(significantFeaturesDetected),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new significantFeaturesDetected(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sizeOfFeaturesDetected),
 					lower = 0,
 					upper = 1,
@@ -4457,14 +4457,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dateEnd),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
@@ -4499,14 +4499,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(frequencyShoreStationReceives),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new frequencyShoreStationReceives(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(frequencyShoreStationTransmits),
 					lower = 1,
 					upper = 1,
@@ -4541,14 +4541,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalDistanceUncertainty),
 					lower = 0,
 					upper = 1,
@@ -4583,14 +4583,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalDistanceUncertainty),
 					lower = 0,
 					upper = 1,
@@ -4625,14 +4625,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new uncertaintyFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(uncertaintyVariableFactor),
 					lower = 0,
 					upper = 1,
@@ -4667,32 +4667,32 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fileLocator),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fileLocator(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fileReference),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fileReference(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new headline(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 0,
 					upper = 1,
@@ -4742,21 +4742,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(distanceUnitOfMeasurement),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new distanceUnitOfMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(referenceLocation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new referenceLocation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterwayDistance),
 					lower = 1,
 					upper = 1,
@@ -4796,14 +4796,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityKnown),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new multiplicityKnown(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(numberOfFeatures),
 					lower = 0,
 					upper = 1,
@@ -4838,20 +4838,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(headline),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new headline(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(linkage),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new linkage(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nameOfResource),
 					lower = 0,
 					upper = 1,
@@ -4891,14 +4891,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientationUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
@@ -4933,14 +4933,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateStart),
 					lower = 1,
 					upper = 1,
@@ -4975,14 +4975,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(radarBand),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new radarBand(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waveLengthValue),
 					lower = 1,
 					upper = 1,
@@ -5017,14 +5017,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -5059,14 +5059,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(sectorBearing),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new sectorBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLineLength),
 					lower = 0,
 					upper = 1,
@@ -5101,14 +5101,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(sectorBearing),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new sectorBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLineLength),
 					lower = 0,
 					upper = 1,
@@ -5143,14 +5143,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -5185,14 +5185,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(signalDuration),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new signalDuration(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalStatus),
 					lower = 1,
 					upper = 1,
@@ -5228,14 +5228,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(speedMaximum),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new speedMaximum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(speedMinimum),
 					lower = 0,
 					upper = 1,
@@ -5270,22 +5270,22 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,11,14,17,18],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurfaceQualifyingTerms),
 					lower = 0,
 					upper = 3,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
 					CreateInstance = () => new natureOfSurfaceQualifyingTerms(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(underlyingLayer),
 					lower = 0,
 					upper = 1,
@@ -5325,14 +5325,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dateEnd),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
@@ -5367,20 +5367,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(contactInstructions),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new contactInstructions(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(telecommunicationIdentifier),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new telecommunicationIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(telecommunicationService),
 					lower = 0,
 					upper = 1,
@@ -5421,20 +5421,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(speedMaximum),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new speedMaximum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeRelativeToTide),
 					lower = 1,
 					upper = 1,
@@ -5474,27 +5474,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dayOfWeek),
 					lower = 0,
 					upper = 7,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new dayOfWeek(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dayOfWeekIsRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dayOfWeekIsRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeOfDayStart),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new timeOfDayStart(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeOfDayEnd),
 					lower = 0,
 					upper = 2147483647,
@@ -5539,29 +5539,29 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmarkDaymarkShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33],
 					CreateInstance = () => new topmarkDaymarkShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(shapeInformation),
 					lower = 0,
 					upper = 2147483647,
@@ -5606,14 +5606,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(magneticAnomalyValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new magneticAnomalyValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(referenceDirection),
 					lower = 0,
 					upper = 1,
@@ -5649,14 +5649,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new uncertaintyFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(uncertaintyVariableFactor),
 					lower = 0,
 					upper = 1,
@@ -5691,21 +5691,21 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(speedLimit),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new speedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(speedUnits),
 					lower = 1,
 					upper = 1,
 					permitedValues = [2,3,4],
 					CreateInstance = () => new speedUnits(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselClass),
 					lower = 0,
 					upper = 1,
@@ -5745,27 +5745,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfZoneOfConfidenceInData),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new categoryOfZoneOfConfidenceInData(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalPositionUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -5810,14 +5810,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(moireEffect),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new moireEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 1,
 					upper = 1,
@@ -5852,27 +5852,27 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(lightCharacteristic),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29],
 					CreateInstance = () => new lightCharacteristic(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGroup),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new signalGroup(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalPeriod),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalPeriod(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalSequence),
 					lower = 0,
 					upper = 2147483647,
@@ -5917,15 +5917,15 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSchedule),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfSchedule(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeIntervalsByDayOfWeek),
 					lower = 1,
 					upper = 2147483647,
@@ -5960,14 +5960,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLimitOne),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new sectorLimitOne(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLimitTwo),
 					lower = 1,
 					upper = 1,
@@ -6002,20 +6002,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalPositionUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -6055,28 +6055,28 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(referenceTide),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new referenceTide(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(referenceTideType),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new referenceTideType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(streamDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new streamDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(tidalStreamValue),
 					lower = 1,
 					upper = 2147483647,
@@ -6121,14 +6121,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -6163,14 +6163,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -6205,20 +6205,20 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceUnlimited),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceUnlimited(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -6258,14 +6258,14 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
@@ -6300,46 +6300,46 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,9,10,11],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(directionalCharacter),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new directionalCharacter(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lightVisibility),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9],
 					CreateInstance = () => new lightVisibility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLimit),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new sectorLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfNominalRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfNominalRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorInformation),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new sectorInformation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorArcExtension),
 					lower = 0,
 					upper = 1,
@@ -6399,33 +6399,33 @@ namespace S100Framework.AttributeModel.S101.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(lightCharacteristic),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,11,12,13,14,15,16,17,18,19,25,26,27,28,29],
 					CreateInstance = () => new lightCharacteristic(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lightSector),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new lightSector(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGroup),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new signalGroup(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalPeriod),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalPeriod(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalSequence),
 					lower = 0,
 					upper = 2147483647,
@@ -6470,21 +6470,45 @@ namespace S100Framework.AttributeModel.S101.InformationAssociation
 	using S100Framework.AttributeModel.S101.SimpleAttributes;
 	using S100Framework.AttributeModel.S101.ComplexAttributes;
 
+	/// <summary>
+	/// A feature association for the binding between at least one instance of a geo feature and an instance of an information type.
+	/// </summary>
 	public class AdditionalInformation : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(AdditionalInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Additional information";
+		[JsonIgnore]
 		public override string role => "theInformation";
 	}
+
+	/// <summary>
+	/// The mandatory association between the quality-related characteristics of bathymetric data and the horizontal position and vertical uncertainties of the data.
+	/// </summary>
 	public class QualityOfBathymetricDataComposition : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
-		public override string role => "theQualityInformation";
-	}
-	public class SpatialAssociation : S100Framework.AttributeModel.InformationAssociation
-	{
+		public override string S100FC_code => nameof(QualityOfBathymetricDataComposition);
+		[JsonIgnore]
+		public override string S100FC_name => "Quality of bathymetric data composition";
 		[JsonIgnore]
 		public override string role => "theQualityInformation";
 	}
+
+	/// <summary>
+	/// An association for the binding between a spatial type and its spatial quality information.
+	/// </summary>
+	public class SpatialAssociation : S100Framework.AttributeModel.InformationAssociation
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SpatialAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Spatial Association";
+		[JsonIgnore]
+		public override string role => "theQualityInformation";
+	}
+
 }
 
 namespace S100Framework.AttributeModel.S101.FeatureAssociation
@@ -6492,96 +6516,240 @@ namespace S100Framework.AttributeModel.S101.FeatureAssociation
 	using S100Framework.AttributeModel.S101.SimpleAttributes;
 	using S100Framework.AttributeModel.S101.ComplexAttributes;
 
+	/// <summary>
+	/// A feature association for the binding between navigational aids and the traffic systems (such as routeing measures) that they define.
+	/// </summary>
 	public class AidsToNavigationAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(AidsToNavigationAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Aids to navigation association";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between an Archipelagic Sea Lane and its component features.
+	/// </summary>
 	public class ASLAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(ASLAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "ASL aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a bridge and its component features.
+	/// </summary>
 	public class BridgeAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(BridgeAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Bridge aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a caution area and the traffic systems (such as routeing measures) to which the cautionary information applies.
+	/// </summary>
 	public class CautionAreaAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(CautionAreaAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Caution area association";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a Deep Water route and its component features.
+	/// </summary>
 	public class DeepWaterRouteAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(DeepWaterRouteAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Deep Water route aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between related fairways comprising a fairway system.
+	/// </summary>
 	public class FairwayAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(FairwayAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Fairway aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a fairway and related features auxiliary to the fairway.
+	/// </summary>
 	public class FairwayAuxiliary : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(FairwayAuxiliary);
+		[JsonIgnore]
+		public override string S100FC_name => "Fairway auxiliary";
+		[JsonIgnore]
 		public override string[] roles => ["thePrimaryFeature","theAuxiliaryFeature"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a named group of islands.
+	/// </summary>
 	public class IslandAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(IslandAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Island aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a mooring trot and its component parts.
+	/// </summary>
 	public class MooringTrotAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(MooringTrotAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Mooring trot aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a pilotage district and its component pilot boarding places.
+	/// </summary>
 	public class PilotageDistrictAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(PilotageDistrictAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Pilotage District Association";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between navigational tracks and the navigational aids that define the tracks.
+	/// </summary>
 	public class RangeSystemAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(RangeSystemAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Range system aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a roofed structure over navigable water and its supporting features.
+	/// </summary>
 	public class RoofedStructureAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(RoofedStructureAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Roofed Structure Aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theRoofedStructure","theSupport"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a navigation aid equipment feature and the structure that supports it.
+	/// </summary>
 	public class StructureEquipment : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(StructureEquipment);
+		[JsonIgnore]
+		public override string S100FC_name => "Structure/equipment";
+		[JsonIgnore]
 		public override string[] roles => ["theStructure","theEquipment"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a geo feature and the cartographically positioned location for text.
+	/// </summary>
 	public class TextAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(TextAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Text association";
+		[JsonIgnore]
 		public override string[] roles => ["theCartographicText","thePositionProvider"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a Traffic Separation Scheme or a Traffic Separation Scheme System and its component features.
+	/// </summary>
 	public class TrafficSeparationSchemeAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(TrafficSeparationSchemeAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Traffic Separation Scheme aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between a two-way route and its component features.
+	/// </summary>
 	public class TwoWayRouteAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(TwoWayRouteAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Two-way route aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between an Update Information feature and its component Update Information features.
+	/// </summary>
 	public class UpdateAggregation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(UpdateAggregation);
+		[JsonIgnore]
+		public override string S100FC_name => "Update Aggregation";
+		[JsonIgnore]
 		public override string[] roles => ["theCollection","theComponent"];
 	}
+
+	/// <summary>
+	/// A feature association for the binding between an update information metadata feature and updated feature(s) that it identifies.
+	/// </summary>
 	public class UpdatedInformation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(UpdatedInformation);
+		[JsonIgnore]
+		public override string S100FC_name => "Updated Information";
+		[JsonIgnore]
 		public override string[] roles => ["theUpdate","theUpdatedObject"];
 	}
+
 }
 
 namespace S100Framework.AttributeModel.S101.InformationTypes
@@ -6601,50 +6769,50 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(callSign),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new callSign(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(contactInstructions),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new contactInstructions(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(frequencyPair),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new frequencyPair(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(mMSICode),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new mMSICode(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(onlineResource),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new onlineResource(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(telecommunications),
 					lower = 0,
 					upper = 2147483647,
@@ -6709,26 +6877,26 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scheduleByDayOfWeek),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new scheduleByDayOfWeek(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -6773,32 +6941,32 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dateFixed),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new dateFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateVariable),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new dateVariable(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -6848,26 +7016,26 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -6912,15 +7080,15 @@ namespace S100Framework.AttributeModel.S101.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfHorizontalMeasurement),
 					lower = 0,
 					upper = 1,
 					permitedValues = [4],
 					CreateInstance = () => new qualityOfHorizontalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(spatialAccuracy),
 					lower = 0,
 					upper = 2147483647,
@@ -6962,51 +7130,51 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfTemporalVariation),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,4],
 					CreateInstance = () => new categoryOfTemporalVariation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalDistanceUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalDistanceUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new horizontalPositionUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientationUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surveyDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new surveyDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7071,38 +7239,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(drawingIndex),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new drawingIndex(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumDisplayScale),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new maximumDisplayScale(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(minimumDisplayScale),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new minimumDisplayScale(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(optimumDisplayScale),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new optimumDisplayScale(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7157,21 +7325,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7211,33 +7379,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7287,64 +7455,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfTemporalVariation),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,5,6],
 					CreateInstance = () => new categoryOfTemporalVariation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dataAssessment),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new dataAssessment(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMaximumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMaximumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featuresDetected),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new featuresDetected(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fullSeafloorCoverageAchieved),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new fullSeafloorCoverageAchieved(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surveyDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new surveyDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(zoneOfConfidence),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new zoneOfConfidence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7419,21 +7587,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,19,22,23,24,25,26,27,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7473,21 +7641,21 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 1,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7527,114 +7695,114 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMaximumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMaximumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featuresDetected),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new featuresDetected(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fullSeafloorCoverageAchieved),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fullSeafloorCoverageAchieved(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lineSpacingMaximum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new lineSpacingMaximum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lineSpacingMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new lineSpacingMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(measurementDistanceMaximum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new measurementDistanceMaximum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(measurementDistanceMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new measurementDistanceMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfHorizontalMeasurement),
 					lower = 0,
 					upper = 1,
 					permitedValues = [4],
 					CreateInstance = () => new qualityOfHorizontalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9,10,11],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleValueMaximum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleValueMaximum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleValueMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleValueMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surveyAuthority),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new surveyAuthority(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surveyDateRange),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new surveyDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surveyType),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new surveyType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7749,45 +7917,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(updateNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new updateNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(updateType),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new updateType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(source),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new source(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7847,38 +8015,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(referenceYearForMagneticVariation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new referenceYearForMagneticVariation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfAnnualChangeInMagneticVariation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new valueOfAnnualChangeInMagneticVariation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfMagneticVariation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new valueOfMagneticVariation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -7933,38 +8101,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfLocalMagneticAnomaly),
 					lower = 1,
 					upper = 2,
 					CreateInstance = () => new valueOfLocalMagneticAnomaly(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8019,66 +8187,66 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCoastline),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,6,7,8,10],
 					CreateInstance = () => new categoryOfCoastline(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,11,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,11,14,17],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -8153,46 +8321,46 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8252,26 +8420,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8316,39 +8484,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8403,33 +8571,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8479,32 +8647,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8554,39 +8722,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8641,39 +8809,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8728,47 +8896,47 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLandRegion),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
 					CreateInstance = () => new categoryOfLandRegion(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,11,14,17,18],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,6],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8828,58 +8996,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfVegetation),
 					lower = 1,
 					upper = 1,
 					permitedValues = [3,4,5,6,11,13,14,15,16,17,18,19,20,22],
 					CreateInstance = () => new categoryOfVegetation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -8949,77 +9117,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfIce),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,5,8],
 					CreateInstance = () => new categoryOfIce(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,5,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -9104,60 +9272,60 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSlope),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new categoryOfSlope(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,11,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,6,7,9,11],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -9227,66 +9395,66 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSlope),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,6],
 					CreateInstance = () => new categoryOfSlope(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,11,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,6,7,9,11],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -9361,26 +9529,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -9425,77 +9593,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfBuiltUpArea),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new categoryOfBuiltUpArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -9580,130 +9748,130 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buildingShape),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,6,7,8,9],
 					CreateInstance = () => new buildingShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(function),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48],
 					CreateInstance = () => new function(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8,12],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,7,8,12,13,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -9828,59 +9996,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfAirportAirfield),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9],
 					CreateInstance = () => new categoryOfAirportAirfield(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -9950,59 +10118,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -10072,59 +10240,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -10194,125 +10362,125 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(bridgeConstruction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new bridgeConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(bridgeFunction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new bridgeFunction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfOpeningBridge),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,4,5,7],
 					CreateInstance = () => new categoryOfOpeningBridge(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(openingBridge),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new openingBridge(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -10432,51 +10600,51 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -10541,57 +10709,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceClosed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceClosed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceOpen),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceOpen(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -10661,136 +10829,136 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfConveyor),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfConveyor(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(liftingCapacity),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new liftingCapacity(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,6,10,11,12,13,14,15,16,17,21,22,25],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -10920,103 +11088,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCable),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,10],
 					CreateInstance = () => new categoryOfCable(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iceFactor),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iceFactor(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,7,12,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceSafe),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceSafe(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -11121,98 +11289,98 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPipelinePipe),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,6],
 					CreateInstance = () => new categoryOfPipelinePipe(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,7,8,9,18,19,20,22],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,7,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -11312,124 +11480,124 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPylon),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new categoryOfPylon(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -11549,105 +11717,105 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfFence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,4],
 					CreateInstance = () => new categoryOfFence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,6,7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,7,12,13],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -11752,52 +11920,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,12,13,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -11862,60 +12030,60 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRoad),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new categoryOfRoad(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,7,8,12,13,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -11985,71 +12153,71 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,6,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -12129,137 +12297,137 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLandmark),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,27],
 					CreateInstance = () => new categoryOfLandmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSpecialPurposeMark),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [16,17,41],
 					CreateInstance = () => new categoryOfSpecialPurposeMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,4,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(function),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47,48],
 					CreateInstance = () => new function(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,6,7,8,11,12],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,4,5,7,8,12,13,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -12389,137 +12557,137 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buildingShape),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,6,7,8,9],
 					CreateInstance = () => new buildingShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSiloTank),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfSiloTank(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,7,8,9,13,14,16,18,19,20,21,22,24],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,12,13],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -12649,142 +12817,142 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,4,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,13,14,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,7],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -12919,97 +13087,97 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfFortifiedStructure),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,8,9],
 					CreateInstance = () => new categoryOfFortifiedStructure(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,7,8,12,13,14,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -13109,103 +13277,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfProductionArea),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new categoryOfProductionArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -13310,40 +13478,40 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCheckpoint),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1],
 					CreateInstance = () => new categoryOfCheckpoint(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,9,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -13398,109 +13566,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfHulk),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new categoryOfHulk(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -13610,104 +13778,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPile),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,4,5,6,7,8],
 					CreateInstance = () => new categoryOfPile(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -13812,77 +13980,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -13967,130 +14135,130 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfShorelineConstruction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,20,22,23],
 					CreateInstance = () => new categoryOfShorelineConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,12,13,14,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -14215,155 +14383,155 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfStructure),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new categoryOfStructure(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8,11,12],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 1,
 					permitedValues = [7,12,13,21,22,25],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -14508,60 +14676,60 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -14631,71 +14799,71 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCanal),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfCanal(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -14775,44 +14943,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(distanceMarkVisible),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new distanceMarkVisible(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(measuredDistanceValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new measuredDistanceValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -14872,92 +15040,92 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfGate),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6],
 					CreateInstance = () => new categoryOfGate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceOpen),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceOpen(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,6,7],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceOpen),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceOpen(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -15052,106 +15220,106 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfDam),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfDam(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8,14,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,6],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -15256,129 +15424,129 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCrane),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6],
 					CreateInstance = () => new categoryOfCrane(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(liftingCapacity),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new liftingCapacity(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radius),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radius(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inTheWater),
 					lower = 0,
 					upper = 1,
@@ -15503,89 +15671,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfCargo(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(minimumBerthDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new minimumBerthDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,9,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -15680,123 +15848,123 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfDolphin),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfDolphin(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,12,14,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -15916,64 +16084,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -16048,101 +16216,101 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -16247,127 +16415,127 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(liftingCapacity),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new liftingCapacity(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,7,8,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -16492,77 +16660,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,12,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -16647,83 +16815,83 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfDock),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfDock(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -16813,65 +16981,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,8,14,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,4,5],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -16946,63 +17114,63 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalClearanceFixed),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalClearanceFixed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,8,13,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17077,32 +17245,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17152,33 +17320,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSeaArea),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56],
 					CreateInstance = () => new categoryOfSeaArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17228,51 +17396,51 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfTidalStream),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfTidalStream(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(speed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new speed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17337,57 +17505,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(speed),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new speed(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17457,33 +17625,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfWaterTurbulence),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new categoryOfWaterTurbulence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17533,44 +17701,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(stationName),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new stationName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(stationNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new stationNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(tidalStreamPanelValues),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new tidalStreamPanelValues(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17630,53 +17798,53 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17741,77 +17909,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMaximumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMaximumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dredgedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dredgedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 1,
 					permitedValues = [10,11],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,11,12,13,16,17,18,19,20,21,23,25,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17896,32 +18064,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sweptDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new sweptDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -17971,26 +18139,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfDepthContour),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new valueOfDepthContour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18035,26 +18203,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMaximumValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new depthRangeMaximumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18099,27 +18267,27 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18164,14 +18332,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18206,39 +18374,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surfaceCharacteristics),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new surfaceCharacteristics(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,4,5],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18293,33 +18461,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfWeedKelp),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,4],
 					CreateInstance = () => new categoryOfWeedKelp(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18369,26 +18537,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18433,26 +18601,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18497,26 +18665,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -18561,92 +18729,92 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(expositionOfSounding),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new expositionOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 1,
 					permitedValues = [14],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfSounding),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new valueOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 1,
 					upper = 1,
 					permitedValues = [3,4,5],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(defaultClearanceDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new defaultClearanceDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surroundingDepth),
 					lower = 1,
 					upper = 1,
@@ -18741,117 +18909,117 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfWreck),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new categoryOfWreck(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(expositionOfSounding),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new expositionOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [7,13,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfSounding),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new pictorialRepresentation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(defaultClearanceDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new defaultClearanceDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surroundingDepth),
 					lower = 1,
 					upper = 1,
@@ -18966,131 +19134,131 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfObstruction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23],
 					CreateInstance = () => new categoryOfObstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(expositionOfSounding),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new expositionOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfSurface),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,11,14,17,18],
 					CreateInstance = () => new natureOfSurface(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,8,23],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,7,8,13,18,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfSounding),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,7],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(defaultClearanceDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new defaultClearanceDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(surroundingDepth),
 					lower = 1,
 					upper = 1,
@@ -19215,65 +19383,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [13,18,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,8,9,10,11,12,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfSounding),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -19348,26 +19516,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -19412,65 +19580,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfFishingFacility),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfFishingFacility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,6,7,8,12,18,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -19545,110 +19713,110 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfMarineFarmCulture),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5],
 					CreateInstance = () => new categoryOfMarineFarmCulture(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(expositionOfSounding),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new expositionOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7,8,9],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,14,16,17,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfSounding),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfSounding(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,7],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -19758,117 +19926,117 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfOffshorePlatform),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
 					CreateInstance = () => new categoryOfOffshorePlatform(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(flareStack),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new flareStack(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,18,19,23],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,7,8,12,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -19983,59 +20151,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buriedDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new buriedDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCable),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,6,7,9,10],
 					CreateInstance = () => new categoryOfCable(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,13,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -20105,59 +20273,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCable),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,7,10],
 					CreateInstance = () => new categoryOfCable(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,11,12,13,14,16,17,18,20,23,24,25,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,7,13],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -20227,103 +20395,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buriedDepth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new buriedDepth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPipelinePipe),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,7],
 					CreateInstance = () => new categoryOfPipelinePipe(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMaximumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMaximumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,7,8,9,18,19],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,8,9,11,12,13,14,16,17,18,20,23,24,25,26,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,7,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -20428,66 +20596,66 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPipelinePipe),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6],
 					CreateInstance = () => new categoryOfPipelinePipe(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,7,8,18,19],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -20562,111 +20730,111 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfOffshoreProductionArea),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new categoryOfOffshoreProductionArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,4,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,6,10,14,23],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,7,8,12,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(waterLevelEffect),
 					lower = 0,
 					upper = 1,
 					permitedValues = [2,3,4,7],
 					CreateInstance = () => new waterLevelEffect(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -20776,58 +20944,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfNavigationLine),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfNavigationLine(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(measuredDistance),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new measuredDistance(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -20897,96 +21065,96 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(basedOnFixedMarks),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new basedOnFixedMarks(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,6,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21086,38 +21254,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21172,90 +21340,90 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,7,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21350,44 +21518,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21447,90 +21615,90 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(basedOnFixedMarks),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new basedOnFixedMarks(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,5,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21625,78 +21793,78 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(basedOnFixedMarks),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new basedOnFixedMarks(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,5,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21781,38 +21949,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21867,39 +22035,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -21954,90 +22122,90 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(basedOnFixedMarks),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new basedOnFixedMarks(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iMOAdopted),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iMOAdopted(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,5,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22132,97 +22300,97 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(depthRangeMinimumValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new depthRangeMinimumValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iMOAdopted),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iMOAdopted(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,6,7],
 					CreateInstance = () => new qualityOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(techniqueOfVerticalMeasurement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,5,8,9,13,15,16,17,18],
 					CreateInstance = () => new techniqueOfVerticalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalUncertainty),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalUncertainty(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22322,38 +22490,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iMOAdopted),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iMOAdopted(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22408,46 +22576,46 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22507,58 +22675,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iMOAdopted),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iMOAdopted(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,14,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 1,
 					upper = 2147483647,
@@ -22628,52 +22796,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22738,33 +22906,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22814,33 +22982,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,9,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22890,46 +23058,46 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -22989,46 +23157,46 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,6,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23088,44 +23256,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(iMOAdopted),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new iMOAdopted(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23185,38 +23353,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23271,38 +23439,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23357,38 +23525,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23443,64 +23611,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 0,
 					upper = 2,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,7,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(trafficFlow),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new trafficFlow(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23575,52 +23743,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfFerry),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new categoryOfFerry(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23685,39 +23853,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(orientationValue),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new orientationValue(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23772,45 +23940,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -23870,70 +24038,70 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(callSign),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new callSign(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRadarStation),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfRadarStation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,7,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfMaximumRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfMaximumRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24013,72 +24181,72 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfAnchorage),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,9,10,14,15],
 					CreateInstance = () => new categoryOfAnchorage(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfCargo(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24158,77 +24326,77 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfMooringArea),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfMooringArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedVesselLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedVesselLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,25,27,39,42],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
@@ -24313,65 +24481,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfAnchorage),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,9,10,14],
 					CreateInstance = () => new categoryOfAnchorage(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCargo),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfCargo(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radius),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radius(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24446,52 +24614,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24556,59 +24724,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfDumpingGround),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6],
 					CreateInstance = () => new categoryOfDumpingGround(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateDisused),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateDisused(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,6,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24678,71 +24846,71 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfMilitaryPracticeArea),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6],
 					CreateInstance = () => new categoryOfMilitaryPracticeArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,15,16,17,18,19,20,21,22,23,24,25,26,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,6,7,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -24822,51 +24990,51 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(inDispute),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new inDispute(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(jurisdiction),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new jurisdiction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -24931,58 +25099,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,22,24,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,5,6,7,9],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25052,58 +25220,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -25173,50 +25341,50 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -25281,38 +25449,38 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(inDispute),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new inDispute(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25367,32 +25535,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25442,26 +25610,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25506,32 +25674,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(inDispute),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new inDispute(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25581,39 +25749,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,5,6,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25668,52 +25836,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,8,9,10,11,12,15,16,17,18,19,20,21,22,23,24,25,26,27,39],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,5,6,7,8,14,16,17,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25778,33 +25946,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,6,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25854,33 +26022,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,6,8,14],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -25930,39 +26098,39 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,6,7,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26017,59 +26185,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfOilBarrier),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfOilBarrier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26139,26 +26307,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26203,45 +26371,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(inDispute),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new inDispute(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [2,4,6,8,9,10,12,17,18,19,20,21,22,23,24,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26301,45 +26469,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,16,17,18,19,20,21,22,23,24,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26399,32 +26567,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26474,44 +26642,44 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(regulationCitation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new regulationCitation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26571,32 +26739,32 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(regulationCitation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new regulationCitation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26646,65 +26814,65 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRestrictedArea),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,6,7,8,9,10,12,14,18,19,20,21,22,23,24,25,27,28,29,30,31,32],
 					CreateInstance = () => new categoryOfRestrictedArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,39,42],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,9,18,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -26779,136 +26947,136 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLight),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
 					CreateInstance = () => new categoryOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,9,10,11],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(exhibitionConditionOfLight),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new exhibitionConditionOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(flareBearing),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new flareBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lightVisibility),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new lightVisibility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(majorLight),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new majorLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(rhythmOfLight),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new rhythmOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGeneration),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,6],
 					CreateInstance = () => new signalGeneration(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,11,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfNominalRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfNominalRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -27038,98 +27206,98 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLight),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
 					CreateInstance = () => new categoryOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(exhibitionConditionOfLight),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new exhibitionConditionOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorCharacteristics),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new sectorCharacteristics(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGeneration),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,6],
 					CreateInstance = () => new signalGeneration(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,11,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -27229,90 +27397,90 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,9,10,11],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(flareBearing),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new flareBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(rhythmOfLight),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new rhythmOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGeneration),
 					lower = 0,
 					upper = 1,
 					permitedValues = [5,6],
 					CreateInstance = () => new signalGeneration(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,11,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -27407,103 +27575,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,9,10,11],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(exhibitionConditionOfLight),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new exhibitionConditionOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(flareBearing),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new flareBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lightVisibility),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9],
 					CreateInstance = () => new lightVisibility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(multiplicityOfFeatures),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new multiplicityOfFeatures(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(rhythmOfLight),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new rhythmOfLight(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8,11,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfNominalRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfNominalRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalDatum),
 					lower = 0,
 					upper = 1,
 					permitedValues = [3,13,16,17,18,19,20,21,24,25,26,28,29,30,44],
 					CreateInstance = () => new verticalDatum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -27608,111 +27776,111 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLateralMark),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfLateralMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -27822,111 +27990,111 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCardinalMark),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfCardinalMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -28036,104 +28204,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -28238,104 +28406,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -28440,111 +28608,111 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSpecialPurposeMark),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,42,43,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63],
 					CreateInstance = () => new categoryOfSpecialPurposeMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -28654,91 +28822,91 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -28833,106 +29001,106 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfInstallationBuoy),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfInstallationBuoy(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,18,19],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -29037,103 +29205,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(buoyShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8],
 					CreateInstance = () => new buoyShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedDraught),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedDraught(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(maximumPermittedVesselLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new maximumPermittedVesselLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visitorsMooring),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new visitorsMooring(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -29238,143 +29406,143 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(beaconShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new beaconShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfLateralMark),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfLateralMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -29509,143 +29677,143 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(beaconShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new beaconShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfCardinalMark),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfCardinalMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -29780,136 +29948,136 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(beaconShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new beaconShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -30039,136 +30207,136 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(beaconShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new beaconShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -30298,143 +30466,143 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(beaconShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7],
 					CreateInstance = () => new beaconShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSpecialPurposeMark),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,10,11,12,14,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63],
 					CreateInstance = () => new categoryOfSpecialPurposeMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(marksNavigationalSystemOf),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,9,11],
 					CreateInstance = () => new marksNavigationalSystemOf(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,6,7,8],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,18],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -30569,116 +30737,116 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSpecialPurposeMark),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,60,61,62,63],
 					CreateInstance = () => new categoryOfSpecialPurposeMark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(elevation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new elevation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,6,7,8,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,7,8,12],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmarkDaymarkShape),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33],
 					CreateInstance = () => new topmarkDaymarkShape(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(shapeInformation),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new shapeInformation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -30793,109 +30961,109 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7,11],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(topmark),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new topmark(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -31005,103 +31173,103 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalWidth),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new horizontalWidth(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarConspicuous),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new radarConspicuous(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(verticalLength),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new verticalLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(visualProminence),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new visualProminence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -31206,59 +31374,59 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(colour),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,7,8,9,10,11,12,13],
 					CreateInstance = () => new colour(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(colourPattern),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new colourPattern(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -31328,45 +31496,45 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(height),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new height(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -31426,89 +31594,89 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfFogSignal),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
 					CreateInstance = () => new categoryOfFogSignal(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalFrequency),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalFrequency(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGeneration),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6],
 					CreateInstance = () => new signalGeneration(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGroup),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalGroup(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalPeriod),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalPeriod(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalSequence),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new signalSequence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,15],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfMaximumRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfMaximumRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -31603,57 +31771,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(estimatedRangeOfTransmission),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new estimatedRangeOfTransmission(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(mMSICode),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new mMSICode(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -31723,64 +31891,64 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(estimatedRangeOfTransmission),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new estimatedRangeOfTransmission(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(mMSICode),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new mMSICode(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,5,7],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(virtualAISAidToNavigationType),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new virtualAISAidToNavigationType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -31855,76 +32023,76 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(callSign),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new callSign(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRadioStation),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [5,10,11,14,19,20],
 					CreateInstance = () => new categoryOfRadioStation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(estimatedRangeOfTransmission),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new estimatedRangeOfTransmission(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(frequencyPair),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new frequencyPair(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32009,82 +32177,82 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRadarTransponderBeacon),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfRadarTransponderBeacon(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(radarWaveLength),
 					lower = 0,
 					upper = 2,
 					CreateInstance = () => new radarWaveLength(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(sectorLimit),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new sectorLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalGroup),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new signalGroup(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(signalSequence),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new signalSequence(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(valueOfMaximumRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new valueOfMaximumRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32174,78 +32342,78 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPilotBoardingPlace),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new categoryOfPilotBoardingPlace(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPreference),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfPreference(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(destination),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new destination(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pilotMovement),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3],
 					CreateInstance = () => new pilotMovement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,5,6,9,16,17,28],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32330,26 +32498,26 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32394,57 +32562,57 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(isMRCC),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new isMRCC(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32514,58 +32682,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSignalStationWarning),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfSignalStationWarning(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32635,58 +32803,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSignalStationTraffic),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10],
 					CreateInstance = () => new categoryOfSignalStationTraffic(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,12,14,15,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32756,58 +32924,58 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfRescueStation),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,6,7,8],
 					CreateInstance = () => new categoryOfRescueStation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,4,5,7,8,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
@@ -32877,104 +33045,104 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfHarbourFacility),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfHarbourFacility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(communicationChannel),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new communicationChannel(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(condition),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,5],
 					CreateInstance = () => new condition(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(natureOfConstruction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,6,7],
 					CreateInstance = () => new natureOfConstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(product),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,25],
 					CreateInstance = () => new product(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(reportedDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new reportedDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,8,9,10,11,12,13,15,16,17,18,19,20,21,23,24,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,4,5,6,7,8,9,12,13,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(vesselSpeedLimit),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new vesselSpeedLimit(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -33079,52 +33247,52 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(categoryOfSmallCraftFacility),
 					lower = 1,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,30,31,32,33],
 					CreateInstance = () => new categoryOfSmallCraftFacility(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(periodicDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new periodicDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(status),
 					lower = 0,
 					upper = 2147483647,
 					permitedValues = [1,2,3,4,5,6,7,8,9,12,14,16,17],
 					CreateInstance = () => new status(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(pictorialRepresentation),
 					lower = 0,
 					upper = 1,
@@ -33189,33 +33357,33 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(textOffsetBearing),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textOffsetDistance),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetDistance(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textRotation),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new textRotation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textType),
 					lower = 1,
 					upper = 2,
 					permitedValues = [1,2],
 					CreateInstance = () => new textType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
@@ -33265,14 +33433,14 @@ namespace S100Framework.AttributeModel.S101.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(drawingInstruction),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new drawingInstruction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
@@ -33320,7 +33488,7 @@ namespace S100Framework.AttributeModel.S101
 			resolver.Modifiers.Add(typeInfo => {
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$association",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.AdditionalInformation>), typeDiscriminator: "AdditionalInformation"));
@@ -33329,7 +33497,7 @@ namespace S100Framework.AttributeModel.S101
 				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$association",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.AidsToNavigationAssociation>), typeDiscriminator: "AidsToNavigationAssociation"));
@@ -33353,7 +33521,7 @@ namespace S100Framework.AttributeModel.S101
 				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$code",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(basedOnFixedMarks), typeDiscriminator: "basedOnFixedMarks"));

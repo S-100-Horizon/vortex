@@ -924,26 +924,26 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(chartNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new chartNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(chartPlanNumber),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartPlanNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(editionDate),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new editionDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(lastNoticeDate),
 					lower = 0,
 					upper = 1,
@@ -988,26 +988,26 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(dateEnd),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateEnd(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(dateStart),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new dateStart(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeOfDayEnd),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new timeOfDayEnd(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(timeOfDayStart),
 					lower = 0,
 					upper = 1,
@@ -1052,14 +1052,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1094,14 +1094,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1136,45 +1136,45 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(agencyResponsibleForProduction),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new agencyResponsibleForProduction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nameOfSeries),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new nameOfSeries(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nationality),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new nationality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(warningNumber),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new warningNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(warningType),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
 					CreateInstance = () => new warningType(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(year),
 					lower = 1,
 					upper = 1,
@@ -1234,14 +1234,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
@@ -1276,14 +1276,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(information),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new information(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(navwarnTypeDetails),
 					lower = 0,
 					upper = 2147483647,
@@ -1318,14 +1318,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(atoNNumber),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new atoNNumber(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
 					lower = 0,
 					upper = 2147483647,
@@ -1360,20 +1360,20 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(name),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new name(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(nameUsage),
 					lower = 0,
 					upper = 1,
@@ -1414,8 +1414,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(uncertaintyFixed),
 					lower = 1,
 					upper = 1,
@@ -1445,8 +1445,8 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(horizontalPositionUncertainty),
 					lower = 1,
 					upper = 1,
@@ -1476,32 +1476,32 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(chartAffected),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartAffected(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(chartPublicationIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new chartPublicationIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(internationalChartAffected),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new internationalChartAffected(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(language),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new language(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(publicationAffected),
 					lower = 0,
 					upper = 1,
@@ -1551,14 +1551,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(localityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new localityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(locationName),
 					lower = 1,
 					upper = 2147483647,
@@ -1593,14 +1593,14 @@ namespace S100Framework.AttributeModel.S124.ComplexAttributes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(localityIdentifier),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new localityIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(locationName),
 					lower = 1,
 					upper = 2147483647,
@@ -1630,16 +1630,32 @@ namespace S100Framework.AttributeModel.S124.InformationAssociation
 	using S100Framework.AttributeModel.S124.SimpleAttributes;
 	using S100Framework.AttributeModel.S124.ComplexAttributes;
 
+	/// <summary>
+	/// The binding between a navigational warning preamble and the body.
+	/// </summary>
 	public class navwarnPreambleContent : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(navwarnPreambleContent);
+		[JsonIgnore]
+		public override string S100FC_name => "navwarnPreambleContent";
+		[JsonIgnore]
 		public override string role => "header";
 	}
+
+	/// <summary>
+	/// The relationship between a navigational warning and previous information relevant to its purpose.
+	/// </summary>
 	public class navwarnReferences : S100Framework.AttributeModel.InformationAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(navwarnReferences);
+		[JsonIgnore]
+		public override string S100FC_name => "navwarnReferences";
+		[JsonIgnore]
 		public override string role => "theReferences";
 	}
+
 }
 
 namespace S100Framework.AttributeModel.S124.FeatureAssociation
@@ -1647,16 +1663,32 @@ namespace S100Framework.AttributeModel.S124.FeatureAssociation
 	using S100Framework.AttributeModel.S124.SimpleAttributes;
 	using S100Framework.AttributeModel.S124.ComplexAttributes;
 
+	/// <summary>
+	/// a feature association for the binding between a geo feature and the cartographically positioned location for text.
+	/// </summary>
 	public class TextAssociation : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(TextAssociation);
+		[JsonIgnore]
+		public override string S100FC_name => "Text association";
+		[JsonIgnore]
 		public override string[] roles => ["theCartographicText","thePositionProvider"];
 	}
+
+	/// <summary>
+	/// Association between a warning and the area impacted.
+	/// </summary>
 	public class areaAffected : S100Framework.AttributeModel.FeatureAssociation
 	{
 		[JsonIgnore]
+		public override string S100FC_code => nameof(areaAffected);
+		[JsonIgnore]
+		public override string S100FC_name => "Area Affected";
+		[JsonIgnore]
 		public override string[] roles => ["impacts","affects"];
 	}
+
 }
 
 namespace S100Framework.AttributeModel.S124.InformationTypes
@@ -1676,20 +1708,20 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(messageSeriesIdentifier),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new messageSeriesIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(noMessageOnHand),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new noMessageOnHand(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(referenceCategory),
 					lower = 1,
 					upper = 1,
@@ -1730,57 +1762,57 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(affectedChartPublications),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new affectedChartPublications(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(generalArea),
 					lower = 1,
 					upper = 2147483647,
 					CreateInstance = () => new generalArea(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(locality),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new locality(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(messageSeriesIdentifier),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new messageSeriesIdentifier(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(navwarnTitle),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new navwarnTitle(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(cancellationDate),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new cancellationDate(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(intService),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new intService(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(navwarnTypeGeneral),
 					lower = 1,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20],
 					CreateInstance = () => new navwarnTypeGeneral(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(publicationTime),
 					lower = 1,
 					upper = 1,
@@ -1850,15 +1882,15 @@ namespace S100Framework.AttributeModel.S124.InformationTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(qualityOfHorizontalMeasurement),
 					lower = 0,
 					upper = 1,
 					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
 					CreateInstance = () => new qualityOfHorizontalMeasurement(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(spatialAccuracy),
 					lower = 0,
 					upper = 1,
@@ -1900,33 +1932,33 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(restriction),
 					lower = 0,
 					upper = 1,
 					permitedValues = [7,8,14,25,27],
 					CreateInstance = () => new restriction(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(fixedDateRange),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new fixedDateRange(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(warningInformation),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new warningInformation(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureName),
 					lower = 0,
 					upper = 2147483647,
 					CreateInstance = () => new featureName(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(featureReference),
 					lower = 0,
 					upper = 2147483647,
@@ -1973,15 +2005,6 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 		public override string S100FC_code => nameof(NavwarnAreaAffected);
 		[JsonIgnore]
 		public override string S100FC_name => "NAVWARN Area Affected";
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-			];
-		#endregion
-
-		#region Attributes
-		#endregion
 	}
 
 	/// <summary>
@@ -1996,32 +2019,32 @@ namespace S100Framework.AttributeModel.S124.FeatureTypes
 
 		#region Catalogue
 		[JsonIgnore]
-		public override attributeBinding[] attributeBindingsCatalogue => [
-				new attributeBinding {
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				new attributeBindingDefinition {
 					attribute = nameof(scaleMinimum),
 					lower = 0,
 					upper = 1,
 					CreateInstance = () => new scaleMinimum(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(text),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new text(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textOffsetBearing),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetBearing(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textOffsetDistance),
 					lower = 1,
 					upper = 1,
 					CreateInstance = () => new textOffsetDistance(),
 				},
-				new attributeBinding {
+				new attributeBindingDefinition {
 					attribute = nameof(textRotation),
 					lower = 1,
 					upper = 1,
@@ -2084,7 +2107,7 @@ namespace S100Framework.AttributeModel.S124
 			resolver.Modifiers.Add(typeInfo => {
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$association",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(informationBinding<InformationAssociation.navwarnPreambleContent>), typeDiscriminator: "navwarnPreambleContent"));
@@ -2092,7 +2115,7 @@ namespace S100Framework.AttributeModel.S124
 				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$association",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureBinding<FeatureAssociation.TextAssociation>), typeDiscriminator: "TextAssociation"));
@@ -2100,7 +2123,7 @@ namespace S100Framework.AttributeModel.S124
 				}
 				if (typeInfo.Type == typeof(S100Framework.AttributeModel.Attribute)) {
 					typeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {
-						TypeDiscriminatorPropertyName = "$code",
+						TypeDiscriminatorPropertyName = "code",
 						IgnoreUnrecognizedTypeDiscriminators = true,
 					};
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(atoNNumber), typeDiscriminator: "atoNNumber"));

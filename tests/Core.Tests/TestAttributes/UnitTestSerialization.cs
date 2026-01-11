@@ -6,6 +6,7 @@ using Xunit.Abstractions;
 
 namespace TestAttributes.S101
 {
+    using CodeCapital.System.Text.Json;
     using JsonFlatten;
     using Newtonsoft.Json.Linq;
     using S100Framework.AttributeModel.S101;
@@ -100,10 +101,11 @@ namespace TestAttributes.S101
 
             var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
 
-            var jsonObject = JObject.Parse(json);
+            //var jsonObject = JObject.Parse(json);
 
-            var flatten = jsonObject.Flatten(includeNullAndEmptyValues: true);
+            //var flatten = jsonObject.Flatten(includeNullAndEmptyValues: true);
 
+            //var restored = flatten.Unflatten();
 
             var reloaded = System.Text.Json.JsonSerializer.Deserialize<Bridge>(json, jsonSerializerOptions);
 
