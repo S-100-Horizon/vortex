@@ -7,8 +7,8 @@ using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
-using S100Framework.Catalogues;
-using S100Framework.DomainModel;
+using S100FC;
+using S100FC.Catalogues;
 using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
 using System;
@@ -60,15 +60,15 @@ namespace VortexProAppModule
             TypeSelector = this.InformationTypeSelector,
             Types = (fc, p) => fc.InformationTypes.Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
-                return S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
+                return null;    // S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
             },
         };
 
         private InspectorHandle _inspectorHandleFeatureType => new() {
             TypeSelector = this.FeatureTypeSelector,
-            Types = (fc, p) => fc.FeatureTypesByPrimivive(p.Value).Select(e => e.Code),
+            Types = (fc, p) => fc.FeatureTypesByPrimitive(p.Value).Select(e => e.Code),
             CreateViewModel = (schema, code, type, pid) => {
-                return S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
+                return null;    // S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
             },
         };
 
@@ -448,18 +448,18 @@ namespace VortexProAppModule
             await QueuedTask.Run(() => {
                 var updated = false;
 
-                if (sender is ViewModelBase viewModel) {
-                    var json = viewModel.Serialize();
+                //if (sender is ViewModelBase viewModel) {
+                //    var json = viewModel.Serialize();
 
-                    if (Inspector.IsNull("json")) {
-                        Inspector["json"] = json;
-                        updated |= true;
-                    }
-                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
-                        Inspector["json"] = json;
-                        updated |= true;
-                    }
-                }
+                //    if (Inspector.IsNull("json")) {
+                //        Inspector["json"] = json;
+                //        updated |= true;
+                //    }
+                //    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
+                //        Inspector["json"] = json;
+                //        updated |= true;
+                //    }
+                //}
             }, TaskCreationOptions.None);
         }
 
@@ -467,19 +467,19 @@ namespace VortexProAppModule
             await QueuedTask.Run(() => {
                 var updated = false;
 
-                if (sender is FeatureViewModel viewModel) {
-                    var informationBindings = viewModel.GetInformationBindings();
+                //if (sender is FeatureViewModel viewModel) {
+                //    var informationBindings = viewModel.GetInformationBindings();
 
-                    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
-                    if (Inspector.IsNull("informationBindings") && informationBindings.Any()) {
-                        Inspector["informationBindings"] = json;
-                        updated |= true;
-                    }
-                    else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
-                        Inspector["informationBindings"] = json;
-                        updated |= true;
-                    }
-                }
+                //    var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                //    if (Inspector.IsNull("informationBindings") && informationBindings.Any()) {
+                //        Inspector["informationBindings"] = json;
+                //        updated |= true;
+                //    }
+                //    else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
+                //        Inspector["informationBindings"] = json;
+                //        updated |= true;
+                //    }
+                //}
             }, TaskCreationOptions.None);
         }
 
@@ -489,20 +489,20 @@ namespace VortexProAppModule
             await QueuedTask.Run(() => {
                 var updated = false;
 
-                if (sender is FeatureViewModel viewModel) {                    
-                    //var featureBindings = (Collection<featureBindingViewModel>)viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
-                    var featureBindings = viewModel.GetFeatureBindings();
+                //if (sender is FeatureViewModel viewModel) {                    
+                //    //var featureBindings = (Collection<featureBindingViewModel>)viewModel.GetType().GetProperty(propertyName).GetValue(viewModel);
+                //    var featureBindings = viewModel.GetFeatureBindings();
 
-                    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
-                    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
-                        Inspector["featurebindings"] = json;
-                        updated |= true;
-                    }
-                    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
-                        Inspector["featurebindings"] = json;
-                        updated |= true;
-                    }
-                }
+                //    var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                //    if (Inspector.IsNull("featurebindings") && featureBindings.Any()) {
+                //        Inspector["featurebindings"] = json;
+                //        updated |= true;
+                //    }
+                //    else if (string.Compare(json, Convert.ToString(Inspector["featurebindings"]), true) != 0) {
+                //        Inspector["featurebindings"] = json;
+                //        updated |= true;
+                //    }
+                //}
             }, TaskCreationOptions.None);
         }
 
@@ -526,7 +526,7 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
+            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
 
             return type;
         }
@@ -551,7 +551,7 @@ namespace VortexProAppModule
                 SelectedModelType = ModelTypes.Single(e => e.Code == code);
             }
 
-            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
+            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
 
             return type;
         }
@@ -593,15 +593,15 @@ namespace VortexProAppModule
             set => SetProperty(ref _isEditingEnabled, value);
         }
 
-        public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
-            get => _selectedInformationProperty;
-            set => SetProperty(ref _selectedInformationProperty, value);
-        }
+        //public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
+        //    get => _selectedInformationProperty;
+        //    set => SetProperty(ref _selectedInformationProperty, value);
+        //}
 
-        public SelectedFeatureTypeObjectViewModel SelectedFeatureProperty {
-            get => _selectedFeatureProperty;
-            set => SetProperty(ref _selectedFeatureProperty, value);
-        }
+        //public SelectedFeatureTypeObjectViewModel SelectedFeatureProperty {
+        //    get => _selectedFeatureProperty;
+        //    set => SetProperty(ref _selectedFeatureProperty, value);
+        //}
 
         public bool IsSelectedSchemaEnabled {
             get => _isSelectedSchemaEnabled;

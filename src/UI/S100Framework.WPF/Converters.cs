@@ -1,9 +1,10 @@
-﻿using S100Framework.DomainModel;
+﻿using S100FC;
 using System.Globalization;
 using System.Windows.Data;
 
 namespace S100Framework.WPF.Converters
 {
+#if TRISTATE
     public class TristateConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
@@ -31,4 +32,5 @@ namespace S100Framework.WPF.Converters
             return new Tristate<string>(strValue);
         }
     }
+#endif
 }

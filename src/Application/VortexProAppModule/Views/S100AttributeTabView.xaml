@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:s100="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF"
-             xmlns:pg="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF.PropertyGrid"
+             xmlns:pg="clr-namespace:S100Framework.WPF;assembly=S100Framework.WPF.S100AttributeEditor"
              xmlns:local="clr-namespace:VortexProAppModule.Views"
              xmlns:extensions="clr-namespace:ArcGIS.Desktop.Extensions;assembly=ArcGIS.Desktop.Extensions" 
              xmlns:vortexproappmodule="clr-namespace:VortexProAppModule" d:DataContext="{d:DesignInstance Type=vortexproappmodule:S100AttributeTabViewModel}"
@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/S100Framework.WPF;component/Themes/Generic.xaml"/>
+                <!--<ResourceDictionary Source="pack://application:,,,/S100Framework.WPF;component/Themes/Generic.xaml"/>-->
                 <extensions:DesignOnlyResourceDictionary Source="pack://application:,,,/ArcGIS.Desktop.Framework;component\Themes\Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

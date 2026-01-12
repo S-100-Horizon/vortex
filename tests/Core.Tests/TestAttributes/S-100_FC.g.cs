@@ -280,6 +280,7 @@ namespace S100FC
     public abstract class ComplexAttribute : attributeBinding, IAttributeBindings
     {
         [JsonInclude]
+        [JsonPropertyName("attr")]
         public attributeBinding[] attributeBindings { get; protected set; } = [];
 
         [JsonIgnore]
@@ -358,6 +359,7 @@ namespace S100FC
         public abstract string S100FC_name { get; }
 
         [JsonInclude]
+        [JsonPropertyName("attr")]
         public attributeBinding[] attributeBindings { get; protected set; } = [];
 
         //[JsonIgnore]
@@ -435,6 +437,7 @@ namespace S100FC
         public abstract string S100FC_name { get; }
 
         [JsonInclude]
+        [JsonPropertyName("attr")]
         public attributeBinding[] attributeBindings { get; protected set; } = [];
 
         //[JsonIgnore]
