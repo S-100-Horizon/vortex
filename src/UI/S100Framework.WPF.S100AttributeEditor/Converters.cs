@@ -36,7 +36,6 @@ namespace S100Framework.WPF.Converters
                 if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {
                     var method = propertyValue.GetType().GetMethod("get_listedValues", BindingFlags.Public | BindingFlags.Static);
                     return method!.Invoke(null, new object[] { /* parameters */ });
-                    //return propertyValue.listedValues;
                 }
             }
             if (value is Type type && type.IsEnum) {
