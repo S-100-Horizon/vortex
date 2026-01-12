@@ -1,15 +1,13 @@
-﻿using S100Framework.Catalogues;
-using S100FC;
+﻿using S100FC;
 using S100FC.S100;
+using S100Framework.Catalogues;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
-using System.Text.Json.Serialization;
 using YamlDotNet.Core;
 using YamlDotNet.Core.Events;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
-
 using Scalar = YamlDotNet.Core.Events.Scalar;
 
 namespace S100Framework.YAML
@@ -19,34 +17,6 @@ namespace S100Framework.YAML
         public static string Serialize(object dataset) => Serializer.Serialize(dataset);
         public static T Deserialize<T>(string yaml) => Deserializer.Deserialize<T>(yaml);
         public static object Deserialize(string yaml) => Deserializer.Deserialize(yaml);
-        public static bool IsDefault(object? node) {
-            if (node is not Node) return true;
-
-            //var type = node.GetType();
-            //var properties = type.GetProperties();
-
-            //foreach (var property in properties) {
-            //    if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
-            //        continue;
-
-            //    if ((property.GetGetMethod(true)?.IsStatic ?? property.GetSetMethod(true)?.IsStatic) == true)
-            //        continue;
-
-            //    //if (property.GetValue(node) == null)
-            //    //    continue;
-
-
-            //    return false;
-            //}
-
-            //return true;
-
-            var propertyId = 1;
-
-            var flattenedAttributes = FlattenAttributesRecursively(node, ref propertyId);
-
-            return flattenedAttributes.Count == 0;
-        }
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
         private readonly static FeatureCatalogue featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
@@ -68,80 +38,52 @@ namespace S100Framework.YAML
             var attributes = new List<YamlAttributeItem>();
 
             var type = obj.GetType();
-            var properties = type.GetProperties();
 
-            if (obj is IDependencies dependencies)
-                dependencies.RunValidationChecks();
+            var prop = type.GetProperty(
+                "attributeBindings",
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
+            );
 
-            foreach (var property in properties) {
-                if (property.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
-                    continue;
+            if (prop?.GetValue(obj) is IEnumerable bindings) {
+                foreach (var binding in bindings) {
+                    switch (binding) {
+                        case SimpleAttribute sa:
+                            var attribute = GetSimple100Attribute(sa);
+                            attributes.BuildAttributeItem(attribute.Value, sa.S100FC_code, attribute.Type, ref propertyId, parentId);
 
-                //if (property.GetAccessors(false).Any(x => x.IsStatic))                // Do not serialize static properties
-                //    continue;
+                            break;
 
-                if ((property.GetGetMethod(true)?.IsStatic ?? property.GetSetMethod(true)?.IsStatic) == true)
-                    continue;
+                        case ComplexAttribute ca:
+                            attributes.BuildAttributeItem(ca.attributeBindings, ca.S100FC_code, typeof(object), ref propertyId, parentId);
 
-                var propertyValue = property.GetValue(obj, null);
-
-                var required = IsRequired(obj, property);
-
-                try {
-                    attributes.BuildAttributeItem(propertyValue, property.Name, property.PropertyType, ref propertyId, parentId, required);
-                }
-                catch (Exception ex) {
-                    Console.WriteLine(ex.Message);
+                            break;
+                    }
                 }
             }
             return attributes;
         }
 
-        private static bool IsRequired(object obj, PropertyInfo property) {
-            var type = obj.GetType();
-            var properties = type.GetProperties();
+        private static (object? Value, Type Type) GetSimple100Attribute(SimpleAttribute simpleAttribute) {
+            return simpleAttribute switch {
+                BooleanAttribute attr => (attr.value, typeof(bool)),
+                IntegerAttribute attr => (attr.value, typeof(int)),
+                EnumerationAttribute attr => (attr.value, typeof(int)),
+                CodeListAttribute attr => (attr.value, typeof(int)),
+                RealAttribute attr => (attr.value, typeof(double)),
+                TimeAttribute attr => (attr.value, typeof(Time)),
+                DateAttribute attr => (attr.value, typeof(DateOnly)),
+                DateTimeAttribute attr => (attr.value, typeof(DateTime)),
+                TextAttribute attr => (attr.value, typeof(string)),
+                S100_TruncatedDateAttribute attr => (attr.value, typeof(string)),
+                UrnTimeAttribute attr => (attr.value, typeof(string)),
+                UriTimeAttribute attr => (attr.value, typeof(string)),
+                UrlTimeAttribute attr => (attr.value, typeof(string)),
 
-            // If property should be unknown, its required
-            var unknownValueAttr = property.GetCustomAttribute<UnknownValueAttribute>();
-            if (unknownValueAttr is not null)
-                return true;
-
-            var mandatory = property.GetCustomAttribute<MandatoryAttribute>();
-            if (mandatory is not null)
-                return true;
-
-            // If the property (list) has a lowerAttribute, it should be required if lower > 1
-            var multiplicityAttr = property.GetCustomAttribute<MultiplicityAttribute>();
-            if (multiplicityAttr is not null) {
-                if (multiplicityAttr.Lower > 0)
-                    return true;
-            }
-
-            // If the property is a dependent property, it should be required IF the master property is null.
-            var dependentAttr = property.GetCustomAttribute<DependentUnknownValueAttribute>();
-            if (dependentAttr is not null) {
-                var dependentValue = properties.FirstOrDefault(p => p.Name == dependentAttr.PropertyName)?.GetValue(obj);
-
-                if (dependentValue is null)
-                    return true;
-            }
-
-            // If its conditional depencency is a boolean and true, this property is required
-            var conditionalDependencyAttr = property.GetCustomAttribute<ConditionalUnknownDependencyAttribute>();
-            if (conditionalDependencyAttr is not null) {
-                var d = (IDependencies)obj;
-
-                return d.ConditionalUnknown(conditionalDependencyAttr.PropertyName);
-            }
-
-            return false;
+                _ => throw new InvalidCastException()
+            };
         }
 
-        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId, bool required = false) {
-            // If the attribute is not required and the value is null, omit from yaml
-            if (!required && propertyValue == null)
-                return;
-
+        private static void BuildAttributeItem(this List<YamlAttributeItem> attributes, object? propertyValue, string propertyName, Type propertyType, ref int propertyId, int? parentId) {
             var typed = Nullable.GetUnderlyingType(propertyType) ?? propertyType;
 
             switch (typed) {
@@ -215,8 +157,7 @@ namespace S100Framework.YAML
                     if (propertyValue is not IEnumerable collection)
                         break;
 
-                    // If collection is required but empty
-                    if (required && !collection.GetEnumerator().MoveNext()) {
+                    if (!collection.GetEnumerator().MoveNext()) {
                         attributes.Add(new(propertyName, null, null, parentId));
                     }
 
@@ -230,37 +171,21 @@ namespace S100Framework.YAML
                     break;
 
                 case Type t when t.IsClass:
-                    if (propertyValue is IDependencies dependencies)
-                        dependencies.RunValidationChecks();
-
-                    // If the property is a nullable object, but still required, add it with null value
-                    if (propertyValue == null) {
-                        attributes.Add(new(propertyName, null, null, parentId));
-                        break;
-                    }
-
-
                     // Add root object with ID and value = null
-                    attributes.Add(new(t.Name, null, propertyId, parentId));
+                    attributes.Add(new(propertyName, null, propertyId, parentId));
 
                     parentId = propertyId;
                     propertyId++;
 
-                    var properties = t.GetProperties();
+                    foreach (var property in propertyValue as IEnumerable<attributeBinding> ?? []) {
+                        if (property is SimpleAttribute sp) {
+                            var attribute = GetSimple100Attribute(sp);
+                            attributes.BuildAttributeItem(attribute.Value, property.S100FC_code, attribute.Type, ref propertyId, parentId);
+                        }
+                        else if (property is ComplexAttribute cp) {
 
-                    foreach (var propInfo in properties) {
-                        if (propInfo.GetCustomAttribute<JsonIgnoreAttribute>(true) != null)   // Include JsonIgnore to YAML serialization
-                            continue;
-
-                        var propVal = propInfo.GetValue(propertyValue);
-                        var objectName = propInfo.Name;
-
-                        var propType = propInfo.PropertyType;
-                        propType = Nullable.GetUnderlyingType(propType) ?? propType;
-
-                        var r = IsRequired(propertyValue, propInfo);
-
-                        attributes.BuildAttributeItem(propVal, objectName, propType, ref propertyId, parentId, r);
+                            attributes.BuildAttributeItem(cp.attributeBindings, cp.S100FC_code, typeof(object), ref propertyId, parentId);
+                        }
                     }
 
                     break;
@@ -792,7 +717,7 @@ namespace S100Framework.YAML
 
                                 var attributeList = BuildAttributeList(parser);
 
-                                InformationNode informationNode = BuildInformationNodeObject(attributeList, information.Name);
+                                S100FC.InformationType informationNode = BuildInformationNodeObject(attributeList, information.Name);
 
                                 information.Attributes = informationNode;
 
@@ -879,7 +804,7 @@ namespace S100Framework.YAML
 
                 return attributes;
             }
-            private static InformationNode BuildInformationNodeObject(List<YamlAttributeItem> attributes, string type) {
+            private static S100FC.InformationType BuildInformationNodeObject(List<YamlAttributeItem> attributes, string type) {
                 var informationType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{type}", true) ?? default;
 
                 var informationNode = Activator.CreateInstance(informationType);
@@ -995,7 +920,7 @@ namespace S100Framework.YAML
                     }
                 }
 
-                return informationNode as InformationNode;
+                return informationNode as S100FC.InformationType;
             }
             private static S100FC.FeatureType BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
                 var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
@@ -1116,12 +1041,12 @@ namespace S100Framework.YAML
 
         private class NodeConverter : IYamlTypeConverter
         {
-            public bool Accepts(Type type) => typeof(Node).IsAssignableFrom(type);
+            public bool Accepts(Type type) => typeof(S100FC.FeatureType).IsAssignableFrom(type) || typeof(S100FC.InformationType).IsAssignableFrom(type);       
 
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                if (value is not Node) return;
+                if (value is not S100FC.FeatureType or S100FC.InformationType) return;
 
                 var propertyId = 1;
 
@@ -1143,7 +1068,7 @@ namespace S100Framework.YAML
 
                     if (attr.Value is not null) {
                         emitter.Emit(new Scalar("Value"));
-                        emitter.Emit(new Scalar(attr.Value));   // Todo: Handle empty strings
+                        emitter.Emit(new Scalar(attr.Value));   
                     }
 
                     if (attr.Id.HasValue) {

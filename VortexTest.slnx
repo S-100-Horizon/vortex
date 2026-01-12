@@ -22,6 +22,7 @@
     <Project Path="src/Core/S100Framework.Topology/S100Framework.Topology.csproj">
       <Build Solution="Release|*" Project="false" />
     </Project>
+    <Project Path="src/Core/S100Framework.YAML/S100Framework.YAML.csproj" />
     <Project Path="src/UI/S100Framework.WPF.S100AttributeEditor/S100Framework.WPF.S100AttributeEditor.csproj" Id="740ebc84-f14b-4eeb-a09e-f789639b626e" />
   </Folder>
   <Folder Name="/Tests/">
