@@ -1,6 +1,7 @@
 ﻿using PropertyGridApplication;
-using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100FC.S101;
+using S100FC.S101.ComplexAttributes;
+using S100FC.S101.FeatureTypes;
 using S100Framework.WPF;
 using System.Text.Json;
 using System.Windows;
@@ -23,36 +24,27 @@ namespace SelectorUI
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            //var viewModel = new CustomViewModel() {
-            //    buoyShape = buoyShape.Barrel,
-            //    MyValue = 123,
-            //};
-            //viewModel.colour.Add((colour)3);
-            //viewModel.featureName.Add(new S100Framework.WPF.ViewModel.S101.featureNameViewModel {
-            //    language = "eng",
-            //    name = "Hello World",
-            //    nameUsage = nameUsage.DefaultNameDisplay,
-            //});
-
             var featureType = new TestFeature {
-
             };
-            featureType.featuresDetectedNested.featureName.name = "Nested";
-            featureType.featuresDetectedNested.featureName.language = "eng";
+            featureType.featuresDetectedNested = new featuresDetectedNested {
+                featureName = [new featureName {
+                    name ="Nested",
+                    language="eng",
+                }],
+            };
 
             featureType.categoryOfTemporalVariation = 1;
             featureType.dataAssessment = 1;
-            featureType.featuresDetected.significantFeaturesDetected = true;
-            featureType.featuresDetected.leastDepthOfDetectedFeaturesMeasured = false;
-            featureType.zoneOfConfidence.categoryOfZoneOfConfidenceInData = 1;
 
-            var selectedObject = new S100AttributeEditorViewModel(featureType);
+            featureType.featuresDetected = new featuresDetected {
+                significantFeaturesDetected = true,
+                leastDepthOfDetectedFeaturesMeasured = false,
+            };
+            featureType.zoneOfConfidence = [new zoneOfConfidence {
+                categoryOfZoneOfConfidenceInData = 1,
+            }];
 
-            //var selectedObject = new SelectedObject {
-            //    code = featureType.S100FC_name,
-            //    attributeBindings = featureType.attributeBindings(),
-            //    attributeValues = [.. featureType.attributes],
-            //};            
+            var selectedObject = new S100AttributeEditorViewModel(featureType);         
 
             this.PropertyGrid.SelectedObject = selectedObject;
 
