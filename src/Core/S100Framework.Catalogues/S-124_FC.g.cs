@@ -2225,6 +2225,14 @@ namespace S100FC.S124
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
 		public static string[] InformationTypes => ["References","NavwarnPreamble","SpatialQuality"];
 		public static string[] FeatureTypes => ["References","NavwarnPreamble","SpatialQuality"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => [],
+			Primitives.point => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"],
+			Primitives.pointSet => [],
+			Primitives.curve => ["NavwarnPart","NavwarnAreaAffected"],
+			Primitives.surface => ["NavwarnPart","NavwarnAreaAffected"],
+			_ => throw new InvalidOperationException(),
+		};
 	}
 
 	public static class Extensions {

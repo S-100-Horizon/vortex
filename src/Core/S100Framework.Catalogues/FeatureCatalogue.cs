@@ -65,7 +65,7 @@ namespace S100FC.Catalogues
 
         public ImmutableArray<AssociationType> InformationAssociationTypes { get; set; } = ImmutableArray<AssociationType>.Empty;
 
-        //public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimivive { get; set; } = (p) => ImmutableArray<FeatureType>.Empty;
+        public Func<Primitives, ImmutableArray<FeatureType>> FeatureTypesByPrimitive { get; set; } = (p) => ImmutableArray<FeatureType>.Empty;
 
         public JsonSerializerOptions DefaultJsonOptions { get; init; } = new JsonSerializerOptions();
 
@@ -80,7 +80,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S101.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S101.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S101.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S101.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S101.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S101.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -93,7 +93,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S122.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S122.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S122.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S122.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S122.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S122.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -106,7 +106,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S123.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S123.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S123.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S123.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S123.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S123.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -119,7 +119,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S124.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S124.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S124.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S124.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S124.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S124.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -132,7 +132,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S127.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S127.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S127.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S127.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S127.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S127.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -145,7 +145,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S128.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S128.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S128.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S128.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S128.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S128.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,
@@ -158,7 +158,7 @@ namespace S100FC.Catalogues
                 FeatureAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S131.Summary.FeatureAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(S100FC.S131.Summary.InformationTypes.Select(e=>new InformationType(e)).ToArray()),
                 InformationAssociationTypes = ImmutableArray.Create<AssociationType>(S100FC.S131.Summary.InformationAssociationTypes.Select(e=>new AssociationType(e)).ToArray()),
-                //FeatureTypesByPrimivive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S131.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
+                FeatureTypesByPrimitive = (p) => ImmutableArray.Create<FeatureType>(S100FC.S131.Summary.PrimitiveFeatures(p).Select(e=> new FeatureType(e)).ToArray()),
                 DefaultJsonOptions = S100FC.S131.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
                     Encoder =System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                     PropertyNameCaseInsensitive = true,

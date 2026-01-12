@@ -8,6 +8,7 @@ using Xunit.Abstractions;
 
 namespace TestAttributes
 {
+    using S100FC;
     using S100FC.S100;
     using System.Reflection;
     using System.Security.Cryptography;
@@ -481,6 +482,15 @@ namespace TestAttributes
             var featureBindingsCreatorKeys = new List<string>();
             var featureBindingsCreator = new StringBuilder();
 
+            var featurePrimitives = new Dictionary<Primitives, ICollection<string>> {
+                { Primitives.noGeometry, [] },
+                { Primitives.point, [] },
+                { Primitives.pointSet, [] },
+                { Primitives.curve, [] },
+                { Primitives.surface, [] },
+            };
+
+
             #region S100_FC_FeatureType
             var featureTypesKnown = new List<string>();
             {
@@ -498,6 +508,8 @@ namespace TestAttributes
                 do {
                     notFinished = false;
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
+                        var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
+
                         var success = this.ClassBuilder(roslyn, element, "FeatureType", new ClassBuilderHost {
                             KnownTypes = featureTypesKnown,
                             KnownTypesAbstract = abstractTypesKnown,
@@ -512,6 +524,11 @@ namespace TestAttributes
                             if (permittedValues.Any()) {
                                 b.AppendLine();
                                 b.AppendLine($"\t\tpublic override Primitives[] permittedPrimitives => [{string.Join(',', permittedValues)}];");
+
+                                foreach (var p in element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager)) {
+                                    var value = Enum.Parse<Primitives>(p.Value!);
+                                    featurePrimitives[value].Add(code);
+                                }
                             }
                         });
                         if (!success) {
@@ -558,6 +575,15 @@ namespace TestAttributes
 
                 types = informationTypesKnown.Select(e => $"\"{e}\"");
                 roslyn.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', types)}];");
+
+                roslyn.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");
+                roslyn.AppendLine($"\t\t\tPrimitives.noGeometry => [{string.Join(',', featurePrimitives[Primitives.noGeometry].Select(e => $"\"{e}\""))}],");
+                roslyn.AppendLine($"\t\t\tPrimitives.point => [{string.Join(',', featurePrimitives[Primitives.point].Select(e => $"\"{e}\""))}],");
+                roslyn.AppendLine($"\t\t\tPrimitives.pointSet => [{string.Join(',', featurePrimitives[Primitives.pointSet].Select(e => $"\"{e}\""))}],");
+                roslyn.AppendLine($"\t\t\tPrimitives.curve => [{string.Join(',', featurePrimitives[Primitives.curve].Select(e => $"\"{e}\""))}],");
+                roslyn.AppendLine($"\t\t\tPrimitives.surface => [{string.Join(',', featurePrimitives[Primitives.surface].Select(e => $"\"{e}\""))}],");
+                roslyn.AppendLine("\t\t\t_ => throw new InvalidOperationException(),");
+                roslyn.AppendLine("\t\t};");
 
                 roslyn.AppendLine("\t}");
                 roslyn.AppendLine();

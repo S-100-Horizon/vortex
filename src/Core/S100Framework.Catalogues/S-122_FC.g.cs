@@ -4581,6 +4581,14 @@ namespace S100FC.S122
 		public static string[] FeatureAssociationTypes => ["TextAssociation"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
 		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["FeatureType"],
+			Primitives.point => ["TextPlacement"],
+			Primitives.pointSet => [],
+			Primitives.curve => ["MarineProtectedArea"],
+			Primitives.surface => ["InformationArea","MarineProtectedArea","RestrictedArea","VesselTrafficServiceArea","DataCoverage","QualityOfNonBathymetricData"],
+			_ => throw new InvalidOperationException(),
+		};
 	}
 
 	public static class Extensions {

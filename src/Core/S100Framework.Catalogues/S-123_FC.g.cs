@@ -6735,6 +6735,14 @@ namespace S100FC.S123
 		public static string[] FeatureAssociationTypes => ["coreAggregation","fuzzyZoneAggregation","ServiceProvisionArea"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
 		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["FeatureType","FuzzyAreaAggregate","RadioServiceAreaAggregate"],
+			Primitives.point => ["ConnectivitySubscriptionArea","RadioStation"],
+			Primitives.pointSet => [],
+			Primitives.curve => [],
+			Primitives.surface => ["ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","SearchAndRescueRegion","WeatherForecastAndWarningArea","DataCoverage","QualityOfNonBathymetricData"],
+			_ => throw new InvalidOperationException(),
+		};
 	}
 
 	public static class Extensions {
