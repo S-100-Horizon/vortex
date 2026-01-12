@@ -4041,6 +4041,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -4089,6 +4090,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -4197,6 +4199,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
@@ -4257,6 +4260,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -4286,6 +4290,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -4353,6 +4358,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -4465,6 +4471,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -4556,6 +4563,7 @@ namespace S100FC.S122.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
@@ -4580,7 +4588,7 @@ namespace S100FC.S122
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ProtectedAreaAuthority","RelatedOrganisation","InclusionType","PermissionType","ServiceControl","SpatialAssociation"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
-		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
+		public static string[] FeatureTypes => ["FeatureType","InformationArea","MarineProtectedArea","RestrictedArea","VesselTrafficServiceArea","DataCoverage","QualityOfNonBathymetricData","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["FeatureType"],
 			Primitives.point => ["TextPlacement"],

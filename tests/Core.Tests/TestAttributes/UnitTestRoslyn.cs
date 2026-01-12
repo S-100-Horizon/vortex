@@ -570,6 +570,7 @@ namespace TestAttributes
                             var permittedValues = element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Select(e => $"Primitives.{e.Value!}");
                             if (permittedValues.Any()) {
                                 b.AppendLine();
+                                b.AppendLine("\t\t[JsonIgnore]");
                                 b.AppendLine($"\t\tpublic override Primitives[] permittedPrimitives => [{string.Join(',', permittedValues)}];");
 
                                 foreach (var p in element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager)) {
@@ -620,7 +621,7 @@ namespace TestAttributes
                 types = informationTypesKnown.Select(e => $"\"{e}\"");
                 roslyn.AppendLine($"\t\tpublic static string[] InformationTypes => [{string.Join(',', types)}];");
 
-                types = informationTypesKnown.Select(e => $"\"{e}\"");
+                types = featureTypesKnown.Select(e => $"\"{e}\"");
                 roslyn.AppendLine($"\t\tpublic static string[] FeatureTypes => [{string.Join(',', types)}];");
 
                 roslyn.AppendLine("\t\tpublic static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {");

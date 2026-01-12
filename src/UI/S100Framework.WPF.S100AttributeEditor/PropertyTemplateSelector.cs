@@ -12,27 +12,43 @@ namespace S100Framework.WPF
 {
     public class PropertyTemplateSelector : DataTemplateSelector
     {
-        public DataTemplate StringEditorTemplate { get; set; }
-        public DataTemplate IntegerEditorTemplate { get; set; }
-        public DataTemplate BooleanEditorTemplate { get; set; }
-        public DataTemplate EnumEditorTemplate { get; set; }
-        public DataTemplate ComplexEditorTemplate { get; set; }
+        public DataTemplate? BooleanEditorTemplate { get; set; } = default;
+        public DataTemplate? IntegerEditorTemplate { get; set; } = default;
+        public DataTemplate? RealEditorTemplate { get; set; } = default;
+        public DataTemplate? TextEditorTemplate { get; set; } = default;
+        public DataTemplate? TruncatedDateEditorTemplate { get; set; } = default;
+        public DataTemplate? DateOnlyEditorTemplate { get; set; } = default;
+        public DataTemplate? DateTimeEditorTemplate { get; set; } = default;
+        public DataTemplate? TimeEditorTemplate { get; set; } = default;
+        public DataTemplate? EnumEditorTemplate { get; set; } = default;
+        public DataTemplate? ComplexEditorTemplate { get; set; } = default;
 
-        public override DataTemplate SelectTemplate(object item, DependencyObject container) {
+        public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
             if (item is SimpleAttributeViewModel simpleAttribute) {
                 if (simpleAttribute.valueType.Equals("boolean"))
                     return BooleanEditorTemplate;
                 if (simpleAttribute.valueType.Equals("integer"))
                     return IntegerEditorTemplate;
+                if (simpleAttribute.valueType.Equals("real"))
+                    return RealEditorTemplate;
+                if (simpleAttribute.valueType.Equals("S100_TruncatedDate"))
+                    return TruncatedDateEditorTemplate;
+                if (simpleAttribute.valueType.Equals("date"))
+                    return DateOnlyEditorTemplate;
+                if (simpleAttribute.valueType.Equals("datetime"))
+                    return DateTimeEditorTemplate;
+                if (simpleAttribute.valueType.Equals("time"))
+                    return TimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("enumeration"))
                     return EnumEditorTemplate;
+                ;
             }
 
             if (item is ComplexAttributeViewModel complextAttribute) {
                 return ComplexEditorTemplate;
             }
 
-            return StringEditorTemplate; // Default
+            return TextEditorTemplate; // Default
         }
 
         private static bool IsNumericType(Type type) {

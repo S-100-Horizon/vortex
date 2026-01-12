@@ -41,8 +41,6 @@ namespace VortexProAppModule
             public Func<Inspector, string, Type> TypeSelector { get; set; }
 
             public Func<FeatureCatalogue, Primitives?, IEnumerable<string>> Types { get; set; }
-
-            public Func<string, string, string, string?, S100Framework.WPF.ViewModel.ViewModelBase> CreateViewModel { get; set; }
         }
 
         internal record SelectedTemplate(string Schema, string Code)
@@ -59,17 +57,17 @@ namespace VortexProAppModule
         private InspectorHandle _inspectorHandleInformationType => new() {
             TypeSelector = this.InformationTypeSelector,
             Types = (fc, p) => fc.InformationTypes.Select(e => e.Code),
-            CreateViewModel = (schema, code, type, pid) => {
-                return null;    // S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
-            },
+            //CreateViewModel = (schema, code, type, pid) => {
+            //    return null;    // S100Framework.WPF.Helper.CreateInformationTypeViewModel(schema, type, pid);
+            //},
         };
 
         private InspectorHandle _inspectorHandleFeatureType => new() {
             TypeSelector = this.FeatureTypeSelector,
             Types = (fc, p) => fc.FeatureTypesByPrimitive(p.Value).Select(e => e.Code),
-            CreateViewModel = (schema, code, type, pid) => {
-                return null;    // S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
-            },
+            //CreateViewModel = (schema, code, type, pid) => {
+            //    return null;    // S100Framework.WPF.Helper.CreateFeatureTypeViewModel(schema, type, pid);
+            //},
         };
 
 
@@ -77,17 +75,17 @@ namespace VortexProAppModule
 
         private SelectedType _selectedModelType = default;
 
-        private S100AttributeEditorControlHost _host;
+        //private S100AttributeEditorControlHost _host;
 
         private ObservableCollection<string> _schemas = new();
 
         private string _selectedSchema = default;
 
-        private object _selectedProperty = default;
+        private S100AttributeEditorViewModel _selectedProperty = default;
 
-        private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
+        //private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
 
-        private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
+        //private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
 
         private Boolean _isEditingEnabled = false;
 
@@ -268,16 +266,6 @@ namespace VortexProAppModule
                     if (catalogues.Any())
                         return catalogues;
                     return _catalogues;
-
-
-                    //if (!string.IsNullOrEmpty(tableNames.Item2)) {
-                    //    return _catalogues.SingleOrDefault(e => e.Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(tableNames.Item2, StringComparison.OrdinalIgnoreCase));
-                    //}
-
-                    //return geodatabase.GetConnector() switch {
-                    //    FileGeodatabaseConnectionPath fileGeodatabase => _catalogues.SingleOrDefault(e => e.Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.OrdinalIgnoreCase) || e.Replace("-", string.Empty).Equals(IO.Path.GetFileNameWithoutExtension(fileGeodatabase.Path.AbsolutePath), StringComparison.InvariantCultureIgnoreCase)),
-                    //    _ => null,
-                    //};
                 }, TaskCreationOptions.None);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
@@ -294,7 +282,7 @@ namespace VortexProAppModule
                     //}
                 });
 
-                this.SelectedProperty = await QueuedTask.Run((Func<S100Framework.WPF.ViewModel.ViewModelBase>)(() => {
+                this.SelectedProperty = await QueuedTask.Run(() => {
                     var schema = Convert.ToString(inspector["ps"]);
 
                     if (string.IsNullOrEmpty(schema)) {
@@ -321,76 +309,76 @@ namespace VortexProAppModule
                         return default;
                     }
 
-                    var viewmodel = this._inspectorHandle.CreateViewModel(schema, code, type.Name, name);
-
                     object instance;
                     if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
                         instance = Activator.CreateInstance(type);
                     }
                     else {
                         var json = Convert.ToString(inspector["JSON"]);
-                        instance = System.Text.Json.JsonSerializer.Deserialize(json, type);
+                        instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 
-                    var methodInfo = viewmodel.GetType().GetMethod("Load");
-                    methodInfo.Invoke(viewmodel, new object[1] { instance });
+                    var viewModel = new S100AttributeEditorViewModel((S100FC.FeatureType)instance);
 
-                    SelectedObjectViewModel selectedObjectViewModel = null;
+                    return viewModel;
 
-                    if (viewmodel is InformationViewModel informationViewModel) {
-                        if (!inspector.IsNull("informationbindings")) {
-                            var json = Convert.ToString(inspector["informationbindings"]);
-                            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
-                            parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
-                        }
+                    //var methodInfo = viewmodel.GetType().GetMethod("Load");
+                    //methodInfo.Invoke(viewmodel, new object[1] { instance });
 
-                        this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel);
-                        selectedObjectViewModel = this.SelectedInformationProperty;
-                    }
-                    if (viewmodel is FeatureViewModel featureViewModel) {
-                        var primitive = inspector.Shape?.GeometryType switch {
-                            ArcGIS.Core.Geometry.GeometryType.Point => Primitives.point,
-                            ArcGIS.Core.Geometry.GeometryType.Multipoint => Primitives.pointSet,
-                            ArcGIS.Core.Geometry.GeometryType.Polyline => Primitives.curve,
-                            ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
-                            null => Primitives.noGeometry,
-                            _ => throw new InvalidOperationException()
-                        };
+                    //if (viewmodel is InformationViewModel informationViewModel) {
+                    //    if (!inspector.IsNull("informationbindings")) {
+                    //        var json = Convert.ToString(inspector["informationbindings"]);
+                    //        var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                    //        parseInformationBindingsInfo.Invoke(viewmodel, new object[1] { json });
+                    //    }
 
-                        //  informationBinding
-                        if (!inspector.IsNull("informationbindings")) {
-                            var json = Convert.ToString(inspector["informationbindings"]);
-                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
-                                var bindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(json, featureCatalogue.DefaultJsonOptions);
-                                var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
-                                parseInformationBindingsInfo.Invoke(viewmodel, new object[] { bindings });
-                            }
-                        }
+                    //    this.SelectedInformationProperty = new SelectedInformationTypeObjectViewModel(informationViewModel);
+                    //    selectedObjectViewModel = this.SelectedInformationProperty;
+                    //}
+                    //if (viewmodel is FeatureViewModel featureViewModel) {
+                    //    var primitive = inspector.Shape?.GeometryType switch {
+                    //        ArcGIS.Core.Geometry.GeometryType.Point => Primitives.point,
+                    //        ArcGIS.Core.Geometry.GeometryType.Multipoint => Primitives.pointSet,
+                    //        ArcGIS.Core.Geometry.GeometryType.Polyline => Primitives.curve,
+                    //        ArcGIS.Core.Geometry.GeometryType.Polygon => Primitives.surface,
+                    //        null => Primitives.noGeometry,
+                    //        _ => throw new InvalidOperationException()
+                    //    };
 
-                        //  featureBinding                        
-                        if (!inspector.IsNull("featurebindings")) {
-                            var json = Convert.ToString(inspector["featurebindings"]);
-                            if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
-                                var bindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, featureCatalogue.DefaultJsonOptions);
-                                var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
-                                parseFeatureBindingsInfo.Invoke(viewmodel, new object[] { bindings });
-                            }
-                        }
+                    //    //  informationBinding
+                    //    if (!inspector.IsNull("informationbindings")) {
+                    //        var json = Convert.ToString(inspector["informationbindings"]);
+                    //        if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                    //            var bindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                    //            var parseInformationBindingsInfo = viewmodel.GetType().GetMethod("ParseInformationBindings");
+                    //            parseInformationBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                    //        }
+                    //    }
 
-                        this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
-                        selectedObjectViewModel = this.SelectedFeatureProperty;
-                    }
+                    //    //  featureBinding                        
+                    //    if (!inspector.IsNull("featurebindings")) {
+                    //        var json = Convert.ToString(inspector["featurebindings"]);
+                    //        if (!string.IsNullOrEmpty(json) && !json.Equals("[]")) {
+                    //            var bindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(json, featureCatalogue.DefaultJsonOptions);
+                    //            var parseFeatureBindingsInfo = viewmodel.GetType().GetMethod("ParseFeatureBindings");
+                    //            parseFeatureBindingsInfo.Invoke(viewmodel, new object[] { bindings });
+                    //        }
+                    //    }
 
-                    //  Hooking up changed events
-                    if (selectedObjectViewModel != null) {
-                        selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
-                        selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
-                        selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
-                        selectedObjectViewModel.InformationBindingCollectionChanged += this.OnInformationBindingCollectionChanged;
-                        selectedObjectViewModel.FeatureBindingCollectionChanged += this.OnFeatureBindingCollectionChanged;
-                    }
-                    return viewmodel;
-                }), TaskCreationOptions.None);
+                    //    this.SelectedFeatureProperty = new SelectedFeatureTypeObjectViewModel(featureViewModel, primitive);
+                    //    selectedObjectViewModel = this.SelectedFeatureProperty;
+                    //}
+
+                    ////  Hooking up changed events
+                    //if (selectedObjectViewModel != null) {
+                    //    selectedObjectViewModel.PropertyChanged += this.OnPropertyChanged;
+                    //    selectedObjectViewModel.CollectionChanged += this.OnCollectionChanged;
+                    //    selectedObjectViewModel.CollectionItemChanged += this.OnCollectionItemChanged;
+                    //    selectedObjectViewModel.InformationBindingCollectionChanged += this.OnInformationBindingCollectionChanged;
+                    //    selectedObjectViewModel.FeatureBindingCollectionChanged += this.OnFeatureBindingCollectionChanged;
+                    //}
+                    //return viewmodel;
+                }, TaskCreationOptions.None);
 
                 if (SelectedProperty == default) {
                     SelectedSchema = default;
@@ -578,7 +566,7 @@ namespace VortexProAppModule
             set => SetProperty(ref _selectedModelType, value);
         }
 
-        public object SelectedProperty {
+        public S100AttributeEditorViewModel SelectedProperty {
             get => _selectedProperty;
             set => SetProperty(ref _selectedProperty, value);
         }
