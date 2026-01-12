@@ -51,6 +51,8 @@ namespace PropertyGridApplication
             set { base.SetAttribute(value); }
             get { return base.GetAttributeValue<featuresDetectedNested>(nameof(featuresDetectedNested)); }
         }
+
+        public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
     }
 
     public class TestFeature : QualityOfBathymetricData

@@ -3419,7 +3419,7 @@ namespace S100FC.S128.FeatureTypes
 	/// <summary>
 	/// An element within a catalogue of elements.
 	/// </summary>
-	public class CatalogueElement : S100FC.FeatureType
+	public abstract class CatalogueElement : S100FC.FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CatalogueElement);
@@ -3614,7 +3614,7 @@ namespace S100FC.S128.FeatureTypes
 	/// <summary>
 	/// A physical or electronic product, that is primarily intended for navigation.
 	/// </summary>
-	public class NavigationalProduct : CatalogueElement
+	public abstract class NavigationalProduct : CatalogueElement
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationalProduct);

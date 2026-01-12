@@ -654,8 +654,11 @@ namespace TestAttributes
                 baseClass = $"{superType.Value}";
             }
 
+            var accessibility = "public";
+
             if (element.Attribute("isAbstract") != default && bool.Parse(element.Attribute("isAbstract")!.Value)) {
                 host.KnownTypesAbstract.Add(code);
+                accessibility = "public abstract";
             }
 
             host.KnownTypes.Add(code);
@@ -665,7 +668,7 @@ namespace TestAttributes
             roslyn.AppendLine($"\t/// {definition}");
             roslyn.AppendLine("\t/// </summary>");
 
-            roslyn.AppendLine($"\tpublic class {code} : {baseClass}");
+            roslyn.AppendLine($"\t{accessibility} class {code} : {baseClass}");
             roslyn.AppendLine($"\t{{");
             roslyn.AppendLine("\t\t[JsonIgnore]");
             roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");

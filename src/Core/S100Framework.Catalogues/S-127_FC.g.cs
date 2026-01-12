@@ -3789,7 +3789,7 @@ namespace S100FC.S127.InformationTypes
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
 	/// </summary>
-	public class InformationType : S100FC.InformationType
+	public abstract class InformationType : S100FC.InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationType);
@@ -3865,7 +3865,7 @@ namespace S100FC.S127.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : InformationType
+	public abstract class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -4673,7 +4673,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
 	/// </summary>
-	public class FeatureType : S100FC.FeatureType
+	public abstract class FeatureType : S100FC.FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FeatureType);
@@ -4813,7 +4813,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// A feature often associated with contact information for an organization that exercises a management role or offers a service in the location.
 	/// </summary>
-	public class OrganizationContactArea : FeatureType
+	public abstract class OrganizationContactArea : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OrganizationContactArea);
@@ -4842,7 +4842,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// A location which may be supervised by a responsible or controlling authority.
 	/// </summary>
-	public class SupervisedArea : OrganizationContactArea
+	public abstract class SupervisedArea : OrganizationContactArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SupervisedArea);
@@ -4871,7 +4871,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// A service feature generally involving one or more reports from the requester, including communications not strictly considered "reporting".
 	/// </summary>
-	public class ReportableServiceArea : SupervisedArea
+	public abstract class ReportableServiceArea : SupervisedArea
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ReportableServiceArea);

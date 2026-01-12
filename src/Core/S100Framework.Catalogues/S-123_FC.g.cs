@@ -3892,7 +3892,7 @@ namespace S100FC.S123.InformationTypes
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
 	/// </summary>
-	public class InformationType : S100FC.InformationType
+	public abstract class InformationType : S100FC.InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationType);
@@ -3980,7 +3980,7 @@ namespace S100FC.S123.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : InformationType
+	public abstract class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -5161,7 +5161,7 @@ namespace S100FC.S123.FeatureTypes
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
 	/// </summary>
-	public class FeatureType : S100FC.FeatureType
+	public abstract class FeatureType : S100FC.FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FeatureType);
@@ -6490,7 +6490,7 @@ namespace S100FC.S123.FeatureTypes
 	/// <summary>
 	/// Aggregation of a geographic feature describing a service or phenomenon with zones of different confidence about the availability of the service, occurrence of the phenomenon, or applicability of the information described by the geographic feature.
 	/// </summary>
-	public class FuzzyAreaAggregate : FeatureType
+	public abstract class FuzzyAreaAggregate : FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FuzzyAreaAggregate);
