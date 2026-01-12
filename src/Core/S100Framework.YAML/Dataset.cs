@@ -1,5 +1,7 @@
-﻿using S100Framework.Topology;
+﻿using S100FC;
+using S100FC.Topology;
 using System.Globalization;
+using System.Text.Json.Serialization;
 using YamlDotNet.Serialization;
 
 namespace S100Framework.YAML
@@ -1068,7 +1070,7 @@ namespace S100Framework.YAML
     {
         public string? Name { get; set; }
         public string? ID { get; set; }
-        public InformationNode? Attributes { get; set; }
+        public S100FC.InformationType? Attributes { get; set; }
     }
 
     public class Feature
@@ -1076,7 +1078,7 @@ namespace S100Framework.YAML
         public string? Name { get; set; }
         public Primitive Prim { get; set; }
         public string Foid { get; set; } = default!;
-        public FeatureNode? Attributes { get; set; }
+        public S100FC.FeatureType? Attributes { get; set; }
         public string? Geometry { get; set; }
         public string? Masks { get; set; }
 
