@@ -3123,7 +3123,7 @@ namespace S100FC.S122.InformationTypes
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
 	/// </summary>
-	public class InformationType : S100FC.InformationType
+	public abstract class InformationType : S100FC.InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationType);
@@ -3199,7 +3199,7 @@ namespace S100FC.S122.InformationTypes
 	/// <summary>
 	/// An abstract superclass for information types that encode rules, recommendations, and general information in text or graphic form.
 	/// </summary>
-	public class AbstractRxN : InformationType
+	public abstract class AbstractRxN : InformationType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AbstractRxN);
@@ -3907,7 +3907,7 @@ namespace S100FC.S122.FeatureTypes
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
 	/// </summary>
-	public class FeatureType : S100FC.FeatureType
+	public abstract class FeatureType : S100FC.FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FeatureType);
@@ -4581,6 +4581,14 @@ namespace S100FC.S122
 		public static string[] FeatureAssociationTypes => ["TextAssociation"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
 		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => ["FeatureType"],
+			Primitives.point => ["TextPlacement"],
+			Primitives.pointSet => [],
+			Primitives.curve => ["MarineProtectedArea"],
+			Primitives.surface => ["InformationArea","MarineProtectedArea","RestrictedArea","VesselTrafficServiceArea","DataCoverage","QualityOfNonBathymetricData"],
+			_ => throw new InvalidOperationException(),
+		};
 	}
 
 	public static class Extensions {

@@ -1,4 +1,4 @@
-﻿using S100Framework.Catalogues;
+﻿using S100FC.Catalogues;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
@@ -19,9 +19,9 @@ namespace S100Framework.GML
 
         private readonly IDictionary<string, string> _namespaces;
 
-        private readonly Catalogues.FeatureCatalogue _featureCatalogue;
+        private readonly FeatureCatalogue _featureCatalogue;
 
-        public Catalogues.FeatureCatalogue FeatureCatalogue => _featureCatalogue;
+        public FeatureCatalogue FeatureCatalogue => _featureCatalogue;
 
         public string ProductSpecification => _featureCatalogue.ProductID;
 
@@ -115,7 +115,7 @@ namespace S100Framework.GML
                 }
             }
 
-            _featureCatalogue = Catalogues.FeatureCatalogue.Catalogues.SingleOrDefault(e => e.ProductID.Equals(prefix, StringComparison.OrdinalIgnoreCase))!;
+            _featureCatalogue = FeatureCatalogue.Catalogues.SingleOrDefault(e => e.ProductID.Equals(prefix, StringComparison.OrdinalIgnoreCase))!;
         }
 
         public IEnumerable<object> Members() {

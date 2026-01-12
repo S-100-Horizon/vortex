@@ -3419,7 +3419,7 @@ namespace S100FC.S128.FeatureTypes
 	/// <summary>
 	/// An element within a catalogue of elements.
 	/// </summary>
-	public class CatalogueElement : S100FC.FeatureType
+	public abstract class CatalogueElement : S100FC.FeatureType
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CatalogueElement);
@@ -3614,7 +3614,7 @@ namespace S100FC.S128.FeatureTypes
 	/// <summary>
 	/// A physical or electronic product, that is primarily intended for navigation.
 	/// </summary>
-	public class NavigationalProduct : CatalogueElement
+	public abstract class NavigationalProduct : CatalogueElement
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationalProduct);
@@ -4131,6 +4131,14 @@ namespace S100FC.S128
 		public static string[] FeatureAssociationTypes => ["ProductMapping","Correlated"];
 		public static string[] InformationTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
 		public static string[] FeatureTypes => ["CatalogueSectionHeader","ContactDetails","IndicationOfCarriageRequirement","PriceInformation","ProducerInformation","DistributorInformation"];
+		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
+			Primitives.noGeometry => [],
+			Primitives.point => [],
+			Primitives.pointSet => [],
+			Primitives.curve => [],
+			Primitives.surface => ["CatalogueElement","NavigationalProduct","ElectronicProduct","PhysicalProduct","S100Service"],
+			_ => throw new InvalidOperationException(),
+		};
 	}
 
 	public static class Extensions {

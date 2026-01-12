@@ -360,8 +360,8 @@ namespace S100FC
         [JsonInclude]
         public attributeBinding[] attributeBindings { get; protected set; } = [];
 
-        [JsonIgnore]
-        public informationBinding[] informationBindings { get; set; } = [];
+        //[JsonIgnore]
+        //public informationBinding[] informationBindings { get; set; } = [];
 
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
@@ -437,14 +437,14 @@ namespace S100FC
         [JsonInclude]
         public attributeBinding[] attributeBindings { get; protected set; } = [];
 
-        [JsonIgnore]
-        public informationBinding[] informationBindings { get; set; } = [];
+        //[JsonIgnore]
+        //public informationBinding[] informationBindings { get; set; } = [];
+
+        //[JsonIgnore]
+        //public featureBinding[] featureBindings { get; set; } = [];
 
         [JsonIgnore]
-        public featureBinding[] featureBindings { get; set; } = [];
-
-        [JsonIgnore]
-        public virtual Primitives[] permittedPrimitives { get; }
+        public abstract Primitives[] permittedPrimitives { get; }
 
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
