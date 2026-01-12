@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Text;
 using IO = System.IO;
 
-namespace S100Framework.Topology
+namespace S100FC.Topology
 {
     public class FeatureRef
     {
@@ -156,10 +156,10 @@ namespace S100Framework.Topology
 
     public interface ITopologyBuilder
     {
-        ITopologyBuilder AddTopologyFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves);
-        ITopologyBuilder AddNavigationalFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves);
+        ITopologyBuilder AddTopologyFeatures(ICollection<S100FC.Topology.Polygon> surfaces, ICollection<S100FC.Topology.Polyline> curves);
+        ITopologyBuilder AddNavigationalFeatures(ICollection<S100FC.Topology.Polygon> surfaces, ICollection<S100FC.Topology.Polyline> curves);
 
-        ITopologyBuilder AddSingletonFeatures(ICollection<S100Framework.Topology.Polyline> curves);
+        ITopologyBuilder AddSingletonFeatures(ICollection<S100FC.Topology.Polyline> curves);
 
         IMatrix BuildTopology();
     }
@@ -201,13 +201,13 @@ namespace S100Framework.Topology
 
         private IDictionary<string, List<LineString>>? _featureToEdges = new Dictionary<string, List<LineString>>();
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesTopology = new Collection<S100Framework.Topology.Polygon>();
-        private ICollection<S100Framework.Topology.Polyline> _curvesTopology = new Collection<S100Framework.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polygon> _surfacesTopology = new Collection<S100FC.Topology.Polygon>();
+        private ICollection<S100FC.Topology.Polyline> _curvesTopology = new Collection<S100FC.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polygon> _surfacesNavigational = new Collection<S100Framework.Topology.Polygon>();
-        private ICollection<S100Framework.Topology.Polyline> _curvesNavigational = new Collection<S100Framework.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polygon> _surfacesNavigational = new Collection<S100FC.Topology.Polygon>();
+        private ICollection<S100FC.Topology.Polyline> _curvesNavigational = new Collection<S100FC.Topology.Polyline>();
 
-        private ICollection<S100Framework.Topology.Polyline> _curvesSingleton = new Collection<S100Framework.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polyline> _curvesSingleton = new Collection<S100FC.Topology.Polyline>();
 
         private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
@@ -227,7 +227,7 @@ namespace S100Framework.Topology
             return lineString;
         }
 
-        private static ICollection<S100Framework.Topology.Polygon> MakePrecise(ICollection<S100Framework.Topology.Polygon> surfaces) {
+        private static ICollection<S100FC.Topology.Polygon> MakePrecise(ICollection<S100FC.Topology.Polygon> surfaces) {
             foreach (var p in surfaces) {
                 MakePrecise(p.ExteriorRing);
 
@@ -237,21 +237,21 @@ namespace S100Framework.Topology
             return surfaces;
         }
 
-        private static ICollection<S100Framework.Topology.Polyline> MakePrecise(ICollection<S100Framework.Topology.Polyline> curves) {
+        private static ICollection<S100FC.Topology.Polyline> MakePrecise(ICollection<S100FC.Topology.Polyline> curves) {
             foreach (var c in curves) {
                 MakePrecise(c.LineString);
             }
             return curves;
         }
 
-        ITopologyBuilder ITopologyBuilder.AddTopologyFeatures(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
+        ITopologyBuilder ITopologyBuilder.AddTopologyFeatures(ICollection<S100FC.Topology.Polygon> surfaces, ICollection<S100FC.Topology.Polyline> curves) {
             this._surfacesTopology = MakePrecise(surfaces);
             this._curvesTopology = MakePrecise(curves);
 
             return (ITopologyBuilder)this;
         }
 
-        ITopologyBuilder ITopologyBuilder.AddNavigationalFeatures(ICollection<Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
+        ITopologyBuilder ITopologyBuilder.AddNavigationalFeatures(ICollection<Polygon> surfaces, ICollection<S100FC.Topology.Polyline> curves) {
             this._surfacesNavigational = MakePrecise(surfaces);
             this._curvesNavigational = MakePrecise(curves);
 
@@ -265,8 +265,8 @@ namespace S100Framework.Topology
         }
 
         IMatrix ITopologyBuilder.BuildTopology() {
-            IEnumerable<S100Framework.Topology.Polygon> surfaces = Enumerable.Empty<S100Framework.Topology.Polygon>();
-            IEnumerable<S100Framework.Topology.Polyline> curves = Enumerable.Empty<S100Framework.Topology.Polyline>();
+            IEnumerable<S100FC.Topology.Polygon> surfaces = Enumerable.Empty<S100FC.Topology.Polygon>();
+            IEnumerable<S100FC.Topology.Polyline> curves = Enumerable.Empty<S100FC.Topology.Polyline>();
 
             if (this._surfacesTopology.Any() || this._curvesTopology.Any()) {
                 surfaces = surfaces.UnionBy(this._surfacesTopology, e => e.Name);
@@ -650,7 +650,7 @@ namespace S100Framework.Topology
             return this;
         }
 
-        private void BuildSharedEdges(ICollection<S100Framework.Topology.Polygon> surfaces, ICollection<S100Framework.Topology.Polyline> curves) {
+        private void BuildSharedEdges(ICollection<S100FC.Topology.Polygon> surfaces, ICollection<S100FC.Topology.Polyline> curves) {
             var minimalEdges = new HashSet<Edge>();
 
             var edgeToFeatureMap = new Dictionary<Edge, List<string>>();

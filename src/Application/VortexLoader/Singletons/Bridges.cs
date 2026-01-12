@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101.FeatureAssociation;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100FC;
+using S100FC.S101.FeatureAssociation;
+using S100FC.S101.FeatureTypes;
 using System.Diagnostics;
 
 
@@ -270,7 +270,7 @@ namespace S100Framework.Applications.Singletons
                     var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
                     var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
 
-                    //S100Framework.AttributeModel.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100Framework.AttributeModel.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
+                    //S100FC.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100FC.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 
                     bridge.openingBridge = canOpen;
                     bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);

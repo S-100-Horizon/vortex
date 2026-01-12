@@ -1,6 +1,6 @@
-﻿using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101.ComplexAttributes;
-using S100Framework.AttributeModel.S101.InformationTypes;
+﻿using S100FC;
+using S100FC.S101.ComplexAttributes;
+using S100FC.S101.InformationTypes;
 
 namespace S100Framework.Applications
 {

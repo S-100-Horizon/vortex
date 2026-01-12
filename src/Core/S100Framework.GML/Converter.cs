@@ -1,4 +1,4 @@
-﻿using S100Framework.DomainModel.S100;
+﻿using S100FC.S100;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;

@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-namespace S100Framework.DomainModel.S100
+namespace S100FC.S100
 {
     [JsonConverter(typeof(TimeJsonConverter))]
     public readonly struct Time
@@ -133,7 +133,7 @@ namespace S100Framework.DomainModel.S100
     }
 }
 
-namespace S100Framework.AttributeModel
+namespace S100FC
 {
     public enum Primitives
     {
@@ -222,7 +222,7 @@ namespace S100Framework.AttributeModel
         [JsonIgnore]
         public override string valueType => "time";
 
-        public S100Framework.DomainModel.S100.Time? value { get; set; } = default;
+        public S100FC.S100.Time? value { get; set; } = default;
     }
 
     public abstract class UrnTimeAttribute : SimpleAttribute

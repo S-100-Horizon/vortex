@@ -8,8 +8,7 @@ using Xunit.Abstractions;
 
 namespace TestAttributes
 {
-    using S100Framework.AttributeModel;
-    using S100Framework.DomainModel;
+    using S100FC.S100;
     using System.Reflection;
     using System.Security.Cryptography;
     using System.Text.Json.Serialization;
@@ -49,7 +48,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-101_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-101_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -60,7 +59,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-122_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-122_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -71,7 +70,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-123_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-123_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -82,7 +81,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-124_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-124_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -93,7 +92,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-125_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-125_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -104,7 +103,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-127_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-127_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -115,7 +114,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-128_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-128_FC.g.cs", output, Encoding.UTF8);
         }
 
         [Fact]
@@ -126,7 +125,7 @@ namespace TestAttributes
 
             var output = roslyn.ToString();
 
-            File.WriteAllText(@".\..\..\..\S-131_FC.attribute.g.cs", output, Encoding.UTF8);
+            File.WriteAllText(@".\..\..\..\S-131_FC.g.cs", output, Encoding.UTF8);
         }
 
         private StringBuilder RoslynBuilder(XDocument ps, string? id = null) {
@@ -168,7 +167,7 @@ namespace TestAttributes
 
             #region S100_FC_SimpleAttribute
             {
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.SimpleAttributes");
+                roslyn.AppendLine($"namespace S100FC.{productId}.SimpleAttributes");
                 roslyn.AppendLine("{");
                 foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager)) {
                     var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
@@ -187,7 +186,7 @@ namespace TestAttributes
 
                     if (valueType.Equals("enumeration")) {
                         attributesKnownTypes.Add(code, "int");
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.EnumerationAttribute");
+                        roslyn.AppendLine($"\tpublic class {code} : S100FC.EnumerationAttribute");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -228,7 +227,7 @@ namespace TestAttributes
                     }
                     else if (valueType.Equals("S100_CodeList")) {
                         attributesKnownTypes.Add(code, "int");
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.CodeListAttribute");
+                        roslyn.AppendLine($"\tpublic class {code} : S100FC.CodeListAttribute");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -268,7 +267,7 @@ namespace TestAttributes
                             "date" => "DateOnly",
                             "dateonly" => "DateOnly",
                             "datetime" => "DateTime",
-                            "time" => "S100Framework.DomainModel.S100.Time",
+                            "time" => "S100FC.S100.Time",
                             "integer" => "int",
                             "urn" => "String",
                             "url" => "String",
@@ -294,7 +293,7 @@ namespace TestAttributes
                         };
 
                         attributesKnownTypes.Add(code, prefix);
-                        roslyn.AppendLine($"\tpublic class {code} : S100Framework.AttributeModel.{type}");
+                        roslyn.AppendLine($"\tpublic class {code} : S100FC.{type}");
                         roslyn.AppendLine($"\t{{");
                         roslyn.AppendLine("\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic override string S100FC_code => nameof({code});");
@@ -319,9 +318,9 @@ namespace TestAttributes
                 var complexTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.ComplexAttributes");
+                roslyn.AppendLine($"namespace S100FC.{productId}.ComplexAttributes");
                 roslyn.AppendLine("{");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
                 roslyn.AppendLine();
 
                 var notFinished = false;
@@ -376,10 +375,10 @@ namespace TestAttributes
                 var abstractTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationAssociation");
+                roslyn.AppendLine($"namespace S100FC.{productId}.InformationAssociation");
                 roslyn.AppendLine("{");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
                 roslyn.AppendLine();
 
                 foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager)) {
@@ -414,10 +413,10 @@ namespace TestAttributes
                 var abstractTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.FeatureAssociation");
+                roslyn.AppendLine($"namespace S100FC.{productId}.FeatureAssociation");
                 roslyn.AppendLine("{");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
                 roslyn.AppendLine();
 
                 foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager)) {
@@ -452,10 +451,10 @@ namespace TestAttributes
                 var abstractTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.InformationTypes");
+                roslyn.AppendLine($"namespace S100FC.{productId}.InformationTypes");
                 roslyn.AppendLine("{");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
                 roslyn.AppendLine();
 
                 var notFinished = false;
@@ -488,11 +487,11 @@ namespace TestAttributes
                 var abstractTypesKnown = new List<string>();
 
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}.FeatureTypes");
+                roslyn.AppendLine($"namespace S100FC.{productId}.FeatureTypes");
                 roslyn.AppendLine("{");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.InformationTypes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.InformationTypes;");
                 roslyn.AppendLine();
 
                 var notFinished = false;
@@ -528,13 +527,13 @@ namespace TestAttributes
             #region Helpers
             {
                 roslyn.AppendLine();
-                roslyn.AppendLine($"namespace S100Framework.AttributeModel.{productId}");
+                roslyn.AppendLine($"namespace S100FC.{productId}");
                 roslyn.AppendLine("{");
                 roslyn.AppendLine($"\tusing System.Text.Json;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.SimpleAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.ComplexAttributes;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.FeatureAssociation;");
-                roslyn.AppendLine($"\tusing S100Framework.AttributeModel.{productId}.FeatureTypes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureAssociation;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureTypes;");
                 roslyn.AppendLine();
 
                 roslyn.AppendLine("\tpublic class Summary : ISummary");
@@ -568,7 +567,7 @@ namespace TestAttributes
                 roslyn.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
                 roslyn.AppendLine("\t\t\tresolver.Modifiers.Add(typeInfo => {");
 
-                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.informationBinding)) {");
+                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100FC.informationBinding)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
                 roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
@@ -576,7 +575,7 @@ namespace TestAttributes
                 roslyn.Append(derivedTypesInformationBindings.ToString());
                 roslyn.AppendLine("\t\t\t\t}");
 
-                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.featureBinding)) {");
+                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100FC.featureBinding)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
                 roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
@@ -584,7 +583,7 @@ namespace TestAttributes
                 roslyn.Append(derivedTypesFeatureBindings.ToString());
                 roslyn.AppendLine("\t\t\t\t}");
 
-                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100Framework.AttributeModel.attributeBinding)) {");
+                roslyn.AppendLine("\t\t\t\tif (typeInfo.Type == typeof(S100FC.attributeBinding)) {");
                 roslyn.AppendLine("\t\t\t\t\ttypeInfo.PolymorphismOptions = new System.Text.Json.Serialization.Metadata.JsonPolymorphismOptions {");
                 roslyn.AppendLine("\t\t\t\t\t\tTypeDiscriminatorPropertyName = \"code\",");
                 roslyn.AppendLine("\t\t\t\t\t\tIgnoreUnrecognizedTypeDiscriminators = true,");
@@ -644,7 +643,7 @@ namespace TestAttributes
             if (host.KnownTypes.Any(a => a.Equals(code, StringComparison.InvariantCultureIgnoreCase)))
                 return true;
 
-            var baseClass = $"S100Framework.AttributeModel.{type}";
+            var baseClass = $"S100FC.{type}";
 
             var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
             if (superType != null) {

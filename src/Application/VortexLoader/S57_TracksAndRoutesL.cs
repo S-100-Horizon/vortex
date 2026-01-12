@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100FC.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {
@@ -133,7 +133,7 @@ namespace S100Framework.Applications
                             // TODO: measured distance
 
                             if (current.ORIENT.HasValue) {
-                                instance.orientation = new AttributeModel.S101.ComplexAttributes.orientation() {
+                                instance.orientation = new S100FC.S101.ComplexAttributes.orientation() {
                                     orientationValue = current.ORIENT.Value,
                                     // TODO: oriantationUncertainty
                                     //orientationUncertainty = ,

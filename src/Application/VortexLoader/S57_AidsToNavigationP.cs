@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.ComplexAttributes;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100FC.S101.ComplexAttributes;
+using S100FC.S101.FeatureTypes;
 using System.Globalization;
 
 namespace S100Framework.Applications
@@ -1930,7 +1930,7 @@ namespace S100Framework.Applications
         /// <param _s101name="current"></param>
         /// <param _s101name="sectors"></param>
         /// <returns>List of sectorCharacteristics</returns>
-        internal static sectorCharacteristics[] GetSectorCharacteristics<TType>(IList<AidsToNavigationP> lights) where TType : AttributeModel.FeatureType {
+        internal static sectorCharacteristics[] GetSectorCharacteristics<TType>(IList<AidsToNavigationP> lights) where TType : S100FC.FeatureType {
             var sectorCharacteristics = new List<sectorCharacteristics>();
 
             //if (sectors == null || sectors.Count == 0) {

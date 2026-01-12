@@ -1,6 +1,6 @@
 ﻿using S100Framework.Catalogues;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S100;
+using S100FC;
+using S100FC.S100;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
@@ -997,7 +997,7 @@ namespace S100Framework.YAML
 
                 return informationNode as InformationNode;
             }
-            private static FeatureNode BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
+            private static S100FC.FeatureType BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
                 var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
                 var featureNode = Activator.CreateInstance(featureType);
                 var typeInstances = new Dictionary<int, object> { { 0, featureNode } };
@@ -1110,7 +1110,7 @@ namespace S100Framework.YAML
                     }
                 }
 
-                return featureNode as FeatureNode;
+                return featureNode as S100FC.FeatureType;
             }
         }
 

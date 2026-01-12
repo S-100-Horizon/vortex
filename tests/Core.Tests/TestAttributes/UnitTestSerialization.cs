@@ -1,4 +1,4 @@
-using S100Framework.AttributeModel;
+using S100FC;
 
 using System.Reflection;
 using System.Text.Json;
@@ -9,11 +9,11 @@ namespace TestAttributes.S101
     using CodeCapital.System.Text.Json;
     using JsonFlatten;
     using Newtonsoft.Json.Linq;
-    using S100Framework.AttributeModel.S101;
-    using S100Framework.AttributeModel.S101.ComplexAttributes;
-    using S100Framework.AttributeModel.S101.FeatureAssociation;
-    using S100Framework.AttributeModel.S101.FeatureTypes;
-    using S100Framework.AttributeModel.S101.SimpleAttributes;
+    using S100FC.S101;
+    using S100FC.S101.ComplexAttributes;
+    using S100FC.S101.FeatureAssociation;
+    using S100FC.S101.FeatureTypes;
+    using S100FC.S101.SimpleAttributes;
 
     public class UnitTestAttributes
     {
@@ -49,7 +49,7 @@ namespace TestAttributes.S101
                 nameUsage = 1,
             }];
 
-            feature.features = [new featureBinding<BridgeAggregation>{
+            feature.featureBindings = [new featureBinding<BridgeAggregation>{
                 featureId = "1234",
                 featureType = relatedFeature.S100FC_code,
                 role = "theComponent",
@@ -92,7 +92,7 @@ namespace TestAttributes.S101
                 nameUsage = 1,
             }];
 
-            feature.features = [new featureBinding<BridgeAggregation>{
+            feature.featureBindings = [new featureBinding<BridgeAggregation>{
                 featureId = "1234",
                 featureType = relatedFeature.S100FC_code,
                 role = "theComponent",
@@ -146,11 +146,11 @@ namespace TestAttributes.S101
 
 namespace TestAttributes.S128
 {
-    using S100Framework.AttributeModel.S128;
-    using S100Framework.AttributeModel.S128.ComplexAttributes;
-    using S100Framework.AttributeModel.S128.FeatureAssociation;
-    using S100Framework.AttributeModel.S128.FeatureTypes;
-    using S100Framework.AttributeModel.S128.SimpleAttributes;
+    using S100FC.S128;
+    using S100FC.S128.ComplexAttributes;
+    using S100FC.S128.FeatureAssociation;
+    using S100FC.S128.FeatureTypes;
+    using S100FC.S128.SimpleAttributes;
 
     public class UnitTestAttributes
     {
@@ -187,7 +187,7 @@ namespace TestAttributes.S128
             };
             featureBinding.association.categoryOfProductMapping = 2;    //Lower Priority Alternative
 
-            feature.features = [featureBinding];
+            feature.featureBindings = [featureBinding];
 
             var json = System.Text.Json.JsonSerializer.Serialize(feature, jsonSerializerOptions);
 

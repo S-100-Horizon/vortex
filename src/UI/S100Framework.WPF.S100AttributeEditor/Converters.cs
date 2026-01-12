@@ -1,4 +1,4 @@
-﻿using S100Framework.AttributeModel;
+﻿using S100FC;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Data;

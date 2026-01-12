@@ -1,5 +1,4 @@
-﻿using S100Framework.DomainModel;
-using S100Framework.Topology;
+﻿using S100Framework.Topology;
 using System.Globalization;
 using YamlDotNet.Serialization;
 

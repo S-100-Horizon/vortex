@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101.InformationAssociation;
-using S100Framework.AttributeModel.S101.InformationTypes;
+using S100FC;
+using S100FC.S101.InformationAssociation;
+using S100FC.S101.InformationTypes;
 
 namespace S100Framework.Applications.Singletons
 {
@@ -142,17 +142,17 @@ namespace S100Framework.Applications.Singletons
                             supportFile.date = DateOnly.FromDateTime(File.GetLastWriteTimeUtc(filePath));
 
                             supportFile.s100_SupportFileFormat = Path.GetExtension(filePath).ToLower() switch {
-                                ".txt" => DomainModel.S100.S100_SupportFileFormat.TXT,
-                                ".mp4" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".mov" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".avi" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".flv" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".webm" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".mkv" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".mpeg" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".mpg" => DomainModel.S100.S100_SupportFileFormat.VIDEO,
-                                ".xml" => DomainModel.S100.S100_SupportFileFormat.XML,
-                                ".xslt" => DomainModel.S100.S100_SupportFileFormat.XSLT,
+                                ".txt" => S100FC.S100.S100_SupportFileFormat.TXT,
+                                ".mp4" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".mov" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".avi" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".flv" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".webm" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".mkv" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".mpeg" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".mpg" => S100FC.S100.S100_SupportFileFormat.VIDEO,
+                                ".xml" => S100FC.S100.S100_SupportFileFormat.XML,
+                                ".xslt" => S100FC.S100.S100_SupportFileFormat.XSLT,
                                 _ => throw new NotSupportedException($"Illegal file extension for support files: {Path.GetExtension(filePath).ToLower()}")
                             };
 

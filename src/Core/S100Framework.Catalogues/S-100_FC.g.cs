@@ -1,181 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection.PortableExecutable;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
+﻿using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
 
-namespace S100Framework.Catalogues
+#nullable enable
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+namespace S100FC.S100
 {
-    public class S100_TruncatedDate
-    {
-        public string Value { get; set; }
-    }
-}
-
-namespace S100Framework.DomainModel.S100
-{
-    #region SimpleTypes
-
-    [Serializable]
-    [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    public enum MD_TopicCategoryCode
-    {
-        [XmlEnum("farming")]
-        Farming,
-        [XmlEnum("biota")]
-        Biota,
-        [XmlEnum("boundaries")]
-        Boundaries,
-        [XmlEnum("climatologyMeteorologyAtmosphere")]
-        ClimatologyMeteorologyAtmosphere,
-        [XmlEnum("economy")]
-        Economy,
-        [XmlEnum("elevation")]
-        Elevation,
-        [XmlEnum("environment")]
-        Environment,
-        [XmlEnum("geoscientificInformation")]
-        GeoscientificInformation,
-        [XmlEnum("health")]
-        Health,
-        [XmlEnum("imageryBaseMapsEarthCover")]
-        ImageryBaseMapsEarthCover,
-        [XmlEnum("intelligenceMilitary")]
-        IntelligenceMilitary,
-        [XmlEnum("inlandWaters")]
-        InlandWaters,
-        [XmlEnum("location")]
-        Location,
-        [XmlEnum("oceans")]
-        Oceans,
-        [XmlEnum("planningCadastre")]
-        PlanningCadastre,
-        [XmlEnum("society")]
-        Society,
-        [XmlEnum("structure")]
-        Structure,
-        [XmlEnum("transportation")]
-        Transportation,
-        [XmlEnum("utilitiesCommunication")]
-        UtilitiesCommunication,
-    }
-
-    [Serializable]
-    [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    public enum datasetPurposeType
-    {
-        [XmlEnum("base")]
-        Base,
-        [XmlEnum("update")]
-        Update,
-    }
-
-    [Serializable]
-    [XmlType(Namespace = "http://www.iho.int/s100/xc/5.2")]
-    public enum S100_SupportFileFormat {
-        [XmlEnum("TXT_UTF-8")]
-        TXT,
-        [XmlEnum("JPEG2000")]
-        JPEG2000,
-        [XmlEnum("HTML")]
-        HTML,
-        [XmlEnum("XML")]
-        XML,
-        [XmlEnum("XSLT")]
-        XSLT,
-        [XmlEnum("VIDEO")]
-        VIDEO,
-        [XmlEnum("TIFF")]
-        TIFF,
-        [XmlEnum("PDF/AorUA")]
-        PDF,
-        [XmlEnum("LUA")]
-        LUA,
-        [XmlEnum("other")]
-        other,
-
-    }
-
-    #endregion
-
-
-    #region ComplexTypes
-
-    #endregion
-
-    [System.Serializable()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-    [XmlType(Namespace = "http://www.iho.int/s100gml/5.0")]
-    public partial class DataSetIdentification
-    {
-        [XmlElement(Order = 0)]
-        public string encodingSpecification { get; init; } = "S-100 Part 10b";
-
-        [XmlElement(Order = 1)]
-        public string encodingSpecificationEdition { get; init; } = "1.0";
-
-        [XmlElement(Order = 2)]
-        public string productIdentifier { get; set; }
-
-        [XmlElement(Order = 3)]
-        public string productEdition { get; set; }
-
-        [XmlElement(Order = 4)]
-        public string applicationProfile { get; set; }
-
-        [XmlElement(Order = 5)]
-        public string datasetFileIdentifier { get; set; }
-
-        [XmlElement(Order = 6)]
-        public string datasetTitle { get; set; }
-
-        [XmlElement(DataType = "date", Order = 7)]
-        public DateTime datasetReferenceDate { get; set; }
-
-        [XmlElement(Order = 8)]
-        public string datasetLanguage { get; set; } = "eng";
-
-        [XmlElement(Order = 9)]
-        public string datasetAbstract { get; set; }
-
-        [XmlElement("datasetTopicCategory", Order = 10)]
-        public List<MD_TopicCategoryCode> datasetTopicCategory { get; set; } = new List<MD_TopicCategoryCode>();
-
-        [XmlElement(Order = 11)]
-        public datasetPurposeType datasetPurpose { get; set; }
-
-        [XmlElement(DataType = "nonNegativeInteger", Order = 12)]
-        public string updateNumber { get; set; }
-    }
-
-
-    [Serializable]
-    public abstract class DatasetBase
-    {
-        [JsonIgnore]
-        [XmlAttribute("id", Namespace = "http://www.opengis.net/gml/3.2")]
-        public string gmlId { get; set; }
-
-        [XmlElement(Order = 0, Namespace = "http://www.iho.int/s100gml/5.0")]
-        public DataSetIdentification DatasetIdentificationInformation { get; set; }
-
-        [JsonIgnore]
-        [XmlAttribute("schemaLocation", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
-        public abstract string SchemaLocation { get; set; }
-    }
-
-    [Serializable]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006: Naming Styles", Justification = "<Pending>")]
-    public abstract class MembersBase
-    {
-        public abstract List<object> elements { get; set; }
-    }
-
     [JsonConverter(typeof(TimeJsonConverter))]
     public readonly struct Time
     {
@@ -271,5 +103,577 @@ namespace S100Framework.DomainModel.S100
         public override void Write(Utf8JsonWriter writer, Time value, JsonSerializerOptions options) {
             writer.WriteStringValue(value.ToString());
         }
+    }
+
+    [Serializable]
+    [XmlType(Namespace = "http://www.iho.int/s100/xc/5.2")]
+    public enum S100_SupportFileFormat
+    {
+        [XmlEnum("TXT_UTF-8")]
+        TXT,
+        [XmlEnum("JPEG2000")]
+        JPEG2000,
+        [XmlEnum("HTML")]
+        HTML,
+        [XmlEnum("XML")]
+        XML,
+        [XmlEnum("XSLT")]
+        XSLT,
+        [XmlEnum("VIDEO")]
+        VIDEO,
+        [XmlEnum("TIFF")]
+        TIFF,
+        [XmlEnum("PDF/AorUA")]
+        PDF,
+        [XmlEnum("LUA")]
+        LUA,
+        [XmlEnum("other")]
+        other,
+
+    }
+}
+
+namespace S100FC
+{
+    public enum Primitives
+    {
+        noGeometry,
+        point,
+        pointSet,
+        curve,
+        surface,
+    }
+
+    public record listedValue(string label, string defintion, int code);
+
+    public abstract class attributeBinding
+    {
+        [JsonIgnore]
+        public abstract string S100FC_code { get; }
+
+        [JsonIgnore]
+        public abstract string S100FC_name { get; }
+    }
+
+    public abstract class SimpleAttribute : attributeBinding
+    {
+        [JsonIgnore]
+        public abstract string valueType { get; }
+    }
+
+    public abstract class BooleanAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "boolean";
+
+        public Boolean? value { get; set; } = default;
+    }
+
+    public abstract class IntegerAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "integer";
+
+        public int? value { get; set; } = default;
+    }
+
+    public abstract class RealAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "real";
+
+        public double? value { get; set; } = default;
+    }
+
+    public abstract class TextAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "text";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class S100_TruncatedDateAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "S100_TruncatedDate";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class DateAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "date";
+
+        public DateOnly? value { get; set; } = default;
+    }
+
+    public abstract class DateTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "datetime";
+
+        public DateTime? value { get; set; } = default;
+    }
+
+    public abstract class TimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "time";
+
+        public S100FC.S100.Time? value { get; set; } = default;
+    }
+
+    public abstract class UrnTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URN";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class UrlTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URL";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class UriTimeAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "URI";
+
+        public String? value { get; set; } = default;
+    }
+
+    public abstract class EnumerationAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "enumeration";
+
+        //[JsonIgnore]
+        //public abstract listedValue[] listedValues { get; }
+
+        public int? value { get; set; } = default;
+    }
+
+    public abstract class CodeListAttribute : SimpleAttribute
+    {
+        [JsonIgnore]
+        public override string valueType => "S100_CodeList";
+
+        //[JsonIgnore]
+        //public abstract listedValue[] listedValues { get; }
+
+        public int? value { get; set; } = default;
+    }
+
+
+
+    public interface IAttributeBindings
+    {
+    }
+
+    public abstract class ComplexAttribute : attributeBinding, IAttributeBindings
+    {
+        [JsonInclude]
+        public attributeBinding[] attributeBindings { get; protected set; } = [];
+
+        [JsonIgnore]
+        public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
+
+        public attributeBindingDefinition[] mandatoryBindings() {
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
+        }
+
+        public int? FreeSeats(string code) {
+            var binding = attributeBindingsCatalogue!.SingleOrDefault(e => e.attribute.Equals(code));
+            if (binding == null)
+                return null;
+            return (binding.upper - this.attributeBindings.Where(e => e.GetType().Name.Equals(code)).Count());
+        }
+
+        protected void SetAttribute(attributeBinding? attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributeBindings = [.. this.attributeBindings, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributeBindings, value);
+                    this.attributeBindings[index] = attribute;
+                }
+            }
+            else {
+                this.attributeBindings = [.. this.attributeBindings, attribute];
+            }
+        }
+
+        protected void SetAttribute(attributeBinding[] attribute) {
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributeBindings = [.. this.attributeBindings, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributeBindings, value);
+                        this.attributeBindings[index] = a;
+                    }
+                }
+                else {
+                    this.attributeBindings = [.. this.attributeBindings, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
+        public ComplexAttribute() {
+            foreach (var binding in attributeBindingsCatalogue.Where(e => e.lower > 0)) {
+                for (int i = 0; i < binding.lower; i++)
+                    this.SetAttribute(binding.CreateInstance()!);
+            }
+        }
+    }
+
+    public abstract class InformationType : IAttributeBindings
+    {
+        [JsonIgnore]
+        public abstract string S100FC_code { get; }
+
+        [JsonIgnore]
+        public abstract string S100FC_name { get; }
+
+        [JsonInclude]
+        public attributeBinding[] attributeBindings { get; protected set; } = [];
+
+        [JsonIgnore]
+        public informationBinding[] informationBindings { get; set; } = [];
+
+        [JsonIgnore]
+        public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
+
+        [JsonIgnore]
+        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+
+        public attributeBindingDefinition[] mandatoryBindings() {
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
+        }
+
+        protected void SetAttribute(attributeBinding? attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributeBindings = [.. this.attributeBindings, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributeBindings, value);
+                    this.attributeBindings[index] = attribute;
+                }
+            }
+            else {
+                this.attributeBindings = [.. this.attributeBindings, attribute];
+            }
+        }
+
+        protected void SetAttribute(attributeBinding[] attribute) {
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributeBindings = [.. this.attributeBindings, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributeBindings, value);
+                        this.attributeBindings[index] = a;
+                    }
+                }
+                else {
+                    this.attributeBindings = [.. this.attributeBindings, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
+        public InformationType() {
+            foreach (var binding in attributeBindingsCatalogue.Where(e => e.lower > 0)) {
+                for (int i = 0; i < binding.lower; i++)
+                    this.SetAttribute(binding.CreateInstance()!);
+            }
+        }
+    }
+
+    public abstract class FeatureType : IAttributeBindings
+    {
+        [JsonIgnore]
+        public abstract string S100FC_code { get; }
+
+        [JsonIgnore]
+        public abstract string S100FC_name { get; }
+
+        [JsonInclude]
+        public attributeBinding[] attributeBindings { get; protected set; } = [];
+
+        [JsonIgnore]
+        public informationBinding[] informationBindings { get; set; } = [];
+
+        [JsonIgnore]
+        public featureBinding[] featureBindings { get; set; } = [];
+
+        [JsonIgnore]
+        public virtual Primitives[] permittedPrimitives { get; }
+
+        [JsonIgnore]
+        public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
+
+        [JsonIgnore]
+        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+
+        [JsonIgnore]
+        public virtual featureBindingDefinition[] featureBindingsCatalogue { get; } = [];
+
+        public attributeBindingDefinition[] mandatoryBindings() {
+            return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
+        }
+
+        protected void SetAttribute(attributeBinding attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributeBindings = [.. this.attributeBindings, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributeBindings, value);
+                    this.attributeBindings[index] = attribute;
+                }
+            }
+            else {
+                this.attributeBindings = [.. this.attributeBindings, attribute];
+            }
+        }
+
+        protected void SetAttribute(attributeBinding[] attribute) {
+            if (attribute == null) return;
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributeBindings = [.. this.attributeBindings, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributeBindings, value);
+                        this.attributeBindings[index] = a;
+                    }
+                }
+                else {
+                    this.attributeBindings = [.. this.attributeBindings, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributeBindings.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
+        public FeatureType() {
+            foreach (var binding in attributeBindingsCatalogue.Where(e => e.lower > 0)) {
+                for (int i = 0; i < binding.lower; i++)
+                    this.SetAttribute(binding.CreateInstance()!);
+            }
+        }
+    }
+
+    public class attributeBindingDefinition
+    {
+        public string attribute { get; init; } = string.Empty;
+
+        public int[]? permitedValues { get; init; } = default;
+
+        public int lower { get; init; } = 0;
+        public int upper { get; init; } = int.MaxValue;
+
+        public bool IsCollection => this.upper > 1;
+        public bool IsMandatory => this.lower > 0;
+        public bool IsOptional => this.lower == 0;
+
+        public Func<attributeBinding?> CreateInstance { get; init; } = () => null;
+    }
+
+    public class informationBindingDefinition
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string association { get; init; } = string.Empty;
+
+        public int lower { get; init; } = 0;
+        public int upper { get; init; } = int.MaxValue;
+
+        public bool IsCollection => this.upper > 1;
+        public bool IsMandatory => this.lower > 0;
+        public bool IsOptional => this.lower == 0;
+
+        public string[] informationTypes { get; init; } = [];
+    }
+
+    public class featureBindingDefinition
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string association { get; init; } = string.Empty;
+
+        public int lower { get; init; } = 0;
+        public int upper { get; init; } = int.MaxValue;
+
+        public bool IsCollection => this.upper > 1;
+        public bool IsMandatory => this.lower > 0;
+        public bool IsOptional => this.lower == 0;
+
+        public string[] featureTypes { get; init; } = [];
+    }
+
+    public abstract class Association
+    {
+        [JsonIgnore]
+        public abstract string S100FC_code { get; }
+
+        [JsonIgnore]
+        public abstract string S100FC_name { get; }
+
+        [JsonInclude]
+        public attributeBinding[] attributes { get; protected set; } = [];
+
+        [JsonIgnore]
+        public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
+
+        protected void SetAttribute(attributeBinding attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            if (binding.upper == 1) {
+                var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
+                if (value == default) {
+                    this.attributes = [.. this.attributes, attribute];
+                }
+                else {
+                    var index = Array.IndexOf(this.attributes, value);
+                    this.attributes[index] = attribute;
+                }
+            }
+            else {
+                this.attributes = [.. this.attributes, attribute];
+            }
+        }
+
+        protected void SetAttribute(attributeBinding[] attribute) {
+            if (attribute == null) return;
+            foreach (var a in attribute) {
+                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                if (binding.upper == 1) {
+                    var value = this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                    if (value == default) {
+                        this.attributes = [.. this.attributes, a];
+                    }
+                    else {
+                        var index = Array.IndexOf(this.attributes, value);
+                        this.attributes[index] = a;
+                    }
+                }
+                else {
+                    this.attributes = [.. this.attributes, a];
+                }
+            }
+        }
+
+        protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributes.SingleOrDefault(e => e.S100FC_code.Equals(name)) as TAttribute;
+        }
+
+        protected TAttribute[] GetAttributeValues<TAttribute>(string name) where TAttribute : attributeBinding {
+            return this.attributes.Where(e => e.S100FC_code.Equals(name)).Cast<TAttribute>().ToArray();
+        }
+
+        public Association() {
+            foreach (var binding in attributeBindingsCatalogue.Where(e => e.lower > 0)) {
+                for (int i = 0; i < binding.lower; i++)
+                    this.SetAttribute(binding.CreateInstance()!);
+            }
+        }
+
+    }
+
+    public abstract class InformationAssociation : Association
+    {
+        [JsonIgnore]
+        public abstract string role { get; }
+    }
+
+    public abstract class FeatureAssociation : Association
+    {
+        [JsonIgnore]
+        public abstract string[] roles { get; }
+    }
+
+    public abstract class informationBinding
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string? informationType { get; set; } = null;
+        public string informationId { get; set; } = string.Empty;
+    }
+
+    public class informationBinding<TAssociation> : informationBinding where TAssociation : InformationAssociation, new()
+    {
+        public TAssociation association { get; init; } = new TAssociation();
+    }
+
+    public abstract class featureBinding
+    {
+        public string roleType { get; init; } = string.Empty;
+        public string role { get; init; } = string.Empty;
+        public string? featureType { get; set; } = null;
+        public string featureId { get; set; } = string.Empty;
+    }
+
+    public class featureBinding<TAssociation> : featureBinding where TAssociation : FeatureAssociation, new()
+    {
+        public TAssociation association { get; init; } = new TAssociation();
+    }
+
+    public interface ISummary
+    {
+        public static string Name => string.Empty;
+        public static string Scope => string.Empty;
+        public static string ProductId => string.Empty;
+        public static Version Version => throw new NotImplementedException();
+        public static DateOnly VersionDate => throw new NotImplementedException();
     }
 }

@@ -2,7 +2,7 @@
 //using ArcGIS.Desktop.Internal.Mapping;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.FeatureTypes;
+using S100FC.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {

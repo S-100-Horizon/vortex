@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xaml.Behaviors;
-using S100Framework.AttributeModel;
-using S100Framework.AttributeModel.S101.ComplexAttributes;
+using S100FC;
+using S100FC.S101.ComplexAttributes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -59,7 +59,7 @@ namespace S100Framework.WPF
 
         #endregion
 
-        public AttributeViewModel(S100Framework.AttributeModel.attributeBinding attribute) {
+        public AttributeViewModel(S100FC.attributeBinding attribute) {
             this.code = attribute.S100FC_code;
         }
     }
@@ -85,7 +85,7 @@ namespace S100Framework.WPF
             }
         }
 
-        public S100Framework.AttributeModel.SimpleAttribute? _attribute { get; init; } = default;
+        public S100FC.SimpleAttribute? _attribute { get; init; } = default;
     }
 
     public class ComplexAttributeViewModel : AttributeViewModel
@@ -106,7 +106,7 @@ namespace S100Framework.WPF
             }
         }
 
-        private S100Framework.AttributeModel.ComplexAttribute? _attribute = default;
+        private S100FC.ComplexAttribute? _attribute = default;
     }
 
     public class S100AttributeEditorViewModel : INotifyPropertyChanged
@@ -128,7 +128,7 @@ namespace S100Framework.WPF
 
         #endregion        
 
-        public S100AttributeEditorViewModel(S100Framework.AttributeModel.FeatureType feature) {
+        public S100AttributeEditorViewModel(S100FC.FeatureType feature) {
             this._feature = feature;
             this.code = this._feature.S100FC_code;
             this.attributeBindings = this._feature.attributeBindingsCatalogue;
@@ -159,7 +159,7 @@ namespace S100Framework.WPF
         public attributeBindingDefinition[] attributeBindings { get; init; } = [];
         #endregion
 
-        private S100Framework.AttributeModel.FeatureType? _feature = default;
+        private S100FC.FeatureType? _feature = default;
     }
 
 

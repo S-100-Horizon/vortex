@@ -4,11 +4,11 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101;
-using S100Framework.AttributeModel.S101.ComplexAttributes;
-using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S101.InformationTypes;
-using S100Framework.AttributeModel.S101.SimpleAttributes;
+using S100FC.S101;
+using S100FC.S101.ComplexAttributes;
+using S100FC.S101.FeatureTypes;
+using S100FC.S101.InformationTypes;
+using S100FC.S101.SimpleAttributes;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -47,9 +47,9 @@ namespace S100Framework.Applications
         //internal static int _compilationScale = -1;
         internal static string _scaminFilesPath = "";
 
-        internal static string ps101 = S100Framework.AttributeModel.S101.Summary.ProductId;
-        internal static string ps128 = S100Framework.AttributeModel.S128.Summary.ProductId;
-        internal static string s101version = S100Framework.AttributeModel.S101.Summary.Version.ToString();
+        internal static string ps101 = S100FC.S101.Summary.ProductId;
+        internal static string ps128 = S100FC.S128.Summary.ProductId;
+        internal static string s101version = S100FC.S101.Summary.Version.ToString();
         internal static Geodatabase? _geodatabase;
 
         internal static bool createBridgesAndRelations = true;
@@ -692,7 +692,7 @@ namespace S100Framework.Applications
         /// </summary>
         /// <param _s101name="current"></param>
         /// <returns></returns>
-        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : AttributeModel.FeatureType {
+        internal static rhythmOfLight GetRythmOfLight<TType>(AidsToNavigationP current) where TType : S100FC.FeatureType {
             /*
                 When populating rhythm of light, the
                 sub-attributes signal group, signal period and signal sequence are only valid for non-fixed lights

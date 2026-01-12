@@ -7,7 +7,7 @@ namespace S100Framework.Applications.Singletons
         private static VerticalDatums? _instance;
         private static readonly object _lock = new object();
 
-        private readonly List<(Geometry, AttributeModel.S101.SimpleAttributes.verticalDatum)> _polygons = [];
+        private readonly List<(Geometry, S100FC.S101.SimpleAttributes.verticalDatum)> _polygons = [];
 
 
         internal static void Initialize() {
@@ -38,7 +38,7 @@ namespace S100Framework.Applications.Singletons
         /// <summary>
         /// Adds a polygon geometry to the collection.
         /// </summary>
-        public void Add(Geometry polygon, AttributeModel.S101.SimpleAttributes.verticalDatum vdat) {
+        public void Add(Geometry polygon, S100FC.S101.SimpleAttributes.verticalDatum vdat) {
             if (polygon == null)
                 throw new ArgumentNullException(nameof(polygon));
 
@@ -51,7 +51,7 @@ namespace S100Framework.Applications.Singletons
         /// <summary>
         /// Returns all polygons from the collection that touch the specified geometry.
         /// </summary>
-        public IEnumerable<(Geometry, AttributeModel.S101.SimpleAttributes.verticalDatum)> Touch(Geometry geometry) {
+        public IEnumerable<(Geometry, S100FC.S101.SimpleAttributes.verticalDatum)> Touch(Geometry geometry) {
             if (geometry == null)
                 throw new ArgumentNullException(nameof(geometry));
 

@@ -2,14 +2,14 @@
 using ArcGIS.Core.Geometry;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.FeatureTypes;
-using S100Framework.AttributeModel.S128.ComplexAttributes;
+using S100FC.S101.FeatureTypes;
+using S100FC.S128.ComplexAttributes;
 using System.Text.Json;
 using VortexLoader.Singletons;
 
 namespace S100Framework.Applications
 {
-    using S100Framework.AttributeModel.S128;
+    using S100FC.S128;
 
     internal static partial class ImporterNIS
     {
@@ -108,15 +108,15 @@ namespace S100Framework.Applications
                 dsnm = "101DK00" + dsnm!.Substring(2);
 
                 var specificUsage = dsnm[7] switch {
-                    '5' => 5,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeHarbour,
-                    '4' => 4,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeApproach,
-                    '3' => 3,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeCoastal,
-                    '2' => 2,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeGeneral,
-                    '1' => 1,   //S100Framework.AttributeModel.S128.specificUsage.NavigationalPurposeOverview,
+                    '5' => 5,   //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+                    '4' => 4,   //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+                    '3' => 3,   //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+                    '2' => 2,   //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+                    '1' => 1,   //S100FC.S128.specificUsage.NavigationalPurposeOverview,
                     _ => throw new InvalidDataException(),
                 };
 
-                var instance = new S100Framework.AttributeModel.S128.FeatureTypes.ElectronicProduct {
+                var instance = new S100FC.S128.FeatureTypes.ElectronicProduct {
                     catalogueElementClassification = [1], // catalogueElementClassification.Enc
                     editionNumber = edtn,
                     updateNumber = updn,
@@ -126,9 +126,9 @@ namespace S100Framework.Applications
                     datasetName = dsnm,
                     specificUsage = specificUsage,
                     productSpecification = new productSpecification {
-                        editionDate = AttributeModel.S101.Summary.VersionDate,
-                        name = AttributeModel.S101.Summary.ProductId,
-                        version = AttributeModel.S101.Summary.Version.ToString(),
+                        editionDate = S100FC.S101.Summary.VersionDate,
+                        name = S100FC.S101.Summary.ProductId,
+                        version = S100FC.S101.Summary.Version.ToString(),
                     },
                 };
 

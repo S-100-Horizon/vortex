@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100Framework.AttributeModel.S101.FeatureTypes;
-using surfaceCharacteristics = S100Framework.AttributeModel.S101.ComplexAttributes.surfaceCharacteristics;
+using S100FC.S101.FeatureTypes;
+using surfaceCharacteristics = S100FC.S101.ComplexAttributes.surfaceCharacteristics;
 
 namespace S100Framework.Applications
 {
