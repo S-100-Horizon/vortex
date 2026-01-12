@@ -62,17 +62,17 @@ namespace TestAttributes
             };
 
 
-            var feature = new Feature {
-                Name = "LightFogDetector",
-                Foid = "110:85:1",
-                Prim = Primitive.Point,
-                Geometry = "P5343543",
-                Attributes = lightFogDetector
-            };
+            //var feature = new Feature {
+            //    Name = "LightFogDetector",
+            //    Foid = "110:85:1",
+            //    Prim = Primitive.Point,
+            //    Geometry = "P5343543",
+            //    Attributes = lightFogDetector
+            //};
 
-            dataset.AddFeature(feature);
+            //dataset.AddFeature(feature);
 
-            var serialized = S100Framework.YAML.Converter.Serialize(feature);
+            //var serialized = S100Framework.YAML.Converter.Serialize(feature);
 
             System.Diagnostics.Debugger.Break();
         }

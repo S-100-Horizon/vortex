@@ -1,4 +1,5 @@
 ﻿using S100FC;
+using S100Framework.WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;

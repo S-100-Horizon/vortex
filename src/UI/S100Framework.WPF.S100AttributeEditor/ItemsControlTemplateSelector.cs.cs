@@ -1,5 +1,6 @@
 ﻿using ABI.System;
 using S100FC;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

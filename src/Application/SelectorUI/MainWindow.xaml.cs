@@ -3,6 +3,7 @@ using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100Framework.WPF;
+using S100Framework.WPF.ViewModel;
 using System.Text.Json;
 using System.Windows;
 

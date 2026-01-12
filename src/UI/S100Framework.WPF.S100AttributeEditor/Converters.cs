@@ -1,4 +1,5 @@
 ﻿using S100FC;
+using S100Framework.WPF.ViewModel;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Data;
