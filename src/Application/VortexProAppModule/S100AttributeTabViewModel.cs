@@ -301,7 +301,7 @@ namespace VortexProAppModule
 
                     var code = Convert.ToString(inspector["code"]);
 
-                    var name = $"{inspector.Crc32()}";
+                    var uid = $"{inspector.UID()}";
 
                     var type = this._inspectorHandle.TypeSelector(inspector, schema);
 
@@ -318,7 +318,7 @@ namespace VortexProAppModule
                         instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 
-                    var viewModel = new S100AttributeEditorViewModel((S100FC.FeatureType)instance);
+                    var viewModel = new S100AttributeEditorViewModel((S100FC.FeatureType)instance, uid);
 
                     return viewModel;
 
@@ -568,7 +568,10 @@ namespace VortexProAppModule
 
         public S100AttributeEditorViewModel SelectedProperty {
             get => _selectedProperty;
-            set => SetProperty(ref _selectedProperty, value);
+            set {
+                SetProperty(ref _selectedProperty, value);
+                _selectedProperty.PropertyChanged += this.OnPropertyChanged;
+            }
         }
 
         public Visibility IsVisible {

@@ -29,8 +29,9 @@ namespace S100Framework.WPF.ViewModel
 
         #endregion        
 
-        public S100AttributeEditorViewModel(S100FC.FeatureType feature) {
+        public S100AttributeEditorViewModel(S100FC.FeatureType feature, string uid) {
             this._feature = feature;
+            this._uid = uid;
             this.code = this._feature.S100FC_code;
             this.attributeBindings = this._feature.attributeBindingsCatalogue;
             foreach (var e in this._feature.attributeBindings)
@@ -61,6 +62,7 @@ namespace S100Framework.WPF.ViewModel
         #endregion
 
         private S100FC.FeatureType? _feature = default;
+        private string _uid;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ArcGIS.Core.Data;
+using System;
 
 namespace ArcGIS.Desktop.Editing.Attributes
 {
@@ -11,9 +12,7 @@ namespace ArcGIS.Desktop.Editing.Attributes
 
         }
 
-        public static string Crc32(this Inspector inspector) {
-            return $"{System.IO.Hashing.Crc32.HashToUInt32(Guid.Parse(Convert.ToString(inspector["GlobalID"])).ToByteArray())}";
-        }
+        public static string UID(this Inspector inspector) => $"{Convert.ToInt64(inspector["UID"])}";
     }
 }
 
