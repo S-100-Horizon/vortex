@@ -10,9 +10,6 @@
     <Project Path="src/Application/VortexLoader/VortexLoader.csproj">
       <Platform Project="x64" />
     </Project>
-    <Project Path="src/Application/VortexProAppModule/VortexProAppModule.csproj">
-      <Platform Project="x64" />
-    </Project>
   </Folder>
   <Folder Name="/S100Framework/">
     <Project Path="src/Core/S100Framework.ArcGIS.Core/S100Framework.ArcGIS.Core.csproj">
