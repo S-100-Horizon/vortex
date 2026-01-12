@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using System.Reflection;
 using System.Text.Json;
 
-namespace S100Framework
+namespace S100FC
 {
     public static class Extension
     {
@@ -36,7 +36,7 @@ namespace S100Framework
     }
 }
 
-namespace S100Framework.Catalogues
+namespace S100FC.Catalogues
 {
     public record FeatureType(string Code);
 
