@@ -98,7 +98,7 @@
         </Setter>
 
         <Setter Property="Visibility" Value="Hidden"/>
-        
+
         <Style.Triggers>
             <!-- Show when hovering the TextBox -->
             <DataTrigger Binding="{Binding IsMouseOver, ElementName=ContentItem}" Value="True">
@@ -169,13 +169,22 @@
         <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
 
-    <!-- Template for Integers -->
+    <!-- Templates for Numbers -->
     <DataTemplate x:Key="IntegerEditorTemplate">
         <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
-
-    <!-- Template for Decimals -->
     <DataTemplate x:Key="DecimalEditorTemplate">
+        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+    </DataTemplate>
+
+    <!-- Templates for Date/Time -->
+    <DataTemplate x:Key="DateTimeEditorTemplate">
+        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="DateOnlyEditorTemplate">
+        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+    </DataTemplate>
+    <DataTemplate x:Key="TimeEditorTemplate">
         <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
 
@@ -198,10 +207,14 @@
 </DataTemplate>-->
 
     <local:PropertyTemplateSelector x:Key="PropSelector" 
-                                StringEditorTemplate="{StaticResource StringEditorTemplate}"
-                                BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
-                                IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
-                                EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
+                                    TextEditorTemplate="{StaticResource StringEditorTemplate}"
+                                    DateOnlyEditorTemplate="{StaticResource DateOnlyEditorTemplate}"
+                                    DateTimeEditorTemplate="{StaticResource DateTimeEditorTemplate}"
+                                    TimeEditorTemplate="{StaticResource TimeEditorTemplate}"
+                                    RealEditorTemplate="{StaticResource DecimalEditorTemplate}"                                    
+                                    BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
+                                    IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
+                                    EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
     <!--ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>-->
 
     <DataTemplate x:Key="DefaultItemControlTemplate">

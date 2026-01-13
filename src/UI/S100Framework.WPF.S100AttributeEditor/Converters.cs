@@ -1,4 +1,5 @@
 ﻿using S100FC;
+using S100Framework.WPF.ViewModel;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Data;
@@ -33,9 +34,8 @@ namespace S100Framework.WPF.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if(value is SimpleAttributeViewModel simpleAttributeViewModel) {
                 if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {
-                    var method = propertyValue.GetType().GetMethod("listedValues", BindingFlags.Public | BindingFlags.Static);
+                    var method = propertyValue.GetType().GetMethod("get_listedValues", BindingFlags.Public | BindingFlags.Static);
                     return method!.Invoke(null, new object[] { /* parameters */ });
-                    //return propertyValue.listedValues;
                 }
             }
             if (value is Type type && type.IsEnum) {

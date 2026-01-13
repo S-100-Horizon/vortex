@@ -10,8 +10,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Editors.cs" />
+    <Compile Remove="Helper.cs" />
+    <Compile Remove="S-101_ViewModel.g.cs" />
+    <Compile Remove="S-122_ViewModel.g.cs" />
+    <Compile Remove="S-123_ViewModel.g.cs" />
+    <Compile Remove="S-124_ViewModel.g.cs" />
+    <Compile Remove="S-125_ViewModel.g.cs" />
     <Compile Remove="S-127_ViewModel.g.cs" />
+    <Compile Remove="S-128_ViewModel.g.cs" />
+    <Compile Remove="S-131_ViewModel.g.cs" />
+    <Compile Remove="S-201_ViewModel.g.cs" />
     <Compile Remove="S-501_ViewModel.g.cs" />
+    <Compile Remove="S100AttributeEditorControl.cs" />
+    <Compile Remove="ViewModelBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Themes\Generic.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +45,7 @@
 
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Themes\" />
   </ItemGroup>
 
 </Project>

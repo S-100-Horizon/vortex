@@ -18,7 +18,7 @@ namespace S100Framework.YAML
         public static T Deserialize<T>(string yaml) => Deserializer.Deserialize<T>(yaml);
         public static object Deserialize(string yaml) => Deserializer.Deserialize(yaml);
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
-        private readonly static FeatureCatalogue featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+        private readonly static S100FC.Catalogues.FeatureCatalogue featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)

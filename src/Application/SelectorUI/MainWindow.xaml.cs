@@ -3,6 +3,7 @@ using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100Framework.WPF;
+using S100Framework.WPF.ViewModel;
 using System.Text.Json;
 using System.Windows;
 
@@ -44,7 +45,7 @@ namespace SelectorUI
                 categoryOfZoneOfConfidenceInData = 1,
             }];
 
-            var selectedObject = new S100AttributeEditorViewModel(featureType);         
+            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");         
 
             this.PropertyGrid.SelectedObject = selectedObject;
 

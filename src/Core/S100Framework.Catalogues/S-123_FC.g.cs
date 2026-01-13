@@ -5283,6 +5283,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -5435,6 +5436,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.point];
 	}
 
@@ -5554,6 +5556,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5603,6 +5606,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5707,6 +5711,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5811,6 +5816,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5950,6 +5956,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6104,6 +6111,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6284,6 +6292,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
@@ -6356,6 +6365,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6484,6 +6494,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6513,6 +6524,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -6542,6 +6554,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -6609,6 +6622,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6710,6 +6724,7 @@ namespace S100FC.S123.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6734,7 +6749,7 @@ namespace S100FC.S123
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AssociatedRxN","AuthorityContact","AuthorityHours","AvailableQoS","BroadcastService","BroadcastTransmission","ConnectivityService","ExceptionalWorkday","InclusionType","LocationHours","PermissionType","RadioServiceControl","relatedOrganisation","ServiceContact","ServiceCoordination","SpatialAssociation","TMAS","TransmissionService"];
 		public static string[] FeatureAssociationTypes => ["coreAggregation","fuzzyZoneAggregation","ServiceProvisionArea"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
-		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","BroadcastDetails","ConnectivityQualityOfService","ContactDetails","NauticalInformation","NonStandardWorkingDay","RadioControlCentre","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality","TelemedicalAssistanceService","TransmissionDetails"];
+		public static string[] FeatureTypes => ["FeatureType","ConnectivitySubscriptionArea","GMDSSArea","IndeterminateZone","METAREA","NAVAREA","NAVTEXServiceArea","RadioServiceArea","RadioStation","SearchAndRescueRegion","WeatherForecastAndWarningArea","FuzzyAreaAggregate","RadioServiceAreaAggregate","DataCoverage","QualityOfNonBathymetricData"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["FeatureType","FuzzyAreaAggregate","RadioServiceAreaAggregate"],
 			Primitives.point => ["ConnectivitySubscriptionArea","RadioStation"],

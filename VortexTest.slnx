@@ -13,6 +13,9 @@
     <Project Path="src/Application/VortexLoader/VortexLoader.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="src/Application/VortexProAppModule/VortexProAppModule.csproj">
+      <Platform Project="x64" />
+    </Project>
   </Folder>
   <Folder Name="/S100Framework/">
     <Project Path="src/Core/S100Framework.ArcGIS.Core/S100Framework.ArcGIS.Core.csproj">
@@ -30,6 +33,7 @@
     </Project>
     <Project Path="src/Core/S100Framework.YAML/S100Framework.YAML.csproj" />
     <Project Path="src/UI/S100Framework.WPF.S100AttributeEditor/S100Framework.WPF.S100AttributeEditor.csproj" Id="740ebc84-f14b-4eeb-a09e-f789639b626e" />
+    <Project Path="src/UI/S100Framework.WPF/S100Framework.WPF.csproj" />
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Core.Tests/TestAttributes/TestAttributes.csproj" Id="21f3f794-46ed-4bf7-8342-8b34bc9b22c3" />

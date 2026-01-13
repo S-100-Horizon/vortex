@@ -4,7 +4,7 @@ using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
 using ArcGIS.Desktop.Mapping.Events;
-using S100Framework.Catalogues;
+using S100FC.Catalogues;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -57,7 +57,7 @@ namespace VortexProAppModule
 
         protected override bool Initialize() {
             _tokenActiveMapViewChangedEvent = ActiveMapViewChangedEvent.Subscribe(OnActiveMapViewChanged);
-            _featureCatalogues = S100Framework.Catalogues.FeatureCatalogue.Catalogues;
+            _featureCatalogues = FeatureCatalogue.Catalogues;
 
             return base.Initialize();
         }

@@ -4807,6 +4807,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -4836,6 +4837,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -4865,6 +4867,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -4894,6 +4897,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
@@ -4942,6 +4946,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -4990,6 +4995,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5026,6 +5032,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface];
 	}
 
@@ -5085,6 +5092,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5169,6 +5177,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -5318,6 +5327,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -5433,6 +5443,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5489,6 +5500,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5537,6 +5549,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -5584,6 +5597,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -5644,6 +5658,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5762,6 +5777,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve];
 	}
 
@@ -5822,6 +5838,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -5882,6 +5899,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface,Primitives.curve];
 	}
 
@@ -5941,6 +5959,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6013,6 +6032,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -6085,6 +6105,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 	}
 
@@ -6132,6 +6153,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6168,6 +6190,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6227,6 +6250,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6286,6 +6310,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6353,6 +6378,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6465,6 +6491,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.surface];
 	}
 
@@ -6556,6 +6583,7 @@ namespace S100FC.S127.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
@@ -6580,7 +6608,7 @@ namespace S100FC.S127
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","InclusionType","PermissionType","RelatedOrganisation","ReportingAuthority","ReportingRequirement","ServiceContact","ServiceControl","SpatialAssociation","LocationHours","TrafficServiceReport"];
 		public static string[] FeatureAssociationTypes => ["ServiceProvisionArea","PilotageDistrictAssociation","TextAssociation","TrafficControlServiceAggregation"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","ShipReport","SpatialQuality"];
-		public static string[] FeatureTypes => ["InformationType","AbstractRxN","Applicability","Authority","ContactDetails","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","ShipReport","SpatialQuality"];
+		public static string[] FeatureTypes => ["FeatureType","OrganizationContactArea","SupervisedArea","ReportableServiceArea","CautionArea","ConcentrationOfShippingHazardArea","ISPSCodeSecurityLevel","LocalPortBroadcastServiceArea","MilitaryPracticeArea","PilotBoardingPlace","PilotService","PilotageDistrict","PiracyRiskArea","PlaceOfRefuge","RadarRange","RadioCallingInPoint","RestrictedArea","RouteingMeasure","ShipReportingServiceArea","SignalStationWarning","SignalStationTraffic","UnderKeelClearanceAllowanceArea","UnderKeelClearanceManagementArea","VesselTrafficServiceArea","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["FeatureType","OrganizationContactArea","SupervisedArea","ReportableServiceArea"],
 			Primitives.point => ["CautionArea","MilitaryPracticeArea","PilotBoardingPlace","PiracyRiskArea","PlaceOfRefuge","RadioCallingInPoint","SignalStationWarning","SignalStationTraffic","TextPlacement"],

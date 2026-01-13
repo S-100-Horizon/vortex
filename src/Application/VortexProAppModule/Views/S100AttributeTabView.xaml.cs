@@ -42,7 +42,7 @@ namespace VortexProAppModule.Views
             if (!propertyItem.PropertyType.IsAbstract) {
                 if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
 
-                    var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
+                    //var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100FC.CodeListAttribute>();
 
                     //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
                     if (propertyItem.Value == null) {

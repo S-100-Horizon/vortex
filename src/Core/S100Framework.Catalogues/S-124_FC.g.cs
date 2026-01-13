@@ -2082,6 +2082,7 @@ namespace S100FC.S124.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
@@ -2110,6 +2111,7 @@ namespace S100FC.S124.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 	}
 
@@ -2200,6 +2202,7 @@ namespace S100FC.S124.FeatureTypes
 
 		#endregion
 
+		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
@@ -2224,7 +2227,7 @@ namespace S100FC.S124
 		public static string[] InformationAssociationTypes => ["navwarnPreambleContent","navwarnReferences"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","areaAffected"];
 		public static string[] InformationTypes => ["References","NavwarnPreamble","SpatialQuality"];
-		public static string[] FeatureTypes => ["References","NavwarnPreamble","SpatialQuality"];
+		public static string[] FeatureTypes => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => [],
 			Primitives.point => ["NavwarnPart","NavwarnAreaAffected","TextPlacement"],
