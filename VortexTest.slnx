@@ -37,6 +37,8 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Core.Tests/TestAttributes/TestAttributes.csproj" Id="21f3f794-46ed-4bf7-8342-8b34bc9b22c3" />
-    <Project Path="TestYAML/TestYAML.csproj" Id="f4b2e214-3cb7-4b4f-88ee-ad3ff7b0b222" />
+    <Project Path="TestYAML/TestYAML.csproj" Id="f4b2e214-3cb7-4b4f-88ee-ad3ff7b0b222">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
   </Folder>
 </Solution>

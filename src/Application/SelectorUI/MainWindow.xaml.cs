@@ -45,7 +45,8 @@ namespace SelectorUI
                 categoryOfZoneOfConfidenceInData = 1,
             }];
 
-            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");         
+            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
+            selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
 
             this.PropertyGrid.SelectedObject = selectedObject;
 
