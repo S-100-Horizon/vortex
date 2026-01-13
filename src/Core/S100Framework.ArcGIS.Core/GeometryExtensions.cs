@@ -49,50 +49,7 @@ namespace ArcGIS.Core.Geometry
             }
         }
 
-        //public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {
-        //    switch (geometry) {
-        //        case ArcGIS.Core.Geometry.MapPoint point: {                              // Point
-        //                var pointLocation = string.Format(
-        //                     CultureInfo.InvariantCulture,
-        //                     "{0:0.#######},{1:0.#######}", point.X, point.Y
-        //                 );
-
-        //                var hashId = System.IO.Hashing.XxHash32.HashToUInt32(new NetTopologySuite.Geometries.Point(point.X, point.Y).ToBinary());
-
-        //                var datasetPoint = dataset?.Points?.FirstOrDefault(e => e.Name == $"P{hashId}");
-
-        //                // Create point if not exist
-        //                if (datasetPoint == default) {
-        //                    var p = new Point(point.X, point.Y) {
-        //                        Name = $"P{hashId}"
-        //                    };
-
-        //                    dataset?.AddPoint(p);
-        //                }
-
-        //                dataset?.UpdateFeatureReferences(name, $"P{hashId}"!);
-        //                break;
-        //            }
-        //        case ArcGIS.Core.Geometry.Multipoint multiPoint: {   // Depths
-        //                var points = multiPoint.Points.Select(e => new Coordinate(e.X, e.Y)).ToArray();
-
-        //                var depths = multiPoint.Points.Select(e => Math.Round(e.Z, 7)).ToArray();
-
-        //                var hashId = System.IO.Hashing.XxHash32.HashToUInt32(new NetTopologySuite.Geometries.MultiPoint([.. multiPoint.Points.Select(e => new NetTopologySuite.Geometries.Point(e.X, e.Y, e.Z))]).ToBinary());
-
-        //                var pointSet = new PointSet(points, depths) { Name = $"P{hashId}" };
-        //                dataset.AddPointSet(pointSet);
-
-        //                dataset?.UpdateFeatureReferences(name, $"P{hashId}"!);
-        //                break;
-        //            }
-        //        case ArcGIS.Core.Geometry.Polyline polyline:        // Curves are handled in Topology
-        //        case ArcGIS.Core.Geometry.Polygon polygon:          // Surfaces are handled in Topology
-        //            break;
-        //        default:
-        //            throw new ArgumentException($"Unsupported geometry type: {geometry.GeometryType}");
-        //    }
-        //}
+        
 
         private static Polyline CreateLinearRing(string[] coords, SpatialReference spatialReference) {
             var points = new MapPoint[coords.Length / 2];

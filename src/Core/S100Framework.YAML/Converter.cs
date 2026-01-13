@@ -1,6 +1,6 @@
 ﻿using S100FC;
+using S100FC.Catalogues;
 using S100FC.S100;
-using S100Framework.Catalogues;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
@@ -18,7 +18,7 @@ namespace S100Framework.YAML
         public static T Deserialize<T>(string yaml) => Deserializer.Deserialize<T>(yaml);
         public static object Deserialize(string yaml) => Deserializer.Deserialize(yaml);
         private record YamlAttributeItem(string Name, string? Value, int? Id, int? Parent);
-        private readonly static FeatureCatalogue featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+        private readonly static FeatureCatalogue featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
         private static readonly ISerializer Serializer = new SerializerBuilder()
            .WithNamingConvention(PascalCaseNamingConvention.Instance)
@@ -805,7 +805,7 @@ namespace S100Framework.YAML
                 return attributes;
             }
             private static S100FC.InformationType BuildInformationNodeObject(List<YamlAttributeItem> attributes, string type) {
-                var informationType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{type}", true) ?? default;
+                var informationType = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{type}", true) ?? default;
 
                 var informationNode = Activator.CreateInstance(informationType);
                 var typeInstances = new Dictionary<int, object> { { 0, informationNode } };
@@ -923,7 +923,7 @@ namespace S100Framework.YAML
                 return informationNode as S100FC.InformationType;
             }
             private static S100FC.FeatureType BuildFeatureNodeObject(List<YamlAttributeItem> attributes, string type) {
-                var featureType = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
+                var featureType = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{type}", true) ?? default;
                 var featureNode = Activator.CreateInstance(featureType);
                 var typeInstances = new Dictionary<int, object> { { 0, featureNode } };
 

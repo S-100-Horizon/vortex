@@ -21,4 +21,10 @@
     <ProjectReference Include="..\S100Framework.Topology\S100Framework.Topology.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ArcGIS.Core">
+      <HintPath>..\..\..\..\..\..\Program Files\ArcGIS\Pro\bin\ArcGIS.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

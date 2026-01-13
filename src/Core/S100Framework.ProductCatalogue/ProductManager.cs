@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S128.ComplexAttributes;
-using S100Framework.DomainModel.S128.FeatureTypes;
+using S100FC;
+using S100FC.S128;
+using S100FC.S128.FeatureTypes;
 using S100Framework.YAML;
 using Serilog;
 using System.Collections;
@@ -21,9 +21,9 @@ namespace S100Framework.ProductCatalogue
 
     public interface IElectronicProductManager : IEnumerable<string>
     {
-        Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
+        Task CreateElectronicProductAsync(string name, S100FC.S128.ComplexAttributes.productSpecification productSpecification, S100FC.S128.SimpleAttributes.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
 
-        Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
+        Task CreateElectronicProductAsync(string name, S100FC.S128.ComplexAttributes.productSpecification productSpecification, S100FC.S128.SimpleAttributes.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
 
         Task<YAML.Dataset> CreateNewDatasetAsync(string name);
 
@@ -70,12 +70,11 @@ namespace S100Framework.ProductCatalogue
         private string _databaseName = string.Empty;
         private string _ownerName = string.Empty;
 
-        JsonSerializerOptions jsonSerializerOptionsSharedBindings = new() {
+        JsonSerializerOptions jsonSerializerOptionsSharedBindings = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
-            TypeInfoResolver = DomainModel.S101.Summary.SharedBindingResolver(),
-        };
+        }.AppendTypeInfoResolver();
 
         public string OutputFolder { get; internal set; }
         private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
@@ -85,7 +84,7 @@ namespace S100Framework.ProductCatalogue
             public override string ToString() => $"{this.ps}::{this.name}";
         }
 
-        private ConcurrentDictionary<string, S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct> _electronicProducts = new ConcurrentDictionary<string, S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>();
+        private ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct> _electronicProducts = new ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct>();
 
         private ProductManager() {
             this._singleThreadTaskScheduler = new SingleThreadTaskScheduler();
@@ -151,8 +150,8 @@ namespace S100Framework.ProductCatalogue
                         if (c.IsNull("code")) continue;
 
                         var code = Convert.ToString(c["code"])!;
-                        if (code.Equals(nameof(S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct))) {
-                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!)!;
+                        if (code.Equals(nameof(S100FC.S128.FeatureTypes.ElectronicProduct))) {
+                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!)!;
                             this._electronicProducts.GetOrAdd(electronicProduct.datasetName!.ToUpperInvariant(), electronicProduct);
                         }
                     }
@@ -179,7 +178,7 @@ namespace S100Framework.ProductCatalogue
 
         #region IElectronicProductManager
 
-        async Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
+        async Task IElectronicProductManager.CreateElectronicProductAsync(string name, S100FC.S128.ComplexAttributes.productSpecification productSpecification, S100FC.S128.SimpleAttributes.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary) {
             if (string.IsNullOrEmpty(name))
                 throw new System.ArgumentNullException(nameof(name));
 
@@ -195,16 +194,16 @@ namespace S100Framework.ProductCatalogue
                     using (var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"))) {
                         using var buffer = surface.CreateRowBuffer();
                         buffer["ps"] = "S-128";
-                        buffer["code"] = nameof(S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct);
+                        buffer["code"] = nameof(S100FC.S128.FeatureTypes.ElectronicProduct);
 
-                        var electronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
+                        var electronicProduct = new S100FC.S128.FeatureTypes.ElectronicProduct {
                             datasetName = name,
-                            typeOfProductFormat = DomainModel.S128.typeOfProductFormat.IsoIec8211,
+                            typeOfProductFormat = 2,                 //IsoIec8211,
                             notForNavigation = true,
                             issueDate = DateOnly.FromDateTime(DateTime.Now),
                             editionNumber = 0,
                             agencyResponsibleForProduction = "Danish Geodata Agency",
-                            specificUsage = specificUsage,
+                            specificUsage = specificUsage.value,
                             productSpecification = productSpecification,
                         };
 
@@ -220,7 +219,7 @@ namespace S100Framework.ProductCatalogue
 
         }
 
-        Task IElectronicProductManager.CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
+        Task IElectronicProductManager.CreateElectronicProductAsync(string name, S100FC.S128.ComplexAttributes.productSpecification productSpecification, S100FC.S128.SimpleAttributes.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile) {
             throw new NotImplementedException();
         }
 
@@ -307,7 +306,7 @@ namespace S100Framework.ProductCatalogue
             if (dataset == default)
                 return false;
 
-            var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
+            var filter = await this.BuildSpatialQueryFilter(dataset, new S100FC.S128.SimpleAttributes.specificUsage { value = electronicProduct.specificUsage });
 
             return await this.Dispatch(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
@@ -345,7 +344,7 @@ namespace S100Framework.ProductCatalogue
             var dirty = await this.Dispatch(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}")); // TODO  _H
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}")); 
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
@@ -405,25 +404,31 @@ namespace S100Framework.ProductCatalogue
                 if (row128.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(name));
 
-                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!)!;
+                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!)!;
 
                 var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
                 var whereClause = "upper(ps) = 'S-101'";
 
-                whereClause += electronicProduct.specificUsage switch {
-                    DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
-                    DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
-                    DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
-                    DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
-                    DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
-                    _ => "",
-                };
+                var specificUsage = S100FC.S128.SimpleAttributes.specificUsage.listedValues.FirstOrDefault(e => e.code == electronicProduct.specificUsage);
+                if (specificUsage != default)
+                    whereClause += $" AND usageband = {electronicProduct.specificUsage}";
+
+
+                //whereClause += specificUsage switch {
+
+                //    S100FC.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
+                //    S100FC.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
+                //    S100FC.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
+                //    S100FC.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
+                //    S100FC.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
+                //    _ => "",
+                //};
 
                 var filter = new SpatialQueryFilter {
                     FilterGeometry = shapeCoverage,
                     SpatialRelationship = SpatialRelationship.Relation,
-                    SpatialRelationshipDescription = Topology.Matrix.DE9IM,
+                    SpatialRelationshipDescription = S100FC.Topology.Matrix.DE9IM,
                     WhereClause = whereClause,
                 };
 
@@ -434,7 +439,7 @@ namespace S100Framework.ProductCatalogue
         private async Task<YAML.Dataset> CreateDatasetAsync(ElectronicProduct electronicProduct, SpatialQueryFilter filter, ExportTypes exportType) {
             var timestamp = DateTime.UtcNow;
 
-            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+            var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
             var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
             var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
@@ -445,7 +450,7 @@ namespace S100Framework.ProductCatalogue
 
             var dataset = new S100Framework.YAML.Dataset {
                 CellName = $"{electronicProduct!.datasetName!}.000",
-                Comment = electronicProduct.notForNavigation ? "Not for navigation!" : string.Empty,
+                Comment = electronicProduct.notForNavigation.HasValue ? "Not for navigation!" : string.Empty,
                 Edition = (uint?)electronicProduct.editionNumber,
                 ENCVer = "INT.IHO.S-101.2.0",
                 FCVer = "2.0",
@@ -476,7 +481,7 @@ namespace S100Framework.ProductCatalogue
                         var code = current["code"].ToString()!;
                         var json = current["json"].ToString()!;
 
-                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+                        var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
                         var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
@@ -485,8 +490,7 @@ namespace S100Framework.ProductCatalogue
                             ID = name,
                         };
                         // Only emit attributes if feature contains any non-static properties
-                        if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                            information.Attributes = (InformationNode)instance!;
+                        information.Attributes = (S100FC.InformationType)instance!;
 
                         informationTypes.Add(information);
 
@@ -527,7 +531,7 @@ namespace S100Framework.ProductCatalogue
                         var code = current["code"].ToString()!;
                         var json = current["json"].ToString()!;
 
-                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+                        var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
                         var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
@@ -539,8 +543,8 @@ namespace S100Framework.ProductCatalogue
                             Foid = foid,
                         };
                         // Only emit attributes if feature contains any non-static properties
-                        if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                            feature.Attributes = (FeatureNode)instance!;
+
+                        feature.Attributes = (S100FC.FeatureType)instance!;
                         featureTypes.Add(feature);
 
                         // Support Files
@@ -614,7 +618,7 @@ namespace S100Framework.ProductCatalogue
                         };
 
                         try {
-                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
+                            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
 
                             if (type == default) {
                                 Log.Error("Could not get type: {type} for feature: {name}", code, name);
@@ -666,12 +670,10 @@ namespace S100Framework.ProductCatalogue
                             };
 
                             // Only emit attributes if feature contains any non-static properties
-                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                                feature.Attributes = (FeatureNode)instance!;
+                            feature.Attributes = (S100FC.FeatureType)instance!;
 
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
-                                // throw new NotImplementedException();    //TODO: informationbindings
                                 var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
 
                                 if (informationBindings != default && informationBindings.Length != 0) {
@@ -679,7 +681,7 @@ namespace S100Framework.ProductCatalogue
                                         var asso = new YAML.Association {
                                             Name = binding.GetType().GenericTypeArguments[0].Name,
                                             Role = binding.role,
-                                            To = binding.referenceId!,
+                                            To = binding.informationId
                                         };
 
                                         // Special case for SpatialAssociation. Add to dictionary for later processing.
@@ -688,9 +690,9 @@ namespace S100Framework.ProductCatalogue
                                         else
                                             feature?.AddAssociation(asso);
 
-                                        if (!informationsTypesAdded.Contains(binding.referenceId!)) {
-                                            informationsTypesAdded.Add(binding.referenceId!);
-                                            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.referenceId!)));
+                                        if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                            informationsTypesAdded.Add(binding.informationId!);
+                                            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
                                         }
                                     }
                                 }
@@ -711,14 +713,14 @@ namespace S100Framework.ProductCatalogue
                                         var asso = new YAML.Association {
                                             Name = binding.GetType().GenericTypeArguments[0].Name,
                                             Role = binding.role,
-                                            To = $"110:{binding!.referenceId!}:1"
+                                            To = $"110:{binding!.featureId!}:1"
                                         };
 
                                         feature?.AddFeatureAssociation(asso);
 
-                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.referenceId}:1"));
-                                        if (noGeometry != null && !featureTypesAdded.Contains(binding.referenceId)) {
-                                            featureTypesAdded.Add(binding.referenceId);
+                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                            featureTypesAdded.Add(binding.featureId);
                                             dataset?.AddFeature(noGeometry);
                                         }
                                     }
@@ -887,7 +889,7 @@ namespace S100Framework.ProductCatalogue
             });
         }
 
-        private async Task<SpatialQueryFilter> BuildSpatialQueryFilter(Dataset dataset, DomainModel.S128.specificUsage? specificUsage) {
+        private async Task<SpatialQueryFilter> BuildSpatialQueryFilter(Dataset dataset, S100FC.S128.SimpleAttributes.specificUsage? specificUsage) {
             return await this.Dispatch(() => {
                 using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
@@ -904,14 +906,20 @@ namespace S100Framework.ProductCatalogue
 
                 var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
 
-                whereClause += specificUsage switch {
-                    DomainModel.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
-                    DomainModel.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
-                    DomainModel.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
-                    DomainModel.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
-                    DomainModel.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
-                    _ => "",
-                };
+
+                // var specificUsage = S100FC.S128.SimpleAttributes.specificUsage.listedValues.FirstOrDefault(e => e.code == electronicProduct.specificUsage);
+                if (specificUsage != null)
+                    whereClause += $" AND usageband = {specificUsage.value}";
+
+
+                //whereClause += specificUsage switch {
+                //    S100FC.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
+                //    S100FC.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
+                //    S100FC.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
+                //    S100FC.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
+                //    S100FC.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
+                //    _ => "",
+                //};
 
                 ArcGIS.Core.Geometry.Polygon shapeCoverage;
 
@@ -920,7 +928,7 @@ namespace S100Framework.ProductCatalogue
                 var filter = new SpatialQueryFilter {
                     FilterGeometry = shapeCoverage,
                     SpatialRelationship = SpatialRelationship.Relation,
-                    SpatialRelationshipDescription = Topology.Matrix.DE9IM,
+                    SpatialRelationshipDescription = S100FC.Topology.Matrix.DE9IM,
                     WhereClause = whereClause,
                 };
 
