@@ -11,14 +11,15 @@ using System.Xml.Linq;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged {
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged
+    {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged = default;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string propertyName = null) {
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string? propertyName = null) {
             if (Equals(field, value))
                 return false;
 
@@ -34,11 +35,33 @@ namespace S100Framework.WPF.ViewModel
             this._uid = uid;
             this.code = this._feature.S100FC_code;
             this.attributeBindings = this._feature.attributeBindingsCatalogue;
+
+            this.attributeValues.CollectionChanged += (s, e) => {
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if(item is SimpleAttributeViewModel simpleAttribute) {
+                            simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                        else if (item is ComplexAttributeViewModel complexAttribute) {
+                            complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+            };
+            
             foreach (var e in this._feature.attributeBindings)
-                if (e is SimpleAttribute simpleAttribute)
-                    this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
-                else if (e is ComplexAttribute complexAttribute)
-                    this.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
+                if (e is SimpleAttribute simpleAttribute) {
+                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    this.attributeValues.Add(viewmodel);
+                }
+                else if (e is ComplexAttribute complexAttribute) {
+                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    this.attributeValues.Add(viewmodel);
+                }
+        }
+
+        private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this.PropertyChanged?.Invoke(this, e);
         }
 
         #region Properties        

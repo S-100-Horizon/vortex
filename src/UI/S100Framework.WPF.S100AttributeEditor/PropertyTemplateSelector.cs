@@ -25,6 +25,8 @@ namespace S100Framework.WPF
 
         public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
             if (item is SimpleAttributeViewModel simpleAttribute) {
+                if (simpleAttribute.valueType.Equals("text"))
+                    return TextEditorTemplate;
                 if (simpleAttribute.valueType.Equals("boolean"))
                     return BooleanEditorTemplate;
                 if (simpleAttribute.valueType.Equals("integer"))

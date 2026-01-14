@@ -7,6 +7,9 @@
     <Project Path="src/Application/VortexDCEGBuilder/VortexDCEGBuilder.csproj">
       <Platform Project="x64" />
     </Project>
+    <Project Path="src/Application/VortexExporter/VortexExporter.csproj">
+      <Platform Project="x64" />
+    </Project>
     <Project Path="src/Application/VortexLoader/VortexLoader.csproj">
       <Platform Project="x64" />
     </Project>
@@ -22,6 +25,9 @@
       <Build Solution="Release|*" Project="false" />
     </Project>
     <Project Path="src/Core/S100Framework.GML/S100Framework.GML.csproj" />
+    <Project Path="src/Core/S100Framework.ProductCatalogue/S100Framework.ProductCatalogue.csproj">
+      <Platform Project="x64" />
+    </Project>
     <Project Path="src/Core/S100Framework.Topology/S100Framework.Topology.csproj">
       <Build Solution="Release|*" Project="false" />
     </Project>
@@ -31,5 +37,8 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="tests/Core.Tests/TestAttributes/TestAttributes.csproj" Id="21f3f794-46ed-4bf7-8342-8b34bc9b22c3" />
+    <Project Path="TestYAML/TestYAML.csproj" Id="f4b2e214-3cb7-4b4f-88ee-ad3ff7b0b222">
+      <Build Solution="Debug|*" Project="false" />
+    </Project>
   </Folder>
 </Solution>

@@ -12,7 +12,7 @@ namespace S100Framework.ProductCatalogue
         static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
 
 
-        public static S100Framework.Topology.IMatrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
+        public static S100FC.Topology.IMatrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {
             queryFilter = queryFilter switch {
                 SpatialQueryFilter spatial => new SpatialQueryFilter {
                     FilterGeometry = spatial.FilterGeometry,
@@ -46,18 +46,18 @@ namespace S100Framework.ProductCatalogue
             var whereClause = queryFilter.WhereClause;
             var prefix = queryFilter.PrefixClause;
 
-            S100Framework.Topology.Matrix.Factory = factory;
+            S100FC.Topology.Matrix.Factory = factory;
 
             var definitions = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
 
-            var matrix = S100Framework.Topology.Matrix.CreateMatrix(interceptor);
+            var matrix = S100FC.Topology.Matrix.CreateMatrix(interceptor);
 
-            S100Framework.Topology.ITopologyBuilder? builder = default;
+            S100FC.Topology.ITopologyBuilder? builder = default;
 
             //  Skin of the Earth
             {
-                var polygons = new List<S100Framework.Topology.Polygon>();
+                var polygons = new List<S100FC.Topology.Polygon>();
 
                 using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
                     queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
@@ -90,15 +90,15 @@ namespace S100Framework.ProductCatalogue
                                 interiorRings.Add(linestring);
                             }
 
-                            polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
+                            polygons.Add(new S100FC.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
                         }
                         else {
-                            polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
+                            polygons.Add(new S100FC.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                         }
                     }
                 }
 
-                var curves = new List<S100Framework.Topology.Polyline>();
+                var curves = new List<S100FC.Topology.Polyline>();
 
                 using (var curve = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("curve")).GetName())) {
                     queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) IN ('COASTLINE','DEPTHCONTOUR','SHORELINECONSTRUCTION'))";
@@ -118,7 +118,7 @@ namespace S100Framework.ProductCatalogue
                             var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                             linestring = linestring.RemoveRepeatedVertices();
 
-                            curves.Add(new S100Framework.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                            curves.Add(new S100FC.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
                 }
@@ -129,7 +129,7 @@ namespace S100Framework.ProductCatalogue
 
             //  Navigational features
             {
-                var polygons = new List<S100Framework.Topology.Polygon>();
+                var polygons = new List<S100FC.Topology.Polygon>();
 
                 using (var surface = geodatabase.OpenDataset<FeatureClass>(definitions.Single(e => e.GetAliasName().Equals("surface")).GetName())) {
                     queryFilter.WhereClause = (!string.IsNullOrEmpty(whereClause) ? $"{whereClause} AND " : "") + $"(upper(code) NOT IN ('DEPTHAREA','DREDGEDAREA','LANDAREA','UNSURVEYEDAREA'))";
@@ -163,17 +163,17 @@ namespace S100Framework.ProductCatalogue
                                     interiorRings.Add(linestring);
                                 }
 
-                                polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
+                                polygons.Add(new S100FC.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, interiorRings.ToArray()));
                             }
                             else {
-                                polygons.Add(new S100Framework.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
+                                polygons.Add(new S100FC.Topology.Polygon(f.GetObjectID(), name, Convert.ToString(f["code"])!, ex, []));
                             }
                         }
                     }
                 }
 
-                var curves = new List<S100Framework.Topology.Polyline>();
-                var singletons = new List<S100Framework.Topology.Polyline>();
+                var curves = new List<S100FC.Topology.Polyline>();
+                var singletons = new List<S100FC.Topology.Polyline>();
 
                 var singletonsFeatures = "''";// "'ROAD','RAILWAY'";  //'NAVIGATIONLINE','RECOMMENDEDTRACK'
 
@@ -196,7 +196,7 @@ namespace S100Framework.ProductCatalogue
 
                             //linestring.Normalize();
 
-                            curves.Add(new S100Framework.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                            curves.Add(new S100FC.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
 
@@ -218,7 +218,7 @@ namespace S100Framework.ProductCatalogue
                             var linestring = (LineString)factory.CreateLineString([.. coordinates]);
                             linestring = linestring.RemoveRepeatedVertices();
 
-                            singletons.Add(new S100Framework.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
+                            singletons.Add(new S100FC.Topology.Polyline(f.GetObjectID(), name, Convert.ToString(f["code"])!, linestring));
                         }
                     }
                 }

@@ -1,10 +1,12 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureAssociations;
-using S100Framework.ProductCatalogue;
+using S100FC;
+//using S100Framework.DomainModel;
+//using S100Framework.DomainModel.S101.FeatureAssociations;
+//using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
+using S100FC.Topology;
 using Serilog;
 using System.Diagnostics;
 using System.Text;
@@ -14,6 +16,8 @@ using WinRT;
 using Dataset = S100Framework.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
+using S100Framework.ProductCatalogue;
+using S100FC.S101;
 
 namespace S100Framework.Applications
 {
@@ -107,7 +111,7 @@ namespace S100Framework.Applications
                 var definitionTables = source.GetDefinitions<TableDefinition>();
                 var definitionFeatures = source.GetDefinitions<FeatureClassDefinition>();
 
-                var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+                var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
 
                 var datasets = new List<(Dataset Dataset, SpatialQueryFilter Filter)>();
                 {
@@ -120,7 +124,7 @@ namespace S100Framework.Applications
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
 
-                        var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+                        var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
 
                         var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
                         //var json = polygon.ToJson();
@@ -140,7 +144,7 @@ namespace S100Framework.Applications
                         }, new SpatialQueryFilter {
                             FilterGeometry = shape,
                             SpatialRelationship = SpatialRelationship.Relation,
-                            SpatialRelationshipDescription = Topology.Matrix.DE9IM,
+                            SpatialRelationshipDescription = S100FC.Topology.Matrix.DE9IM,
                             WhereClause = whereClause,
                         }));
                     }
@@ -153,7 +157,7 @@ namespace S100Framework.Applications
                 var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
                 //  TEST, TEST, TEST, TEST, TEST, 
-                Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
+                S100FC.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
                 foreach (var e in datasets) {
                     var supportFiles = new List<string>();
@@ -163,19 +167,11 @@ namespace S100Framework.Applications
 
                     var datasetName = dataset.CellName.Split('.')[0];
 
-                    JsonSerializerOptions jsonSerializerOptionsInformationBindings = new() {
+                    var jsonSerializerOptionsInformationBindings = new JsonSerializerOptions {
                         WriteIndented = false,
                         Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                         PropertyNameCaseInsensitive = true,
-                        TypeInfoResolver = DomainModel.S101.Summary.InformationBindingResolver(),
-                    };
-
-                    JsonSerializerOptions jsonSerializerOptionsFeatureBindings = new() {
-                        WriteIndented = false,
-                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        PropertyNameCaseInsensitive = true,
-                        TypeInfoResolver = DomainModel.S101.Summary.FeatureBindingResolver(),
-                    };
+                    }.AppendTypeInfoResolver();
 
 
                     //if (datasetName.Equals("101DK40751E")) continue;
@@ -188,7 +184,7 @@ namespace S100Framework.Applications
 
                     // Build Topology
                     Log.Information("Building topology..");
-                    var topology = source.BuildTopology(filter)!;
+                    S100FC.Topology.IMatrix topology = source.BuildTopology(filter)!;
 
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
 
@@ -206,7 +202,7 @@ namespace S100Framework.Applications
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
-                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+                            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
@@ -214,11 +210,9 @@ namespace S100Framework.Applications
                                 Name = code,
                                 ID = name,
                             };
-                            // Only emit attributes if feature contains any non-static properties
-                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                                information.Attributes = (InformationNode)instance!;
+
+                            information.Attributes = (S100FC.InformationType)instance!;
                             informationTypes.Add(information);
-                            //dataset.AddInformation(information);
 
                             if (regFileReference.IsMatch(json)) {
                                 var matches = regFileReference.Matches(json);
@@ -271,7 +265,7 @@ namespace S100Framework.Applications
                             var code = current["code"].ToString()!;
                             var json = current["json"].ToString()!;
 
-                            var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
+                            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
@@ -282,9 +276,8 @@ namespace S100Framework.Applications
                                 Name = code,
                                 Foid = foid,
                             };
-                            // Only emit attributes if feature contains any non-static properties
-                            if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                                feature.Attributes = (FeatureNode)instance!;
+
+                            feature.Attributes = (S100FC.FeatureType)instance!;
                             featureTypes.Add(feature);
 
                             if (regFileReference.IsMatch(json)) {
@@ -368,7 +361,7 @@ namespace S100Framework.Applications
                             };
 
                             try {
-                                var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
+                                var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true) ?? default;
 
                                 if (type == default) {
                                     Log.Error("Could not get type: {type} for feature: {name}", code, name);
@@ -424,20 +417,19 @@ namespace S100Framework.Applications
                                     Masks = masks.Any() ? string.Join(",", masks) : null
                                 };
 
-                                // Only emit attributes if feature contains any non-static properties
-                                if (!S100Framework.YAML.Converter.IsDefault(instance!))
-                                    feature.Attributes = (FeatureNode)instance!;
+                                feature.Attributes = (S100FC.FeatureType)instance!;
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
                                     var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsInformationBindings);
 
+                                    // todo: fix missing binding.referenceId
                                     if (informationBindings != default && informationBindings.Any()) {
                                         foreach (var binding in informationBindings) {
                                             var asso = new YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
-                                                To = binding.referenceId!,
+                                                To = binding.featureId!,
                                             };
 
                                             // Special case for SpatialAssociation. Add to dictionary for later processing.
@@ -446,9 +438,9 @@ namespace S100Framework.Applications
                                             else
                                                 feature?.AddAssociation(asso);
 
-                                            if (!informationsTypesAdded.Contains(binding.referenceId!)) {
-                                                informationsTypesAdded.Add(binding.referenceId!);
-                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.referenceId!)));
+                                            if (!informationsTypesAdded.Contains(binding.featureId!)) {
+                                                informationsTypesAdded.Add(binding.featureId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.featureId!)));
                                             }
                                         }
                                     }
@@ -469,14 +461,14 @@ namespace S100Framework.Applications
                                             var asso = new YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
-                                                To = $"110:{binding!.referenceId!}:1"
+                                                To = $"110:{binding.featureId!}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.referenceId}:1"));
-                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.referenceId)) {
-                                                featureTypesAdded.Add(binding.referenceId);
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                                featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
                                             }
                                         }

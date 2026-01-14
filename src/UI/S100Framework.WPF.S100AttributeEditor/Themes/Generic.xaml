@@ -166,6 +166,7 @@
 
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">
+        <!--<TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>-->
         <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
     </DataTemplate>
 

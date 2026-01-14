@@ -24,17 +24,17 @@ namespace S100Framework.WPF.ViewModel
         protected void SetProperty<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             if (string.IsNullOrWhiteSpace(propertyName)) return;
 
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            if (backingFiled is AttributeViewModel viewModel) {   // if old value is ViewModel, than we assume that it was subscribed, so - unsubscribe it
-                viewModel.PropertyChanged -= ChildViewModelChanged;
-                nestedProperties.Remove(viewModel);
-            }
-            if (value is AttributeViewModel valueViewModel) {
-                // if new value is ViewModel, than we must subscribe it on PropertyChanged and add it into subscribe dictionary
-                valueViewModel.PropertyChanged += ChildViewModelChanged;
-                nestedProperties.Add(valueViewModel, propertyName);
-            }
-            backingFiled = value;
+            //if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            //if (backingFiled is AttributeViewModel viewModel) {   // if old value is ViewModel, than we assume that it was subscribed, so - unsubscribe it
+            //    viewModel.PropertyChanged -= ChildViewModelChanged;
+            //    nestedProperties.Remove(viewModel);
+            //}
+            //if (value is AttributeViewModel valueViewModel) {
+            //    // if new value is ViewModel, than we must subscribe it on PropertyChanged and add it into subscribe dictionary
+            //    valueViewModel.PropertyChanged += ChildViewModelChanged;
+            //    nestedProperties.Add(valueViewModel, propertyName);
+            //}
+            //backingFiled = value;
             OnPropertyChanged(propertyName);
         }
 
@@ -97,12 +97,34 @@ namespace S100Framework.WPF.ViewModel
             this._attribute = attribute;
 
             this.attributeBindings = this._attribute.attributeBindingsCatalogue;
+
+            this.attributeValues.CollectionChanged += (s, e) => {
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is SimpleAttributeViewModel simpleAttribute) {
+                            simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                        else if (item is ComplexAttributeViewModel complexAttribute) {
+                            complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+            };
+
             foreach (var e in attribute.attributeBindings) {
-                if (e is SimpleAttribute simpleAttribute)
-                    this.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
-                else if (e is ComplexAttribute complexAttribute)
-                    this.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
+                if (e is SimpleAttribute simpleAttribute) {
+                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    this.attributeValues.Add(viewmodel);
+                }
+                else if (e is ComplexAttribute complexAttribute) {
+                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    this.attributeValues.Add(viewmodel);
+                }
             }
+        }
+
+        private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            base.OnPropertyChanged(e.PropertyName);
         }
 
         private S100FC.ComplexAttribute? _attribute = default;
