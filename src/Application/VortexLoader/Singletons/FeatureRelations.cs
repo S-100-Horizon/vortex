@@ -1105,7 +1105,7 @@ namespace S100Framework.Applications.Singletons
                     primaryBindings.Add(featureBindingPrimary);
                 }
                 else
-                    Logger.Current.Error("featureBinding doesn't exist: {key}", key);
+                    Logger.Current.Error("featureBinding doesn't exist: {key}, master: {master}, slave: {slave}", key, master.Name, slave.Name);
             }
             {
                 //TODO: Foreign end
@@ -1127,7 +1127,7 @@ namespace S100Framework.Applications.Singletons
                     foreignBindings.Add(featureBindingForeign);
                 }
                 else
-                    Logger.Current.Error("featureBinding doesn't exist: {key}", key);
+                    Logger.Current.Error("featureBinding doesn't exist: {key}, master: {master}, slave: {slave}", key, master.Name, slave.Name);
             }
 
             if (s101SlaveFeature["featurebindings"] is null) {
