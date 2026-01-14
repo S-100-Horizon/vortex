@@ -46,6 +46,7 @@ namespace S100Framework.WPF.ViewModel
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                     }
+                    this.OnPropertyChanged("attributes");
                 }
             };
             
@@ -61,7 +62,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(this, e);
+            this.PropertyChanged?.Invoke(sender, e);
         }
 
         #region Properties        

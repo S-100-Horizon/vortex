@@ -22,6 +22,7 @@ namespace S100Framework.WPF.ViewModel
         private Dictionary<AttributeViewModel, string> nestedProperties = new();
 
         protected void SetProperty<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            System.Diagnostics.Debug.WriteLine($"SetProperty({propertyName})");
             if (string.IsNullOrWhiteSpace(propertyName)) return;
 
             //if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
@@ -34,8 +35,8 @@ namespace S100Framework.WPF.ViewModel
             //    valueViewModel.PropertyChanged += ChildViewModelChanged;
             //    nestedProperties.Add(valueViewModel, propertyName);
             //}
-            //backingFiled = value;
-            OnPropertyChanged(propertyName);
+            backingFiled = value;
+            OnPropertyChanged(this.code);
         }
 
         private void ChildViewModelChanged(object? sender, PropertyChangedEventArgs e) {
@@ -124,7 +125,10 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            base.OnPropertyChanged(e.PropertyName);
+            //if(sender is S100FC.SimpleAttribute simpleAttribute)
+            //    base.OnPropertyChanged(simpleAttribute.S100FC_code);
+            //else
+                base.OnPropertyChanged(e.PropertyName);
         }
 
         private S100FC.ComplexAttribute? _attribute = default;

@@ -40,16 +40,29 @@ namespace PropertyGridApplication
 
         public override attributeBindingDefinition[] attributeBindingsCatalogue => [
                  new attributeBindingDefinition {
-                    attribute = nameof(featuresDetectedNested),
+                    attribute = nameof(beaconShape),
                     lower = 1,
                     upper = 1,
+                    CreateInstance = () => new beaconShape(),
+                },
+                new attributeBindingDefinition {
+                    attribute = nameof(callSign),
+                    lower = 1,
+                    upper = 1,
+                    CreateInstance = () => new callSign(),
                 },
             ];
 
         [JsonIgnore]
-        public featuresDetectedNested? featuresDetectedNested {
+        public beaconShape? beaconShape {
             set { base.SetAttribute(value); }
-            get { return base.GetAttributeValue<featuresDetectedNested>(nameof(featuresDetectedNested)); }
+            get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape)); }
+        }
+
+        [JsonIgnore]
+        public callSign? callSign {
+            set { base.SetAttribute(value); }
+            get { return base.GetAttributeValue<callSign>(nameof(callSign)); }
         }
 
         public override Primitives[] permittedPrimitives => [Primitives.noGeometry];

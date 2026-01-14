@@ -167,37 +167,37 @@
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">
         <!--<TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>-->
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
 
     <!-- Templates for Numbers -->
     <DataTemplate x:Key="IntegerEditorTemplate">
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
     <DataTemplate x:Key="DecimalEditorTemplate">
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
 
     <!-- Templates for Date/Time -->
     <DataTemplate x:Key="DateTimeEditorTemplate">
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
     <DataTemplate x:Key="DateOnlyEditorTemplate">
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
     <DataTemplate x:Key="TimeEditorTemplate">
-        <TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox Text="{Binding value}"/>
     </DataTemplate>
 
     <!-- Template for Booleans -->
     <DataTemplate x:Key="BooleanEditorTemplate">
-        <CheckBox IsChecked="{Binding value, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" IsThreeState="True"/>
+        <CheckBox IsChecked="{Binding value}" VerticalAlignment="Center" IsThreeState="True"/>
     </DataTemplate>
 
     <DataTemplate x:Key="EnumEditorTemplate">
         <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}" 
               DisplayMemberPath="label"
-              SelectedValue="{Binding value, UpdateSourceTrigger=PropertyChanged}"
+              SelectedValue="{Binding value}"
               SelectedValuePath="code"
               IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"                     
               Padding="2"/>
