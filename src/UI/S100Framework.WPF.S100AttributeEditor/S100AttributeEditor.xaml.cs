@@ -34,9 +34,9 @@ namespace S100Framework.WPF.ViewModel
             this._feature = feature;
             this._uid = uid;
             this.code = this._feature.S100FC_code;
-            this.attributeBindings = this._feature.attributeBindingsCatalogue;
+            this.attributeBindingsCatalogue = this._feature.attributeBindingsCatalogue;
 
-            this.attributeValues.CollectionChanged += (s, e) => {
+            this.attributeBindings.CollectionChanged += (s, e) => {
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if(item is SimpleAttributeViewModel simpleAttribute) {
@@ -53,12 +53,17 @@ namespace S100Framework.WPF.ViewModel
             foreach (var e in this._feature.attributeBindings)
                 if (e is SimpleAttribute simpleAttribute) {
                     var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
-                    this.attributeValues.Add(viewmodel);
+                    this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
                     var viewmodel = new ComplexAttributeViewModel(complexAttribute);
-                    this.attributeValues.Add(viewmodel);
+                    this.attributeBindings.Add(viewmodel);
                 }
+        }
+
+        public bool HasCapacity(attributeBindingDefinition binding) {
+            var count = this.attributeBindings.Count(e => e.code.Equals(binding.attribute));
+            return binding.upper > count;
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
@@ -80,9 +85,9 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        public ObservableCollection<AttributeViewModel> attributeValues { get; set; } = [];
+        public ObservableCollection<AttributeViewModel> attributeBindings { get; set; } = [];
 
-        public attributeBindingDefinition[] attributeBindings { get; init; } = [];
+        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
         #endregion
 
         private S100FC.FeatureType? _feature = default;
@@ -107,14 +112,17 @@ namespace S100Framework.WPF
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         protected void OnCreateAttributeCommand(object? parameter) {
+            if (this.SelectedObject is null) return;
             if (parameter is attributeBindingDefinition attributeBinding) {
-                var instance = attributeBinding.CreateInstance();
-                if (instance is SimpleAttribute simpleAttribute)
-                    this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
-                else if (instance is ComplexAttribute complexAttribute)
-                    this.SelectedObject?.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
-                else
-                    throw new NotImplementedException();
+                if (this.SelectedObject.HasCapacity(attributeBinding)) {
+                    var instance = attributeBinding.CreateInstance();
+                    if (instance is SimpleAttribute simpleAttribute)
+                        this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(simpleAttribute));
+                    else if (instance is ComplexAttribute complexAttribute)
+                        this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(complexAttribute));
+                    else
+                        throw new NotImplementedException();
+                }
             }
         }
 

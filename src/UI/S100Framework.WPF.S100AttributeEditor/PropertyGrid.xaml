@@ -26,7 +26,7 @@
             <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
                 <ComboBox
                    Style="{StaticResource ButtonLikeComboBox}"
-                   ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
+                   ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
                    DisplayMemberPath="attribute">
                     <i:Interaction.Behaviors>
                         <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" />
@@ -42,7 +42,7 @@
         </DockPanel>
 
         <ItemsControl Grid.Row="1"
-                      ItemsSource="{Binding SelectedObject.attributeValues, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                      ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                       ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
     </Grid>
 

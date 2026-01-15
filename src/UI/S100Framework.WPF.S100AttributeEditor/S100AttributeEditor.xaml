@@ -27,7 +27,7 @@
             <DockPanel Grid.Row="0" LastChildFill="True" Background="#FFA58DB1">
                 <ComboBox DockPanel.Dock="Right" 
                           Style="{StaticResource ButtonLikeComboBox}"
-                          ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"                          
+                          ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"                          
                           DisplayMemberPath="attribute">
                     <i:Interaction.Behaviors>
                         <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
@@ -37,7 +37,7 @@
             </DockPanel>
 
             <ItemsControl Grid.Row="1"
-                   ItemsSource="{Binding SelectedObject.attributeValues, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                   ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
                    ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
         </Grid>
     </StackPanel>

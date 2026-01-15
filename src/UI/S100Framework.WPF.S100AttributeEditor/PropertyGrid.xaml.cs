@@ -16,14 +16,17 @@ namespace S100Framework.WPF
         public ICommand DeleteAttributeCommand { get; }
 
         protected void OnCreateAttributeCommand(object? parameter) {
+            if (this.SelectedObject is null) return;
             if (parameter is attributeBindingDefinition attributeBinding) {
-                var instance = attributeBinding.CreateInstance();
-                if (instance is SimpleAttribute simpleAttribute)
-                    this.SelectedObject?.attributeValues.Add(new SimpleAttributeViewModel(simpleAttribute));
-                else if (instance is ComplexAttribute complexAttribute)
-                    this.SelectedObject?.attributeValues.Add(new ComplexAttributeViewModel(complexAttribute));
-                else
-                    throw new NotImplementedException();
+                if (this.SelectedObject.HasCapacity(attributeBinding)) {
+                    var instance = attributeBinding.CreateInstance();
+                    if (instance is SimpleAttribute simpleAttribute)
+                        this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(simpleAttribute));
+                    else if (instance is ComplexAttribute complexAttribute)
+                        this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(complexAttribute));
+                    else
+                        throw new NotImplementedException();
+                }
             }
         }
 
@@ -31,15 +34,15 @@ namespace S100Framework.WPF
             if (parameter is ClickedBehavior.DeleteAttributeCommandEventArgs e) {
                 if (e.parameter is AttributeViewModel attributeViewModel) {
                     if (e.parent is PropertyGrid propertyGrid) {
-                        var index = propertyGrid.SelectedObject?.attributeValues.IndexOf(attributeViewModel);
+                        var index = propertyGrid.SelectedObject?.attributeBindings.IndexOf(attributeViewModel);
                         if (index >= 0) {
-                            propertyGrid.SelectedObject?.attributeValues.RemoveAt(index.Value);
+                            propertyGrid.SelectedObject?.attributeBindings.RemoveAt(index.Value);
                         }
                     }
                     else if (e.parent is S100AttributeEditor attributeEditor) {
-                        var index = attributeEditor.SelectedObject?.attributeValues.IndexOf(attributeViewModel);
+                        var index = attributeEditor.SelectedObject?.attributeBindings.IndexOf(attributeViewModel);
                         if (index >= 0) {
-                            attributeEditor.SelectedObject?.attributeValues.RemoveAt(index.Value);
+                            attributeEditor.SelectedObject?.attributeBindings.RemoveAt(index.Value);
                         }
                     }
                 }

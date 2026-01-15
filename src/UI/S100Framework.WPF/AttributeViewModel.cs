@@ -90,16 +90,16 @@ namespace S100Framework.WPF.ViewModel
 
     public class ComplexAttributeViewModel : AttributeViewModel
     {
-        public attributeBindingDefinition[] attributeBindings { get; init; } = [];
+        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
 
-        public ObservableCollection<AttributeViewModel> attributeValues { get; set; } = [];
+        public ObservableCollection<AttributeViewModel> attributeBindings { get; set; } = [];
 
         public ComplexAttributeViewModel(ComplexAttribute attribute) : base(attribute) {
             this._attribute = attribute;
 
-            this.attributeBindings = this._attribute.attributeBindingsCatalogue;
+            this.attributeBindingsCatalogue = this._attribute.attributeBindingsCatalogue;
 
-            this.attributeValues.CollectionChanged += (s, e) => {
+            this.attributeBindings.CollectionChanged += (s, e) => {
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if (item is SimpleAttributeViewModel simpleAttribute) {
@@ -115,13 +115,18 @@ namespace S100Framework.WPF.ViewModel
             foreach (var e in attribute.attributeBindings) {
                 if (e is SimpleAttribute simpleAttribute) {
                     var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
-                    this.attributeValues.Add(viewmodel);
+                    this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
                     var viewmodel = new ComplexAttributeViewModel(complexAttribute);
-                    this.attributeValues.Add(viewmodel);
+                    this.attributeBindings.Add(viewmodel);
                 }
             }
+        }
+
+        public bool HasCapacity(attributeBindingDefinition binding) {
+            var count = this.attributeBindings.Count(e => e.code.Equals(binding.attribute));
+            return binding.upper > count;
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
