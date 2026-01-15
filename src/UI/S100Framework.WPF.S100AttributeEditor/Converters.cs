@@ -27,6 +27,28 @@ namespace S100Framework.WPF.Converters
     }
 
     /// <summary>
+    /// Inverts a boolean value
+    /// </summary>
+    public class AttributeBindingDefinitionConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is attributeBindingDefinition attributeBindingDefinition) {
+                var random = new Random(DateTime.Now.Microsecond);
+                return random.Next(0, 99) >= 50;
+            }
+
+            return true;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool boolValue) {
+                return !boolValue;
+            }
+            return true;
+        }
+    }
+
+    /// <summary>
     /// Converts an enum type to its possible values
     /// </summary>
     public class EnumSourceConverter : IValueConverter

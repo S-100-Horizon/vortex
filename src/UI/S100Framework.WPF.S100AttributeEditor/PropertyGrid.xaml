@@ -25,9 +25,10 @@
         <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
             <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
                 <ComboBox
-                   Style="{StaticResource ButtonLikeComboBox}"
-                   ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
-                   DisplayMemberPath="attribute">
+                    Style="{StaticResource ButtonLikeComboBox}"
+                    ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}"
+                    ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
+                    DisplayMemberPath="attribute">
                     <i:Interaction.Behaviors>
                         <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" />
                     </i:Interaction.Behaviors>
@@ -35,7 +36,7 @@
                 <Button Style="{StaticResource DeleteIconButtonStyle}">
                     <i:Interaction.Behaviors>
                         <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" Parameter="{Binding}"  Parent="{Binding RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}" />
-                    </i:Interaction.Behaviors>                    
+                    </i:Interaction.Behaviors>
                 </Button>
             </StackPanel>
             <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" VerticalAlignment="Center" />

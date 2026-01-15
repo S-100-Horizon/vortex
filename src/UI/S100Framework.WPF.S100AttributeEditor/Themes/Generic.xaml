@@ -7,6 +7,7 @@
     xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
     xmlns:converters="clr-namespace:S100Framework.WPF.Converters">
     <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+    <converters:AttributeBindingDefinitionConverter x:Key="AttributeBindingDefinitionConverter"/>
     <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
     <converters:SelectedObjectSourceConverter x:Key="SelectedObjectSourceConverter"/>
 
@@ -120,32 +121,16 @@
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
                         <!-- MAIN BUTTON SURFACE -->
-                        <ToggleButton
-                x:Name="ToggleButton"
-                Background="Transparent"
-                BorderBrush="Transparent"
-                BorderThickness="{TemplateBinding BorderThickness}"
-                Focusable="False"
-                IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}"
-                ClickMode="Press">
+                        <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False" 
+                                      IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ClickMode="Press">
                             <Grid Width="18" Height="18">
                                 <Path Fill="#4CAF50" Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z" />
                                 <Path Fill="White" Data="M8,4 H10 V8 H14 V10 H10 V14 H8 V10 H4 V8 H8 Z" />
                             </Grid>
                         </ToggleButton>
 
-                        <Popup
-                x:Name="Popup"
-                Placement="Bottom"
-                AllowsTransparency="True"
-                Focusable="False"
-                IsOpen="{TemplateBinding IsDropDownOpen}"
-                PopupAnimation="Slide">
-
-                            <Border
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
+                        <Popup x:Name="Popup" Placement="Bottom" AllowsTransparency="True" Focusable="False" IsOpen="{TemplateBinding IsDropDownOpen}" PopupAnimation="Slide">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                                 <ScrollViewer>
                                     <ItemsPresenter/>
                                 </ScrollViewer>
@@ -163,6 +148,22 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style TargetType="ComboBoxItem" x:Key="ButtonLikeComboBoxItemStyle">
+        <!-- Bind IsEnabled to your model -->
+        <Setter Property="IsEnabled" Value="{Binding {}, Converter={StaticResource AttributeBindingDefinitionConverter}}" />
+
+        <!-- Default foreground -->
+        <Setter Property="Foreground" Value="Black" />
+
+        <!-- Gray out disabled items -->
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="#888" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
 
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">
