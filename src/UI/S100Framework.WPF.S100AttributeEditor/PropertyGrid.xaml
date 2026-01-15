@@ -38,7 +38,7 @@
                     </i:Interaction.Behaviors>                    
                 </Button>
             </StackPanel>
-            <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" />
+            <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" VerticalAlignment="Center" />
         </DockPanel>
 
         <ItemsControl Grid.Row="1"
