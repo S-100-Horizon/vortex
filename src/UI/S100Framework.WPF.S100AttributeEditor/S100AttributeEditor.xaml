@@ -24,7 +24,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <DockPanel Grid.Row="0" LastChildFill="True" Background="#FFA58DB1">
+            <DockPanel Grid.Row="0" LastChildFill="True" Background="#5F9EA0">
                 <ComboBox 
                     DockPanel.Dock="Right" 
                     Style="{StaticResource ButtonLikeComboBox}"
