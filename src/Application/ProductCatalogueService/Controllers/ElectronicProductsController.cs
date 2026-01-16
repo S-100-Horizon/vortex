@@ -2,9 +2,9 @@ using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using S100Framework.ProductCatalogue;
-using S100Framework.YAML;
+using S100FC.S128.FeatureTypes;
+using S100FC.ProductCatalogue;
+using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
 using static ProductCatalogueService.RequestTypes;
@@ -128,19 +128,19 @@ namespace ProductCatalogueService.Controllers
             //var boundary = GetBoundaryFromGeoJSON(aoi);
             var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
 
-            var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification() {
+            var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
                 name = "S-101",
                 version = "2.0.0",
                 editionDate = DateOnly.FromDateTime(DateTime.Today)
             };
 
             var specificUsage = product.UsageBand switch {
-                SpecificUsage.NavigationalPurposeOverview => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
-                SpecificUsage.NavigationalPurposeGeneral => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                SpecificUsage.NavigationalPurposeCoastal => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                SpecificUsage.NavigationalPurposeApproach => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                SpecificUsage.NavigationalPurposeHarbour => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                SpecificUsage.NavigationalPurposeBerthing => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeBerthing,
+                SpecificUsage.NavigationalPurposeOverview => 1, // S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                SpecificUsage.NavigationalPurposeGeneral => 2, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
+                SpecificUsage.NavigationalPurposeCoastal => 3, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
+                SpecificUsage.NavigationalPurposeApproach => 4, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
+                SpecificUsage.NavigationalPurposeHarbour => 5, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
+                SpecificUsage.NavigationalPurposeBerthing => 6, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeBerthing,
                 _ => throw new ArgumentNullException(),
             };
 
@@ -236,7 +236,7 @@ namespace ProductCatalogueService.Controllers
             var latest = await _electronicProductManager.GetLatestDatasetYAML(name);
 
             // Build YAML Delta
-            var delta = S100Framework.YAML.DatasetComparer.Compare(latest, incoming);
+            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
             //if(!delta.Any)
             // TODO: Do something
@@ -249,7 +249,7 @@ namespace ProductCatalogueService.Controllers
             delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
             delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
 
-            var update = S100Framework.YAML.Converter.Serialize(delta);     // Only delta
+            var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
 
             this.CreateExchangeSet(product, update);
 

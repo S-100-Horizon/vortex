@@ -9,7 +9,7 @@
     }
 }
 
-namespace S100Framework.ProductCatalogue
+namespace S100FC.ProductCatalogue
 {
     public enum ProductFormat : int
     {

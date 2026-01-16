@@ -20,9 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml" Link="101_Feature_Catalogue_2.0.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Remove="101_Feature_Catalogue_2.0.0.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="101_Feature_Catalogue_2.0.0.xml" />
   </ItemGroup>
 
   <ItemGroup>

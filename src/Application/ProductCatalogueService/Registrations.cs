@@ -23,7 +23,7 @@ namespace ProductCatalogueService
                         Directory.Delete("exports", true);
                 }
 
-                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                     var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(output.FullName)));
 
                     return new Geodatabase(connectionFile);
@@ -38,7 +38,7 @@ namespace ProductCatalogueService
                 if (string.IsNullOrEmpty(path))
                     throw new ArgumentNullException("Environment variable for S128-Database is null!");
 
-                var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                     if (".sde".Equals(System.IO.Path.GetExtension(path), StringComparison.OrdinalIgnoreCase)) {
                         var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(path)));
 
