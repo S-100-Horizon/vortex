@@ -2,7 +2,7 @@ using ArcGIS.Core.Geometry;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
-using S100Framework.DomainModel.S128.FeatureTypes;
+using S100FC.S128.FeatureTypes;
 using S100Framework.ProductCatalogue;
 using S100Framework.YAML;
 using Serilog;
@@ -128,19 +128,19 @@ namespace ProductCatalogueService.Controllers
             //var boundary = GetBoundaryFromGeoJSON(aoi);
             var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
 
-            var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification() {
+            var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
                 name = "S-101",
                 version = "2.0.0",
                 editionDate = DateOnly.FromDateTime(DateTime.Today)
             };
 
             var specificUsage = product.UsageBand switch {
-                SpecificUsage.NavigationalPurposeOverview => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
-                SpecificUsage.NavigationalPurposeGeneral => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                SpecificUsage.NavigationalPurposeCoastal => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                SpecificUsage.NavigationalPurposeApproach => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                SpecificUsage.NavigationalPurposeHarbour => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                SpecificUsage.NavigationalPurposeBerthing => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeBerthing,
+                SpecificUsage.NavigationalPurposeOverview => 1, // S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                SpecificUsage.NavigationalPurposeGeneral => 2, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
+                SpecificUsage.NavigationalPurposeCoastal => 3, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
+                SpecificUsage.NavigationalPurposeApproach => 4, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
+                SpecificUsage.NavigationalPurposeHarbour => 5, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
+                SpecificUsage.NavigationalPurposeBerthing => 6, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeBerthing,
                 _ => throw new ArgumentNullException(),
             };
 
