@@ -42,8 +42,7 @@ namespace S100Framework.WPF.Converters
             if (values[1] is PropertyGrid propertyGrid) {
                 return propertyGrid.SelectedObject!.HasCapacity(attributeBindingDefinition!);
             }
-
-            throw new NotImplementedException();
+            return false;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) {

@@ -33,6 +33,10 @@ namespace S100Framework.WPF
                     AssociatedObject.SelectedItem = null;
                 }
             }
+
+            if (sender is ComboBox comboBox) {
+                comboBox.Items.Refresh();
+            }
         }
     }
 
