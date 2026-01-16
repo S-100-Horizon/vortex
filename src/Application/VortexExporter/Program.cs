@@ -5,7 +5,7 @@ using S100FC;
 //using S100Framework.DomainModel;
 //using S100Framework.DomainModel.S101.FeatureAssociations;
 //using S100Framework.ProductCatalogue;
-using S100Framework.YAML;
+using S100FC.YAML;
 using S100FC.Topology;
 using Serilog;
 using System.Diagnostics;
@@ -13,10 +13,10 @@ using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using WinRT;
-using Dataset = S100Framework.YAML.Dataset;
+using Dataset = S100FC.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
-using S100Framework.ProductCatalogue;
+using S100FC.ProductCatalogue;
 using S100FC.S101;
 
 namespace S100Framework.Applications
@@ -179,7 +179,7 @@ namespace S100Framework.Applications
                     //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
-                    var spatialAssociations = new Dictionary<string, S100Framework.YAML.Association>();
+                    var spatialAssociations = new Dictionary<string, S100FC.YAML.Association>();
                     var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
 
                     // Build Topology
@@ -189,7 +189,7 @@ namespace S100Framework.Applications
                     Log.Information("Topology finished! Found {curves} Curves, {composites} CompositeCurves, {surfaces} Surfaces", topology.Curves.Count(), topology.CompositeCurves.Count(), topology.Surfaces.Count());
 
                     // InformationTypes
-                    var informationTypes = new List<YAML.Information>();
+                    var informationTypes = new List<S100FC.YAML.Information>();
                     var informationsTypesAdded = new List<string>();
 
                     try {
@@ -206,7 +206,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
 
-                            var information = new YAML.Information {
+                            var information = new S100FC.YAML.Information {
                                 Name = code,
                                 ID = name,
                             };
@@ -252,7 +252,7 @@ namespace S100Framework.Applications
 
 
                     // FeatureTypes
-                    var featureTypes = new List<YAML.Feature>();
+                    var featureTypes = new List<S100FC.YAML.Feature>();
                     var featureTypesAdded = new List<string>();
 
                     try {
@@ -271,7 +271,7 @@ namespace S100Framework.Applications
 
                             var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
-                            var feature = new YAML.Feature {
+                            var feature = new S100FC.YAML.Feature {
                                 Prim = Primitive.NoGeometry,
                                 Name = code,
                                 Foid = foid,
@@ -409,7 +409,7 @@ namespace S100Framework.Applications
                                     topologySurface?.Masks2?.Select(e => $"C{e}:2")
                                 }.Where(m => m != null).SelectMany(m => m!);
 
-                                var feature = new YAML.Feature {
+                                var feature = new S100FC.YAML.Feature {
                                     Name = code,
                                     Foid = foid,
                                     Prim = prim,
@@ -426,7 +426,7 @@ namespace S100Framework.Applications
                                     // todo: fix missing binding.referenceId
                                     if (informationBindings != default && informationBindings.Any()) {
                                         foreach (var binding in informationBindings) {
-                                            var asso = new YAML.Association {
+                                            var asso = new S100FC.YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
                                                 To = binding.featureId!,
@@ -458,7 +458,7 @@ namespace S100Framework.Applications
                                             if (roleType == "association")
                                                 continue;
 
-                                            var asso = new YAML.Association {
+                                            var asso = new S100FC.YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
                                                 To = $"110:{binding.featureId!}:1"
@@ -509,7 +509,7 @@ namespace S100Framework.Applications
                     }
 
                     // Serialize to YAML
-                    var yaml = S100Framework.YAML.Converter.Serialize(dataset!);
+                    var yaml = S100FC.YAML.Converter.Serialize(dataset!);
 
                     var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
