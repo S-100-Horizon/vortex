@@ -13,10 +13,10 @@ namespace ProductCatalogueService
             // Use the attached .zip gdb when developing
             if (System.Diagnostics.Debugger.IsAttached) {
                 // If no .gdb exist in bin, extract the .zip from project root
-                var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"));
+                var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"));
 
                 if (!output.Exists) {
-                    new FastZip().ExtractZip("s100ed9.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb"), null);
+                    new FastZip().ExtractZip("s100edX.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"), null);
 
                     // Clear export folder if exist
                     if (System.IO.Directory.Exists("exports"))

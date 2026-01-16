@@ -201,17 +201,17 @@ namespace TestProductCatalogue
 
             FastZip fastZip = new();
 
-            var zipFileS100ed9 = new IO.DirectoryInfo(@"s100ed9.gdb");
+            var zipFileS100edX = new IO.DirectoryInfo(@"s100edX.gdb");
 
-            if (zipFileS100ed9.Exists) {
-                zipFileS100ed9.Delete(true);
+            if (zipFileS100edX.Exists) {
+                zipFileS100edX.Delete(true);
             }
 
 
-            fastZip.ExtractZip(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb.zip"), zipFileS100ed9.FullName, null);
+            fastZip.ExtractZip(Path.Combine(AppContext.BaseDirectory, "s100edX.gdb.zip"), zipFileS100edX.FullName, null);
 
             var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed9.gdb")));
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100edX.gdb")));
 
                 var geodatabase = new Geodatabase(connectionFile);
 

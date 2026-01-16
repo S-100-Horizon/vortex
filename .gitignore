@@ -415,3 +415,4 @@ FodyWeavers.xsd
 /tests/Core.Tests/TestAttributes/S-131_FC.g.cs
 /tests/Core.Tests/TestAttributes/S-124_FC.g.cs
 /tests/Core.Tests/TestAttributes/S-125_FC.g.cs
+/src/Application/ProductCatalogueService/s100edX.gdb
