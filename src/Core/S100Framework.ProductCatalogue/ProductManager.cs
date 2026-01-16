@@ -3,7 +3,7 @@ using ArcGIS.Core.Geometry;
 using S100FC;
 using S100FC.S128;
 using S100FC.S128.FeatureTypes;
-using S100Framework.YAML;
+using S100FC.YAML;
 using Serilog;
 using System.Collections;
 using System.Collections.Concurrent;
@@ -13,7 +13,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using IO = System.IO;
 
-namespace S100Framework.ProductCatalogue
+namespace S100FC.ProductCatalogue
 {
     public interface INauticalProductManager
     {
@@ -448,7 +448,7 @@ namespace S100Framework.ProductCatalogue
 
             electronicProduct.issueDate = DateOnly.FromDateTime(timestamp);
 
-            var dataset = new S100Framework.YAML.Dataset {
+            var dataset = new S100FC.YAML.Dataset {
                 CellName = $"{electronicProduct!.datasetName!}.000",
                 Comment = electronicProduct.notForNavigation.HasValue ? "Not for navigation!" : string.Empty,
                 Edition = (uint?)electronicProduct.editionNumber,
@@ -460,7 +460,7 @@ namespace S100Framework.ProductCatalogue
 
             var supportFiles = new List<string>();
             var geometries = new List<(ArcGIS.Core.Geometry.Geometry geometry, string name)>();
-            var spatialAssociations = new Dictionary<string, S100Framework.YAML.Association>();
+            var spatialAssociations = new Dictionary<string, S100FC.YAML.Association>();
             var informationTypes = new List<YAML.Information>();
             var informationsTypesAdded = new List<string>();
             var featureTypes = new List<YAML.Feature>();

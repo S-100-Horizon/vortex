@@ -3,7 +3,7 @@ using ArcGIS.Core.Geometry;
 using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 
-namespace S100Framework.ProductCatalogue
+namespace S100FC.ProductCatalogue
 {
     public static class Extensions
     {

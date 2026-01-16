@@ -10,7 +10,7 @@ using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 using Scalar = YamlDotNet.Core.Events.Scalar;
 
-namespace S100Framework.YAML
+namespace S100FC.YAML
 {
     public static class Converter
     {

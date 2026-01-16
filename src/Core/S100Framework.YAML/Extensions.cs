@@ -1,4 +1,4 @@
-﻿namespace S100Framework.YAML
+﻿namespace S100FC.YAML
 {
     using S100FC.Topology;
     using Serilog;
@@ -153,7 +153,7 @@
 
         public static string Serialize(this Dataset? dataset) {
             if ((dataset == null)) return string.Empty;
-            return S100Framework.YAML.Converter.Serialize(dataset);
+            return S100FC.YAML.Converter.Serialize(dataset);
         }
 
         public static void AddGeometry(this Dataset dataset, ArcGIS.Core.Geometry.Geometry geometry, string name) {

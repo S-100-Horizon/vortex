@@ -1,8 +1,7 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
-using S100Framework.DomainModel.S100;
-using S100Framework.YAML;
+using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
 using System.Text.Json;
@@ -81,7 +80,7 @@ namespace TestProductCatalogue
                 table.CreateRow(buffer);
             }
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 return new Geodatabase(connectionFile);
             });
             Assert.NotNull(productManager);
@@ -103,7 +102,7 @@ namespace TestProductCatalogue
             }
             fastZip.ExtractZip("s100ed8.gdb.zip", zipFileS128.FullName, null);
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 var geodatabase = new Geodatabase(connectionFile);
@@ -138,10 +137,10 @@ namespace TestProductCatalogue
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
                 }
 
-                var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
-                    editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-                    name = S100Framework.DomainModel.S101.Summary.ProductId,
-                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
+                var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100FC.S101.Summary.VersionDate,
+                    name = S100FC.S101.Summary.ProductId,
+                    version = S100FC.S101.Summary.Version.ToString(),
                 };
 
                 using var geodatabase = createGeodatabase();
@@ -163,11 +162,11 @@ namespace TestProductCatalogue
 
                         var name = "101DK00" + Convert.ToString(c["DSNM"])!.Substring(2);
                         var specificUsage = name[7] switch {
-                            '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                            '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                            '3' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                            '2' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                            '1' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                            '5' => 5, // NavigationalPurposeHarbour,
+                            '4' => 4, // NavigationalPurposeApproach,
+                            '3' => 3, // NavigationalPurposeCoastal,
+                            '2' => 2, // NavigationalPurposeGeneral,
+                            '1' => 1, // NavigationalPurposeOverview,
                             _ => throw new InvalidDataException(),
                         };
 
@@ -211,7 +210,7 @@ namespace TestProductCatalogue
 
             fastZip.ExtractZip(Path.Combine(AppContext.BaseDirectory, "s100ed9.gdb.zip"), zipFileS100ed9.FullName, null);
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed9.gdb")));
 
                 var geodatabase = new Geodatabase(connectionFile);
@@ -245,10 +244,10 @@ namespace TestProductCatalogue
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
                 }
 
-                var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
-                    editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-                    name = S100Framework.DomainModel.S101.Summary.ProductId,
-                    version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
+                var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100FC.S101.Summary.VersionDate,
+                    name = S100FC.S101.Summary.ProductId,
+                    version = S100FC.S101.Summary.Version.ToString(),
                 };
 
 
@@ -273,11 +272,11 @@ namespace TestProductCatalogue
 
                         var name = "101DK00" + Convert.ToString(c["DSNM"])!.Substring(2);
                         var specificUsage = name[7] switch {
-                            '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                            '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                            '3' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                            '2' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                            '1' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
+                            '5' => 5, // NavigationalPurposeHarbour,
+                            '4' => 4, // NavigationalPurposeApproach,
+                            '3' => 3, // NavigationalPurposeCoastal,
+                            '2' => 2, // NavigationalPurposeGeneral,
+                            '1' => 1, // NavigationalPurposeOverview,
                             _ => throw new InvalidDataException(),
                         };
 
@@ -327,7 +326,7 @@ namespace TestProductCatalogue
             }
             fastZip.ExtractZip("s128ed8.gdb.zip", zipFileS128.FullName, null);
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
 
                 return new Geodatabase(connectionFile);
@@ -397,11 +396,11 @@ namespace TestProductCatalogue
                 throw new System.ArgumentOutOfRangeException(nameof(s101));
 
             var tt = new S100Horizon.Settings.ProductCatalogue {
-                Connections = [new S100Horizon.Settings.Connection(S100Framework.DomainModel.S101.Summary.ProductId)],
+                Connections = [new S100Horizon.Settings.Connection(S100FC.S101.Summary.ProductId)],
             };
             var json = System.Text.Json.JsonSerializer.Serialize(tt);
 
-            var productManager = await S100Framework.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 return createGeodatabase();
             });
             Assert.NotNull(productManager);
@@ -411,7 +410,7 @@ namespace TestProductCatalogue
             foreach (var name in productNames) {
                 var product = productManager.ElectronicProductManager.ElectronicProduct(name);
 
-                S100Framework.YAML.Dataset dataset;
+                S100FC.YAML.Dataset dataset;
                 if (product.editionNumber == 1 && product.updateNumber == 0)
                     dataset = await productManager.ElectronicProductManager.CreateNewDatasetAsync(name);
                 else
@@ -453,7 +452,7 @@ namespace TestProductCatalogue
             using var cursor = attachment.Search(null, true);
 
             while (cursor.MoveNext()) {
-                var dataset = System.Text.Json.JsonSerializer.Deserialize<S100Framework.ProductCatalogue.Dataset>(Convert.ToString(cursor.Current["json"])!)!;
+                var dataset = System.Text.Json.JsonSerializer.Deserialize<S100FC.ProductCatalogue.Dataset>(Convert.ToString(cursor.Current["json"])!)!;
 
                 using var memoryStream = (MemoryStream)cursor.Current["data"];
 

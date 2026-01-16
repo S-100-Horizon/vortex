@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using S100FC.S128.FeatureTypes;
-using S100Framework.ProductCatalogue;
-using S100Framework.YAML;
+using S100FC.ProductCatalogue;
+using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
 using static ProductCatalogueService.RequestTypes;
@@ -236,7 +236,7 @@ namespace ProductCatalogueService.Controllers
             var latest = await _electronicProductManager.GetLatestDatasetYAML(name);
 
             // Build YAML Delta
-            var delta = S100Framework.YAML.DatasetComparer.Compare(latest, incoming);
+            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
             //if(!delta.Any)
             // TODO: Do something
@@ -249,7 +249,7 @@ namespace ProductCatalogueService.Controllers
             delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
             delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
 
-            var update = S100Framework.YAML.Converter.Serialize(delta);     // Only delta
+            var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
 
             this.CreateExchangeSet(product, update);
 

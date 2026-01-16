@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text.Json.Serialization;
 using YamlDotNet.Serialization;
 
-namespace S100Framework.YAML
+namespace S100FC.YAML
 {
     public enum Primitive
     {
@@ -333,7 +333,7 @@ namespace S100Framework.YAML
 
         private static DatasetUpdate ReadDataset(string dataset) {
             // Deserialize to Dictionary
-            var rawDictionary = S100Framework.YAML.Converter.Deserialize<Dictionary<object, object>>(dataset);
+            var rawDictionary = S100FC.YAML.Converter.Deserialize<Dictionary<object, object>>(dataset);
 
             // Read InformationTypes
             rawDictionary.TryGetValue("InformationTypes", out var infoTypesObj);
