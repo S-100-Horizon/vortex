@@ -151,7 +151,9 @@
 
     <Style TargetType="ComboBoxItem" x:Key="ButtonLikeComboBoxItemStyle">
         <!-- Bind IsEnabled to your model -->
-        <Setter Property="IsEnabled" Value="{Binding {}, Converter={StaticResource AttributeBindingDefinitionConverter}}" />
+        <Setter Property="IsEnabled" Value="{Binding {}, 
+                                        RelativeSource={RelativeSource AncestorType=UserControl}, 
+                                        Converter={StaticResource AttributeBindingDefinitionConverter}}"/>
 
         <!-- Default foreground -->
         <Setter Property="Foreground" Value="Black" />
