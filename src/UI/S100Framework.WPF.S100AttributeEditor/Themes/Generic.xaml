@@ -5,7 +5,8 @@
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:local="clr-namespace:S100Framework.WPF"
     xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
-    xmlns:converters="clr-namespace:S100Framework.WPF.Converters">
+    xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
+    xmlns:validation="clr-namespace:S100Framework.WPF.Validation">
     <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     <converters:AttributeBindingDefinitionConverter x:Key="AttributeBindingDefinitionConverter"/>
     <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
@@ -213,7 +214,16 @@
         <xctk:DateTimeUpDown Value="{Binding value}" Format="ShortTime" FormatString="HH:mm" Watermark="[UNKNOWN]"/>
     </DataTemplate>
     <DataTemplate x:Key="TruncatedDateEditorTemplate">
-        <xctk:WatermarkTextBox Text="{Binding value}" Watermark="[UNKNOWN]"/>
+        <xctk:WatermarkTextBox Watermark="[UNKNOWN]">
+            <xctk:WatermarkTextBox.Text>
+                <Binding Path="value" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:TruncatedDateRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </xctk:WatermarkTextBox.Text>
+        </xctk:WatermarkTextBox>
+        <!--<xctk:WatermarkTextBox Text="{Binding value}" Watermark="[UNKNOWN]" Validation.Errors="{StaticResource }"/>-->
     </DataTemplate>
     
 
