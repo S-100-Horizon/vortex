@@ -16,12 +16,12 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
+        </Grid.RowDefinitions>-->
+    <StackPanel>
         <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
             <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
                 <ComboBox
@@ -45,6 +45,7 @@
         <ItemsControl Grid.Row="1"
                       ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
                       ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
-    </Grid>
+    </StackPanel>
+        <!--</Grid>-->
 
 </UserControl>

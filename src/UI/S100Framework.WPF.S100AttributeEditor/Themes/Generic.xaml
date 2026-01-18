@@ -75,7 +75,7 @@
                     <Grid Width="14" Height="14">
                         <Path x:Name="Icon" Fill="#E53935" Data="M7,0 A7,7 0 1 1 7,14 A7,7 0 1 1 7,0 Z"/>
                         <Path x:Name="X" Fill="White" Data="M4.02,3.11 L7,6.06 L9.96,3.11 L10.89,4.02 L7.93,7 L10.89,9.96 L9.96,10.89 L7,7.93 L4.02,10.89 L3.11,9.96 L6.06,7 L3.11,4.02 Z"/>
-                    </Grid>                    
+                    </Grid>
                     <!--<Grid>
                         <Grid.LayoutTransform>
                             <ScaleTransform ScaleX="0.777" ScaleY="0.777"/>
@@ -224,7 +224,7 @@
             </xctk:WatermarkTextBox.Text>
         </xctk:WatermarkTextBox>
     </DataTemplate>
-    
+
 
     <!-- Template for Booleans -->
     <DataTemplate x:Key="BooleanEditorTemplate">
@@ -256,30 +256,62 @@
                                     EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
     <!--ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>-->
 
+    <!--<local:ItemsControlTemplateSelector x:Key="ItemControlSelector"/>-->
+    
     <DataTemplate x:Key="DefaultItemControlTemplate">
         <!--<Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">-->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <!-- SharedSizeGroup="LabelColumn" is the magic part -->
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- SharedSizeGroup="LabelColumn" is the magic part -->
+                <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding code}" Padding="5" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Text="{Binding code}" Padding="5" VerticalAlignment="Center"/>
 
-                <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
-                    </Button>
-                    <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
+            <DockPanel Grid.Column="1" LastChildFill="True">
+                <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
+                </Button>
+                <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
                                   Content="{Binding}" 
                                   ContentTemplateSelector="{StaticResource PropSelector}"/>
-                </DockPanel>
-            </Grid>
+            </DockPanel>
+        </Grid>
         <!--</Border>-->
     </DataTemplate>
 
+    <!--<DataTemplate x:Key="PropertyGrid">
+        <StackPanel>
+            <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
+                <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
+                    <ComboBox
+                    Style="{StaticResource ButtonLikeComboBox}"
+                    ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}"
+                    ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
+                    DisplayMemberPath="attribute">
+                        <i:Interaction.Behaviors>
+                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                    <Button Style="{StaticResource DeleteIconButtonStyle}">
+                        <i:Interaction.Behaviors>
+                            <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" Parameter="{Binding}" Parent="{Binding RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}" />
+                        </i:Interaction.Behaviors>
+                    </Button>
+                </StackPanel>
+                <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" VerticalAlignment="Center" />
+            </DockPanel>
+
+            <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                      ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
+        </StackPanel>
+    </DataTemplate>-->
+
     <HierarchicalDataTemplate x:Key="ComplexItemControlTemplate">
-        <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}"/>
+        <StackPanel Margin="0,0,0,0">
+            <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}" />
+        </StackPanel>
         <!--Padding="5,0,0,0"-->
     </HierarchicalDataTemplate>
 
