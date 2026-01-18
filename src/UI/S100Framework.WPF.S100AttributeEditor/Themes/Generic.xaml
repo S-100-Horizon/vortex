@@ -223,7 +223,6 @@
                 </Binding>
             </xctk:WatermarkTextBox.Text>
         </xctk:WatermarkTextBox>
-        <!--<xctk:WatermarkTextBox Text="{Binding value}" Watermark="[UNKNOWN]" Validation.Errors="{StaticResource }"/>-->
     </DataTemplate>
     
 
@@ -258,7 +257,7 @@
     <!--ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>-->
 
     <DataTemplate x:Key="DefaultItemControlTemplate">
-        <Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">
+        <!--<Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <!-- SharedSizeGroup="LabelColumn" is the magic part -->
@@ -266,7 +265,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding code}" Padding="5" VerticalAlignment="Center"/>
 
                 <DockPanel Grid.Column="1" LastChildFill="True">
                     <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
@@ -276,11 +275,12 @@
                                   ContentTemplateSelector="{StaticResource PropSelector}"/>
                 </DockPanel>
             </Grid>
-        </Border>
+        <!--</Border>-->
     </DataTemplate>
 
     <HierarchicalDataTemplate x:Key="ComplexItemControlTemplate">
-        <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}" Padding="5,0,0,0"/>
+        <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}"/>
+        <!--Padding="5,0,0,0"-->
     </HierarchicalDataTemplate>
 
     <local:ItemsControlTemplateSelector x:Key="ItemControlSelector" 
