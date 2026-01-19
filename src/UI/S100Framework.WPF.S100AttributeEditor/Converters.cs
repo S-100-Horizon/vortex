@@ -89,4 +89,17 @@ namespace S100Framework.WPF.Converters
         }
 
     }
+
+    public class ColumnWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            var element = ((System.Windows.FrameworkElement)value);
+
+            return 200 - element.Margin.Left*2;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
 }
