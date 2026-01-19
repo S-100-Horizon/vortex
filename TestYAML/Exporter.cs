@@ -1,5 +1,5 @@
 using S100FC.S101.FeatureTypes;
-using S100Framework.YAML;
+using S100FC.YAML;
 using S100FC.S101.ComplexAttributes;
 
 namespace TestYAML
@@ -35,7 +35,7 @@ namespace TestYAML
             };
 
 
-            var feature = new Feature {
+            var feature = new S100FC.YAML.Feature {
                 Name = "LightFogDetector",
                 Foid = "110:85:1",
                 Prim = Primitive.Point,
@@ -45,7 +45,7 @@ namespace TestYAML
 
             dataset.AddFeature(feature);
 
-            var serialized = S100Framework.YAML.Converter.Serialize(feature);
+            var serialized = S100FC.YAML.Converter.Serialize(feature);
 
             System.Diagnostics.Debugger.Break();
         }

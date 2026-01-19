@@ -2,10 +2,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"   
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"             
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:local="clr-namespace:S100Framework.WPF"
     xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
-    xmlns:converters="clr-namespace:S100Framework.WPF.Converters">
+    xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
+    xmlns:validation="clr-namespace:S100Framework.WPF.Validation">
     <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     <converters:AttributeBindingDefinitionConverter x:Key="AttributeBindingDefinitionConverter"/>
     <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
@@ -22,7 +23,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
+                    <Grid Width="14" Height="14">
+                        <Path x:Name="Icon" Fill="#E53935" Data="M7,0 A7,7 0 1 1 7,14 A7,7 0 1 1 7,0 Z"/>
+                        <Path x:Name="X" Fill="White" Data="M4.02,3.11 L7,6.06 L9.96,3.11 L10.89,4.02 L7.93,7 L10.89,9.96 L9.96,10.89 L7,7.93 L4.02,10.89 L3.11,9.96 L6.06,7 L3.11,4.02 Z"/>
+                    </Grid>
+
+                    <!--<Grid>
                         <Path x:Name="Icon"
                           Stretch="Uniform"
                           Fill="#E53935"
@@ -31,7 +37,7 @@
                         <Path x:Name="X"
                           Fill="White"
                           Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
-                    </Grid>
+                    </Grid>-->
 
                     <ControlTemplate.Triggers>
                         <!-- Hover -->
@@ -66,7 +72,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Grid>
+                    <Grid Width="14" Height="14">
+                        <Path x:Name="Icon" Fill="#E53935" Data="M7,0 A7,7 0 1 1 7,14 A7,7 0 1 1 7,0 Z"/>
+                        <Path x:Name="X" Fill="White" Data="M4.02,3.11 L7,6.06 L9.96,3.11 L10.89,4.02 L7.93,7 L10.89,9.96 L9.96,10.89 L7,7.93 L4.02,10.89 L3.11,9.96 L6.06,7 L3.11,4.02 Z"/>
+                    </Grid>
+                    <!--<Grid>
+                        <Grid.LayoutTransform>
+                            <ScaleTransform ScaleX="0.777" ScaleY="0.777"/>
+                        </Grid.LayoutTransform>
+
                         <Path x:Name="Icon"
                           Stretch="Uniform"
                           Fill="#E53935"
@@ -75,7 +89,7 @@
                         <Path x:Name="X"
                           Fill="White"
                           Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
-                    </Grid>
+                    </Grid>-->
 
                     <ControlTemplate.Triggers>
                         <!-- Hover -->
@@ -124,6 +138,10 @@
                         <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False" 
                                       IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ClickMode="Press">
                             <Grid Width="18" Height="18">
+                                <Grid.LayoutTransform>
+                                    <ScaleTransform ScaleX="0.777" ScaleY="0.777"/>
+                                </Grid.LayoutTransform>
+
                                 <Path Fill="#4CAF50" Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z" />
                                 <Path Fill="White" Data="M8,4 H10 V8 H14 V10 H10 V14 H8 V10 H4 V8 H8 Z" />
                             </Grid>
@@ -151,7 +169,14 @@
 
     <Style TargetType="ComboBoxItem" x:Key="ButtonLikeComboBoxItemStyle">
         <!-- Bind IsEnabled to your model -->
-        <Setter Property="IsEnabled" Value="{Binding {}, Converter={StaticResource AttributeBindingDefinitionConverter}}" />
+        <Setter Property="IsEnabled">
+            <Setter.Value>
+                <MultiBinding Converter="{StaticResource AttributeBindingDefinitionConverter}">
+                    <Binding/>
+                    <Binding RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                </MultiBinding>
+            </Setter.Value>
+        </Setter>
 
         <!-- Default foreground -->
         <Setter Property="Foreground" Value="Black" />
@@ -167,28 +192,39 @@
 
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">
-        <!--<TextBox Text="{Binding value, UpdateSourceTrigger=PropertyChanged}"/>-->
-        <TextBox Text="{Binding value}"/>
+        <xctk:WatermarkTextBox Text="{Binding value}" Watermark="[UNKNOWN]"/>
     </DataTemplate>
 
     <!-- Templates for Numbers -->
     <DataTemplate x:Key="IntegerEditorTemplate">
-        <TextBox Text="{Binding value}"/>
+        <xctk:IntegerUpDown Value="{Binding value}" Watermark="[UNKNOWN]" ShowButtonSpinner="False" ParsingNumberStyle="Integer"/>
     </DataTemplate>
     <DataTemplate x:Key="DecimalEditorTemplate">
-        <TextBox Text="{Binding value}"/>
+        <xctk:DecimalUpDown Value="{Binding value}" Watermark="[UNKNOWN]" ShowButtonSpinner="False" ParsingNumberStyle="Any"/>
     </DataTemplate>
 
     <!-- Templates for Date/Time -->
     <DataTemplate x:Key="DateTimeEditorTemplate">
-        <TextBox Text="{Binding value}"/>
+        <xctk:DateTimeUpDown Value="{Binding value}" Format="Custom" FormatString="yyyyMMdd HH:mm" Watermark="[UNKNOWN]"/>
     </DataTemplate>
     <DataTemplate x:Key="DateOnlyEditorTemplate">
-        <TextBox Text="{Binding value}"/>
+        <xctk:DateTimeUpDown Value="{Binding value}" Format="ShortDate" FormatString="yyyyMMdd" Watermark="[UNKNOWN]"/>
     </DataTemplate>
     <DataTemplate x:Key="TimeEditorTemplate">
-        <TextBox Text="{Binding value}"/>
+        <xctk:DateTimeUpDown Value="{Binding value}" Format="ShortTime" FormatString="HH:mm" Watermark="[UNKNOWN]"/>
     </DataTemplate>
+    <DataTemplate x:Key="TruncatedDateEditorTemplate">
+        <xctk:WatermarkTextBox Watermark="[UNKNOWN]">
+            <xctk:WatermarkTextBox.Text>
+                <Binding Path="value" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:TruncatedDateRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </xctk:WatermarkTextBox.Text>
+        </xctk:WatermarkTextBox>
+    </DataTemplate>
+
 
     <!-- Template for Booleans -->
     <DataTemplate x:Key="BooleanEditorTemplate">
@@ -213,36 +249,70 @@
                                     DateOnlyEditorTemplate="{StaticResource DateOnlyEditorTemplate}"
                                     DateTimeEditorTemplate="{StaticResource DateTimeEditorTemplate}"
                                     TimeEditorTemplate="{StaticResource TimeEditorTemplate}"
+                                    TruncatedDateEditorTemplate="{StaticResource TruncatedDateEditorTemplate}"
                                     RealEditorTemplate="{StaticResource DecimalEditorTemplate}"                                    
                                     BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
                                     IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
                                     EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
     <!--ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>-->
 
+    <!--<local:ItemsControlTemplateSelector x:Key="ItemControlSelector"/>-->
+    
     <DataTemplate x:Key="DefaultItemControlTemplate">
-        <Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <!-- SharedSizeGroup="LabelColumn" is the magic part -->
-                    <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+        <!--<Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <!-- SharedSizeGroup="LabelColumn" is the magic part -->
+                <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock Text="{Binding code}" Margin="5" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="0" Text="{Binding code}" Padding="5" VerticalAlignment="Center"/>
 
-                <DockPanel Grid.Column="1" LastChildFill="True">
-                    <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
-                    </Button>
-                    <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
+            <DockPanel Grid.Column="1" LastChildFill="True">
+                <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
+                </Button>
+                <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
                                   Content="{Binding}" 
                                   ContentTemplateSelector="{StaticResource PropSelector}"/>
-                </DockPanel>
-            </Grid>
-        </Border>
+            </DockPanel>
+        </Grid>
+        <!--</Border>-->
     </DataTemplate>
 
+    <!--<DataTemplate x:Key="PropertyGrid">
+        <StackPanel>
+            <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
+                <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
+                    <ComboBox
+                    Style="{StaticResource ButtonLikeComboBox}"
+                    ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}"
+                    ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"                          
+                    DisplayMemberPath="attribute">
+                        <i:Interaction.Behaviors>
+                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                    <Button Style="{StaticResource DeleteIconButtonStyle}">
+                        <i:Interaction.Behaviors>
+                            <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" Parameter="{Binding}" Parent="{Binding RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}" />
+                        </i:Interaction.Behaviors>
+                    </Button>
+                </StackPanel>
+                <TextBlock DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" FontWeight="Bold" VerticalAlignment="Center" />
+            </DockPanel>
+
+            <ItemsControl Grid.Row="1"
+                      ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}"
+                      ItemTemplateSelector="{StaticResource ItemControlSelector}"/>
+        </StackPanel>
+    </DataTemplate>-->
+
     <HierarchicalDataTemplate x:Key="ComplexItemControlTemplate">
-        <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}" Padding="5,0,0,0"/>
+        <StackPanel Margin="0,0,0,0">
+            <local:PropertyGrid SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}" />
+        </StackPanel>
+        <!--Padding="5,0,0,0"-->
     </HierarchicalDataTemplate>
 
     <local:ItemsControlTemplateSelector x:Key="ItemControlSelector" 

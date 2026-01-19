@@ -29,22 +29,24 @@ namespace S100Framework.WPF.Converters
     /// <summary>
     /// Inverts a boolean value
     /// </summary>
-    public class AttributeBindingDefinitionConverter : IValueConverter
+    public class AttributeBindingDefinitionConverter : IMultiValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (value is attributeBindingDefinition attributeBindingDefinition) {
-                var random = new Random(DateTime.Now.Microsecond);
-                return random.Next(0, 99) >= 50;
-            }
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
+            if ((values.Length != 2)) return false;
 
-            return true;
+            var attributeBindingDefinition = values[0] as attributeBindingDefinition;
+
+            if (values[1] is S100AttributeEditor attributeEditor) {
+                return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
+            }
+            if (values[1] is PropertyGrid propertyGrid) {
+                return propertyGrid.SelectedObject!.HasCapacity(attributeBindingDefinition!);
+            }
+            return false;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            if (value is bool boolValue) {
-                return !boolValue;
-            }
-            return true;
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
         }
     }
 
