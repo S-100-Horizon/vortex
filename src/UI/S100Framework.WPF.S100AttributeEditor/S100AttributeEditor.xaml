@@ -23,13 +23,15 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <!-- SharedSizeGroup="LabelColumn" is the magic part -->
-                        <ColumnDefinition SharedSizeGroup="LabelColumn" />
+                        <ColumnDefinition SharedSizeGroup="LabelColumn"/>
                         <ColumnDefinition Width="*"/>
                         <!-- Width="{Binding RelativeSource={RelativeSource AncestorType=Control}, Converter={StaticResource ColumnWidthConverter}}" -->
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Grid.Column="0" Text="{Binding code}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
 
+                    <!--<GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" />-->
+                    
                     <DockPanel Grid.Column="1" LastChildFill="True">
                         <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
                         </Button>
@@ -44,7 +46,7 @@
 
             <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
                 <Expander Header="{Binding code}" IsExpanded="True" Background="AliceBlue">
-                    <ItemsControl ItemsSource="{Binding attributeBindings}" Margin="10,0,0,0" />
+                    <ItemsControl ItemsSource="{Binding attributeBindings}" Margin="0,0,0,0" BorderBrush="Bisque" BorderThickness="20,0,0,0"/>
                 </Expander>
             </HierarchicalDataTemplate>
 
