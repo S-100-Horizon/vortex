@@ -98,6 +98,7 @@ namespace S100Framework.WPF.ViewModel
 namespace S100Framework.WPF
 {
     using S100Framework.WPF.ViewModel;
+    using Xceed.Wpf.Toolkit.PropertyGrid;
 
     /// <summary>
     /// Interaction logic for S100AttributeEditor.xaml
@@ -107,6 +108,8 @@ namespace S100Framework.WPF
         public event PropertyChangedEventHandler? PropertyChanged = default;
 
         public ICommand CreateAttributeCommand { get; }
+
+        public ICommand DeleteAttributeCommand { get; }
 
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -122,6 +125,21 @@ namespace S100Framework.WPF
                         this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(complexAttribute));
                     else
                         throw new NotImplementedException();
+                }
+            }
+        }
+
+        protected void OnDeleteAttributeCommand(object? parameter) {
+            if (this.SelectedObject is null) return;
+            if (parameter is ClickedBehavior.DeleteAttributeCommandEventArgs e) {
+                if (e.parameter is SimpleAttributeViewModel simpleAttribute) {
+                    if (e.parent is ItemsControl itemsControl) {
+                        var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
+                        var index = collection.IndexOf(simpleAttribute);
+                        if (index >= 0) {
+                            collection.RemoveAt(index);
+                        }
+                    }
                 }
             }
         }
@@ -145,6 +163,7 @@ namespace S100Framework.WPF
             InitializeComponent();
 
             this.CreateAttributeCommand = new RelayCommand(this.OnCreateAttributeCommand);
+            this.DeleteAttributeCommand=new RelayCommand(this.OnDeleteAttributeCommand);
         }
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {

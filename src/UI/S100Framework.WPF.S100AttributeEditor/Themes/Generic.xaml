@@ -119,18 +119,6 @@
                 <Setter Property="Visibility" Value="Visible" />
             </DataTrigger>
         </Style.Triggers>
-
-        <!--<Style.Triggers>
-            --><!-- Show when hovering the TextBox --><!--
-            <DataTrigger Binding="{Binding IsMouseOver, ElementName=ContentItem}" Value="True">
-                <Setter Property="Visibility" Value="Visible"/>
-            </DataTrigger>
-
-            --><!-- Keep visible when hovering the button itself --><!--
-            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True">
-                <Setter Property="Visibility" Value="Visible"/>
-            </DataTrigger>
-        </Style.Triggers>-->
     </Style>
 
 
@@ -260,32 +248,6 @@
                                     BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
                                     IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
                                     EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
-    <!--ComplexEditorTemplate="{StaticResource ComplexEditorTemplate}"/>-->
-
-    <!--<local:ItemsControlTemplateSelector x:Key="ItemControlSelector"/>-->
-    
-    <DataTemplate x:Key="DefaultItemControlTemplate">
-        <!--<Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">-->
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <!-- SharedSizeGroup="LabelColumn" is the magic part -->
-                <ColumnDefinition Width="Auto" SharedSizeGroup="LabelColumn"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock Grid.Column="0" Text="{Binding code}" Padding="5" VerticalAlignment="Center"/>
-
-            <DockPanel Grid.Column="1" LastChildFill="True">
-                <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
-                </Button>
-                <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
-                                  Content="{Binding}" 
-                                  ContentTemplateSelector="{StaticResource PropSelector}"/>
-            </DockPanel>
-        </Grid>
-        <!--</Border>-->
-    </DataTemplate>
-   
 
     <Style TargetType="{x:Type localcontrols:DropdownButton}">
         <Setter Property="Focusable" Value="False"/>
