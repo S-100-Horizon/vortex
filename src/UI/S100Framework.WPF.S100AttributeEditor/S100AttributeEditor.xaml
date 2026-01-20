@@ -21,24 +21,22 @@
 
             <DataTemplate DataType="{x:Type viewmodel:SimpleAttributeViewModel}">
                 <Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">
-                    <DockPanel LastChildFill="True">
-                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" 
+                    <DockPanel LastChildFill="True" Background="Transparent">
+                        <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" 
                                Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                        <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}">
-                        </Button>
-                        <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
+                            <Button DockPanel.Dock="Right" Style="{StaticResource DeleteContentItemButtonStyle}"/>
+                            <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
                               Content="{Binding}" 
                               ContentTemplateSelector="{StaticResource PropSelector}"/>
-                    </DockPanel>
+                        </DockPanel>
 
-                    <TextBlock DockPanel.Dock="Left" Text="{Binding code}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                </DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding code}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
+                    </DockPanel>
                 </Border>
             </DataTemplate>
 
             <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
-
-                <Expander Header="{Binding code}" IsExpanded="True" Background="AliceBlue">
+                <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent">
                     <ItemsControl ItemsSource="{Binding attributeBindings}" Margin="20,0,0,0"/>
                 </Expander>
             </HierarchicalDataTemplate>

@@ -38,10 +38,7 @@ namespace S100Framework.WPF.Converters
 
             if (values[1] is S100AttributeEditor attributeEditor) {
                 return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
-            }
-            if (values[1] is PropertyGrid propertyGrid) {
-                return propertyGrid.SelectedObject!.HasCapacity(attributeBindingDefinition!);
-            }
+            }            
             return false;
         }
 
