@@ -9215,6 +9215,7 @@ namespace S100FC.S131
 	using System.Text.Json;
 	using S100FC.S131.SimpleAttributes;
 	using S100FC.S131.ComplexAttributes;
+	using S100FC.S131.InformationAssociation;
 	using S100FC.S131.FeatureAssociation;
 	using S100FC.S131.FeatureTypes;
 
@@ -9241,6 +9242,79 @@ namespace S100FC.S131
 	}
 
 	public static class Extensions {
+		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
+			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AuthorityContact" => new informationBinding<AuthorityContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AuthorityHours" => new informationBinding<AuthorityHours>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AssociatedRxN" => new informationBinding<AssociatedRxN>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ExceptionalWorkday" => new informationBinding<ExceptionalWorkday>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ServiceControl" => new informationBinding<ServiceControl>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ServiceContact" => new informationBinding<ServiceContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"LocationHours" => new informationBinding<LocationHours>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"RelatedOrganisation" => new informationBinding<RelatedOrganisation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"InclusionType" => new informationBinding<InclusionType>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"PermissionType" => new informationBinding<PermissionType>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"LimitEntrance" => new informationBinding<LimitEntrance>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ServiceAvailability" => new informationBinding<ServiceAvailability>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
+		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
+			"TextAssociation" => new featureBinding<TextAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"Subsection" => new featureBinding<Subsection>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"Infrastructure" => new featureBinding<Infrastructure>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"PrimaryAuxiliaryFacility" => new featureBinding<PrimaryAuxiliaryFacility>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"Demarcation" => new featureBinding<Demarcation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"JurisdictionalLimit" => new featureBinding<JurisdictionalLimit>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"LayoutDivision" => new featureBinding<LayoutDivision>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {

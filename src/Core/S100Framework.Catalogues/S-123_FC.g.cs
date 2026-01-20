@@ -6735,6 +6735,7 @@ namespace S100FC.S123
 	using System.Text.Json;
 	using S100FC.S123.SimpleAttributes;
 	using S100FC.S123.ComplexAttributes;
+	using S100FC.S123.InformationAssociation;
 	using S100FC.S123.FeatureAssociation;
 	using S100FC.S123.FeatureTypes;
 
@@ -6761,6 +6762,82 @@ namespace S100FC.S123
 	}
 
 	public static class Extensions {
+		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
+			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AssociatedRxN" => new informationBinding<AssociatedRxN>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AuthorityContact" => new informationBinding<AuthorityContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AuthorityHours" => new informationBinding<AuthorityHours>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"AvailableQoS" => new informationBinding<AvailableQoS>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"BroadcastService" => new informationBinding<BroadcastService>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"BroadcastTransmission" => new informationBinding<BroadcastTransmission>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ConnectivityService" => new informationBinding<ConnectivityService>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ExceptionalWorkday" => new informationBinding<ExceptionalWorkday>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"InclusionType" => new informationBinding<InclusionType>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"LocationHours" => new informationBinding<LocationHours>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"PermissionType" => new informationBinding<PermissionType>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"RadioServiceControl" => new informationBinding<RadioServiceControl>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"relatedOrganisation" => new informationBinding<relatedOrganisation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ServiceContact" => new informationBinding<ServiceContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ServiceCoordination" => new informationBinding<ServiceCoordination>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"TMAS" => new informationBinding<TMAS>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"TransmissionService" => new informationBinding<TransmissionService>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
+		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
+			"coreAggregation" => new featureBinding<coreAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"fuzzyZoneAggregation" => new featureBinding<fuzzyZoneAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"ServiceProvisionArea" => new featureBinding<ServiceProvisionArea>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {

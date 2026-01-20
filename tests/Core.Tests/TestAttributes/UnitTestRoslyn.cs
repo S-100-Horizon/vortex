@@ -551,6 +551,7 @@ namespace TestAttributes
                 roslyn.AppendLine($"\tusing System.Text.Json;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.SimpleAttributes;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.InformationAssociation;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureAssociation;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureTypes;");
                 roslyn.AppendLine();
@@ -591,6 +592,29 @@ namespace TestAttributes
                 roslyn.AppendLine();
 
                 roslyn.AppendLine("\tpublic static class Extensions {");
+
+                roslyn.AppendLine("\t\tpublic static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {");
+                foreach (var informationAssociation in informationAssociationTypesKnown) {
+                    roslyn.AppendLine($"\t\t\t\"{informationAssociation}\" => new informationBinding<{informationAssociation}>() {{");
+                    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, informationType = informationType, informationId = informationId,");
+                    roslyn.AppendLine("\t\t\t},");
+                }
+                roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
+                roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+                roslyn.AppendLine("\t\t};");
+                roslyn.AppendLine();
+
+                roslyn.AppendLine("\t\tpublic static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {");
+                foreach(var featureAssociation in featureAssociationTypesKnown) {
+                    roslyn.AppendLine($"\t\t\t\"{featureAssociation}\" => new featureBinding<{featureAssociation}>() {{");
+                    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, featureType = featureType, featureId = featureId,");
+                    roslyn.AppendLine("\t\t\t},");
+                }
+                roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
+                roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+                roslyn.AppendLine("\t\t};");
+                roslyn.AppendLine();
+
                 roslyn.AppendLine("\t\tpublic static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {");
                 roslyn.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
                 roslyn.AppendLine("\t\t\tresolver.Modifiers.Add(typeInfo => {");

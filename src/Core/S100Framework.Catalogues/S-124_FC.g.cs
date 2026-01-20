@@ -2213,6 +2213,7 @@ namespace S100FC.S124
 	using System.Text.Json;
 	using S100FC.S124.SimpleAttributes;
 	using S100FC.S124.ComplexAttributes;
+	using S100FC.S124.InformationAssociation;
 	using S100FC.S124.FeatureAssociation;
 	using S100FC.S124.FeatureTypes;
 
@@ -2239,6 +2240,28 @@ namespace S100FC.S124
 	}
 
 	public static class Extensions {
+		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
+			"navwarnPreambleContent" => new informationBinding<navwarnPreambleContent>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"navwarnReferences" => new informationBinding<navwarnReferences>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
+		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
+			"TextAssociation" => new featureBinding<TextAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"areaAffected" => new featureBinding<areaAffected>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {

@@ -41513,6 +41513,7 @@ namespace S100FC.S101
 	using System.Text.Json;
 	using S100FC.S101.SimpleAttributes;
 	using S100FC.S101.ComplexAttributes;
+	using S100FC.S101.InformationAssociation;
 	using S100FC.S101.FeatureAssociation;
 	using S100FC.S101.FeatureTypes;
 
@@ -41539,6 +41540,79 @@ namespace S100FC.S101
 	}
 
 	public static class Extensions {
+		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
+			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"QualityOfBathymetricDataComposition" => new informationBinding<QualityOfBathymetricDataComposition>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
+		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
+			"AidsToNavigationAssociation" => new featureBinding<AidsToNavigationAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"ASLAggregation" => new featureBinding<ASLAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"BridgeAggregation" => new featureBinding<BridgeAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"CautionAreaAssociation" => new featureBinding<CautionAreaAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"DeepWaterRouteAggregation" => new featureBinding<DeepWaterRouteAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"FairwayAggregation" => new featureBinding<FairwayAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"FairwayAuxiliary" => new featureBinding<FairwayAuxiliary>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"IslandAggregation" => new featureBinding<IslandAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"MooringTrotAggregation" => new featureBinding<MooringTrotAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"PilotageDistrictAssociation" => new featureBinding<PilotageDistrictAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"RangeSystemAggregation" => new featureBinding<RangeSystemAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"RoofedStructureAggregation" => new featureBinding<RoofedStructureAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"StructureEquipment" => new featureBinding<StructureEquipment>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"TextAssociation" => new featureBinding<TextAssociation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"TrafficSeparationSchemeAggregation" => new featureBinding<TrafficSeparationSchemeAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"TwoWayRouteAggregation" => new featureBinding<TwoWayRouteAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"UpdateAggregation" => new featureBinding<UpdateAggregation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"UpdatedInformation" => new featureBinding<UpdatedInformation>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {

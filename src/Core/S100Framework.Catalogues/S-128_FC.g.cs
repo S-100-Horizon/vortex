@@ -4121,6 +4121,7 @@ namespace S100FC.S128
 	using System.Text.Json;
 	using S100FC.S128.SimpleAttributes;
 	using S100FC.S128.ComplexAttributes;
+	using S100FC.S128.InformationAssociation;
 	using S100FC.S128.FeatureAssociation;
 	using S100FC.S128.FeatureTypes;
 
@@ -4147,6 +4148,46 @@ namespace S100FC.S128
 	}
 
 	public static class Extensions {
+		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
+			"CarriageRequirement" => new informationBinding<CarriageRequirement>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"DistributionDetails" => new informationBinding<DistributionDetails>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"DistributorContact" => new informationBinding<DistributorContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"PriceOfElement" => new informationBinding<PriceOfElement>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"PriceOfNauticalProduct" => new informationBinding<PriceOfNauticalProduct>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ProducerContact" => new informationBinding<ProducerContact>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ProductionDetails" => new informationBinding<ProductionDetails>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"ProductPackage" => new informationBinding<ProductPackage>() {
+				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
+		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
+			"ProductMapping" => new featureBinding<ProductMapping>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"Correlated" => new featureBinding<Correlated>() {
+				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
+			},
+			"" => throw new KeyNotFoundException(),
+			_ => throw new KeyNotFoundException(),
+		};
+
 		public static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {
 			var resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();
 			resolver.Modifiers.Add(typeInfo => {
