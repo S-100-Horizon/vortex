@@ -81,6 +81,7 @@ namespace PropertyGridApplication
                     attribute = nameof(featuresDetectedNested),
                     lower = 1,
                     upper = 1,
+                    order = int.MaxValue,
                 },                
             ];
 

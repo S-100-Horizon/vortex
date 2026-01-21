@@ -63,7 +63,7 @@
             </DataTemplate>
 
             <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
-                <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch">
+                <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0">
                     <Expander.HeaderTemplate>
                         <DataTemplate>
                             <DockPanel LastChildFill="True" Background="Transparent" Width="{Binding ActualWidth , RelativeSource={RelativeSource AncestorType=Expander}, Converter={StaticResource CalculateExpanderWidthConverter}}">

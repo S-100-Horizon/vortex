@@ -731,7 +731,7 @@ namespace TestAttributes
 
             var hasAttributes = host.Attributes.Any();
 
-            if (hasAttributes) {
+            if (hasAttributes) {                
                 roslyn.AppendLine();
                 roslyn.AppendLine("\t\t#region Attributes");
                 foreach (var attributeBinding in host.Attributes) {
@@ -778,6 +778,8 @@ namespace TestAttributes
             roslyn.AppendLine("\t\t#region Catalogue");
 
             if (hasAttributes) {
+                int order = 0;
+
                 roslyn.AppendLine("\t\t[JsonIgnore]");
                 roslyn.AppendLine($"\t\tpublic override attributeBindingDefinition[] attributeBindingsCatalogue => [");
                 if (superType != null) {
@@ -794,6 +796,7 @@ namespace TestAttributes
                     roslyn.AppendLine($"\t\t\t\t\tattribute = nameof({referenceCode}),");
                     roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
                     roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
+                    roslyn.AppendLine($"\t\t\t\t\torder = {order++},");
                     if (permittedValues is not null)
                         roslyn.AppendLine($"\t\t\t\t\tpermitedValues = [{string.Join(',', permittedValues.XPathSelectElements("S100FC:value", xmlNamespaceManager).Select(e => $"{e.Value}"))}],");
                     roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new {referenceCode}(),");

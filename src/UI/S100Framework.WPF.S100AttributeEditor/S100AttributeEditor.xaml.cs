@@ -49,8 +49,8 @@ namespace S100Framework.WPF.ViewModel
                     this.OnPropertyChanged("attributes");
                 }
             };
-            
-            foreach (var e in this._feature.attributeBindings)
+
+            foreach (var e in this._feature.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
                     var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
@@ -59,6 +59,7 @@ namespace S100Framework.WPF.ViewModel
                     var viewmodel = new ComplexAttributeViewModel(complexAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
+            }
         }
 
         public bool HasCapacity(attributeBindingDefinition binding) {

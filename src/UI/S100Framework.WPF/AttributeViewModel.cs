@@ -112,7 +112,7 @@ namespace S100Framework.WPF.ViewModel
                 }
             };
 
-            foreach (var e in attribute.attributeBindings) {
+            foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
                     var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
@@ -133,7 +133,7 @@ namespace S100Framework.WPF.ViewModel
             //if(sender is S100FC.SimpleAttribute simpleAttribute)
             //    base.OnPropertyChanged(simpleAttribute.S100FC_code);
             //else
-                base.OnPropertyChanged(e.PropertyName);
+            base.OnPropertyChanged(e.PropertyName);
         }
 
         private S100FC.ComplexAttribute? _attribute = default;

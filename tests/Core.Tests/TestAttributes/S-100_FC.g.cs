@@ -6,6 +6,16 @@ using System.Xml.Serialization;
 #nullable enable
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+namespace S100FC
+{
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class OrderAttribute(int order) : System.Attribute
+    {
+        public int Order { get; set; } = order;
+    }
+
+}
+
 namespace S100FC.S100
 {
     [JsonConverter(typeof(TimeJsonConverter))]
@@ -524,6 +534,8 @@ namespace S100FC
 
         public int lower { get; init; } = 0;
         public int upper { get; init; } = int.MaxValue;
+
+        public int order { get; init; } = 0;
 
         public bool IsCollection => this.upper > 1;
         public bool IsMandatory => this.lower > 0;
