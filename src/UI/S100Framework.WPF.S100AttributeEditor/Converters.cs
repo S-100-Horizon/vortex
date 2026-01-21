@@ -2,6 +2,7 @@
 using S100Framework.WPF.ViewModel;
 using System.Globalization;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Data;
 
 namespace S100Framework.WPF.Converters
@@ -110,5 +111,14 @@ namespace S100Framework.WPF.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
             throw new NotImplementedException();
         }
+    }
+
+    public class CalculateExpanderWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            return (Double)value - 0;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => Binding.DoNothing;
     }
 }

@@ -11,16 +11,39 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <!--
+            https://www.color-meanings.com/light-color-palettes/
+        
+            color-palettes
+                Names: Silver, Lily white, Seasalt, Platinum, Dun
+                Hex Codes: #C7D4D5, #DFE8E9, #FAFAFA, #EAEBE6, #E3CCA9
+        -->               
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/S100Framework.WPF.S100AttributeEditor;component/Themes/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
+            <Style TargetType="Expander">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Expander">
+                            <DockPanel>
+                                <Border Background="#DFE8E9" Padding="0,0,0,0" DockPanel.Dock="Top">
+                                    <ContentPresenter ContentSource="Header"/>
+                                </Border>
+                                <ContentPresenter Margin="0"/>
+                            </DockPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <converters:ColumnWidthConverter x:Key="ColumnWidthConverter"/>
             <converters:PercentageConverter x:Key="PercentageConverter"/>
+            <converters:CalculateExpanderWidthConverter x:Key="CalculateExpanderWidthConverter"/>
 
             <DataTemplate DataType="{x:Type viewmodel:SimpleAttributeViewModel}">
-                <Border BorderBrush="#F0EEF1" BorderThickness="0,0,0,1">
+                <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
                     <DockPanel LastChildFill="True" Background="Transparent">
                         <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" 
                                Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
@@ -40,55 +63,23 @@
             </DataTemplate>
 
             <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
-                <!--<StackPanel>
-                    <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
-                        <StackPanel DockPanel.Dock="Right"  Orientation="Horizontal">
-                            <ComboBox
-                    Style="{StaticResource ButtonLikeComboBox}"
-                    ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}"
-                    ItemsSource="{Binding attributeBindingsCatalogue}"                          
-                    DisplayMemberPath="attribute">
-                                -->
-                <!--<i:Interaction.Behaviors>
-                                    <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" />
-                                </i:Interaction.Behaviors>-->
-                <!--
-                            </ComboBox>
-                            <Button Style="{StaticResource DeleteIconButtonStyle}">
-                                -->
-                <!--<i:Interaction.Behaviors>
-                                    <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:PropertyGrid}}}" Parameter="{Binding}" Parent="{Binding RelativeSource={RelativeSource AncestorType=UserControl, AncestorLevel=2}}" />
-                                </i:Interaction.Behaviors>-->
-                <!--
-                            </Button>
-                        </StackPanel>
-                        <TextBlock DockPanel.Dock="Left" Text="{Binding code}" FontWeight="Bold" VerticalAlignment="Center" />
-                    </DockPanel>-->
-
                 <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch">
                     <Expander.HeaderTemplate>
                         <DataTemplate>
-                            <Grid HorizontalAlignment="Stretch">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200"/>
-                                </Grid.ColumnDefinitions>
-                                <DockPanel LastChildFill="True" Background="#F0EEF1">
-                                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                                        <ComboBox Style="{StaticResource ButtonLikeComboBox}" 
+                            <DockPanel LastChildFill="True" Background="Transparent" Width="{Binding ActualWidth , RelativeSource={RelativeSource AncestorType=Expander}, Converter={StaticResource CalculateExpanderWidthConverter}}">
+                                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                                    <ComboBox Style="{StaticResource ButtonLikeComboBox}" 
                                               ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}" 
                                               ItemsSource="{Binding attributeBindingsCatalogue}" 
                                               DisplayMemberPath="attribute">
-                                        </ComboBox>
-                                        <Button Style="{StaticResource DeleteIconButtonStyle}">
-                                        </Button>
-                                    </StackPanel>
-                                    <TextBlock DockPanel.Dock="Left" Text="{Binding}" FontWeight="Bold" VerticalAlignment="Center" />
-                                </DockPanel>
-                            </Grid>
+                                    </ComboBox>
+                                    <Button Style="{StaticResource DeleteIconButtonStyle}">
+                                    </Button>
+                                </StackPanel>
+                                <TextBlock Padding="5,0,0,0" DockPanel.Dock="Left" Text="{Binding}" FontWeight="Bold" VerticalAlignment="Center" />
+                            </DockPanel>
                         </DataTemplate>
                     </Expander.HeaderTemplate>
-                    <!-- Content -->
-
                     <ItemsControl ItemsSource="{Binding attributeBindings}" Margin="20,0,0,0"/>
                 </Expander>
             </HierarchicalDataTemplate>
@@ -103,7 +94,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" LastChildFill="True" Background="#F0EEF1">
+        <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
             <ComboBox 
                     DockPanel.Dock="Right" 
                     Style="{StaticResource ButtonLikeComboBox}"
