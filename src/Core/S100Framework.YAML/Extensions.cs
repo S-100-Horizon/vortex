@@ -5,6 +5,7 @@
     using System.Collections.Concurrent;
     using System.Globalization;
     using System.Linq;
+    using System.Text.Json;
 
     public static class Extensions
     {
@@ -148,6 +149,23 @@
             }
             else {
                 return datasetPoint;
+            }
+        }
+        public static IEnumerable<string> GetFileNames(string json) {
+            using var doc = JsonDocument.Parse(json);
+
+            foreach (var attr in doc.RootElement.GetProperty("attr").EnumerateArray()) {
+                if (!attr.TryGetProperty("attr", out var innerAttrs))
+                    continue;
+
+                foreach (var inner in innerAttrs.EnumerateArray()) {
+                    var code = inner.GetProperty("code").GetString();
+
+                    if (code?.Equals("fileReference", StringComparison.OrdinalIgnoreCase) == true
+                        || code?.Equals("pictorialRepresentation", StringComparison.OrdinalIgnoreCase) == true) {
+                        yield return inner.GetProperty("value").GetString()!;
+                    }
+                }
             }
         }
 

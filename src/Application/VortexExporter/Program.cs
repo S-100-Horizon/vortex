@@ -2,17 +2,10 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100FC;
-//using S100Framework.DomainModel;
-//using S100Framework.DomainModel.S101.FeatureAssociations;
-//using S100Framework.ProductCatalogue;
 using S100FC.YAML;
-using S100FC.Topology;
 using Serilog;
 using System.Diagnostics;
-using System.Text;
 using System.Text.Json;
-using System.Text.RegularExpressions;
-using WinRT;
 using Dataset = S100FC.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -79,6 +72,20 @@ namespace S100Framework.Applications
                 if (arguments.Errors.Any())
                     return -1;
 
+                var jsonSerializerOptionsS101 = new JsonSerializerOptions {
+                    WriteIndented = false,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true,
+                }.AppendTypeInfoResolver();
+
+                var jsonSerializerOptionsS128 = new JsonSerializerOptions {
+                    WriteIndented = false,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                    PropertyNameCaseInsensitive = true,
+                };
+
+                S100FC.S128.Extensions.AppendTypeInfoResolver(jsonSerializerOptionsS128);
+
                 Esri.Initialize();
 
                 string? dsnm = default;
@@ -118,17 +125,16 @@ namespace S100Framework.Applications
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
                     using var cursor = surface.Search(new QueryFilter {
-                        WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
+                        //WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
+                        WhereClause = string.IsNullOrEmpty(dsnm) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"code\":\"datasetName\",\"value\":\"{dsnm.ToUpperInvariant()}\"%'"
                     }, true);
 
                     while (cursor.MoveNext()) {
                         var current = (ArcGIS.Core.Data.Feature)cursor.Current;
 
-                        var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!);
+                        var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!, jsonSerializerOptionsS128);
 
                         var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
-                        //var json = polygon.ToJson();
-                        //var shape = GeometryEngine.Instance.ImportFromJson(JsonImportFlags.JsonImportDefaults, json);
 
                         var whereClause = "upper(ps) = 'S-101'";
                         if (current.FindField("usageband") != -1 && !current.IsNull("usageband"))
@@ -152,10 +158,6 @@ namespace S100Framework.Applications
 
                 //Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
-                var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
-
-                var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
-
                 //  TEST, TEST, TEST, TEST, TEST, 
                 S100FC.Topology.Matrix.ParallelOptions = new ParallelOptions { MaxDegreeOfParallelism = 1 };
 
@@ -166,17 +168,6 @@ namespace S100Framework.Applications
                     var filter = e.Filter;
 
                     var datasetName = dataset.CellName.Split('.')[0];
-
-                    var jsonSerializerOptionsInformationBindings = new JsonSerializerOptions {
-                        WriteIndented = false,
-                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                        PropertyNameCaseInsensitive = true,
-                    }.AppendTypeInfoResolver();
-
-
-                    //if (datasetName.Equals("101DK40751E")) continue;
-                    //if (datasetName.Equals("101DK40545E")) continue;
-                    //if (datasetName.Equals("101DK40347E")) continue;
 
                     Log.Information("{dataset}", datasetName);
                     var spatialAssociations = new Dictionary<string, S100FC.YAML.Association>();
@@ -204,7 +195,7 @@ namespace S100Framework.Applications
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101); // jsonSerializerOptionsS101
 
                             var information = new S100FC.YAML.Information {
                                 Name = code,
@@ -214,29 +205,13 @@ namespace S100Framework.Applications
                             information.Attributes = (S100FC.InformationType)instance!;
                             informationTypes.Add(information);
 
-                            if (regFileReference.IsMatch(json)) {
-                                var matches = regFileReference.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
-                                    }
-                                }
-                            }
-                            if (regPictorialRepresentation.IsMatch(json)) {
-                                var matches = regPictorialRepresentation.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
-
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
+                            foreach(var filename in filenames) {
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                    if(file != null) {
                                         var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
                                         dataset?.Metadata.AddSupportFile(filename, base64);
                                     }
@@ -248,8 +223,6 @@ namespace S100Framework.Applications
                         Log.Information("Table: informationtype: {message} ", ex.Message);
                         Logger.Current.Error("Exception: {ex}", ex);
                     }
-
-
 
                     // FeatureTypes
                     var featureTypes = new List<S100FC.YAML.Feature>();
@@ -267,7 +240,7 @@ namespace S100Framework.Applications
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
-                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;// jsonSerializerOptionsS101
 
                             var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
@@ -275,37 +248,19 @@ namespace S100Framework.Applications
                                 Prim = Primitive.NoGeometry,
                                 Name = code,
                                 Foid = foid,
+                                Attributes = instance,
                             };
 
-                            feature.Attributes = (S100FC.FeatureType)instance!;
                             featureTypes.Add(feature);
 
-                            if (regFileReference.IsMatch(json)) {
-                                var matches = regFileReference.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
-                                    }
-                                }
-                            }
-                            if (regPictorialRepresentation.IsMatch(json)) {
-                                var matches = regPictorialRepresentation.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
-
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
-                                    }
+                            foreach (var filename in filenames) {
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
                         }
@@ -369,34 +324,17 @@ namespace S100Framework.Applications
                                 }
 
                                 var json = Convert.ToString(current["json"])!;
-                                var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                                var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(json, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
 
-                                if (regFileReference.IsMatch(json)) {
-                                    var matches = regFileReference.Matches(json);
-                                    foreach (Match m in matches) {
-                                        var filename = m.Groups["filename"].Value;
 
-                                        if (!supportFiles.Contains(filename)) {
-                                            supportFiles.Add(filename);
-                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                            dataset?.Metadata.AddSupportFile(filename, base64);
-                                        }
-                                    }
-                                }
-                                if (regPictorialRepresentation.IsMatch(json)) {
-                                    var matches = regPictorialRepresentation.Matches(json);
-                                    foreach (Match m in matches) {
-                                        var filename = m.Groups["filename"].Value;
-
-                                        if (!supportFiles.Contains(filename)) {
-                                            supportFiles.Add(filename);
-                                            var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-
-                                            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                            dataset?.Metadata.AddSupportFile(filename, base64);
-                                        }
+                                foreach (var filename in filenames) {
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
                                     }
                                 }
 
@@ -414,22 +352,21 @@ namespace S100Framework.Applications
                                     Foid = foid,
                                     Prim = prim,
                                     Geometry = geometry,
-                                    Masks = masks.Any() ? string.Join(",", masks) : null
+                                    Masks = masks.Any() ? string.Join(",", masks) : null,
+                                    Attributes = instance?.attributeBindings.Length > 0 ? instance : null
                                 };
-
-                                feature.Attributes = (S100FC.FeatureType)instance!;
+                                
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {
-                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsInformationBindings);
+                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsS101); // jsonSerializerOptionsS101
 
-                                    // todo: fix missing binding.referenceId
                                     if (informationBindings != default && informationBindings.Any()) {
                                         foreach (var binding in informationBindings) {
                                             var asso = new S100FC.YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
-                                                To = binding.featureId!,
+                                                To = binding.informationId!,
                                             };
 
                                             // Special case for SpatialAssociation. Add to dictionary for later processing.
@@ -438,9 +375,9 @@ namespace S100Framework.Applications
                                             else
                                                 feature?.AddAssociation(asso);
 
-                                            if (!informationsTypesAdded.Contains(binding.featureId!)) {
-                                                informationsTypesAdded.Add(binding.featureId!);
-                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.featureId!)));
+                                            if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                                informationsTypesAdded.Add(binding.informationId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
                                             }
                                         }
                                     }
@@ -448,7 +385,8 @@ namespace S100Framework.Applications
 
                                 // Feature Associations
                                 if (!current.IsNull("featurebindings")) {
-                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsInformationBindings);
+                                    var featureBindingsJson = Convert.ToString(current["featurebindings"])!;
+                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(featureBindingsJson, jsonSerializerOptionsS101); // jsonSerializerOptionsS101
 
                                     if (featureBindings != default && featureBindings.Any()) {
                                         foreach (var binding in featureBindings) {

@@ -1,6 +1,9 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
+using S100FC;
+using S100FC.S128;
+using S100FC.S128.FeatureTypes;
 using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -50,6 +53,41 @@ namespace TestProductCatalogue
 
 
 
+        }
+
+
+
+        [Fact]
+        public void Test_CreateS128() {
+
+
+            var electronicProduct = new S100FC.S128.FeatureTypes.ElectronicProduct {
+                datasetName = "101DK43403E",
+                typeOfProductFormat = 2,                 //IsoIec8211,
+                notForNavigation = true,
+                issueDate = DateOnly.FromDateTime(DateTime.Now),
+                editionNumber = 0,
+                agencyResponsibleForProduction = "Danish Geodata Agency",
+                specificUsage = 1,
+                productSpecification = new(),
+            };
+
+            //foreach (var binding in electronicProduct.attributeBindings) {
+            //    Console.WriteLine(  );
+            //}
+
+            var jsonSerializerOptions = new JsonSerializerOptions {
+                WriteIndented = false,
+                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                PropertyNameCaseInsensitive = true,
+            }.AppendTypeInfoResolver();
+
+
+
+
+            var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptions);
+
+            System.Diagnostics.Debugger.Break();
         }
 
         [Fact]

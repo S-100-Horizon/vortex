@@ -70,11 +70,21 @@ namespace S100FC.ProductCatalogue
         private string _databaseName = string.Empty;
         private string _ownerName = string.Empty;
 
-        JsonSerializerOptions jsonSerializerOptionsSharedBindings = new JsonSerializerOptions {
+        JsonSerializerOptions jsonSerializerOptionsS128 = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
         }.AppendTypeInfoResolver();
+
+        JsonSerializerOptions jsonSerializerOptionsS101 = new JsonSerializerOptions {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
+        };
+
+
+
+      
 
         public string OutputFolder { get; internal set; }
         private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
@@ -93,6 +103,8 @@ namespace S100FC.ProductCatalogue
         }
 
         protected async Task<ProductManager> InitializeAsync(Func<Geodatabase> creator) {
+            S100FC.S101.Extensions.AppendTypeInfoResolver(jsonSerializerOptionsS101);
+
             await this.Dispatch(() => {
                 this._geodatabase = creator();
 
@@ -151,7 +163,7 @@ namespace S100FC.ProductCatalogue
 
                         var code = Convert.ToString(c["code"])!;
                         if (code.Equals(nameof(S100FC.S128.FeatureTypes.ElectronicProduct))) {
-                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!)!;
+                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, jsonSerializerOptionsS128)!;
                             this._electronicProducts.GetOrAdd(electronicProduct.datasetName!.ToUpperInvariant(), electronicProduct);
                         }
                     }
@@ -207,7 +219,11 @@ namespace S100FC.ProductCatalogue
                             productSpecification = productSpecification,
                         };
 
-                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+
+                        var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsS128);
+
+                        buffer["json"] = jason;
+                        //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsSharedBindings);
                         buffer["shape"] = boundary;
                         surface.CreateRow(buffer);
 
@@ -344,7 +360,7 @@ namespace S100FC.ProductCatalogue
             var dirty = await this.Dispatch(() => {
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
-                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}")); 
+                    using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}"));
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
@@ -392,7 +408,8 @@ namespace S100FC.ProductCatalogue
                 ArcGIS.Core.Data.Row row128;
 
                 using var cursorS128 = surface.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                    //WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
+                    WhereClause = $"json LIKE '%\"{name}\"%'",
                 }, false);
 
                 cursorS128.MoveNext();
@@ -404,7 +421,7 @@ namespace S100FC.ProductCatalogue
                 if (row128.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(name));
 
-                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!)!;
+                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, jsonSerializerOptionsS128)!;
 
                 var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
@@ -483,39 +500,51 @@ namespace S100FC.ProductCatalogue
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.InformationType;
 
                         var information = new YAML.Information {
                             Name = code,
                             ID = name,
                         };
                         // Only emit attributes if feature contains any non-static properties
-                        information.Attributes = (S100FC.InformationType)instance!;
+                        if (instance?.attributeBindings.Length > 0)
+                            information.Attributes = instance!;
 
                         informationTypes.Add(information);
 
+                        var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                        // Support Files
-                        if (regFileReference.IsMatch(json)) {
-                            var matches = regFileReference.Matches(json);
-                            foreach (Match m in matches) {
-                                var filename = m.Groups["filename"].Value;
-
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                }
+                        foreach (var filename in filenames) {
+                            if (!supportFiles.Contains(filename)) {
+                                supportFiles.Add(filename);
+                                //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                //dataset?.Metadata.AddSupportFile(filename, base64);
                             }
                         }
-                        if (regPictorialRepresentation.IsMatch(json)) {
-                            var matches = regPictorialRepresentation.Matches(json);
-                            foreach (Match m in matches) {
-                                var filename = m.Groups["filename"].Value;
 
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                }
-                            }
-                        }
+
+                        //// Support Files
+                        //if (regFileReference.IsMatch(json)) {
+                        //    var matches = regFileReference.Matches(json);
+                        //    foreach (Match m in matches) {
+                        //        var filename = m.Groups["filename"].Value;
+
+                        //        if (!supportFiles.Contains(filename)) {
+                        //            supportFiles.Add(filename);
+                        //        }
+                        //    }
+                        //}
+                        //if (regPictorialRepresentation.IsMatch(json)) {
+                        //    var matches = regPictorialRepresentation.Matches(json);
+                        //    foreach (Match m in matches) {
+                        //        var filename = m.Groups["filename"].Value;
+
+                        //        if (!supportFiles.Contains(filename)) {
+                        //            supportFiles.Add(filename);
+                        //        }
+                        //    }
+                        //}
                     }
                 }
 
@@ -533,7 +562,7 @@ namespace S100FC.ProductCatalogue
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
 
                         var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
@@ -541,33 +570,43 @@ namespace S100FC.ProductCatalogue
                             Prim = Primitive.NoGeometry,
                             Name = code,
                             Foid = foid,
+                            Attributes = instance?.attributeBindings.Length > 0 ? instance : null,
                         };
-                        // Only emit attributes if feature contains any non-static properties
 
-                        feature.Attributes = (S100FC.FeatureType)instance!;
                         featureTypes.Add(feature);
 
-                        // Support Files
-                        if (regFileReference.IsMatch(json)) {
-                            var matches = regFileReference.Matches(json);
-                            foreach (Match m in matches) {
-                                var filename = m.Groups["filename"].Value;
+                        var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                }
+                        foreach (var filename in filenames) {
+                            if (!supportFiles.Contains(filename)) {
+                                supportFiles.Add(filename);
+                                //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                //dataset?.Metadata.AddSupportFile(filename, base64);
                             }
                         }
-                        if (regPictorialRepresentation.IsMatch(json)) {
-                            var matches = regPictorialRepresentation.Matches(json);
-                            foreach (Match m in matches) {
-                                var filename = m.Groups["filename"].Value;
 
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                }
-                            }
-                        }
+                        //// Support Files
+                        //if (regFileReference.IsMatch(json)) {
+                        //    var matches = regFileReference.Matches(json);
+                        //    foreach (Match m in matches) {
+                        //        var filename = m.Groups["filename"].Value;
+
+                        //        if (!supportFiles.Contains(filename)) {
+                        //            supportFiles.Add(filename);
+                        //        }
+                        //    }
+                        //}
+                        //if (regPictorialRepresentation.IsMatch(json)) {
+                        //    var matches = regPictorialRepresentation.Matches(json);
+                        //    foreach (Match m in matches) {
+                        //        var filename = m.Groups["filename"].Value;
+
+                        //        if (!supportFiles.Contains(filename)) {
+                        //            supportFiles.Add(filename);
+                        //        }
+                        //    }
+                        //}
                     }
                 }
                 catch (Exception ex) {
@@ -625,31 +664,42 @@ namespace S100FC.ProductCatalogue
                                 continue;
                             }
 
-                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type);
+                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
 
                             var json = Convert.ToString(current["json"])!;
 
-                            // Support Files
-                            if (regFileReference.IsMatch(json)) {
-                                var matches = regFileReference.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                    }
+                            foreach (var filename in filenames) {
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                    //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    //dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
-                            if (regPictorialRepresentation.IsMatch(json)) {
-                                var matches = regPictorialRepresentation.Matches(json);
-                                foreach (Match m in matches) {
-                                    var filename = m.Groups["filename"].Value;
 
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                    }
-                                }
-                            }
+                            //// Support Files
+                            //if (regFileReference.IsMatch(json)) {
+                            //    var matches = regFileReference.Matches(json);
+                            //    foreach (Match m in matches) {
+                            //        var filename = m.Groups["filename"].Value;
+
+                            //        if (!supportFiles.Contains(filename)) {
+                            //            supportFiles.Add(filename);
+                            //        }
+                            //    }
+                            //}
+                            //if (regPictorialRepresentation.IsMatch(json)) {
+                            //    var matches = regPictorialRepresentation.Matches(json);
+                            //    foreach (Match m in matches) {
+                            //        var filename = m.Groups["filename"].Value;
+
+                            //        if (!supportFiles.Contains(filename)) {
+                            //            supportFiles.Add(filename);
+                            //        }
+                            //    }
+                            //}
 
 
                             // Surface Masks
@@ -666,15 +716,13 @@ namespace S100FC.ProductCatalogue
                                 Foid = foid,
                                 Prim = prim,
                                 Geometry = geometry,
-                                Masks = masks.Any() ? string.Join(",", masks) : null
+                                Masks = masks.Any() ? string.Join(",", masks) : null,
+                                Attributes = instance?.attributeBindings.Length > 0 ? instance : null,
                             };
-
-                            // Only emit attributes if feature contains any non-static properties
-                            feature.Attributes = (S100FC.FeatureType)instance!;
 
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
-                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsSharedBindings);
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsS101);
 
                                 if (informationBindings != default && informationBindings.Length != 0) {
                                     foreach (var binding in informationBindings) {
@@ -700,7 +748,7 @@ namespace S100FC.ProductCatalogue
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
-                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsSharedBindings);
+                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsS101);
 
                                 if (featureBindings != default && featureBindings.Length != 0) {
                                     foreach (var binding in featureBindings) {
@@ -739,11 +787,11 @@ namespace S100FC.ProductCatalogue
                 }
 
                 // SupportFiles
-                if (supportFiles.Any()) {
+                if (supportFiles.Count != 0) {
                     using var attachmentTable = connection.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                     using var attachmentCursor = attachmentTable.Search(new QueryFilter {
-                        WhereClause = "code = 'supportfile'"
+                        WhereClause = "code = 'supportfile'"    // Todo code is not supportfile, key/value pairs
                     });
                     while (attachmentCursor.MoveNext()) {
                         var current = attachmentCursor.Current;
@@ -791,7 +839,8 @@ namespace S100FC.ProductCatalogue
                     using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
                     using var cursorS128 = surface.Search(new QueryFilter {
-                        WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                        //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                        WhereClause = $"json LIKE '%\"{electronicProduct.datasetName}\"%'", // todo: remake to key/value pair
                     }, false);
 
                     cursorS128.MoveNext();
@@ -799,7 +848,7 @@ namespace S100FC.ProductCatalogue
                     Debug.Assert(cursorS128.Current != null);
 
                     var row128 = cursorS128.Current;
-                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct);
+                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsS128);
                     row128.Store();
                     row128.Dispose();
 
@@ -817,7 +866,7 @@ namespace S100FC.ProductCatalogue
                         Update = electronicProduct.updateNumber ?? 0,
                         ExportTypes = exportType,
                         TimestampUTC = timestamp
-                    });
+                    }, jsonSerializerOptionsS128);
 
                     var yaml = dataset.Serialize();
 
@@ -878,7 +927,8 @@ namespace S100FC.ProductCatalogue
                 using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                 using var cursor = attachment.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
+                    //WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
+                    WhereClause = $"json LIKE '%\"{name}\"%'",
                     PostfixClause = "ORDER BY created_date DESC",
                 }, true);
 
@@ -894,7 +944,7 @@ namespace S100FC.ProductCatalogue
                 using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
                 using var cursorS128 = surface.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"datasetName\":\"{dataset.DatasetName}\"%'",
+                    WhereClause = $"json LIKE '%\"{dataset.DatasetName}\"%'",
                 }, false);
 
                 cursorS128.MoveNext();

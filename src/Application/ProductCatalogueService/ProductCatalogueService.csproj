@@ -24,7 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="101_Feature_Catalogue_2.0.0.xml" />
+    <Content Include="101_Feature_Catalogue_2.0.0.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

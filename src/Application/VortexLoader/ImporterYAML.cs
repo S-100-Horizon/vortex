@@ -1,8 +1,12 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using S100Framework.DomainModel;
-using S100Framework.AttributeModel.S101;
+using S100FC.S101;
+using S100FC.S101.FeatureAssociation;
+using S100FC.S101.FeatureTypes;
+using S100FC.S128.SimpleAttributes;
+using S100Framework.Applications;
+using S100Framework.Applications.Singletons;
 using Serilog;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -10,18 +14,18 @@ using System.Text.RegularExpressions;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 
-namespace S100Framework.Applications
+namespace S100FC.Applications
 {
     internal static class ImporterYAML
     {
         public static bool Load(Geodatabase geodatabase, ParserResult<Options> arguments) {
-            S100Framework.YAML.Dataset? dataset = null;
+            S100FC.YAML.Dataset? dataset = null;
 
             bool append = false;
 
             var productSpecification = "S-101"; // Default product specification
 
-            var featureCatalogue = S100Framework.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals(productSpecification));
+            var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals(productSpecification));
 
             arguments.WithParsed<Options>(o => {
                 append = o.Append;
@@ -30,25 +34,17 @@ namespace S100Framework.Applications
                     throw new FileNotFoundException(o.Dataset);
 
                 var yaml = IO.File.ReadAllText(o.Dataset);
-                dataset = S100Framework.YAML.Converter.Deserialize<S100Framework.YAML.Dataset>(yaml);
+                dataset = S100FC.YAML.Converter.Deserialize<S100FC.YAML.Dataset>(yaml);
             });
 
             if (dataset is null)
                 throw new InvalidProgramException();
 
-            JsonSerializerOptions jsonInformationTypeSerializerOptions = new() {
+            var jsonSerializerOptions = new JsonSerializerOptions {
                 WriteIndented = false,
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
                 PropertyNameCaseInsensitive = true,
-                TypeInfoResolver = Summary.InformationBindingResolver(),
-            };
-
-            JsonSerializerOptions jsonFeatureTypeSerializerOptions = new() {
-                WriteIndented = false,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                PropertyNameCaseInsensitive = true,
-                TypeInfoResolver = Summary.FeatureBindingResolver(),
-            };
+            }.AppendTypeInfoResolver();
 
             geodatabase.ApplyEdits(() => {
                 using var tableInformationType = geodatabase.OpenDataset<Table>(geodatabase.GetName("informationtype"));
@@ -82,7 +78,7 @@ namespace S100Framework.Applications
 
                 foreach (var feature in dataset.Features!) {
                     // 1) Cast feature.Attributes to S101 Model
-                    var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Name}", true) ?? default;
+                    var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{feature.Name}", true) ?? default;
 
                     if (type == default) {
                         Log.Error("Could not get type: {name}", feature.Name);
@@ -110,27 +106,48 @@ namespace S100Framework.Applications
                         var featureAssociations = new List<featureBinding>();
 
                         foreach (var fa in feature.FeatureAssociation) {
-                            if (!foreignFoids.TryGetValue(fa.To, out var featureType)) {
-                                featureType = dataset.Features.First(e => e.Foid == fa.To).Name;
-                                foreignFoids.TryAdd(fa.To, featureType!);
-                            }
+                            var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
+                            featureAssociations.Add(binding);
 
-                            var instance = Activator.CreateInstance(type);
-                            var casted = instance as IFeatureBindingDefinition;
-                            var featurebindingdefinition = casted!.featureBindingDefinitions.Single(e => e.association == fa.Name && e.role == fa.Role);
+                            // fa.Name == "StructureEquipment"
+                            // fa.Role == "theStructure"
+                            // fa.To == "110:85:1"
 
-                            var theType = Summary.FeatureBindings(fa.Name);
-                            var fb = Activator.CreateInstance(theType) as featureBinding;
 
-                            fb!.featureType = featureType;
-                            fb.role = fa.Role;
-                            fb.roleType = featurebindingdefinition.roleType.ToString();
-                            fb.referenceId = fa.To;
 
-                            featureAssociations.Add(fb);
+                            // var f = FeatureRelations.featureBindings[$"{fa.Name}::{fa.Role}"]();
+                            // f.featureId = fa.To;
+                            // featureAssociations.Add(f);
+
+
+
+
+
+
+
+                            //if (!foreignFoids.TryGetValue(fa.To, out var featureType)) { }
+                            //    featureType = dataset.Features.First(e => e.Foid == fa.To).Name;
+                            //    foreignFoids.TryAdd(fa.To, featureType!);
+                            //}
+
+
+                            //var instance = Activator.CreateInstance(type);
+                            //var casted = instance as IFeatureBindingDefinition;
+                            //var featurebindingdefinition = casted!.featureBindingDefinitions.Single(e => e.association == fa.Name && e.role == fa.Role);
+
+                            //var theType = Summary.FeatureBindings(fa.Name);
+                            //var fb = Activator.CreateInstance(theType) as featureBinding;
+
+                            //fb.featureType = featureType;
+                            //fb.role = fa.Role;
+                            //fb.roleType = featurebindingdefinition.roleType.ToString();
+                            //fb.referenceId = fa.To;
+
+
                         }
 
-                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations, jsonFeatureTypeSerializerOptions);
+
+                        var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations, jsonSerializerOptions);
                         rowbuffer["featurebindings"] = featureAssociationJSON;
                     }
 
@@ -138,28 +155,38 @@ namespace S100Framework.Applications
                     if (feature.Association != null && feature.Association.Count != 0) {
                         var informationAssociations = new List<informationBinding>();
 
-                        foreach (var ia in feature.Association) {
-                            if (!foreignFoids.TryGetValue(ia.To, out var informationType)) {
-                                informationType = dataset.InformationTypes!.First(e => e.ID == ia.To).Name;
-                                foreignFoids.TryAdd(ia.To, informationType!);
-                            }
+                        foreach (var fa in feature.Association) {
+                            var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
+                            informationAssociations.Add(binding);
+                            // var i = FeatureRelations.featureBindings[$"{ia.Name}::{ia.Role}"]();
 
-                            var instance = Activator.CreateInstance(type);
-                            var casted = instance as IFeatureBindingDefinition;
-                            var informationBindingDefinitions = casted!.informationBindingDefinitions.Single(e => e.association == ia.Name && e.role == ia.Role);
 
-                            var theType = Summary.InformationBindings(ia.Name);
-                            var ib = Activator.CreateInstance(theType) as informationBinding;
+                            //    if (!foreignFoids.TryGetValue(ia.To, out var informationType)) {
+                            //        informationType = dataset.InformationTypes!.First(e => e.ID == ia.To).Name;
+                            //        foreignFoids.TryAdd(ia.To, informationType!);
+                            //    }
 
-                            ib!.informationType = informationType;
-                            ib.role = ia.Role;
-                            ib.roleType = informationBindingDefinitions.roleType.ToString();
-                            ib.referenceId = ia.To;
+                            //    var instance = Activator.CreateInstance(type);
+                            //    var casted = instance as IFeatureBindingDefinition;
+                            //    var informationBindingDefinitions = casted!.informationBindingDefinitions.Single(e => e.association == ia.Name && e.role == ia.Role);
 
-                            informationAssociations.Add(ib);
+                            //    var theType = Summary.InformationBindings(ia.Name);
+                            //    var ib = Activator.CreateInstance(theType) as informationBinding;
+                            //    //var ab = new informationBinding() {
+                            //    //    informationType = informationType,
+                            //    //    role = ia.Role,
+                            //    //    roleType = informationBindingDefinitions.roleType.ToString(),
+                            //    //    informationId = ia.To,
+                            //    //}
+                            //    ib!.informationType = informationType;
+                            //    ib.role = ia.Role;
+                            //    ib.roleType = informationBindingDefinitions.roleType.ToString();
+                            //    ib.referenceId = ia.To;
+
+                            //    informationAssociations.Add(ib);
                         }
 
-                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations, jsonInformationTypeSerializerOptions);
+                        var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations, jsonSerializerOptions);
                         rowbuffer["informationbindings"] = informationAssociationJSON;
                     }
 
@@ -197,22 +224,22 @@ namespace S100Framework.Applications
 
                 foreach (var informationType in dataset.InformationTypes!) {
                     // 1) Cast feature.Attributes to S101 Model
-                        var type = featureCatalogue.Assembly!.GetType($"{S100Framework.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.Code}", true) ?? default;
-                        if (type == default) {
-                            Log.Error("Could not get type: {type} for informationType: {name}", informationType.Attributes.Code, informationType.Name);
-                            continue;
-                        }
-
-                        // 2) Serialize to JSON
-                        var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
-
-                        // Write to table
-                        var rowbuffer = bufferInformationType;
-                        rowbuffer["ps"] = productSpecification;
-                        rowbuffer["code"] = informationType.Name;
-                        rowbuffer["json"] = json;
-                        tableInformationType.CreateRow(bufferInformationType);
+                    var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.S100FC_code}", true) ?? default;
+                    if (type == default) {
+                        Log.Error("Could not get type: {type} for informationType: {name}", informationType.Attributes.S100FC_code, informationType.Name);
+                        continue;
                     }
+
+                    // 2) Serialize to JSON
+                    var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
+
+                    // Write to table
+                    var rowbuffer = bufferInformationType;
+                    rowbuffer["ps"] = productSpecification;
+                    rowbuffer["code"] = informationType.Name;
+                    rowbuffer["json"] = json;
+                    tableInformationType.CreateRow(bufferInformationType);
+                }
             });
             return true;
         }

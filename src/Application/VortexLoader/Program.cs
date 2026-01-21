@@ -1,8 +1,11 @@
 ﻿//using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using ArcGIS.Core.Geometry;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
-//using S100Framework.DomainModel;
+using S100FC.Applications;
+
+//using S100Framework.DomainModel
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
@@ -158,7 +161,7 @@ namespace S100Framework.Applications
             var result = command switch {
                 //"GML" => ImporterGML(target, arguments),
                 "NIS" => ImporterNIS.Load(target, arguments),
-                //"YAML" => ImporterYAML.Load(target, arguments),
+                "YAML" => ImporterYAML.Load(target, arguments),
                 _ => throw new System.ArgumentNullException(nameof(command)),
             };
         }
@@ -293,12 +296,11 @@ namespace S100Framework.Applications
 #endif
     }
 
-#if YAML
     public static class YAMLExtensions
     {
-        public static ArcGIS.Core.Geometry.Geometry? GetFeatureShape(this S100Framework.YAML.Dataset dataset, S100Framework.YAML.Feature feature) {
+        public static ArcGIS.Core.Geometry.Geometry? GetFeatureShape(this S100FC.YAML.Dataset dataset, S100FC.YAML.Feature feature) {
             switch (feature.Prim) {
-                case YAML.Primitive.Point: {
+                case S100FC.YAML.Primitive.Point: {
                         var depth = dataset?.Depths?.FirstOrDefault(e => e.Name == feature.Geometry);
 
                         // If point is depth
@@ -322,7 +324,7 @@ namespace S100Framework.Applications
                             return MapPointBuilderEx.CreateMapPoint(point!.Coordinate!.X, point!.Coordinate.Y);
                         }
                     }
-                case YAML.Primitive.Curve: {
+                case S100FC.YAML.Primitive.Curve: {
                         var points = new List<MapPoint>();
                         var compositeExist = dataset.FindCompositeCurve(feature.Geometry!);
 
@@ -356,7 +358,7 @@ namespace S100Framework.Applications
 
                         return PolylineBuilderEx.CreatePolyline(points);
                     }
-                case YAML.Primitive.Surface: {
+                case S100FC.YAML.Primitive.Surface: {
                         var surface = dataset.Surfaces!.FirstOrDefault(e => e.Name == feature.Geometry) ?? throw new InvalidOperationException($"Surface with name {feature.Geometry} not found in dataset.");
 
                         // Build Exterior ring
@@ -452,102 +454,8 @@ namespace S100Framework.Applications
 
                         return polygonBuilder.ToGeometry();
                     }
-                case YAML.Primitive.NoGeometry: {
+                case S100FC.YAML.Primitive.NoGeometry: {
                         return null;
-                        //var surface = dataset.Surfaces!.FirstOrDefault(e => e.Name == feature.Geometry) ?? throw new InvalidOperationException($"Surface with name {feature.Geometry} not found in dataset.");
-
-                        //// Build Exterior ring
-                        //var compositeExist = dataset.FindCompositeCurve(surface.Exterior);
-                        //var exteriorPoints = new List<MapPoint>();
-
-                        //// If exterior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
-                        //if (compositeExist != default) {
-                        //    var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist.Curves.Reverse() : compositeExist.Curves;
-                        //    foreach (var curveName in curvesInComposite) {
-                        //        var curve = dataset.FindCurve(curveName);
-
-                        //        if (curve.Coordinate == null || curve.Coordinate.Length == 0)
-                        //            continue;
-
-                        //        var coords = curveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
-
-                        //        foreach (var c in coords) {
-                        //            var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
-                        //            exteriorPoints.Add(point);
-                        //        }
-                        //    }
-                        //}
-                        //else {
-                        //    var curve = dataset.FindCurve(surface.Exterior);
-
-                        //    var coords = curve.Name?.StartsWith('R') == true
-                        //          ? curve.Coordinate!.Reverse()
-                        //          : curve.Coordinate;
-
-                        //    foreach (var c in coords!) {
-                        //        var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
-                        //        exteriorPoints.Add(point);
-                        //    }
-                        //}
-
-                        //var polyline = PolylineBuilderEx.CreatePolyline(exteriorPoints);
-
-                        //var polygonBuilder = new PolygonBuilderEx(polyline);
-
-
-                        //// Interior Rings
-                        //if (surface.InteriorRings is not null) {
-                        //    var interiorRings = new List<Polyline>();
-
-                        //    // Iterate all interior rings
-                        //    foreach (var interiorCurveName in surface.InteriorRings) {
-                        //        var interiorCompositeExist = dataset.FindCompositeCurve(interiorCurveName);
-                        //        var interiorPoints = new List<MapPoint>();
-
-                        //        // If interior ring is a composite curve, iterate these and build. If reverse curve, also reverse the coordinates.
-                        //        if (interiorCompositeExist != default) {
-                        //            var curvesInComposite = surface.Exterior.StartsWith('R') ? compositeExist!.Curves.Reverse() : compositeExist!.Curves;
-                        //            foreach (var curveName in curvesInComposite) {
-                        //                var curve = dataset.FindCurve(curveName);
-
-                        //                if (curve.Coordinate == null || curve.Coordinate.Length == 0)
-                        //                    continue;
-
-                        //                var coords = curveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
-
-                        //                foreach (var c in coords) {
-                        //                    var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
-                        //                    interiorPoints.Add(point);
-                        //                }
-                        //            }
-                        //        }
-                        //        else {
-                        //            var curve = dataset.FindCurve(interiorCurveName);
-
-                        //            if (curve.Coordinate == null || curve.Coordinate.Length == 0)
-                        //                continue;
-
-                        //            var coords = interiorCurveName?.StartsWith('R') == true ? curve.Coordinate.Reverse() : curve.Coordinate;
-
-                        //            foreach (var c in coords) {
-                        //                var point = MapPointBuilderEx.CreateMapPoint(c.X, c.Y);
-                        //                interiorPoints.Add(point);
-                        //            }
-                        //        }
-
-                        //        var interiorRing = PolylineBuilderEx.CreatePolyline(interiorPoints);
-                        //        interiorRings.Add(interiorRing);
-                        //    }
-
-
-                        //    foreach (var ring in interiorRings) {
-                        //        var segments = ring.Parts.First().ToList(); // get segments from the first part
-                        //        polygonBuilder.AddPart(segments);
-                        //    }
-                        //}
-
-                        //return polygonBuilder.ToGeometry();
-                        return default;
                     }
                 default: {
                         throw new InvalidOperationException($"Unsupported Primtive type detected: {feature.Prim}");
@@ -555,18 +463,17 @@ namespace S100Framework.Applications
             }
         }
 
-        public static S100Framework.YAML.Curve FindCurve(this S100Framework.YAML.Dataset dataset, string name) {
+        public static S100FC.YAML.Curve FindCurve(this S100FC.YAML.Dataset dataset, string name) {
             // Trim the 'R' to find the actual curve
             var trimmed = name.StartsWith('R') ? name[1..] : name;
 
             return dataset?.Curves?.FirstOrDefault(e => e.Name == trimmed)!;
         }
-        public static S100Framework.YAML.CompositeCurve FindCompositeCurve(this S100Framework.YAML.Dataset dataset, string name) {
+        public static S100FC.YAML.CompositeCurve FindCompositeCurve(this S100FC.YAML.Dataset dataset, string name) {
             // Trim the 'R' to find the actual curve
             var trimmed = name.StartsWith('R') ? name[1..] : name;
 
             return dataset?.CompositeCurves?.FirstOrDefault(e => e.Name == trimmed)!;
         }
     }
-#endif
 }

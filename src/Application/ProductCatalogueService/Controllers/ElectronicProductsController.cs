@@ -10,6 +10,7 @@ using System.Diagnostics;
 using static ProductCatalogueService.RequestTypes;
 using static ProductCatalogueService.ResponseTypes;
 using IO = System.IO;
+using ArcGIS.Core.Data;
 
 namespace ProductCatalogueService.Controllers
 {
@@ -135,12 +136,12 @@ namespace ProductCatalogueService.Controllers
             };
 
             var specificUsage = product.UsageBand switch {
-                SpecificUsage.NavigationalPurposeOverview => 1, // S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
-                SpecificUsage.NavigationalPurposeGeneral => 2, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-                SpecificUsage.NavigationalPurposeCoastal => 3, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-                SpecificUsage.NavigationalPurposeApproach => 4, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-                SpecificUsage.NavigationalPurposeHarbour => 5, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-                SpecificUsage.NavigationalPurposeBerthing => 6, //S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeBerthing,
+                SpecificUsage.NavigationalPurposeOverview => 1, // S100FC.S128.specificUsage.NavigationalPurposeOverview,
+                SpecificUsage.NavigationalPurposeGeneral => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+                SpecificUsage.NavigationalPurposeCoastal => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+                SpecificUsage.NavigationalPurposeApproach => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+                SpecificUsage.NavigationalPurposeHarbour => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+                SpecificUsage.NavigationalPurposeBerthing => 6, //S100FC.S128.specificUsage.NavigationalPurposeBerthing,
                 _ => throw new ArgumentNullException(),
             };
 
@@ -257,115 +258,117 @@ namespace ProductCatalogueService.Controllers
             return Ok(response);
         }
 
-        ///// <summary>
-        ///// Imports all existing products from a S-57 database
-        ///// </summary>
-        ///// <param name="createAll"> If true, creates a new dataset for each product, may take 5-10 minutes to complete.</param>
-        ///// <returns>An collection with all imported productnames.</returns>
-        //[ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        //[HttpPost("load", Name = "LoadElectronicProducts")]
-        //public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
-        //    var response = new ApiResponse<string[]>();
-        //    var sw = Stopwatch.StartNew();
-        //    var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
+        /// <summary>
+        /// Imports all existing products from a S-57 database
+        /// </summary>
+        /// <param name="createAll"> If true, creates a new dataset for each product, may take 5-10 minutes to complete.</param>
+        /// <returns>An collection with all imported productnames.</returns>
+        [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("load", Name = "LoadElectronicProducts")]
+        public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
+            var response = new ApiResponse<string[]>();
+            var sw = Stopwatch.StartNew();
+            var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
 
-        //    if (string.IsNullOrEmpty(s57)) {
-        //        response.Success = false;
-        //        response.Message = $"No S-57 database was configured";
-        //        response.DurationMs = sw.ElapsedMilliseconds;
-        //        return StatusCode(StatusCodes.Status500InternalServerError, response);
-        //    }
+            if (string.IsNullOrEmpty(s57)) {
+                response.Success = false;
+                response.Message = $"No S-57 database was configured";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
 
-        //    var tasks = new List<Task>();
-        //    await productManager.Dispatch(() => {
-        //        var connectionFile = new Uri(IO.Path.GetFullPath(s57));
+            //s57 = "C:\\Geodatastyrelsen\\gdbs\\s100edX.gdb"; // For testing only
 
-        //        Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
+            var tasks = new List<Task>();
+            await productManager.Dispatch(() => {
+                var connectionFile = new Uri(IO.Path.GetFullPath(s57));
 
-        //        if (IO.File.Exists(s57) && ".sde".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
-        //            createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
-        //        }
-        //        else if (IO.Directory.Exists(s57) && ".gdb".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
-        //            createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
-        //        }
+                Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
-        //        var productSpecification = new S100Framework.DomainModel.S128.ComplexAttributes.productSpecification {
-        //            editionDate = S100Framework.DomainModel.S101.Summary.VersionDate,
-        //            name = S100Framework.DomainModel.S101.Summary.ProductId,
-        //            version = S100Framework.DomainModel.S101.Summary.Version.ToString(),
-        //        };
+                if (IO.File.Exists(s57) && ".sde".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
+                }
+                else if (IO.Directory.Exists(s57) && ".gdb".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
+                }
+
+                var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification {
+                    editionDate = S100FC.S101.Summary.VersionDate,
+                    name = S100FC.S101.Summary.ProductId,
+                    version = S100FC.S101.Summary.Version.ToString(),
+                };
 
 
 
-        //        using var geodatabase = createGeodatabase();
+                using var geodatabase = createGeodatabase();
 
-        //        var definitionTables = geodatabase.GetDefinitions<TableDefinition>();
-        //        var definitionFeatureClasses = geodatabase.GetDefinitions<FeatureClassDefinition>();
+                var definitionTables = geodatabase.GetDefinitions<TableDefinition>();
+                var definitionFeatureClasses = geodatabase.GetDefinitions<FeatureClassDefinition>();
 
-        //        using var tableProductCoverage = geodatabase.OpenDataset<FeatureClass>(definitionFeatureClasses.Single(e => e.GetName().EndsWith("ProductCoverage")).GetName());
+                using var tableProductCoverage = geodatabase.OpenDataset<FeatureClass>(definitionFeatureClasses.Single(e => e.GetName().EndsWith("ProductCoverage")).GetName());
 
-        //        using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
-        //        using var cursor = tableProductDefinitions.Search(new QueryFilter {
-        //            WhereClause = "1 = 1",
-        //        }, true);
+                using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
+                using var cursor = tableProductDefinitions.Search(new QueryFilter {
+                    WhereClause = "1 = 1",
+                }, true);
 
-        //        while (cursor.MoveNext()) {
-        //            var c = cursor.Current;
+                while (cursor.MoveNext()) {
+                    var c = cursor.Current;
 
-        //            var series = Convert.ToString(c["series"])!.ToString();
+                    var series = Convert.ToString(c["series"])!.ToString();
 
-        //            var name = "101DK00" + Convert.ToString(c["DSNM"])![2..];
-        //            var specificUsage = name[7] switch {
-        //                '5' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeHarbour,
-        //                '4' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeApproach,
-        //                '3' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeCoastal,
-        //                '2' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeGeneral,
-        //                '1' => S100Framework.DomainModel.S128.specificUsage.NavigationalPurposeOverview,
-        //                _ => throw new InvalidDataException(),
-        //            };
+                    var name = "101DK00" + Convert.ToString(c["DSNM"])![2..];
+                    var specificUsage = name[7] switch {
+                        '5' => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+                        '4' => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+                        '3' => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+                        '2' => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+                        '1' => 1, //S100FC.S128.specificUsage.NavigationalPurposeOverview,
+                        _ => throw new InvalidDataException(),
+                    };
 
-        //            using var coverage = tableProductCoverage.Search(new QueryFilter {
-        //                WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
-        //            }, true);
+                    using var coverage = tableProductCoverage.Search(new QueryFilter {
+                        WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
+                    }, true);
 
-        //            var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
-        //            while (coverage.MoveNext()) {
-        //                var current = (ArcGIS.Core.Data.Feature)coverage.Current;
-        //                var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+                    var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
+                    while (coverage.MoveNext()) {
+                        var current = (ArcGIS.Core.Data.Feature)coverage.Current;
+                        var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
 
-        //                polygons.Add(polygon);
-        //                continue;
-        //            }
-        //            Debug.Assert(polygons.Any());
+                        polygons.Add(polygon);
+                        continue;
+                    }
+                    Debug.Assert(polygons.Any());
 
-        //            var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
+                    var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-        //            // todo: kald med s57
-        //            tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
-        //        }
-        //    });
+                    // todo: kald med s57
+                    tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
+                }
+            });
 
-        //    await Task.WhenAll([.. tasks]);
+            await Task.WhenAll([.. tasks]);
 
-        //    var products = _electronicProductManager.ToArray();
+            var products = _electronicProductManager.ToArray();
 
-        //    if (createAll) {
-        //        foreach (var productName in products) {
-        //            var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
-        //            var product = _electronicProductManager.ElectronicProduct(productName);
+            if (createAll) {
+                foreach (var productName in products) {
+                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
+                    var product = _electronicProductManager.ElectronicProduct(productName);
 
-        //            var yaml = dataset.Serialize();
-        //            this.CreateExchangeSet(product, yaml);
-        //        }
-        //    }
+                    var yaml = dataset.Serialize();
+                    this.CreateExchangeSet(product, yaml);
+                }
+            }
 
-        //    response.Data = products;
-        //    response.DurationMs = sw.ElapsedMilliseconds;
-        //    response.TotalHits = products.Length;
+            response.Data = products;
+            response.DurationMs = sw.ElapsedMilliseconds;
+            response.TotalHits = products.Length;
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
         private void CreateExchangeSet(ElectronicProduct product, string yaml) {
             var datasetName = product.datasetName;
@@ -379,6 +382,8 @@ namespace ProductCatalogueService.Controllers
 
             var catalogue = Path.Combine(AppContext.BaseDirectory, "101_Feature_Catalogue_2.0.0.xml");
 
+            if (!IO.File.Exists(catalogue))
+                throw new NullReferenceException("Could not find featurecatalogue!");
 
             var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName}";
 
@@ -405,48 +410,5 @@ namespace ProductCatalogueService.Controllers
             // Cleanup temp yaml
             IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
         }
-
-        //    private static Polygon GetBoundaryFromGeoJSON(string geojson) {
-        //        using var doc = JsonDocument.Parse(geojson);
-        //        var root = doc.RootElement;
-
-        //        // Extract coordinates 
-        //        var coordinates = root.GetProperty("coordinates");
-
-        //        var polygonBuilder = new PolygonBuilder(SpatialReferences.WGS84);
-
-        //        foreach (var ring in coordinates.EnumerateArray()) {
-        //            var points = new List<MapPoint>();
-        //            foreach (var coord in ring.EnumerateArray()) {
-        //                double x = coord[0].GetDouble();
-        //                double y = coord[1].GetDouble();
-        //                points.Add(MapPointBuilder.CreateMapPoint(x, y, SpatialReferences.WGS84));
-        //            }
-        //            polygonBuilder.AddPart(points);
-        //        }
-
-        //        return polygonBuilder.ToGeometry();
-        //    }
     }
 }
-
-
-
-
-//Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary);
-
-//Task CreateElectronicProductAsync(string name, DomainModel.S128.ComplexAttributes.productSpecification productSpecification, S100Framework.DomainModel.S128.specificUsage specificUsage, ArcGIS.Core.Geometry.Polygon boundary, int edition, int update, byte[] zipfile);
-
-//Task<YAML.Dataset> CreateNewDatasetAsync(string name);
-
-//Task<YAML.Dataset> CreateNewEditionAsync(string name);
-
-//Task<YAML.Dataset> CreateNewUpdateAsync(string name);
-
-//Task<YAML.Dataset> ReissueAsync(string name);
-
-//Task<bool> QueryUpdatesAsync(string name, Action<object> action);
-
-//Task<bool> IsDirtyAsync(string name);
-
-//ElectronicProduct ElectronicProduct(string name);

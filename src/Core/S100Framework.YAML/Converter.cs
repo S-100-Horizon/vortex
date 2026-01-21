@@ -1042,11 +1042,11 @@ namespace S100FC.YAML
         private class NodeConverter : IYamlTypeConverter
         {
             public bool Accepts(Type type) => typeof(S100FC.FeatureType).IsAssignableFrom(type) || typeof(S100FC.InformationType).IsAssignableFrom(type);       
-
+            //public bool Accepts(Type type) => true;
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
             public void WriteYaml(IEmitter emitter, object? value, Type type, ObjectSerializer serializer) {
-                if (value is not S100FC.FeatureType or S100FC.InformationType) return;
+                //if (value is not S100FC.FeatureType or S100FC.InformationType) return;
 
                 var propertyId = 1;
 

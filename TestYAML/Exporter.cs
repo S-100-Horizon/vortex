@@ -1,6 +1,8 @@
+using NetTopologySuite.Features;
+using S100FC;
+using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100FC.YAML;
-using S100FC.S101.ComplexAttributes;
 
 namespace TestYAML
 {
@@ -46,6 +48,13 @@ namespace TestYAML
             dataset.AddFeature(feature);
 
             var serialized = S100FC.YAML.Converter.Serialize(feature);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_CreateBinding() {
+            var binding = S100FC.S101.Extensions.CreateFeatureBinding("StructureEquipment", "roletype", "theStructure", "Bridge", "110:2348869:1");
 
             System.Diagnostics.Debugger.Break();
         }

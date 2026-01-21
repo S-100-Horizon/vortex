@@ -12,19 +12,20 @@ namespace ProductCatalogueService
             Log.Logger.Information("ArcGIS Core Host Initialized");
             // Use the attached .zip gdb when developing
             if (System.Diagnostics.Debugger.IsAttached) {
+                var path = "C:\\Geodatastyrelsen\\gdbs\\s100edX.gdb"; // For testing only
                 // If no .gdb exist in bin, extract the .zip from project root
-                var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"));
+                //var output = new DirectoryInfo(Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"));
 
-                if (!output.Exists) {
-                    new FastZip().ExtractZip("s100edX.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"), null);
+                //if (!output.Exists) {
+                //    new FastZip().ExtractZip("s100edX.gdb.zip", Path.Combine(AppContext.BaseDirectory, "s100edX.gdb"), null);
 
-                    // Clear export folder if exist
-                    if (System.IO.Directory.Exists("exports"))
-                        Directory.Delete("exports", true);
-                }
+                //    // Clear export folder if exist
+                //    if (System.IO.Directory.Exists("exports"))
+                //        Directory.Delete("exports", true);
+                //}
 
                 var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(output.FullName)));
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(path)));
 
                     return new Geodatabase(connectionFile);
                 });
@@ -34,7 +35,7 @@ namespace ProductCatalogueService
             else {
                 // Connect to prod
                 var path = Environment.GetEnvironmentVariable("S100-Horizon-S128-Database");
-
+               
                 if (string.IsNullOrEmpty(path))
                     throw new ArgumentNullException("Environment variable for S128-Database is null!");
 

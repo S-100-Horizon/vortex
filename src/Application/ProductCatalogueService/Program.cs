@@ -3,9 +3,11 @@ using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Mvc; // Required for ApiVersion
 using Microsoft.OpenApi.Models; // Required for AddApiVersioning
+using S100FC.S128;
 using Serilog;
 using Serilog.Events;
 using System.Reflection;
+using System.Text.Json;
 
 namespace ProductCatalogueService
 {
@@ -40,7 +42,18 @@ namespace ProductCatalogueService
             });
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            //  builder.Services.AddControllers();
+            builder.Services.AddControllers()
+     .AddJsonOptions(options => {
+         var o = options.JsonSerializerOptions;
+
+         o.WriteIndented = false;
+         o.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+         o.PropertyNameCaseInsensitive = true;
+         o.PropertyNamingPolicy = null;
+         o.AppendTypeInfoResolver();
+     });
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
