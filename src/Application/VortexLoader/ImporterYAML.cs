@@ -86,7 +86,7 @@ namespace S100FC.Applications
                     }
 
                     // Serialize to JSON
-                    var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type);
+                    var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type, jsonSerializerOptions);
 
                     //  Find corresponding geometry and cast it to ArcGIS.Core.Geometry
                     var geometry = dataset.GetFeatureShape(feature);
@@ -106,8 +106,13 @@ namespace S100FC.Applications
                         var featureAssociations = new List<featureBinding>();
 
                         foreach (var fa in feature.FeatureAssociation) {
-                            var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
-                            featureAssociations.Add(binding);
+                            // todo: fix when helper method is ready
+                            //var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
+                            //featureAssociations.Add(binding);
+
+
+
+
 
                             // fa.Name == "StructureEquipment"
                             // fa.Role == "theStructure"
@@ -156,8 +161,17 @@ namespace S100FC.Applications
                         var informationAssociations = new List<informationBinding>();
 
                         foreach (var fa in feature.Association) {
-                            var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
-                            informationAssociations.Add(binding);
+                            // todo: fix when helper method is ready
+                            //var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
+                            //informationAssociations.Add(binding);
+
+
+
+
+
+
+
+
                             // var i = FeatureRelations.featureBindings[$"{ia.Name}::{ia.Role}"]();
 
 
