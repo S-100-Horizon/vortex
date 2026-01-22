@@ -2866,8 +2866,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(CarriageRequirement);
 		[JsonIgnore]
 		public override string S100FC_name => "Carriage Requirement";
-		[JsonIgnore]
-		public override string role => "theElement";
+		public static string role => "theElement";
 
 		#region Catalogue
 		#endregion
@@ -2882,8 +2881,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(DistributionDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Distribution Details";
-		[JsonIgnore]
-		public override string role => "catalogueHeader";
+		public static string role => "catalogueHeader";
 
 		#region Catalogue
 		#endregion
@@ -2898,8 +2896,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(DistributorContact);
 		[JsonIgnore]
 		public override string S100FC_name => "Distributor Contact";
-		[JsonIgnore]
-		public override string role => "theDistributor";
+		public static string role => "theDistributor";
 
 		#region Catalogue
 		#endregion
@@ -2914,8 +2911,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(PriceOfElement);
 		[JsonIgnore]
 		public override string S100FC_name => "Price of Element";
-		[JsonIgnore]
-		public override string role => "theCatalogueElement";
+		public static string role => "theCatalogueElement";
 
 		#region Catalogue
 		#endregion
@@ -2930,8 +2926,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(PriceOfNauticalProduct);
 		[JsonIgnore]
 		public override string S100FC_name => "Price of Nautical Product";
-		[JsonIgnore]
-		public override string role => "theCatalogueOfNauticalProduct";
+		public static string role => "theCatalogueOfNauticalProduct";
 
 		#region Catalogue
 		#endregion
@@ -2946,8 +2941,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(ProducerContact);
 		[JsonIgnore]
 		public override string S100FC_name => "Producer Contact";
-		[JsonIgnore]
-		public override string role => "theProducer";
+		public static string role => "theProducer";
 
 		#region Catalogue
 		#endregion
@@ -2962,8 +2956,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(ProductionDetails);
 		[JsonIgnore]
 		public override string S100FC_name => "Production Details";
-		[JsonIgnore]
-		public override string role => "catalogueHeader";
+		public static string role => "catalogueHeader";
 
 		#region Catalogue
 		#endregion
@@ -2978,8 +2971,7 @@ namespace S100FC.S128.InformationAssociation
 		public override string S100FC_code => nameof(ProductPackage);
 		[JsonIgnore]
 		public override string S100FC_name => "Product Package";
-		[JsonIgnore]
-		public override string role => "theCatalogueElement";
+		public static string role => "theCatalogueElement";
 
 		#region Catalogue
 		#endregion
@@ -3001,8 +2993,7 @@ namespace S100FC.S128.FeatureAssociation
 		public override string S100FC_code => nameof(ProductMapping);
 		[JsonIgnore]
 		public override string S100FC_name => "Product Mapping";
-		[JsonIgnore]
-		public override string[] roles => ["theSource","theReference"];
+		public static string[] roles => ["theSource","theReference"];
 
 		#region Attributes
 		[JsonIgnore]
@@ -3038,8 +3029,7 @@ namespace S100FC.S128.FeatureAssociation
 		public override string S100FC_code => nameof(Correlated);
 		[JsonIgnore]
 		public override string S100FC_name => "Correlated";
-		[JsonIgnore]
-		public override string[] roles => ["theMain","thePanel"];
+		public static string[] roles => ["theMain","thePanel"];
 
 		#region Catalogue
 		#endregion
@@ -3106,8 +3096,7 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "thePriceInformation",
@@ -3133,6 +3122,19 @@ namespace S100FC.S128.InformationTypes
 					informationTypes = [nameof(DistributorInformation)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.PriceOfNauticalProduct> PriceOfNauticalProduct => new informationBinding<InformationAssociation.PriceOfNauticalProduct> {
+			roleType = "association",
+			role = "thePriceInformation",
+		};
+		public static informationBinding<InformationAssociation.ProductionDetails> ProductionDetails => new informationBinding<InformationAssociation.ProductionDetails> {
+			roleType = "association",
+			role = "theProducer",
+		};
+		public static informationBinding<InformationAssociation.DistributionDetails> DistributionDetails => new informationBinding<InformationAssociation.DistributionDetails> {
+			roleType = "association",
+			role = "theDistributor",
+		};
 
 		#endregion
 	}
@@ -3227,8 +3229,7 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theProducer",
@@ -3246,6 +3247,15 @@ namespace S100FC.S128.InformationTypes
 					informationTypes = [nameof(DistributorInformation)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.ProducerContact> ProducerContact => new informationBinding<InformationAssociation.ProducerContact> {
+			roleType = "association",
+			role = "theProducer",
+		};
+		public static informationBinding<InformationAssociation.DistributorContact> DistributorContact => new informationBinding<InformationAssociation.DistributorContact> {
+			roleType = "association",
+			role = "theDistributor",
+		};
 
 		#endregion
 	}
@@ -3302,6 +3312,9 @@ namespace S100FC.S128.InformationTypes
 					order = 2,
 					CreateInstance = () => new featureName(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
 		#endregion
@@ -3373,8 +3386,7 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theCatalogueOfNauticalProduct",
@@ -3384,6 +3396,11 @@ namespace S100FC.S128.InformationTypes
 					informationTypes = [nameof(CatalogueSectionHeader)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.PriceOfNauticalProduct> PriceOfNauticalProduct => new informationBinding<InformationAssociation.PriceOfNauticalProduct> {
+			roleType = "association",
+			role = "theCatalogueOfNauticalProduct",
+		};
 
 		#endregion
 	}
@@ -3430,8 +3447,7 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theContactDetails",
@@ -3449,6 +3465,15 @@ namespace S100FC.S128.InformationTypes
 					informationTypes = [nameof(CatalogueSectionHeader)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.ProducerContact> ProducerContact => new informationBinding<InformationAssociation.ProducerContact> {
+			roleType = "association",
+			role = "theContactDetails",
+		};
+		public static informationBinding<InformationAssociation.ProductionDetails> ProductionDetails => new informationBinding<InformationAssociation.ProductionDetails> {
+			roleType = "association",
+			role = "catalogueHeader",
+		};
 
 		#endregion
 	}
@@ -3483,8 +3508,7 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "catalogueHeader",
@@ -3502,6 +3526,15 @@ namespace S100FC.S128.InformationTypes
 					informationTypes = [nameof(ContactDetails)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.DistributionDetails> DistributionDetails => new informationBinding<InformationAssociation.DistributionDetails> {
+			roleType = "association",
+			role = "catalogueHeader",
+		};
+		public static informationBinding<InformationAssociation.DistributorContact> DistributorContact => new informationBinding<InformationAssociation.DistributorContact> {
+			roleType = "association",
+			role = "theContactDetails",
+		};
 
 		#endregion
 	}
@@ -3676,8 +3709,7 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theRequirement",
@@ -3704,8 +3736,20 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.CarriageRequirement> CarriageRequirement => new informationBinding<InformationAssociation.CarriageRequirement> {
+			roleType = "association",
+			role = "theRequirement",
+		};
+		public static informationBinding<InformationAssociation.PriceOfElement> PriceOfElement => new informationBinding<InformationAssociation.PriceOfElement> {
+			roleType = "association",
+			role = "thePriceInformation",
+		};
+		public static informationBinding<InformationAssociation.ProductPackage> ProductPackage => new informationBinding<InformationAssociation.ProductPackage> {
+			roleType = "association",
+			role = "elementContainer",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theReference",
@@ -3716,6 +3760,10 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.ProductMapping> ProductMapping(string role) => new featureBinding<FeatureAssociation.ProductMapping> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -3937,9 +3985,11 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. CatalogueElement.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theMain",
@@ -3958,6 +4008,10 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.Correlated> Correlated(string role) => new featureBinding<FeatureAssociation.Correlated> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -4054,6 +4108,12 @@ namespace S100FC.S128.FeatureTypes
 					order = 5,
 					CreateInstance = () => new productSpecification(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -4153,6 +4213,12 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
 
 		[JsonIgnore]
@@ -4250,6 +4316,12 @@ namespace S100FC.S128.FeatureTypes
 					order = 5,
 					CreateInstance = () => new productSpecification(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion

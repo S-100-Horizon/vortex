@@ -662,6 +662,7 @@ namespace S100FC.S131.SimpleAttributes
 				new listedValue("11000V", "11 kiloVolts",12),
 				new listedValue("22000V", "22 kiloVolts",13),
 				new listedValue("380V", "380 Volts",14),
+				new listedValue("11000V or 22000V", "11/22 kiloVolts",15),
 			];
 
 		public static implicit operator categoryOfVoltage(int? value) => new categoryOfVoltage { value = value };
@@ -3190,6 +3191,7 @@ namespace S100FC.S131.ComplexAttributes
 					lower = 0,
 					upper = 1,
 					order = 0,
+					permitedValues = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
 					CreateInstance = () => new categoryOfAuthority(),
 				},
 				new attributeBindingDefinition {
@@ -4394,9 +4396,9 @@ namespace S100FC.S131.ComplexAttributes
 			get { return base.GetAttributeValue<limitsDescription>(nameof(limitsDescription)); }
 		}
 		[JsonIgnore]
-		public constructionInformation? constructionInformation {
+		public constructionInformation?[] constructionInformation {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<constructionInformation>(nameof(constructionInformation)); }
+			get { return base.GetAttributeValues<constructionInformation>(nameof(constructionInformation)); }
 		}
 		[JsonIgnore]
 		public cargoServicesDescription? cargoServicesDescription {
@@ -4437,7 +4439,7 @@ namespace S100FC.S131.ComplexAttributes
 				new attributeBindingDefinition {
 					attribute = nameof(constructionInformation),
 					lower = 0,
-					upper = 1,
+					upper = 2147483647,
 					order = 3,
 					CreateInstance = () => new constructionInformation(),
 				},
@@ -4476,8 +4478,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(AdditionalInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Additional information";
-		[JsonIgnore]
-		public override string role => "theInformation";
+		public static string role => "theInformation";
 
 		#region Catalogue
 		#endregion
@@ -4492,8 +4493,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(AuthorityContact);
 		[JsonIgnore]
 		public override string S100FC_name => "Authority contact";
-		[JsonIgnore]
-		public override string role => "theAuthority";
+		public static string role => "theAuthority";
 
 		#region Catalogue
 		#endregion
@@ -4508,8 +4508,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(AuthorityHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Authority hours";
-		[JsonIgnore]
-		public override string role => "theAuthority_srvHrs";
+		public static string role => "theAuthority_srvHrs";
 
 		#region Catalogue
 		#endregion
@@ -4524,8 +4523,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(AssociatedRxN);
 		[JsonIgnore]
 		public override string S100FC_name => "Associated RxN";
-		[JsonIgnore]
-		public override string role => "theRxN";
+		public static string role => "theRxN";
 
 		#region Catalogue
 		#endregion
@@ -4540,8 +4538,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(ExceptionalWorkday);
 		[JsonIgnore]
 		public override string S100FC_name => "Exceptional workday";
-		[JsonIgnore]
-		public override string role => "theServiceHours_nsdy";
+		public static string role => "theServiceHours_nsdy";
 
 		#region Catalogue
 		#endregion
@@ -4556,8 +4553,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(ServiceControl);
 		[JsonIgnore]
 		public override string S100FC_name => "Service control";
-		[JsonIgnore]
-		public override string role => "controlAuthority";
+		public static string role => "controlAuthority";
 
 		#region Catalogue
 		#endregion
@@ -4572,8 +4568,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(ServiceContact);
 		[JsonIgnore]
 		public override string S100FC_name => "Service contact";
-		[JsonIgnore]
-		public override string role => "theContactDetails";
+		public static string role => "theContactDetails";
 
 		#region Catalogue
 		#endregion
@@ -4588,8 +4583,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(LocationHours);
 		[JsonIgnore]
 		public override string S100FC_name => "Location hours";
-		[JsonIgnore]
-		public override string role => "facilityOperatingHours";
+		public static string role => "facilityOperatingHours";
 
 		#region Catalogue
 		#endregion
@@ -4604,8 +4598,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(RelatedOrganisation);
 		[JsonIgnore]
 		public override string S100FC_name => "Related organisation";
-		[JsonIgnore]
-		public override string role => "organisationRelatedRxN";
+		public static string role => "organisationRelatedRxN";
 
 		#region Catalogue
 		#endregion
@@ -4620,8 +4613,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(InclusionType);
 		[JsonIgnore]
 		public override string S100FC_name => "InclusionType";
-		[JsonIgnore]
-		public override string role => "theApplicableRxN";
+		public static string role => "theApplicableRxN";
 
 		#region Attributes
 		[JsonIgnore]
@@ -4656,8 +4648,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(PermissionType);
 		[JsonIgnore]
 		public override string S100FC_name => "Permission Type";
-		[JsonIgnore]
-		public override string role => "permission";
+		public static string role => "permission";
 
 		#region Attributes
 		[JsonIgnore]
@@ -4692,8 +4683,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(SpatialAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Association";
-		[JsonIgnore]
-		public override string role => "theQualityInformation";
+		public static string role => "theQualityInformation";
 
 		#region Catalogue
 		#endregion
@@ -4708,8 +4698,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(LimitEntrance);
 		[JsonIgnore]
 		public override string S100FC_name => "Limit Entrance";
-		[JsonIgnore]
-		public override string role => "entranceReference";
+		public static string role => "entranceReference";
 
 		#region Catalogue
 		#endregion
@@ -4724,8 +4713,7 @@ namespace S100FC.S131.InformationAssociation
 		public override string S100FC_code => nameof(ServiceAvailability);
 		[JsonIgnore]
 		public override string S100FC_name => "Service Availability";
-		[JsonIgnore]
-		public override string role => "serviceDescriptionReference";
+		public static string role => "serviceDescriptionReference";
 
 		#region Catalogue
 		#endregion
@@ -4747,8 +4735,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(TextAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Text association";
-		[JsonIgnore]
-		public override string[] roles => ["thePositionProvider","theCartographicText"];
+		public static string[] roles => ["thePositionProvider","theCartographicText"];
 
 		#region Catalogue
 		#endregion
@@ -4763,8 +4750,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(Subsection);
 		[JsonIgnore]
 		public override string S100FC_name => "Subsection";
-		[JsonIgnore]
-		public override string[] roles => ["subUnit","constitute"];
+		public static string[] roles => ["subUnit","constitute"];
 
 		#region Catalogue
 		#endregion
@@ -4779,8 +4765,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(Infrastructure);
 		[JsonIgnore]
 		public override string S100FC_name => "Infrastructure";
-		[JsonIgnore]
-		public override string[] roles => ["infrastructureLocation","hasInfrastructure"];
+		public static string[] roles => ["infrastructureLocation","hasInfrastructure"];
 
 		#region Catalogue
 		#endregion
@@ -4795,8 +4780,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(PrimaryAuxiliaryFacility);
 		[JsonIgnore]
 		public override string S100FC_name => "Primary/Auxiliary Facility";
-		[JsonIgnore]
-		public override string[] roles => ["primaryFacility","auxiliaryFacility"];
+		public static string[] roles => ["primaryFacility","auxiliaryFacility"];
 
 		#region Catalogue
 		#endregion
@@ -4811,8 +4795,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(Demarcation);
 		[JsonIgnore]
 		public override string S100FC_name => "Demarcation";
-		[JsonIgnore]
-		public override string[] roles => ["demarcationIndicator","demarcatedFeature"];
+		public static string[] roles => ["demarcationIndicator","demarcatedFeature"];
 
 		#region Catalogue
 		#endregion
@@ -4827,8 +4810,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(JurisdictionalLimit);
 		[JsonIgnore]
 		public override string S100FC_name => "Jurisdictional Limit";
-		[JsonIgnore]
-		public override string[] roles => ["limitReference","limitExtent"];
+		public static string[] roles => ["limitReference","limitExtent"];
 
 		#region Catalogue
 		#endregion
@@ -4843,8 +4825,7 @@ namespace S100FC.S131.FeatureAssociation
 		public override string S100FC_code => nameof(LayoutDivision);
 		[JsonIgnore]
 		public override string S100FC_name => "Layout Division";
-		[JsonIgnore]
-		public override string[] roles => ["layoutUnit","componentOf"];
+		public static string[] roles => ["layoutUnit","componentOf"];
 
 		#region Catalogue
 		#endregion
@@ -4935,6 +4916,9 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -4994,9 +4978,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "isApplicableTo",
@@ -5014,6 +4997,15 @@ namespace S100FC.S131.InformationTypes
 					informationTypes = [nameof(Authority)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.InclusionType> InclusionType => new informationBinding<InformationAssociation.InclusionType> {
+			roleType = "association",
+			role = "isApplicableTo",
+		};
+		public static informationBinding<InformationAssociation.RelatedOrganisation> RelatedOrganisation => new informationBinding<InformationAssociation.RelatedOrganisation> {
+			roleType = "association",
+			role = "theOrganisation",
+		};
 
 		#endregion
 	}
@@ -5174,9 +5166,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theApplicableRxN",
@@ -5186,6 +5177,11 @@ namespace S100FC.S131.InformationTypes
 					informationTypes = [nameof(AbstractRxN)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.InclusionType> InclusionType => new informationBinding<InformationAssociation.InclusionType> {
+			roleType = "association",
+			role = "theApplicableRxN",
+		};
 
 		#endregion
 	}
@@ -5234,9 +5230,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theContactDetails",
@@ -5262,6 +5257,19 @@ namespace S100FC.S131.InformationTypes
 					informationTypes = [nameof(ServiceHours)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.AuthorityContact> AuthorityContact => new informationBinding<InformationAssociation.AuthorityContact> {
+			roleType = "association",
+			role = "theContactDetails",
+		};
+		public static informationBinding<InformationAssociation.RelatedOrganisation> RelatedOrganisation => new informationBinding<InformationAssociation.RelatedOrganisation> {
+			roleType = "association",
+			role = "organisationRelatedRxN",
+		};
+		public static informationBinding<InformationAssociation.AuthorityHours> AuthorityHours => new informationBinding<InformationAssociation.AuthorityHours> {
+			roleType = "association",
+			role = "theServiceHours",
+		};
 
 		#endregion
 	}
@@ -5452,6 +5460,9 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5619,9 +5630,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theAuthority",
@@ -5631,6 +5641,11 @@ namespace S100FC.S131.InformationTypes
 					informationTypes = [nameof(Authority)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.AuthorityContact> AuthorityContact => new informationBinding<InformationAssociation.AuthorityContact> {
+			roleType = "association",
+			role = "theAuthority",
+		};
 
 		#endregion
 	}
@@ -5774,6 +5789,9 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5788,6 +5806,9 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Nautical Information";
 
 		#region Catalogue
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5846,6 +5867,9 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5860,6 +5884,9 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Recommendations";
 
 		#region Catalogue
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5874,6 +5901,9 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Regulations";
 
 		#region Catalogue
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5888,6 +5918,9 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Restrictions";
 
 		#region Catalogue
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -5934,9 +5967,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "partialWorkingDay",
@@ -5954,6 +5986,15 @@ namespace S100FC.S131.InformationTypes
 					informationTypes = [nameof(Authority)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.ExceptionalWorkday> ExceptionalWorkday => new informationBinding<InformationAssociation.ExceptionalWorkday> {
+			roleType = "association",
+			role = "partialWorkingDay",
+		};
+		public static informationBinding<InformationAssociation.AuthorityHours> AuthorityHours => new informationBinding<InformationAssociation.AuthorityHours> {
+			roleType = "association",
+			role = "theAuthority_srvHrs",
+		};
 
 		#endregion
 	}
@@ -5999,6 +6040,9 @@ namespace S100FC.S131.InformationTypes
 					order = 1,
 					CreateInstance = () => new spatialAccuracy(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
 		#endregion
@@ -6150,8 +6194,7 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "permission",
@@ -6178,8 +6221,20 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.PermissionType> PermissionType => new informationBinding<InformationAssociation.PermissionType> {
+			roleType = "association",
+			role = "permission",
+		};
+		public static informationBinding<InformationAssociation.AssociatedRxN> AssociatedRxN => new informationBinding<InformationAssociation.AssociatedRxN> {
+			roleType = "association",
+			role = "theRxN",
+		};
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theCartographicText",
@@ -6190,7 +6245,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6204,9 +6266,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Organization Contact Area";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. FeatureType.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theContactDetails",
@@ -6217,7 +6278,18 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static informationBinding<InformationAssociation.ServiceContact> ServiceContact => new informationBinding<InformationAssociation.ServiceContact> {
+			roleType = "association",
+			role = "theContactDetails",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6231,9 +6303,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Supervised Area";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. OrganizationContactArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "controlAuthority",
@@ -6244,7 +6315,18 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static informationBinding<InformationAssociation.ServiceControl> ServiceControl => new informationBinding<InformationAssociation.ServiceControl> {
+			roleType = "association",
+			role = "controlAuthority",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6258,9 +6340,11 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Harbour Physical Infrastructure";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. SupervisedArea.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "infrastructureLocation",
@@ -6271,7 +6355,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6285,7 +6376,16 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Layout";
 
 		#region Catalogue
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
 	}
 
 	/// <summary>
@@ -6345,9 +6445,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -6366,9 +6465,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "auxiliaryFacility",
@@ -6379,6 +6486,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -6479,9 +6590,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -6492,9 +6602,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -6505,6 +6619,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -6522,9 +6640,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Automated Guided Vehicle";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -6533,6 +6650,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -6809,7 +6934,7 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					order = 19,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfVoltage(),
 				},
 				new attributeBindingDefinition {
@@ -6829,9 +6954,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -6850,9 +6974,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "demarcationIndicator",
@@ -6871,6 +7003,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.Demarcation> Demarcation(string role) => new featureBinding<FeatureAssociation.Demarcation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -6968,9 +7108,11 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "demarcatedFeature",
@@ -6989,6 +7131,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.Demarcation> Demarcation(string role) => new featureBinding<FeatureAssociation.Demarcation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7016,6 +7166,11 @@ namespace S100FC.S131.FeatureTypes
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
+		[JsonIgnore]
+		public double? safeWorkingLoad {
+			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
+			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
+		}
 		#endregion
 
 		#region Catalogue
@@ -7036,6 +7191,19 @@ namespace S100FC.S131.FeatureTypes
 					order = 1,
 					CreateInstance = () => new verticalLength(),
 				},
+				new attributeBindingDefinition {
+					attribute = nameof(safeWorkingLoad),
+					lower = 0,
+					upper = 1,
+					order = 2,
+					CreateInstance = () => new safeWorkingLoad(),
+				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7112,9 +7280,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -7133,9 +7300,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -7146,6 +7321,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7195,9 +7374,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7206,6 +7384,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7244,6 +7430,12 @@ namespace S100FC.S131.FeatureTypes
 					permitedValues = [1,2,3,4],
 					CreateInstance = () => new categoryOfDolphin(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7320,9 +7512,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7333,9 +7524,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -7346,6 +7541,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7383,9 +7582,11 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -7396,6 +7597,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7433,9 +7638,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7444,6 +7648,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7495,9 +7707,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7506,6 +7717,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7607,9 +7826,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -7628,9 +7846,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "limitExtent",
@@ -7649,6 +7875,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.JurisdictionalLimit> JurisdictionalLimit(string role) => new featureBinding<FeatureAssociation.JurisdictionalLimit> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7725,9 +7959,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -7746,9 +7979,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -7791,6 +8032,18 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.Subsection> Subsection(string role) => new featureBinding<FeatureAssociation.Subsection> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7865,9 +8118,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7878,9 +8130,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -7891,6 +8147,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7908,9 +8168,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Harbour Facility";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7919,6 +8178,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7958,9 +8225,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -7969,6 +8235,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -8008,9 +8282,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8019,6 +8292,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -8094,6 +8375,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
 
 		[JsonIgnore]
@@ -8144,7 +8431,7 @@ namespace S100FC.S131.FeatureTypes
 				.. base.attributeBindingsCatalogue,
 				new attributeBindingDefinition {
 					attribute = nameof(categoryOfMooringWarpingFacility),
-					lower = 1,
+					lower = 0,
 					upper = 1,
 					order = 0,
 					permitedValues = [4,5,6],
@@ -8180,9 +8467,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -8201,9 +8487,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "primaryFacility",
@@ -8214,6 +8508,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8282,7 +8580,7 @@ namespace S100FC.S131.FeatureTypes
 				},
 				new attributeBindingDefinition {
 					attribute = nameof(iDCode),
-					lower = 1,
+					lower = 0,
 					upper = 1,
 					order = 1,
 					CreateInstance = () => new iDCode(),
@@ -8299,7 +8597,7 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					order = 3,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14],
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 					CreateInstance = () => new categoryOfVoltage(),
 				},
 				new attributeBindingDefinition {
@@ -8307,6 +8605,7 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					order = 4,
+					permitedValues = [1,2],
 					CreateInstance = () => new categoryOfFrequency(),
 				},
 				new attributeBindingDefinition {
@@ -8325,9 +8624,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8336,6 +8634,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -8435,9 +8741,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "entranceReference",
@@ -8448,9 +8753,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LimitEntrance> LimitEntrance => new informationBinding<InformationAssociation.LimitEntrance> {
+			roleType = "association",
+			role = "entranceReference",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "limitReference",
@@ -8461,6 +8770,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.JurisdictionalLimit> JurisdictionalLimit(string role) => new featureBinding<FeatureAssociation.JurisdictionalLimit> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8548,9 +8861,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8561,9 +8873,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -8574,6 +8890,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8648,9 +8968,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8661,9 +8980,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -8674,6 +8997,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8711,9 +9038,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8722,6 +9048,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -8741,9 +9075,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Straddle Carrier";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -8752,6 +9085,14 @@ namespace S100FC.S131.FeatureTypes
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
 				},
+			];
+
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -8832,7 +9173,7 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					order = 2,
-					permitedValues = [2,5,6,7,8,10,11,12,13,14,15],
+					permitedValues = [3,4,6,7,8,10,11,12,14,15],
 					CreateInstance = () => new categoryOfCargo(),
 				},
 				new attributeBindingDefinition {
@@ -8866,9 +9207,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "serviceDescriptionReference",
@@ -8887,9 +9227,17 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.ServiceAvailability> ServiceAvailability => new informationBinding<InformationAssociation.ServiceAvailability> {
+			roleType = "association",
+			role = "serviceDescriptionReference",
+		};
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -8916,6 +9264,14 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8990,9 +9346,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -9003,9 +9358,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -9016,6 +9375,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9061,7 +9424,7 @@ namespace S100FC.S131.FeatureTypes
 				.. base.attributeBindingsCatalogue,
 				new attributeBindingDefinition {
 					attribute = nameof(categoryOfPortSection),
-					lower = 1,
+					lower = 0,
 					upper = 1,
 					order = 0,
 					permitedValues = [1,3,8,9,11,12],
@@ -9090,9 +9453,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
-				.. base.informationBindingsCatalogue,
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "facilityOperatingHours",
@@ -9103,9 +9465,13 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
-				.. base.featureBindingsCatalogue,
+		public static informationBinding<InformationAssociation.LocationHours> LocationHours => new informationBinding<InformationAssociation.LocationHours> {
+			roleType = "association",
+			role = "facilityOperatingHours",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. Layout.featureBindingsDefinitions,
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "componentOf",
@@ -9116,6 +9482,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9186,6 +9556,12 @@ namespace S100FC.S131.FeatureTypes
 					order = 3,
 					CreateInstance = () => new interoperabilityIdentifier(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -9321,6 +9697,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
 
 		[JsonIgnore]
@@ -9370,6 +9752,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
 
 		[JsonIgnore]
@@ -9417,6 +9805,12 @@ namespace S100FC.S131.FeatureTypes
 					order = 1,
 					CreateInstance = () => new information(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
 
 		#endregion
@@ -9504,8 +9898,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "thePositionProvider",
@@ -9516,6 +9912,10 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9539,14 +9939,14 @@ namespace S100FC.S131
 		public static string Scope => "Global coverage of maritime areas";
 		public static string ProductId => "S-131";
 		public static Version Version => new Version("2.0.0");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-11-12", "yyyy-MM-dd");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2026-01-07", "yyyy-MM-dd");
 		public static string[] ComplexTypes => ["contactAddress","featureName","fixedDateRange","frequencyPair","horizontalPositionUncertainty","information","onlineResource","orientation","periodicDateRange","rxNCode","sourceIndication","surveyDateRange","telecommunications","textContent","timeIntervalsByDayOfWeek","usefulMarkDescription","verticalUncertainty","vesselMeasurementsSpecification","weatherResource","bearingInformation","cargoServicesDescription","constructionInformation","depthsDescription","facilitiesLayoutDescription","generalPortDescription","graphic","landmarkDescription","limitsDescription","majorLightDescription","markedBy","offshoreMarkDescription","scheduleByDayOfWeek","spatialAccuracy","generalHarbourInformation"];
 		public static string[] InformationAssociationTypes => ["AdditionalInformation","AuthorityContact","AuthorityHours","AssociatedRxN","ExceptionalWorkday","ServiceControl","ServiceContact","LocationHours","RelatedOrganisation","InclusionType","PermissionType","SpatialAssociation","LimitEntrance","ServiceAvailability"];
 		public static string[] FeatureAssociationTypes => ["TextAssociation","Subsection","Infrastructure","PrimaryAuxiliaryFacility","Demarcation","JurisdictionalLimit","LayoutDivision"];
 		public static string[] InformationTypes => ["InformationType","AbstractRxN","Applicability","Authority","AvailablePortServices","ContactDetails","Entrance","NauticalInformation","NonStandardWorkingDay","Recommendations","Regulations","Restrictions","ServiceHours","SpatialQuality"];
 		public static string[] FeatureTypes => ["FeatureType","OrganizationContactArea","SupervisedArea","HarbourPhysicalInfrastructure","Layout","AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DockArea","DryDock","Dolphin","DumpingGround","FenderLine","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourBasin","HarbourFacility","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","OuterLimit","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TurningBasin","WaterwayArea","DataCoverage","QualityOfNonBathymetricData","SoundingDatum","VerticalDatumOfData","TextPlacement"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
-			Primitives.noGeometry => [],
+			Primitives.noGeometry => ["FeatureType","OrganizationContactArea","SupervisedArea","HarbourPhysicalInfrastructure","Layout"],
 			Primitives.point => ["AnchorBerth","AnchorageArea","AutomatedGuidedVehicle","Berth","BerthPosition","Bollard","DryDock","Dolphin","DumpingGround","FloatingDock","Gridiron","HarbourAreaAdministrative","HarbourAreaSection","HarbourFacility","LockBasin","LockBasinPart","MooringBuoy","MooringWarpingFacility","OnshorePowerFacility","PilotBoardingPlace","SeaplaneLandingArea","ShipLift","StraddleCarrier","Terminal","TextPlacement"],
 			Primitives.pointSet => [],
 			Primitives.curve => ["AutomatedGuidedVehicle","Berth","FenderLine","HarbourFacility","OuterLimit"],

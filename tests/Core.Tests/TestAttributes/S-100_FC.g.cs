@@ -462,11 +462,11 @@ namespace S100FC
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
 
-        [JsonIgnore]
-        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+        //[JsonIgnore]
+        //public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
 
-        [JsonIgnore]
-        public virtual featureBindingDefinition[] featureBindingsCatalogue { get; } = [];
+        //[JsonIgnore]
+        //public virtual featureBindingDefinition[] featureBindingsCatalogue { get; } = [];
 
         public attributeBindingDefinition[] mandatoryBindings() {
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
@@ -645,16 +645,20 @@ namespace S100FC
 
     }
 
+    public interface IInformationAssociation {
+        public abstract static string role { get; }
+    }
+
     public abstract class InformationAssociation : Association
     {
-        [JsonIgnore]
-        public abstract string role { get; }
+        //[JsonIgnore]
+        //public abstract string role { get; }        
     }
 
     public abstract class FeatureAssociation : Association
     {
-        [JsonIgnore]
-        public abstract string[] roles { get; }
+        //[JsonIgnore]
+        //public abstract string[] roles { get; }
     }
 
     public abstract class informationBinding
