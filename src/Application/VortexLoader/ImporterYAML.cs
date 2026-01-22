@@ -74,6 +74,9 @@ namespace S100FC.Applications
                     fcSurface.DeleteRows(filter);
                 }
 
+                var match = Regex.Match(dataset.CellName, @"101DK00(\d)");
+                var usageBand = int.Parse(match.Groups[1].Value);
+
                 var foreignFoids = new Dictionary<string, string>();
 
                 foreach (var feature in dataset.Features!) {
@@ -87,6 +90,10 @@ namespace S100FC.Applications
 
                     // Serialize to JSON
                     var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type, jsonSerializerOptions);
+
+                    // temp fix to ensure everything is serialized. todo: investigate if UnsurveyedArea has 0 mandatory attributes
+                    if (json.Equals("null", StringComparison.CurrentCultureIgnoreCase))
+                        json = "{\"attr\":[]}";
 
                     //  Find corresponding geometry and cast it to ArcGIS.Core.Geometry
                     var geometry = dataset.GetFeatureShape(feature);
@@ -107,48 +114,8 @@ namespace S100FC.Applications
 
                         foreach (var fa in feature.FeatureAssociation) {
                             // todo: fix when helper method is ready
-                            //var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
-                            //featureAssociations.Add(binding);
-
-
-
-
-
-                            // fa.Name == "StructureEquipment"
-                            // fa.Role == "theStructure"
-                            // fa.To == "110:85:1"
-
-
-
-                            // var f = FeatureRelations.featureBindings[$"{fa.Name}::{fa.Role}"]();
-                            // f.featureId = fa.To;
-                            // featureAssociations.Add(f);
-
-
-
-
-
-
-
-                            //if (!foreignFoids.TryGetValue(fa.To, out var featureType)) { }
-                            //    featureType = dataset.Features.First(e => e.Foid == fa.To).Name;
-                            //    foreignFoids.TryAdd(fa.To, featureType!);
-                            //}
-
-
-                            //var instance = Activator.CreateInstance(type);
-                            //var casted = instance as IFeatureBindingDefinition;
-                            //var featurebindingdefinition = casted!.featureBindingDefinitions.Single(e => e.association == fa.Name && e.role == fa.Role);
-
-                            //var theType = Summary.FeatureBindings(fa.Name);
-                            //var fb = Activator.CreateInstance(theType) as featureBinding;
-
-                            //fb.featureType = featureType;
-                            //fb.role = fa.Role;
-                            //fb.roleType = featurebindingdefinition.roleType.ToString();
-                            //fb.referenceId = fa.To;
-
-
+                            var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
+                            featureAssociations.Add(binding);
                         }
 
 
@@ -162,42 +129,8 @@ namespace S100FC.Applications
 
                         foreach (var fa in feature.Association) {
                             // todo: fix when helper method is ready
-                            //var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
-                            //informationAssociations.Add(binding);
-
-
-
-
-
-
-
-
-                            // var i = FeatureRelations.featureBindings[$"{ia.Name}::{ia.Role}"]();
-
-
-                            //    if (!foreignFoids.TryGetValue(ia.To, out var informationType)) {
-                            //        informationType = dataset.InformationTypes!.First(e => e.ID == ia.To).Name;
-                            //        foreignFoids.TryAdd(ia.To, informationType!);
-                            //    }
-
-                            //    var instance = Activator.CreateInstance(type);
-                            //    var casted = instance as IFeatureBindingDefinition;
-                            //    var informationBindingDefinitions = casted!.informationBindingDefinitions.Single(e => e.association == ia.Name && e.role == ia.Role);
-
-                            //    var theType = Summary.InformationBindings(ia.Name);
-                            //    var ib = Activator.CreateInstance(theType) as informationBinding;
-                            //    //var ab = new informationBinding() {
-                            //    //    informationType = informationType,
-                            //    //    role = ia.Role,
-                            //    //    roleType = informationBindingDefinitions.roleType.ToString(),
-                            //    //    informationId = ia.To,
-                            //    //}
-                            //    ib!.informationType = informationType;
-                            //    ib.role = ia.Role;
-                            //    ib.roleType = informationBindingDefinitions.roleType.ToString();
-                            //    ib.referenceId = ia.To;
-
-                            //    informationAssociations.Add(ib);
+                            var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
+                            informationAssociations.Add(binding);
                         }
 
                         var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations, jsonSerializerOptions);
@@ -205,10 +138,14 @@ namespace S100FC.Applications
                     }
 
                     // Set Usageband
-                    var match = Regex.Match(dataset.CellName, @"101DK00(\d)");
+                    try {
+                        if (geometry != null)
+                            rowbuffer["usageband"] = usageBand;
+                    }
+                    catch (Exception ex) {
+                        Log.Error("Regex match error: {message}. feature: {featuerename}: ", ex.Message, feature.Name);
+                    }
 
-                    if (match.Success)
-                        rowbuffer["usageband"] = match.Groups[1].Value;
 
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
@@ -222,17 +159,20 @@ namespace S100FC.Applications
 
                         using var row = fcPoint.CreateRow(bufferPoint);
                     }
-                    if (geometry is Multipoint) {
+                    else if (geometry is Multipoint) {
                         bufferPointSet["shape"] = geometry;
                         using var row = fcPointSet.CreateRow(bufferPointSet);
                     }
-                    if (geometry is Polyline) {
+                    else if (geometry is Polyline) {
                         bufferCurve["shape"] = geometry;
                         using var row = fcCurve.CreateRow(bufferCurve);
                     }
-                    if (geometry is Polygon) {
+                    else if (geometry is Polygon) {
                         bufferSurface["shape"] = geometry;
                         using var row = fcSurface.CreateRow(bufferSurface);
+                    }
+                    else if(geometry is null) {     // NoGeometry feature
+                        using var row = tableFeatureType.CreateRow(bufferFeatureType);
                     }
                 }
 
@@ -245,7 +185,7 @@ namespace S100FC.Applications
                     }
 
                     // 2) Serialize to JSON
-                    var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type);
+                    var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type, jsonSerializerOptions);
 
                     // Write to table
                     var rowbuffer = bufferInformationType;

@@ -869,9 +869,11 @@ namespace S100FC.YAML
                                 break;
                             }
 
-                        case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
-                                var list = (System.Collections.IList?)prop.GetValue(parentInstance);
-                                var elementType = typed.GetGenericArguments()[0];
+                        case Type t when typeof(IEnumerable).IsAssignableFrom(t): {         // && t != typeof(string)
+                                var elementType = t.IsArray ? t.GetElementType() : t.IsGenericType ? t.GetGenericArguments()[0] : null;
+                                var listType = typeof(List<>).MakeGenericType(elementType!);
+
+                                var list = (IList)Activator.CreateInstance(listType)!;
 
                                 if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null) continue;
@@ -889,6 +891,17 @@ namespace S100FC.YAML
                                     if (attr.Id.HasValue)
                                         typeInstances[attr.Id.Value] = newInstance;
                                 }
+
+                                if (t.IsArray) {
+                                    Array array = Array.CreateInstance(elementType!, list.Count);
+                                    list.CopyTo(array, 0);
+
+                                    prop.SetValue(parentInstance, array);
+                                }
+                                else {
+                                    prop.SetValue(parentInstance, list);
+                                }
+
                                 break;
                             }
 
@@ -932,6 +945,8 @@ namespace S100FC.YAML
                     var parentInstance = typeInstances[parentId];
                     var parentType = parentInstance.GetType();
                     var prop = parentType.GetProperty(attr.Name);
+                    if (attr.Name == "UnsurveyedArea")
+                        Console.WriteLine();
 
                     if (prop == null)
                         continue;
@@ -951,7 +966,12 @@ namespace S100FC.YAML
 
                         case Type t when t == typeof(bool): {
                                 if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
-                                var booleanValue = bool.Parse(attr.Value);  // Convert.ToInt32(attr.Value) == 1;
+                                bool booleanValue;
+                                if (int.TryParse(attr.Value, out int intValue))
+                                    booleanValue = intValue == 1;
+                                else
+                                    booleanValue = bool.Parse(attr.Value);
+                                //var booleanValue = bool.Parse(attr.Value);  // Convert.ToInt32(attr.Value) == 1;
                                 prop.SetValue(parentInstance, booleanValue);
                                 break;
                             }
@@ -985,8 +1005,10 @@ namespace S100FC.YAML
                             }
 
                         case Type t when typeof(IEnumerable).IsAssignableFrom(t): {
-                                var list = (System.Collections.IList?)prop.GetValue(parentInstance);
-                                var elementType = typed.GetGenericArguments()[0];
+                                var elementType = t.IsArray ? t.GetElementType() : t.IsGenericType ? t.GetGenericArguments()[0] : null;
+                                var listType = typeof(List<>).MakeGenericType(elementType!);
+
+                                var list = (IList)Activator.CreateInstance(listType)!;
 
                                 if (elementType == typeof(string) || elementType.IsPrimitive || elementType.IsEnum || elementType == typeof(decimal) || elementType == typeof(double)) {
                                     if (attr.Value == null || string.IsNullOrEmpty(attr.Value)) continue;
@@ -1003,6 +1025,16 @@ namespace S100FC.YAML
 
                                     if (attr.Id.HasValue)
                                         typeInstances[attr.Id.Value] = newInstance;
+                                }
+
+                                if (t.IsArray) {
+                                    Array array = Array.CreateInstance(elementType!, list.Count);
+                                    list.CopyTo(array, 0);
+
+                                    prop.SetValue(parentInstance, array);
+                                }
+                                else {
+                                    prop.SetValue(parentInstance, list);
                                 }
                                 break;
                             }
@@ -1041,7 +1073,7 @@ namespace S100FC.YAML
 
         private class NodeConverter : IYamlTypeConverter
         {
-            public bool Accepts(Type type) => typeof(S100FC.FeatureType).IsAssignableFrom(type) || typeof(S100FC.InformationType).IsAssignableFrom(type);       
+            public bool Accepts(Type type) => typeof(S100FC.FeatureType).IsAssignableFrom(type) || typeof(S100FC.InformationType).IsAssignableFrom(type);
             //public bool Accepts(Type type) => true;
             public object? ReadYaml(IParser parser, Type type, ObjectDeserializer rootDeserializer) => throw new NotImplementedException("Deserialization is not supported.");
 
@@ -1068,7 +1100,7 @@ namespace S100FC.YAML
 
                     if (attr.Value is not null) {
                         emitter.Emit(new Scalar("Value"));
-                        emitter.Emit(new Scalar(attr.Value));   
+                        emitter.Emit(new Scalar(attr.Value));
                     }
 
                     if (attr.Id.HasValue) {
