@@ -6636,8 +6636,7 @@ namespace S100FC.S101.InformationAssociation
 		public override string S100FC_code => nameof(AdditionalInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Additional information";
-		[JsonIgnore]
-		public override string role => "theInformation";
+		public static string role => "theInformation";
 
 		#region Catalogue
 		#endregion
@@ -6652,8 +6651,7 @@ namespace S100FC.S101.InformationAssociation
 		public override string S100FC_code => nameof(QualityOfBathymetricDataComposition);
 		[JsonIgnore]
 		public override string S100FC_name => "Quality of bathymetric data composition";
-		[JsonIgnore]
-		public override string role => "theQualityInformation";
+		public static string role => "theQualityInformation";
 
 		#region Catalogue
 		#endregion
@@ -6668,8 +6666,7 @@ namespace S100FC.S101.InformationAssociation
 		public override string S100FC_code => nameof(SpatialAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Spatial Association";
-		[JsonIgnore]
-		public override string role => "theQualityInformation";
+		public static string role => "theQualityInformation";
 
 		#region Catalogue
 		#endregion
@@ -6691,8 +6688,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(AidsToNavigationAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Aids to navigation association";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6707,8 +6703,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(ASLAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "ASL aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6723,8 +6718,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(BridgeAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Bridge aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6739,8 +6733,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(CautionAreaAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Caution area association";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6755,8 +6748,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(DeepWaterRouteAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Deep Water route aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6771,8 +6763,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(FairwayAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Fairway aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6787,8 +6778,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(FairwayAuxiliary);
 		[JsonIgnore]
 		public override string S100FC_name => "Fairway auxiliary";
-		[JsonIgnore]
-		public override string[] roles => ["thePrimaryFeature","theAuxiliaryFeature"];
+		public static string[] roles => ["thePrimaryFeature","theAuxiliaryFeature"];
 
 		#region Catalogue
 		#endregion
@@ -6803,8 +6793,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(IslandAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Island aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6819,8 +6808,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(MooringTrotAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Mooring trot aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6835,8 +6823,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(PilotageDistrictAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Pilotage District Association";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6851,8 +6838,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(RangeSystemAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Range system aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6867,8 +6853,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(RoofedStructureAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Roofed Structure Aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theRoofedStructure","theSupport"];
+		public static string[] roles => ["theRoofedStructure","theSupport"];
 
 		#region Catalogue
 		#endregion
@@ -6883,8 +6868,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(StructureEquipment);
 		[JsonIgnore]
 		public override string S100FC_name => "Structure/equipment";
-		[JsonIgnore]
-		public override string[] roles => ["theStructure","theEquipment"];
+		public static string[] roles => ["theStructure","theEquipment"];
 
 		#region Catalogue
 		#endregion
@@ -6899,8 +6883,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(TextAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Text association";
-		[JsonIgnore]
-		public override string[] roles => ["theCartographicText","thePositionProvider"];
+		public static string[] roles => ["theCartographicText","thePositionProvider"];
 
 		#region Catalogue
 		#endregion
@@ -6915,8 +6898,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(TrafficSeparationSchemeAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Traffic Separation Scheme aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6931,8 +6913,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(TwoWayRouteAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Two-way route aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6947,8 +6928,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(UpdateAggregation);
 		[JsonIgnore]
 		public override string S100FC_name => "Update Aggregation";
-		[JsonIgnore]
-		public override string[] roles => ["theCollection","theComponent"];
+		public static string[] roles => ["theCollection","theComponent"];
 
 		#region Catalogue
 		#endregion
@@ -6963,8 +6943,7 @@ namespace S100FC.S101.FeatureAssociation
 		public override string S100FC_code => nameof(UpdatedInformation);
 		[JsonIgnore]
 		public override string S100FC_name => "Updated Information";
-		[JsonIgnore]
-		public override string[] roles => ["theUpdate","theUpdatedObject"];
+		public static string[] roles => ["theUpdate","theUpdatedObject"];
 
 		#region Catalogue
 		#endregion
@@ -7091,6 +7070,9 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -7158,6 +7140,9 @@ namespace S100FC.S101.InformationTypes
 					order = 3,
 					CreateInstance = () => new information(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7241,6 +7226,9 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -7310,6 +7298,9 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
 		#endregion
 	}
 
@@ -7354,6 +7345,9 @@ namespace S100FC.S101.InformationTypes
 					order = 1,
 					CreateInstance = () => new spatialAccuracy(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
 		#endregion
@@ -7482,8 +7476,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -7494,6 +7490,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7590,6 +7590,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
 		#endregion
 
 		[JsonIgnore]
@@ -7651,8 +7657,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -7663,6 +7671,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7748,8 +7760,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -7760,6 +7774,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7906,8 +7924,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theQualityInformation",
@@ -7918,8 +7935,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.QualityOfBathymetricDataComposition> QualityOfBathymetricDataComposition => new informationBinding<InformationAssociation.QualityOfBathymetricDataComposition> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -7930,6 +7951,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -7991,8 +8016,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8003,6 +8030,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8064,8 +8095,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8076,6 +8109,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8320,8 +8357,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8332,6 +8371,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8441,8 +8484,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -8477,6 +8522,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdateAggregation> UpdateAggregation(string role) => new featureBinding<FeatureAssociation.UpdateAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8573,8 +8626,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -8585,8 +8637,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8597,6 +8653,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8693,8 +8753,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -8705,8 +8764,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8725,6 +8788,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -8873,8 +8944,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -8885,8 +8955,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -8905,6 +8979,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9015,8 +9097,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9027,8 +9108,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -9055,6 +9140,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.IslandAggregation> IslandAggregation(string role) => new featureBinding<FeatureAssociation.IslandAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9127,8 +9224,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9139,8 +9235,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -9175,6 +9275,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.IslandAggregation> IslandAggregation(string role) => new featureBinding<FeatureAssociation.IslandAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9272,8 +9384,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9284,8 +9395,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9304,6 +9419,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9389,8 +9512,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9401,8 +9523,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9421,6 +9547,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9505,8 +9639,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9517,8 +9650,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9537,6 +9674,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9634,8 +9779,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9646,8 +9790,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9666,6 +9814,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9763,8 +9919,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9775,8 +9930,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9795,6 +9954,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -9906,8 +10073,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -9918,8 +10084,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -9938,6 +10108,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10072,8 +10250,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10084,8 +10261,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10104,6 +10285,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10275,8 +10464,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10287,8 +10475,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10307,6 +10499,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10443,8 +10643,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10455,8 +10654,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10475,6 +10678,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10623,8 +10834,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10635,8 +10845,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10655,6 +10869,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10727,8 +10949,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10739,8 +10960,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10759,6 +10984,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -10930,8 +11163,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -10942,8 +11174,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -10962,6 +11198,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -11234,8 +11478,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -11246,8 +11489,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -11290,6 +11537,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -11425,8 +11692,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -11437,8 +11703,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -11457,6 +11727,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -11592,8 +11870,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -11604,8 +11881,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -11624,6 +11905,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -11759,8 +12048,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -11771,8 +12059,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -11799,6 +12091,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -12060,8 +12364,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -12072,8 +12375,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -12116,6 +12423,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.BridgeAggregation> BridgeAggregation(string role) => new featureBinding<FeatureAssociation.BridgeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -12237,8 +12564,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -12249,8 +12575,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -12293,6 +12623,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.BridgeAggregation> BridgeAggregation(string role) => new featureBinding<FeatureAssociation.BridgeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -12426,8 +12776,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -12438,8 +12787,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -12482,6 +12835,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.BridgeAggregation> BridgeAggregation(string role) => new featureBinding<FeatureAssociation.BridgeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -12766,8 +13139,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -12778,8 +13150,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -12814,6 +13190,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -13035,8 +13427,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -13047,8 +13438,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -13075,6 +13470,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -13285,8 +13692,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -13297,8 +13703,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -13333,6 +13743,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -13593,8 +14019,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -13605,8 +14030,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -13657,6 +14086,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.BridgeAggregation> BridgeAggregation(string role) => new featureBinding<FeatureAssociation.BridgeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RoofedStructureAggregation> RoofedStructureAggregation(string role) => new featureBinding<FeatureAssociation.RoofedStructureAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -13880,8 +14333,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -13892,8 +14344,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -13912,6 +14368,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -14034,8 +14498,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -14046,8 +14509,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -14066,6 +14533,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -14202,8 +14677,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -14214,8 +14688,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -14234,6 +14712,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -14393,8 +14879,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -14405,8 +14890,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -14425,6 +14914,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -14710,8 +15207,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -14722,8 +15218,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -14774,6 +15274,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -15059,8 +15583,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -15071,8 +15594,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -15115,6 +15642,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -15411,8 +15958,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -15423,8 +15969,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -15459,6 +16009,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -15668,8 +16234,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -15680,8 +16245,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -15724,6 +16293,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -15945,8 +16534,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -15957,8 +16545,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -15977,6 +16569,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -16075,8 +16675,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -16087,8 +16686,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -16107,6 +16710,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -16340,8 +16951,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -16352,8 +16962,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -16388,6 +17002,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -16610,8 +17240,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -16622,8 +17251,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -16674,6 +17307,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -16845,8 +17502,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -16857,8 +17513,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -16877,6 +17537,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -17149,8 +17817,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -17161,8 +17828,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -17197,6 +17868,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -17518,8 +18205,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -17530,8 +18216,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -17574,6 +18264,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RoofedStructureAggregation> RoofedStructureAggregation(string role) => new featureBinding<FeatureAssociation.RoofedStructureAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -17710,8 +18420,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -17722,8 +18431,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -17742,6 +18455,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -17901,8 +18622,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -17913,8 +18633,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -17933,6 +18657,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -18041,8 +18773,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -18053,8 +18784,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -18081,6 +18816,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -18279,8 +19026,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -18291,8 +19037,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -18311,6 +19061,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -18535,8 +19293,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -18547,8 +19304,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -18567,6 +19328,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -18838,8 +19607,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -18850,8 +19618,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -18886,6 +19658,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -19081,8 +19869,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -19093,8 +19880,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -19121,6 +19912,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.MooringTrotAggregation> MooringTrotAggregation(string role) => new featureBinding<FeatureAssociation.MooringTrotAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -19380,8 +20183,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -19392,8 +20194,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -19436,6 +20242,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -19582,8 +20408,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -19594,8 +20419,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -19622,6 +20451,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -19841,8 +20682,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -19853,8 +20693,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -19873,6 +20717,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -20142,8 +20994,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -20154,8 +21005,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -20190,6 +21045,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -20361,8 +21232,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -20373,8 +21243,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -20417,6 +21291,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.BridgeAggregation> BridgeAggregation(string role) => new featureBinding<FeatureAssociation.BridgeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -20600,8 +21494,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -20612,8 +21505,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -20632,6 +21529,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -20779,8 +21684,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -20791,8 +21695,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -20811,6 +21719,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -20956,8 +21872,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -20968,8 +21883,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -20988,6 +21907,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21072,8 +21999,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21084,8 +22010,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -21112,6 +22042,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.MooringTrotAggregation> MooringTrotAggregation(string role) => new featureBinding<FeatureAssociation.MooringTrotAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21197,8 +22139,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21209,8 +22150,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21229,6 +22174,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21350,8 +22303,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21362,8 +22314,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21382,6 +22338,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21515,8 +22479,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21527,8 +22490,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21547,6 +22514,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21632,8 +22607,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21644,8 +22618,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21664,6 +22642,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21772,8 +22758,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21784,8 +22769,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21804,6 +22793,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -21927,8 +22924,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -21939,8 +22935,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -21959,6 +22959,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22130,8 +23138,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22142,8 +23149,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "thePrimaryFeature",
@@ -22170,6 +23181,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22254,8 +23277,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22266,8 +23288,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "thePrimaryFeature",
@@ -22294,6 +23320,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22366,8 +23404,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22378,8 +23415,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22390,6 +23431,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22462,8 +23507,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22474,8 +23518,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22486,6 +23534,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22559,8 +23611,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22571,8 +23622,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22583,6 +23638,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22631,8 +23690,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22643,8 +23701,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22655,6 +23717,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22752,8 +23818,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22764,8 +23829,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22784,6 +23853,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22869,8 +23946,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22881,8 +23957,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -22901,6 +23981,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -22973,8 +24061,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -22985,8 +24072,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -23005,6 +24096,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -23077,8 +24176,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -23089,8 +24187,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -23101,6 +24203,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -23173,8 +24279,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -23185,8 +24290,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -23205,6 +24314,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -23403,8 +24520,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -23415,8 +24531,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -23435,6 +24555,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -23682,8 +24810,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -23694,8 +24821,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -23722,6 +24853,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -23995,8 +25138,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -24007,8 +25149,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -24035,6 +25181,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.MooringTrotAggregation> MooringTrotAggregation(string role) => new featureBinding<FeatureAssociation.MooringTrotAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -24182,8 +25340,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -24194,8 +25351,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -24214,6 +25375,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -24286,8 +25455,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -24298,8 +25466,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -24310,6 +25482,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -24457,8 +25633,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -24469,8 +25644,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -24505,6 +25684,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -24739,8 +25934,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -24751,8 +25945,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -24771,6 +25969,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -25018,8 +26224,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -25030,8 +26235,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -25066,6 +26275,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -25201,8 +26426,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -25213,8 +26437,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -25241,6 +26469,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.MooringTrotAggregation> MooringTrotAggregation(string role) => new featureBinding<FeatureAssociation.MooringTrotAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -25376,8 +26616,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -25388,8 +26627,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -25408,6 +26651,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -25629,8 +26880,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -25641,8 +26891,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -25661,6 +26915,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -25809,8 +27071,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -25821,8 +27082,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -25841,6 +27106,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -26076,8 +27349,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -26088,8 +27360,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -26108,6 +27384,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -26242,8 +27526,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -26254,8 +27537,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -26274,6 +27561,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -26482,8 +27777,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -26494,8 +27788,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -26530,6 +27828,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -26626,8 +27940,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -26638,8 +27951,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -26682,6 +27999,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -26878,8 +28211,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -26890,8 +28222,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -26926,6 +28262,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.FairwayAggregation> FairwayAggregation(string role) => new featureBinding<FeatureAssociation.FairwayAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -27034,8 +28386,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -27046,8 +28397,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -27082,6 +28437,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAggregation> FairwayAggregation(string role) => new featureBinding<FeatureAssociation.FairwayAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -27278,8 +28649,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -27290,8 +28660,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -27326,6 +28700,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -27498,8 +28888,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -27510,8 +28899,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -27538,6 +28931,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TwoWayRouteAggregation> TwoWayRouteAggregation(string role) => new featureBinding<FeatureAssociation.TwoWayRouteAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -27634,8 +29039,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -27646,8 +29050,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -27690,6 +29098,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TwoWayRouteAggregation> TwoWayRouteAggregation(string role) => new featureBinding<FeatureAssociation.TwoWayRouteAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -27787,8 +29215,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -27799,8 +29226,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -27811,6 +29242,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28007,8 +29442,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28019,8 +29453,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -28055,6 +29493,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.DeepWaterRouteAggregation> DeepWaterRouteAggregation(string role) => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28264,8 +29718,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28276,8 +29729,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -28312,6 +29769,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.DeepWaterRouteAggregation> DeepWaterRouteAggregation(string role) => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28408,8 +29881,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28420,8 +29892,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -28464,6 +29940,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.DeepWaterRouteAggregation> DeepWaterRouteAggregation(string role) => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28574,8 +30070,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28586,8 +30081,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -28606,6 +30105,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28740,8 +30247,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28752,8 +30258,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -28780,6 +30290,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -28902,8 +30424,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -28914,8 +30435,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -28934,6 +30459,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29019,8 +30552,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29031,8 +30563,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29051,6 +30587,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29136,8 +30680,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29148,8 +30691,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29168,6 +30715,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29278,8 +30833,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29290,8 +30844,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29310,6 +30868,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29420,8 +30986,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29432,8 +30997,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29452,6 +31021,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29560,8 +31137,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29572,8 +31148,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -29624,6 +31204,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.CautionAreaAssociation> CautionAreaAssociation(string role) => new featureBinding<FeatureAssociation.CautionAreaAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29720,8 +31320,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29732,8 +31331,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29760,6 +31363,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.ASLAggregation> ASLAggregation(string role) => new featureBinding<FeatureAssociation.ASLAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29856,8 +31471,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -29868,8 +31482,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -29896,6 +31514,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.ASLAggregation> ASLAggregation(string role) => new featureBinding<FeatureAssociation.ASLAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -29992,8 +31622,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30004,8 +31633,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -30048,6 +31681,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.ASLAggregation> ASLAggregation(string role) => new featureBinding<FeatureAssociation.ASLAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.CautionAreaAssociation> CautionAreaAssociation(string role) => new featureBinding<FeatureAssociation.CautionAreaAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -30194,8 +31847,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30206,8 +31858,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -30226,6 +31882,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -30348,8 +32012,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30360,8 +32023,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -30380,6 +32047,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -30477,8 +32152,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30489,8 +32163,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -30509,6 +32187,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -30618,8 +32304,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30630,8 +32315,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -30650,6 +32339,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -30808,8 +32505,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -30820,8 +32516,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -30840,6 +32540,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31000,8 +32708,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31012,8 +32719,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31032,6 +32743,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31203,8 +32922,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31215,8 +32933,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31235,6 +32957,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31382,8 +33112,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31394,8 +33123,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31414,6 +33147,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31536,8 +33277,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31548,8 +33288,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31568,6 +33312,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31703,8 +33455,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31715,8 +33466,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31735,6 +33490,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -31894,8 +33657,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -31906,8 +33668,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -31926,6 +33692,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32047,8 +33821,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32059,8 +33832,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32079,6 +33856,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32213,8 +33998,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32225,8 +34009,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32245,6 +34033,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32379,8 +34175,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32391,8 +34186,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -32419,6 +34218,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.CautionAreaAssociation> CautionAreaAssociation(string role) => new featureBinding<FeatureAssociation.CautionAreaAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32539,8 +34350,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32551,8 +34361,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32571,6 +34385,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32667,8 +34489,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32679,8 +34500,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32691,6 +34516,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32775,8 +34604,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32787,8 +34615,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32807,6 +34639,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32879,8 +34719,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32891,8 +34730,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -32903,6 +34746,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -32987,8 +34834,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -32999,8 +34845,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33011,6 +34861,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33108,8 +34962,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33120,8 +34973,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33140,6 +34997,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33262,8 +35127,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33274,8 +35138,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33294,6 +35162,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33379,8 +35255,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33391,8 +35266,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33411,6 +35290,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33496,8 +35383,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33508,8 +35394,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33528,6 +35418,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33625,8 +35523,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33637,8 +35534,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33657,6 +35558,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33792,8 +35701,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33804,8 +35712,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33824,6 +35736,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -33896,8 +35816,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -33908,8 +35827,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -33920,6 +35843,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34029,8 +35956,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34041,8 +35967,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -34053,6 +35983,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34162,8 +36096,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34174,8 +36107,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -34194,6 +36131,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34278,8 +36223,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34290,8 +36234,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theComponent",
@@ -34318,6 +36266,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.PilotageDistrictAssociation> PilotageDistrictAssociation(string role) => new featureBinding<FeatureAssociation.PilotageDistrictAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34426,8 +36386,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34438,8 +36397,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -34458,6 +36421,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34542,8 +36513,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34554,8 +36524,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -34574,6 +36548,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -34721,8 +36703,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -34733,8 +36714,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "thePrimaryFeature",
@@ -34769,6 +36754,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> TrafficSeparationSchemeAggregation(string role) => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -35053,8 +37054,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -35065,8 +37065,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -35109,6 +37113,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -35319,8 +37339,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -35331,8 +37350,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -35375,6 +37398,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -35571,8 +37610,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -35583,8 +37621,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -35611,6 +37653,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -35832,8 +37886,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -35844,8 +37897,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -35872,6 +37929,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -36107,8 +38176,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -36119,8 +38187,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -36163,6 +38235,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -36398,8 +38490,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -36410,8 +38501,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -36454,6 +38549,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -36676,8 +38791,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -36688,8 +38802,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -36732,6 +38850,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -36954,8 +39092,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -36966,8 +39103,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -37010,6 +39151,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -37245,8 +39406,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -37257,8 +39417,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -37301,6 +39465,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -37498,8 +39682,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -37510,8 +39693,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -37546,6 +39733,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -37770,8 +39973,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -37782,8 +39984,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -37810,6 +40016,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -38031,8 +40249,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -38043,8 +40260,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -38087,6 +40308,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.MooringTrotAggregation> MooringTrotAggregation(string role) => new featureBinding<FeatureAssociation.MooringTrotAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -38384,8 +40625,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -38396,8 +40636,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -38448,6 +40692,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -38745,8 +41013,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -38757,8 +41024,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -38809,6 +41080,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -39093,8 +41388,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -39105,8 +41399,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -39157,6 +41455,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -39441,8 +41763,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -39453,8 +41774,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -39505,6 +41830,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -39802,8 +42151,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -39814,8 +42162,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -39866,6 +42218,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -40112,8 +42488,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -40124,8 +42499,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -40184,6 +42563,30 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -40417,8 +42820,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -40429,8 +42831,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -40473,6 +42879,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -40694,8 +43120,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -40706,8 +43131,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theEquipment",
@@ -40750,6 +43179,26 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.AidsToNavigationAssociation> AidsToNavigationAssociation(string role) => new featureBinding<FeatureAssociation.AidsToNavigationAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.FairwayAuxiliary> FairwayAuxiliary(string role) => new featureBinding<FeatureAssociation.FairwayAuxiliary> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -40885,8 +43334,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -40897,8 +43345,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -40917,6 +43369,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -41026,8 +43486,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -41038,8 +43497,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -41058,6 +43521,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -41253,8 +43724,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -41265,8 +43735,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -41293,6 +43767,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -41426,8 +43912,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -41438,8 +43923,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -41466,6 +43955,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -41612,8 +44113,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -41624,8 +44124,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -41644,6 +44148,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -41814,8 +44326,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -41826,8 +44337,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -41846,6 +44361,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42028,8 +44551,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42040,8 +44562,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -42076,6 +44602,22 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.RangeSystemAggregation> RangeSystemAggregation(string role) => new featureBinding<FeatureAssociation.RangeSystemAggregation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42248,8 +44790,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42260,8 +44801,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "aggregation",
 					role = "theCollection",
@@ -42288,6 +44833,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.PilotageDistrictAssociation> PilotageDistrictAssociation(string role) => new featureBinding<FeatureAssociation.PilotageDistrictAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42360,8 +44917,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42372,8 +44928,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -42392,6 +44952,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42525,8 +45093,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42537,8 +45104,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -42557,6 +45128,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42691,8 +45270,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42703,8 +45281,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -42731,6 +45313,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -42865,8 +45459,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -42877,8 +45470,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "theStructure",
@@ -42905,6 +45502,18 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.StructureEquipment> StructureEquipment(string role) => new featureBinding<FeatureAssociation.StructureEquipment> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -43039,8 +45648,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -43051,8 +45659,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -43071,6 +45683,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -43293,8 +45913,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -43305,8 +45924,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -43325,6 +45948,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -43447,8 +46078,7 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theInformation",
@@ -43459,8 +46089,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
+			roleType = "association",
+			role = "theInformation",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theUpdate",
@@ -43479,6 +46113,14 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.UpdatedInformation> UpdatedInformation(string role) => new featureBinding<FeatureAssociation.UpdatedInformation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -43564,8 +46206,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "composition",
 					role = "thePositionProvider",
@@ -43576,6 +46220,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -43624,8 +46272,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theCartographicText",
@@ -43636,6 +46286,10 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]

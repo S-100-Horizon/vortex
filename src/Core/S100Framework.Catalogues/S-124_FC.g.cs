@@ -1692,8 +1692,7 @@ namespace S100FC.S124.InformationAssociation
 		public override string S100FC_code => nameof(navwarnPreambleContent);
 		[JsonIgnore]
 		public override string S100FC_name => "navwarnPreambleContent";
-		[JsonIgnore]
-		public override string role => "header";
+		public static string role => "header";
 
 		#region Catalogue
 		#endregion
@@ -1708,8 +1707,7 @@ namespace S100FC.S124.InformationAssociation
 		public override string S100FC_code => nameof(navwarnReferences);
 		[JsonIgnore]
 		public override string S100FC_name => "navwarnReferences";
-		[JsonIgnore]
-		public override string role => "theReferences";
+		public static string role => "theReferences";
 
 		#region Catalogue
 		#endregion
@@ -1731,8 +1729,7 @@ namespace S100FC.S124.FeatureAssociation
 		public override string S100FC_code => nameof(TextAssociation);
 		[JsonIgnore]
 		public override string S100FC_name => "Text association";
-		[JsonIgnore]
-		public override string[] roles => ["theCartographicText","thePositionProvider"];
+		public static string[] roles => ["theCartographicText","thePositionProvider"];
 
 		#region Catalogue
 		#endregion
@@ -1747,8 +1744,7 @@ namespace S100FC.S124.FeatureAssociation
 		public override string S100FC_code => nameof(areaAffected);
 		[JsonIgnore]
 		public override string S100FC_name => "Area Affected";
-		[JsonIgnore]
-		public override string[] roles => ["impacts","affects"];
+		public static string[] roles => ["impacts","affects"];
 
 		#region Catalogue
 		#endregion
@@ -1816,8 +1812,7 @@ namespace S100FC.S124.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theWarning",
@@ -1827,6 +1822,11 @@ namespace S100FC.S124.InformationTypes
 					informationTypes = [nameof(NavwarnPreamble)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.navwarnReferences> navwarnReferences => new informationBinding<InformationAssociation.navwarnReferences> {
+			roleType = "association",
+			role = "theWarning",
+		};
 
 		#endregion
 	}
@@ -1958,8 +1958,7 @@ namespace S100FC.S124.InformationTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "theReferences",
@@ -1969,6 +1968,11 @@ namespace S100FC.S124.InformationTypes
 					informationTypes = [nameof(References)],
 				},
 			];
+
+		public static informationBinding<InformationAssociation.navwarnReferences> navwarnReferences => new informationBinding<InformationAssociation.navwarnReferences> {
+			roleType = "association",
+			role = "theReferences",
+		};
 
 		#endregion
 	}
@@ -2014,6 +2018,9 @@ namespace S100FC.S124.InformationTypes
 					order = 1,
 					CreateInstance = () => new spatialAccuracy(),
 				},
+			];
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
 		#endregion
@@ -2106,8 +2113,7 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override informationBindingDefinition[] informationBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
 					role = "header",
@@ -2118,8 +2124,12 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBinding<InformationAssociation.navwarnPreambleContent> navwarnPreambleContent => new informationBinding<InformationAssociation.navwarnPreambleContent> {
+			roleType = "association",
+			role = "header",
+		};
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "affects",
@@ -2138,6 +2148,14 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.areaAffected> areaAffected(string role) => new featureBinding<FeatureAssociation.areaAffected> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -2155,8 +2173,10 @@ namespace S100FC.S124.FeatureTypes
 		public override string S100FC_name => "NAVWARN Area Affected";
 
 		#region Catalogue
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "impacts",
@@ -2167,6 +2187,10 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.areaAffected> areaAffected(string role) => new featureBinding<FeatureAssociation.areaAffected> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
@@ -2251,8 +2275,10 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
-		[JsonIgnore]
-		public override featureBindingDefinition[] featureBindingsCatalogue => [
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
 					role = "theCartographicText",
@@ -2263,6 +2289,10 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
+		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			role = role,
+		};
 		#endregion
 
 		[JsonIgnore]
