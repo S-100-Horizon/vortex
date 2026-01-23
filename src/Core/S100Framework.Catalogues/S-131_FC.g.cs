@@ -9931,6 +9931,7 @@ namespace S100FC.S131
 	using S100FC.S131.ComplexAttributes;
 	using S100FC.S131.InformationAssociation;
 	using S100FC.S131.FeatureAssociation;
+	using S100FC.S131.InformationTypes;
 	using S100FC.S131.FeatureTypes;
 
 	public class Summary : ISummary
@@ -9956,75 +9957,84 @@ namespace S100FC.S131
 	}
 
 	public static class Extensions {
-		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
-			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityContact" => new informationBinding<AuthorityContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityHours" => new informationBinding<AuthorityHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AssociatedRxN" => new informationBinding<AssociatedRxN>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ExceptionalWorkday" => new informationBinding<ExceptionalWorkday>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceControl" => new informationBinding<ServiceControl>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceContact" => new informationBinding<ServiceContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"LocationHours" => new informationBinding<LocationHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"RelatedOrganisation" => new informationBinding<RelatedOrganisation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"InclusionType" => new informationBinding<InclusionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"PermissionType" => new informationBinding<PermissionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"LimitEntrance" => new informationBinding<LimitEntrance>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceAvailability" => new informationBinding<ServiceAvailability>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
+		public static informationBinding CreateInformationBinding(string informationType, string association) => $"{informationType}::{association}" switch {
+			"AbstractRxN::InclusionType" => AbstractRxN.InclusionType,
+			"AbstractRxN::RelatedOrganisation" => AbstractRxN.RelatedOrganisation,
+			"Applicability::InclusionType" => Applicability.InclusionType,
+			"Authority::AuthorityContact" => Authority.AuthorityContact,
+			"Authority::RelatedOrganisation" => Authority.RelatedOrganisation,
+			"Authority::AuthorityHours" => Authority.AuthorityHours,
+			"ContactDetails::AuthorityContact" => ContactDetails.AuthorityContact,
+			"ServiceHours::ExceptionalWorkday" => ServiceHours.ExceptionalWorkday,
+			"ServiceHours::AuthorityHours" => ServiceHours.AuthorityHours,
+			"FeatureType::PermissionType" => FeatureType.PermissionType,
+			"FeatureType::AssociatedRxN" => FeatureType.AssociatedRxN,
+			"FeatureType::AdditionalInformation" => FeatureType.AdditionalInformation,
+			"OrganizationContactArea::ServiceContact" => OrganizationContactArea.ServiceContact,
+			"SupervisedArea::ServiceControl" => SupervisedArea.ServiceControl,
+			"AnchorBerth::ServiceAvailability" => AnchorBerth.ServiceAvailability,
+			"AnchorBerth::LocationHours" => AnchorBerth.LocationHours,
+			"AnchorageArea::LocationHours" => AnchorageArea.LocationHours,
+			"AutomatedGuidedVehicle::LocationHours" => AutomatedGuidedVehicle.LocationHours,
+			"Berth::ServiceAvailability" => Berth.ServiceAvailability,
+			"Berth::LocationHours" => Berth.LocationHours,
+			"DockArea::ServiceAvailability" => DockArea.ServiceAvailability,
+			"DockArea::LocationHours" => DockArea.LocationHours,
+			"DryDock::LocationHours" => DryDock.LocationHours,
+			"DumpingGround::LocationHours" => DumpingGround.LocationHours,
+			"FloatingDock::LocationHours" => FloatingDock.LocationHours,
+			"Gridiron::LocationHours" => Gridiron.LocationHours,
+			"HarbourAreaAdministrative::ServiceAvailability" => HarbourAreaAdministrative.ServiceAvailability,
+			"HarbourAreaAdministrative::LocationHours" => HarbourAreaAdministrative.LocationHours,
+			"HarbourAreaSection::ServiceAvailability" => HarbourAreaSection.ServiceAvailability,
+			"HarbourAreaSection::LocationHours" => HarbourAreaSection.LocationHours,
+			"HarbourBasin::LocationHours" => HarbourBasin.LocationHours,
+			"HarbourFacility::LocationHours" => HarbourFacility.LocationHours,
+			"LockBasin::LocationHours" => LockBasin.LocationHours,
+			"LockBasinPart::LocationHours" => LockBasinPart.LocationHours,
+			"MooringWarpingFacility::ServiceAvailability" => MooringWarpingFacility.ServiceAvailability,
+			"MooringWarpingFacility::LocationHours" => MooringWarpingFacility.LocationHours,
+			"OnshorePowerFacility::LocationHours" => OnshorePowerFacility.LocationHours,
+			"OuterLimit::LimitEntrance" => OuterLimit.LimitEntrance,
+			"PilotBoardingPlace::LocationHours" => PilotBoardingPlace.LocationHours,
+			"SeaplaneLandingArea::LocationHours" => SeaplaneLandingArea.LocationHours,
+			"ShipLift::LocationHours" => ShipLift.LocationHours,
+			"StraddleCarrier::LocationHours" => StraddleCarrier.LocationHours,
+			"Terminal::ServiceAvailability" => Terminal.ServiceAvailability,
+			"Terminal::LocationHours" => Terminal.LocationHours,
+			"TurningBasin::LocationHours" => TurningBasin.LocationHours,
+			"WaterwayArea::LocationHours" => WaterwayArea.LocationHours,
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
 
-		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
-			"TextAssociation" => new featureBinding<TextAssociation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"Subsection" => new featureBinding<Subsection>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"Infrastructure" => new featureBinding<Infrastructure>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"PrimaryAuxiliaryFacility" => new featureBinding<PrimaryAuxiliaryFacility>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"Demarcation" => new featureBinding<Demarcation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"JurisdictionalLimit" => new featureBinding<JurisdictionalLimit>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"LayoutDivision" => new featureBinding<LayoutDivision>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
+		public static featureBinding CreateFeatureBinding(string featureType, string association, string role) => $"{featureType}::{association}" switch {
+			"FeatureType::TextAssociation" => FeatureType.TextAssociation(role),
+			"HarbourPhysicalInfrastructure::Infrastructure" => HarbourPhysicalInfrastructure.Infrastructure(role),
+			"AnchorBerth::PrimaryAuxiliaryFacility" => AnchorBerth.PrimaryAuxiliaryFacility(role),
+			"AnchorageArea::LayoutDivision" => AnchorageArea.LayoutDivision(role),
+			"Berth::Demarcation" => Berth.Demarcation(role),
+			"Berth::LayoutDivision" => Berth.LayoutDivision(role),
+			"BerthPosition::Demarcation" => BerthPosition.Demarcation(role),
+			"BerthPosition::PrimaryAuxiliaryFacility" => BerthPosition.PrimaryAuxiliaryFacility(role),
+			"DockArea::LayoutDivision" => DockArea.LayoutDivision(role),
+			"DumpingGround::LayoutDivision" => DumpingGround.LayoutDivision(role),
+			"FenderLine::LayoutDivision" => FenderLine.LayoutDivision(role),
+			"HarbourAreaAdministrative::JurisdictionalLimit" => HarbourAreaAdministrative.JurisdictionalLimit(role),
+			"HarbourAreaAdministrative::LayoutDivision" => HarbourAreaAdministrative.LayoutDivision(role),
+			"HarbourAreaSection::LayoutDivision" => HarbourAreaSection.LayoutDivision(role),
+			"HarbourAreaSection::Subsection" => HarbourAreaSection.Subsection(role),
+			"HarbourAreaSection::Infrastructure" => HarbourAreaSection.Infrastructure(role),
+			"HarbourBasin::LayoutDivision" => HarbourBasin.LayoutDivision(role),
+			"MooringWarpingFacility::PrimaryAuxiliaryFacility" => MooringWarpingFacility.PrimaryAuxiliaryFacility(role),
+			"OuterLimit::JurisdictionalLimit" => OuterLimit.JurisdictionalLimit(role),
+			"PilotBoardingPlace::LayoutDivision" => PilotBoardingPlace.LayoutDivision(role),
+			"SeaplaneLandingArea::LayoutDivision" => SeaplaneLandingArea.LayoutDivision(role),
+			"Terminal::LayoutDivision" => Terminal.LayoutDivision(role),
+			"Terminal::Infrastructure" => Terminal.Infrastructure(role),
+			"TurningBasin::LayoutDivision" => TurningBasin.LayoutDivision(role),
+			"WaterwayArea::LayoutDivision" => WaterwayArea.LayoutDivision(role),
+			"TextPlacement::TextAssociation" => TextPlacement.TextAssociation(role),
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};

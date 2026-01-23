@@ -453,6 +453,7 @@ namespace TestAttributes
 
             #region S100_FC_InformationType
             var informationTypesKnown = new List<string>();
+            var informationAssociationCreators = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
 
@@ -473,6 +474,7 @@ namespace TestAttributes
                             KnownTypesComplex = attributesKnownComplex,
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                            informationAssociationCreators = informationAssociationCreators,
                         });
                         if (!success) {
                             notFinished = true;
@@ -498,6 +500,7 @@ namespace TestAttributes
 
             #region S100_FC_FeatureType
             var featureTypesKnown = new List<string>();
+            var featureAssociationCreators = new List<string>();
             {
                 var abstractTypesKnown = new List<string>();
 
@@ -521,6 +524,8 @@ namespace TestAttributes
                             KnownTypesComplex = attributesKnownComplex,
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                            informationAssociationCreators = informationAssociationCreators,
+                            featureAssociationCreators = featureAssociationCreators,
                         }, (b) => {
 
                         }, (b) => {
@@ -557,6 +562,7 @@ namespace TestAttributes
                 roslyn.AppendLine($"\tusing S100FC.{productId}.ComplexAttributes;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.InformationAssociation;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureAssociation;");
+                roslyn.AppendLine($"\tusing S100FC.{productId}.InformationTypes;");
                 roslyn.AppendLine($"\tusing S100FC.{productId}.FeatureTypes;");
                 roslyn.AppendLine();
 
@@ -597,27 +603,47 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\tpublic static class Extensions {");
 
-                roslyn.AppendLine("\t\tpublic static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {");
-                foreach (var informationAssociation in informationAssociationTypesKnown) {
-                    roslyn.AppendLine($"\t\t\t\"{informationAssociation}\" => new informationBinding<{informationAssociation}>() {{");
-                    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, informationType = informationType, informationId = informationId,");
-                    roslyn.AppendLine("\t\t\t},");
+                roslyn.AppendLine("\t\tpublic static informationBinding CreateInformationBinding(string informationType, string association) => $\"{informationType}::{association}\" switch {");
+                foreach (var informationAssociation in informationAssociationCreators) {
+                    roslyn.AppendLine($"\t\t\t{informationAssociation}");
                 }
                 roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
                 roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
                 roslyn.AppendLine("\t\t};");
                 roslyn.AppendLine();
 
-                roslyn.AppendLine("\t\tpublic static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {");
-                foreach (var featureAssociation in featureAssociationTypesKnown) {
-                    roslyn.AppendLine($"\t\t\t\"{featureAssociation}\" => new featureBinding<{featureAssociation}>() {{");
-                    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, featureType = featureType, featureId = featureId,");
-                    roslyn.AppendLine("\t\t\t},");
+                //roslyn.AppendLine("\t\tpublic static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {");
+                //foreach (var informationAssociation in informationAssociationTypesKnown) {
+                //    roslyn.AppendLine($"\t\t\t\"{informationAssociation}\" => new informationBinding<{informationAssociation}>() {{");
+                //    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, informationType = informationType, informationId = informationId,");
+                //    roslyn.AppendLine("\t\t\t},");
+                //}
+                //roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
+                //roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+                //roslyn.AppendLine("\t\t};");
+                //roslyn.AppendLine();
+
+
+                roslyn.AppendLine("\t\tpublic static featureBinding CreateFeatureBinding(string featureType, string association, string role) => $\"{featureType}::{association}\" switch {");
+                foreach (var featureAssociation in featureAssociationCreators) {
+                    roslyn.AppendLine($"\t\t\t{featureAssociation}");
                 }
                 roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
                 roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
                 roslyn.AppendLine("\t\t};");
                 roslyn.AppendLine();
+
+
+                //roslyn.AppendLine("\t\tpublic static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {");
+                //foreach (var featureAssociation in featureAssociationTypesKnown) {
+                //    roslyn.AppendLine($"\t\t\t\"{featureAssociation}\" => new featureBinding<{featureAssociation}>() {{");
+                //    roslyn.AppendLine("\t\t\t\troleType = roleType, role = role, featureType = featureType, featureId = featureId,");
+                //    roslyn.AppendLine("\t\t\t},");
+                //}
+                //roslyn.AppendLine("\t\t\t\"\" => throw new KeyNotFoundException(),");
+                //roslyn.AppendLine("\t\t\t_ => throw new KeyNotFoundException(),");
+                //roslyn.AppendLine("\t\t};");
+                //roslyn.AppendLine();
 
                 roslyn.AppendLine("\t\tpublic static JsonSerializerOptions AppendTypeInfoResolver(this JsonSerializerOptions jsonSerializerOptions) {");
                 roslyn.AppendLine("\t\t\tvar resolver = new System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver();");
@@ -682,6 +708,9 @@ namespace TestAttributes
             public IDictionary<string, string> KnownAttributeTypes { get; init; } = new Dictionary<string, string>();
 
             public IEnumerable<XElement> Attributes { get; init; } = [];
+
+            public ICollection<string> informationAssociationCreators { get; init; } = [];
+            public ICollection<string> featureAssociationCreators { get; init; } = [];
         }
 
         private bool ClassBuilder(StringBuilder roslyn, XElement element, string type, ClassBuilderHost host, Action<StringBuilder>? pre = default, Action<StringBuilder>? post = default) {
@@ -855,6 +884,8 @@ namespace TestAttributes
                     roslyn.AppendLine($"\t\t\troleType = \"{roleType}\",");
                     roslyn.AppendLine($"\t\t\trole = \"{role}\",");
                     roslyn.AppendLine($"\t\t}};");
+
+                    host.informationAssociationCreators.Add($"\"{code}::{association}\" => {code}.{association},");
                 }
                 if (informationBindings.Any())
                     roslyn.AppendLine();
@@ -911,6 +942,8 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\troleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,");
                         roslyn.AppendLine($"\t\t\trole = role,");
                         roslyn.AppendLine($"\t\t}};");
+
+                        host.featureAssociationCreators.Add($"\"{code}::{association}\" => {code}.{association}(role),");
                     }
                 }
             }

@@ -7266,6 +7266,7 @@ namespace S100FC.S123
 	using S100FC.S123.ComplexAttributes;
 	using S100FC.S123.InformationAssociation;
 	using S100FC.S123.FeatureAssociation;
+	using S100FC.S123.InformationTypes;
 	using S100FC.S123.FeatureTypes;
 
 	public class Summary : ISummary
@@ -7291,78 +7292,87 @@ namespace S100FC.S123
 	}
 
 	public static class Extensions {
-		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
-			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AssociatedRxN" => new informationBinding<AssociatedRxN>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityContact" => new informationBinding<AuthorityContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityHours" => new informationBinding<AuthorityHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AvailableQoS" => new informationBinding<AvailableQoS>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"BroadcastService" => new informationBinding<BroadcastService>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"BroadcastTransmission" => new informationBinding<BroadcastTransmission>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ConnectivityService" => new informationBinding<ConnectivityService>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ExceptionalWorkday" => new informationBinding<ExceptionalWorkday>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"InclusionType" => new informationBinding<InclusionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"LocationHours" => new informationBinding<LocationHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"PermissionType" => new informationBinding<PermissionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"RadioServiceControl" => new informationBinding<RadioServiceControl>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"relatedOrganisation" => new informationBinding<relatedOrganisation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceContact" => new informationBinding<ServiceContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceCoordination" => new informationBinding<ServiceCoordination>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"TMAS" => new informationBinding<TMAS>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"TransmissionService" => new informationBinding<TransmissionService>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
+		public static informationBinding CreateInformationBinding(string informationType, string association) => $"{informationType}::{association}" switch {
+			"InformationType::AdditionalInformation" => InformationType.AdditionalInformation,
+			"AbstractRxN::InclusionType" => AbstractRxN.InclusionType,
+			"AbstractRxN::relatedOrganisation" => AbstractRxN.relatedOrganisation,
+			"Applicability::InclusionType" => Applicability.InclusionType,
+			"Authority::AuthorityContact" => Authority.AuthorityContact,
+			"Authority::AuthorityHours" => Authority.AuthorityHours,
+			"BroadcastDetails::BroadcastTransmission" => BroadcastDetails.BroadcastTransmission,
+			"ContactDetails::AuthorityContact" => ContactDetails.AuthorityContact,
+			"NonStandardWorkingDay::ExceptionalWorkday" => NonStandardWorkingDay.ExceptionalWorkday,
+			"RadioControlCentre::AuthorityContact" => RadioControlCentre.AuthorityContact,
+			"RadioControlCentre::AuthorityHours" => RadioControlCentre.AuthorityHours,
+			"RadioControlCentre::TMAS" => RadioControlCentre.TMAS,
+			"ServiceHours::AuthorityHours" => ServiceHours.AuthorityHours,
+			"ServiceHours::ExceptionalWorkday" => ServiceHours.ExceptionalWorkday,
+			"TelemedicalAssistanceService::RadioServiceControl" => TelemedicalAssistanceService.RadioServiceControl,
+			"TransmissionDetails::BroadcastTransmission" => TransmissionDetails.BroadcastTransmission,
+			"FeatureType::AssociatedRxN" => FeatureType.AssociatedRxN,
+			"FeatureType::PermissionType" => FeatureType.PermissionType,
+			"FeatureType::AdditionalInformation" => FeatureType.AdditionalInformation,
+			"ConnectivitySubscriptionArea::ConnectivityService" => ConnectivitySubscriptionArea.ConnectivityService,
+			"ConnectivitySubscriptionArea::ServiceContact" => ConnectivitySubscriptionArea.ServiceContact,
+			"ConnectivitySubscriptionArea::LocationHours" => ConnectivitySubscriptionArea.LocationHours,
+			"ConnectivitySubscriptionArea::AvailableQoS" => ConnectivitySubscriptionArea.AvailableQoS,
+			"GMDSSArea::ServiceCoordination" => GMDSSArea.ServiceCoordination,
+			"GMDSSArea::RadioServiceControl" => GMDSSArea.RadioServiceControl,
+			"GMDSSArea::ServiceContact" => GMDSSArea.ServiceContact,
+			"GMDSSArea::LocationHours" => GMDSSArea.LocationHours,
+			"METAREA::ServiceCoordination" => METAREA.ServiceCoordination,
+			"METAREA::ServiceContact" => METAREA.ServiceContact,
+			"METAREA::LocationHours" => METAREA.LocationHours,
+			"METAREA::BroadcastService" => METAREA.BroadcastService,
+			"METAREA::TransmissionService" => METAREA.TransmissionService,
+			"NAVAREA::ServiceCoordination" => NAVAREA.ServiceCoordination,
+			"NAVAREA::ServiceContact" => NAVAREA.ServiceContact,
+			"NAVAREA::LocationHours" => NAVAREA.LocationHours,
+			"NAVAREA::BroadcastService" => NAVAREA.BroadcastService,
+			"NAVAREA::TransmissionService" => NAVAREA.TransmissionService,
+			"NAVTEXServiceArea::ServiceCoordination" => NAVTEXServiceArea.ServiceCoordination,
+			"NAVTEXServiceArea::ServiceContact" => NAVTEXServiceArea.ServiceContact,
+			"NAVTEXServiceArea::LocationHours" => NAVTEXServiceArea.LocationHours,
+			"NAVTEXServiceArea::BroadcastService" => NAVTEXServiceArea.BroadcastService,
+			"NAVTEXServiceArea::TransmissionService" => NAVTEXServiceArea.TransmissionService,
+			"RadioServiceArea::ServiceCoordination" => RadioServiceArea.ServiceCoordination,
+			"RadioServiceArea::RadioServiceControl" => RadioServiceArea.RadioServiceControl,
+			"RadioServiceArea::ServiceContact" => RadioServiceArea.ServiceContact,
+			"RadioServiceArea::LocationHours" => RadioServiceArea.LocationHours,
+			"RadioServiceArea::BroadcastService" => RadioServiceArea.BroadcastService,
+			"RadioServiceArea::TransmissionService" => RadioServiceArea.TransmissionService,
+			"RadioStation::ServiceCoordination" => RadioStation.ServiceCoordination,
+			"RadioStation::RadioServiceControl" => RadioStation.RadioServiceControl,
+			"RadioStation::ServiceContact" => RadioStation.ServiceContact,
+			"RadioStation::LocationHours" => RadioStation.LocationHours,
+			"RadioStation::BroadcastService" => RadioStation.BroadcastService,
+			"RadioStation::TransmissionService" => RadioStation.TransmissionService,
+			"SearchAndRescueRegion::ServiceCoordination" => SearchAndRescueRegion.ServiceCoordination,
+			"SearchAndRescueRegion::RadioServiceControl" => SearchAndRescueRegion.RadioServiceControl,
+			"SearchAndRescueRegion::TMAS" => SearchAndRescueRegion.TMAS,
+			"SearchAndRescueRegion::ServiceContact" => SearchAndRescueRegion.ServiceContact,
+			"WeatherForecastAndWarningArea::ServiceCoordination" => WeatherForecastAndWarningArea.ServiceCoordination,
+			"WeatherForecastAndWarningArea::ServiceContact" => WeatherForecastAndWarningArea.ServiceContact,
+			"WeatherForecastAndWarningArea::LocationHours" => WeatherForecastAndWarningArea.LocationHours,
+			"WeatherForecastAndWarningArea::BroadcastService" => WeatherForecastAndWarningArea.BroadcastService,
+			"WeatherForecastAndWarningArea::TransmissionService" => WeatherForecastAndWarningArea.TransmissionService,
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
 
-		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
-			"coreAggregation" => new featureBinding<coreAggregation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"fuzzyZoneAggregation" => new featureBinding<fuzzyZoneAggregation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"ServiceProvisionArea" => new featureBinding<ServiceProvisionArea>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
+		public static featureBinding CreateFeatureBinding(string featureType, string association, string role) => $"{featureType}::{association}" switch {
+			"ConnectivitySubscriptionArea::ServiceProvisionArea" => ConnectivitySubscriptionArea.ServiceProvisionArea(role),
+			"GMDSSArea::ServiceProvisionArea" => GMDSSArea.ServiceProvisionArea(role),
+			"IndeterminateZone::fuzzyZoneAggregation" => IndeterminateZone.fuzzyZoneAggregation(role),
+			"METAREA::ServiceProvisionArea" => METAREA.ServiceProvisionArea(role),
+			"NAVAREA::ServiceProvisionArea" => NAVAREA.ServiceProvisionArea(role),
+			"NAVTEXServiceArea::ServiceProvisionArea" => NAVTEXServiceArea.ServiceProvisionArea(role),
+			"RadioServiceArea::ServiceProvisionArea" => RadioServiceArea.ServiceProvisionArea(role),
+			"RadioServiceArea::coreAggregation" => RadioServiceArea.coreAggregation(role),
+			"RadioStation::ServiceProvisionArea" => RadioStation.ServiceProvisionArea(role),
+			"WeatherForecastAndWarningArea::ServiceProvisionArea" => WeatherForecastAndWarningArea.ServiceProvisionArea(role),
+			"FuzzyAreaAggregate::fuzzyZoneAggregation" => FuzzyAreaAggregate.fuzzyZoneAggregation(role),
+			"RadioServiceAreaAggregate::coreAggregation" => RadioServiceAreaAggregate.coreAggregation(role),
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};

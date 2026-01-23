@@ -7043,6 +7043,7 @@ namespace S100FC.S127
 	using S100FC.S127.ComplexAttributes;
 	using S100FC.S127.InformationAssociation;
 	using S100FC.S127.FeatureAssociation;
+	using S100FC.S127.InformationTypes;
 	using S100FC.S127.FeatureTypes;
 
 	public class Summary : ISummary
@@ -7068,69 +7069,45 @@ namespace S100FC.S127
 	}
 
 	public static class Extensions {
-		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
-			"AdditionalInformation" => new informationBinding<AdditionalInformation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityContact" => new informationBinding<AuthorityContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AuthorityHours" => new informationBinding<AuthorityHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"AssociatedRxN" => new informationBinding<AssociatedRxN>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ExceptionalWorkday" => new informationBinding<ExceptionalWorkday>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"InclusionType" => new informationBinding<InclusionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"PermissionType" => new informationBinding<PermissionType>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"RelatedOrganisation" => new informationBinding<RelatedOrganisation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ReportingAuthority" => new informationBinding<ReportingAuthority>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ReportingRequirement" => new informationBinding<ReportingRequirement>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceContact" => new informationBinding<ServiceContact>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"ServiceControl" => new informationBinding<ServiceControl>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"SpatialAssociation" => new informationBinding<SpatialAssociation>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"LocationHours" => new informationBinding<LocationHours>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"TrafficServiceReport" => new informationBinding<TrafficServiceReport>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
+		public static informationBinding CreateInformationBinding(string informationType, string association) => $"{informationType}::{association}" switch {
+			"AbstractRxN::InclusionType" => AbstractRxN.InclusionType,
+			"AbstractRxN::RelatedOrganisation" => AbstractRxN.RelatedOrganisation,
+			"Applicability::InclusionType" => Applicability.InclusionType,
+			"Authority::AuthorityContact" => Authority.AuthorityContact,
+			"Authority::RelatedOrganisation" => Authority.RelatedOrganisation,
+			"Authority::AuthorityHours" => Authority.AuthorityHours,
+			"ContactDetails::AuthorityContact" => ContactDetails.AuthorityContact,
+			"ServiceHours::ExceptionalWorkday" => ServiceHours.ExceptionalWorkday,
+			"ServiceHours::AuthorityHours" => ServiceHours.AuthorityHours,
+			"ShipReport::ReportingRequirement" => ShipReport.ReportingRequirement,
+			"ShipReport::ReportingAuthority" => ShipReport.ReportingAuthority,
+			"FeatureType::PermissionType" => FeatureType.PermissionType,
+			"FeatureType::AssociatedRxN" => FeatureType.AssociatedRxN,
+			"FeatureType::AdditionalInformation" => FeatureType.AdditionalInformation,
+			"OrganizationContactArea::ServiceContact" => OrganizationContactArea.ServiceContact,
+			"SupervisedArea::ServiceControl" => SupervisedArea.ServiceControl,
+			"ReportableServiceArea::TrafficServiceReport" => ReportableServiceArea.TrafficServiceReport,
+			"MilitaryPracticeArea::LocationHours" => MilitaryPracticeArea.LocationHours,
+			"PilotService::LocationHours" => PilotService.LocationHours,
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
 
-		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
-			"ServiceProvisionArea" => new featureBinding<ServiceProvisionArea>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"PilotageDistrictAssociation" => new featureBinding<PilotageDistrictAssociation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"TextAssociation" => new featureBinding<TextAssociation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"TrafficControlServiceAggregation" => new featureBinding<TrafficControlServiceAggregation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
+		public static featureBinding CreateFeatureBinding(string featureType, string association, string role) => $"{featureType}::{association}" switch {
+			"FeatureType::TextAssociation" => FeatureType.TextAssociation(role),
+			"LocalPortBroadcastServiceArea::TrafficControlServiceAggregation" => LocalPortBroadcastServiceArea.TrafficControlServiceAggregation(role),
+			"PilotBoardingPlace::PilotageDistrictAssociation" => PilotBoardingPlace.PilotageDistrictAssociation(role),
+			"PilotBoardingPlace::ServiceProvisionArea" => PilotBoardingPlace.ServiceProvisionArea(role),
+			"PilotService::ServiceProvisionArea" => PilotService.ServiceProvisionArea(role),
+			"PilotageDistrict::PilotageDistrictAssociation" => PilotageDistrict.PilotageDistrictAssociation(role),
+			"PilotageDistrict::ServiceProvisionArea" => PilotageDistrict.ServiceProvisionArea(role),
+			"RadarRange::TrafficControlServiceAggregation" => RadarRange.TrafficControlServiceAggregation(role),
+			"RadioCallingInPoint::TrafficControlServiceAggregation" => RadioCallingInPoint.TrafficControlServiceAggregation(role),
+			"ShipReportingServiceArea::TrafficControlServiceAggregation" => ShipReportingServiceArea.TrafficControlServiceAggregation(role),
+			"SignalStationWarning::TrafficControlServiceAggregation" => SignalStationWarning.TrafficControlServiceAggregation(role),
+			"SignalStationTraffic::TrafficControlServiceAggregation" => SignalStationTraffic.TrafficControlServiceAggregation(role),
+			"VesselTrafficServiceArea::TrafficControlServiceAggregation" => VesselTrafficServiceArea.TrafficControlServiceAggregation(role),
+			"TextPlacement::TextAssociation" => TextPlacement.TextAssociation(role),
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};

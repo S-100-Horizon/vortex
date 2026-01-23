@@ -2308,6 +2308,7 @@ namespace S100FC.S124
 	using S100FC.S124.ComplexAttributes;
 	using S100FC.S124.InformationAssociation;
 	using S100FC.S124.FeatureAssociation;
+	using S100FC.S124.InformationTypes;
 	using S100FC.S124.FeatureTypes;
 
 	public class Summary : ISummary
@@ -2333,24 +2334,19 @@ namespace S100FC.S124
 	}
 
 	public static class Extensions {
-		public static object CreateInformationBinding(string association, string roleType, string role, string informationType, string informationId) => association switch {
-			"navwarnPreambleContent" => new informationBinding<navwarnPreambleContent>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
-			"navwarnReferences" => new informationBinding<navwarnReferences>() {
-				roleType = roleType, role = role, informationType = informationType, informationId = informationId,
-			},
+		public static informationBinding CreateInformationBinding(string informationType, string association) => $"{informationType}::{association}" switch {
+			"References::navwarnReferences" => References.navwarnReferences,
+			"NavwarnPreamble::navwarnReferences" => NavwarnPreamble.navwarnReferences,
+			"NavwarnPart::navwarnPreambleContent" => NavwarnPart.navwarnPreambleContent,
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
 
-		public static object CreateFeatureBinding(string association, string roleType, string role, string featureType, string featureId) => association switch {
-			"TextAssociation" => new featureBinding<TextAssociation>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
-			"areaAffected" => new featureBinding<areaAffected>() {
-				roleType = roleType, role = role, featureType = featureType, featureId = featureId,
-			},
+		public static featureBinding CreateFeatureBinding(string featureType, string association, string role) => $"{featureType}::{association}" switch {
+			"NavwarnPart::areaAffected" => NavwarnPart.areaAffected(role),
+			"NavwarnPart::TextAssociation" => NavwarnPart.TextAssociation(role),
+			"NavwarnAreaAffected::areaAffected" => NavwarnAreaAffected.areaAffected(role),
+			"TextPlacement::TextAssociation" => TextPlacement.TextAssociation(role),
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
