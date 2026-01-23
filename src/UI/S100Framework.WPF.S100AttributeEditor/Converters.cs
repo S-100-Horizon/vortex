@@ -116,7 +116,7 @@ namespace S100Framework.WPF.Converters
     public class CalculateExpanderWidthConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            return (Double)value - 0;
+            return (Double)value - 18;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => Binding.DoNothing;

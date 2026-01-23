@@ -25,4 +25,10 @@
     <ProjectReference Include="..\..\UI\S100Framework.WPF.S100AttributeEditor\S100Framework.WPF.S100AttributeEditor.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="ArcGIS.Desktop.Extensions">
+      <HintPath>C:\Program Files\ArcGIS\Pro\bin\Extensions\DesktopExtensions\ArcGIS.Desktop.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

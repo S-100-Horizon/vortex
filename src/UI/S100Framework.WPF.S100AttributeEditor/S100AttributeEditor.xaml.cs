@@ -142,6 +142,15 @@ namespace S100Framework.WPF
                         }
                     }
                 }
+                if (e.parameter is ComplexAttributeViewModel complexAttribute) {
+                    if(e.parent is ItemsControl itemsControl) {
+                        var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
+                        var index = collection.IndexOf(complexAttribute);
+                        if (index >= 0) {
+                            collection.RemoveAt(index);
+                        }
+                    }
+                }
             }
         }
 

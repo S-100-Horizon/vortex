@@ -6,19 +6,24 @@
     xmlns:local="clr-namespace:S100Framework.WPF"
     xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
     xmlns:converters="clr-namespace:S100Framework.WPF.Converters"
-    xmlns:validation="clr-namespace:S100Framework.WPF.Validation">
+    xmlns:validation="clr-namespace:S100Framework.WPF.Validation"
+    xmlns:extensions="clr-namespace:ArcGIS.Desktop.Extensions;assembly=ArcGIS.Desktop.Extensions">
+
+    <ResourceDictionary.MergedDictionaries>
+        <extensions:DesignOnlyResourceDictionary Source="pack://application:,,,/ArcGIS.Desktop.Framework;component\Themes\Default.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
     <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
     <converters:AttributeBindingDefinitionConverter x:Key="AttributeBindingDefinitionConverter"/>
     <converters:EnumSourceConverter x:Key="EnumSourceConverter"/>
     <converters:SelectedObjectSourceConverter x:Key="SelectedObjectSourceConverter"/>
 
-    <Style x:Key="DeleteIconButtonStyle" TargetType="Button">
+    <Style x:Key="DeleteComplexAttributeIconButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="18"/>
         <Setter Property="Height" Value="18"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="Cursor" Value="Hand"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -27,17 +32,6 @@
                         <Path x:Name="Icon" Fill="#E53935" Data="M7,0 A7,7 0 1 1 7,14 A7,7 0 1 1 7,0 Z"/>
                         <Path x:Name="X" Fill="White" Data="M4.02,3.11 L7,6.06 L9.96,3.11 L10.89,4.02 L7.93,7 L10.89,9.96 L9.96,10.89 L7,7.93 L4.02,10.89 L3.11,9.96 L6.06,7 L3.11,4.02 Z"/>
                     </Grid>
-
-                    <!--<Grid>
-                        <Path x:Name="Icon"
-                          Stretch="Uniform"
-                          Fill="#E53935"
-                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
-
-                        <Path x:Name="X"
-                          Fill="White"
-                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
-                    </Grid>-->
 
                     <ControlTemplate.Triggers>
                         <!-- Hover -->
@@ -59,15 +53,22 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+
+        <Setter Property="Visibility" Value="Visible"/>
+        
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=DockPanel, AncestorLevel=1}}" Value="True">
+                <Setter Property="Visibility" Value="Visible" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
-    <Style x:Key="DeleteContentItemButtonStyle" TargetType="Button">
+    <Style x:Key="DeleteSimpleAttributeIconButtonStyle" TargetType="Button">
         <Setter Property="Width" Value="18"/>
         <Setter Property="Height" Value="18"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="white"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Padding" Value="0"/>
-        <!--<Setter Property="Cursor" Value="Hand"/>-->
 
         <Setter Property="Template">
             <Setter.Value>
@@ -76,20 +77,6 @@
                         <Path x:Name="Icon" Fill="#E53935" Data="M7,0 A7,7 0 1 1 7,14 A7,7 0 1 1 7,0 Z"/>
                         <Path x:Name="X" Fill="White" Data="M4.02,3.11 L7,6.06 L9.96,3.11 L10.89,4.02 L7.93,7 L10.89,9.96 L9.96,10.89 L7,7.93 L4.02,10.89 L3.11,9.96 L6.06,7 L3.11,4.02 Z"/>
                     </Grid>
-                    <!--<Grid>
-                        <Grid.LayoutTransform>
-                            <ScaleTransform ScaleX="0.777" ScaleY="0.777"/>
-                        </Grid.LayoutTransform>
-
-                        <Path x:Name="Icon"
-                          Stretch="Uniform"
-                          Fill="#E53935"
-                          Data="M9,0 A9,9 0 1 1 9,18 A9,9 0 1 1 9,0 Z"/>
-
-                        <Path x:Name="X"
-                          Fill="White"
-                          Data="M5.2,4 L9,7.8 L12.8,4 L14,5.2 L10.2,9 L14,12.8 L12.8,14 L9,10.2 L5.2,14 L4,12.8 L7.8,9 L4,5.2 Z"/>
-                    </Grid>-->
 
                     <ControlTemplate.Triggers>
                         <!-- Hover -->
@@ -128,7 +115,6 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ComboBox">
                     <Grid>
-                        <!-- MAIN BUTTON SURFACE -->
                         <ToggleButton x:Name="ToggleButton" Background="Transparent" BorderBrush="Transparent" BorderThickness="{TemplateBinding BorderThickness}" Focusable="False" 
                                       IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}" ClickMode="Press">
                             <Grid Width="18" Height="18">
@@ -222,16 +208,18 @@
 
     <!-- Template for Booleans -->
     <DataTemplate x:Key="BooleanEditorTemplate">
-        <CheckBox IsChecked="{Binding value}" VerticalAlignment="Center" IsThreeState="True"/>
+        <CheckBox IsChecked="{Binding value}" VerticalAlignment="Center" IsThreeState="True" Style="{DynamicResource Esri_CheckboxToggleSwitch}"/>
     </DataTemplate>
 
     <DataTemplate x:Key="EnumEditorTemplate">
         <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}" 
-              DisplayMemberPath="label"
-              SelectedValue="{Binding value}"
-              SelectedValuePath="code"
-              IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"                     
-              Padding="2"/>
+                  DisplayMemberPath="label"
+                  SelectedValue="{Binding value}"
+                  SelectedValuePath="code"
+                  IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"                     
+                  Padding="2"
+                  Background="{DynamicResource Esri_BackgroundPressedBrush}" 
+                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>
     </DataTemplate>
 
     <!--<DataTemplate x:Key="ComplexEditorTemplate">

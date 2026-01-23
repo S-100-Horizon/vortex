@@ -54,7 +54,7 @@ namespace TestYAML
 
         [Fact]
         public void Test_CreateBinding() {
-            var binding = S100FC.S101.Extensions.CreateFeatureBinding("StructureEquipment", "roletype", "theStructure", "Bridge", "110:2348869:1");
+            var binding = S100FC.S101.Extensions.CreateFeatureBinding("Bridge", "StructureEquipment", "theStructure");
 
             System.Diagnostics.Debugger.Break();
         }
