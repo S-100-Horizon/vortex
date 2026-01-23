@@ -2,13 +2,8 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100FC.S101;
-using S100FC.S101.FeatureAssociation;
-using S100FC.S101.FeatureTypes;
-using S100FC.S128.SimpleAttributes;
 using S100Framework.Applications;
-using S100Framework.Applications.Singletons;
 using Serilog;
-using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using static S100Framework.Applications.VortexLoader;
@@ -112,12 +107,13 @@ namespace S100FC.Applications
                     if (feature.FeatureAssociation != null && feature.FeatureAssociation.Count != 0) {
                         var featureAssociations = new List<featureBinding>();
 
-                        foreach (var fa in feature.FeatureAssociation) {
-                            // todo: fix when helper method is ready
-                            var binding = Extensions.CreateFeatureBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as featureBinding;
+                        foreach (var featureAssociation in feature.FeatureAssociation) {
+                            var binding = Extensions.CreateFeatureBinding(feature.Name!, featureAssociation.Name, featureAssociation.Role);
+                            // Set featureId on featurebindings
+                            binding.featureId = featureAssociation.To;
+
                             featureAssociations.Add(binding);
                         }
-
 
                         var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations, jsonSerializerOptions);
                         rowbuffer["featurebindings"] = featureAssociationJSON;
@@ -127,9 +123,9 @@ namespace S100FC.Applications
                     if (feature.Association != null && feature.Association.Count != 0) {
                         var informationAssociations = new List<informationBinding>();
 
-                        foreach (var fa in feature.Association) {
-                            // todo: fix when helper method is ready
-                            var binding = Extensions.CreateInformationBinding(fa.Name, "roletype", fa.Role, feature.Name!, fa.To) as informationBinding;
+                        foreach (var informationAssociation in feature.Association) {
+                            var binding = Extensions.CreateInformationBinding(feature.Name!, informationAssociation.Name);
+
                             informationAssociations.Add(binding);
                         }
 
@@ -138,7 +134,12 @@ namespace S100FC.Applications
                     }
 
                     // Set Usageband
-                    rowbuffer["usageband"] = usageBand;
+                    try {
+                        rowbuffer["usageband"] = usageBand;
+                    } catch(Exception ex) {
+                        Log.Error("Could not set usageband for feature {feature}. Exception: {ex}", feature.Name, ex.Message);
+                    }
+                 
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
                     rowbuffer["json"] = json;
