@@ -75,7 +75,7 @@ namespace S100FC.Applications
                 }
 
                 var match = Regex.Match(dataset.CellName, @"101DK00(\d)");
-                var usageBand = int.Parse(match.Groups[1].Value);
+                int? usageBand = match.Success ? int.Parse(match.Groups[1].Value) : null;
 
                 var foreignFoids = new Dictionary<string, string>();
 
@@ -138,15 +138,7 @@ namespace S100FC.Applications
                     }
 
                     // Set Usageband
-                    try {
-                        if (geometry != null)
-                            rowbuffer["usageband"] = usageBand;
-                    }
-                    catch (Exception ex) {
-                        Log.Error("Regex match error: {message}. feature: {featuerename}: ", ex.Message, feature.Name);
-                    }
-
-
+                    rowbuffer["usageband"] = usageBand;
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
                     rowbuffer["json"] = json;

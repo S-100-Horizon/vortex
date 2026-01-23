@@ -114,14 +114,14 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("{name}/electronicproduct", Name = "ElectronicProduct")]
-        public async Task<IActionResult> CreateElectronicProduct(string name, [FromBody] CreateProductRequest product) {
+        [HttpPost()]
+        public async Task<IActionResult> CreateElectronicProduct([FromBody] CreateProductRequest product) {
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(name) != null) {
+            if (_electronicProductManager.ElectronicProduct(product.Name) != null) {
                 response.Success = false;
-                response.Message = $"An electronic product with name '{name}' already exists.";
+                response.Message = $"An electronic product with name '{product.Name}' already exists.";
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return StatusCode(StatusCodes.Status404NotFound, response);
             }
@@ -145,7 +145,7 @@ namespace ProductCatalogueService.Controllers
                 _ => throw new ArgumentNullException(),
             };
 
-            await _electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, boundary);
+            await _electronicProductManager.CreateElectronicProductAsync(product.Name, productSpecification, specificUsage, boundary);
 
             response.DurationMs = sw.ElapsedMilliseconds;
 
@@ -261,11 +261,11 @@ namespace ProductCatalogueService.Controllers
         /// <summary>
         /// Imports all existing products from a S-57 database
         /// </summary>
-        /// <param name="createAll"> If true, creates a new dataset for each product, may take 5-10 minutes to complete.</param>
+        /// <param name="createAll"> If set to true, will create a new dataset for each product, and may take up to 10 minutes to complete.</param>
         /// <returns>An collection with all imported productnames.</returns>
         [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("load", Name = "LoadElectronicProducts")]
+        [HttpPost("import", Name = "LoadElectronicProducts")]
         public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
             var response = new ApiResponse<string[]>();
             var sw = Stopwatch.StartNew();
@@ -277,8 +277,6 @@ namespace ProductCatalogueService.Controllers
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
-
-            //s57 = "C:\\Geodatastyrelsen\\gdbs\\s100edX.gdb"; // For testing only
 
             var tasks = new List<Task>();
             await productManager.Dispatch(() => {

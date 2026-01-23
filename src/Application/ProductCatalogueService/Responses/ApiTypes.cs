@@ -40,6 +40,7 @@ namespace ProductCatalogueService
 
         public class CreateProductRequest
         {
+            public required string Name { get; set; } 
             public JsonElement Aoi { get; set; }
             public SpecificUsage UsageBand { get; set; }
         }
