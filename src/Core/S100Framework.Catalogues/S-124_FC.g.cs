@@ -2149,11 +2149,11 @@ namespace S100FC.S124.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.areaAffected> areaAffected(string role) => new featureBinding<FeatureAssociation.areaAffected> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("areaAffected") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -2188,7 +2188,7 @@ namespace S100FC.S124.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.areaAffected> areaAffected(string role) => new featureBinding<FeatureAssociation.areaAffected> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("areaAffected") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -2290,7 +2290,7 @@ namespace S100FC.S124.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion

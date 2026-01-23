@@ -4224,7 +4224,7 @@ namespace S100FC.S122.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -4818,7 +4818,7 @@ namespace S100FC.S122.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion

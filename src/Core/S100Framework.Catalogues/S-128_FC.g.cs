@@ -3761,7 +3761,7 @@ namespace S100FC.S128.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ProductMapping> ProductMapping(string role) => new featureBinding<FeatureAssociation.ProductMapping> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ProductMapping") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -4009,7 +4009,7 @@ namespace S100FC.S128.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.Correlated> Correlated(string role) => new featureBinding<FeatureAssociation.Correlated> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Correlated") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion

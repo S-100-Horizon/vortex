@@ -4996,7 +4996,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5333,7 +5333,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5594,11 +5594,11 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.PilotageDistrictAssociation> PilotageDistrictAssociation(string role) => new featureBinding<FeatureAssociation.PilotageDistrictAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PilotageDistrictAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5726,7 +5726,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5790,11 +5790,11 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.PilotageDistrictAssociation> PilotageDistrictAssociation(string role) => new featureBinding<FeatureAssociation.PilotageDistrictAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PilotageDistrictAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5976,7 +5976,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6108,7 +6108,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6316,7 +6316,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6398,7 +6398,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6480,7 +6480,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6648,7 +6648,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TrafficControlServiceAggregation> TrafficControlServiceAggregation(string role) => new featureBinding<FeatureAssociation.TrafficControlServiceAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TrafficControlServiceAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7025,7 +7025,7 @@ namespace S100FC.S127.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion

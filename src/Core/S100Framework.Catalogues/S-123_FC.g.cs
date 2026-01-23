@@ -5699,7 +5699,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5842,7 +5842,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -5899,7 +5899,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.fuzzyZoneAggregation> fuzzyZoneAggregation(string role) => new featureBinding<FeatureAssociation.fuzzyZoneAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("fuzzyZoneAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6029,7 +6029,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6159,7 +6159,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6327,7 +6327,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6514,11 +6514,11 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.coreAggregation> coreAggregation(string role) => new featureBinding<FeatureAssociation.coreAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("coreAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6734,7 +6734,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6983,7 +6983,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.ServiceProvisionArea> ServiceProvisionArea(string role) => new featureBinding<FeatureAssociation.ServiceProvisionArea> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("ServiceProvisionArea") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7019,7 +7019,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.fuzzyZoneAggregation> fuzzyZoneAggregation(string role) => new featureBinding<FeatureAssociation.fuzzyZoneAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("fuzzyZoneAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7055,7 +7055,7 @@ namespace S100FC.S123.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.coreAggregation> coreAggregation(string role) => new featureBinding<FeatureAssociation.coreAggregation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("coreAggregation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion

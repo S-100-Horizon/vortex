@@ -939,7 +939,7 @@ namespace TestAttributes
                         if (knownBindings.Contains(association)) continue;
                         knownBindings.Add(association);
                         roslyn.AppendLine($"\t\tpublic static featureBinding<FeatureAssociation.{association}> {association}(string role) => new featureBinding<FeatureAssociation.{association}> {{");
-                        roslyn.AppendLine($"\t\t\troleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,");
+                        roslyn.AppendLine($"\t\t\troleType = featureBindingsDefinitions.Single(binding => binding.association.Equals(\"{association}\") && binding.role.Equals(role)).roleType,");
                         roslyn.AppendLine($"\t\t\trole = role,");
                         roslyn.AppendLine($"\t\t}};");
 

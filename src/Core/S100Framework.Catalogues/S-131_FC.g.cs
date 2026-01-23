@@ -6246,7 +6246,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6356,7 +6356,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Infrastructure") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6487,7 +6487,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PrimaryAuxiliaryFacility") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -6620,7 +6620,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7004,11 +7004,11 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.Demarcation> Demarcation(string role) => new featureBinding<FeatureAssociation.Demarcation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Demarcation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7132,11 +7132,11 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.Demarcation> Demarcation(string role) => new featureBinding<FeatureAssociation.Demarcation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Demarcation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PrimaryAuxiliaryFacility") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7322,7 +7322,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7542,7 +7542,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7598,7 +7598,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -7876,11 +7876,11 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.JurisdictionalLimit> JurisdictionalLimit(string role) => new featureBinding<FeatureAssociation.JurisdictionalLimit> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("JurisdictionalLimit") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8033,15 +8033,15 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.Subsection> Subsection(string role) => new featureBinding<FeatureAssociation.Subsection> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Subsection") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Infrastructure") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8148,7 +8148,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8509,7 +8509,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> PrimaryAuxiliaryFacility(string role) => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PrimaryAuxiliaryFacility") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8771,7 +8771,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.JurisdictionalLimit> JurisdictionalLimit(string role) => new featureBinding<FeatureAssociation.JurisdictionalLimit> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("JurisdictionalLimit") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8891,7 +8891,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -8998,7 +8998,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -9265,11 +9265,11 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		public static featureBinding<FeatureAssociation.Infrastructure> Infrastructure(string role) => new featureBinding<FeatureAssociation.Infrastructure> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("Infrastructure") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -9376,7 +9376,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -9483,7 +9483,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.LayoutDivision> LayoutDivision(string role) => new featureBinding<FeatureAssociation.LayoutDivision> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("LayoutDivision") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
@@ -9913,7 +9913,7 @@ namespace S100FC.S131.FeatureTypes
 			];
 
 		public static featureBinding<FeatureAssociation.TextAssociation> TextAssociation(string role) => new featureBinding<FeatureAssociation.TextAssociation> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.role.Equals(role)).roleType,
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("TextAssociation") && binding.role.Equals(role)).roleType,
 			role = role,
 		};
 		#endregion
