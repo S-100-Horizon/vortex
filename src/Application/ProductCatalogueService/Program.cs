@@ -25,7 +25,7 @@ namespace ProductCatalogueService
                      .Enrich.WithProperty("MachineName", Environment.MachineName)
                      .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose)
                      .WriteTo.File("ProductCatalogue.log",
-                            rollingInterval: RollingInterval.Month,
+                            rollingInterval: RollingInterval.Infinite,
                             retainedFileCountLimit: 1,
                             shared: true,
                             outputTemplate: outputTemplate);
@@ -44,15 +44,15 @@ namespace ProductCatalogueService
             // Add services to the container.
             //  builder.Services.AddControllers();
             builder.Services.AddControllers()
-     .AddJsonOptions(options => {
-         var o = options.JsonSerializerOptions;
+             .AddJsonOptions(options => {
+                 var o = options.JsonSerializerOptions;
 
-         o.WriteIndented = false;
-         o.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
-         o.PropertyNameCaseInsensitive = true;
-         o.PropertyNamingPolicy = null;
-         o.AppendTypeInfoResolver();
-     });
+                 o.WriteIndented = false;
+                 o.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
+                 o.PropertyNameCaseInsensitive = true;
+                 o.PropertyNamingPolicy = null;
+                 o.AppendTypeInfoResolver();
+             });
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -106,8 +106,7 @@ namespace ProductCatalogueService
 
             app.UseAuthorization();
 
-            app.Use(async (context, next) =>
-            {
+            app.Use(async (context, next) => {
                 if (context.Request.Path == "/") {
                     context.Response.Redirect("/swagger");
                     return;
