@@ -1,7 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel;
-using Xunit.Abstractions;
-using IO = System.IO;
+﻿using Xunit.Abstractions;
 
 namespace TestS100Framework
 {

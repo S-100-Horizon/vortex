@@ -2,7 +2,6 @@
 using S100Framework.WPF.ViewModel;
 using System.Globalization;
 using System.Reflection;
-using System.Windows;
 using System.Windows.Data;
 
 namespace S100Framework.WPF.Converters
@@ -39,7 +38,7 @@ namespace S100Framework.WPF.Converters
 
             if (values[1] is S100AttributeEditor attributeEditor) {
                 return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
-            }            
+            }
             return false;
         }
 
@@ -54,7 +53,7 @@ namespace S100Framework.WPF.Converters
     public class EnumSourceConverter : IValueConverter
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            if(value is SimpleAttributeViewModel simpleAttributeViewModel) {
+            if (value is SimpleAttributeViewModel simpleAttributeViewModel) {
                 if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {
                     var method = propertyValue.GetType().GetMethod("get_listedValues", BindingFlags.Public | BindingFlags.Static);
                     return method!.Invoke(null, new object[] { /* parameters */ });
@@ -105,7 +104,7 @@ namespace S100Framework.WPF.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             var element = ((System.Windows.FrameworkElement)value);
 
-            return 200 - element.Margin.Left*2;
+            return 200 - element.Margin.Left * 2;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

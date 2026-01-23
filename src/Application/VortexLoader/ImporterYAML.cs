@@ -136,10 +136,11 @@ namespace S100FC.Applications
                     // Set Usageband
                     try {
                         rowbuffer["usageband"] = usageBand;
-                    } catch(Exception ex) {
+                    }
+                    catch (Exception ex) {
                         Log.Error("Could not set usageband for feature {feature}. Exception: {ex}", feature.Name, ex.Message);
                     }
-                 
+
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
                     rowbuffer["json"] = json;
@@ -164,7 +165,7 @@ namespace S100FC.Applications
                         bufferSurface["shape"] = geometry;
                         using var row = fcSurface.CreateRow(bufferSurface);
                     }
-                    else if(geometry is null) {     // NoGeometry feature
+                    else if (geometry is null) {     // NoGeometry feature
                         using var row = tableFeatureType.CreateRow(bufferFeatureType);
                     }
                 }

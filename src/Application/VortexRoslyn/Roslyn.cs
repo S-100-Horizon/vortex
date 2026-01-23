@@ -1,6 +1,5 @@
 ﻿using Pluralize.NET.Core;
 using S100Framework.DomainModel;
-using System;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -11,11 +10,11 @@ namespace S100Framework.Applications
 {
     public static class Roslyn
     {
-        private static Pluralizer pluralizer = new();
+        private static readonly Pluralizer pluralizer = new();
 
         //private static ICollection<string> spatialAssociationTypes = new List<string>() { "SpatialAssociation" };
 
-        private static ICollection<Primitives> spatialAssociationPrimitives = [Primitives.curve, Primitives.pointSet, Primitives.point];
+        private static readonly ICollection<Primitives> spatialAssociationPrimitives = [Primitives.curve, Primitives.pointSet, Primitives.point];
 
         public enum ProductFormat : int
         {
@@ -2085,7 +2084,7 @@ namespace S100Framework.Applications
 
                     var key = $"\"{association}\", \"{role}\"";
                     if (!client.InformationAssociationsLookup.ContainsKey(key))
-                        client.InformationAssociationsLookup.Add(key, new List<string>());
+                        client.InformationAssociationsLookup.Add(key, []);
                     foreach (var informationType in informationBinding.Elements(XName.Get("informationType", scope_S100))) {
                         client.InformationAssociationsLookup[key].Add(informationType.Attribute("ref")!.Value);
                     }
@@ -2160,7 +2159,7 @@ namespace S100Framework.Applications
 
                     var key = $"\"{association}\", \"{role}\"";
                     if (!client.FeatureAssociationsLookup.ContainsKey(key))
-                        client.FeatureAssociationsLookup.Add(key, new List<string>());
+                        client.FeatureAssociationsLookup.Add(key, []);
                     foreach (var featureType in featureBinding.Elements(XName.Get("featureType", scope_S100))) {
                         client.FeatureAssociationsLookup[key].Add(featureType.Attribute("ref")!.Value);
                     }

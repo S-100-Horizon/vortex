@@ -4,12 +4,10 @@ using ArcGIS.Core.Events;
 using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
-using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
 using S100FC;
 using S100FC.Catalogues;
-using S100Framework.WPF;
 using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -34,7 +32,7 @@ namespace VortexProAppModule
     {
         const string S100AttributesUpdate = "S100AttributesUpdate";
 
-        private static CultureInfo culture = new("en-GB", false);
+        private static readonly CultureInfo culture = new("en-GB", false);
 
         public class InspectorHandle
         {
@@ -77,7 +75,7 @@ namespace VortexProAppModule
 
         //private S100AttributeEditorControlHost _host;
 
-        private ObservableCollection<string> _schemas = new();
+        private ObservableCollection<string> _schemas = [];
 
         private string _selectedSchema = default;
 
@@ -91,27 +89,27 @@ namespace VortexProAppModule
 
         private Boolean _isVisible = false;
 
-        private ObservableCollection<SelectedType> _modelTypes = new();
+        private ObservableCollection<SelectedType> _modelTypes = [];
 
         private bool _isSelectedSchemaEnabled = true;
 
         private bool _isSelectedModelTypeEnabled = false;
 
-        private string[] _catalogues;
+        private readonly string[] _catalogues;
 
-        private SubscriptionToken _tokenEditStarted;
+        private readonly SubscriptionToken _tokenEditStarted;
 
         public S100AttributeTabViewModel(XElement options, bool canChangeOptions) : base(options, canChangeOptions) {
-            _module = VortexProAppModule.Module.Current;
-            _catalogues = _module.GetFeatureCatalogues();
+            this._module = VortexProAppModule.Module.Current;
+            this._catalogues = this._module.GetFeatureCatalogues();
 
 
             Project.Current.PropertyChanged += this.Current_PropertyChanged;
             this.IsEditingEnabled = Project.Current.IsEditingEnabled;
 
-            Schemas.AddRange(_catalogues);
+            this.Schemas.AddRange(this._catalogues);
 
-            CreateInstance = new ArcGIS.Desktop.Framework.RelayCommand(async () => {
+            this.CreateInstance = new ArcGIS.Desktop.Framework.RelayCommand(async () => {
                 var inspector = base.Inspector;
 
                 if (inspector != default) {
@@ -119,11 +117,11 @@ namespace VortexProAppModule
                     //    await Project.Current.SetIsEditingEnabledAsync(true);
                     //}
 
-                    inspector["ps"] = SelectedSchema;
-                    inspector["code"] = SelectedModelType.Code;
+                    inspector["ps"] = this.SelectedSchema;
+                    inspector["code"] = this.SelectedModelType.Code;
 
-                    IsSelectedSchemaEnabled = false;
-                    IsSelectedModelTypeEnabled = false;
+                    this.IsSelectedSchemaEnabled = false;
+                    this.IsSelectedModelTypeEnabled = false;
 
                     await QueuedTask.Run(() => {
                         inspector.Apply();
@@ -145,14 +143,14 @@ namespace VortexProAppModule
 
             switch (name) {
                 case "SelectedSchema": {
-                        SelectedModelType = default;
-                        IsSelectedModelTypeEnabled = false;
+                        this.SelectedModelType = default;
+                        this.IsSelectedModelTypeEnabled = false;
 
-                        if (SelectedSchema != default) {
-                            var schema = SelectedSchema;
+                        if (this.SelectedSchema != default) {
+                            var schema = this.SelectedSchema;
 
                             if (!string.IsNullOrEmpty(schema)) {
-                                var featureCatalogue = _module.GetFeatureCatalogue(schema);
+                                var featureCatalogue = this._module.GetFeatureCatalogue(schema);
 
                                 IEnumerable<string> types;
                                 if (inspector.HasGeometry) {
@@ -169,38 +167,38 @@ namespace VortexProAppModule
                                         _ => throw new InvalidOperationException(),
                                     };
 
-                                    types = _inspectorHandle.Types(featureCatalogue, primitive);
+                                    types = this._inspectorHandle.Types(featureCatalogue, primitive);
                                 }
                                 else {
-                                    types = _inspectorHandle.Types(featureCatalogue, Primitives.noGeometry);
+                                    types = this._inspectorHandle.Types(featureCatalogue, Primitives.noGeometry);
                                 }
 
                                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                                    ModelTypes.Clear();
-                                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                                    this.ModelTypes.Clear();
+                                    this.ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                                 });
 
-                                IsSelectedModelTypeEnabled = true;
+                                this.IsSelectedModelTypeEnabled = true;
                             }
                         }
-                        _selectedTemplate = SelectedTemplate.Empty;
+                        this._selectedTemplate = SelectedTemplate.Empty;
 
-                        NotifyPropertyChanged(() => IsCreateButtonEnabled);
+                        this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
                     }
                     break;
 
                 case "SelectedModelType": {
-                        if (SelectedModelType != default) {
-                            var featuretype = SelectedModelType.Code;
+                        if (this.SelectedModelType != default) {
+                            var featuretype = this.SelectedModelType.Code;
 
                             if (featuretype != default) {
-                                var featureCatalogue = _module.GetFeatureCatalogue(SelectedSchema);
+                                var featureCatalogue = this._module.GetFeatureCatalogue(this.SelectedSchema);
 
                                 //var featureType = featureCatalogue.FeatureTypes.Single(e => e.Code.Equals(featuretype));
 
-                                _selectedTemplate = new SelectedTemplate(SelectedSchema, featuretype);
+                                this._selectedTemplate = new SelectedTemplate(this.SelectedSchema, featuretype);
 
-                                NotifyPropertyChanged(() => IsCreateButtonEnabled);
+                                this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
                             }
                         }
                     }
@@ -236,12 +234,12 @@ namespace VortexProAppModule
                     var tableNames = syntax.ParseTableName(fc.GetName());
 
                     this._inspectorHandle = tableNames.Item3.ToLowerInvariant() switch {
-                        "point" => _inspectorHandleFeatureType,
-                        "pointset" => _inspectorHandleFeatureType,
-                        "curve" => _inspectorHandleFeatureType,
-                        "surface" => _inspectorHandleFeatureType,
-                        "informationtype" => _inspectorHandleInformationType,
-                        "featuretype" => _inspectorHandleFeatureType,
+                        "point" => this._inspectorHandleFeatureType,
+                        "pointset" => this._inspectorHandleFeatureType,
+                        "curve" => this._inspectorHandleFeatureType,
+                        "surface" => this._inspectorHandleFeatureType,
+                        "informationtype" => this._inspectorHandleInformationType,
+                        "featuretype" => this._inspectorHandleFeatureType,
                         //"featureassociation" => _inspectorHandleFeatureAssociation,
                         //"informationassociation" => _inspectorHandleInformationAssociation,
 
@@ -265,13 +263,13 @@ namespace VortexProAppModule
                     }
                     if (catalogues.Any())
                         return catalogues;
-                    return _catalogues;
+                    return this._catalogues;
                 }, TaskCreationOptions.None);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    Schemas.Clear();
+                    this.Schemas.Clear();
                     if (catalogue.Any()) {
-                        Schemas.AddRange(catalogue);
+                        this.Schemas.AddRange(catalogue);
                     }
                     //if (!string.IsNullOrEmpty(catalogue)) {
                     //    Schemas.Clear();
@@ -297,7 +295,7 @@ namespace VortexProAppModule
                         return default;
                     }
 
-                    var featureCatalogue = _module.GetFeatureCatalogue(schema);
+                    var featureCatalogue = this._module.GetFeatureCatalogue(schema);
 
                     var code = Convert.ToString(inspector["code"]);
 
@@ -380,22 +378,22 @@ namespace VortexProAppModule
                     //return viewmodel;
                 }, TaskCreationOptions.None);
 
-                if (SelectedProperty == default) {
-                    SelectedSchema = default;
-                    SelectedModelType = default;
+                if (this.SelectedProperty == default) {
+                    this.SelectedSchema = default;
+                    this.SelectedModelType = default;
 
-                    IsSelectedSchemaEnabled = true;
-                    IsSelectedModelTypeEnabled = SelectedSchema != default;
+                    this.IsSelectedSchemaEnabled = true;
+                    this.IsSelectedModelTypeEnabled = this.SelectedSchema != default;
 
-                    IsVisible = Visibility.Collapsed;
+                    this.IsVisible = Visibility.Collapsed;
                 }
                 else {
-                    IsSelectedSchemaEnabled = false;
-                    IsSelectedModelTypeEnabled = false;
+                    this.IsSelectedSchemaEnabled = false;
+                    this.IsSelectedModelTypeEnabled = false;
 
-                    IsVisible = Visibility.Visible;
+                    this.IsVisible = Visibility.Visible;
                 }
-                NotifyPropertyChanged(() => IsCreateButtonEnabled);
+                this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
             }
             catch (System.Exception ex) {
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
@@ -495,23 +493,23 @@ namespace VortexProAppModule
         }
 
         private Type FeatureTypeSelector(Inspector inspector, string schema) {
-            var featureCatalogue = _module.GetFeatureCatalogue(schema);
+            var featureCatalogue = this._module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
             if (string.IsNullOrEmpty(code))
                 return null;
 
-            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
-                SelectedSchema = schema;
+            if (!this._selectedTemplate.Schema.Equals(schema) || !this._selectedTemplate.Code.Equals(code)) {
+                this.SelectedSchema = schema;
 
                 var types = featureCatalogue.FeatureTypes.Select(e => e.Code);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    ModelTypes.Clear();
-                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                    this.ModelTypes.Clear();
+                    this.ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                 });
 
-                SelectedModelType = ModelTypes.Single(e => e.Code == code);
+                this.SelectedModelType = this.ModelTypes.Single(e => e.Code == code);
             }
 
             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace(schema, "FeatureTypes")}.{code}", true);
@@ -520,23 +518,23 @@ namespace VortexProAppModule
         }
 
         private Type InformationTypeSelector(Inspector inspector, string schema) {
-            var featureCatalogue = _module.GetFeatureCatalogue(schema);
+            var featureCatalogue = this._module.GetFeatureCatalogue(schema);
 
             var code = Convert.ToString(inspector["code"]);
             if (string.IsNullOrEmpty(code))
                 return null;
 
-            if (!_selectedTemplate.Schema.Equals(schema) || !_selectedTemplate.Code.Equals(code)) {
-                SelectedSchema = schema;
+            if (!this._selectedTemplate.Schema.Equals(schema) || !this._selectedTemplate.Code.Equals(code)) {
+                this.SelectedSchema = schema;
 
                 var types = featureCatalogue.InformationTypes.Select(e => e.Code);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(() => {
-                    ModelTypes.Clear();
-                    ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
+                    this.ModelTypes.Clear();
+                    this.ModelTypes.AddRange(types.OrderBy(e => e).Select(e => new SelectedType(e)));
                 });
 
-                SelectedModelType = ModelTypes.Single(e => e.Code == code);
+                this.SelectedModelType = this.ModelTypes.Single(e => e.Code == code);
             }
 
             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace(schema, "InformationTypes")}.{code}", true);
@@ -547,41 +545,41 @@ namespace VortexProAppModule
         public ICommand CreateInstance { get; set; }
 
         public ObservableCollection<string> Schemas {
-            get => _schemas;
-            set => SetProperty(ref _schemas, value);
+            get => this._schemas;
+            set => this.SetProperty(ref this._schemas, value);
         }
 
         public string SelectedSchema {
-            get => _selectedSchema;
-            set => SetProperty(ref _selectedSchema, value);
+            get => this._selectedSchema;
+            set => this.SetProperty(ref this._selectedSchema, value);
         }
 
         public ObservableCollection<SelectedType> ModelTypes {
-            get => _modelTypes;
-            set => SetProperty(ref _modelTypes, value);
+            get => this._modelTypes;
+            set => this.SetProperty(ref this._modelTypes, value);
         }
 
         public SelectedType SelectedModelType {
-            get => _selectedModelType;
-            set => SetProperty(ref _selectedModelType, value);
+            get => this._selectedModelType;
+            set => this.SetProperty(ref this._selectedModelType, value);
         }
 
         public S100AttributeEditorViewModel SelectedProperty {
-            get => _selectedProperty;
+            get => this._selectedProperty;
             set {
-                SetProperty(ref _selectedProperty, value);
-                _selectedProperty.PropertyChanged += this.OnPropertyChanged;
+                this.SetProperty(ref this._selectedProperty, value);
+                this._selectedProperty.PropertyChanged += this.OnPropertyChanged;
             }
         }
 
         public Visibility IsVisible {
-            get => _isVisible ? Visibility.Visible : Visibility.Collapsed;
-            set => SetProperty(ref _isVisible, value == Visibility.Visible);
+            get => this._isVisible ? Visibility.Visible : Visibility.Collapsed;
+            set => this.SetProperty(ref this._isVisible, value == Visibility.Visible);
         }
 
         public Boolean IsEditingEnabled {
-            get => _isEditingEnabled;
-            set => SetProperty(ref _isEditingEnabled, value);
+            get => this._isEditingEnabled;
+            set => this.SetProperty(ref this._isEditingEnabled, value);
         }
 
         //public SelectedInformationTypeObjectViewModel SelectedInformationProperty {
@@ -595,16 +593,16 @@ namespace VortexProAppModule
         //}
 
         public bool IsSelectedSchemaEnabled {
-            get => _isSelectedSchemaEnabled;
-            set => SetProperty(ref _isSelectedSchemaEnabled, value);
+            get => this._isSelectedSchemaEnabled;
+            set => this.SetProperty(ref this._isSelectedSchemaEnabled, value);
         }
 
         public bool IsSelectedModelTypeEnabled {
-            get => _isSelectedModelTypeEnabled;
-            set => SetProperty(ref _isSelectedModelTypeEnabled, value);
+            get => this._isSelectedModelTypeEnabled;
+            set => this.SetProperty(ref this._isSelectedModelTypeEnabled, value);
         }
 
-        public bool IsCreateButtonEnabled => IsSelectedSchemaEnabled && IsSelectedModelTypeEnabled && _selectedTemplate != SelectedTemplate.Empty;
+        public bool IsCreateButtonEnabled => this.IsSelectedSchemaEnabled && this.IsSelectedModelTypeEnabled && this._selectedTemplate != SelectedTemplate.Empty;
 
 
         private static JsonNode Unflatten(Dictionary<string, JsonValue> source) {

@@ -2,6 +2,8 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100FC;
+using S100FC.ProductCatalogue;
+using S100FC.S101;
 using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -9,8 +11,6 @@ using System.Text.Json;
 using Dataset = S100FC.YAML.Dataset;
 using Esri = ArcGIS.Core.Hosting.Host;
 using IO = System.IO;
-using S100FC.ProductCatalogue;
-using S100FC.S101;
 
 namespace S100Framework.Applications
 {
@@ -200,18 +200,17 @@ namespace S100Framework.Applications
                             var information = new S100FC.YAML.Information {
                                 Name = code,
                                 ID = name,
+                                Attributes = (S100FC.InformationType)instance!
                             };
-
-                            information.Attributes = (S100FC.InformationType)instance!;
                             informationTypes.Add(information);
 
                             var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                            foreach(var filename in filenames) {
+                            foreach (var filename in filenames) {
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
                                     var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                    if(file != null) {
+                                    if (file != null) {
                                         var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
                                         dataset?.Metadata.AddSupportFile(filename, base64);
                                     }
@@ -355,7 +354,7 @@ namespace S100Framework.Applications
                                     Masks = masks.Any() ? string.Join(",", masks) : null,
                                     Attributes = instance?.attributeBindings.Length > 0 ? instance : null
                                 };
-                                
+
 
                                 // Information Associations
                                 if (!current.IsNull("informationbindings")) {

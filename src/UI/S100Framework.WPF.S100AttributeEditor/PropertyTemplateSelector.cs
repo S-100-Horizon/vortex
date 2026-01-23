@@ -1,10 +1,4 @@
-﻿using S100FC;
-using S100Framework.WPF.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using S100Framework.WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -26,31 +20,31 @@ namespace S100Framework.WPF
         public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
             if (item is SimpleAttributeViewModel simpleAttribute) {
                 if (simpleAttribute.valueType.Equals("text"))
-                    return TextEditorTemplate;
+                    return this.TextEditorTemplate;
                 if (simpleAttribute.valueType.Equals("boolean"))
-                    return BooleanEditorTemplate;
+                    return this.BooleanEditorTemplate;
                 if (simpleAttribute.valueType.Equals("integer"))
-                    return IntegerEditorTemplate;
+                    return this.IntegerEditorTemplate;
                 if (simpleAttribute.valueType.Equals("real"))
-                    return RealEditorTemplate;
+                    return this.RealEditorTemplate;
                 if (simpleAttribute.valueType.Equals("S100_TruncatedDate"))
-                    return TruncatedDateEditorTemplate;
+                    return this.TruncatedDateEditorTemplate;
                 if (simpleAttribute.valueType.Equals("date"))
-                    return DateOnlyEditorTemplate;
+                    return this.DateOnlyEditorTemplate;
                 if (simpleAttribute.valueType.Equals("datetime"))
-                    return DateTimeEditorTemplate;
+                    return this.DateTimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("time"))
-                    return TimeEditorTemplate;
+                    return this.TimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("enumeration"))
-                    return EnumEditorTemplate;
+                    return this.EnumEditorTemplate;
                 ;
             }
 
             if (item is ComplexAttributeViewModel complextAttribute) {
-                return ComplexEditorTemplate;
+                return this.ComplexEditorTemplate;
             }
 
-            return TextEditorTemplate; // Default
+            return this.TextEditorTemplate; // Default
         }
 
         private static bool IsNumericType(Type type) {

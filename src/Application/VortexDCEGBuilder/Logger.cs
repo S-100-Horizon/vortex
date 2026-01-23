@@ -4,9 +4,9 @@ namespace S100Framework.Applications
 {
     internal static class Logger
     {
-        private static string _dateTimeString = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-        private static Serilog.Core.Logger _logger;
-        private static string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static readonly string _dateTimeString = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+        private static readonly Serilog.Core.Logger _logger;
+        private static readonly string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         public static ILogger Current => _logger;
 

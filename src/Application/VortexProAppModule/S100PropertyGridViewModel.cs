@@ -13,8 +13,8 @@ namespace VortexProAppModule.S100PropertyGrid
     {
         public string DisplayName { get; set; }
         public bool IsReadOnly { get; set; }
-        public bool IsNullable => PropertyType.IsGenericType && Nullable.GetUnderlyingType(PropertyType) != null;
-        public bool HasValue => Value != null;
+        public bool IsNullable => this.PropertyType.IsGenericType && Nullable.GetUnderlyingType(this.PropertyType) != null;
+        public bool HasValue => this.Value != null;
         public string Category { get; set; }
         public Type PropertyType { get; set; }
 
@@ -27,17 +27,17 @@ namespace VortexProAppModule.S100PropertyGrid
 
     public class PropertyItemArray : PropertyItemBase
     {
-        public List<PropertyItemBase> Items { get; set; } = new List<PropertyItemBase>();
+        public List<PropertyItemBase> Items { get; set; } = [];
     }
 
     public class PropertyItemComplex : PropertyItemBase
     {
-        public List<PropertyItemBase> Properties { get; set; } = new List<PropertyItemBase>();
+        public List<PropertyItemBase> Properties { get; set; } = [];
     }
 
     public class S100PropertyGridViewModel : INotifyPropertyChanged
     {
-        private object _selectedProperty;
+        private readonly object _selectedProperty;
 
         private string _displayName;
 
@@ -45,15 +45,15 @@ namespace VortexProAppModule.S100PropertyGrid
         }
 
         public void Load(object instance) {
-            DisplayName = instance.GetType().Name;
-            Logger.Current.Verbose("DisplanName: {DisplayName}", DisplayName);
+            this.DisplayName = instance.GetType().Name;
+            Logger.Current.Verbose("DisplanName: {DisplayName}", this.DisplayName);
 
             var properties = PropertyCollection.GetPropertyItemCollection(instance);
 
             this.Properties.Clear();
 
             foreach (PropertyDescriptor p in properties) {
-                var property = Build(instance, p);
+                var property = this.Build(instance, p);
                 Logger.Current.Verbose("Property: {DisplayName}, {IsReadOnly}, {IsNullable}, {Value}", property.DisplayName, property.IsReadOnly, property.IsNullable, property.Value);
                 this.Properties.Add(property);
             }
@@ -107,7 +107,7 @@ namespace VortexProAppModule.S100PropertyGrid
                     var items = (p.Value as IEnumerable<object>).Cast<object>().ToList();
                     foreach (var v in items) {
                         foreach (PropertyDescriptor sub in PropertyCollection.GetPropertyItemCollection(v)) {
-                            var subproperty = Build(v, sub);
+                            var subproperty = this.Build(v, sub);
                             //Logger.Current.Verbose("Property: {DisplayName}, {IsReadOnly}, {IsNullable}, {Value}", property.DisplayName, property.IsReadOnly, property.IsNullable, property.Value);
                             p.Items.Add(subproperty);
                         }
@@ -144,11 +144,11 @@ namespace VortexProAppModule.S100PropertyGrid
             }
         }
 
-        public ObservableCollection<PropertyItemBase> Properties { get; set; } = new ObservableCollection<PropertyItemBase>();
+        public ObservableCollection<PropertyItemBase> Properties { get; set; } = [];
 
         public string DisplayName {
-            get => _displayName;
-            set => SetProperty(ref _displayName, value);
+            get => this._displayName;
+            set => this.SetProperty(ref this._displayName, value);
         }
 
         #region INotifyPropertyChanged
@@ -159,7 +159,7 @@ namespace VortexProAppModule.S100PropertyGrid
             bool num = !EqualityComparer<T>.Default.Equals(backingField, value);
             if (num) {
                 backingField = value;
-                NotifyPropertyChanged(getName(property));
+                this.NotifyPropertyChanged(getName(property));
             }
 
             return num;
@@ -168,14 +168,14 @@ namespace VortexProAppModule.S100PropertyGrid
             bool num = !EqualityComparer<T>.Default.Equals(backingField, value);
             if (num) {
                 backingField = value;
-                NotifyPropertyChanged(name);
+                this.NotifyPropertyChanged(name);
             }
 
             return num;
         }
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string name = "") {
-            NotifyPropertyChanged(new PropertyChangedEventArgs(name));
+            this.NotifyPropertyChanged(new PropertyChangedEventArgs(name));
         }
 
         protected virtual void NotifyPropertyChanged(PropertyChangedEventArgs args) {

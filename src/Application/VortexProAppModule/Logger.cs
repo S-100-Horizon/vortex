@@ -8,7 +8,7 @@ namespace VortexProAppModule
     {
         public static ILogger Current => _logger;
 
-        private static Serilog.Core.Logger _logger;
+        private static readonly Serilog.Core.Logger _logger;
 
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
 

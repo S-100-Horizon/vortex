@@ -1,7 +1,5 @@
 ﻿using S100Framework.DomainModel;
 using System.Collections;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -39,7 +37,7 @@ namespace S100Framework.WPF.ViewModel
         public ViewModelBase() {
             this.PropertyChanged += (sender, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName)) return;
-                if (e.PropertyName == nameof(HasErrors)) return; // Prevent recursive validation call
+                if (e.PropertyName == nameof(this.HasErrors)) return; // Prevent recursive validation call
 
                 this.Validate();
             };
@@ -58,23 +56,23 @@ namespace S100Framework.WPF.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private Dictionary<ViewModelBase, string> nestedProperties = new();
+        private readonly Dictionary<ViewModelBase, string> nestedProperties = [];
 
         protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             if (string.IsNullOrWhiteSpace(propertyName)) return;
 
             if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
             if (backingFiled is ViewModelBase viewModel) {   // if old value is ViewModel, than we assume that it was subscribed, so - unsubscribe it
-                viewModel.PropertyChanged -= ChildViewModelChanged;
-                nestedProperties.Remove(viewModel);
+                viewModel.PropertyChanged -= this.ChildViewModelChanged;
+                this.nestedProperties.Remove(viewModel);
             }
             if (value is ViewModelBase valueViewModel) {
                 // if new value is ViewModel, than we must subscribe it on PropertyChanged and add it into subscribe dictionary
-                valueViewModel.PropertyChanged += ChildViewModelChanged;
-                nestedProperties.Add(valueViewModel, propertyName);
+                valueViewModel.PropertyChanged += this.ChildViewModelChanged;
+                this.nestedProperties.Add(valueViewModel, propertyName);
             }
             backingFiled = value;
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
         }
 
         private void ChildViewModelChanged(object? sender, PropertyChangedEventArgs e) {
@@ -83,17 +81,17 @@ namespace S100Framework.WPF.ViewModel
             // this is child property name, need to get parent property name from dictionary
             string propertyName = e.PropertyName;
             if (sender is ViewModelBase viewModel) {
-                propertyName = nestedProperties[viewModel];
+                propertyName = this.nestedProperties[viewModel];
             }
             // Rise parent PropertyChanged with parent property name
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
         }
 
         #endregion
 
         #region INotifyDataErrorInfo
 
-        private readonly Dictionary<string, List<string>> _errors = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<string>> _errors = [];
 
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
@@ -101,14 +99,14 @@ namespace S100Framework.WPF.ViewModel
         public bool HasErrors => this._errors.Any();
 
         public IEnumerable GetErrors(string? propertyName) {
-            if (string.IsNullOrEmpty(propertyName) || !_errors.ContainsKey(propertyName)) {
+            if (string.IsNullOrEmpty(propertyName) || !this._errors.ContainsKey(propertyName)) {
                 return Enumerable.Empty<string>();
             }
-            return _errors[propertyName];
+            return this._errors[propertyName];
         }
 
         public IEnumerable<string> GetErrors() {
-            return _errors.Keys;
+            return this._errors.Keys;
         }
 
         protected void OnErrorsChanged(string propertyName) {
@@ -157,36 +155,36 @@ namespace S100Framework.WPF.ViewModel
         //}
 
         protected void AddError(string propertyName, string errorMessage) {
-            if (!_errors.ContainsKey(propertyName)) {
-                _errors[propertyName] = new List<string>();
+            if (!this._errors.ContainsKey(propertyName)) {
+                this._errors[propertyName] = [];
             }
-            if (!_errors[propertyName].Contains(errorMessage)) {
-                _errors[propertyName].Add(errorMessage);
-                OnErrorsChanged(propertyName);
+            if (!this._errors[propertyName].Contains(errorMessage)) {
+                this._errors[propertyName].Add(errorMessage);
+                this.OnErrorsChanged(propertyName);
             }
         }
 
         protected void RemoveError(string propertyName, string errorMessage) {
-            if (_errors.ContainsKey(propertyName) && _errors[propertyName].Contains(errorMessage)) {
-                _errors[propertyName].Remove(errorMessage);
-                if (_errors[propertyName].Count == 0) {
-                    _errors.Remove(propertyName);
+            if (this._errors.ContainsKey(propertyName) && this._errors[propertyName].Contains(errorMessage)) {
+                this._errors[propertyName].Remove(errorMessage);
+                if (this._errors[propertyName].Count == 0) {
+                    this._errors.Remove(propertyName);
                 }
-                OnErrorsChanged(propertyName);
+                this.OnErrorsChanged(propertyName);
             }
         }
 
         protected void ClearErrors(string propertyName) {
-            if (_errors.ContainsKey(propertyName)) {
-                _errors.Remove(propertyName);
-                OnErrorsChanged(propertyName);
+            if (this._errors.ContainsKey(propertyName)) {
+                this._errors.Remove(propertyName);
+                this.OnErrorsChanged(propertyName);
             }
         }
 
         protected void ClearErrors() {
-            foreach (var propertyName in _errors.Keys.ToArray()) {
-                _errors.Remove(propertyName);
-                OnErrorsChanged(propertyName);
+            foreach (var propertyName in this._errors.Keys.ToArray()) {
+                this._errors.Remove(propertyName);
+                this.OnErrorsChanged(propertyName);
             }
         }
 
@@ -194,8 +192,8 @@ namespace S100Framework.WPF.ViewModel
 
         #region IDisposable
         public void Dispose() {   // need to make sure that we unsubscibed
-            foreach (ViewModelBase viewModel in nestedProperties.Keys) {
-                viewModel.PropertyChanged -= ChildViewModelChanged;
+            foreach (ViewModelBase viewModel in this.nestedProperties.Keys) {
+                viewModel.PropertyChanged -= this.ChildViewModelChanged;
                 viewModel.Dispose();
             }
         }
@@ -239,9 +237,9 @@ namespace S100Framework.WPF.ViewModel
 
         //[Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
         public string role {
-            get { return _role; }
+            get { return this._role; }
             set {
-                SetValue(ref _role, value);
+                this.SetValue(ref this._role, value);
             }
         }
 
@@ -249,9 +247,9 @@ namespace S100Framework.WPF.ViewModel
 
         //[Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
         public string informationId {
-            get { return _referenceId; }
+            get { return this._referenceId; }
             set {
-                SetValue(ref _referenceId, value);
+                this.SetValue(ref this._referenceId, value);
             }
         }
 
@@ -259,9 +257,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ReadOnly(true)]
         public string? informationType {
-            get { return _informationType; }
+            get { return this._informationType; }
             set {
-                SetValue(ref _informationType, value);
+                this.SetValue(ref this._informationType, value);
             }
         }
 
@@ -281,9 +279,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
         public string role {
-            get { return _role; }
+            get { return this._role; }
             set {
-                SetValue(ref _role, value);
+                this.SetValue(ref this._role, value);
             }
         }
 
@@ -291,9 +289,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
         public string featureId {
-            get { return _referenceId; }
+            get { return this._referenceId; }
             set {
-                SetValue(ref _referenceId, value);
+                this.SetValue(ref this._referenceId, value);
             }
         }
 
@@ -301,9 +299,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ReadOnly(true)]
         public string? featureType {
-            get { return _featureType; }
+            get { return this._featureType; }
             set {
-                SetValue(ref _featureType, value);
+                this.SetValue(ref this._featureType, value);
             }
         }
 
@@ -368,9 +366,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.InformationBindingRoleEditor), typeof(Editors.InformationBindingRoleEditor))]
         public string role {
-            get { return _role; }
+            get { return this._role; }
             set {
-                SetValue(ref _role, value);
+                this.SetValue(ref this._role, value);
             }
         }
 
@@ -378,9 +376,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ReadOnly(true)]
         public string? informationType {
-            get { return _informationType; }
+            get { return this._informationType; }
             set {
-                SetValue(ref _informationType, value);
+                this.SetValue(ref this._informationType, value);
             }
         }
 
@@ -388,9 +386,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.InformationBindingLinkEditor), typeof(Editors.InformationBindingLinkEditor))]
         public string informationId {
-            get { return _referenceId; }
+            get { return this._referenceId; }
             set {
-                SetValue(ref _referenceId, value);
+                this.SetValue(ref this._referenceId, value);
             }
         }
 
@@ -405,9 +403,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ExpandableObject]
         public TAssociation association {
-            get { return _association; }
+            get { return this._association; }
             set {
-                SetValue(ref _association, value);
+                this.SetValue(ref this._association, value);
             }
         }
 
@@ -455,9 +453,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.FeatureBindingRoleEditor), typeof(Editors.FeatureBindingRoleEditor))]
         public string role {
-            get { return _role; }
+            get { return this._role; }
             set {
-                SetValue(ref _role, value);
+                this.SetValue(ref this._role, value);
             }
         }
 
@@ -465,9 +463,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ReadOnly(true)]
         public string? featureType {
-            get { return _featureType; }
+            get { return this._featureType; }
             set {
-                SetValue(ref _featureType, value);
+                this.SetValue(ref this._featureType, value);
             }
         }
 
@@ -475,9 +473,9 @@ namespace S100Framework.WPF.ViewModel
 
         [Editor(typeof(Editors.FeatureBindingLinkEditor), typeof(Editors.FeatureBindingLinkEditor))]
         public string featureId {
-            get { return _referenceId; }
+            get { return this._referenceId; }
             set {
-                SetValue(ref _referenceId, value);
+                this.SetValue(ref this._referenceId, value);
             }
         }
 
@@ -492,9 +490,9 @@ namespace S100Framework.WPF.ViewModel
 
         [ExpandableObject]
         public TAssociation association {
-            get { return _association; }
+            get { return this._association; }
             set {
-                SetValue(ref _association, value);
+                this.SetValue(ref this._association, value);
             }
         }
 

@@ -17,7 +17,7 @@ namespace VortexProAppModule
     {
         private static Module _this = null;
 
-        internal static List<string> RegisteredFeatureLayers = new();
+        internal static List<string> RegisteredFeatureLayers = [];
 
         /// <summary>
         /// Retrieve the singleton instance to this module here
@@ -28,9 +28,9 @@ namespace VortexProAppModule
 
         private ImmutableArray<FeatureCatalogue> _featureCatalogues = ImmutableArray<FeatureCatalogue>.Empty;
 
-        public string[] GetFeatureCatalogues() => _featureCatalogues.Select(e => e.ProductID).ToArray();
+        public string[] GetFeatureCatalogues() => this._featureCatalogues.Select(e => e.ProductID).ToArray();
 
-        public FeatureCatalogue GetFeatureCatalogue(string name) => _featureCatalogues.Single(e => e.ProductID.Equals(name));
+        public FeatureCatalogue GetFeatureCatalogue(string name) => this._featureCatalogues.Single(e => e.ProductID.Equals(name));
 
         /// <summary>
         /// A new MapView is incoming
@@ -56,14 +56,14 @@ namespace VortexProAppModule
         #region Overrides
 
         protected override bool Initialize() {
-            _tokenActiveMapViewChangedEvent = ActiveMapViewChangedEvent.Subscribe(OnActiveMapViewChanged);
-            _featureCatalogues = FeatureCatalogue.Catalogues;
+            this._tokenActiveMapViewChangedEvent = ActiveMapViewChangedEvent.Subscribe(OnActiveMapViewChanged);
+            this._featureCatalogues = FeatureCatalogue.Catalogues;
 
             return base.Initialize();
         }
 
         protected override void Uninitialize() {
-            ActiveMapViewChangedEvent.Unsubscribe(_tokenActiveMapViewChangedEvent);
+            ActiveMapViewChangedEvent.Unsubscribe(this._tokenActiveMapViewChangedEvent);
             base.Uninitialize();
         }
 

@@ -7,9 +7,9 @@ namespace S100FC.ProductCatalogue
 {
     public static class Extensions
     {
-        static SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
+        static readonly SpatialReference spatialReference = SpatialReferenceBuilder.CreateSpatialReference(4326);
 
-        static GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
+        static readonly GeometryFactory factory = new GeometryFactory(new PrecisionModel(10000000), srid: 4326); // Or PrecisionModels.Floating
 
 
         public static S100FC.Topology.IMatrix? BuildTopology(this Geodatabase geodatabase, QueryFilter? queryFilter = default, Action<ICollection<LineString>>? interceptor = default) {

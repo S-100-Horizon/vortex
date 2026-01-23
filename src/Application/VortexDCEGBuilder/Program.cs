@@ -162,7 +162,7 @@ namespace S100Framework.Applications
                     }
 
                     if (!featureCategories.ContainsKey(key))
-                        featureCategories.Add(key, new List<string>());
+                        featureCategories.Add(key, []);
                     featureCategories[key].Add(e.Key);
 
                     b.AppendLine($"\"{e.Key}\": {{");
@@ -195,6 +195,6 @@ namespace S100Framework.Applications
     {
         public record Feature(string Code, string Category);
 
-        public ICollection<Feature> Features { get; private set; } = new List<Feature>();
+        public ICollection<Feature> Features { get; private set; } = [];
     }
 }

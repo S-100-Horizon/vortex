@@ -1,15 +1,13 @@
 ﻿using S100FC;
-using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.SimpleAttributes;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace PropertyGridApplication
 {
-	public class featuresDetectedNested : featuresDetected {
+    public class featuresDetectedNested : featuresDetected
+    {
         [JsonIgnore]
         public override string S100FC_code => nameof(featuresDetectedNested);
         [JsonIgnore]
@@ -18,7 +16,7 @@ namespace PropertyGridApplication
         public override attributeBindingDefinition[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,
                 new attributeBindingDefinition {
-                    attribute = nameof(featureName),
+                    attribute = nameof(this.featureName),
                     lower = 1,
                     upper = 1,
                 },
@@ -27,7 +25,7 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public featureName?[] featureName {
             set { base.SetAttribute(value); }
-            get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
+            get { return base.GetAttributeValues<featureName>(nameof(this.featureName)); }
         }
     }
 
@@ -40,13 +38,13 @@ namespace PropertyGridApplication
 
         public override attributeBindingDefinition[] attributeBindingsCatalogue => [
                  new attributeBindingDefinition {
-                    attribute = nameof(beaconShape),
+                    attribute = nameof(this.beaconShape),
                     lower = 1,
                     upper = 1,
                     CreateInstance = () => new beaconShape(),
                 },
                 new attributeBindingDefinition {
-                    attribute = nameof(callSign),
+                    attribute = nameof(this.callSign),
                     lower = 1,
                     upper = 1,
                     CreateInstance = () => new callSign(),
@@ -56,13 +54,13 @@ namespace PropertyGridApplication
         [JsonIgnore]
         public beaconShape? beaconShape {
             set { base.SetAttribute(value); }
-            get { return base.GetAttributeValue<beaconShape>(nameof(beaconShape)); }
+            get { return base.GetAttributeValue<beaconShape>(nameof(this.beaconShape)); }
         }
 
         [JsonIgnore]
         public callSign? callSign {
             set { base.SetAttribute(value); }
-            get { return base.GetAttributeValue<callSign>(nameof(callSign)); }
+            get { return base.GetAttributeValue<callSign>(nameof(this.callSign)); }
         }
 
         public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
@@ -78,17 +76,17 @@ namespace PropertyGridApplication
         public override attributeBindingDefinition[] attributeBindingsCatalogue => [
                 .. base.attributeBindingsCatalogue,
                 new attributeBindingDefinition {
-                    attribute = nameof(featuresDetectedNested),
+                    attribute = nameof(this.featuresDetectedNested),
                     lower = 1,
                     upper = 1,
                     order = int.MaxValue,
-                },                
+                },
             ];
 
         [JsonIgnore]
         public featuresDetectedNested? featuresDetectedNested {
             set { base.SetAttribute(value); }
-            get { return base.GetAttributeValue<featuresDetectedNested>(nameof(featuresDetectedNested)); }
+            get { return base.GetAttributeValue<featuresDetectedNested>(nameof(this.featuresDetectedNested)); }
         }
     }
 }

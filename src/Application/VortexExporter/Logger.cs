@@ -22,9 +22,9 @@ namespace S100Framework.Applications
         private readonly string _logDirectory;
 
         public DynamicFileSink(string logDirectory) {
-            _logDirectory = logDirectory;
+            this._logDirectory = logDirectory;
             if (!System.IO.Directory.Exists(logDirectory)) {
-                System.IO.Directory.CreateDirectory(_logDirectory);
+                System.IO.Directory.CreateDirectory(this._logDirectory);
             }
         }
 
@@ -33,7 +33,7 @@ namespace S100Framework.Applications
                 ? logEvent.Properties["TableName"].ToString().Trim('"')
                 : throw new Exception("TableName not supplied");
 
-            var filePath = Path.Combine(_logDirectory, $"Loader_DataObject_{logFileName}.log");
+            var filePath = Path.Combine(this._logDirectory, $"Loader_DataObject_{logFileName}.log");
 
             using (var writer = new StreamWriter(filePath, true, System.Text.Encoding.GetEncoding("ISO-8859-1"))) {
                 writer.WriteLine($"{logEvent.RenderMessage()}");
@@ -84,9 +84,9 @@ namespace S100Framework.Applications
 
     internal static class Logger
     {
-        private static string _dateTimeString = DateTime.Now.ToString("yyyyMMdd");
-        private static Serilog.Core.Logger _logger;
-        private static string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        private static readonly string _dateTimeString = DateTime.Now.ToString("yyyyMMdd");
+        private static readonly Serilog.Core.Logger _logger;
+        private static readonly string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         public static ILogger Current => _logger;
 

@@ -1,5 +1,4 @@
-﻿using S100FC;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 using System.Reflection;
 using System.Text.Json;
 
@@ -47,8 +46,8 @@ namespace S100FC.Catalogues
     public sealed class FeatureCatalogue
     {
         public FeatureCatalogue(string productId, Version versionNumber) {
-            ProductID = productId ?? throw new System.ArgumentNullException(nameof(productId));
-            VersionNumber = versionNumber ?? throw new System.ArgumentNullException(nameof(versionNumber));
+            this.ProductID = productId ?? throw new System.ArgumentNullException(nameof(productId));
+            this.VersionNumber = versionNumber ?? throw new System.ArgumentNullException(nameof(versionNumber));
         }
 
         public string ProductID { get; private set; }
@@ -69,7 +68,7 @@ namespace S100FC.Catalogues
 
         public JsonSerializerOptions DefaultJsonOptions { get; init; } = new JsonSerializerOptions();
 
-        public string DefaultNamespace => $"S100FC.{ProductID.Remove(1, 1)}";
+        public string DefaultNamespace => $"S100FC.{this.ProductID.Remove(1, 1)}";
 
         public static string Namespace(string ps, string types) => $"S100FC.{ps.ToUpperInvariant().Replace("-", string.Empty)}.{types}";
 

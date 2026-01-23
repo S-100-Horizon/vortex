@@ -2,13 +2,13 @@
 using ArcGIS.Core.Geometry;
 //using ArcGIS.Desktop.Internal.Mapping;
 using CommandLine;
-using S100Framework.Applications.S57.esri;
-using S100Framework.Applications.Singletons;
 using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.InformationTypes;
 using S100FC.S101.SimpleAttributes;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text.Json;

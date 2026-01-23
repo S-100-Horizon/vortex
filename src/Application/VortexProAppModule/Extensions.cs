@@ -1,5 +1,4 @@
-﻿using ArcGIS.Core.Data;
-using System;
+﻿using System;
 
 namespace ArcGIS.Desktop.Editing.Attributes
 {

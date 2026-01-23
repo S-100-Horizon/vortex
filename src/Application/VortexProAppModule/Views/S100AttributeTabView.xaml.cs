@@ -1,7 +1,5 @@
-﻿using S100Framework.WPF;
-using Serilog;
+﻿using Serilog;
 using System;
-using System.Reflection;
 using System.Windows.Controls;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 
@@ -12,10 +10,10 @@ namespace VortexProAppModule.Views
     /// </summary>
     public partial class S100AttributeTabView : UserControl /*ArcGIS.Desktop.Framework.Controls.ProWindow*/
     {
-        private ILogger _logger = Logger.Current;
+        private readonly ILogger _logger = Logger.Current;
 
         public S100AttributeTabView() {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         protected virtual void OnSelectedObjectChanged(object oldValue, object newValue) {
@@ -28,7 +26,7 @@ namespace VortexProAppModule.Views
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, Xceed.Wpf.Toolkit.PropertyGrid.PropertyItemEventArgs e) {
-            _logger.Verbose("PreparePropertyItem: {PropertyName}", e.PropertyItem.DisplayName);
+            this._logger.Verbose("PreparePropertyItem: {PropertyName}", e.PropertyItem.DisplayName);
 
             var displayName = e.PropertyItem.DisplayName;
 

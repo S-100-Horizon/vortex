@@ -20,7 +20,12 @@
 
   <ItemGroup>
     <Compile Remove="TestClassBuilder.cs" />
+    <Compile Remove="UnitTestAssociations.cs" />
     <Compile Remove="UnitTestDataset.cs" />
+    <Compile Remove="UnitTestFramework.cs" />
+    <Compile Remove="UnitTestGMLReader.cs" />
+    <Compile Remove="UnitTestS128.cs" />
+    <Compile Remove="UnitTestYAML.cs" />
   </ItemGroup>
 
   <ItemGroup>

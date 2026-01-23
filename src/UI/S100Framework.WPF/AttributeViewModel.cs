@@ -1,12 +1,7 @@
 ﻿using S100FC;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -19,7 +14,7 @@ namespace S100Framework.WPF.ViewModel
         protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        private Dictionary<AttributeViewModel, string> nestedProperties = new();
+        private readonly Dictionary<AttributeViewModel, string> nestedProperties = [];
 
         protected void SetProperty<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             System.Diagnostics.Debug.WriteLine($"SetProperty({propertyName})");
@@ -36,7 +31,7 @@ namespace S100Framework.WPF.ViewModel
             //    nestedProperties.Add(valueViewModel, propertyName);
             //}
             backingFiled = value;
-            OnPropertyChanged(this.code);
+            this.OnPropertyChanged(this.code);
         }
 
         private void ChildViewModelChanged(object? sender, PropertyChangedEventArgs e) {
@@ -45,10 +40,10 @@ namespace S100Framework.WPF.ViewModel
             // this is child property name, need to get parent property name from dictionary
             string propertyName = e.PropertyName;
             if (sender is AttributeViewModel viewModel) {
-                propertyName = nestedProperties[viewModel];
+                propertyName = this.nestedProperties[viewModel];
             }
             // Rise parent PropertyChanged with parent property name
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
         }
 
         #endregion
@@ -78,10 +73,10 @@ namespace S100Framework.WPF.ViewModel
 
         public object? value {
             get {
-                return _value;
+                return this._value;
             }
             set {
-                SetProperty(ref _value, value);
+                this.SetProperty(ref this._value, value);
             }
         }
 
@@ -136,6 +131,6 @@ namespace S100Framework.WPF.ViewModel
             base.OnPropertyChanged(e.PropertyName);
         }
 
-        private S100FC.ComplexAttribute? _attribute = default;
+        private readonly S100FC.ComplexAttribute? _attribute = default;
     }
 }

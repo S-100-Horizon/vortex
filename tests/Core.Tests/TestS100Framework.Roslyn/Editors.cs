@@ -1,15 +1,6 @@
-﻿using Microsoft.Xaml.Behaviors;
-using S100Framework.DomainModel;
-using S100Framework.WPF.ViewModel;
-using System.Collections;
-using System.Globalization;
-using System.Text.RegularExpressions;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
-using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
@@ -84,7 +75,7 @@ namespace S100Framework.WPF.Editors
             throw new NotImplementedException();
         }
     }
-  
+
     public class EnumComboBoxEditor : ComboBoxEditor
     {
         protected override IEnumerable CreateItemsSource(PropertyItem propertyItem) {

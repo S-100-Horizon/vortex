@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 using System.Xml;
 using System.Xml.Linq;
@@ -9,11 +8,6 @@ using Xunit.Abstractions;
 namespace TestAttributes
 {
     using S100FC;
-    using S100FC.S100;
-    using System.Reflection;
-    using System.Security.Cryptography;
-    using System.Text.Json.Serialization;
-    using Windows.System;
 
     public class UnitTestRoslyn
     {
@@ -32,21 +26,21 @@ namespace TestAttributes
 
         [Fact]
         public void Test_Build() {
-            Test_S101_Build();
-            Test_S122_Build();
-            Test_S123_Build();
-            Test_S124_Build();
+            this.Test_S101_Build();
+            this.Test_S122_Build();
+            this.Test_S123_Build();
+            this.Test_S124_Build();
             //Test_S125_Build();
-            Test_S127_Build();
-            Test_S128_Build();
-            Test_S131_Build();
+            this.Test_S127_Build();
+            this.Test_S128_Build();
+            this.Test_S131_Build();
         }
 
         [Fact]
         public void Test_S101_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -57,7 +51,7 @@ namespace TestAttributes
         public void Test_S122_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-122-Product-Specification-Development\FC\122_FC_2.0.0.20260116.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -68,7 +62,7 @@ namespace TestAttributes
         public void Test_S123_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-123-Product-Specification-Development\FC\S-123_FC_Ed.2.0.0_20260118.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -79,7 +73,7 @@ namespace TestAttributes
         public void Test_S124_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-124 Navigational Warnings\FC\124_FC_2.0.0.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -90,7 +84,7 @@ namespace TestAttributes
         public void Test_S125_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml"));
 
-            var roslyn = RoslynBuilder(ps, "S125");
+            var roslyn = this.RoslynBuilder(ps, "S125");
 
             var output = roslyn.ToString();
 
@@ -101,7 +95,7 @@ namespace TestAttributes
         public void Test_S127_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-127-Product-Specification-Development\FC\127_FC_2.0.0.20251207.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -112,7 +106,7 @@ namespace TestAttributes
         public void Test_S128_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-128-Product-Specification-Development\FC\128_FC.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 
@@ -123,7 +117,7 @@ namespace TestAttributes
         public void Test_S131_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-131-Product-Specification-Development\FC\131_FC_2.0.0.20260107.xml"));
 
-            var roslyn = RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps);
 
             var output = roslyn.ToString();
 

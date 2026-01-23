@@ -1,6 +1,4 @@
-﻿using S100FC;
-using S100FC.Catalogues;
-using S100FC.S100;
+﻿using S100FC.S100;
 using System.Collections;
 using System.Globalization;
 using System.Reflection;
@@ -227,17 +225,17 @@ namespace S100FC.YAML
                         continue;
                     }
 
-                    GetKeyValueScalar(parser, out string key, out string? value);
+                    this.GetKeyValueScalar(parser, out string key, out string? value);
 
                     // if this is null, its the beginning of a list
                     if (!string.IsNullOrEmpty(value)) {
                         AddRootAttributes(key, value, dataset);
                     }
                     else if (key == "Metadata") {
-                        AddMetadata(parser, dataset);
+                        this.AddMetadata(parser, dataset);
                     }
                     else {
-                        AddCollection(parser, key, dataset);
+                        this.AddCollection(parser, key, dataset);
                     }
 
                     // always move at the end. Should only reach this after each root collection or root attribute
@@ -249,7 +247,7 @@ namespace S100FC.YAML
             }
 
             public void AddMetadata(IParser parser, Dataset dataset) {
-                var metadata = AddMetadataAttribute(parser);
+                var metadata = this.AddMetadataAttribute(parser);
                 dataset.Metadata = metadata;
             }
 
@@ -275,15 +273,15 @@ namespace S100FC.YAML
                     switch (collectionName) {
                         case "InformationTypes":
                             // To-do Not implemented yet
-                            var information = AddInformationType(parser);
+                            var information = this.AddInformationType(parser);
                             dataset.AddInformation(information);
                             break;
                         case "Points":
-                            var point = AddPoint(parser);
+                            var point = this.AddPoint(parser);
                             dataset.AddPoint(point);
                             break;
                         case "Curves":
-                            var curve = AddCurve(parser);
+                            var curve = this.AddCurve(parser);
                             dataset.AddCurve(curve);
                             break;
                         case "CompositeCurves":
@@ -291,7 +289,7 @@ namespace S100FC.YAML
                             dataset.AddCompositeCurve(compCurve);
                             break;
                         case "Depths":
-                            var depth = AddDepth(parser);
+                            var depth = this.AddDepth(parser);
                             dataset.AddPointSet(depth);
                             break;
                         case "Surfaces":
@@ -299,7 +297,7 @@ namespace S100FC.YAML
                             dataset.AddSurface(surface);
                             break;
                         case "Features":
-                            var feature = AddFeatureAttribute(parser);
+                            var feature = this.AddFeatureAttribute(parser);
                             dataset.AddFeature(feature);
                             break;
                         default:
@@ -340,7 +338,7 @@ namespace S100FC.YAML
                 // Only iterate on the Metadata object at root level
                 while (parser.Current is not MappingEnd) {
                     if (parser.Current is Scalar scalarKey) {
-                        GetKeyValueScalar(parser, out string key, out string? value);
+                        this.GetKeyValueScalar(parser, out string key, out string? value);
                         switch (key) {
                             case "OrganisationName":
                                 metadata.OrganisationName = value;
@@ -395,7 +393,7 @@ namespace S100FC.YAML
                                 name = value;
                                 break;
                             case "Association":
-                                var assos = BuildAssociations(parser);
+                                var assos = this.BuildAssociations(parser);
                                 associations.AddRange(assos);
                                 break;
                             case "Location":
@@ -443,7 +441,7 @@ namespace S100FC.YAML
                                 name = value;
                                 break;
                             case "Association":
-                                var assos = BuildAssociations(parser);
+                                var assos = this.BuildAssociations(parser);
                                 associations.AddRange(assos);
                                 break;
                             case "Location":
@@ -600,7 +598,7 @@ namespace S100FC.YAML
                                 end = value;
                                 break;
                             case "Association":
-                                var curveAssociations = BuildAssociations(parser);
+                                var curveAssociations = this.BuildAssociations(parser);
                                 associations.AddRange(curveAssociations);
                                 break;
                             case "Vertices":
@@ -663,7 +661,7 @@ namespace S100FC.YAML
                                 parser.MoveNext();  // SequenceStart
                                 parser.MoveNext();  // MappingStart
 
-                                var attributeList = BuildAttributeList(parser);
+                                var attributeList = this.BuildAttributeList(parser);
 
                                 var featureNode = BuildFeatureNodeObject(attributeList, feature.Name);
 
@@ -671,14 +669,14 @@ namespace S100FC.YAML
 
                                 break;
                             case "FeatureAssociation":
-                                var featureAssociations = BuildAssociations(parser);
+                                var featureAssociations = this.BuildAssociations(parser);
 
                                 foreach (var fa in featureAssociations) {
                                     feature.AddFeatureAssociation(fa);
                                 }
                                 break;
                             case "Association":
-                                var associations = BuildAssociations(parser);
+                                var associations = this.BuildAssociations(parser);
 
                                 foreach (var a in associations) {
                                     feature.AddAssociation(a);
@@ -715,7 +713,7 @@ namespace S100FC.YAML
                                 parser.MoveNext();  // SequenceStart
                                 parser.MoveNext();  // MappingStart
 
-                                var attributeList = BuildAttributeList(parser);
+                                var attributeList = this.BuildAttributeList(parser);
 
                                 S100FC.InformationType informationNode = BuildInformationNodeObject(attributeList, information.Name);
 
@@ -740,7 +738,7 @@ namespace S100FC.YAML
                 while (parser.Current is not SequenceEnd) {
                     if (parser.Current is Scalar) {
 
-                        GetKeyValueScalar(parser, out var key, out var value);
+                        this.GetKeyValueScalar(parser, out var key, out var value);
 
                         if (key == "To")
                             to = value;
@@ -779,7 +777,7 @@ namespace S100FC.YAML
 
                 while (parser.Current is not SequenceEnd) {
                     if (parser.Current is Scalar) {
-                        GetKeyValueScalar(parser, out var key, out var value);
+                        this.GetKeyValueScalar(parser, out var key, out var value);
 
                         if (key == "Name")
                             itemName = value;

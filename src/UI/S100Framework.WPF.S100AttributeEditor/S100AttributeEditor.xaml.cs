@@ -1,13 +1,10 @@
-﻿using Microsoft.Xaml.Behaviors;
-using S100FC;
-using S100FC.S101.ComplexAttributes;
+﻿using S100FC;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Xml.Linq;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -24,7 +21,7 @@ namespace S100Framework.WPF.ViewModel
                 return false;
 
             field = value;
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
             return true;
         }
 
@@ -39,7 +36,7 @@ namespace S100Framework.WPF.ViewModel
             this.attributeBindings.CollectionChanged += (s, e) => {
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
-                        if(item is SimpleAttributeViewModel simpleAttribute) {
+                        if (item is SimpleAttributeViewModel simpleAttribute) {
                             simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                         else if (item is ComplexAttributeViewModel complexAttribute) {
@@ -79,10 +76,10 @@ namespace S100Framework.WPF.ViewModel
         //[Category("RecommendedTrack")]
         public string code {
             get {
-                return _code;
+                return this._code;
             }
             set {
-                SetProperty(ref _code, value);
+                this.SetProperty(ref this._code, value);
             }
         }
 
@@ -91,15 +88,14 @@ namespace S100Framework.WPF.ViewModel
         public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
         #endregion
 
-        private S100FC.FeatureType? _feature = default;
-        private string _uid;
+        private readonly S100FC.FeatureType? _feature = default;
+        private readonly string _uid;
     }
 }
 
 namespace S100Framework.WPF
 {
     using S100Framework.WPF.ViewModel;
-    using Xceed.Wpf.Toolkit.PropertyGrid;
 
     /// <summary>
     /// Interaction logic for S100AttributeEditor.xaml
@@ -143,7 +139,7 @@ namespace S100Framework.WPF
                     }
                 }
                 if (e.parameter is ComplexAttributeViewModel complexAttribute) {
-                    if(e.parent is ItemsControl itemsControl) {
+                    if (e.parent is ItemsControl itemsControl) {
                         var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
                         var index = collection.IndexOf(complexAttribute);
                         if (index >= 0) {
@@ -165,15 +161,15 @@ namespace S100Framework.WPF
                 new PropertyMetadata(null, OnSelectedObjectChanged));
 
         public S100AttributeEditorViewModel? SelectedObject {
-            get => GetValue(SelectedObjectProperty) as S100AttributeEditorViewModel;
-            set => SetValue(SelectedObjectProperty, value);
+            get => this.GetValue(SelectedObjectProperty) as S100AttributeEditorViewModel;
+            set => this.SetValue(SelectedObjectProperty, value);
         }
 
         public S100AttributeEditor() {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.CreateAttributeCommand = new RelayCommand(this.OnCreateAttributeCommand);
-            this.DeleteAttributeCommand=new RelayCommand(this.OnDeleteAttributeCommand);
+            this.DeleteAttributeCommand = new RelayCommand(this.OnDeleteAttributeCommand);
         }
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {

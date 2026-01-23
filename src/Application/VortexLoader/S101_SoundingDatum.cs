@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.Singletons;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.SimpleAttributes;
+using S100Framework.Applications.Singletons;
 using VortexLoader.Singletons;
 
 

@@ -1,15 +1,12 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
-using S100FC;
 using S100FC.S128;
-using S100FC.S128.FeatureTypes;
 using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
 using System.Text.Json;
 using Xunit.Abstractions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
 namespace TestProductCatalogue

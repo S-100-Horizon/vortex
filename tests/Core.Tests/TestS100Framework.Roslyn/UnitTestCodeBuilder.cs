@@ -3,13 +3,11 @@
 
 using S100Framework.DomainModel;
 using System.IO;
-using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Windows.System;
 using Xunit.Abstractions;
 
 
@@ -34,7 +32,7 @@ namespace TestS100Framework
         {
             public string Path(string ps) => System.IO.Path.GetFullPath(System.IO.Path.Combine(@".\..\..\..\..\..\..\..\artifacts\Product Specifications", ps));
 
-            static string[] productSpecifications = new string[] {
+            static readonly string[] productSpecifications = new string[] {
                     @".\Artifacts\FeatureCatalogue.xml",
                     @".\Artifacts\jpS-122_FC_1.2.1.xml",
                     @".\Artifacts\S-124FC_1.5_20240330.xml",
@@ -60,63 +58,63 @@ namespace TestS100Framework
 
             [Fact]
             public void Build_KnownFeatureCataloguesLocal() {
-                Build_S101();
+                this.Build_S101();
 
-                Build_S122();
+                this.Build_S122();
 
-                Build_S123();
+                this.Build_S123();
 
-                Build_S124();
+                this.Build_S124();
 
                 //Build_S125();
-                Build_S125_FIHO();
+                this.Build_S125_FIHO();
 
-                Build_S127();
+                this.Build_S127();
 
-                Build_S128();
+                this.Build_S128();
 
-                Build_S131();
+                this.Build_S131();
 
-                Build_S201();
+                this.Build_S201();
 
                 //Build_S501();
             }
 
             [Fact]
             public void Build_KnownFeatureCatalogues() {
-                Build_S101();
+                this.Build_S101();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-101_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-101_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-101_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-101_ViewModel.cs"));
 
-                Build_S122();
+                this.Build_S122();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-122_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-122_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-122_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-122_ViewModel.cs"));
 
-                Build_S123();
+                this.Build_S123();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-123_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-123_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-123_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-123_ViewModel.cs"));
 
-                Build_S124();
+                this.Build_S124();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-124_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-124_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-124_ViewModel.cs"));
 
-                Build_S125_FIHO();
+                this.Build_S125_FIHO();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-125_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-125_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-125_ViewModel.cs"));
 
-                Build_S127();
+                this.Build_S127();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-127_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-127_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-127_ViewModel.cs"));
 
-                Build_S128();
+                this.Build_S128();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-128_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-128_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-128_ViewModel.cs"));
 
-                Build_S131();
+                this.Build_S131();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-131_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-131_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-131_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-131_ViewModel.cs"));
 
-                Build_S201();
+                this.Build_S201();
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\Core\S100Framework.Catalogues\S-201_FC.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_FC.cs"));
                 File.WriteAllText(@"..\..\..\..\..\..\..\src\UI\S100Framework.WPF\S-201_ViewModel.g.cs", File.ReadAllText(@".\..\..\..\..\S-201_ViewModel.cs"));
 
@@ -137,12 +135,12 @@ namespace TestS100Framework
                 ];
 
                 foreach (var e in productSpecifications) {
-                    _output.WriteLine($"{System.IO.Path.GetFileName(e)}");
-                    _output.WriteLine("----------------------------------------------------------------------------------");
+                    this._output.WriteLine($"{System.IO.Path.GetFileName(e)}");
+                    this._output.WriteLine("----------------------------------------------------------------------------------");
                     var s100 = XDocument.Load(e);
-                    Assert.True(VerifyProductSpecification(s100));
+                    Assert.True(this.VerifyProductSpecification(s100));
 
-                    _output.WriteLine("");
+                    this._output.WriteLine("");
                 }
             }
 
@@ -154,7 +152,7 @@ namespace TestS100Framework
                 var ps = System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml");
                 var s100 = XDocument.Load(ps);
 
-                Assert.True(VerifyProductSpecification(s100));
+                Assert.True(this.VerifyProductSpecification(s100));
 
                 var attributeRules = new S100Framework.Applications.Roslyn.AttributeRule[] {
                     new S100Framework.Applications.Roslyn.AttributeRule("Obstruction.defaultClearanceDepth","[DependentUnknownValue(\"valueOfSounding\")]"),
@@ -211,7 +209,7 @@ namespace TestS100Framework
                 var ps = System.IO.Path.Combine(this._iho, @"S-122-Product-Specification-Development\FC\122_FC_2.0.0.20251207.xml");
                 var s100 = XDocument.Load(ps);
 
-                Assert.True(VerifyProductSpecification(s100));
+                Assert.True(this.VerifyProductSpecification(s100));
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
@@ -249,7 +247,7 @@ namespace TestS100Framework
                 var ps = this.Path(@"S-124 Navigational Warnings\FC\124_FC_2.0.0.xml");
                 var s100 = XDocument.Load(ps);
 
-                Assert.True(VerifyProductSpecification(s100));
+                Assert.True(this.VerifyProductSpecification(s100));
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
                 //var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
@@ -369,7 +367,7 @@ namespace TestS100Framework
                 var ps = this.Path(@"S-201 Aids to Navigation Information\FC\201_Feature_Catalogue_2.0.0.xml");
                 var s100 = XDocument.Load(ps);
 
-                Assert.True(VerifyProductSpecification(s100));
+                Assert.True(this.VerifyProductSpecification(s100));
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.GML);
 
@@ -387,7 +385,7 @@ namespace TestS100Framework
                 //var s100 = XDocument.Load(this.Path(@"S-501 Additional Military Layers\0.9.3\S-501_FC.xml"));
                 //var s100 = XDocument.Load(@".\Artifacts\S-501_FC_0_0_9_2025-02-14.xml");
 
-                Assert.True(VerifyProductSpecification(s100));
+                Assert.True(this.VerifyProductSpecification(s100));
 
                 var content = S100Framework.Applications.Roslyn.Build(s100, S100Framework.Applications.Roslyn.ProductFormat.ISO8211, false, [], [], []);
 
@@ -464,7 +462,7 @@ namespace TestS100Framework
 
                     var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
 
-                    _output.WriteLine($"{productId}");
+                    this._output.WriteLine($"{productId}");
 
                     foreach (var endpoint in endpoints.GroupBy(e => e.association)) {
                         //_output.WriteLine($"{endpoint.Key}");
@@ -476,13 +474,13 @@ namespace TestS100Framework
 
                             if (!role.All(e => e.lower == lower && e.upper == upper)) {
                                 foreach (var d in role.Distinct()) {
-                                    _output.WriteLine($"\t\t{endpoint.Key}: {d.roleType}, {d.role}, {d.lower}, {d.upper}");
+                                    this._output.WriteLine($"\t\t{endpoint.Key}: {d.roleType}, {d.role}, {d.lower}, {d.upper}");
                                 }
 
                             }
                         }
                     }
-                    _output.WriteLine("");
+                    this._output.WriteLine("");
                 }
             }
 
@@ -506,7 +504,7 @@ namespace TestS100Framework
                     var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
                     var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
 
-                    _output.WriteLine($"--- {productId}, {versionNumber} --------------------------------------------------------");
+                    this._output.WriteLine($"--- {productId}, {versionNumber} --------------------------------------------------------");
 
                     var informationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
 
@@ -518,7 +516,7 @@ namespace TestS100Framework
                         foreach (var r in roles) {
                             var features = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:role[@ref=\"{r}\"]", xmlNamespaceManager);
                             if (!features.Any()) {
-                                _output.WriteLine($"\tinformationBinding: {code}, {r}");
+                                this._output.WriteLine($"\tinformationBinding: {code}, {r}");
                             }
                         }
                     }
@@ -534,12 +532,12 @@ namespace TestS100Framework
                         foreach (var r in roles) {
                             var features = productSpecification.XPathSelectElements($"//S100FC:S100_FC_FeatureType/S100FC:featureBinding/S100FC:role[@ref=\"{r}\"]", xmlNamespaceManager);
                             if (!features.Any()) {
-                                _output.WriteLine($"\t    featureBinding: {code}, {r}");
+                                this._output.WriteLine($"\t    featureBinding: {code}, {r}");
                             }
                         }
                     }
 
-                    _output.WriteLine("");
+                    this._output.WriteLine("");
                 }
             }
 
@@ -604,7 +602,7 @@ namespace TestS100Framework
                     var usage = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:association[@ref=\"{association}\"]", xmlNamespaceManager);
 
                     if (!usage.Any())
-                        _output.WriteLine(association);
+                        this._output.WriteLine(association);
                 }
             }
 
@@ -708,7 +706,7 @@ namespace TestS100Framework
 
                     var elementRoles = productSpecification.XPathSelectElement("//S100FC:S100_FC_Roles", xmlNamespaceManager);
                     if (elementRoles == null) {
-                        _output.WriteLine("no roles found");
+                        this._output.WriteLine("no roles found");
                     }
                     else {
                         foreach (var role in elementRoles!.Elements()) {
@@ -725,7 +723,7 @@ namespace TestS100Framework
                                 continue;
                             }
 
-                            _output.WriteLine($"role not used: {code}");
+                            this._output.WriteLine($"role not used: {code}");
                         }
                     }
                 }
@@ -741,7 +739,7 @@ namespace TestS100Framework
                             var name = e.Element(XName.Get("name", scope_S100))!.Value;
                             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                            _output.WriteLine($"{code}:");
+                            this._output.WriteLine($"{code}:");
 
                             var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
 
@@ -767,15 +765,15 @@ namespace TestS100Framework
 
                             foreach (var pair in dictionary) {
                                 var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
-                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                                this._output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
                             }
                             foreach (var r in roles) {
                                 if (dictionary.ContainsKey(r))
                                     continue;
-                                _output.WriteLine($"\t{r} not used!");
+                                this._output.WriteLine($"\t{r} not used!");
                             }
 
-                            _output.WriteLine("");
+                            this._output.WriteLine("");
                         }
                     }
 
@@ -788,7 +786,7 @@ namespace TestS100Framework
                             var name = e.Element(XName.Get("name", scope_S100))!.Value;
                             var code = e.Element(XName.Get("code", scope_S100))!.Value;
 
-                            _output.WriteLine($"{code}:");
+                            this._output.WriteLine($"{code}:");
 
                             var roles = e.Elements(XName.Get("role", scope_S100)).Select(e => e.Attribute("ref")!.Value);
 
@@ -814,14 +812,14 @@ namespace TestS100Framework
 
                             foreach (var pair in dictionary) {
                                 var upper = pair.Value.upper.HasValue ? $"{pair.Value.upper.Value}" : "∞";
-                                _output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
+                                this._output.WriteLine($"\t{pair.Key}: {pair.Value.lower} {upper}");
                             }
                             foreach (var r in roles) {
                                 if (dictionary.ContainsKey(r))
                                     continue;
-                                _output.WriteLine($"\t{r} not used!");
+                                this._output.WriteLine($"\t{r} not used!");
                             }
-                            _output.WriteLine("");
+                            this._output.WriteLine("");
                         }
                     }
                 }
@@ -864,8 +862,8 @@ namespace TestS100Framework
 
             // Private constructor to control instantiation via factory methods
             private NullableUnknown(T value, ValueState state) {
-                _value = value;
-                _state = state;
+                this._value = value;
+                this._state = state;
             }
 
             // --- Factory Methods ---
@@ -892,9 +890,9 @@ namespace TestS100Framework
 
             // --- Properties ---
 
-            public bool HasValue => _state == ValueState.HasValue;
-            public bool IsNull => _state == ValueState.IsNull;
-            public bool IsUnknown => _state == ValueState.Unknown; // Or _state == default(ValueState)
+            public bool HasValue => this._state == ValueState.HasValue;
+            public bool IsNull => this._state == ValueState.IsNull;
+            public bool IsUnknown => this._state == ValueState.Unknown; // Or _state == default(ValueState)
 
             /// <summary>
             /// Gets the value if HasValue is true.
@@ -902,37 +900,37 @@ namespace TestS100Framework
             /// </summary>
             public T Value {
                 get {
-                    if (!HasValue) {
+                    if (!this.HasValue) {
                         throw new InvalidOperationException("NullableUnknown does not have a value in its current state.");
                     }
-                    return _value;
+                    return this._value;
                 }
             }
 
             /// <summary>
             /// Gets the value if HasValue is true, otherwise returns default(T).
             /// </summary>
-            public T GetValueOrDefault() => _value; // Works because _value is default(T) if not HasValue
+            public T GetValueOrDefault() => this._value; // Works because _value is default(T) if not HasValue
 
             /// <summary>
             /// Gets the value if HasValue is true, otherwise returns the specified default value.
             /// </summary>
-            public T GetValueOrDefault(T defaultValue) => HasValue ? _value : defaultValue;
+            public T GetValueOrDefault(T defaultValue) => this.HasValue ? this._value : defaultValue;
 
 
             // --- Overrides and IEquatable ---
 
             public override bool Equals(object? obj) {
-                return obj is NullableUnknown<T> other && Equals(other);
+                return obj is NullableUnknown<T> other && this.Equals(other);
             }
 
             public bool Equals(NullableUnknown<T> other) {
-                if (_state != other._state) {
+                if (this._state != other._state) {
                     return false;
                 }
-                if (HasValue) // Only compare values if both have values
+                if (this.HasValue) // Only compare values if both have values
                 {
-                    return EqualityComparer<T>.Default.Equals(_value, other._value);
+                    return EqualityComparer<T>.Default.Equals(this._value, other._value);
                 }
                 // If not HasValue, states being equal is enough (e.g., Unknown == Unknown)
                 return true;
@@ -941,10 +939,10 @@ namespace TestS100Framework
             public override int GetHashCode() {
                 unchecked // Overflow is fine, just wrap
                 {
-                    int hashCode = _state.GetHashCode();
-                    if (HasValue && _value != null) // Check _value for null to avoid NullReferenceException on _value.GetHashCode()
+                    int hashCode = this._state.GetHashCode();
+                    if (this.HasValue && this._value != null) // Check _value for null to avoid NullReferenceException on _value.GetHashCode()
                     {
-                        hashCode = (hashCode * 397) ^ EqualityComparer<T>.Default.GetHashCode(_value);
+                        hashCode = (hashCode * 397) ^ EqualityComparer<T>.Default.GetHashCode(this._value);
                     }
                     return hashCode;
                 }
@@ -959,8 +957,8 @@ namespace TestS100Framework
             }
 
             public override string ToString() {
-                return _state switch {
-                    ValueState.HasValue => _value?.ToString() ?? "null (value)", // Differentiate value 'null' from state 'Null'
+                return this._state switch {
+                    ValueState.HasValue => this._value?.ToString() ?? "null (value)", // Differentiate value 'null' from state 'Null'
                     ValueState.IsNull => "Null (state)",
                     ValueState.Unknown => "Unknown",
                     _ => "Invalid State" // Should not happen
@@ -996,11 +994,11 @@ namespace TestS100Framework
                 NullableUnknown<int> age3 = NullableUnknown<int>.Unknown; // Or just default: NullableUnknown<int> age3;
                 NullableUnknown<int> age4 = 25; // Using implicit conversion
 
-                ProcessData(age1, NullableUnknown<string>.FromValue("Alice"));
-                ProcessData(age2, NullableUnknown<string>.FromValue(null)); // Name has a value, and that value is null
-                ProcessData(age3, NullableUnknown<string>.Null);          // Name is explicitly in the "Null state"
-                ProcessData(age4, NullableUnknown<string>.Unknown);       // Name is "Unknown"
-                ProcessData(default, "Bob"); // Default for NullableUnknown<int> is Unknown. Implicit for string.
+                this.ProcessData(age1, NullableUnknown<string>.FromValue("Alice"));
+                this.ProcessData(age2, NullableUnknown<string>.FromValue(null)); // Name has a value, and that value is null
+                this.ProcessData(age3, NullableUnknown<string>.Null);          // Name is explicitly in the "Null state"
+                this.ProcessData(age4, NullableUnknown<string>.Unknown);       // Name is "Unknown"
+                this.ProcessData(default, "Bob"); // Default for NullableUnknown<int> is Unknown. Implicit for string.
 
 
             }
@@ -1008,33 +1006,33 @@ namespace TestS100Framework
             private void ProcessData(NullableUnknown<int> age, NullableUnknown<string> name) {
                 // Processing age
                 if (age.HasValue) {
-                    _output.WriteLine($"Age: {age.Value}");
+                    this._output.WriteLine($"Age: {age.Value}");
                 }
                 else if (age.IsNull) {
-                    _output.WriteLine("Age: Not Applicable/Provided as Null");
+                    this._output.WriteLine("Age: Not Applicable/Provided as Null");
                 }
                 else // age.IsUnknown
                 {
-                    _output.WriteLine("Age: Unknown");
+                    this._output.WriteLine("Age: Unknown");
                 }
 
                 // Processing name (string can be null itself)
                 if (name.HasValue) {
                     if (name.Value == null) {
-                        _output.WriteLine("Name: Provided as a null string value");
+                        this._output.WriteLine("Name: Provided as a null string value");
                     }
                     else {
-                        _output.WriteLine($"Name: {name.Value}");
+                        this._output.WriteLine($"Name: {name.Value}");
                     }
                 }
                 else if (name.IsNull) {
-                    _output.WriteLine("Name: Not Applicable/Provided as Null State");
+                    this._output.WriteLine("Name: Not Applicable/Provided as Null State");
                 }
                 else // name.IsUnknown
                 {
-                    _output.WriteLine("Name: Unknown");
+                    this._output.WriteLine("Name: Unknown");
                 }
-                _output.WriteLine("---");
+                this._output.WriteLine("---");
             }
         }
     }

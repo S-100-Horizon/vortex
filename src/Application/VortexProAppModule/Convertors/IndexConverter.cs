@@ -16,7 +16,7 @@ namespace VortexProAppModule.Convertors
                 //index = lv.ItemContainerGenerator.IndexFromContainer(lvi) + 1;
             }
 
-            return $"{++_index}";
+            return $"{++this._index}";
 
         }
 

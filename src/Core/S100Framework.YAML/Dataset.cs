@@ -1,7 +1,5 @@
-﻿using S100FC;
-using S100FC.Topology;
+﻿using S100FC.Topology;
 using System.Globalization;
-using System.Text.Json.Serialization;
 using YamlDotNet.Serialization;
 
 namespace S100FC.YAML
@@ -28,13 +26,13 @@ namespace S100FC.YAML
 
         public Metadata Metadata { get; set; } = new Metadata();
 
-        public ICollection<Information>? InformationTypes => _informationTypes.Count != 0 ? _informationTypes : null;
-        public ICollection<Point>? Points => _points.Count != 0 ? _points : null;
-        public ICollection<Curve>? Curves => _curves.Count != 0 ? _curves : null;
-        public ICollection<CompositeCurve>? CompositeCurves => _compositeCurves.Count != 0 ? _compositeCurves : null;
-        public ICollection<PointSet>? Depths => _pointSets.Count != 0 ? _pointSets : null;
-        public ICollection<Surface>? Surfaces => _surfaces.Count != 0 ? _surfaces : null;
-        public ICollection<Feature>? Features => _features.Count != 0 ? SortedFeatures() : null;
+        public ICollection<Information>? InformationTypes => this._informationTypes.Count != 0 ? this._informationTypes : null;
+        public ICollection<Point>? Points => this._points.Count != 0 ? this._points : null;
+        public ICollection<Curve>? Curves => this._curves.Count != 0 ? this._curves : null;
+        public ICollection<CompositeCurve>? CompositeCurves => this._compositeCurves.Count != 0 ? this._compositeCurves : null;
+        public ICollection<PointSet>? Depths => this._pointSets.Count != 0 ? this._pointSets : null;
+        public ICollection<Surface>? Surfaces => this._surfaces.Count != 0 ? this._surfaces : null;
+        public ICollection<Feature>? Features => this._features.Count != 0 ? this.SortedFeatures() : null;
 
         private readonly ICollection<Information> _informationTypes = new HashSet<Information>();
         private readonly ICollection<Point> _points = new HashSet<Point>();
@@ -45,34 +43,34 @@ namespace S100FC.YAML
         private readonly ICollection<Feature> _features = new HashSet<Feature>();
 
         public Dataset AddPoint(Point point) {
-            _points.Add(point);
+            this._points.Add(point);
             return this;
         }
         public Dataset AddPointSet(PointSet pointSet) {
-            _pointSets.Add(pointSet);
+            this._pointSets.Add(pointSet);
             return this;
         }
         public Dataset AddCurve(Curve curve) {
-            _curves.Add(curve);
+            this._curves.Add(curve);
             return this;
         }
         public Dataset AddCompositeCurve(CompositeCurve compositeCurve) {
-            _compositeCurves.Add(compositeCurve);
+            this._compositeCurves.Add(compositeCurve);
             return this;
         }
 
         public Dataset AddSurface(Surface surface) {
-            _surfaces.Add(surface);
+            this._surfaces.Add(surface);
             return this;
         }
 
         public Dataset AddFeature(Feature feature) {
-            _features.Add(feature);
+            this._features.Add(feature);
             return this;
         }
 
         public Dataset AddInformation(Information information) {
-            _informationTypes.Add(information);
+            this._informationTypes.Add(information);
             return this;
         }
         /// <summary>
@@ -104,7 +102,7 @@ namespace S100FC.YAML
         /// Thrown when a circular reference between features is detected.
         /// </exception>
         private List<Feature> SortedFeatures() {
-            var foidToFeature = _features.ToDictionary(f => f.Foid);
+            var foidToFeature = this._features.ToDictionary(f => f.Foid);
             var visited = new HashSet<string>();
             var temp = new HashSet<string>();
             var sorted = new List<Feature>();
@@ -127,7 +125,7 @@ namespace S100FC.YAML
                 sorted.Add(f);
             }
 
-            foreach (var f in _features)
+            foreach (var f in this._features)
                 Visit(f);
 
             return sorted;
@@ -159,19 +157,20 @@ namespace S100FC.YAML
         Dictionary<string, Geometry> Deleted
     );
 
-    public class MetadataUpdate() {
-        public string OrganisationName { get; set; } 
-        public string? City { get; set; } 
-        public string? AdministrativeArea { get; set; } 
-        public string? ElectronicMailAddress { get; set; } 
+    public class MetadataUpdate()
+    {
+        public string OrganisationName { get; set; }
+        public string? City { get; set; }
+        public string? AdministrativeArea { get; set; }
+        public string? ElectronicMailAddress { get; set; }
 
-        public string? Country { get; set; } 
+        public string? Country { get; set; }
 
-        public string? PrivateKey { get; set; } 
-        public string? Certificate { get; set; } 
+        public string? PrivateKey { get; set; }
+        public string? Certificate { get; set; }
 
-        public string Producer { get; set; } 
-        public string ProducerCode { get; set; } 
+        public string Producer { get; set; }
+        public string ProducerCode { get; set; }
         public ICollection<SupportFileUpdate>? SupportFiles { get; set; }
     }
     public class SupportFileUpdate()
@@ -204,33 +203,33 @@ namespace S100FC.YAML
         public MetadataUpdate Metadata => metadata;
 
         [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false)]
-        public ICollection<object>? InformationTypesAdded => InformationTypes.Added.Count != 0 ? InformationTypes?.Added.Values : null;
+        public ICollection<object>? InformationTypesAdded => this.InformationTypes.Added.Count != 0 ? this.InformationTypes?.Added.Values : null;
         [YamlMember(Alias = "InfDel", ApplyNamingConventions = false)]
-        public ICollection<string>? InformationTypesDeleted => InformationTypes.Deleted.Count != 0 ? InformationTypes?.Deleted.Keys : null;
+        public ICollection<string>? InformationTypesDeleted => this.InformationTypes.Deleted.Count != 0 ? this.InformationTypes?.Deleted.Keys : null;
         [YamlMember(Alias = "Features", ApplyNamingConventions = false)]
-        public ICollection<object>? FeaturesAdded => Features.Added.Count != 0 ? Features?.Added.Values : null;
+        public ICollection<object>? FeaturesAdded => this.Features.Added.Count != 0 ? this.Features?.Added.Values : null;
         [YamlMember(Alias = "FDel", ApplyNamingConventions = false)]
-        public ICollection<string>? FeaturesDeleted => Features.Deleted.Count != 0 ? Features?.Deleted.Keys : null;
+        public ICollection<string>? FeaturesDeleted => this.Features.Deleted.Count != 0 ? this.Features?.Deleted.Keys : null;
 
         [YamlMember(Alias = "Points", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? PointsAdded => Points.Added.Count != 0 ? Points?.Added.Values : null;
+        public ICollection<Geometry>? PointsAdded => this.Points.Added.Count != 0 ? this.Points?.Added.Values : null;
         [YamlMember(Alias = "Depths", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? DepthsAdded => Depths.Added.Count != 0 ? Depths?.Added.Values : null;
+        public ICollection<Geometry>? DepthsAdded => this.Depths.Added.Count != 0 ? this.Depths?.Added.Values : null;
         [YamlMember(Alias = "Curves", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? CurvesAdded => Curves.Added.Count != 0 ? Curves?.Added.Values : null;
+        public ICollection<Geometry>? CurvesAdded => this.Curves.Added.Count != 0 ? this.Curves?.Added.Values : null;
         [YamlMember(Alias = "CompositeCurves", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? CompositeCurvesAdded => CompositeCurves.Added.Count != 0 ? CompositeCurves?.Added.Values : null;
+        public ICollection<Geometry>? CompositeCurvesAdded => this.CompositeCurves.Added.Count != 0 ? this.CompositeCurves?.Added.Values : null;
         [YamlMember(Alias = "Surfaces", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? SurfacesAdded => Surfaces.Added.Count != 0 ? Surfaces?.Added.Values : null;
+        public ICollection<Geometry>? SurfacesAdded => this.Surfaces.Added.Count != 0 ? this.Surfaces?.Added.Values : null;
 
         [YamlMember(Alias = "GDel", ApplyNamingConventions = false)]
         public ICollection<string>? GeometriesDeleted {
             get {
-                var all = Points.Deleted.Keys
-                    .Concat(Depths.Deleted.Keys)
-                    .Concat(Curves.Deleted.Keys)
-                    .Concat(CompositeCurves.Deleted.Keys)
-                    .Concat(Surfaces.Deleted.Keys);
+                var all = this.Points.Deleted.Keys
+                    .Concat(this.Depths.Deleted.Keys)
+                    .Concat(this.Curves.Deleted.Keys)
+                    .Concat(this.CompositeCurves.Deleted.Keys)
+                    .Concat(this.Surfaces.Deleted.Keys);
 
                 return all.Any() ? [.. all] : null;
             }
@@ -242,22 +241,22 @@ namespace S100FC.YAML
         //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
 
         [YamlIgnore]
-        public bool Any => (Features.Added.Count +
-                            Features.Deleted.Count +
-                            InformationTypes.Added.Count +
-                            InformationTypes.Deleted.Count +
+        public bool Any => (this.Features.Added.Count +
+                            this.Features.Deleted.Count +
+                            this.InformationTypes.Added.Count +
+                            this.InformationTypes.Deleted.Count +
                             // SupportFiles.Added.Count +
                             // SupportFiles.Deleted.Count +
-                            Points.Added.Count +
-                            Points.Deleted.Count +
-                            Depths.Added.Count +
-                            Depths.Deleted.Count +
-                            Curves.Added.Count +
-                            Curves.Deleted.Count +
-                            CompositeCurves.Added.Count +
-                            CompositeCurves.Deleted.Count +
-                            Surfaces.Added.Count +
-                            Surfaces.Deleted.Count) == 0;
+                            this.Points.Added.Count +
+                            this.Points.Deleted.Count +
+                            this.Depths.Added.Count +
+                            this.Depths.Deleted.Count +
+                            this.Curves.Added.Count +
+                            this.Curves.Deleted.Count +
+                            this.CompositeCurves.Added.Count +
+                            this.CompositeCurves.Deleted.Count +
+                            this.Surfaces.Added.Count +
+                            this.Surfaces.Deleted.Count) == 0;
 
         [YamlIgnore]
         internal FeatureDiff Features { get; init; } = features;
@@ -436,7 +435,7 @@ namespace S100FC.YAML
 
 
             // Read Curves
-            var curves = (rawDictionary["Curves"] as List<object> ?? new List<object>())
+            var curves = (rawDictionary["Curves"] as List<object> ?? [])
                 .OfType<Dictionary<object, object>>()
                 .Select(d => {
                     var location = d["Vertices"]?.ToString() ?? string.Empty;
@@ -858,10 +857,10 @@ namespace S100FC.YAML
 
         public string Producer { get; set; } = "GST";
         public string ProducerCode { get; set; } = "DK00";
-        public ICollection<SupportFile>? SupportFiles => _supportFiles.Count != 0 ? _supportFiles : null;
+        public ICollection<SupportFile>? SupportFiles => this._supportFiles.Count != 0 ? this._supportFiles : null;
         private readonly ICollection<SupportFile> _supportFiles = [];
 
-        public void AddSupportFile(string name, string content) => _supportFiles.Add(new(name, content));
+        public void AddSupportFile(string name, string content) => this._supportFiles.Add(new(name, content));
     }
 
     public class SupportFile(string Name, string Content)
@@ -878,44 +877,44 @@ namespace S100FC.YAML
         [YamlMember(Order = 0)]
         public string? Name { get; set; }
         [YamlMember(Order = 9)]
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
-        public void AddAssociation(Association association) => _associations.Add(association);
+        public ICollection<Association>? Association => this._associations.Any() ? this._associations : null;
+        private readonly ICollection<Association> _associations = new HashSet<Association>();
+        public void AddAssociation(Association association) => this._associations.Add(association);
     }
 
     public class Point(double x, double y) : Geometry
     {
         [YamlMember(Order = 1)]
-        public string? Location => Coordinate is null ? string.Empty :
-            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(Coordinate.X, Coordinate.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',');
+        public string? Location => this.Coordinate is null ? string.Empty :
+            Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(this.Coordinate.X, this.Coordinate.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',');
 
         [YamlIgnore]
         public Coordinate? Coordinate { get; private set; } = new Coordinate(x, y);
 
         public override bool Equals(object? obj) {
-            return Equals(obj as Point);
+            return this.Equals(obj as Point);
         }
 
         public bool Equals(Point? other) {
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+            return this.Name == other.Name && this.Location == other.Location && Enumerable.SequenceEqual(this.Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(Name, Location);
+            return HashCode.Combine(this.Name, this.Location);
         }
     }
 
     public class PointSet(Coordinate[] points, double[] depths) : Geometry
     {
         [YamlMember(Order = 1)]
-        public string? Location => Points is null ? string.Empty :
-            string.Join(',', Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
+        public string? Location => this.Points is null ? string.Empty :
+            string.Join(',', this.Points.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
 
         [YamlMember(Order = 2)]
-        public string? Z => Depths is null ? string.Empty : string.Join(",", Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
+        public string? Z => this.Depths is null ? string.Empty : string.Join(",", this.Depths.Select(e => e.ToString(CultureInfo.InvariantCulture)));
 
         [YamlIgnore]
         public double[] Depths { get; private set; } = depths;
@@ -924,53 +923,53 @@ namespace S100FC.YAML
         public Coordinate[] Points { get; private set; } = points;
 
         public override bool Equals(object? obj) {
-            return Equals(obj as PointSet);
+            return this.Equals(obj as PointSet);
         }
 
         public bool Equals(PointSet? other) {
             if (other is null)
                 return false;
 
-            return Name == other.Name && Location == other.Location && Z == other.Z && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+            return this.Name == other.Name && this.Location == other.Location && this.Z == other.Z && Enumerable.SequenceEqual(this.Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(Name, Location, Z);
+            return HashCode.Combine(this.Name, this.Location, this.Z);
         }
     }
 
     public class Curve : Geometry
     {
-        private string? _start;
-        private string? _end;
+        private readonly string? _start;
+        private readonly string? _end;
 
         public Curve(Coordinate[] vertices) {
-            Coordinate = vertices;
+            this.Coordinate = vertices;
         }
         public Curve(string start, Coordinate[] vertices) {
-            _start = start;
+            this._start = start;
 
-            Coordinate = vertices;
+            this.Coordinate = vertices;
         }
         public Curve(string? start, string? end, Coordinate[] vertices) {
-            _start = start;
-            _end = end;
+            this._start = start;
+            this._end = end;
 
-            Coordinate = vertices;
+            this.Coordinate = vertices;
         }
         [YamlMember(Order = 1)]
-        public string? Start => _start;
+        public string? Start => this._start;
         [YamlMember(Order = 2)]
-        public string? End => _end;
+        public string? End => this._end;
         [YamlMember(Order = 3)]
-        public string? Vertices => Coordinate is null ? string.Empty :
-            string.Join(',', Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
+        public string? Vertices => this.Coordinate is null ? string.Empty :
+            string.Join(',', this.Coordinate.Select(e => Matrix.Factory.CreatePoint(new NetTopologySuite.Geometries.Coordinate(e.X, e.Y)).ToText()["Point (".Length..].Trim(')').Replace(' ', ',')));
 
         [YamlIgnore]
         public Coordinate[]? Coordinate { get; private set; }
 
         public override bool Equals(object? obj) {
-            return Equals(obj as Curve);
+            return this.Equals(obj as Curve);
         }
 
         public bool Equals(Curve? other) {
@@ -978,42 +977,42 @@ namespace S100FC.YAML
                 return false;
 
             //return Name == other.Name && Vertices == other.Vertices;
-            return Vertices == other.Vertices && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+            return this.Vertices == other.Vertices && Enumerable.SequenceEqual(this.Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(Name, Vertices);
+            return HashCode.Combine(this.Name, this.Vertices);
         }
     }
 
     public class CompositeCurve : Geometry
     {
         public CompositeCurve(string components) {
-            Curves = components.Split(",");
+            this.Curves = components.Split(",");
         }
 
         public CompositeCurve(string[] curves) {
-            Curves = curves;
+            this.Curves = curves;
         }
         [YamlMember(Order = 1)]
-        public string Components => string.Join(",", Curves);
+        public string Components => string.Join(",", this.Curves);
 
         [YamlIgnore]
         public string[] Curves { get; set; } = [];
 
         public override bool Equals(object? obj) {
-            return Equals(obj as CompositeCurve);
+            return this.Equals(obj as CompositeCurve);
         }
 
         public bool Equals(CompositeCurve? other) {
             if (other is null)
                 return false;
 
-            return Name == other.Name && Components == other.Components && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+            return this.Name == other.Name && this.Components == other.Components && Enumerable.SequenceEqual(this.Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
-            return HashCode.Combine(Name, Components);
+            return HashCode.Combine(this.Name, this.Components);
         }
     }
 
@@ -1026,33 +1025,33 @@ namespace S100FC.YAML
         public string[]? InteriorRings { get; set; }
         [YamlMember(Order = 2)]
 
-        public dynamic[]? Interior => InteriorRings?.Length == 0 ? null : InteriorRings?.Select(e => new { Hole = e }).ToArray();
+        public dynamic[]? Interior => this.InteriorRings?.Length == 0 ? null : this.InteriorRings?.Select(e => new { Hole = e }).ToArray();
 
         public override bool Equals(object? obj) {
-            return Equals(obj as Surface);
+            return this.Equals(obj as Surface);
         }
 
         public bool Equals(Surface? other) {
             if (other is null)
                 return false;
 
-            var nameEquals = string.Equals(Name, other.Name, StringComparison.Ordinal);
-            var exteriorEquals = string.Equals(Exterior, other.Exterior, StringComparison.Ordinal);
+            var nameEquals = string.Equals(this.Name, other.Name, StringComparison.Ordinal);
+            var exteriorEquals = string.Equals(this.Exterior, other.Exterior, StringComparison.Ordinal);
 
-            var interiorRingsEquals = (InteriorRings is null && other.InteriorRings is null) ||
-                                      (InteriorRings is not null && other.InteriorRings is not null &&
-                                       Enumerable.SequenceEqual(InteriorRings, other.InteriorRings));
+            var interiorRingsEquals = (this.InteriorRings is null && other.InteriorRings is null) ||
+                                      (this.InteriorRings is not null && other.InteriorRings is not null &&
+                                       Enumerable.SequenceEqual(this.InteriorRings, other.InteriorRings));
 
-            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(Association ?? [], other.Association ?? []);
+            return nameEquals && exteriorEquals && interiorRingsEquals && Enumerable.SequenceEqual(this.Association ?? [], other.Association ?? []);
         }
 
         public override int GetHashCode() {
             var hash = new HashCode();
-            hash.Add(Name);
-            hash.Add(Exterior);
+            hash.Add(this.Name);
+            hash.Add(this.Exterior);
 
-            if (InteriorRings != null) {
-                foreach (var ring in InteriorRings) {
+            if (this.InteriorRings != null) {
+                foreach (var ring in this.InteriorRings) {
                     hash.Add(ring);
                 }
             }
@@ -1082,19 +1081,19 @@ namespace S100FC.YAML
         public string? Geometry { get; set; }
         public string? Masks { get; set; }
 
-        public ICollection<Association>? Association => _associations.Any() ? _associations : null;
-        private ICollection<Association> _associations = new HashSet<Association>();
+        public ICollection<Association>? Association => this._associations.Any() ? this._associations : null;
+        private readonly ICollection<Association> _associations = new HashSet<Association>();
 
-        public ICollection<Association>? FeatureAssociation => _featureAssociations.Any() ? _featureAssociations : null;
-        private ICollection<Association> _featureAssociations = new HashSet<Association>();
+        public ICollection<Association>? FeatureAssociation => this._featureAssociations.Any() ? this._featureAssociations : null;
+        private readonly ICollection<Association> _featureAssociations = new HashSet<Association>();
 
         public Feature AddAssociation(Association association) {
-            _associations.Add(association);
+            this._associations.Add(association);
             return this;
         }
 
         public Feature AddFeatureAssociation(Association association) {
-            _featureAssociations.Add(association);
+            this._featureAssociations.Add(association);
             return this;
         }
     }

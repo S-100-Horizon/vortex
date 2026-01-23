@@ -1,6 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100FC;
 using S100FC.S128;
 using S100FC.S128.FeatureTypes;
 using S100FC.YAML;
@@ -61,22 +60,22 @@ namespace S100FC.ProductCatalogue
 
         private bool _disposed = false;
 
-        private SingleThreadTaskScheduler _singleThreadTaskScheduler;
+        private readonly SingleThreadTaskScheduler _singleThreadTaskScheduler;
 
-        private TaskFactory _taskFactory;
+        private readonly TaskFactory _taskFactory;
 
         private Geodatabase? _geodatabase = default;
 
         private string _databaseName = string.Empty;
         private string _ownerName = string.Empty;
 
-        JsonSerializerOptions jsonSerializerOptionsS128 = new JsonSerializerOptions {
+        readonly JsonSerializerOptions jsonSerializerOptionsS128 = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
         }.AppendTypeInfoResolver();
 
-        JsonSerializerOptions jsonSerializerOptionsS101 = new JsonSerializerOptions {
+        readonly JsonSerializerOptions jsonSerializerOptionsS101 = new JsonSerializerOptions {
             WriteIndented = false,
             Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             PropertyNameCaseInsensitive = true,
@@ -84,17 +83,17 @@ namespace S100FC.ProductCatalogue
 
 
 
-      
+
 
         public string OutputFolder { get; internal set; }
-        private IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
+        private readonly IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
 
         record ElectronicProductKey(string ps, string name)
         {
             public override string ToString() => $"{this.ps}::{this.name}";
         }
 
-        private ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct> _electronicProducts = new ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct>();
+        private readonly ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct> _electronicProducts = new ConcurrentDictionary<string, S100FC.S128.FeatureTypes.ElectronicProduct>();
 
         private ProductManager() {
             this._singleThreadTaskScheduler = new SingleThreadTaskScheduler();
@@ -103,7 +102,7 @@ namespace S100FC.ProductCatalogue
         }
 
         protected async Task<ProductManager> InitializeAsync(Func<Geodatabase> creator) {
-            S100FC.S101.Extensions.AppendTypeInfoResolver(jsonSerializerOptionsS101);
+            S100FC.S101.Extensions.AppendTypeInfoResolver(this.jsonSerializerOptionsS101);
 
             await this.Dispatch(() => {
                 this._geodatabase = creator();
@@ -136,16 +135,16 @@ namespace S100FC.ProductCatalogue
                         if (settings != null) {
                             foreach (var connection in settings.Connections) {
                                 if (connection.ConnectionFile == default) {
-                                    _connections.Add(connection.ProductSpecification.ToUpperInvariant(), this._geodatabase);
+                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), this._geodatabase);
                                 }
                                 else {
                                     var geodatabase = this.OpenGeodatabase(connection.ConnectionFile);
-                                    _connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
+                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
                                 }
                             }
 
                             // Add output folder
-                            OutputFolder = settings.OutputFolder;
+                            this.OutputFolder = settings.OutputFolder;
                         }
                     }
                 }
@@ -163,7 +162,7 @@ namespace S100FC.ProductCatalogue
 
                         var code = Convert.ToString(c["code"])!;
                         if (code.Equals(nameof(S100FC.S128.FeatureTypes.ElectronicProduct))) {
-                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, jsonSerializerOptionsS128)!;
+                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, this.jsonSerializerOptionsS128)!;
                             this._electronicProducts.GetOrAdd(electronicProduct.datasetName!.ToUpperInvariant(), electronicProduct);
                         }
                     }
@@ -220,7 +219,7 @@ namespace S100FC.ProductCatalogue
                         };
 
 
-                        var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsS128);
+                        var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
 
                         buffer["json"] = jason;
                         //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsSharedBindings);
@@ -392,7 +391,7 @@ namespace S100FC.ProductCatalogue
                 return reader.ReadToEnd();
             });
         }
-        ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => _electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
+        ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
 
         IEnumerator<string> IEnumerable<string>.GetEnumerator() {
             foreach (var p in this._electronicProducts)
@@ -421,7 +420,7 @@ namespace S100FC.ProductCatalogue
                 if (row128.IsNull("json"))
                     throw new System.ArgumentNullException(nameof(name));
 
-                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, jsonSerializerOptionsS128)!;
+                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
 
                 var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
@@ -500,7 +499,7 @@ namespace S100FC.ProductCatalogue
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.InformationType;
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.InformationType;
 
                         var information = new YAML.Information {
                             Name = code,
@@ -562,7 +561,7 @@ namespace S100FC.ProductCatalogue
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
+                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
 
                         var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
 
@@ -664,7 +663,7 @@ namespace S100FC.ProductCatalogue
                                 continue;
                             }
 
-                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
+                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
 
                             var json = Convert.ToString(current["json"])!;
 
@@ -722,7 +721,7 @@ namespace S100FC.ProductCatalogue
 
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
-                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, jsonSerializerOptionsS101);
+                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, this.jsonSerializerOptionsS101);
 
                                 if (informationBindings != default && informationBindings.Length != 0) {
                                     foreach (var binding in informationBindings) {
@@ -748,7 +747,7 @@ namespace S100FC.ProductCatalogue
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
-                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, jsonSerializerOptionsS101);
+                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, this.jsonSerializerOptionsS101);
 
                                 if (featureBindings != default && featureBindings.Length != 0) {
                                     foreach (var binding in featureBindings) {
@@ -848,7 +847,7 @@ namespace S100FC.ProductCatalogue
                     Debug.Assert(cursorS128.Current != null);
 
                     var row128 = cursorS128.Current;
-                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsS128);
+                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
                     row128.Store();
                     row128.Dispose();
 
@@ -866,7 +865,7 @@ namespace S100FC.ProductCatalogue
                         Update = electronicProduct.updateNumber ?? 0,
                         ExportTypes = exportType,
                         TimestampUTC = timestamp
-                    }, jsonSerializerOptionsS128);
+                    }, this.jsonSerializerOptionsS128);
 
                     var yaml = dataset.Serialize();
 
@@ -994,19 +993,19 @@ namespace S100FC.ProductCatalogue
         private readonly Thread _processingThread;
 
         public SingleThreadTaskScheduler() {
-            _tasks = new BlockingCollection<Task>();
+            this._tasks = [];
 
-            _processingThread = new Thread(ProcessTasks) {
+            this._processingThread = new Thread(this.ProcessTasks) {
                 IsBackground = true, // Allow the application to exit even if this thread is running
                 Name = "SingleThreadTaskScheduler"
             };
-            _processingThread.Start();
+            this._processingThread.Start();
         }
 
         private void ProcessTasks() {
             try {
-                foreach (var task in _tasks.GetConsumingEnumerable()) {
-                    TryExecuteTask(task);
+                foreach (var task in this._tasks.GetConsumingEnumerable()) {
+                    this.TryExecuteTask(task);
                 }
             }
             catch (ObjectDisposedException) {
@@ -1015,13 +1014,13 @@ namespace S100FC.ProductCatalogue
         }
 
         protected override void QueueTask(Task task) {
-            if (_tasks.IsAddingCompleted) return;
-            _tasks.Add(task);
+            if (this._tasks.IsAddingCompleted) return;
+            this._tasks.Add(task);
         }
 
         protected override bool TryExecuteTaskInline(Task task, bool taskWasPreviouslyQueued) {
-            if (Thread.CurrentThread == _processingThread) {
-                return TryExecuteTask(task);
+            if (Thread.CurrentThread == this._processingThread) {
+                return this.TryExecuteTask(task);
             }
 
             // Otherwise, we cannot execute it inline. Let QueueTask handle it.
@@ -1029,15 +1028,15 @@ namespace S100FC.ProductCatalogue
         }
 
         protected override IEnumerable<Task> GetScheduledTasks() {
-            return _tasks.ToArray();
+            return this._tasks.ToArray();
         }
 
         public override int MaximumConcurrencyLevel => 1;
 
         public void Dispose() {
-            _tasks.CompleteAdding();
-            _processingThread.Join();
-            _tasks.Dispose();
+            this._tasks.CompleteAdding();
+            this._processingThread.Join();
+            this._tasks.Dispose();
         }
     }
 }

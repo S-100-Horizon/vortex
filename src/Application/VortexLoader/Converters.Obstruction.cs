@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
+using S100FC.S101.FeatureTypes;
 //using ArcGIS.Desktop.Internal.Mapping;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using S100FC.S101.FeatureTypes;
 
 namespace S100Framework.Applications
 {

@@ -3,7 +3,6 @@ using NetTopologySuite.Geometries;
 using NetTopologySuite.LinearReferencing;
 using NetTopologySuite.Operation.Linemerge;
 using System.Collections.Concurrent;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
 using IO = System.IO;
@@ -33,7 +32,7 @@ namespace S100FC.Topology
             this.LineStringReverseText = this.LineStringReverse.ToString();
 
             //base.Id = System.IO.Hashing.XxHash64.HashToUInt64(LineString.ToBinary());
-            base.Id = System.IO.Hashing.XxHash32.HashToUInt32(LineString.ToBinary());
+            base.Id = System.IO.Hashing.XxHash32.HashToUInt32(this.LineString.ToBinary());
         }
 
         public LineString LineString { get; set; }
@@ -71,7 +70,7 @@ namespace S100FC.Topology
     public class CompositeCurveFeature : FeatureType
     {
         public CompositeCurveFeature(FeatureRef[] curves) {
-            Curves = curves;
+            this.Curves = curves;
 
             //base.Id = System.IO.Hashing.XxHash64.HashToUInt64(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
             base.Id = System.IO.Hashing.XxHash32.HashToUInt32(Encoding.UTF8.GetBytes(string.Join(',', curves.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"))));
@@ -101,10 +100,10 @@ namespace S100FC.Topology
 
     public class CurveContainer
     {
-        private Dictionary<UInt64, CurveFeature> _feature = new Dictionary<UInt64, CurveFeature>();
-        private Dictionary<ulong, (UInt64 Id, bool Reverse)> _keys = new Dictionary<ulong, (UInt64, bool)>();
+        private readonly Dictionary<UInt64, CurveFeature> _feature = [];
+        private readonly Dictionary<ulong, (UInt64 Id, bool Reverse)> _keys = [];
 
-        public ICollection<CurveFeature> CurveFeatures => _feature.Values;
+        public ICollection<CurveFeature> CurveFeatures => this._feature.Values;
 
         public (UInt64 Id, bool Reverse) AddOrGet(LineString lineString) {
             var keyStraight = System.IO.Hashing.XxHash3.HashToUInt64(lineString.AsBinary());
@@ -113,13 +112,13 @@ namespace S100FC.Topology
             var curve = new CurveFeature(lineString);
 
             lock (this) {
-                if (_keys.ContainsKey(keyStraight)) {
-                    var value = _keys[keyStraight];
+                if (this._keys.ContainsKey(keyStraight)) {
+                    var value = this._keys[keyStraight];
                     return (value.Id, value.Reverse);
                 }
-                _feature.Add(curve.Id, curve);
-                _keys.Add(keyStraight, (curve.Id, false));
-                _keys.Add(keyReverse, (curve.Id, true));
+                this._feature.Add(curve.Id, curve);
+                this._keys.Add(keyStraight, (curve.Id, false));
+                this._keys.Add(keyReverse, (curve.Id, true));
 
                 return (curve.Id, false);
             }
@@ -128,10 +127,10 @@ namespace S100FC.Topology
 
     public class CompositeCurveContainer
     {
-        private Dictionary<UInt64, CompositeCurveFeature> _feature = new Dictionary<ulong, CompositeCurveFeature>();
-        private Dictionary<string, (UInt64 Id, bool Reverse)> _keys = new Dictionary<string, (ulong, bool)>();
+        private readonly Dictionary<UInt64, CompositeCurveFeature> _feature = [];
+        private readonly Dictionary<string, (UInt64 Id, bool Reverse)> _keys = [];
 
-        public ICollection<CompositeCurveFeature> CompositeCurveFeatures => _feature.Values;
+        public ICollection<CompositeCurveFeature> CompositeCurveFeatures => this._feature.Values;
 
         public (UInt64 Id, bool Reverse) AddOrGet(IList<FeatureRef> sortedList) {
             var keyStraight = string.Join(',', sortedList.Select(e => e.Reverse ? $"RC{e.Id}" : $"C{e.Id}"));
@@ -141,13 +140,13 @@ namespace S100FC.Topology
             };
 
             lock (this) {
-                if (_keys.ContainsKey(keyStraight)) {
-                    var value = _keys[keyStraight];
+                if (this._keys.ContainsKey(keyStraight)) {
+                    var value = this._keys[keyStraight];
                     return (value.Id, value.Reverse);
                 }
-                _feature.Add(compositeCurve.Id, compositeCurve);
-                _keys.Add(keyStraight, (compositeCurve.Id, false));
-                _keys.Add(keyReverse, (compositeCurve.Id, true));
+                this._feature.Add(compositeCurve.Id, compositeCurve);
+                this._keys.Add(keyStraight, (compositeCurve.Id, false));
+                this._keys.Add(keyReverse, (compositeCurve.Id, true));
 
                 return (compositeCurve.Id, false);
             }
@@ -191,28 +190,28 @@ namespace S100FC.Topology
 
         private Action<ICollection<LineString>>? _interceptor = default;
 
-        private ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)> _bagPolygons = new ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)>();
+        private readonly ConcurrentBag<(string Name, IEnumerable<LineString> ExteriorRing, List<IEnumerable<LineString>> InteriorRings)> _bagPolygons = [];
 
-        private ConcurrentBag<(string Name, LineString LineString, IEnumerable<LineString> LineStrings)> _bagPolylines = new ConcurrentBag<(string Name, LineString, IEnumerable<LineString> LineStrings)>();
+        private readonly ConcurrentBag<(string Name, LineString LineString, IEnumerable<LineString> LineStrings)> _bagPolylines = [];
 
-        private ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
+        private readonly ConcurrentDictionary<string, string> _mapping = new ConcurrentDictionary<string, string>();
 
-        private ConcurrentBag<SurfaceFeature> _bagSurfaces = new ConcurrentBag<SurfaceFeature>();
+        private readonly ConcurrentBag<SurfaceFeature> _bagSurfaces = [];
 
         private IDictionary<string, List<LineString>>? _featureToEdges = new Dictionary<string, List<LineString>>();
 
-        private ICollection<S100FC.Topology.Polygon> _surfacesTopology = new Collection<S100FC.Topology.Polygon>();
-        private ICollection<S100FC.Topology.Polyline> _curvesTopology = new Collection<S100FC.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polygon> _surfacesTopology = [];
+        private ICollection<S100FC.Topology.Polyline> _curvesTopology = [];
 
-        private ICollection<S100FC.Topology.Polygon> _surfacesNavigational = new Collection<S100FC.Topology.Polygon>();
-        private ICollection<S100FC.Topology.Polyline> _curvesNavigational = new Collection<S100FC.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polygon> _surfacesNavigational = [];
+        private ICollection<S100FC.Topology.Polyline> _curvesNavigational = [];
 
-        private ICollection<S100FC.Topology.Polyline> _curvesSingleton = new Collection<S100FC.Topology.Polyline>();
+        private ICollection<S100FC.Topology.Polyline> _curvesSingleton = [];
 
-        private ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
+        private readonly ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)> _hashing = new ConcurrentDictionary<ulong, (FeatureRef fetureRef, CurveFeature curve)>();
 
         //private CurveContainer _curveContainer = new CurveContainer();
-        private CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
+        private readonly CompositeCurveContainer _compositeCurveContainer = new CompositeCurveContainer();
 
         public static ITopologyBuilder CreateMatrix(Action<ICollection<LineString>>? interceptor = default) {
             return new Matrix() {
@@ -562,7 +561,7 @@ namespace S100FC.Topology
                         }
                     }
 
-                    var compositeExterior = _compositeCurveContainer.AddOrGet(sortedList.Values);
+                    var compositeExterior = this._compositeCurveContainer.AddOrGet(sortedList.Values);
 
                     featureRef = new FeatureRef {
                         Id = compositeExterior.Id,
@@ -662,7 +661,7 @@ namespace S100FC.Topology
                     minimalEdges.Add(edge);
 
                     if (!edgeToFeatureMap.ContainsKey(edge)) {
-                        edgeToFeatureMap[edge] = new List<string>();
+                        edgeToFeatureMap[edge] = [];
                     }
                     edgeToFeatureMap[edge].Add(name);
                 }
@@ -695,7 +694,7 @@ namespace S100FC.Topology
                 var hits = e.Key.Split(',', StringSplitOptions.RemoveEmptyEntries);
                 foreach (var p in hits) {
                     if (!this._featureToEdges.ContainsKey(p))
-                        this._featureToEdges.Add(p, new List<LineString>());
+                        this._featureToEdges.Add(p, []);
                     this._featureToEdges[p].AddRange(mergedLineStrings);
                 }
             }
@@ -786,19 +785,19 @@ namespace S100FC.Topology
             public NetTopologySuite.Geometries.Coordinate End { get; }
 
             public Edge(NetTopologySuite.Geometries.Coordinate p1, NetTopologySuite.Geometries.Coordinate p2) {
-                if (p1.CompareTo(p2) < 0) { Start = p1; End = p2; }
-                else { Start = p2; End = p1; }
+                if (p1.CompareTo(p2) < 0) { this.Start = p1; this.End = p2; }
+                else { this.Start = p2; this.End = p1; }
             }
 
             public bool Equals(Edge? other) {
                 if (other is null) return false;
-                return Start.Equals(other.Start) && End.Equals(other.End);
+                return this.Start.Equals(other.Start) && this.End.Equals(other.End);
             }
-            public override bool Equals(object? obj) => Equals(obj as Edge);
-            public override int GetHashCode() => (Start, End).GetHashCode();
-            public override string ToString() => $"EDGE ({Start.X} {Start.Y}, {End.X} {End.Y})";
+            public override bool Equals(object? obj) => this.Equals(obj as Edge);
+            public override int GetHashCode() => (this.Start, this.End).GetHashCode();
+            public override string ToString() => $"EDGE ({this.Start.X} {this.Start.Y}, {this.End.X} {this.End.Y})";
 
-            public LineString LineString => Matrix.Factory.CreateLineString([Start, End]);
+            public LineString LineString => Matrix.Factory.CreateLineString([this.Start, this.End]);
         }
 
         public static void AddLineStringsFromGeometry(NetTopologySuite.Geometries.Geometry geometry, List<LineString> targetList) {

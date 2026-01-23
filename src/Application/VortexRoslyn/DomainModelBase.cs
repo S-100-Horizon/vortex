@@ -31,41 +31,41 @@ namespace S100Framework.DomainModel
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class EnumerationAttribute : System.Attribute
     {
-        private string _propertyName;
-        public string PropertyName => _propertyName;
+        private readonly string _propertyName;
+        public string PropertyName => this._propertyName;
 
-        private Type? _enumType;
-        public Type? EnumType => _enumType;
+        private readonly Type? _enumType;
+        public Type? EnumType => this._enumType;
 
         public EnumerationAttribute(string propertyName, Type? type = default) {
-            _propertyName = propertyName;
-            _enumType = type;
+            this._propertyName = propertyName;
+            this._enumType = type;
         }
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
     public class PermittedValuesAttribute : System.Attribute
     {
-        private int[] _values;
-        public int[] Values => _values;
+        private readonly int[] _values;
+        public int[] Values => this._values;
 
         public PermittedValuesAttribute(int value) {
-            _values = [value];
+            this._values = [value];
         }
 
         public PermittedValuesAttribute(int[] values) {
-            _values = values;
+            this._values = values;
         }
     }
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class CodeListAttribute : System.Attribute
     {
-        private string _propertyName;
-        public string PropertyName => _propertyName;
+        private readonly string _propertyName;
+        public string PropertyName => this._propertyName;
 
         public CodeListAttribute(string propertyName) {
-            _propertyName = propertyName;
+            this._propertyName = propertyName;
         }
     }
 
@@ -126,7 +126,7 @@ namespace S100Framework.DomainModel
 
         public int? Upper;
 
-        public bool Infinite => !Upper.HasValue;
+        public bool Infinite => !this.Upper.HasValue;
     }
 
 
@@ -283,14 +283,14 @@ namespace S100Framework.DomainModel
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }
-        public bool infinite => !upper.HasValue;
+        public bool infinite => !this.upper.HasValue;
         public string association { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
         public string[] informationTypes { get; set; } = [];
 
         public Primitives[] primitives { get; set; } = [];
 
-        public override string ToString() => $"{association}, {role}";
+        public override string ToString() => $"{this.association}, {this.role}";
     }
 
     public abstract class featureBinding
@@ -324,12 +324,12 @@ namespace S100Framework.DomainModel
         public roleType roleType { get; set; }
         public int lower { get; set; }
         public int? upper { get; set; }
-        public bool infinite => !upper.HasValue;
+        public bool infinite => !this.upper.HasValue;
         public string association { get; set; } = string.Empty;
         public string role { get; set; } = string.Empty;
         public string[] featureTypes { get; set; } = [];
 
-        public override string ToString() => $"{association}, {role}";
+        public override string ToString() => $"{this.association}, {this.role}";
     }
 
     public enum roleType
@@ -370,14 +370,14 @@ namespace S100Framework.DomainModel
         private TristateStatus _status = TristateStatus.Null;
 
         public TristateStatus Status {
-            get { return _status; }
+            get { return this._status; }
             set {
-                if (value == _status) return;
-                _status = value;
-                _value = _status switch {
+                if (value == this._status) return;
+                this._status = value;
+                this._value = this._status switch {
                     TristateStatus.Null => default,
                     TristateStatus.Unknown => default,
-                    _ => _value,
+                    _ => this._value,
                 };
             }
         }
@@ -389,32 +389,32 @@ namespace S100Framework.DomainModel
             if (status == TristateStatus.Value)
                 throw new ArgumentException("This constructor is for Null/Unknown states only.");
 
-            Status = status;
-            _value = default;
+            this.Status = status;
+            this._value = default;
         }
 
         public Tristate(T value) {
             if (value == null) {
-                Status = TristateStatus.Null;
-                _value = default(T);
+                this.Status = TristateStatus.Null;
+                this._value = default(T);
             }
             else {
-                Status = TristateStatus.Value;
-                _value = value;
+                this.Status = TristateStatus.Value;
+                this._value = value;
             }
         }
 
-        public bool HasValue => Status == TristateStatus.Value;
-        public bool IsNull => Status == TristateStatus.Null;
-        public bool IsUnknown => Status == TristateStatus.Unknown;
+        public bool HasValue => this.Status == TristateStatus.Value;
+        public bool IsNull => this.Status == TristateStatus.Null;
+        public bool IsUnknown => this.Status == TristateStatus.Unknown;
 
         public T? Value {
             get {
-                if (!HasValue) {
+                if (!this.HasValue) {
                     return default;
                     throw new InvalidOperationException("Tristate does not have a value.");
                 }
-                return _value!;
+                return this._value!;
             }
             set {
                 System.Diagnostics.Debugger.Break();
@@ -432,21 +432,21 @@ namespace S100Framework.DomainModel
         //    };
         //}
 
-        public override bool Equals(object? obj) => obj is Tristate<T> other && Equals(other);
+        public override bool Equals(object? obj) => obj is Tristate<T> other && this.Equals(other);
 
         public bool Equals(Tristate<T> other) {
-            if (Status != other.Status) return false;
-            if (!HasValue) return true; // Both are Null or both are Unknown
-            return System.Collections.Generic.EqualityComparer<T>.Default.Equals(_value, other._value);
+            if (this.Status != other.Status) return false;
+            if (!this.HasValue) return true; // Both are Null or both are Unknown
+            return System.Collections.Generic.EqualityComparer<T>.Default.Equals(this._value, other._value);
         }
 
         public override int GetHashCode() {
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 17;
-                hash = hash * 23 + Status.GetHashCode();
-                if (_value != null) {
-                    hash = hash * 23 + _value.GetHashCode();
+                hash = hash * 23 + this.Status.GetHashCode();
+                if (this._value != null) {
+                    hash = hash * 23 + this._value.GetHashCode();
                 }
                 return hash;
             }
@@ -458,7 +458,7 @@ namespace S100Framework.DomainModel
 
     public class SerializableEnumeration<T> : IXmlSerializable where T : notnull
     {
-        private T _value;
+        private readonly T _value;
 
         // Implicit conversions to and from the underlying enum for ease of use
         public static implicit operator T(SerializableEnumeration<T> o) {

@@ -1,9 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using S100Framework.Applications.S57.esri;
-using S100Framework.Applications.Singletons;
 using S100FC.S101.FeatureTypes;
 using S100FC.S128.ComplexAttributes;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 using System.Text.Json;
 using VortexLoader.Singletons;
 

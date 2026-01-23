@@ -1,8 +1,4 @@
-﻿using S100FC;
-using System.Globalization;
-using System.Windows.Data;
-
-namespace S100Framework.WPF.Converters
+﻿namespace S100Framework.WPF.Converters
 {
 #if TRISTATE
     public class TristateConverter : IValueConverter

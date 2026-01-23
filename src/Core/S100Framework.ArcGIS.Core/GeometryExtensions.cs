@@ -49,7 +49,7 @@ namespace ArcGIS.Core.Geometry
             }
         }
 
-        
+
 
         private static Polyline CreateLinearRing(string[] coords, SpatialReference spatialReference) {
             var points = new MapPoint[coords.Length / 2];

@@ -1,11 +1,11 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.Applications.S57.esri;
-using S100Framework.Applications.Singletons;
 using S100FC;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureAssociation;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.SimpleAttributes;
+using S100Framework.Applications.S57.esri;
+using S100Framework.Applications.Singletons;
 
 namespace S100Framework.Applications
 {

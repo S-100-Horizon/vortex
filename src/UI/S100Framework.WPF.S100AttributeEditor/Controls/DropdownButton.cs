@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace S100Framework.WPF.Controls
@@ -17,8 +12,8 @@ namespace S100Framework.WPF.Controls
         }
 
         public object DropdownContent {
-            get => GetValue(DropdownContentProperty);
-            set => SetValue(DropdownContentProperty, value);
+            get => this.GetValue(DropdownContentProperty);
+            set => this.SetValue(DropdownContentProperty, value);
         }
 
         public static readonly DependencyProperty DropdownContentProperty =
@@ -26,8 +21,8 @@ namespace S100Framework.WPF.Controls
                 typeof(object), typeof(DropdownButton));
 
         public bool IsOpen {
-            get => (bool)GetValue(IsOpenProperty);
-            set => SetValue(IsOpenProperty, value);
+            get => (bool)this.GetValue(IsOpenProperty);
+            set => this.SetValue(IsOpenProperty, value);
         }
 
         public static readonly DependencyProperty IsOpenProperty =
