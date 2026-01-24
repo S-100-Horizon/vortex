@@ -3851,7 +3851,7 @@ namespace S100FC.S127.InformationTypes
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
 	/// </summary>
-	public abstract class InformationType : S100FC.InformationType
+	public abstract class InformationType : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationType);
@@ -3926,6 +3926,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => InformationType.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -3987,6 +3989,8 @@ namespace S100FC.S127.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AbstractRxN.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
@@ -4176,6 +4180,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Applicability.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -4239,6 +4245,8 @@ namespace S100FC.S127.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Authority.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
@@ -4448,6 +4456,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContactDetails.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -4479,6 +4489,8 @@ namespace S100FC.S127.InformationTypes
 		public override string S100FC_name => "Nautical Information";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NauticalInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4540,6 +4552,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NonStandardWorkingDay.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4557,6 +4571,8 @@ namespace S100FC.S127.InformationTypes
 		public override string S100FC_name => "Recommendations";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Recommendations.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4574,6 +4590,8 @@ namespace S100FC.S127.InformationTypes
 		public override string S100FC_name => "Regulations";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Regulations.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4591,6 +4609,8 @@ namespace S100FC.S127.InformationTypes
 		public override string S100FC_name => "Restrictions";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Restrictions.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4639,6 +4659,8 @@ namespace S100FC.S127.InformationTypes
 					CreateInstance = () => new information(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ServiceHours.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
@@ -4753,6 +4775,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ShipReport.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -4788,7 +4812,7 @@ namespace S100FC.S127.InformationTypes
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
-	public class SpatialQuality : S100FC.InformationType
+	public class SpatialQuality : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpatialQuality);
@@ -4828,6 +4852,8 @@ namespace S100FC.S127.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpatialQuality.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4845,7 +4871,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
 	/// </summary>
-	public abstract class FeatureType : S100FC.FeatureType
+	public abstract class FeatureType : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FeatureType);
@@ -4944,6 +4970,8 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FeatureType.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4984,6 +5012,8 @@ namespace S100FC.S127.FeatureTypes
 			role = "theInformation",
 		};
 
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FeatureType.featureBindingsDefinitions;
+
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
@@ -5016,6 +5046,8 @@ namespace S100FC.S127.FeatureTypes
 		public override string S100FC_name => "Organization Contact Area";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OrganizationContactArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. FeatureType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5032,6 +5064,8 @@ namespace S100FC.S127.FeatureTypes
 			roleType = "association",
 			role = "theContactDetails",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OrganizationContactArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5053,6 +5087,8 @@ namespace S100FC.S127.FeatureTypes
 		public override string S100FC_name => "Supervised Area";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SupervisedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. OrganizationContactArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5069,6 +5105,8 @@ namespace S100FC.S127.FeatureTypes
 			roleType = "association",
 			role = "controlAuthority",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SupervisedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5090,6 +5128,8 @@ namespace S100FC.S127.FeatureTypes
 		public override string S100FC_name => "Reportable Service Area";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ReportableServiceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. SupervisedArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5106,6 +5146,8 @@ namespace S100FC.S127.FeatureTypes
 			roleType = "association",
 			role = "reptForTrafficServ",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ReportableServiceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5161,8 +5203,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CautionArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CautionArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5218,8 +5264,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ConcentrationOfShippingHazardArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ConcentrationOfShippingHazardArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5262,8 +5312,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ISPSCodeSecurityLevel.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ISPSCodeSecurityLevel.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5317,8 +5371,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LocalPortBroadcastServiceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LocalPortBroadcastServiceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. ReportableServiceArea.featureBindingsDefinitions,
@@ -5412,6 +5470,8 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MilitaryPracticeArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. SupervisedArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5428,6 +5488,8 @@ namespace S100FC.S127.FeatureTypes
 			roleType = "association",
 			role = "theServiceHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MilitaryPracticeArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5570,8 +5632,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotBoardingPlace.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotBoardingPlace.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. OrganizationContactArea.featureBindingsDefinitions,
@@ -5688,6 +5754,8 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotService.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. ReportableServiceArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5704,6 +5772,8 @@ namespace S100FC.S127.FeatureTypes
 			roleType = "association",
 			role = "theServiceHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotService.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. ReportableServiceArea.featureBindingsDefinitions,
@@ -5766,8 +5836,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotageDistrict.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotageDistrict.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. FeatureType.featureBindingsDefinitions,
@@ -5848,8 +5922,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PiracyRiskArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PiracyRiskArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5904,8 +5982,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PlaceOfRefuge.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PlaceOfRefuge.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -5960,8 +6042,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarRange.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarRange.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. FeatureType.featureBindingsDefinitions,
@@ -6092,8 +6178,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadioCallingInPoint.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadioCallingInPoint.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. FeatureType.featureBindingsDefinitions,
@@ -6175,8 +6265,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RestrictedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RestrictedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6245,8 +6339,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RouteingMeasure.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RouteingMeasure.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6300,8 +6398,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ShipReportingServiceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ShipReportingServiceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. ReportableServiceArea.featureBindingsDefinitions,
@@ -6382,8 +6484,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SignalStationWarning.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationWarning.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. FeatureType.featureBindingsDefinitions,
@@ -6464,8 +6570,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SignalStationTraffic.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationTraffic.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. OrganizationContactArea.featureBindingsDefinitions,
@@ -6533,8 +6643,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UnderKeelClearanceAllowanceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnderKeelClearanceAllowanceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6577,8 +6691,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UnderKeelClearanceManagementArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnderKeelClearanceManagementArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6632,8 +6750,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VesselTrafficServiceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VesselTrafficServiceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. ReportableServiceArea.featureBindingsDefinitions,
@@ -6714,8 +6836,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => WaterwayArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WaterwayArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6729,7 +6855,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
-	public class DataCoverage : S100FC.FeatureType
+	public class DataCoverage : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DataCoverage);
@@ -6792,8 +6918,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DataCoverage.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DataCoverage.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6807,7 +6937,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
-	public class QualityOfNonBathymetricData : S100FC.FeatureType
+	public class QualityOfNonBathymetricData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
@@ -6919,8 +7049,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfNonBathymetricData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfNonBathymetricData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6934,7 +7068,7 @@ namespace S100FC.S127.FeatureTypes
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
-	public class TextPlacement : S100FC.FeatureType
+	public class TextPlacement : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TextPlacement);
@@ -7010,8 +7144,12 @@ namespace S100FC.S127.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TextPlacement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TextPlacement.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {

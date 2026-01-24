@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11415.281 d18.3
 MinimumVisualStudioVersion = 17.10.0.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestS100Framework", "tests\Core.Tests\TestS100Framework\TestS100Framework.csproj", "{DA9509AE-7F11-4840-A0EC-D82A4F0072B7}"
 EndProject

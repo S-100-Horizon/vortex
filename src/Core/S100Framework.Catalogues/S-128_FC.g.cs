@@ -3045,7 +3045,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// A header identifying a section within a catalogue.
 	/// </summary>
-	public class CatalogueSectionHeader : S100FC.InformationType
+	public class CatalogueSectionHeader : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CatalogueSectionHeader);
@@ -3096,6 +3096,8 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CatalogueSectionHeader.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3142,7 +3144,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100FC.InformationType
+	public class ContactDetails : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -3229,6 +3231,8 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContactDetails.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3263,7 +3267,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// An indication of the type or justification of a carriage requirement.
 	/// </summary>
-	public class IndicationOfCarriageRequirement : S100FC.InformationType
+	public class IndicationOfCarriageRequirement : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IndicationOfCarriageRequirement);
@@ -3314,6 +3318,8 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => IndicationOfCarriageRequirement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -3323,7 +3329,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// Pricing information of nautical products.
 	/// </summary>
-	public class PriceInformation : S100FC.InformationType
+	public class PriceInformation : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PriceInformation);
@@ -3386,6 +3392,8 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PriceInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3408,7 +3416,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// Information about the authority responsible for production.
 	/// </summary>
-	public class ProducerInformation : S100FC.InformationType
+	public class ProducerInformation : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ProducerInformation);
@@ -3447,6 +3455,8 @@ namespace S100FC.S128.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ProducerInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3481,7 +3491,7 @@ namespace S100FC.S128.InformationTypes
 	/// <summary>
 	/// Information related to a distributor.
 	/// </summary>
-	public class DistributorInformation : S100FC.InformationType
+	public class DistributorInformation : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DistributorInformation);
@@ -3507,6 +3517,8 @@ namespace S100FC.S128.InformationTypes
 					CreateInstance = () => new distributorName(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DistributorInformation.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
@@ -3550,7 +3562,7 @@ namespace S100FC.S128.FeatureTypes
 	/// <summary>
 	/// An element within a catalogue of elements.
 	/// </summary>
-	public abstract class CatalogueElement : S100FC.FeatureType
+	public abstract class CatalogueElement : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CatalogueElement);
@@ -3709,6 +3721,8 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CatalogueElement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3748,6 +3762,8 @@ namespace S100FC.S128.FeatureTypes
 			roleType = "association",
 			role = "elementContainer",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CatalogueElement.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -3985,8 +4001,12 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationalProduct.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationalProduct.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. CatalogueElement.featureBindingsDefinitions,
@@ -4110,8 +4130,12 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ElectronicProduct.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ElectronicProduct.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -4213,8 +4237,12 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PhysicalProduct.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PhysicalProduct.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -4318,8 +4346,12 @@ namespace S100FC.S128.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => S100Service.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => S100Service.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];

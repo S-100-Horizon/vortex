@@ -6959,7 +6959,7 @@ namespace S100FC.S101.InformationTypes
 	/// <summary>
 	/// Information on how to reach a person or organisation by postal, internet, telephone, telex and radio systems.
 	/// </summary>
-	public class ContactDetails : S100FC.InformationType
+	public class ContactDetails : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContactDetails);
@@ -7070,6 +7070,8 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContactDetails.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -7079,7 +7081,7 @@ namespace S100FC.S101.InformationTypes
 	/// <summary>
 	/// The time when a service is available and known exceptions.
 	/// </summary>
-	public class ServiceHours : S100FC.InformationType
+	public class ServiceHours : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ServiceHours);
@@ -7142,6 +7144,8 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ServiceHours.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -7151,7 +7155,7 @@ namespace S100FC.S101.InformationTypes
 	/// <summary>
 	/// Days when many services are not available. Often days of festivity or recreation or public holidays when normal working hours are limited, especially a national or religious festival, etc.
 	/// </summary>
-	public class NonStandardWorkingDay : S100FC.InformationType
+	public class NonStandardWorkingDay : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NonStandardWorkingDay);
@@ -7226,6 +7230,8 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NonStandardWorkingDay.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -7235,7 +7241,7 @@ namespace S100FC.S101.InformationTypes
 	/// <summary>
 	/// Nautical information about a related area or facility.
 	/// </summary>
-	public class NauticalInformation : S100FC.InformationType
+	public class NauticalInformation : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NauticalInformation);
@@ -7298,6 +7304,8 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NauticalInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -7307,7 +7315,7 @@ namespace S100FC.S101.InformationTypes
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
-	public class SpatialQuality : S100FC.InformationType
+	public class SpatialQuality : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpatialQuality);
@@ -7347,6 +7355,8 @@ namespace S100FC.S101.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpatialQuality.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -7364,7 +7374,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
-	public class QualityOfNonBathymetricData : S100FC.FeatureType
+	public class QualityOfNonBathymetricData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
@@ -7476,8 +7486,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfNonBathymetricData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfNonBathymetricData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -7503,7 +7517,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
-	public class DataCoverage : S100FC.FeatureType
+	public class DataCoverage : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DataCoverage);
@@ -7590,8 +7604,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DataCoverage.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DataCoverage.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7605,7 +7623,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
-	public class NavigationalSystemOfMarks : S100FC.FeatureType
+	public class NavigationalSystemOfMarks : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationalSystemOfMarks);
@@ -7657,8 +7675,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationalSystemOfMarks.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationalSystemOfMarks.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -7684,7 +7706,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which the navigational system of marks has been established in relation to a specific direction.
 	/// </summary>
-	public class LocalDirectionOfBuoyage : S100FC.FeatureType
+	public class LocalDirectionOfBuoyage : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LocalDirectionOfBuoyage);
@@ -7760,8 +7782,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LocalDirectionOfBuoyage.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LocalDirectionOfBuoyage.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -7787,7 +7813,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the bathymetric data exists.
 	/// </summary>
-	public class QualityOfBathymetricData : S100FC.FeatureType
+	public class QualityOfBathymetricData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfBathymetricData);
@@ -7924,6 +7950,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfBathymetricData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7939,6 +7967,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theQualityInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfBathymetricData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -7964,7 +7994,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
-	public class SoundingDatum : S100FC.FeatureType
+	public class SoundingDatum : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SoundingDatum);
@@ -8016,8 +8046,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SoundingDatum.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SoundingDatum.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8043,7 +8077,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
-	public class VerticalDatumOfData : S100FC.FeatureType
+	public class VerticalDatumOfData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VerticalDatumOfData);
@@ -8095,8 +8129,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VerticalDatumOfData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VerticalDatumOfData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8122,7 +8160,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the reliability of source survey information exists.
 	/// </summary>
-	public class QualityOfSurvey : S100FC.FeatureType
+	public class QualityOfSurvey : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfSurvey);
@@ -8357,8 +8395,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfSurvey.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfSurvey.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8384,7 +8426,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The Update Information metadata feature is used to represent a change to the information shown.
 	/// </summary>
-	public class UpdateInformation : S100FC.FeatureType
+	public class UpdateInformation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(UpdateInformation);
@@ -8484,8 +8526,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UpdateInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UpdateInformation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8539,7 +8585,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The angle between the magnetic and geographic meridians at any place, expressed in degrees east or west to indicate the direction of magnetic north from true north. Also called magnetic declination.
 	/// </summary>
-	public class MagneticVariation : S100FC.FeatureType
+	public class MagneticVariation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MagneticVariation);
@@ -8626,6 +8672,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MagneticVariation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -8641,6 +8689,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MagneticVariation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8666,7 +8716,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An anomaly of the magnetic field of the Earth, extending over a relatively small area, due to local magnetic influences. Also called local attraction or magnetic anomaly.
 	/// </summary>
-	public class LocalMagneticAnomaly : S100FC.FeatureType
+	public class LocalMagneticAnomaly : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LocalMagneticAnomaly);
@@ -8753,6 +8803,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LocalMagneticAnomaly.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -8768,6 +8820,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LocalMagneticAnomaly.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8805,7 +8859,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The line where shore and water meet. Shoreline and coastline are generally used synonymously.
 	/// </summary>
-	public class Coastline : S100FC.FeatureType
+	public class Coastline : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Coastline);
@@ -8944,6 +8998,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Coastline.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -8959,6 +9015,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Coastline.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -8996,7 +9054,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The solid portion of the Earth's surface, as opposed to sea, water.
 	/// </summary>
-	public class LandArea : S100FC.FeatureType
+	public class LandArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LandArea);
@@ -9097,6 +9155,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LandArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9112,6 +9172,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9161,7 +9223,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A named group of islands, including archipelagos.
 	/// </summary>
-	public class IslandGroup : S100FC.FeatureType
+	public class IslandGroup : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IslandGroup);
@@ -9224,6 +9286,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => IslandGroup.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9239,6 +9303,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IslandGroup.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9296,7 +9362,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An elevation is the vertical distance of a point or a level, on, or affixed to, the surface of the earth, measured from a specified vertical datum.
 	/// </summary>
-	public class LandElevation : S100FC.FeatureType
+	public class LandElevation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LandElevation);
@@ -9384,6 +9450,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LandElevation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9399,6 +9467,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandElevation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9436,7 +9506,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A relatively large natural stream of water.
 	/// </summary>
-	public class River : S100FC.FeatureType
+	public class River : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(River);
@@ -9512,6 +9582,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => River.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9527,6 +9599,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => River.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9564,7 +9638,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Portions of a stream with accelerated current where it descends rapidly but without a break in the slope of the bed sufficient to form a waterfall. Usually used in the plural.
 	/// </summary>
-	public class Rapids : S100FC.FeatureType
+	public class Rapids : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Rapids);
@@ -9639,6 +9713,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Rapids.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9654,6 +9730,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Rapids.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9691,7 +9769,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A vertically descending part of a watercourse where it falls from a height (for example: over a rock or a precipice). In place names, commonly shortened to fall or falls, for example Niagara Falls.
 	/// </summary>
-	public class Waterfall : S100FC.FeatureType
+	public class Waterfall : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Waterfall);
@@ -9779,6 +9857,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Waterfall.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9794,6 +9874,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Waterfall.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9831,7 +9913,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A large body of water entirely surrounded by land.
 	/// </summary>
-	public class Lake : S100FC.FeatureType
+	public class Lake : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Lake);
@@ -9919,6 +10001,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Lake.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9934,6 +10018,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Lake.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -9971,7 +10057,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of natural or cultivated scenery defined by its geographical characteristics and may be known by its proper name.
 	/// </summary>
-	public class LandRegion : S100FC.FeatureType
+	public class LandRegion : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LandRegion);
@@ -10073,6 +10159,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LandRegion.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10088,6 +10176,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandRegion.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -10125,7 +10215,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Plants collectively or individually, especially those dominating a particular area or habitat.
 	/// </summary>
-	public class Vegetation : S100FC.FeatureType
+	public class Vegetation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Vegetation);
@@ -10250,6 +10340,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Vegetation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10265,6 +10357,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Vegetation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -10302,7 +10396,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of ice over land or water.
 	/// </summary>
-	public class IceArea : S100FC.FeatureType
+	public class IceArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IceArea);
@@ -10464,6 +10558,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => IceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10479,6 +10575,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -10516,7 +10614,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An inclined surface.
 	/// </summary>
-	public class SlopingGround : S100FC.FeatureType
+	public class SlopingGround : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SlopingGround);
@@ -10643,6 +10741,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SlopingGround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10658,6 +10758,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SlopingGround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -10695,7 +10797,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The upper marking of a slope, for example the ridge line or the separation line between two different gradients.
 	/// </summary>
-	public class SlopeTopline : S100FC.FeatureType
+	public class SlopeTopline : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SlopeTopline);
@@ -10834,6 +10936,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SlopeTopline.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10849,6 +10953,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SlopeTopline.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -10886,7 +10992,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A channel through which a tidal current runs.
 	/// </summary>
-	public class Tideway : S100FC.FeatureType
+	public class Tideway : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Tideway);
@@ -10949,6 +11055,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Tideway.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -10964,6 +11072,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Tideway.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -11001,7 +11111,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of land or construction over the water containing a concentration of buildings and/or other structures.
 	/// </summary>
-	public class BuiltUpArea : S100FC.FeatureType
+	public class BuiltUpArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(BuiltUpArea);
@@ -11163,6 +11273,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => BuiltUpArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -11178,6 +11290,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => BuiltUpArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -11215,7 +11329,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A free-standing self-supporting construction that is roofed, usually walled, and is intended for human occupancy (for example: a place of work or recreation) and/or habitation.
 	/// </summary>
-	public class Building : S100FC.FeatureType
+	public class Building : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Building);
@@ -11478,6 +11592,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Building.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -11493,6 +11609,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Building.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -11566,7 +11684,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A defined area on land (including any buildings, installations and equipment) intended to be used either wholly or in part for the arrival, departure and surface movement of aircraft.
 	/// </summary>
-	public class AirportAirfield : S100FC.FeatureType
+	public class AirportAirfield : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AirportAirfield);
@@ -11692,6 +11810,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AirportAirfield.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -11707,6 +11827,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AirportAirfield.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -11744,7 +11866,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A defined area, on a land aerodrome, prepared for the landing and take-off run of aircraft.
 	/// </summary>
-	public class Runway : S100FC.FeatureType
+	public class Runway : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Runway);
@@ -11870,6 +11992,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Runway.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -11885,6 +12009,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Runway.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -11922,7 +12048,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A site on which helicopters may land and take off.
 	/// </summary>
-	public class Helipad : S100FC.FeatureType
+	public class Helipad : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Helipad);
@@ -12048,6 +12174,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Helipad.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -12063,6 +12191,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Helipad.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -12112,7 +12242,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.
 	/// </summary>
-	public class Bridge : S100FC.FeatureType
+	public class Bridge : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Bridge);
@@ -12364,6 +12494,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Bridge.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -12379,6 +12511,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Bridge.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -12452,7 +12586,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A fixed component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
-	public class SpanFixed : S100FC.FeatureType
+	public class SpanFixed : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpanFixed);
@@ -12564,6 +12698,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpanFixed.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -12579,6 +12715,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpanFixed.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -12652,7 +12790,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An opening component of the deck of a bridge spanning successive bridge piers.
 	/// </summary>
-	public class SpanOpening : S100FC.FeatureType
+	public class SpanOpening : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpanOpening);
@@ -12776,6 +12914,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpanOpening.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -12791,6 +12931,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpanOpening.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -12864,7 +13006,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A mechanical device for conveying bulk material or people using an endless moving belt or series of rollers.
 	/// </summary>
-	public class Conveyor : S100FC.FeatureType
+	public class Conveyor : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Conveyor);
@@ -13139,6 +13281,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Conveyor.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -13154,6 +13298,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Conveyor.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -13215,7 +13361,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A single continuous rope-like bundle consisting of multiple strands of fiber, plastic, metal, and/or glass, which is supported by structures such as poles or pylons and passing over or nearby navigable waters.
 	/// </summary>
-	public class CableOverhead : S100FC.FeatureType
+	public class CableOverhead : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CableOverhead);
@@ -13427,6 +13573,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CableOverhead.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -13442,6 +13590,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableOverhead.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -13491,7 +13641,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A string of interconnected pipes, supported by pylons and passing over or nearby navigable waters, used for the transport of matter, nowadays mainly oil or gas.
 	/// </summary>
-	public class PipelineOverhead : S100FC.FeatureType
+	public class PipelineOverhead : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PipelineOverhead);
@@ -13692,6 +13842,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PipelineOverhead.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -13707,6 +13859,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PipelineOverhead.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -13768,7 +13922,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A vertical construction consisting, for example, of a steel framework or pre-stressed concrete to carry cables, a bridge, etc.
 	/// </summary>
-	public class PylonBridgeSupport : S100FC.FeatureType
+	public class PylonBridgeSupport : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PylonBridgeSupport);
@@ -14019,6 +14173,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PylonBridgeSupport.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -14034,6 +14190,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PylonBridgeSupport.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -14119,7 +14277,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A man-made barrier used as an enclosure or boundary or for protection.
 	/// </summary>
-	public class FenceWall : S100FC.FeatureType
+	public class FenceWall : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FenceWall);
@@ -14333,6 +14491,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FenceWall.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -14348,6 +14508,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FenceWall.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -14385,7 +14547,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A rail or set of parallel rails on which a train, tram, or rail wagon runs.
 	/// </summary>
-	public class Railway : S100FC.FeatureType
+	public class Railway : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Railway);
@@ -14498,6 +14660,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Railway.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -14513,6 +14677,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Railway.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -14550,7 +14716,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A route with a specially prepared surface that is intended for use by wheeled vehicles or pedestrians.
 	/// </summary>
-	public class Road : S100FC.FeatureType
+	public class Road : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Road);
@@ -14677,6 +14843,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Road.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -14692,6 +14860,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Road.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -14729,7 +14899,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A passage that is open to the atmosphere at both ends, buried under the seabed or laid over the seafloor or bored under the ground or through mountains.
 	/// </summary>
-	public class Tunnel : S100FC.FeatureType
+	public class Tunnel : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Tunnel);
@@ -14879,6 +15049,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Tunnel.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -14894,6 +15066,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Tunnel.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -14931,7 +15105,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Any prominent object at a fixed location on land which can be used in determining a location or a direction.
 	/// </summary>
-	public class Landmark : S100FC.FeatureType
+	public class Landmark : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Landmark);
@@ -15207,6 +15381,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Landmark.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -15222,6 +15398,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Landmark.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -15307,7 +15485,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A large storage structure used for storing loose materials, liquids and/or gases.
 	/// </summary>
-	public class SiloTank : S100FC.FeatureType
+	public class SiloTank : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SiloTank);
@@ -15583,6 +15761,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SiloTank.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -15598,6 +15778,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SiloTank.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -15671,7 +15853,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A tower and associated equipment that generates electrical power from wind. They can be sited offshore and may be either fixed or floating.
 	/// </summary>
-	public class WindTurbine : S100FC.FeatureType
+	public class WindTurbine : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WindTurbine);
@@ -15958,6 +16140,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => WindTurbine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -15973,6 +16157,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WindTurbine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -16034,7 +16220,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A structure that is specifically designed or reinforced to provide for defence from armed attack.
 	/// </summary>
-	public class FortifiedStructure : S100FC.FeatureType
+	public class FortifiedStructure : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FortifiedStructure);
@@ -16234,6 +16420,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FortifiedStructure.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -16249,6 +16437,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FortifiedStructure.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -16322,7 +16512,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area on land for the exploitation or storage of natural resources.
 	/// </summary>
-	public class ProductionStorageArea : S100FC.FeatureType
+	public class ProductionStorageArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ProductionStorageArea);
@@ -16534,6 +16724,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ProductionStorageArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -16549,6 +16741,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ProductionStorageArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -16586,7 +16780,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An official location at which to register, declare and/or inspect goods and/or people.
 	/// </summary>
-	public class Checkpoint : S100FC.FeatureType
+	public class Checkpoint : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Checkpoint);
@@ -16675,6 +16869,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Checkpoint.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -16690,6 +16886,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Checkpoint.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -16727,7 +16925,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The hull of a wrecked or condemned ship, from which the fittings and superstructure have usually been removed, which is moored in a permanent position or grounded. It may be abandoned or put to some other use.
 	/// </summary>
-	public class Hulk : S100FC.FeatureType
+	public class Hulk : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Hulk);
@@ -16951,6 +17149,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Hulk.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -16966,6 +17166,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Hulk.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -17027,7 +17229,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A long heavy timber or section of steel, wood, concrete, etc., forced into the earth or seafloor to serve as a support, as for a pier, or to resist lateral pressure; or as a free standing pole within a marine environment.
 	/// </summary>
-	public class Pile : S100FC.FeatureType
+	public class Pile : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Pile);
@@ -17240,6 +17442,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Pile.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -17255,6 +17459,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Pile.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -17340,7 +17546,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A dyke (or dike) is an artificial embankment to contain or hold back water.
 	/// </summary>
-	public class Dyke : S100FC.FeatureType
+	public class Dyke : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Dyke);
@@ -17502,6 +17708,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Dyke.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -17517,6 +17725,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dyke.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -17554,7 +17764,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A fixed artificial structure in the water and/or adjoining the land. It may also refer to features such as training walls, which are not necessarily connected to, nor form part of the shoreline.
 	/// </summary>
-	public class ShorelineConstruction : S100FC.FeatureType
+	public class ShorelineConstruction : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ShorelineConstruction);
@@ -17817,6 +18027,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ShorelineConstruction.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -17832,6 +18044,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ShorelineConstruction.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -17893,7 +18107,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A roofed structure erected, or partly erected, over a body of water, to provide protection for a vessel or its cargo.
 	/// </summary>
-	public class StructureOverNavigableWater : S100FC.FeatureType
+	public class StructureOverNavigableWater : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(StructureOverNavigableWater);
@@ -18205,6 +18419,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => StructureOverNavigableWater.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -18220,6 +18436,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => StructureOverNavigableWater.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -18293,7 +18511,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A raised way across low or wet ground or water.
 	/// </summary>
-	public class Causeway : S100FC.FeatureType
+	public class Causeway : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Causeway);
@@ -18420,6 +18638,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Causeway.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -18435,6 +18655,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Causeway.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -18472,7 +18694,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An artificial waterway with no flow, or a controlled flow, used for navigation, or for draining or irrigating land (ditch).
 	/// </summary>
-	public class Canal : S100FC.FeatureType
+	public class Canal : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Canal);
@@ -18622,6 +18844,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Canal.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -18637,6 +18861,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Canal.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -18674,7 +18900,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A distance mark indicates the distance measured from an origin and consists of either a solid visible structure or a distinct location without special installation. Usually found on canals.
 	/// </summary>
-	public class DistanceMark : S100FC.FeatureType
+	public class DistanceMark : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DistanceMark);
@@ -18773,6 +18999,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DistanceMark.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -18788,6 +19016,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DistanceMark.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -18837,7 +19067,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A structure that may be swung, drawn, or lowered to block an entrance or passageway on a watercourse.
 	/// </summary>
-	public class Gate : S100FC.FeatureType
+	public class Gate : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Gate);
@@ -19026,6 +19256,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Gate.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -19041,6 +19273,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Gate.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -19078,7 +19312,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.
 	/// </summary>
-	public class Dam : S100FC.FeatureType
+	public class Dam : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Dam);
@@ -19293,6 +19527,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Dam.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -19308,6 +19544,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dam.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -19345,7 +19583,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A machine for lifting, shifting and lowering objects or materials by means of a swinging boom or with a lifting apparatus supported on an overhead track.
 	/// </summary>
-	public class Crane : S100FC.FeatureType
+	public class Crane : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Crane);
@@ -19607,6 +19845,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Crane.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -19622,6 +19862,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Crane.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -19683,7 +19925,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A place, generally named or numbered, where a vessel may moor or anchor.
 	/// </summary>
-	public class Berth : S100FC.FeatureType
+	public class Berth : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Berth);
@@ -19869,6 +20111,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Berth.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -19884,6 +20128,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Berth.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -19933,7 +20179,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.
 	/// </summary>
-	public class Dolphin : S100FC.FeatureType
+	public class Dolphin : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Dolphin);
@@ -20183,6 +20429,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Dolphin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -20198,6 +20446,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dolphin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -20271,7 +20521,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Small shaped post, mounted on a wharf or dolphin used to secure ship's lines.
 	/// </summary>
-	public class Bollard : S100FC.FeatureType
+	public class Bollard : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Bollard);
@@ -20408,6 +20658,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Bollard.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -20423,6 +20675,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Bollard.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -20472,7 +20726,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An artificial basin fitted with a gate or caisson, into which vessels can be floated and the water pumped out to expose the vessel's bottom. Also called graving dock.
 	/// </summary>
-	public class DryDock : S100FC.FeatureType
+	public class DryDock : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DryDock);
@@ -20682,6 +20936,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DryDock.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -20697,6 +20953,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DryDock.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -20734,7 +20992,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A form of dry dock consisting of a floating structure of one or more sections which can be partly submerged by controlled flooding to receive a vessel, then raised by pumping out the water so that the vessel's bottom can be exposed.
 	/// </summary>
-	public class FloatingDock : S100FC.FeatureType
+	public class FloatingDock : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FloatingDock);
@@ -20994,6 +21252,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FloatingDock.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -21009,6 +21269,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FloatingDock.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -21070,7 +21332,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A floating structure, usually rectangular in shape which serves as landing, pier head, bridge support, etc.
 	/// </summary>
-	public class Pontoon : S100FC.FeatureType
+	public class Pontoon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Pontoon);
@@ -21232,6 +21494,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Pontoon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -21247,6 +21511,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Pontoon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -21320,7 +21586,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An artificially enclosed area within which ships may moor and which may have gates to regulate water level.
 	/// </summary>
-	public class DockArea : S100FC.FeatureType
+	public class DockArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DockArea);
@@ -21494,6 +21760,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DockArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -21509,6 +21777,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DockArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -21546,7 +21816,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A structure in the intertidal zone serving as a support for vessels at low stages of the tide to permit work on the exposed portion of the vessel's hull.
 	/// </summary>
-	public class Gridiron : S100FC.FeatureType
+	public class Gridiron : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Gridiron);
@@ -21684,6 +21954,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Gridiron.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -21699,6 +21971,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Gridiron.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -21736,7 +22010,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A wet dock in a waterway, permitting a ship to pass from one level to another.
 	/// </summary>
-	public class LockBasin : S100FC.FeatureType
+	public class LockBasin : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LockBasin);
@@ -21872,6 +22146,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LockBasin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -21887,6 +22163,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LockBasin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -21924,7 +22202,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A mooring is a place where a vessel may be secured. A mooring trot is a mooring that is composed of ground tackle, mooring cables, buoys and mooring berths on junction cables.
 	/// </summary>
-	public class MooringTrot : S100FC.FeatureType
+	public class MooringTrot : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MooringTrot);
@@ -21999,6 +22277,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MooringTrot.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22014,6 +22294,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringTrot.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22063,7 +22345,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A geographically defined part of the sea or other navigable waters. It may be specified within its limits by its proper name.
 	/// </summary>
-	public class SeaAreaNamedWaterArea : S100FC.FeatureType
+	public class SeaAreaNamedWaterArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SeaAreaNamedWaterArea);
@@ -22139,6 +22421,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SeaAreaNamedWaterArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22154,6 +22438,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeaAreaNamedWaterArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22191,7 +22477,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Approximate tidal stream rates given as discrete rate values for flood and ebb flow during springs.
 	/// </summary>
-	public class TidalStreamFloodEbb : S100FC.FeatureType
+	public class TidalStreamFloodEbb : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TidalStreamFloodEbb);
@@ -22303,6 +22589,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TidalStreamFloodEbb.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22318,6 +22606,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TidalStreamFloodEbb.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22355,7 +22645,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Any current that is caused by other than tide producing forces.
 	/// </summary>
-	public class CurrentNonGravitational : S100FC.FeatureType
+	public class CurrentNonGravitational : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CurrentNonGravitational);
@@ -22479,6 +22769,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CurrentNonGravitational.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22494,6 +22786,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CurrentNonGravitational.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22531,7 +22825,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The disturbance of water caused by the interaction of any combination of waves, currents, tidal streams, wind, shoal patches and obstructions.
 	/// </summary>
-	public class WaterTurbulence : S100FC.FeatureType
+	public class WaterTurbulence : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WaterTurbulence);
@@ -22607,6 +22901,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => WaterTurbulence.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22622,6 +22918,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WaterTurbulence.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22659,7 +22957,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Approximate tidal stream characteristics given as discrete value sets at a specified interval before and/or after a high or low water.
 	/// </summary>
-	public class TidalStreamPanelData : S100FC.FeatureType
+	public class TidalStreamPanelData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TidalStreamPanelData);
@@ -22758,6 +23056,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TidalStreamPanelData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22773,6 +23073,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TidalStreamPanelData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22810,7 +23112,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Measured or charted depth of water (may be a drying height), or the measurement of such a depth, which has been reduced to a vertical datum.
 	/// </summary>
-	public class Sounding : S100FC.FeatureType
+	public class Sounding : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Sounding);
@@ -22924,6 +23226,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Sounding.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -22939,6 +23243,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Sounding.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -22976,7 +23282,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of the bottom of a body of water which has been deepened by dredging.
 	/// </summary>
-	public class DredgedArea : S100FC.FeatureType
+	public class DredgedArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DredgedArea);
@@ -23138,6 +23444,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DredgedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23153,6 +23461,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DredgedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23202,7 +23512,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area that has been determined to be clear of navigational dangers to a specified depth.
 	/// </summary>
-	public class SweptArea : S100FC.FeatureType
+	public class SweptArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SweptArea);
@@ -23277,6 +23587,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SweptArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23292,6 +23604,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SweptArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23341,7 +23655,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A line connecting points of equal water depth which is sometimes significantly displaced outside of soundings, symbols, and other chart detail for clarity as well as generalization. Depth contours therefore often represent an approximate location of the line of equal depth as related to the surveyed line delineated on the source.
 	/// </summary>
-	public class DepthContour : S100FC.FeatureType
+	public class DepthContour : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DepthContour);
@@ -23404,6 +23718,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DepthContour.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23419,6 +23735,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthContour.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23444,7 +23762,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A water area whose depth is within a defined range of values.
 	/// </summary>
-	public class DepthArea : S100FC.FeatureType
+	public class DepthArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DepthArea);
@@ -23507,6 +23825,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DepthArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23522,6 +23842,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23547,7 +23869,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Upon investigation the bottom was not found at this depth.
 	/// </summary>
-	public class DepthNoBottomFound : S100FC.FeatureType
+	public class DepthNoBottomFound : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DepthNoBottomFound);
@@ -23611,6 +23933,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DepthNoBottomFound.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23626,6 +23950,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthNoBottomFound.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23651,7 +23977,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area where hydrographic survey data is non-existent.
 	/// </summary>
-	public class UnsurveyedArea : S100FC.FeatureType
+	public class UnsurveyedArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(UnsurveyedArea);
@@ -23690,6 +24016,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UnsurveyedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23705,6 +24033,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnsurveyedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23730,7 +24060,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A region of the seabed including the material of which it is composed and its physical characteristics. Also called nature of bottom, character (or characteristics) of the bottom, or quality of the bottom.
 	/// </summary>
-	public class SeabedArea : S100FC.FeatureType
+	public class SeabedArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SeabedArea);
@@ -23818,6 +24148,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SeabedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23833,6 +24165,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeabedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23870,7 +24204,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Any macroscopic marine alga.
 	/// </summary>
-	public class WeedKelp : S100FC.FeatureType
+	public class WeedKelp : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(WeedKelp);
@@ -23946,6 +24280,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => WeedKelp.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -23961,6 +24297,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WeedKelp.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -23998,7 +24336,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Any of various submerged monocotyledonous plants (such as eelgrass, tape grass, and turtle grass) of tropical to temperate usually shallow coastal waters that have narrow grass-like leaves and often form dense underwater meadows.
 	/// </summary>
-	public class Seagrass : S100FC.FeatureType
+	public class Seagrass : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Seagrass);
@@ -24061,6 +24399,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Seagrass.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -24076,6 +24416,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Seagrass.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -24113,7 +24455,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Large mobile wave-like sediment feature in shallow water and composed of sand. The wavelength may reach 100 metres, the amplitude may be up to 20 metres.
 	/// </summary>
-	public class Sandwave : S100FC.FeatureType
+	public class Sandwave : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Sandwave);
@@ -24176,6 +24518,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Sandwave.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -24191,6 +24535,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Sandwave.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -24216,7 +24562,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A natural issue of water or other substances from the earth. One on the bottom of the sea is called a submarine spring.
 	/// </summary>
-	public class Spring : S100FC.FeatureType
+	public class Spring : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Spring);
@@ -24279,6 +24625,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Spring.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -24294,6 +24642,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Spring.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -24331,7 +24681,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A concreted mass of stony material or coral which dries, is awash or is below the water surface.
 	/// </summary>
-	public class UnderwaterAwashRock : S100FC.FeatureType
+	public class UnderwaterAwashRock : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(UnderwaterAwashRock);
@@ -24520,6 +24870,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UnderwaterAwashRock.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -24535,6 +24887,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnderwaterAwashRock.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -24572,7 +24926,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The ruined remains of a stranded or sunken vessel which has been rendered useless.
 	/// </summary>
-	public class Wreck : S100FC.FeatureType
+	public class Wreck : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Wreck);
@@ -24810,6 +25164,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Wreck.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -24825,6 +25181,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Wreck.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -24874,7 +25232,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// In marine navigation, anything that hinders or prevents movement, particularly anything that endangers or prevents passage of a vessel. The term is usually used to refer to an isolated danger to navigation, such as a sunken rock or pinnacle.
 	/// </summary>
-	public class Obstruction : S100FC.FeatureType
+	public class Obstruction : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Obstruction);
@@ -25138,6 +25496,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Obstruction.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -25153,6 +25513,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Obstruction.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -25202,7 +25564,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Areas over which it is safe to navigate but which should be avoided for anchoring, taking the ground or ground fishing.
 	/// </summary>
-	public class FoulGround : S100FC.FeatureType
+	public class FoulGround : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FoulGround);
@@ -25340,6 +25702,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FoulGround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -25355,6 +25719,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FoulGround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -25392,7 +25758,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Unnatural coloured areas in the sea which may or may not indicate the existence of shoals.
 	/// </summary>
-	public class DiscolouredWater : S100FC.FeatureType
+	public class DiscolouredWater : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DiscolouredWater);
@@ -25455,6 +25821,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DiscolouredWater.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -25470,6 +25838,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DiscolouredWater.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -25495,7 +25865,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A structure for fishing purposes which can be an obstruction to ships in general. The position of these structures may vary frequently over time.
 	/// </summary>
-	public class FishingFacility : S100FC.FeatureType
+	public class FishingFacility : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FishingFacility);
@@ -25633,6 +26003,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FishingFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -25648,6 +26020,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FishingFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -25709,7 +26083,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An assemblage of cages, nets, rafts and floats or posts where fish, including shellfish, are artificially cultivated.
 	/// </summary>
-	public class MarineFarmCulture : S100FC.FeatureType
+	public class MarineFarmCulture : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MarineFarmCulture);
@@ -25934,6 +26308,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MarineFarmCulture.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -25949,6 +26325,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MarineFarmCulture.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -25986,7 +26364,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A permanent offshore structure, either fixed or floating.
 	/// </summary>
-	public class OffshorePlatform : S100FC.FeatureType
+	public class OffshorePlatform : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OffshorePlatform);
@@ -26224,6 +26602,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OffshorePlatform.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -26239,6 +26619,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OffshorePlatform.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -26300,7 +26682,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An assembly of wires or fibres, or a wire rope or chain, which has been laid underwater or buried beneath the seafloor.
 	/// </summary>
-	public class CableSubmarine : S100FC.FeatureType
+	public class CableSubmarine : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CableSubmarine);
@@ -26426,6 +26808,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CableSubmarine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -26441,6 +26825,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableSubmarine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -26490,7 +26876,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area which contains one or more submarine cables.
 	/// </summary>
-	public class CableArea : S100FC.FeatureType
+	public class CableArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CableArea);
@@ -26616,6 +27002,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CableArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -26631,6 +27019,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -26668,7 +27058,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A connected set of pipes for conveying liquids, slurries, or gases.
 	/// </summary>
-	public class PipelineSubmarineOnLand : S100FC.FeatureType
+	public class PipelineSubmarineOnLand : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PipelineSubmarineOnLand);
@@ -26880,6 +27270,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PipelineSubmarineOnLand.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -26895,6 +27287,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PipelineSubmarineOnLand.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -26932,7 +27326,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area containing one or more submarine pipelines.
 	/// </summary>
-	public class SubmarinePipelineArea : S100FC.FeatureType
+	public class SubmarinePipelineArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SubmarinePipelineArea);
@@ -27071,6 +27465,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SubmarinePipelineArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -27086,6 +27482,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SubmarinePipelineArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -27123,7 +27521,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area at sea within which there are production facilities.
 	/// </summary>
-	public class OffshoreProductionArea : S100FC.FeatureType
+	public class OffshoreProductionArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OffshoreProductionArea);
@@ -27349,6 +27747,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OffshoreProductionArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -27364,6 +27764,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OffshoreProductionArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -27401,7 +27803,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
 	/// </summary>
-	public class NavigationLine : S100FC.FeatureType
+	public class NavigationLine : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationLine);
@@ -27526,6 +27928,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationLine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -27541,6 +27945,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationLine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -27578,7 +27984,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
 	/// </summary>
-	public class RecommendedTrack : S100FC.FeatureType
+	public class RecommendedTrack : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RecommendedTrack);
@@ -27777,6 +28183,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RecommendedTrack.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -27792,6 +28200,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrack.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -27853,7 +28263,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
 	/// </summary>
-	public class RangeSystem : S100FC.FeatureType
+	public class RangeSystem : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RangeSystem);
@@ -27940,6 +28350,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RangeSystem.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -27955,6 +28367,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RangeSystem.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -28024,7 +28438,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'.
 	/// </summary>
-	public class Fairway : S100FC.FeatureType
+	public class Fairway : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Fairway);
@@ -28211,6 +28625,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Fairway.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -28226,6 +28642,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Fairway.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -28287,7 +28705,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// That part of a river, harbour and so on, where the main navigable channel for vessels of larger size lies. It is also the usual course followed by vessels entering or leaving harbours, called 'ship channel'. A fairway system is an aggregation of connected fairway features making up a complex fairway system.
 	/// </summary>
-	public class FairwaySystem : S100FC.FeatureType
+	public class FairwaySystem : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FairwaySystem);
@@ -28386,6 +28804,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FairwaySystem.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -28401,6 +28821,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FairwaySystem.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -28462,7 +28884,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The recommended route centreline indicates the 'centreline' of a recommended route.
 	/// </summary>
-	public class RecommendedRouteCentreline : S100FC.FeatureType
+	public class RecommendedRouteCentreline : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RecommendedRouteCentreline);
@@ -28649,6 +29071,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RecommendedRouteCentreline.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -28664,6 +29088,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedRouteCentreline.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -28725,7 +29151,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of a two-way route within which traffic flow is generally along one bearing (and possibly its reciprocal).
 	/// </summary>
-	public class TwoWayRoutePart : S100FC.FeatureType
+	public class TwoWayRoutePart : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TwoWayRoutePart);
@@ -28888,6 +29314,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TwoWayRoutePart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -28903,6 +29331,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TwoWayRoutePart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -28952,7 +29382,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A route within defined limits inside which two way traffic is established, aimed at providing safe passage of ships through waters where navigation is difficult or dangerous.
 	/// </summary>
-	public class TwoWayRoute : S100FC.FeatureType
+	public class TwoWayRoute : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TwoWayRoute);
@@ -29039,6 +29469,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TwoWayRoute.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -29054,6 +29486,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TwoWayRoute.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -29127,7 +29561,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A traffic flow pattern indicating a recommended directional movement of traffic where it is impractical or unnecessary to adopt an established direction of traffic flow.
 	/// </summary>
-	public class RecommendedTrafficLanePart : S100FC.FeatureType
+	public class RecommendedTrafficLanePart : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RecommendedTrafficLanePart);
@@ -29215,6 +29649,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RecommendedTrafficLanePart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -29230,6 +29666,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrafficLanePart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -29255,7 +29693,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The Deep Water route centreline indicates the centreline of a route, the width of which is not explicitly defined.
 	/// </summary>
-	public class DeepWaterRouteCentreline : S100FC.FeatureType
+	public class DeepWaterRouteCentreline : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DeepWaterRouteCentreline);
@@ -29442,6 +29880,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DeepWaterRouteCentreline.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -29457,6 +29897,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRouteCentreline.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -29518,7 +29960,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area of a deep water route within which ships proceed in the same direction.
 	/// </summary>
-	public class DeepWaterRoutePart : S100FC.FeatureType
+	public class DeepWaterRoutePart : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DeepWaterRoutePart);
@@ -29718,6 +30160,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DeepWaterRoutePart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -29733,6 +30177,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRoutePart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -29794,7 +30240,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A route within defined limits which has been accurately surveyed for clearance of sea bottom and submerged obstacles as indicated on the chart.
 	/// </summary>
-	public class DeepWaterRoute : S100FC.FeatureType
+	public class DeepWaterRoute : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DeepWaterRoute);
@@ -29881,6 +30327,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DeepWaterRoute.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -29896,6 +30344,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRoute.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -29969,7 +30419,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising a designated area between the landward boundary of a traffic separation scheme and the adjacent coast, to be used in accordance with the provisions of the International Regulations for Preventing Collisions at Sea.
 	/// </summary>
-	public class InshoreTrafficZone : S100FC.FeatureType
+	public class InshoreTrafficZone : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InshoreTrafficZone);
@@ -30070,6 +30520,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => InshoreTrafficZone.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30085,6 +30537,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InshoreTrafficZone.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30122,7 +30576,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising an area within defined limits where ships must navigate with particular caution and within which the direction of traffic flow may be recommended.
 	/// </summary>
-	public class PrecautionaryArea : S100FC.FeatureType
+	public class PrecautionaryArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PrecautionaryArea);
@@ -30247,6 +30701,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PrecautionaryArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30262,6 +30718,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PrecautionaryArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30311,7 +30769,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within defined limits in which one-way traffic is established. Natural obstacles, including those forming separation zones, may constitute a boundary.
 	/// </summary>
-	public class TrafficSeparationSchemeLanePart : S100FC.FeatureType
+	public class TrafficSeparationSchemeLanePart : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TrafficSeparationSchemeLanePart);
@@ -30424,6 +30882,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TrafficSeparationSchemeLanePart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30439,6 +30899,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeLanePart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30476,7 +30938,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A zone or line separating the traffic lanes in which ships are proceeding in opposite, or nearly opposite directions; or separating a traffic lane from the adjacent sea area; or separating traffic lanes designated for particular classes of ships proceeding in the same direction.
 	/// </summary>
-	public class SeparationZoneOrLine : S100FC.FeatureType
+	public class SeparationZoneOrLine : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SeparationZoneOrLine);
@@ -30552,6 +31014,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SeparationZoneOrLine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30567,6 +31031,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeparationZoneOrLine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30604,7 +31070,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The outer limit of a traffic lane part or a traffic separation scheme roundabout.
 	/// </summary>
-	public class TrafficSeparationSchemeBoundary : S100FC.FeatureType
+	public class TrafficSeparationSchemeBoundary : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TrafficSeparationSchemeBoundary);
@@ -30680,6 +31146,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TrafficSeparationSchemeBoundary.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30695,6 +31163,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeBoundary.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30732,7 +31202,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A defined area where traffic lanes cross.
 	/// </summary>
-	public class TrafficSeparationSchemeCrossing : S100FC.FeatureType
+	public class TrafficSeparationSchemeCrossing : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TrafficSeparationSchemeCrossing);
@@ -30833,6 +31303,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TrafficSeparationSchemeCrossing.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -30848,6 +31320,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeCrossing.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -30885,7 +31359,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure comprising a separation point or circular separation zone and a circular traffic lane within defined limits. Traffic within the roundabout is separated by moving in a counter-clockwise direction around the separation point or zone.
 	/// </summary>
-	public class TrafficSeparationSchemeRoundabout : S100FC.FeatureType
+	public class TrafficSeparationSchemeRoundabout : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TrafficSeparationSchemeRoundabout);
@@ -30986,6 +31460,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TrafficSeparationSchemeRoundabout.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31001,6 +31477,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeRoundabout.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31038,7 +31516,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A routeing measure aimed at the separation of opposing streams of traffic by appropriate means and by the establishment of traffic lanes.
 	/// </summary>
-	public class TrafficSeparationScheme : S100FC.FeatureType
+	public class TrafficSeparationScheme : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TrafficSeparationScheme);
@@ -31137,6 +31615,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TrafficSeparationScheme.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31152,6 +31632,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationScheme.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31233,7 +31715,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft.
 	/// </summary>
-	public class ArchipelagicSeaLaneArea : S100FC.FeatureType
+	public class ArchipelagicSeaLaneArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ArchipelagicSeaLaneArea);
@@ -31320,6 +31802,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ArchipelagicSeaLaneArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31335,6 +31819,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLaneArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31384,7 +31870,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The reference line used to determine the maximum extents of an Archipelagic Sea Lane. It may not indicate the deepest water nor any recommended route or track.
 	/// </summary>
-	public class ArchipelagicSeaLaneAxis : S100FC.FeatureType
+	public class ArchipelagicSeaLaneAxis : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ArchipelagicSeaLaneAxis);
@@ -31471,6 +31957,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ArchipelagicSeaLaneAxis.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31486,6 +31974,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLaneAxis.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31535,7 +32025,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Sea lanes designated by an archipelagic State for the passage of ships and aircraft. The Archipelagic Sea Lane aggregates all component parts of an Archipelagic Sea Lane system.
 	/// </summary>
-	public class ArchipelagicSeaLane : S100FC.FeatureType
+	public class ArchipelagicSeaLane : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ArchipelagicSeaLane);
@@ -31622,6 +32112,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ArchipelagicSeaLane.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31637,6 +32129,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLane.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31710,7 +32204,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A designated position at which vessels are required to report to a traffic control centre. Also called reporting point or radio reporting point.
 	/// </summary>
-	public class RadioCallingInPoint : S100FC.FeatureType
+	public class RadioCallingInPoint : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioCallingInPoint);
@@ -31847,6 +32341,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadioCallingInPoint.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -31862,6 +32358,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadioCallingInPoint.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -31899,7 +32397,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A route in a body of water where a ferry crosses from one shoreline to another.
 	/// </summary>
-	public class FerryRoute : S100FC.FeatureType
+	public class FerryRoute : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FerryRoute);
@@ -32012,6 +32510,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FerryRoute.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32027,6 +32527,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FerryRoute.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32064,7 +32566,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Recommended tracks along which ships can be guided by coastal radar stations in the event of bad visibility.
 	/// </summary>
-	public class RadarLine : S100FC.FeatureType
+	public class RadarLine : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarLine);
@@ -32152,6 +32654,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarLine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32167,6 +32671,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarLine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32204,7 +32710,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Indicates the coverage of a sea area by a radar surveillance station. Inside this area a vessel may request shore-based radar assistance, particularly in poor visibility.
 	/// </summary>
-	public class RadarRange : S100FC.FeatureType
+	public class RadarRange : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarRange);
@@ -32304,6 +32810,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarRange.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32319,6 +32827,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarRange.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32356,7 +32866,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A station with a transmitter emitting pulses of ultra-high frequency radio waves which are reflected by solid objects and are detected upon their return to the sending station.
 	/// </summary>
-	public class RadarStation : S100FC.FeatureType
+	public class RadarStation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarStation);
@@ -32505,6 +33015,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarStation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32520,6 +33032,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarStation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32557,7 +33071,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area in which vessels or seaplanes anchor or may anchor.
 	/// </summary>
-	public class AnchorageArea : S100FC.FeatureType
+	public class AnchorageArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AnchorageArea);
@@ -32708,6 +33222,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AnchorageArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32723,6 +33239,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorageArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32760,7 +33278,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area in which vessels may be secured to mooring buoys
 	/// </summary>
-	public class MooringArea : S100FC.FeatureType
+	public class MooringArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MooringArea);
@@ -32922,6 +33440,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MooringArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -32937,6 +33457,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -32974,7 +33496,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A designated area of water where a vessel, seaplane, etc., may anchor.
 	/// </summary>
-	public class AnchorBerth : S100FC.FeatureType
+	public class AnchorBerth : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AnchorBerth);
@@ -33112,6 +33634,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AnchorBerth.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -33127,6 +33651,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorBerth.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -33164,7 +33690,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A designated portion of water for the landing and take-off of seaplanes.
 	/// </summary>
-	public class SeaplaneLandingArea : S100FC.FeatureType
+	public class SeaplaneLandingArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SeaplaneLandingArea);
@@ -33277,6 +33803,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SeaplaneLandingArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -33292,6 +33820,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeaplaneLandingArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -33329,7 +33859,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A sea area where dredged material or other potentially more harmful material, for example explosives, chemical waste, is deliberately deposited.
 	/// </summary>
-	public class DumpingGround : S100FC.FeatureType
+	public class DumpingGround : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DumpingGround);
@@ -33455,6 +33985,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DumpingGround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -33470,6 +34002,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DumpingGround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -33507,7 +34041,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which naval, military or aerial exercises are carried out.
 	/// </summary>
-	public class MilitaryPracticeArea : S100FC.FeatureType
+	public class MilitaryPracticeArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MilitaryPracticeArea);
@@ -33657,6 +34191,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MilitaryPracticeArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -33672,6 +34208,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MilitaryPracticeArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -33709,7 +34247,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A defined area within which a jurisdiction applies. It may or may not be named.
 	/// </summary>
-	public class AdministrationArea : S100FC.FeatureType
+	public class AdministrationArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AdministrationArea);
@@ -33821,6 +34359,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AdministrationArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -33836,6 +34376,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AdministrationArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -33873,7 +34415,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area designated for transfer of cargo from one vessel to another sometimes in order to reduce a vessel's draught.
 	/// </summary>
-	public class CargoTranshipmentArea : S100FC.FeatureType
+	public class CargoTranshipmentArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CargoTranshipmentArea);
@@ -33998,6 +34540,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CargoTranshipmentArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34013,6 +34557,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CargoTranshipmentArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34050,7 +34596,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Generally, an area where the mariner has to be made aware of circumstances influencing the safety of navigation.
 	/// </summary>
-	public class CautionArea : S100FC.FeatureType
+	public class CautionArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CautionArea);
@@ -34175,6 +34721,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CautionArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34190,6 +34738,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CautionArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34239,7 +34789,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area for which general information regarding navigation, but not directly related to safety of navigation, is available.
 	/// </summary>
-	public class InformationArea : S100FC.FeatureType
+	public class InformationArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationArea);
@@ -34350,6 +34900,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => InformationArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34365,6 +34917,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InformationArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34402,7 +34956,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A zone contiguous to a coastal State's Territorial Sea, which may not extend beyond 24 nautical miles from the baselines from which the breadth of the Territorial Sea is measured. The coastal State may exercise certain control in this zone subject to the provisions of International Law.
 	/// </summary>
-	public class ContiguousZone : S100FC.FeatureType
+	public class ContiguousZone : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContiguousZone);
@@ -34489,6 +35043,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContiguousZone.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34504,6 +35060,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ContiguousZone.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34529,7 +35087,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The Continental Shelf of a coastal State comprises the seabed and subsoil of the submarine areas that extend beyond its Territorial Sea throughout the natural prolongation of its land territory to the outer edge of the continental margin, or to a distance of 200 nautical miles from the baselines from which the breadth of the Territorial Sea is measured where the outer edge of the continental margin does not extend up to that distance.
 	/// </summary>
-	public class ContinentalShelfArea : S100FC.FeatureType
+	public class ContinentalShelfArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ContinentalShelfArea);
@@ -34604,6 +35162,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContinentalShelfArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34619,6 +35179,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ContinentalShelfArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34656,7 +35218,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The area within which national custom regulations are in force.
 	/// </summary>
-	public class CustomZone : S100FC.FeatureType
+	public class CustomZone : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CustomZone);
@@ -34719,6 +35281,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CustomZone.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34734,6 +35298,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CustomZone.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34759,7 +35325,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area, not exceeding 200 nautical miles from the baselines from which the breadth of the territorial sea is measured, subject to a specific legal regime established in the United Nations Convention on the Law of the Sea under which the coastal state has certain rights and jurisdiction.
 	/// </summary>
-	public class ExclusiveEconomicZone : S100FC.FeatureType
+	public class ExclusiveEconomicZone : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(ExclusiveEconomicZone);
@@ -34834,6 +35400,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ExclusiveEconomicZone.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34849,6 +35417,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ExclusiveEconomicZone.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -34874,7 +35444,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The offshore zone in which exclusive fishing rights and management are held by the coastal nation.
 	/// </summary>
-	public class FisheryZone : S100FC.FeatureType
+	public class FisheryZone : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FisheryZone);
@@ -34962,6 +35532,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FisheryZone.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -34977,6 +35549,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FisheryZone.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35014,7 +35588,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A water area in which fishing is frequently carried on.
 	/// </summary>
-	public class FishingGround : S100FC.FeatureType
+	public class FishingGround : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FishingGround);
@@ -35127,6 +35701,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FishingGround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35142,6 +35718,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FishingGround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35179,7 +35757,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A port where certain import and export duties are waived (unless goods pass into the country) to facilitate reshipment to other countries.
 	/// </summary>
-	public class FreePortArea : S100FC.FeatureType
+	public class FreePortArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FreePortArea);
@@ -35255,6 +35833,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FreePortArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35270,6 +35850,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FreePortArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35307,7 +35889,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The area over which a harbour authority has jurisdiction.
 	/// </summary>
-	public class HarbourAreaAdministrative : S100FC.FeatureType
+	public class HarbourAreaAdministrative : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourAreaAdministrative);
@@ -35383,6 +35965,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourAreaAdministrative.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35398,6 +35982,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourAreaAdministrative.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35435,7 +36021,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A maritime area enclosed with connected floating timbers used as a staging area for sawn logs.
 	/// </summary>
-	public class LogPond : S100FC.FeatureType
+	public class LogPond : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LogPond);
@@ -35523,6 +36109,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LogPond.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35538,6 +36126,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LogPond.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35575,7 +36165,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A floating barrier to stop and contain the spread of oil on a water body surface.
 	/// </summary>
-	public class OilBarrier : S100FC.FeatureType
+	public class OilBarrier : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(OilBarrier);
@@ -35701,6 +36291,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OilBarrier.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35716,6 +36308,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OilBarrier.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35753,7 +36347,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Straight baselines are a system of straight lines joining specified or discrete points on the low-water line, usually known as straight baseline turning points. Straight baselines are used in delimitation.
 	/// </summary>
-	public class StraightTerritorialSeaBaseline : S100FC.FeatureType
+	public class StraightTerritorialSeaBaseline : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(StraightTerritorialSeaBaseline);
@@ -35816,6 +36410,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => StraightTerritorialSeaBaseline.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35831,6 +36427,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => StraightTerritorialSeaBaseline.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35856,7 +36454,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A belt of water of a defined breadth but not exceeding 12 nautical miles measured seaward from the territorial sea baseline.
 	/// </summary>
-	public class TerritorialSeaArea : S100FC.FeatureType
+	public class TerritorialSeaArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TerritorialSeaArea);
@@ -35956,6 +36554,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TerritorialSeaArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -35971,6 +36571,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TerritorialSeaArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -35996,7 +36598,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A lane where submarines may navigate under water or at the surface.
 	/// </summary>
-	public class SubmarineTransitLane : S100FC.FeatureType
+	public class SubmarineTransitLane : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SubmarineTransitLane);
@@ -36096,6 +36698,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SubmarineTransitLane.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -36111,6 +36715,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SubmarineTransitLane.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -36148,7 +36754,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An area within which a pilotage direction exists. Such directions are regulated by a competent harbour authority which dictates circumstances under which they apply.
 	/// </summary>
-	public class PilotageDistrict : S100FC.FeatureType
+	public class PilotageDistrict : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotageDistrict);
@@ -36223,6 +36829,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotageDistrict.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -36238,6 +36846,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotageDistrict.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -36287,7 +36897,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// Convention on the International Regulations for Preventing Collisions at Sea, 1972 (COLREGs). The demarcation line between inland navigation rules and international navigation rules.
 	/// </summary>
-	public class CollisionRegulationsLimit : S100FC.FeatureType
+	public class CollisionRegulationsLimit : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CollisionRegulationsLimit);
@@ -36386,6 +36996,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CollisionRegulationsLimit.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -36401,6 +37013,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CollisionRegulationsLimit.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -36438,7 +37052,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The International Convention for the Prevention of Pollution from Ships (MARPOL) is the main international convention covering prevention of pollution of the marine environment by ships from operational or accidental causes.
 	/// </summary>
-	public class MarinePollutionRegulationsArea : S100FC.FeatureType
+	public class MarinePollutionRegulationsArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MarinePollutionRegulationsArea);
@@ -36513,6 +37127,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MarinePollutionRegulationsArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -36528,6 +37144,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MarinePollutionRegulationsArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -36565,7 +37183,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A specified area on land or water designated by an appropriate authority within which access or navigation is restricted in accordance with certain specified conditions.
 	/// </summary>
-	public class RestrictedArea : S100FC.FeatureType
+	public class RestrictedArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RestrictedArea);
@@ -36703,6 +37321,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RestrictedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -36718,6 +37338,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RestrictedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -36779,7 +37401,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
 	/// </summary>
-	public class LightAllAround : S100FC.FeatureType
+	public class LightAllAround : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightAllAround);
@@ -37054,6 +37676,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAllAround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -37069,6 +37693,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAllAround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -37138,7 +37764,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
 	/// </summary>
-	public class LightSectored : S100FC.FeatureType
+	public class LightSectored : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightSectored);
@@ -37339,6 +37965,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightSectored.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -37354,6 +37982,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightSectored.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -37423,7 +38053,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
 	/// </summary>
-	public class LightFogDetector : S100FC.FeatureType
+	public class LightFogDetector : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightFogDetector);
@@ -37610,6 +38240,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightFogDetector.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -37625,6 +38257,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFogDetector.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -37674,7 +38308,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
 	/// </summary>
-	public class LightAirObstruction : S100FC.FeatureType
+	public class LightAirObstruction : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightAirObstruction);
@@ -37886,6 +38520,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAirObstruction.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -37901,6 +38537,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAirObstruction.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -37950,7 +38588,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A lateral buoy is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well-defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
-	public class LateralBuoy : S100FC.FeatureType
+	public class LateralBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LateralBuoy);
@@ -38176,6 +38814,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LateralBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -38191,6 +38831,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LateralBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -38264,7 +38906,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A cardinal buoy is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
-	public class CardinalBuoy : S100FC.FeatureType
+	public class CardinalBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CardinalBuoy);
@@ -38490,6 +39132,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CardinalBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -38505,6 +39149,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CardinalBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -38578,7 +39224,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An isolated danger buoy is a buoy moored on or above an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
-	public class IsolatedDangerBuoy : S100FC.FeatureType
+	public class IsolatedDangerBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IsolatedDangerBuoy);
@@ -38791,6 +39437,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => IsolatedDangerBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -38806,6 +39454,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IsolatedDangerBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -38879,7 +39529,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A safe water buoy is used to indicate that there is navigable water around the mark.
 	/// </summary>
-	public class SafeWaterBuoy : S100FC.FeatureType
+	public class SafeWaterBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SafeWaterBuoy);
@@ -39092,6 +39742,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SafeWaterBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -39107,6 +39759,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SafeWaterBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -39180,7 +39834,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A special purpose buoy is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
-	public class SpecialPurposeGeneralBuoy : S100FC.FeatureType
+	public class SpecialPurposeGeneralBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBuoy);
@@ -39406,6 +40060,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpecialPurposeGeneralBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -39421,6 +40077,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpecialPurposeGeneralBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -39494,7 +40152,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An emergency wreck marking buoy is a buoy moored on or above a new wreck, designed to provide a prominent (both visual and radio) and easily identifiable temporary first response.
 	/// </summary>
-	public class EmergencyWreckMarkingBuoy : S100FC.FeatureType
+	public class EmergencyWreckMarkingBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(EmergencyWreckMarkingBuoy);
@@ -39682,6 +40340,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => EmergencyWreckMarkingBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -39697,6 +40357,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => EmergencyWreckMarkingBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -39758,7 +40420,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An installation buoy is a buoy used for loading tankers with gas or oil.
 	/// </summary>
-	public class InstallationBuoy : S100FC.FeatureType
+	public class InstallationBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InstallationBuoy);
@@ -39973,6 +40635,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => InstallationBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -39988,6 +40652,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InstallationBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -40037,7 +40703,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A buoy secured to the bottom by permanent moorings with means for mooring a vessel by use of its anchor chain or mooring lines.
 	/// </summary>
-	public class MooringBuoy : S100FC.FeatureType
+	public class MooringBuoy : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(MooringBuoy);
@@ -40249,6 +40915,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MooringBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -40264,6 +40932,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -40337,7 +41007,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A lateral beacon is used to indicate the port or starboard hand side of the route to be followed. They are generally used for well defined channels and are used in conjunction with a conventional direction of buoyage.
 	/// </summary>
-	public class LateralBeacon : S100FC.FeatureType
+	public class LateralBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LateralBeacon);
@@ -40625,6 +41295,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LateralBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -40640,6 +41312,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LateralBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -40725,7 +41399,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A cardinal beacon is used in conjunction with the compass to indicate where the mariner may find the best navigable water. It is placed in one of the four quadrants (North, East, South and West), bounded by inter-cardinal bearings from the point marked.
 	/// </summary>
-	public class CardinalBeacon : S100FC.FeatureType
+	public class CardinalBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CardinalBeacon);
@@ -41013,6 +41687,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CardinalBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -41028,6 +41704,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CardinalBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -41113,7 +41791,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An isolated danger beacon is a beacon erected on an isolated danger of limited extent, which has navigable water all around it.
 	/// </summary>
-	public class IsolatedDangerBeacon : S100FC.FeatureType
+	public class IsolatedDangerBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(IsolatedDangerBeacon);
@@ -41388,6 +42066,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => IsolatedDangerBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -41403,6 +42083,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IsolatedDangerBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -41488,7 +42170,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A safe water beacon is used to indicate that there is navigable water around the mark.
 	/// </summary>
-	public class SafeWaterBeacon : S100FC.FeatureType
+	public class SafeWaterBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SafeWaterBeacon);
@@ -41763,6 +42445,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SafeWaterBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -41778,6 +42462,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SafeWaterBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -41863,7 +42549,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A special purpose beacon is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notices to Mariners.
 	/// </summary>
-	public class SpecialPurposeGeneralBeacon : S100FC.FeatureType
+	public class SpecialPurposeGeneralBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpecialPurposeGeneralBeacon);
@@ -42151,6 +42837,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpecialPurposeGeneralBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -42166,6 +42854,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpecialPurposeGeneralBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -42251,7 +42941,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The identifying characteristics of an aid to navigation which serve to facilitate its recognition against a daylight viewing background. On those structures that do not by themselves present an adequate viewing area to be seen at the required distance, the aid is made more visible by affixing a daymark to the structure. A daymark so affixed has a distinctive colour and shape depending on the purpose of the aid.
 	/// </summary>
-	public class Daymark : S100FC.FeatureType
+	public class Daymark : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Daymark);
@@ -42488,6 +43178,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Daymark.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -42503,6 +43195,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Daymark.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -42596,7 +43290,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A boat-like structure used instead of a light buoy in waters where strong streams or currents are experienced, or when a greater elevation than that of a light buoy is necessary.
 	/// </summary>
-	public class LightFloat : S100FC.FeatureType
+	public class LightFloat : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightFloat);
@@ -42820,6 +43514,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightFloat.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -42835,6 +43531,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFloat.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -42908,7 +43606,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A distinctively marked vessel anchored or moored at a charted point, to serve as an aid to navigation. By night, it displays a characteristic light(s) and is usually equipped with other devices, such as fog signal, submarine sound signal, and radio-beacon, to assist navigation.
 	/// </summary>
-	public class LightVessel : S100FC.FeatureType
+	public class LightVessel : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LightVessel);
@@ -43120,6 +43818,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightVessel.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -43135,6 +43835,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightVessel.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -43208,7 +43910,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A means of distinguishing unlighted marks at night. Retroreflective material is secured to the mark in a particular pattern to reflect back light.
 	/// </summary>
-	public class Retroreflector : S100FC.FeatureType
+	public class Retroreflector : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Retroreflector);
@@ -43334,6 +44036,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Retroreflector.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -43349,6 +44053,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Retroreflector.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -43386,7 +44092,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A device capable of, or intended for, reflecting radar signals.
 	/// </summary>
-	public class RadarReflector : S100FC.FeatureType
+	public class RadarReflector : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarReflector);
@@ -43486,6 +44192,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarReflector.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -43501,6 +44209,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarReflector.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -43538,7 +44248,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A warning signal transmitted by a vessel, or aid to navigation, during periods of low visibility. Also, the device producing such a signal.
 	/// </summary>
-	public class FogSignal : S100FC.FeatureType
+	public class FogSignal : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FogSignal);
@@ -43724,6 +44434,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FogSignal.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -43739,6 +44451,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FogSignal.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -43788,7 +44502,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
 	/// </summary>
-	public class PhysicalAISAidToNavigation : S100FC.FeatureType
+	public class PhysicalAISAidToNavigation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
@@ -43912,6 +44626,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PhysicalAISAidToNavigation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -43927,6 +44643,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PhysicalAISAidToNavigation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -43976,7 +44694,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
 	/// </summary>
-	public class VirtualAISAidToNavigation : S100FC.FeatureType
+	public class VirtualAISAidToNavigation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
@@ -44113,6 +44831,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VirtualAISAidToNavigation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -44128,6 +44848,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VirtualAISAidToNavigation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -44165,7 +44887,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A place equipped to transmit radio waves. Such a station may be either stationary or mobile, and may also be provided with a radio receiver.
 	/// </summary>
-	public class RadioStation : S100FC.FeatureType
+	public class RadioStation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadioStation);
@@ -44326,6 +45048,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadioStation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -44341,6 +45065,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadioStation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -44378,7 +45104,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A transponder beacon transmitting a coded signal on radar frequency, permitting an interrogating craft to determine the bearing and range of the transponder.
 	/// </summary>
-	public class RadarTransponderBeacon : S100FC.FeatureType
+	public class RadarTransponderBeacon : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RadarTransponderBeacon);
@@ -44551,6 +45277,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RadarTransponderBeacon.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -44566,6 +45294,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarTransponderBeacon.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -44627,7 +45357,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A location offshore where a pilot may board a vessel in preparation to piloting it through local waters.
 	/// </summary>
-	public class PilotBoardingPlace : S100FC.FeatureType
+	public class PilotBoardingPlace : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(PilotBoardingPlace);
@@ -44790,6 +45520,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotBoardingPlace.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -44805,6 +45537,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotBoardingPlace.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -44854,7 +45588,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The area of any service implemented by a relevant authority primarily designed to improve safety and efficiency of traffic flow and the protection of the environment. It may range from simple information messages, to extensive organisation of the traffic involving national or regional schemes.
 	/// </summary>
-	public class VesselTrafficServiceArea : S100FC.FeatureType
+	public class VesselTrafficServiceArea : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VesselTrafficServiceArea);
@@ -44917,6 +45651,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VesselTrafficServiceArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -44932,6 +45668,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VesselTrafficServiceArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -44969,7 +45707,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A station at which a visual/radio/radar marine watch is kept either continuously or at certain times only.
 	/// </summary>
-	public class CoastGuardStation : S100FC.FeatureType
+	public class CoastGuardStation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(CoastGuardStation);
@@ -45093,6 +45831,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => CoastGuardStation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -45108,6 +45848,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CoastGuardStation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -45145,7 +45887,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A warning signal station is a place on shore from which warning signals are made to ships at sea.
 	/// </summary>
-	public class SignalStationWarning : S100FC.FeatureType
+	public class SignalStationWarning : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SignalStationWarning);
@@ -45270,6 +46012,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SignalStationWarning.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -45285,6 +46029,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationWarning.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -45334,7 +46080,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A traffic signal station is a place on shore from which signals are made to regulate the movement of traffic.
 	/// </summary>
-	public class SignalStationTraffic : S100FC.FeatureType
+	public class SignalStationTraffic : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SignalStationTraffic);
@@ -45459,6 +46205,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SignalStationTraffic.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -45474,6 +46222,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationTraffic.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -45523,7 +46273,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A place where equipment for saving life at sea is maintained.
 	/// </summary>
-	public class RescueStation : S100FC.FeatureType
+	public class RescueStation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RescueStation);
@@ -45648,6 +46398,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RescueStation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -45663,6 +46415,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RescueStation.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -45700,7 +46454,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A harbour installation with a service or commercial operation of public interest.
 	/// </summary>
-	public class HarbourFacility : S100FC.FeatureType
+	public class HarbourFacility : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(HarbourFacility);
@@ -45913,6 +46667,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -45928,6 +46684,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -45965,7 +46723,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A place at which a service generally of interest to small craft or pleasure boats is available.
 	/// </summary>
-	public class SmallCraftFacility : S100FC.FeatureType
+	public class SmallCraftFacility : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SmallCraftFacility);
@@ -46078,6 +46836,8 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SmallCraftFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -46093,6 +46853,8 @@ namespace S100FC.S101.FeatureTypes
 			roleType = "association",
 			role = "theInformation",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SmallCraftFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -46130,7 +46892,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
-	public class TextPlacement : S100FC.FeatureType
+	public class TextPlacement : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TextPlacement);
@@ -46206,8 +46968,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TextPlacement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TextPlacement.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -46233,7 +46999,7 @@ namespace S100FC.S101.FeatureTypes
 	/// <summary>
 	/// A feature which exists to support the rendering of graphics or text in order to provide additional information that cannot be encoded using other features.
 	/// </summary>
-	public class Chart1Feature : S100FC.FeatureType
+	public class Chart1Feature : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(Chart1Feature);
@@ -46272,8 +47038,12 @@ namespace S100FC.S101.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Chart1Feature.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Chart1Feature.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {

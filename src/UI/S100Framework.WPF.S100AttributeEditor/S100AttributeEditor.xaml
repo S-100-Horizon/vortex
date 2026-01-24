@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              xmlns:local="clr-namespace:S100Framework.WPF"
              xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
              xmlns:viewmodel="clr-namespace:S100Framework.WPF.ViewModel;assembly=S100Framework.WPF"
@@ -20,7 +21,7 @@
                 Hex Codes: #C7D4D5, #DFE8E9, #FAFAFA, #EAEBE6, #E3CCA9
         
             Esri: https://github.com/esri/arcgis-pro-sdk/wiki/proguide-style-guide
-        -->               
+        -->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/S100Framework.WPF.S100AttributeEditor;component/Themes/Generic.xaml"/>
@@ -76,7 +77,7 @@
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
                                     <ComboBox Grid.Column="0" Style="{StaticResource ButtonLikeComboBox}" 
-                                              ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}" 
+                                              ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}" 
                                               ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}}"
                                               DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
                                     </ComboBox>
@@ -94,30 +95,116 @@
                 </Expander>
             </HierarchicalDataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodel:InformationBindingItemViewModel}">
+                <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                    <DockPanel LastChildFill="True" Background="Transparent">
+                        <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                            <Button DockPanel.Dock="Right" Style="{StaticResource DeleteSimpleAttributeIconButtonStyle}" Visibility="Hidden">
+                            </Button>
+                            <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left" Content="{Binding}" ContentTemplateSelector="{StaticResource PropSelector}"/>
+                        </DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding label}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </Border>
+            </DataTemplate>
+            
+            <DataTemplate DataType="{x:Type viewmodel:InformationBindingViewModel}">
+                <Expander Header="{Binding association}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0" Style="{DynamicResource Esri_ExpanderBorderless}">
+                    <ItemsControl ItemsSource="{Binding items}" Margin="20,0,0,0"/>
+                </Expander>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodel:FeatureBindingItemViewModel}">
+                <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                    <DockPanel LastChildFill="True" Background="Transparent">
+                        <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                            <Button DockPanel.Dock="Right" Style="{StaticResource DeleteSimpleAttributeIconButtonStyle}" Visibility="Hidden">
+                            </Button>
+                            <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left" Content="{Binding}" ContentTemplateSelector="{StaticResource PropSelector}"/>
+                        </DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding label}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewmodel:FeatureBindingViewModel}">
+                <Expander Header="{Binding association}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0" Style="{DynamicResource Esri_ExpanderBorderless}">
+                    <ItemsControl ItemsSource="{Binding items}" Margin="20,0,0,0"/>
+                </Expander>
+            </DataTemplate>
+
         </ResourceDictionary>
     </UserControl.Resources>
 
 
-    <Grid x:Name="PropertyGrid" Grid.IsSharedSizeScope="True">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Orientation="Vertical">
+            <Grid x:Name="PropertyGrid" Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
-            <ComboBox DockPanel.Dock="Right" 
+                <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
+                    <ComboBox DockPanel.Dock="Right" 
                       Style="{StaticResource ButtonLikeComboBox}"
-                      ItemContainerStyle="{StaticResource ButtonLikeComboBoxItemStyle}"
+                      ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}"
                       ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
                       DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
-                <i:Interaction.Behaviors>
-                    <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
-                </i:Interaction.Behaviors>
-            </ComboBox>
-            <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />
-        </DockPanel>
+                        <i:Interaction.Behaviors>
+                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />
+                </DockPanel>
 
-        <ItemsControl Grid.Row="1"
+                <ItemsControl Grid.Row="1"
                    ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
-    </Grid>
+            </Grid>
+
+            <Grid x:Name="InformationBindingsGrid" Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
+                    <ComboBox DockPanel.Dock="Right" 
+                      Style="{StaticResource ButtonLikeComboBox}"
+                      ItemsSource="{Binding SelectedObject.informationBindingDefinitions, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                      DisplayMemberPath="association" FontWeight="Normal" FontSize="12">
+                        <i:Interaction.Behaviors>
+                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="InformationBindings" FontWeight="Bold" VerticalAlignment="Center" />
+                </DockPanel>
+
+                <ItemsControl Grid.Row="1"
+                   ItemsSource="{Binding SelectedObject.informationBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
+            </Grid>
+
+            <Grid x:Name="FeatureBindingsGrid" Grid.IsSharedSizeScope="True">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
+                    <ComboBox DockPanel.Dock="Right" 
+                      Style="{StaticResource ButtonLikeComboBox}"
+                      ItemsSource="{Binding SelectedObject.featureBindingDefinitions, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                      DisplayMemberPath="association" FontWeight="Normal" FontSize="12">
+                        <i:Interaction.Behaviors>
+                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
+                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="FeatureBindings" FontWeight="Bold" VerticalAlignment="Center" />
+                </DockPanel>
+
+                <ItemsControl Grid.Row="1"
+                   ItemsSource="{Binding SelectedObject.featureBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

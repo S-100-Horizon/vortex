@@ -1,6 +1,9 @@
 ﻿using PropertyGridApplication;
+using S100FC;
 using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
+using S100FC.S101.FeatureAssociation;
+using S100FC.S101.InformationAssociation;
 using S100Framework.WPF.ViewModel;
 using System.Text.Json;
 using System.Windows;
@@ -44,6 +47,21 @@ namespace SelectorUI
             };
 
             var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
+
+            selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
+                roleType = "association",
+                role = "theQualityInformation",
+                informationType = "QualityOfBathymetricDataComposition",
+                informationId = RandomString(5),
+            };
+
+            selectedObject += new featureBinding<UpdatedInformation> {
+                roleType = "association",
+                role = "theUpdate",
+                featureType = "UpdatedInformation",
+                featureId = RandomString(5),
+            };
+
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
 
             this.PropertyGrid.SelectedObject = selectedObject;
@@ -54,5 +72,9 @@ namespace SelectorUI
         private void PropertyGrid_PropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e) {
 
         }
+
+        private static readonly char[] _chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".ToCharArray();
+
+        public static string RandomString(int length) { var result = new char[length]; var rng = Random.Shared; for (int i = 0; i < length; i++) result[i] = _chars[rng.Next(_chars.Length)]; return new string(result); }
     }
 }

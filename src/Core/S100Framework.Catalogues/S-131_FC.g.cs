@@ -4841,7 +4841,7 @@ namespace S100FC.S131.InformationTypes
 	/// <summary>
 	/// Generalized information type which carries all the common attributes.
 	/// </summary>
-	public abstract class InformationType : S100FC.InformationType
+	public abstract class InformationType : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(InformationType);
@@ -4916,6 +4916,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => InformationType.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -4977,6 +4979,8 @@ namespace S100FC.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AbstractRxN.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
@@ -5166,6 +5170,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Applicability.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5229,6 +5235,8 @@ namespace S100FC.S131.InformationTypes
 					CreateInstance = () => new textContent(),
 				},
 			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Authority.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
@@ -5460,6 +5468,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AvailablePortServices.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5630,6 +5640,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ContactDetails.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -5789,6 +5801,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Entrance.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5806,6 +5820,8 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Nautical Information";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NauticalInformation.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5867,6 +5883,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NonStandardWorkingDay.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5884,6 +5902,8 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Recommendations";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Recommendations.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5901,6 +5921,8 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Regulations";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Regulations.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5918,6 +5940,8 @@ namespace S100FC.S131.InformationTypes
 		public override string S100FC_name => "Restrictions";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Restrictions.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -5967,6 +5991,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ServiceHours.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. InformationType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6002,7 +6028,7 @@ namespace S100FC.S131.InformationTypes
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
-	public class SpatialQuality : S100FC.InformationType
+	public class SpatialQuality : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpatialQuality);
@@ -6042,6 +6068,8 @@ namespace S100FC.S131.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpatialQuality.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -6059,7 +6087,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// Generalized feature type which carries all the common attributes.
 	/// </summary>
-	public abstract class FeatureType : S100FC.FeatureType
+	public abstract class FeatureType : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(FeatureType);
@@ -6194,6 +6222,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FeatureType.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6234,6 +6264,8 @@ namespace S100FC.S131.FeatureTypes
 			role = "theInformation",
 		};
 
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FeatureType.featureBindingsDefinitions;
+
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
 					roleType = "association",
@@ -6266,6 +6298,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Organization Contact Area";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OrganizationContactArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. FeatureType.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6282,6 +6316,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "theContactDetails",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OrganizationContactArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6303,6 +6339,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Supervised Area";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SupervisedArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. OrganizationContactArea.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6319,6 +6357,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "controlAuthority",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SupervisedArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6340,8 +6380,12 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Harbour Physical Infrastructure";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourPhysicalInfrastructure.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourPhysicalInfrastructure.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. SupervisedArea.featureBindingsDefinitions,
@@ -6376,8 +6420,12 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Layout";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Layout.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Layout.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6445,6 +6493,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AnchorBerth.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6473,6 +6523,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorBerth.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -6590,6 +6642,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AnchorageArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6606,6 +6660,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorageArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -6640,6 +6696,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Automated Guided Vehicle";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => AutomatedGuidedVehicle.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6656,6 +6714,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AutomatedGuidedVehicle.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6954,6 +7014,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Berth.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -6982,6 +7044,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Berth.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7108,8 +7172,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => BerthPosition.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => BerthPosition.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7200,8 +7268,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Bollard.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Bollard.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7280,6 +7352,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DockArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7308,6 +7382,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DockArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7374,6 +7450,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DryDock.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7390,6 +7468,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DryDock.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7432,8 +7512,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Dolphin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dolphin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7512,6 +7596,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DumpingGround.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7528,6 +7614,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DumpingGround.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7582,8 +7670,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FenderLine.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FenderLine.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7638,6 +7730,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => FloatingDock.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7654,6 +7748,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FloatingDock.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7707,6 +7803,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Gridiron.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7723,6 +7821,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Gridiron.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -7826,6 +7926,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourAreaAdministrative.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7854,6 +7956,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourAreaAdministrative.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -7959,6 +8063,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourAreaSection.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -7987,6 +8093,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourAreaSection.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -8118,6 +8226,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourBasin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8134,6 +8244,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourBasin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -8168,6 +8280,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Harbour Facility";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => HarbourFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8184,6 +8298,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -8225,6 +8341,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LockBasin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8241,6 +8359,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LockBasin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -8282,6 +8402,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LockBasinPart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8298,6 +8420,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LockBasinPart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -8375,8 +8499,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MooringBuoy.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringBuoy.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -8467,6 +8595,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => MooringWarpingFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8495,6 +8625,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringWarpingFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -8624,6 +8756,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OnshorePowerFacility.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8640,6 +8774,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OnshorePowerFacility.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -8741,6 +8877,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => OuterLimit.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8757,6 +8895,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "entranceReference",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OuterLimit.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -8861,6 +9001,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PilotBoardingPlace.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8877,6 +9019,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotBoardingPlace.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -8968,6 +9112,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SeaplaneLandingArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -8984,6 +9130,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeaplaneLandingArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -9038,6 +9186,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => ShipLift.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -9054,6 +9204,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ShipLift.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9075,6 +9227,8 @@ namespace S100FC.S131.FeatureTypes
 		public override string S100FC_name => "Straddle Carrier";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => StraddleCarrier.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. HarbourPhysicalInfrastructure.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -9091,6 +9245,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => StraddleCarrier.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9207,6 +9363,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Terminal.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -9235,6 +9393,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Terminal.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -9346,6 +9506,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TurningBasin.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -9362,6 +9524,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TurningBasin.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -9453,6 +9617,8 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => WaterwayArea.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				.. Layout.informationBindingsDefinitions,
 				new informationBindingDefinition {
@@ -9469,6 +9635,8 @@ namespace S100FC.S131.FeatureTypes
 			roleType = "association",
 			role = "facilityOperatingHours",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WaterwayArea.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				.. Layout.featureBindingsDefinitions,
@@ -9495,7 +9663,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// A geographical area that describes the coverage and extent of spatial objects.
 	/// </summary>
-	public class DataCoverage : S100FC.FeatureType
+	public class DataCoverage : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(DataCoverage);
@@ -9558,8 +9726,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DataCoverage.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DataCoverage.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9573,7 +9745,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// An area within which a uniform assessment of the quality of the non-bathymetric data exists.
 	/// </summary>
-	public class QualityOfNonBathymetricData : S100FC.FeatureType
+	public class QualityOfNonBathymetricData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfNonBathymetricData);
@@ -9697,8 +9869,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfNonBathymetricData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfNonBathymetricData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9712,7 +9888,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// The horizontal plane or tidal datum to which soundings have been reduced. Also called datum for sounding reduction.
 	/// </summary>
-	public class SoundingDatum : S100FC.FeatureType
+	public class SoundingDatum : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SoundingDatum);
@@ -9752,8 +9928,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SoundingDatum.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SoundingDatum.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9767,7 +9947,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// Any level surface (for example Mean Sea Level) taken as a surface of reference to which the elevations within a data set are reduced. Also called datum level, reference level, reference plane, levelling datum, datum for heights.
 	/// </summary>
-	public class VerticalDatumOfData : S100FC.FeatureType
+	public class VerticalDatumOfData : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(VerticalDatumOfData);
@@ -9807,8 +9987,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VerticalDatumOfData.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VerticalDatumOfData.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -9822,7 +10006,7 @@ namespace S100FC.S131.FeatureTypes
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
-	public class TextPlacement : S100FC.FeatureType
+	public class TextPlacement : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TextPlacement);
@@ -9898,8 +10082,12 @@ namespace S100FC.S131.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TextPlacement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TextPlacement.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {

@@ -147,7 +147,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="ComboBoxItem" x:Key="ButtonLikeComboBoxItemStyle">
+    <Style TargetType="ComboBoxItem" x:Key="AttributeBindingButtonLikeComboBoxItemStyle">
         <!-- Bind IsEnabled to your model -->
         <Setter Property="IsEnabled">
             <Setter.Value>
@@ -168,7 +168,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
 
     <!-- Template for Strings -->
     <DataTemplate x:Key="StringEditorTemplate">

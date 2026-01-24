@@ -64,6 +64,14 @@ namespace PropertyGridApplication
         }
 
         public override Primitives[] permittedPrimitives => [Primitives.noGeometry];
+
+        public override featureBindingDefinition[] GetFeatureBindingsDefinitions() {
+            throw new NotImplementedException();
+        }
+
+        public override informationBindingDefinition[] GetInformationBindingsDefinitions() {
+            throw new NotImplementedException();
+        }
     }
 
     public class TestFeature : QualityOfBathymetricData

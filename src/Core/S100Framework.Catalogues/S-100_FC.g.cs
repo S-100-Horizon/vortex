@@ -287,6 +287,21 @@ namespace S100FC
     {
     }
 
+    public interface IInformationBindings
+    {
+        informationBindingDefinition[] GetInformationBindingsDefinitions();
+
+        static abstract informationBindingDefinition[] informationBindingsDefinitions { get; }
+    }
+
+    public interface IFeatureBindings
+    {
+        informationBindingDefinition[] GetInformationBindingsDefinitions();
+        featureBindingDefinition[] GetFeatureBindingsDefinitions();
+
+        static abstract featureBindingDefinition[] featureBindingsDefinitions { get; }
+    }
+
     public abstract class ComplexAttribute : attributeBinding, IAttributeBindings
     {
         [JsonInclude]
@@ -378,8 +393,7 @@ namespace S100FC
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
 
-        [JsonIgnore]
-        public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+        public abstract informationBindingDefinition[] GetInformationBindingsDefinitions();
 
         public attributeBindingDefinition[] mandatoryBindings() {
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
@@ -462,11 +476,9 @@ namespace S100FC
         [JsonIgnore]
         public virtual attributeBindingDefinition[] attributeBindingsCatalogue { get; } = [];
 
-        //[JsonIgnore]
-        //public virtual informationBindingDefinition[] informationBindingsCatalogue { get; } = [];
+        public abstract informationBindingDefinition[] GetInformationBindingsDefinitions();
 
-        //[JsonIgnore]
-        //public virtual featureBindingDefinition[] featureBindingsCatalogue { get; } = [];
+        public abstract featureBindingDefinition[] GetFeatureBindingsDefinitions();
 
         public attributeBindingDefinition[] mandatoryBindings() {
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
@@ -645,7 +657,8 @@ namespace S100FC
 
     }
 
-    public interface IInformationAssociation {
+    public interface IInformationAssociation
+    {
         public abstract static string role { get; }
     }
 

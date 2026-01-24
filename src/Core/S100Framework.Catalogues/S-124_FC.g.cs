@@ -1760,7 +1760,7 @@ namespace S100FC.S124.InformationTypes
 	/// <summary>
 	/// References to for example a navigational warning, nautical publication or chart.
 	/// </summary>
-	public class References : S100FC.InformationType
+	public class References : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(References);
@@ -1812,6 +1812,8 @@ namespace S100FC.S124.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => References.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -1834,7 +1836,7 @@ namespace S100FC.S124.InformationTypes
 	/// <summary>
 	/// Preamble information for warnings, notices and other types of messages in a navigational warning scheme.
 	/// </summary>
-	public class NavwarnPreamble : S100FC.InformationType
+	public class NavwarnPreamble : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavwarnPreamble);
@@ -1958,6 +1960,8 @@ namespace S100FC.S124.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavwarnPreamble.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -1980,7 +1984,7 @@ namespace S100FC.S124.InformationTypes
 	/// <summary>
 	/// The indication of the quality of the locational information for features in a dataset.
 	/// </summary>
-	public class SpatialQuality : S100FC.InformationType
+	public class SpatialQuality : S100FC.InformationType, IInformationBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(SpatialQuality);
@@ -2020,6 +2024,8 @@ namespace S100FC.S124.InformationTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SpatialQuality.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
 
@@ -2037,7 +2043,7 @@ namespace S100FC.S124.FeatureTypes
 	/// <summary>
 	/// Navigational warning information that may be geo-located.
 	/// </summary>
-	public class NavwarnPart : S100FC.FeatureType
+	public class NavwarnPart : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavwarnPart);
@@ -2113,6 +2119,8 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavwarnPart.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 				new informationBindingDefinition {
 					roleType = "association",
@@ -2128,6 +2136,8 @@ namespace S100FC.S124.FeatureTypes
 			roleType = "association",
 			role = "header",
 		};
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavwarnPart.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -2165,7 +2175,7 @@ namespace S100FC.S124.FeatureTypes
 	/// <summary>
 	/// An area affected by some event marked by a navigational warning.
 	/// </summary>
-	public class NavwarnAreaAffected : S100FC.FeatureType
+	public class NavwarnAreaAffected : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavwarnAreaAffected);
@@ -2173,8 +2183,12 @@ namespace S100FC.S124.FeatureTypes
 		public override string S100FC_name => "NAVWARN Area Affected";
 
 		#region Catalogue
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavwarnAreaAffected.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavwarnAreaAffected.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {
@@ -2200,7 +2214,7 @@ namespace S100FC.S124.FeatureTypes
 	/// <summary>
 	/// The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.
 	/// </summary>
-	public class TextPlacement : S100FC.FeatureType
+	public class TextPlacement : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(TextPlacement);
@@ -2275,8 +2289,12 @@ namespace S100FC.S124.FeatureTypes
 				},
 			];
 
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TextPlacement.informationBindingsDefinitions;
+
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
 			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TextPlacement.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 				new featureBindingDefinition {

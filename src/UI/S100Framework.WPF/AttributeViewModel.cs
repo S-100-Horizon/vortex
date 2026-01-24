@@ -133,4 +133,170 @@ namespace S100Framework.WPF.ViewModel
 
         private readonly S100FC.ComplexAttribute? _attribute = default;
     }
+
+    public class InformationBindingItemViewModel : INotifyPropertyChanged {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged = default;
+
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
+            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
+                return false;
+
+            backingField = newValue;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+        #endregion
+
+        public string label { get; init; } = string.Empty;
+
+        private string? _value = string.Empty;
+
+        public string? value {
+            get => this._value;
+            set {
+                this.SetProperty(ref this._value, value);
+            }
+        }
+    }
+
+    public class InformationBindingViewModel : INotifyPropertyChanged {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged = default;
+
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
+            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
+                return false;
+
+            backingField = newValue;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+        #endregion
+
+        public ObservableCollection<InformationBindingItemViewModel> items { get; set; } = [];
+
+        public string association { get; init; }
+
+        public InformationBindingViewModel(informationBindingDefinition informationBinding) {
+            this.association = informationBinding.association;
+
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "role",
+            });
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "informationType",
+            });
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "informationId",
+            });
+        }
+
+
+        public InformationBindingViewModel(informationBinding informationBinding) {
+            this.association = informationBinding.roleType;
+
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "role",
+                value = informationBinding.role,
+            });
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "informationType",
+                value = informationBinding.informationType,
+            });
+            this.items.Add(new InformationBindingItemViewModel {
+                label = "informationId",
+                value = informationBinding.informationId,
+            });
+        }
+    }
+
+    public class FeatureBindingItemViewModel : INotifyPropertyChanged
+    {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged = default;
+
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
+            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
+                return false;
+
+            backingField = newValue;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+        #endregion
+
+        public string label { get; init; } = string.Empty;
+
+        private string? _value = string.Empty;
+
+        public string? value {
+            get => this._value;
+            set {
+                this.SetProperty(ref this._value, value);
+            }
+        }
+    }
+    public class FeatureBindingViewModel : INotifyPropertyChanged
+    {
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler? PropertyChanged = default;
+
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
+            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
+                return false;
+
+            backingField = newValue;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+        #endregion
+
+        public ObservableCollection<FeatureBindingItemViewModel> items { get; set; } = [];
+
+        public string association { get; init; }
+
+        public FeatureBindingViewModel(featureBindingDefinition featureBinding) {
+            this.association = featureBinding.association;
+
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "role",
+            });
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "featureType",
+            });
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "featureId",
+            });
+        }
+
+        public FeatureBindingViewModel(featureBinding featureBinding) {
+            this.association = featureBinding.roleType;
+
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "role",
+                value = featureBinding.role,
+            });
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "featureType",
+                value = featureBinding.featureType,
+            });
+            this.items.Add(new FeatureBindingItemViewModel {
+                label = "featureId",
+                value = featureBinding.featureId,
+            });
+        }
+    }
 }

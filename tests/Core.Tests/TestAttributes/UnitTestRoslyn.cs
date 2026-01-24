@@ -462,7 +462,7 @@ namespace TestAttributes
                 do {
                     notFinished = false;
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager)) {
-                        var success = this.ClassBuilder(roslyn, element, "InformationType", new ClassBuilderHost {
+                        var success = this.ClassBuilder(roslyn, element, "InformationType, IInformationBindings", new ClassBuilderHost {
                             KnownTypes = informationTypesKnown,
                             KnownTypesAbstract = abstractTypesKnown,
                             KnownTypesComplex = attributesKnownComplex,
@@ -512,7 +512,7 @@ namespace TestAttributes
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
                         var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
 
-                        var success = this.ClassBuilder(roslyn, element, "FeatureType", new ClassBuilderHost {
+                        var success = this.ClassBuilder(roslyn, element, "FeatureType, IInformationBindings, IFeatureBindings", new ClassBuilderHost {
                             KnownTypes = featureTypesKnown,
                             KnownTypesAbstract = abstractTypesKnown,
                             KnownTypesComplex = attributesKnownComplex,
@@ -835,6 +835,8 @@ namespace TestAttributes
 
             string[] localNameInformationTypes = ["S100_FC_InformationType", "S100_FC_FeatureType"];
             if (localNameInformationTypes.Contains(element.Name.LocalName)) {
+                roslyn.AppendLine($"\t\tpublic override informationBindingDefinition[] GetInformationBindingsDefinitions() => {code}.informationBindingsDefinitions;");
+                roslyn.AppendLine();
                 var informationBindings = element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager);
                 roslyn.AppendLine($"\t\tpublic static informationBindingDefinition[] informationBindingsDefinitions => [");
                 if (informationBindings.Any()) {
@@ -887,6 +889,8 @@ namespace TestAttributes
 
             string[] localNameFeatureTypes = ["S100_FC_FeatureType"];
             if (localNameFeatureTypes.Contains(element.Name.LocalName)) {
+                roslyn.AppendLine($"\t\tpublic override featureBindingDefinition[] GetFeatureBindingsDefinitions() => {code}.featureBindingsDefinitions;");
+                roslyn.AppendLine();
                 var featureBindings = element.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager);
                 roslyn.AppendLine($"\t\tpublic static featureBindingDefinition[] featureBindingsDefinitions => [");
                 if (featureBindings.Any()) {
