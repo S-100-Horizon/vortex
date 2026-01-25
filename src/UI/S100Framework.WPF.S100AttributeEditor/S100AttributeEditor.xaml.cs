@@ -38,10 +38,14 @@ namespace S100Framework.WPF
                 }
             }
             if(parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
-                this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
+                if (this.SelectedObject.HasCapacity(informationBinding)) {
+                    this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
+                }
             }
-            if(parameter is IGrouping<string,featureBindingDefinition> featureBinding) {                
-                this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
+            if(parameter is IGrouping<string,featureBindingDefinition> featureBinding) {
+                if (this.SelectedObject.HasCapacity(featureBinding)) {
+                    this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
+                }
             }
         }
 

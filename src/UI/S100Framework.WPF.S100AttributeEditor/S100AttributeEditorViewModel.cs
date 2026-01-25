@@ -25,7 +25,8 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        public class featureBindingContainer {
+        public class featureBindingContainer
+        {
             public string[] associations => [.. this._featureBindingDefinitions.Select(e => e.Key)];
 
             public IEnumerable<IGrouping<string, featureBindingDefinition>> GroupBy => this._featureBindingDefinitions;
@@ -110,6 +111,24 @@ namespace S100Framework.WPF.ViewModel
         public bool HasCapacity(attributeBindingDefinition binding) {
             var count = this.attributeBindings.Count(e => e.code.Equals(binding.attribute));
             return binding.upper > count;
+        }
+
+        public bool HasCapacity(IGrouping<string, informationBindingDefinition> binding) {
+            return true;
+            //var count = this.informationBindings.Count(e => e.association.Equals(binding.association) && e.role!.Equals(binding.role));
+
+            //var definition = this.informationBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(binding.association)).Single(e => e.role.Equals(binding.role));
+
+            //return definition.upper > count;
+        }
+
+        public bool HasCapacity(IGrouping<string, featureBindingDefinition> binding) {
+            return true;
+            //var count = this.featureBindings.Count(e => e.association.Equals(binding.association) && e.role!.Equals(binding.role));
+
+            //var definition = this.featureBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(binding.association)).Single(e => e.role.Equals(binding.role));
+
+            //return definition.upper > count;
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
