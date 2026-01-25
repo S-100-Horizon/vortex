@@ -27,7 +27,7 @@ namespace S100Framework.WPF
         protected void OnCreateAttributeCommand(object? parameter) {
             if (this.SelectedObject is null) return;
             if (parameter is attributeBindingDefinition attributeBinding) {
-                if (this.SelectedObject.HasCapacity(attributeBinding)) {
+                if (this.SelectedObject!.HasCapacity(attributeBinding)) {
                     var instance = attributeBinding.CreateInstance();
                     if (instance is SimpleAttribute simpleAttribute)
                         this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(simpleAttribute));
@@ -38,12 +38,12 @@ namespace S100Framework.WPF
                 }
             }
             if(parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
-                if (this.SelectedObject.HasCapacity(informationBinding)) {
+                if (this.SelectedObject!.HasCapacity(informationBinding)) {
                     this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
                 }
             }
             if(parameter is IGrouping<string,featureBindingDefinition> featureBinding) {
-                if (this.SelectedObject.HasCapacity(featureBinding)) {
+                if (this.SelectedObject!.HasCapacity(featureBinding)) {
                     this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
                 }
             }
