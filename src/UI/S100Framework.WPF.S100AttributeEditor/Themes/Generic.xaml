@@ -221,6 +221,14 @@
                   Foreground="{DynamicResource Esri_TextMenuBrush}"/>
     </DataTemplate>
 
+    <DataTemplate x:Key="FeatureBindingEditorTemplate">
+        <ComboBox ItemsSource="{Binding items}" 
+                  SelectedValue="{Binding value}"                  
+                  Padding="2"
+                  Background="{DynamicResource Esri_BackgroundPressedBrush}" 
+                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+    </DataTemplate>
+
     <!--<DataTemplate x:Key="ComplexEditorTemplate">
     <local:S100AttributeEditor SelectedObject="{Binding {}, Converter={StaticResource SelectedObjectSourceConverter}}" />
 </DataTemplate>-->
@@ -234,7 +242,8 @@
                                     RealEditorTemplate="{StaticResource DecimalEditorTemplate}"                                    
                                     BooleanEditorTemplate="{StaticResource BooleanEditorTemplate}"
                                     IntegerEditorTemplate="{StaticResource IntegerEditorTemplate}"
-                                    EnumEditorTemplate="{StaticResource EnumEditorTemplate}"/>
+                                    EnumEditorTemplate="{StaticResource EnumEditorTemplate}"
+                                    FeatureBindingEditorTemplate="{StaticResource FeatureBindingEditorTemplate}"/>
 
     <Style TargetType="{x:Type localcontrols:DropdownButton}">
         <Setter Property="Focusable" Value="False"/>

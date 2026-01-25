@@ -17,6 +17,8 @@ namespace S100Framework.WPF
         public DataTemplate? EnumEditorTemplate { get; set; } = default;
         public DataTemplate? ComplexEditorTemplate { get; set; } = default;
 
+        public DataTemplate? FeatureBindingEditorTemplate { get; set; } = default;
+
         public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
             if (item is SimpleAttributeViewModel simpleAttribute) {
                 if (simpleAttribute.valueType.Equals("text"))
@@ -36,8 +38,7 @@ namespace S100Framework.WPF
                 if (simpleAttribute.valueType.Equals("time"))
                     return this.TimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("enumeration"))
-                    return this.EnumEditorTemplate;
-                ;
+                    return this.EnumEditorTemplate;                
             }
 
             if (item is ComplexAttributeViewModel complextAttribute) {

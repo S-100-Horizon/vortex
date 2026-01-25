@@ -37,10 +37,10 @@ namespace S100Framework.WPF
                         throw new NotImplementedException();
                 }
             }
-            if(parameter is informationBindingDefinition informationBinding) {
+            if(parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
                 this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
             }
-            if(parameter is featureBindingDefinition featureBinding) {
+            if(parameter is IGrouping<string,featureBindingDefinition> featureBinding) {                
                 this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
             }
         }

@@ -59,6 +59,9 @@ namespace S100Framework.WPF.Converters
                     return method!.Invoke(null, new object[] { /* parameters */ });
                 }
             }
+            //if(value is FeatureBindingItemViewModel featureBindingItem) {
+            //    return featureBindingItem.items;
+            //}
             if (value is Type type && type.IsEnum) {
                 return Enum.GetValues(type);
             }
@@ -119,5 +122,5 @@ namespace S100Framework.WPF.Converters
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => Binding.DoNothing;
-    }
+    }    
 }

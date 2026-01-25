@@ -134,90 +134,7 @@ namespace S100Framework.WPF.ViewModel
         private readonly S100FC.ComplexAttribute? _attribute = default;
     }
 
-    public class InformationBindingItemViewModel : INotifyPropertyChanged {
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler? PropertyChanged = default;
-
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
-            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
-                return false;
-
-            backingField = newValue;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-        #endregion
-
-        public string label { get; init; } = string.Empty;
-
-        private string? _value = string.Empty;
-
-        public string? value {
-            get => this._value;
-            set {
-                this.SetProperty(ref this._value, value);
-            }
-        }
-    }
-
-    public class InformationBindingViewModel : INotifyPropertyChanged {
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler? PropertyChanged = default;
-
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        protected bool SetProperty<T>(ref T backingField, T newValue, [System.Runtime.CompilerServices.CallerMemberName] string? propertyName = null) {
-            if (EqualityComparer<T>.Default.Equals(backingField, newValue))
-                return false;
-
-            backingField = newValue;
-            OnPropertyChanged(propertyName);
-            return true;
-        }
-        #endregion
-
-        public ObservableCollection<InformationBindingItemViewModel> items { get; set; } = [];
-
-        public string association { get; init; }
-
-        public InformationBindingViewModel(informationBindingDefinition informationBinding) {
-            this.association = informationBinding.association;
-
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "role",
-            });
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "informationType",
-            });
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "informationId",
-            });
-        }
-
-
-        public InformationBindingViewModel(informationBinding informationBinding) {
-            this.association = informationBinding.roleType;
-
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "role",
-                value = informationBinding.role,
-            });
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "informationType",
-                value = informationBinding.informationType,
-            });
-            this.items.Add(new InformationBindingItemViewModel {
-                label = "informationId",
-                value = informationBinding.informationId,
-            });
-        }
-    }
-
-    public class FeatureBindingItemViewModel : INotifyPropertyChanged
+    public class InformationBindingViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged = default;
@@ -235,17 +152,90 @@ namespace S100Framework.WPF.ViewModel
         }
         #endregion
 
-        public string label { get; init; } = string.Empty;
+        public string association { get; init; }
 
-        private string? _value = string.Empty;
+        public InformationBindingViewModel(IGrouping<string, informationBindingDefinition> informationBinding) {
+            this._informationBindingDefinitions = [.. informationBinding];
 
-        public string? value {
-            get => this._value;
+            this.association = informationBinding.Key;
+
+
+            foreach (var e in this._informationBindingDefinitions) {
+                this.roles.Add(e.role);
+            }            
+
+            this.PropertyChanged += (s, e) => {
+                if (string.IsNullOrEmpty(e.PropertyName)) {
+                    this.role = null;
+                    this.roleType = null;
+                    this.informationTypes.Clear();
+                    this.informationType = null;
+                    this.informationUIDs.Clear();
+                    this.informationUID = null;
+                }
+                else if (e.PropertyName.Equals(nameof(role))) {
+                    var featureBinding = this._informationBindingDefinitions.Single(e => e.role.Equals(this.role));
+                    this.roleType = featureBinding.roleType;
+
+                    this.informationType = null;
+                    this.informationTypes.Clear();
+                    foreach (var featureType in featureBinding.informationTypes) {
+                        this.informationTypes.Add(featureType);
+                    }
+
+                    this.informationUID = null;
+                    this.informationUIDs.Clear();
+                }
+                else if (e.PropertyName.Equals(nameof(informationType))) {
+                }
+            };
+
+            this.role = this.roles[0];
+        }
+
+        private string? _roleType;
+        public string? roleType {
+            get => this._roleType;
             set {
-                this.SetProperty(ref this._value, value);
+                this.SetProperty(ref this._roleType, value);
             }
         }
+
+        public ObservableCollection<string> roles { get; init; } = [];
+
+        public ObservableCollection<string> informationTypes { get; init; } = [];
+
+        public ObservableCollection<string> informationUIDs { get; init; } = [];
+
+        private string? _role;
+        public string? role {
+            get => this._role;
+            set {
+                this.SetProperty(ref this._role, value);
+            }
+        }
+
+        private string? _informationType;
+
+        public string? informationType {
+            get => this._informationType;
+            set {
+                this.SetProperty(ref this._informationType, value);
+            }
+        }
+
+        private string? _informationUID;
+
+        public string? informationUID {
+            get => this._informationUID;
+            set {
+                this.SetProperty(ref this._informationUID, value);
+            }
+        }
+
+        private informationBindingDefinition[] _informationBindingDefinitions;
     }
+
     public class FeatureBindingViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
@@ -264,39 +254,84 @@ namespace S100Framework.WPF.ViewModel
         }
         #endregion
 
-        public ObservableCollection<FeatureBindingItemViewModel> items { get; set; } = [];
-
         public string association { get; init; }
 
-        public FeatureBindingViewModel(featureBindingDefinition featureBinding) {
-            this.association = featureBinding.association;
+        public FeatureBindingViewModel(IGrouping<string, featureBindingDefinition> featureBindings) {
+            this._featureBindingDefinitions = [.. featureBindings];
 
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "role",
-            });
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "featureType",
-            });
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "featureId",
-            });
+            this.association = featureBindings.Key;
+
+            foreach (var e in this._featureBindingDefinitions) {
+                this.roles.Add(e.role);
+            }
+
+            this.PropertyChanged += (s, e) => {
+                if (string.IsNullOrEmpty(e.PropertyName)) {
+                    this.role = null;
+                    this.roleType = null;
+                    this.featureTypes.Clear();
+                    this.featureType = null;
+                    this.featureUIDs.Clear();
+                    this.featureUID = null;
+                }
+                else if (e.PropertyName.Equals(nameof(role))) {
+                    var featureBinding = this._featureBindingDefinitions.Single(e => e.role.Equals(this.role));
+                    this.roleType = featureBinding.roleType;
+
+                    this.featureType = null;
+                    this.featureTypes.Clear();
+                    foreach (var featureType in featureBinding.featureTypes) {
+                        this.featureTypes.Add(featureType);
+                    }
+
+                    this.featureUID = null;
+                    this.featureUIDs.Clear();
+                }
+                else if (e.PropertyName.Equals(nameof(featureType))) {
+                }
+            };                
         }
 
-        public FeatureBindingViewModel(featureBinding featureBinding) {
-            this.association = featureBinding.roleType;
-
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "role",
-                value = featureBinding.role,
-            });
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "featureType",
-                value = featureBinding.featureType,
-            });
-            this.items.Add(new FeatureBindingItemViewModel {
-                label = "featureId",
-                value = featureBinding.featureId,
-            });
+        private string? _roleType;
+        public string? roleType {
+            get => this._roleType;
+            set {
+                this.SetProperty(ref this._roleType, value);
+            }
         }
+
+        public ObservableCollection<string> roles { get; init; } = [];
+
+        public ObservableCollection<string> featureTypes { get; init; } = [];
+
+        public ObservableCollection<string> featureUIDs { get; init; } = [];
+
+        private string? _role;
+        public string? role {
+            get => this._role;
+            set {
+                this.SetProperty(ref this._role, value);
+            }
+        }
+
+        private string? _featureType;
+
+        public string? featureType {
+            get => this._featureType;
+            set {
+                this.SetProperty(ref this._featureType, value);
+            }
+        }
+
+        private string? _featureUID;
+
+        public string? featureUID {
+            get => this._featureUID;
+            set {
+                this.SetProperty(ref this._featureUID, value);
+            }
+        }
+
+        private featureBindingDefinition[] _featureBindingDefinitions;
     }
 }

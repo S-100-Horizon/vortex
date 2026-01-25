@@ -3,6 +3,7 @@ using S100FC;
 using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureAssociation;
+using S100FC.S101.FeatureTypes;
 using S100FC.S101.InformationAssociation;
 using S100Framework.WPF.ViewModel;
 using System.Text.Json;
@@ -26,41 +27,47 @@ namespace SelectorUI
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            var featureType = new TestFeature {
-                featuresDetectedNested = new featuresDetectedNested {
-                    featureName = [new featureName {
-                        name ="Nested",
-                        language="eng",
-                    }],
-                },
+            //var featureType = new TestFeature {
+            //    featuresDetectedNested = new featuresDetectedNested {
+            //        featureName = [new featureName {
+            //            name ="Nested",
+            //            language="eng",
+            //        }],
+            //    },
 
-                categoryOfTemporalVariation = 1,
-                dataAssessment = 1,
+            //    categoryOfTemporalVariation = 1,
+            //    dataAssessment = 1,
 
-                featuresDetected = new featuresDetected {
-                    significantFeaturesDetected = true,
-                    leastDepthOfDetectedFeaturesMeasured = false,
-                },
-                zoneOfConfidence = [new zoneOfConfidence {
-                    categoryOfZoneOfConfidenceInData = 1,
-                }]
+            //    featuresDetected = new featuresDetected {
+            //        significantFeaturesDetected = true,
+            //        leastDepthOfDetectedFeaturesMeasured = false,
+            //    },
+            //    zoneOfConfidence = [new zoneOfConfidence {
+            //        categoryOfZoneOfConfidenceInData = 1,
+            //    }]
+            //};
+
+            //var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
+
+            //selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
+            //    roleType = "association",
+            //    role = "theQualityInformation",
+            //    informationType = "SpatialQuality",
+            //    informationId = RandomString(5),
+            //};
+
+            //selectedObject += new featureBinding<UpdatedInformation> {
+            //    roleType = "association",
+            //    role = "theUpdate",
+            //    featureType = "UpdateInformation",
+            //    featureId = RandomString(5),
+            //};
+
+            var featureType = new IslandGroup {
+
             };
 
             var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
-
-            selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
-                roleType = "association",
-                role = "theQualityInformation",
-                informationType = "QualityOfBathymetricDataComposition",
-                informationId = RandomString(5),
-            };
-
-            selectedObject += new featureBinding<UpdatedInformation> {
-                roleType = "association",
-                role = "theUpdate",
-                featureType = "UpdatedInformation",
-                featureId = RandomString(5),
-            };
 
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
 
