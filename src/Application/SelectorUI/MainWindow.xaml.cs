@@ -67,7 +67,26 @@ namespace SelectorUI
 
             };
 
-            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
+            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456") {
+                RequestInformation = (s, e) => {
+                    var random = new Random(DateTime.Now.Millisecond);
+                    string[] result = [];
+                    for (int i = 0; i < random.Next(1, 8); i++) {
+                        var text = RandomString(5).ToUpperInvariant();
+                        result = [.. result, text];
+                    }
+                    return result;
+                },
+                RequestFeatures = (s, e) => {
+                    var random = new Random(DateTime.Now.Millisecond);
+                    string[] result = [];
+                    for (int i = 0; i < random.Next(1, 8); i++) {
+                        var text = RandomString(5).ToUpperInvariant();
+                        result = [..result, text];
+                    }
+                    return result;
+                },                
+            };
 
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
 

@@ -37,12 +37,12 @@ namespace S100Framework.WPF
                         throw new NotImplementedException();
                 }
             }
-            if(parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
+            if (parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
                 if (this.SelectedObject!.HasCapacity(informationBinding)) {
                     this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
                 }
             }
-            if(parameter is IGrouping<string,featureBindingDefinition> featureBinding) {
+            if (parameter is IGrouping<string, featureBindingDefinition> featureBinding) {
                 if (this.SelectedObject!.HasCapacity(featureBinding)) {
                     this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
                 }
@@ -68,6 +68,64 @@ namespace S100Framework.WPF
                         if (index >= 0) {
                             collection.RemoveAt(index);
                         }
+                    }
+                }
+            }
+        }
+
+        private void InformationUID_OnDropDownOpened(object sender, EventArgs e) {
+            if (sender is null) return;
+            if (((FrameworkElement)sender).DataContext is InformationBindingViewModel informationBinding) {
+                var informationType = informationBinding.informationType;
+                if (!string.IsNullOrEmpty(informationType)) {
+                    var items = this.SelectedObject?.RequestInformation?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestInformationsEventArgs(informationType));
+
+                    var selectedValue = informationBinding.informationUID;
+
+                    informationBinding.informationUIDs.Clear();
+
+                    if (selectedValue is not null) {
+                        informationBinding.informationUIDs.Add(selectedValue);
+                    }
+
+                    if (items is not null) {
+                        foreach (var uid in items) {
+                            if (uid.Equals(selectedValue?.UID)) continue;
+                            informationBinding.informationUIDs.Add(new InformationTypeID(informationType, uid));
+                        }
+                    }
+
+                    if (selectedValue is not null) {
+                        informationBinding.informationUID = selectedValue;
+                    }
+                }
+            }
+        }
+
+        private void FeatureUID_OnDropDownOpened(object sender, EventArgs e) {
+            if (sender is null) return;
+            if (((FrameworkElement)sender).DataContext is FeatureBindingViewModel featureBinding) {
+                var featureType = featureBinding.featureType;
+                if (!string.IsNullOrEmpty(featureType)) {
+                    var items = this.SelectedObject?.RequestFeatures?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestFeaturesEventArgs(featureType));
+
+                    var selectedValue = featureBinding.featureUID;
+
+                    featureBinding.featureUIDs.Clear();
+
+                    if (selectedValue is not null) {
+                        featureBinding.featureUIDs.Add(selectedValue);
+                    }
+
+                    if (items is not null) {
+                        foreach (var uid in items) {
+                            if (uid.Equals(selectedValue?.UID)) continue;
+                            featureBinding.featureUIDs.Add(new FeatureTypeID(featureType, uid));
+                        }
+                    }
+
+                    if (selectedValue is not null) {
+                        featureBinding.featureUID = selectedValue;
                     }
                 }
             }

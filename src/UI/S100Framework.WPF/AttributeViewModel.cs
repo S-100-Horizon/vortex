@@ -5,6 +5,22 @@ using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
 {
+    public class InformationTypeID(string informationType, string UID)
+    {
+        public string UID { get; set; } = UID;
+        public string InformationType { get; set; } = informationType;
+
+        public override string ToString() => $"{InformationType}:{UID}";
+    }
+
+    public class FeatureTypeID(string featureType, string UID)
+    {
+        public string UID { get; set; } = UID;
+        public string FeatureType { get; set; } = featureType;
+
+        public override string ToString() => $"{FeatureType}:{UID}";
+    }
+
     public abstract class AttributeViewModel : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged
@@ -205,7 +221,7 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<string> informationTypes { get; init; } = [];
 
-        public ObservableCollection<string> informationUIDs { get; init; } = [];
+        public ObservableCollection<InformationTypeID> informationUIDs { get; init; } = [];
 
         private string? _role;
         public string? role {
@@ -224,9 +240,9 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private string? _informationUID;
+        private InformationTypeID? _informationUID;
 
-        public string? informationUID {
+        public InformationTypeID? informationUID {
             get => this._informationUID;
             set {
                 this.SetProperty(ref this._informationUID, value);
@@ -287,7 +303,7 @@ namespace S100Framework.WPF.ViewModel
                     this.featureUID = null;
                     this.featureUIDs.Clear();
                 }
-                else if (e.PropertyName.Equals(nameof(featureType))) {
+                else if (e.PropertyName.Equals(nameof(featureType))) {                    
                 }
             };                
         }
@@ -304,7 +320,7 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<string> featureTypes { get; init; } = [];
 
-        public ObservableCollection<string> featureUIDs { get; init; } = [];
+        public ObservableCollection<FeatureTypeID> featureUIDs { get; init; } = [];
 
         private string? _role;
         public string? role {
@@ -323,9 +339,9 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private string? _featureUID;
+        private FeatureTypeID? _featureUID;
 
-        public string? featureUID {
+        public FeatureTypeID? featureUID {
             get => this._featureUID;
             set {
                 this.SetProperty(ref this._featureUID, value);

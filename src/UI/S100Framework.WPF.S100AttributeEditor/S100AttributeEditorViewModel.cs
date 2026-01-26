@@ -10,8 +10,19 @@ using System.Threading.Tasks;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged
-    {
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged {
+        public class RequestInformationsEventArgs(string? informationType) : EventArgs {
+            public string? InformationType { get; } = informationType;
+        }
+
+        public class RequestFeaturesEventArgs(string? featureType) : EventArgs {
+            public string? FeatureType { get; } = featureType;
+        }
+
+        public delegate string[]? RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
+
+        public delegate string[]? RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
+
         public class informationBindingContainer
         {
             public string[] associations => [.. this._informationBindingDefinitions.Select(e => e.Key)];
@@ -54,6 +65,48 @@ namespace S100Framework.WPF.ViewModel
         }
 
         #endregion        
+
+        public RequestInformationsEventHandler RequestInformation = (s, e) => { return []; };
+
+        public RequestFeaturesEventHandler RequestFeatures = (s, e) => { return []; };
+
+        public S100AttributeEditorViewModel(S100FC.InformationType informationType, string uid) {
+            this._informationType = informationType;
+            this._uid = uid;
+            this.code = this._informationType.S100FC_code;
+            this.attributeBindingsCatalogue = this._informationType.attributeBindingsCatalogue;
+
+            if (informationType is IInformationBindings informationBindings) {
+                this.HasInformationBindings = true;
+
+                informationBindingDefinitions = new informationBindingContainer(informationBindings.GetInformationBindingsDefinitions());
+            }
+
+            this.attributeBindings.CollectionChanged += (s, e) => {
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is SimpleAttributeViewModel simpleAttribute) {
+                            simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                        else if (item is ComplexAttributeViewModel complexAttribute) {
+                            complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                    this.OnPropertyChanged("attributes");
+                }
+            };
+
+            foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                if (e is SimpleAttribute simpleAttribute) {
+                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    this.attributeBindings.Add(viewmodel);
+                }
+                else if (e is ComplexAttribute complexAttribute) {
+                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    this.attributeBindings.Add(viewmodel);
+                }
+            }
+        }
 
         public S100AttributeEditorViewModel(S100FC.FeatureType feature, string uid) {
             this._feature = feature;
@@ -187,6 +240,7 @@ namespace S100Framework.WPF.ViewModel
         public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
         #endregion
 
+        private readonly S100FC.InformationType? _informationType = default;
         private readonly S100FC.FeatureType? _feature = default;
         private readonly string _uid;
     }
