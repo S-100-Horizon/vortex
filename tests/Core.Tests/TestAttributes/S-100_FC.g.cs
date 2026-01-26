@@ -163,6 +163,9 @@ namespace S100FC
 
         [JsonIgnore]
         public abstract string S100FC_name { get; }
+
+        [JsonIgnore]
+        public abstract bool HasValue { get; }
     }
 
     public abstract class SimpleAttribute : attributeBinding
@@ -177,6 +180,9 @@ namespace S100FC
         public override string valueType => "boolean";
 
         public Boolean? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class IntegerAttribute : SimpleAttribute
@@ -185,6 +191,9 @@ namespace S100FC
         public override string valueType => "integer";
 
         public int? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class RealAttribute : SimpleAttribute
@@ -193,6 +202,9 @@ namespace S100FC
         public override string valueType => "real";
 
         public double? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class TextAttribute : SimpleAttribute
@@ -201,6 +213,9 @@ namespace S100FC
         public override string valueType => "text";
 
         public String? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value == null;
     }
 
     public abstract class S100_TruncatedDateAttribute : SimpleAttribute
@@ -209,6 +224,9 @@ namespace S100FC
         public override string valueType => "S100_TruncatedDate";
 
         public String? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value == null;
     }
 
     public abstract class DateAttribute : SimpleAttribute
@@ -217,6 +235,9 @@ namespace S100FC
         public override string valueType => "date";
 
         public DateOnly? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class DateTimeAttribute : SimpleAttribute
@@ -225,6 +246,9 @@ namespace S100FC
         public override string valueType => "datetime";
 
         public DateTime? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class TimeAttribute : SimpleAttribute
@@ -233,6 +257,9 @@ namespace S100FC
         public override string valueType => "time";
 
         public S100FC.S100.Time? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class UrnTimeAttribute : SimpleAttribute
@@ -241,6 +268,9 @@ namespace S100FC
         public override string valueType => "URN";
 
         public String? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value == null;
     }
 
     public abstract class UrlTimeAttribute : SimpleAttribute
@@ -249,6 +279,9 @@ namespace S100FC
         public override string valueType => "URL";
 
         public String? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value == null;
     }
 
     public abstract class UriTimeAttribute : SimpleAttribute
@@ -257,6 +290,9 @@ namespace S100FC
         public override string valueType => "URI";
 
         public String? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value == null;
     }
 
     public abstract class EnumerationAttribute : SimpleAttribute
@@ -268,6 +304,9 @@ namespace S100FC
         //public abstract listedValue[] listedValues { get; }
 
         public int? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
     public abstract class CodeListAttribute : SimpleAttribute
@@ -279,6 +318,9 @@ namespace S100FC
         //public abstract listedValue[] listedValues { get; }
 
         public int? value { get; set; } = default;
+
+        [JsonIgnore]
+        public override bool HasValue => value.HasValue;
     }
 
 
@@ -373,6 +415,9 @@ namespace S100FC
                     this.SetAttribute(binding.CreateInstance()!);
             }
         }
+
+        [JsonIgnore]
+        public override bool HasValue => true;  //TODO: HasValue on ComplexAttribute!!!
     }
 
     public abstract class InformationType : IAttributeBindings
@@ -489,8 +534,9 @@ namespace S100FC
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
-                if (value == default) {
-                    this.attributeBindings = [.. this.attributeBindings, attribute];
+                if (value == default) {                    
+                    if (attribute.HasValue) //TODO:  NULL ???
+                        this.attributeBindings = [.. this.attributeBindings, attribute];
                 }
                 else {
                     var index = Array.IndexOf(this.attributeBindings, value);
