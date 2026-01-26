@@ -22,12 +22,18 @@ namespace S100Framework.Applications
         {
             [Option('d', "dnsm", Required = false, HelpText = "")]
             public string? Dataset { get; set; }
+           
+            [Option('b', "bulk", Required = false, HelpText = "Multiple datasets. Example: -b dataset1 dataset2 dataset3")]
+            public IEnumerable<string> DatasetBulk { get; set; } = [];
 
             [Option('g', "geodatabase", Required = true, HelpText = "Geodatabase.")]
             public string Geodatabase { get; set; } = string.Empty;
 
             [Option('e', "exchangeset", Required = false, Default = false, HelpText = "Build exchangeset.")]
             public bool ExchangeSet { get; set; } = false;
+
+            [Option('o', "outputpath", Required = false, HelpText = "OutputPath")]
+            public string OutputPath { get; set; } = Directory.GetCurrentDirectory();
 
             [Option('n', "notespath", Required = false, HelpText = "Path to notes files references in TXTDSC.")]
             public string? NotesPath { get; set; }
@@ -88,14 +94,15 @@ namespace S100Framework.Applications
 
                 Esri.Initialize();
 
-                string? dsnm = default;
+                string? output = default;
                 bool exchangeset = false;
+                string[] datasetNames = [];
 
                 IO.DirectoryInfo? directoryNotes = default;
 
                 Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
 
-                arguments.WithParsed<Options>(o => {
+                _ = arguments.WithParsed<Options>(o => {
                     var geodatabase = o.Geodatabase.ToLowerInvariant();
 
                     if (IO.File.Exists(geodatabase) && ".sde".Equals(IO.Path.GetExtension(geodatabase), StringComparison.InvariantCultureIgnoreCase)) {
@@ -107,11 +114,24 @@ namespace S100Framework.Applications
                     else
                         throw new System.ArgumentOutOfRangeException(nameof(geodatabase));
 
-                    dsnm = o.Dataset;
+                    datasetNames = [.. o.DatasetBulk];
+
+                    if(o.Dataset != null)
+                        datasetNames = [.. datasetNames, o.Dataset];
+
+
                     exchangeset = o.ExchangeSet;
 
                     directoryNotes = new IO.DirectoryInfo(o.NotesPath!);
+
+                    output = o.OutputPath;
                 });
+
+                if(datasetNames.Length == 0)
+                    throw new ArgumentNullException("No datasets specified. Use -d or -b to specify dataset(s).");
+
+                Directory.CreateDirectory(output!);
+                Log.Information("Output path: {output}", output);
 
                 using Geodatabase source = createGeodatabase();
 
@@ -124,35 +144,37 @@ namespace S100Framework.Applications
                 {
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
 
-                    using var cursor = surface.Search(new QueryFilter {
-                        //WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
-                        WhereClause = string.IsNullOrEmpty(dsnm) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"code\":\"datasetName\",\"value\":\"{dsnm.ToUpperInvariant()}\"%'"
-                    }, true);
+                    foreach (var ds in datasetNames) {
+                        using var cursor = surface.Search(new QueryFilter {
+                            //WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
+                            WhereClause = string.IsNullOrEmpty(ds) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"code\":\"datasetName\",\"value\":\"{ds.ToUpperInvariant()}\"%'"
+                        }, true);
 
-                    while (cursor.MoveNext()) {
-                        var current = (ArcGIS.Core.Data.Feature)cursor.Current;
+                        while (cursor.MoveNext()) {
+                            var current = (ArcGIS.Core.Data.Feature)cursor.Current;
 
-                        var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!, jsonSerializerOptionsS128);
+                            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!, jsonSerializerOptionsS128);
 
-                        var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
+                            var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
 
-                        var whereClause = "upper(ps) = 'S-101'";
-                        if (current.FindField("usageband") != -1 && !current.IsNull("usageband"))
-                            whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
+                            var whereClause = "upper(ps) = 'S-101'";
+                            if (current.FindField("usageband") != -1 && !current.IsNull("usageband"))
+                                whereClause += $" AND usageband = {Convert.ToInt32(current["usageband"])}";
 
-                        datasets.Add((new Dataset {
-                            CellName = $"{electricProduct!.datasetName!}.000",
-                            Comment = "Not for navigation!",
-                            Edition = 1,
-                            ENCVer = "INT.IHO.S-101.2.0",
-                            FCVer = "2.0",
-                            verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                        }, new SpatialQueryFilter {
-                            FilterGeometry = shape,
-                            SpatialRelationship = SpatialRelationship.Relation,
-                            SpatialRelationshipDescription = S100FC.Topology.Matrix.DE9IM,
-                            WhereClause = whereClause,
-                        }));
+                            datasets.Add((new Dataset {
+                                CellName = $"{electricProduct!.datasetName!}.000",
+                                Comment = "Not for navigation!",
+                                Edition = 1,
+                                ENCVer = "INT.IHO.S-101.2.0",
+                                FCVer = "2.0",
+                                verticalDatum = "Baltic Sea Chart Datum 2000,44",
+                            }, new SpatialQueryFilter {
+                                FilterGeometry = shape,
+                                SpatialRelationship = SpatialRelationship.Relation,
+                                SpatialRelationshipDescription = S100FC.Topology.Matrix.DE9IM,
+                                WhereClause = whereClause,
+                            }));
+                        }
                     }
                 }
 
@@ -448,17 +470,17 @@ namespace S100Framework.Applications
                     // Serialize to YAML
                     var yaml = S100FC.YAML.Converter.Serialize(dataset!);
 
-                    var output = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
 
                     File.WriteAllText(IO.Path.Combine(output, $"{datasetName}.yaml"), yaml);
                     File.WriteAllText(IO.Path.Combine(@"c:\temp", $"{datasetName}.yaml"), yaml);
 
                     if (IO.File.Exists(@"C:\Program Files\s100compiler\s100compiler.exe")) {
-                        var commandline = $"-f \"{IO.Path.Combine(output, $"{datasetName}.yaml")}\" -c \"{@"\\nas.gst.dk\public\projektdata\produktion\S-100\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"}\" -d \"{IO.Path.Combine(output, datasetName)}\"";
+                        var commandline = $"-f \"{IO.Path.Combine(output, $"{datasetName}.yaml")}\" -c \"{@"\\nas.gst.dk\public\projektdata\produktion\S-100\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\101_Feature_Catalogue_2.0.0.xml"}\" -d \"{output}\"";
 
                         if (IO.Directory.Exists(IO.Path.Combine(output, datasetName)))
                             IO.Directory.Delete(IO.Path.Combine(output, datasetName), true);
-                        IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));
+                       // IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));
 
                         if (!exchangeset) {
                             Log.Information("s100compiler.exe -f {dataset}.yaml -d {dataset}.000 -c 101_Feature_Catalogue_2.0.0.xml", datasetName);
