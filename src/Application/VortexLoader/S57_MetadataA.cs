@@ -229,12 +229,12 @@ namespace S100Framework.Applications
                                 populated with value 6 (unassessed).
                             */
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1 : null;
                             }
 
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2;
+                            if (current.DRVAL2.HasValue) {
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2 : null;
                             }
 
                             // TODO: featuresDetected
@@ -390,11 +390,11 @@ namespace S100Framework.Applications
                             var instance = new QualityOfSurvey {
                             };
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
                             }
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
+                            if (current.DRVAL2.HasValue) {
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2.Value : null;
                             }
 
                             // TODO: featuresdetected
@@ -407,21 +407,31 @@ namespace S100Framework.Applications
 
                             // TODO: line spacing minimum
 
-                            if (current.SDISMX.HasValue && current.SDISMX.Value != -32767d) {
-                                if (current.SDISMX.Value % 1 == 0) {
-                                    instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
+                            if (current.SDISMX.HasValue) {
+                                if (current.SDISMX.Value == -32767d) {
+                                    instance.measurementDistanceMaximum = null;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX} and cannot be converted to an integer");
+                                    if (current.SDISMX.Value % 1 == 0) {
+                                        instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMX.Value);
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMX on M_SREL: value is {current.SDISMX} and cannot be converted to an integer");
+                                    }
                                 }
                             }
 
-                            if (current.SDISMN.HasValue && current.SDISMN.Value != -32767d) {
-                                if (current.SDISMN.Value % 1 == 0) {
-                                    instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
+                            if (current.SDISMN.HasValue) {
+                                if (current.SDISMN.Value == -32767d) {
+                                    instance.measurementDistanceMaximum = null;
                                 }
                                 else {
-                                    Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMN on M_SREL: value is {current.SDISMN} and cannot be converted to an integer");
+                                    if (current.SDISMN.Value % 1 == 0) {
+                                        instance.measurementDistanceMaximum = Convert.ToInt32(current.SDISMN.Value);
+                                    }
+                                    else {
+                                        Logger.Current.DataError(current.OBJECTID!.Value, current.LNAM ?? "Empty LNAM", current.TableName ?? "Unknown tablename", $"SDISMN on M_SREL: value is {current.SDISMN} and cannot be converted to an integer");
+                                    }
                                 }
                             }
 

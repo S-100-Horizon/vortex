@@ -47,8 +47,8 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
 
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height = current.HEIGHT.Value;
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
             }
 
             // TODO: interoperabilityidentifier
@@ -90,7 +90,7 @@ namespace S100Framework.Applications
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
+                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
             }
 
             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {

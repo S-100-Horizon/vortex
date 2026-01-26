@@ -262,9 +262,9 @@ namespace S100Framework.Applications
 
                             if (openingBridge) {
                                 SpanOpening instance = null!;
-                                if (current.VERACC.HasValue && current.VERACC.Value != -32767d) {
+                                if (current.VERACC.HasValue) {
                                     verticalUncertaintyValue = new verticalUncertainty() {
-                                        uncertaintyFixed = current.VERACC.Value,
+                                        uncertaintyFixed = current.VERACC.Value != -32767d ? current.VERACC.Value : null,
                                     };
 
 
@@ -371,14 +371,14 @@ namespace S100Framework.Applications
 
                                 SpanFixed instance = null!;
 
-                                if (current.VERACC.HasValue && current.VERACC.Value != -32767d) {
+                                if (current.VERACC.HasValue) {
                                     verticalUncertaintyValue = new verticalUncertainty() {
-                                        uncertaintyFixed = current.VERACC.Value,
+                                        uncertaintyFixed = current.VERACC.Value != -32767d ? current.VERACC.Value : null,
                                     };
 
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
-                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : null,
                                             verticalUncertainty = verticalUncertaintyValue
                                         }
                                     };
@@ -386,7 +386,7 @@ namespace S100Framework.Applications
                                 else {
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
-                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : null,
                                         }
 
                                     };
@@ -473,8 +473,8 @@ namespace S100Framework.Applications
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -582,8 +582,8 @@ namespace S100Framework.Applications
                                 if (function is not null && function.Any())
                                     instance.function = function;
                             }
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -616,7 +616,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -693,8 +693,8 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -753,7 +753,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -817,8 +817,8 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -850,7 +850,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -964,8 +964,8 @@ namespace S100Framework.Applications
                                     instance.function = function;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -998,7 +998,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1073,8 +1073,8 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -1104,8 +1104,8 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength = current.VERLEN.Value;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
                             else {
                                 //instance.verticalLength = default(double?);
@@ -1194,8 +1194,8 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -1227,8 +1227,8 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength = current.VERLEN.Value;
+                            if (current.VERLEN.HasValue) { 
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
                             else {
                                 //instance.verticalLength = default(double?);
@@ -1468,7 +1468,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value;
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1503,8 +1503,8 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue && current.VERLEN.Value != -32767d) {
-                                instance.verticalLength = current.VERLEN.Value;
+                            if (current.VERLEN.HasValue) {
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
                             else {
                                 //instance.verticalLength = default(double?);

@@ -658,8 +658,8 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                instance.valueOfSounding = current.VALSOU.Value;
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
                             }
                             else {
 
@@ -667,7 +667,7 @@ namespace S100Framework.Applications
 
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value;
+                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
                             else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
                                 //instance.verticalLength = default(double?);

@@ -38,8 +38,8 @@ namespace S100Framework.Applications
             }
 
             // flareBearing is not populated. New field.                            
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height = current.HEIGHT.Value;
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
             }
 
             // TODO: interoperabilityidentifier
@@ -98,7 +98,7 @@ namespace S100Framework.Applications
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value;
+                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                 var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
                 if (verticalDatum != default)
                     instance.verticalDatum = verticalDatum.value;

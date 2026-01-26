@@ -27,8 +27,8 @@ namespace S100Framework.Applications
 
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                instance.height = current.HEIGHT.Value;
+            if (current.HEIGHT.HasValue) {
+                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
             }
             else {
 
