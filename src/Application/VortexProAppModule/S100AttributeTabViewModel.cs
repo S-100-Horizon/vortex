@@ -316,9 +316,93 @@ namespace VortexProAppModule
                         instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 
-                    var viewModel = new S100AttributeEditorViewModel((S100FC.FeatureType)instance, uid);
+                    if (instance is S100FC.InformationType informationType) {
+                        return new S100AttributeEditorViewModel(informationType, uid) {
+                            RequestInformation = async (s, e) => {
+                                if (MapView.Active is null)
+                                    return [];
+                                return await QueuedTask.Run(() => {
+                                    string[] result = [];
 
-                    return viewModel;
+                                    foreach (var layer in MapView.Active.Map.StandaloneTables.Where(table => table.Name.EndsWith("informationtype"))) {
+                                        var selection = layer.GetSelection();
+                                        if (selection.GetCount() == 0) continue;
+
+                                        using var cursor = selection.Search(new QueryFilter {
+                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
+                                        }, true);
+
+                                        while (cursor.MoveNext()) {
+                                            result = [.. result, Convert.ToString(cursor.Current["UID"])];
+                                        }
+                                    }
+                                    return result;
+                                }, TaskCreationOptions.None);
+                            },
+                        };
+                    }
+                    if (instance is S100FC.FeatureType featureType) {
+                        return new S100AttributeEditorViewModel(featureType, uid) {
+                            RequestInformation = async (s, e) => {
+                                if (MapView.Active is null)
+                                    return [];
+                                return await QueuedTask.Run(() => {
+                                    string[] result = [];
+
+                                    foreach (var layer in MapView.Active.Map.StandaloneTables.Where(table => table.Name.EndsWith("informationtype"))) {
+                                        var selection = layer.GetSelection();
+                                        if (selection.GetCount() == 0) continue;
+
+                                        using var cursor = selection.Search(new QueryFilter {
+                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
+                                        }, true);
+
+                                        while (cursor.MoveNext()) {
+                                            result = [.. result, Convert.ToString(cursor.Current["UID"])];
+                                        }
+                                    }
+                                    return result;
+                                }, TaskCreationOptions.None);
+                            },
+                            RequestFeatures = async (s, e) => {
+                                if (MapView.Active is null)
+                                    return [];
+                                return await QueuedTask.Run(() => {
+                                    string[] result = [];
+
+                                    foreach (var layer in MapView.Active.Map.GetLayersAsFlattenedList().OfType<FeatureLayer>()) {
+                                        if (layer is FeatureLayer featureLayer) {
+                                            var selection = layer.GetSelection();
+                                            if (selection.GetCount() == 0) continue;
+
+                                            using var cursor = selection.Search(new QueryFilter {
+                                                WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
+                                            }, true);
+
+                                            while (cursor.MoveNext()) {
+                                                result = [.. result, Convert.ToString(cursor.Current["UID"])];
+                                            }
+                                        }
+                                    }
+                                    foreach (var layer in MapView.Active.Map.StandaloneTables.Where(table => table.Name.EndsWith("featuretype"))) {
+                                        var selection = layer.GetSelection();
+                                        if (selection.GetCount() == 0) continue;
+
+                                        using var cursor = selection.Search(new QueryFilter {
+                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
+                                        }, true);
+
+                                        while (cursor.MoveNext()) {
+                                            result = [.. result, Convert.ToString(cursor.Current["UID"])];
+                                        }
+                                    }
+                                    return result;
+                                }, TaskCreationOptions.None);
+                            },
+                        };
+                    }
+
+                    throw new NotImplementedException();
 
                     //var methodInfo = viewmodel.GetType().GetMethod("Load");
                     //methodInfo.Invoke(viewmodel, new object[1] { instance });

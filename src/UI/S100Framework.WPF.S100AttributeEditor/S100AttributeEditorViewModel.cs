@@ -19,9 +19,9 @@ namespace S100Framework.WPF.ViewModel
             public string? FeatureType { get; } = featureType;
         }
 
-        public delegate string[]? RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
+        public delegate Task<string[]> RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
 
-        public delegate string[]? RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
+        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
 
         public class informationBindingContainer
         {
@@ -66,9 +66,9 @@ namespace S100Framework.WPF.ViewModel
 
         #endregion        
 
-        public RequestInformationsEventHandler RequestInformation = (s, e) => { return []; };
+        public RequestInformationsEventHandler RequestInformation = async (s, e) => { return []; };
 
-        public RequestFeaturesEventHandler RequestFeatures = (s, e) => { return []; };
+        public RequestFeaturesEventHandler RequestFeatures = async (s, e) => { return []; };
 
         public S100AttributeEditorViewModel(S100FC.InformationType informationType, string uid) {
             this._informationType = informationType;

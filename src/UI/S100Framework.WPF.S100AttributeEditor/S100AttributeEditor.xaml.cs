@@ -73,12 +73,12 @@ namespace S100Framework.WPF
             }
         }
 
-        private void InformationUID_OnDropDownOpened(object sender, EventArgs e) {
+        private async void InformationUID_OnDropDownOpened(object sender, EventArgs e) {
             if (sender is null) return;
             if (((FrameworkElement)sender).DataContext is InformationBindingViewModel informationBinding) {
                 var informationType = informationBinding.informationType;
                 if (!string.IsNullOrEmpty(informationType)) {
-                    var items = this.SelectedObject?.RequestInformation?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestInformationsEventArgs(informationType));
+                    var items = await this.SelectedObject?.RequestInformation?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestInformationsEventArgs(informationType))!;
 
                     var selectedValue = informationBinding.informationUID;
 
@@ -102,12 +102,12 @@ namespace S100Framework.WPF
             }
         }
 
-        private void FeatureUID_OnDropDownOpened(object sender, EventArgs e) {
+        private async void FeatureUID_OnDropDownOpened(object sender, EventArgs e) {
             if (sender is null) return;
             if (((FrameworkElement)sender).DataContext is FeatureBindingViewModel featureBinding) {
                 var featureType = featureBinding.featureType;
                 if (!string.IsNullOrEmpty(featureType)) {
-                    var items = this.SelectedObject?.RequestFeatures?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestFeaturesEventArgs(featureType));
+                    var items = await this.SelectedObject?.RequestFeatures?.Invoke(this.SelectedObject, new S100AttributeEditorViewModel.RequestFeaturesEventArgs(featureType))!;
 
                     var selectedValue = featureBinding.featureUID;
 
