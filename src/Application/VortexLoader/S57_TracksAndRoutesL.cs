@@ -205,8 +205,8 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -218,8 +218,8 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value != -32767d ? current.ORIENT.Value : null;
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
@@ -387,8 +387,8 @@ namespace S100Framework.Applications
 
                             // TODO: maximumPermittedDraught
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value != -32767d ? current.ORIENT.Value : null;
                             }
 
                             DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);

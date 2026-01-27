@@ -125,7 +125,7 @@
                             <DockPanel LastChildFill="True" Background="Transparent">
                                 <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox ItemsSource="{Binding informationTypes}" 
+                                    <ComboBox x:Name="informationType" ItemsSource="{Binding informationTypes}" 
                                               SelectedValue="{Binding informationType}"                  
                                               Padding="2"
                                               Background="{DynamicResource Esri_BackgroundPressedBrush}" 
@@ -152,9 +152,20 @@
                                     <ComboBox ItemsSource="{Binding informationUIDs}" 
                                               SelectedValue="{Binding informationUID}"                  
                                               Padding="2"
-                                              IsEnabled="False"
                                               Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
+                                              DropDownOpened="InformationUID_OnDropDownOpened">
+                                        <ComboBox.Style>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="IsEnabled" Value="True" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedValue, ElementName=informationType}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="information" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                             </DockPanel>
@@ -193,7 +204,7 @@
                             <DockPanel LastChildFill="True" Background="Transparent">
                                 <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox ItemsSource="{Binding featureTypes}" 
+                                    <ComboBox x:Name="featureType" ItemsSource="{Binding featureTypes}" 
                                               SelectedValue="{Binding featureType}"                  
                                               Padding="2"
                                               Background="{DynamicResource Esri_BackgroundPressedBrush}" 
@@ -217,12 +228,23 @@
                             <DockPanel LastChildFill="True" Background="Transparent">
                                 <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox ItemsSource="{Binding featureUIDs}" 
-                                              SelectedValue="{Binding featureUID}"                  
+                                    <ComboBox ItemsSource="{Binding featureUIDs}"                                              
+                                              SelectedValue="{Binding featureUID}"
                                               Padding="2"
-                                              IsEnabled="False"
                                               Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
+                                              DropDownOpened="FeatureUID_OnDropDownOpened">
+                                        <ComboBox.Style>
+                                            <Style TargetType="ComboBox">
+                                                <Setter Property="IsEnabled" Value="True" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding SelectedValue, ElementName=featureType}" Value="{x:Null}">
+                                                        <Setter Property="IsEnabled" Value="False" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </ComboBox.Style>
+                                    </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="feature" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                             </DockPanel>

@@ -133,8 +133,8 @@ namespace S100Framework.Applications
                                         instance.techniqueOfVerticalMeasurement = techniqueOfVerticalMeasurement;
                                 }
 
-                                if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                    instance.valueOfSounding = current.VALSOU.Value;
+                                if (current.VALSOU.HasValue) {
+                                    instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
                                 }
                                 else {
 
@@ -257,8 +257,8 @@ namespace S100Framework.Applications
                                     instance.techniqueOfVerticalMeasurement = techniqueOfVerticalMeasurement;
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                instance.valueOfSounding = current.VALSOU.Value;
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
                             }
                             else {
 
@@ -320,7 +320,7 @@ namespace S100Framework.Applications
                             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth is not null && instance.surroundingDepth.HasValue);
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
-                                if (!(current.VALSOU.HasValue && current.VALSOU.Value != -32767d)) {
+                                if (!(current.VALSOU.HasValue)) {
                                     if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
                                         (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
                                         (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
@@ -458,8 +458,8 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
-                            if (current.HEIGHT.HasValue && current.HEIGHT.Value != -32767d) {
-                                instance.height = current.HEIGHT.Value;
+                            if (current.HEIGHT.HasValue) {
+                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -501,8 +501,8 @@ namespace S100Framework.Applications
                                     instance.techniqueOfVerticalMeasurement = techniqueOfVerticalMeasurement;
                             }
 
-                            if (current.VALSOU.HasValue && current.VALSOU.Value != -32767d) {
-                                instance.valueOfSounding = current.VALSOU.Value;
+                            if (current.VALSOU.HasValue) {
+                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
                             }
                             else {
 

@@ -145,12 +145,12 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
                             }
 
-                            if (current.DRVAL2.HasValue && current.DRVAL2.Value != -32767d) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value;
+                            if (current.DRVAL2.HasValue) {
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2.Value : null;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

@@ -70,8 +70,8 @@ namespace S100Framework.Applications
                             // TODO: InteroperabilityIdentifier
 
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value != -32767d ? current.ORIENT.Value : null;
                             }
 
 
@@ -149,8 +149,8 @@ namespace S100Framework.Applications
                     case 5: { // FAIRWY_Fairway
                             var instance = new Fairway();
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
@@ -164,8 +164,8 @@ namespace S100Framework.Applications
 
                             // TODO: maximumPermittedDraught
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value != -32767d ? current.ORIENT.Value : null;
                             }
 
                             if (current.QUASOU != default) {
@@ -699,8 +699,8 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            if (current.DRVAL1.HasValue && current.DRVAL1.Value != -32767d) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value;
+                            if (current.DRVAL1.HasValue) {
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
                             }
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -710,8 +710,8 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
-                                instance.orientationValue = current.ORIENT.Value;
+                            if (current.ORIENT.HasValue) {
+                                instance.orientationValue = current.ORIENT.Value != -32767d ? current.ORIENT.Value : null;
                             }
 
                             if (current.QUASOU != default) {
