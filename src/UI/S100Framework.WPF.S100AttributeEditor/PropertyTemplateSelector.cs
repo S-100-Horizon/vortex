@@ -20,9 +20,13 @@ namespace S100Framework.WPF
         public DataTemplate? FeatureBindingEditorTemplate { get; set; } = default;
 
         public override DataTemplate? SelectTemplate(object item, DependencyObject container) {
-            if(item is DateAttributeViewModel dateAttribute) {
+            if (item is DateAttributeViewModel dateAttribute) {
                 if (dateAttribute.valueType.Equals("date"))
                     return this.DateOnlyEditorTemplate;
+            }
+            if (item is DateTimeAttributeViewModel dateTimeAttribute) {
+                if (dateTimeAttribute.valueType.Equals("datetime"))
+                    return this.DateTimeEditorTemplate;
             }
             if (item is SimpleAttributeViewModel simpleAttribute) {
                 if (simpleAttribute.valueType.Equals("text"))
@@ -35,13 +39,12 @@ namespace S100Framework.WPF
                     return this.RealEditorTemplate;
                 if (simpleAttribute.valueType.Equals("S100_TruncatedDate"))
                     return this.TruncatedDateEditorTemplate;
-                if (simpleAttribute.valueType.Equals("datetime"))
-                    return this.DateTimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("time"))
                     return this.TimeEditorTemplate;
                 if (simpleAttribute.valueType.Equals("enumeration"))
                     return this.EnumEditorTemplate;
-                ;
+                if (System.Diagnostics.Debugger.IsAttached)
+                    System.Diagnostics.Debugger.Break();
             }
 
             if (item is ComplexAttributeViewModel complextAttribute) {

@@ -121,15 +121,42 @@ namespace S100Framework.WPF.ViewModel
                 return this._value;
             }
             set {
-                if (value !=null) {
+                if (value != null) {
                     var date = DateOnly.FromDateTime(value.Value);
-                    attribute.GetType().GetProperty("value")!.SetValue(_attribute, date);                 
+                    attribute.GetType().GetProperty("value")!.SetValue(_attribute, date);
                 }
+                else
+                    attribute.GetType().GetProperty("value")!.SetValue(_attribute, default);
                 this.SetProperty(ref this._value, value);
             }
         }
 
         public S100FC.DateAttribute? _attribute { get; init; } = default;
+    }
+
+    public class DateTimeAttributeViewModel : AttributeViewModel
+    {
+        public DateTimeAttributeViewModel(ref DateTimeAttribute attribute) : base(attribute) {
+            this._attribute = attribute;
+
+            this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
+        }
+
+        public string valueType => this._attribute!.valueType;
+
+        private DateTime? _value;
+
+        public DateTime? value {
+            get {
+                return this._value;
+            }
+            set {
+                attribute.GetType().GetProperty("value")!.SetValue(_attribute, value);
+                this.SetProperty(ref this._value, value);
+            }
+        }
+
+        public S100FC.DateTimeAttribute? _attribute { get; init; } = default;
     }
 
     public class ComplexAttributeViewModel : AttributeViewModel
@@ -211,7 +238,7 @@ namespace S100Framework.WPF.ViewModel
 
             foreach (var e in this._informationBindingDefinitions) {
                 this.roles.Add(e.role);
-            }            
+            }
 
             this.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName)) {
@@ -336,9 +363,9 @@ namespace S100Framework.WPF.ViewModel
                     this.featureUID = null;
                     this.featureUIDs.Clear();
                 }
-                else if (e.PropertyName.Equals(nameof(featureType))) {                    
+                else if (e.PropertyName.Equals(nameof(featureType))) {
                 }
-            };                
+            };
         }
 
         private string? _roleType;

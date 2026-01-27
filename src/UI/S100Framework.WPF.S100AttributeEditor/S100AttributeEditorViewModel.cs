@@ -102,6 +102,8 @@ namespace S100Framework.WPF.ViewModel
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is DateAttribute dateAttribute)
                     this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                else if (e is DateTimeAttribute dateTimeAttribute)
+                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
                 else if (e is SimpleAttribute simpleAttribute)
                     this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)
@@ -150,6 +152,8 @@ namespace S100Framework.WPF.ViewModel
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is DateAttribute dateAttribute)
                     this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                else if (e is DateTimeAttribute dateTimeAttribute)
+                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
                 else if (e is SimpleAttribute simpleAttribute)
                     this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)

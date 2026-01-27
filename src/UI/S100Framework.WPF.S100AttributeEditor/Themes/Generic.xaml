@@ -184,7 +184,13 @@
 
     <!-- Templates for Date/Time -->
     <DataTemplate x:Key="DateTimeEditorTemplate">
-        <xctk:DateTimeUpDown Value="{Binding value}" Format="Custom" FormatString="yyyy-MM-dd HH:mm" Watermark="[yyyy-MM-dd HH:mm]" ShowButtonSpinner="False"/>
+        <xctk:DateTimePicker 
+            Value="{Binding value}" 
+            Format="Custom" 
+            FormatString="yyyy-MM-dd HH:mm" 
+            Watermark="[yyyy-MM-dd HH:mm]" 
+            ShowButtonSpinner="False"
+            ShowDropDownButton="True" TimePickerVisibility="Visible"/>
     </DataTemplate>
     <DataTemplate x:Key="DateOnlyEditorTemplate">
         <xctk:DateTimePicker 
