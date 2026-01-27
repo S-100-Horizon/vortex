@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.SimpleAttributes;
 using S100Framework.Applications.Singletons;
@@ -111,6 +112,7 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    buffer["flatten"] = instance.Flatten();
                     //buffer["informationbindings"] = "[]";
 
                     SetShape(buffer, item);
@@ -134,6 +136,7 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    buffer["flatten"] = instance.Flatten();
                     //buffer["informationbindings"] = "[]";
 
                     SetShape(buffer, item.Geometry);

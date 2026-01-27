@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using S100FC;
 using System.Text.Json;
 
-namespace S100Framework.Catalogues
+namespace S100FC
 {
     public static class AttributeFlattenExtensions
     {

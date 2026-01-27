@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100FC.S128.ComplexAttributes;
 using S100Framework.Applications.S57.esri;
@@ -71,6 +72,7 @@ namespace S100Framework.Applications
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl, jsonSerializerOptions128);
+                    buffer["flatten"] = dataCoverage_m_scl.Flatten();
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
 
@@ -200,6 +202,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage, ImporterNIS.jsonSerializerOptions);
+                                buffer["flatten"] = dataCoverage.Flatten();
                                 buffer["informationbindings"] = "[]";
 
                                 SetShape(buffer, cutOutM_SCL[0]); // productCoverage.SHAPE);
@@ -224,6 +227,7 @@ namespace S100Framework.Applications
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(vdat, ImporterNIS.jsonSerializerOptions);
+                                buffer["flatten"] = vdat.Flatten();
                                 buffer["informationbindings"] = "[]";
 
                                 SetShape(buffer, productCoverage.SHAPE);
@@ -253,6 +257,7 @@ namespace S100Framework.Applications
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions128);
+                    buffer["flatten"] = instance.Flatten();
                     buffer["informationbindings"] = "[]";
 
                     SetShape(buffer, (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons));

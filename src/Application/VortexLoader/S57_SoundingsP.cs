@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -143,6 +144,7 @@ namespace S100Framework.Applications
                                     sounding.SetInformationBindings(result.InformationBindings.ToArray());
 
                                     bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
+                                    bufferPointset["flatten"] = sounding.Flatten();
                                     bufferPointset["ps"] = ps101;
                                     bufferPointset["code"] = sounding.GetType().Name;
                                     bufferPointset["edition"] = ImporterNIS.s101version;
@@ -208,6 +210,7 @@ namespace S100Framework.Applications
                                     instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                                     bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                    bufferPointset["flatten"] = instance.Flatten();
                                     bufferPointset["ps"] = ps101;
                                     bufferPointset["code"] = instance.GetType().Name;
                                     bufferPointset["edition"] = ImporterNIS.s101version;

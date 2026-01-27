@@ -2,6 +2,7 @@
 using S100FC;
 using S100FC.S101.InformationAssociation;
 using S100FC.S101.InformationTypes;
+using System.Text.Json;
 
 namespace S100Framework.Applications.Singletons
 {

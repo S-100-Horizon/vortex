@@ -85,6 +85,7 @@ namespace S100FC.Applications
 
                     // Serialize to JSON
                     var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type, jsonSerializerOptions);
+                    var flatten = feature.Attributes.Flatten();
 
                     // temp fix to ensure everything is serialized. todo: investigate if UnsurveyedArea has 0 mandatory attributes
                     if (json.Equals("null", StringComparison.CurrentCultureIgnoreCase))
@@ -144,6 +145,7 @@ namespace S100FC.Applications
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = feature.Name;
                     rowbuffer["json"] = json;
+                    rowbuffer["flatten"] = flatten;
 
                     if (geometry is MapPoint point) {
                         if (point.HasZ == false)
@@ -180,12 +182,14 @@ namespace S100FC.Applications
 
                     // 2) Serialize to JSON
                     var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type, jsonSerializerOptions);
+                    var flatten = informationType.Attributes.Flatten();
 
                     // Write to table
                     var rowbuffer = bufferInformationType;
                     rowbuffer["ps"] = productSpecification;
                     rowbuffer["code"] = informationType.Name;
                     rowbuffer["json"] = json;
+                    rowbuffer["flatten"] = flatten;
                     tableInformationType.CreateRow(bufferInformationType);
                 }
             });

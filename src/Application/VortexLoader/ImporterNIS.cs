@@ -4,6 +4,7 @@ using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100FC.S101;
 using S100FC.S101.ComplexAttributes;
+using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100FC.S101.InformationTypes;
 using S100FC.S101.SimpleAttributes;
