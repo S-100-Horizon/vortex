@@ -109,10 +109,10 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100AttributeEditorViewModel(S100FC.FeatureType feature, string uid) {
-            this._feature = feature;
+            this._featureType = feature;
             this._uid = uid;
-            this.code = this._feature.S100FC_code;
-            this.attributeBindingsCatalogue = this._feature.attributeBindingsCatalogue;
+            this.code = this._featureType.S100FC_code;
+            this.attributeBindingsCatalogue = this._featureType.attributeBindingsCatalogue;
 
             if (feature is IInformationBindings informationBindings) {
                 this.HasInformationBindings = true;
@@ -141,7 +141,7 @@ namespace S100Framework.WPF.ViewModel
                 }
             };
 
-            foreach (var e in this._feature.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+            foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
                     var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
@@ -153,11 +153,11 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        public bool HasInformationBindings { get; set; } = false;
+        public bool HasInformationBindings { get; init; } = false;
 
         public informationBindingContainer? informationBindingDefinitions { get; set; } = null;
 
-        public bool HasFeatureBindings { get; set; } = false;
+        public bool HasFeatureBindings { get; init; } = false;
 
         public featureBindingContainer? featureBindingDefinitions { get; set; } = null;
 
@@ -185,7 +185,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(sender, e);
+            this.PropertyChanged?.Invoke(this, e);
         }
 
         #region Operators
@@ -240,8 +240,10 @@ namespace S100Framework.WPF.ViewModel
         public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
         #endregion
 
+        public object? Instance => this._informationType != default ? this._informationType : this._featureType;
+
         private readonly S100FC.InformationType? _informationType = default;
-        private readonly S100FC.FeatureType? _feature = default;
+        private readonly S100FC.FeatureType? _featureType = default;
         private readonly string _uid;
     }
 }

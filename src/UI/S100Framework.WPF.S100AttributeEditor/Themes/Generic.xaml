@@ -216,17 +216,17 @@
                   SelectedValue="{Binding value}"
                   SelectedValuePath="code"
                   IsEnabled="{Binding IsReadOnly, Converter={StaticResource InverseBooleanConverter}}"                     
-                  Padding="2"
-                  Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                  Padding="2"/>
+        <!--Background="{DynamicResource Esri_BackgroundPressedBrush}" 
+                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>-->
     </DataTemplate>
 
     <DataTemplate x:Key="FeatureBindingEditorTemplate">
         <ComboBox ItemsSource="{Binding items}" 
                   SelectedValue="{Binding value}"                  
-                  Padding="2"
-                  Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                  Padding="2"/>
+        <!--Background="{DynamicResource Esri_BackgroundPressedBrush}" 
+                  Foreground="{DynamicResource Esri_TextMenuBrush}"/>-->
     </DataTemplate>
 
     <!--<DataTemplate x:Key="ComplexEditorTemplate">

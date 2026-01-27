@@ -5,7 +5,9 @@ using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Internal.KnowledgeGraph.FFP;
 using ArcGIS.Desktop.Mapping;
+using Microsoft.AspNetCore.Http.Json;
 using S100FC;
 using S100FC.Catalogues;
 using S100Framework.WPF.ViewModel;
@@ -78,6 +80,12 @@ namespace VortexProAppModule
         private ObservableCollection<string> _schemas = [];
 
         private string _selectedSchema = default;
+
+        private JsonSerializerOptions _jsonOptions = new JsonSerializerOptions {
+            WriteIndented = false,
+            Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            PropertyNameCaseInsensitive = true,
+        };
 
         private S100AttributeEditorViewModel _selectedProperty = default;
 
@@ -518,18 +526,17 @@ namespace VortexProAppModule
             await QueuedTask.Run(() => {
                 var updated = false;
 
-                //if (sender is ViewModelBase viewModel) {
-                //    var json = viewModel.Serialize();
-
-                //    if (Inspector.IsNull("json")) {
-                //        Inspector["json"] = json;
-                //        updated |= true;
-                //    }
-                //    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
-                //        Inspector["json"] = json;
-                //        updated |= true;
-                //    }
-                //}
+                if (sender is S100AttributeEditorViewModel viewModel) {
+                    var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
+                    if (Inspector.IsNull("json")) {
+                        Inspector["json"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
+                        Inspector["json"] = json;
+                        updated |= true;
+                    }
+                }
             }, TaskCreationOptions.None);
         }
 
@@ -635,7 +642,53 @@ namespace VortexProAppModule
 
         public string SelectedSchema {
             get => this._selectedSchema;
-            set => this.SetProperty(ref this._selectedSchema, value);
+            set {
+                this.SetProperty(ref this._selectedSchema, value);
+
+                this._jsonOptions = value switch {
+                    "S-101" => S100FC.S101.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-122" => S100FC.S122.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-123" => S100FC.S123.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-124" => S100FC.S124.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-127" => S100FC.S127.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-128" => S100FC.S128.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    "S-131" => S100FC.S131.Extensions.AppendTypeInfoResolver(new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    }),
+                    null => new JsonSerializerOptions {
+                        WriteIndented = false,
+                        Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                        PropertyNameCaseInsensitive = true,
+                    },
+                    _ => throw new NotImplementedException(),
+                };
+            }
         }
 
         public ObservableCollection<SelectedType> ModelTypes {

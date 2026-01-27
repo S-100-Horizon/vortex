@@ -46,6 +46,7 @@
             <converters:ColumnWidthConverter x:Key="ColumnWidthConverter"/>
             <converters:PercentageConverter x:Key="PercentageConverter"/>
             <converters:CalculateExpanderWidthConverter x:Key="CalculateExpanderWidthConverter"/>
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
             <DataTemplate DataType="{x:Type viewmodel:SimpleAttributeViewModel}">
                 <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
@@ -193,9 +194,7 @@
                                     <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
                                               SelectedValue="{Binding role}"                  
                                               Padding="2"
-                                              IsEnabled="True"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                                              IsEnabled="True"/>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                             </DockPanel>
@@ -206,9 +205,7 @@
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
                                     <ComboBox x:Name="featureType" ItemsSource="{Binding featureTypes}" 
                                               SelectedValue="{Binding featureType}"                  
-                                              Padding="2"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}">
+                                              Padding="2">
                                         <ComboBox.Style>
                                             <Style TargetType="ComboBox">
                                                 <Setter Property="IsEnabled" Value="True" />
@@ -230,10 +227,7 @@
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
                                     <ComboBox ItemsSource="{Binding featureUIDs}"                                              
                                               SelectedValue="{Binding featureUID}"
-                                              Padding="2"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
-                                              DropDownOpened="FeatureUID_OnDropDownOpened">
+                                              Padding="2">
                                         <ComboBox.Style>
                                             <Style TargetType="ComboBox">
                                                 <Setter Property="IsEnabled" Value="True" />
@@ -304,7 +298,7 @@
                    ItemsSource="{Binding SelectedObject.informationBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
             </Grid>
 
-            <Grid x:Name="FeatureBindingsGrid" Grid.IsSharedSizeScope="True">
+            <Grid x:Name="FeatureBindingsGrid" Grid.IsSharedSizeScope="True" Visibility="{Binding SelectedObject.HasFeatureBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
