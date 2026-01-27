@@ -63,7 +63,11 @@ namespace SelectorUI
             //    featureId = RandomString(5),
             //};
 
-            var featureType = new IslandGroup {
+            //var featureType = new IslandGroup {
+
+            //};
+
+            var featureType = new S100FC.S128.FeatureTypes.ElectronicProduct {
 
             };
 
@@ -82,10 +86,10 @@ namespace SelectorUI
                     string[] result = [];
                     for (int i = 0; i < random.Next(1, 8); i++) {
                         var text = RandomString(5).ToUpperInvariant();
-                        result = [..result, text];
+                        result = [.. result, text];
                     }
                     return result;
-                },                
+                },
             };
 
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;

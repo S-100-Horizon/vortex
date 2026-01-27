@@ -30,9 +30,9 @@ namespace S100Framework.WPF
                 if (this.SelectedObject!.HasCapacity(attributeBinding)) {
                     var instance = attributeBinding.CreateInstance();
                     if (instance is SimpleAttribute simpleAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(simpleAttribute));
+                        this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                     else if (instance is ComplexAttribute complexAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(complexAttribute));
+                        this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
                     else
                         throw new NotImplementedException();
                 }
@@ -146,6 +146,22 @@ namespace S100Framework.WPF
             set => this.SetValue(SelectedObjectProperty, value);
         }
 
+        public static readonly DependencyProperty IsEditingEnabledProperty =
+            DependencyProperty.Register(
+                nameof(IsEditingEnabled), 
+                typeof(Boolean), 
+                typeof(S100AttributeEditor), 
+                new UIPropertyMetadata(false, IsEditingEnabledChanged));
+
+        public Boolean IsEditingEnabled {
+            get {
+                return (Boolean)GetValue(IsEditingEnabledProperty);
+            }
+            set {
+                SetValue(IsEditingEnabledProperty, value);
+            }
+        }
+
         public S100AttributeEditor() {
             this.InitializeComponent();
 
@@ -157,6 +173,12 @@ namespace S100Framework.WPF
             if (d is S100AttributeEditor grid) {
                 grid._selectedObject = e.NewValue as S100AttributeEditorViewModel;
             }
+        }
+
+        private static void IsEditingEnabledChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
+            var control = sender as S100AttributeEditor;
+            if (control is null)
+                return;
         }
 
         private S100AttributeEditorViewModel? _selectedObject;

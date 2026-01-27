@@ -5,9 +5,7 @@ using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
-using ArcGIS.Desktop.Internal.KnowledgeGraph.FFP;
 using ArcGIS.Desktop.Mapping;
-using Microsoft.AspNetCore.Http.Json;
 using S100FC;
 using S100FC.Catalogues;
 using S100Framework.WPF.ViewModel;
@@ -509,16 +507,19 @@ namespace VortexProAppModule
 
         private async void OnCollectionItemChanged(object sender, object item, PropertyChangedEventArgs e) {
             await QueuedTask.Run(() => {
-                //if (sender is ICollection<FeatureBindingViewModel> featureBindings) {
-                //    var f = featureBindings.Select(e => new featureBinding {
-                //        association = e.association,
-                //        associationId = e.associationId,
-                //        featureId = e.featureId,
-                //        role = e.role,
-                //        roleType = e.roleType.HasValue ? Enum.GetName<roleType>(e.roleType.Value) : default,
-                //    });
-                //    Inspector["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(f);
-                //}
+                var updated = false;
+
+                if (sender is S100AttributeEditorViewModel viewModel) {
+                    var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
+                    if (Inspector.IsNull("json")) {
+                        Inspector["json"] = json;
+                        updated |= true;
+                    }
+                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
+                        Inspector["json"] = json;
+                        updated |= true;
+                    }
+                }
             }, TaskCreationOptions.None);
         }
 

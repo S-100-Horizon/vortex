@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged {
-        public class RequestInformationsEventArgs(string? informationType) : EventArgs {
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged
+    {
+        public class RequestInformationsEventArgs(string? informationType) : EventArgs
+        {
             public string? InformationType { get; } = informationType;
         }
 
-        public class RequestFeaturesEventArgs(string? featureType) : EventArgs {
+        public class RequestFeaturesEventArgs(string? featureType) : EventArgs
+        {
             public string? FeatureType { get; } = featureType;
         }
 
@@ -98,11 +101,11 @@ namespace S100Framework.WPF.ViewModel
 
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
             }
@@ -143,11 +146,11 @@ namespace S100Framework.WPF.ViewModel
 
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
             }
@@ -185,7 +188,6 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-
             this.PropertyChanged?.Invoke(this, e);
         }
 

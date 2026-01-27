@@ -71,13 +71,16 @@ namespace S100Framework.WPF.ViewModel
         #endregion
 
         public AttributeViewModel(S100FC.attributeBinding attribute) {
-            this.code = attribute.S100FC_code;
+            this.attribute = attribute;
+            this.code = this.attribute.S100FC_code;
         }
+
+        public S100FC.attributeBinding attribute { get; protected set; }
     }
 
     public class SimpleAttributeViewModel : AttributeViewModel
     {
-        public SimpleAttributeViewModel(SimpleAttribute attribute) : base(attribute) {
+        public SimpleAttributeViewModel(ref SimpleAttribute attribute) : base(attribute) {
             this._attribute = attribute;
 
             this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
@@ -92,6 +95,7 @@ namespace S100Framework.WPF.ViewModel
                 return this._value;
             }
             set {
+                attribute.GetType().GetProperty("value")!.SetValue(_attribute, value);
                 this.SetProperty(ref this._value, value);
             }
         }
@@ -105,7 +109,7 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<AttributeViewModel> attributeBindings { get; set; } = [];
 
-        public ComplexAttributeViewModel(ComplexAttribute attribute) : base(attribute) {
+        public ComplexAttributeViewModel(ref ComplexAttribute attribute) : base(attribute) {
             this._attribute = attribute;
 
             this.attributeBindingsCatalogue = this._attribute.attributeBindingsCatalogue;
@@ -125,11 +129,11 @@ namespace S100Framework.WPF.ViewModel
 
             foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
                 if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(simpleAttribute);
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(complexAttribute);
+                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
                     this.attributeBindings.Add(viewmodel);
                 }
             }

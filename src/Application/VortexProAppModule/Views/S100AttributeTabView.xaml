@@ -78,6 +78,7 @@
 
         <pg:S100AttributeEditor x:Name="S100AttributeEditor" Grid.Row="1"
                                 Visibility="{Binding IsVisible, Mode=OneWay}"
+                                IsEditingEnabled="{Binding IsEditingEnabled, Mode=OneWay}"
                                 SelectedObject="{Binding SelectedProperty, Mode=OneWay}"
                                 Loaded="S100AttributeEditor_Loaded"/>
         

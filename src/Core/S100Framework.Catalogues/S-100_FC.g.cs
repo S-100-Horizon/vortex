@@ -529,7 +529,7 @@ namespace S100FC
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
-        protected void SetAttribute(attributeBinding attribute) {
+        public void SetAttribute(attributeBinding attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
@@ -548,7 +548,7 @@ namespace S100FC
             }
         }
 
-        protected void SetAttribute(attributeBinding[] attribute) {
+        public void SetAttribute(attributeBinding[] attribute) {
             if (attribute == null) return;
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
