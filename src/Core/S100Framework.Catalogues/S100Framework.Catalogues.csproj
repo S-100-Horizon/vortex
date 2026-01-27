@@ -17,4 +17,8 @@
     <Compile Remove="S-501_FC.g.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="JsonFlatten" Version="1.0.4" />
+  </ItemGroup>
+
 </Project>
