@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -94,7 +93,7 @@ namespace S100Framework.Applications
 
                 if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
                     throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
-                
+
                 var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                 if (scamin.HasValue)
                     instance.scaleMinimum = scamin.Value;

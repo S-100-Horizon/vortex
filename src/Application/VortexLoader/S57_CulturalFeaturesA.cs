@@ -1237,7 +1237,7 @@ namespace S100Framework.Applications
                                 instance.status = GetStatus(current.STATUS);
                             }
 
-                            if (current.VERLEN.HasValue) { 
+                            if (current.VERLEN.HasValue) {
                                 instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
                             }
                             else {

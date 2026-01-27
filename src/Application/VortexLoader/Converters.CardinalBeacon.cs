@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -114,7 +113,7 @@ namespace S100Framework.Applications
 
                 var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
                 if (scamin.HasValue)
-                    instance.scaleMinimum = scamin.Value;                
+                    instance.scaleMinimum = scamin.Value;
             }
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
