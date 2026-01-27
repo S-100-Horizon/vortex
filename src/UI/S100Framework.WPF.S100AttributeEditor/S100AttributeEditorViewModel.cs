@@ -185,6 +185,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            æøå
             this.PropertyChanged?.Invoke(this, e);
         }
 
