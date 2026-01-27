@@ -118,16 +118,21 @@ namespace S100Framework.WPF.ViewModel
             this.attributeBindingsCatalogue = this._featureType.attributeBindingsCatalogue;
 
             if (feature is IInformationBindings informationBindings) {
-                this.HasInformationBindings = true;
+                var _informationBindingDefinitions = informationBindings.GetInformationBindingsDefinitions();
 
-                informationBindingDefinitions = new informationBindingContainer(informationBindings.GetInformationBindingsDefinitions());
+                if (_informationBindingDefinitions.Any())
+                    informationBindingDefinitions = new informationBindingContainer(_informationBindingDefinitions);
+
+                this.HasInformationBindings = this.informationBindingDefinitions is not null;
             }
 
-            if (feature is IFeatureBindings featureBindings) {
-                this.HasFeatureBindings = true;
+            if (feature is IFeatureBindings featureBindings) {                
+                var _featureBindingDefinitions = featureBindings.GetFeatureBindingsDefinitions();
 
-                informationBindingDefinitions = new informationBindingContainer(featureBindings.GetInformationBindingsDefinitions());
-                featureBindingDefinitions = new featureBindingContainer(featureBindings.GetFeatureBindingsDefinitions());
+                if (_featureBindingDefinitions.Any())
+                    featureBindingDefinitions = new featureBindingContainer(_featureBindingDefinitions);
+                
+                this.HasFeatureBindings = this.featureBindingDefinitions is not null;
             }
 
             this.attributeBindings.CollectionChanged += (s, e) => {
