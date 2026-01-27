@@ -100,14 +100,12 @@ namespace S100Framework.WPF.ViewModel
             };
 
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
-                if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
-                else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
+                if (e is DateAttribute dateAttribute)
+                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                else if (e is SimpleAttribute simpleAttribute)
+                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                else if (e is ComplexAttribute complexAttribute)
+                    this.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
             }
         }
 
@@ -126,12 +124,12 @@ namespace S100Framework.WPF.ViewModel
                 this.HasInformationBindings = this.informationBindingDefinitions is not null;
             }
 
-            if (feature is IFeatureBindings featureBindings) {                
+            if (feature is IFeatureBindings featureBindings) {
                 var _featureBindingDefinitions = featureBindings.GetFeatureBindingsDefinitions();
 
                 if (_featureBindingDefinitions.Any())
                     featureBindingDefinitions = new featureBindingContainer(_featureBindingDefinitions);
-                
+
                 this.HasFeatureBindings = this.featureBindingDefinitions is not null;
             }
 
@@ -150,14 +148,12 @@ namespace S100Framework.WPF.ViewModel
             };
 
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
-                if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
-                else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
+                if (e is DateAttribute dateAttribute)
+                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                else if (e is SimpleAttribute simpleAttribute)
+                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                else if (e is ComplexAttribute complexAttribute)
+                    this.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
             }
         }
 

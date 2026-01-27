@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -101,6 +102,34 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.SimpleAttribute? _attribute { get; init; } = default;
+    }
+
+    public class DateAttributeViewModel : AttributeViewModel
+    {
+        public DateAttributeViewModel(ref DateAttribute attribute) : base(attribute) {
+            this._attribute = attribute;
+
+            this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
+        }
+
+        public string valueType => this._attribute!.valueType;
+
+        private DateTime? _value;
+
+        public DateTime? value {
+            get {
+                return this._value;
+            }
+            set {
+                if (value !=null) {
+                    var date = DateOnly.FromDateTime(value.Value);
+                    attribute.GetType().GetProperty("value")!.SetValue(_attribute, date);                 
+                }
+                this.SetProperty(ref this._value, value);
+            }
+        }
+
+        public S100FC.DateAttribute? _attribute { get; init; } = default;
     }
 
     public class ComplexAttributeViewModel : AttributeViewModel

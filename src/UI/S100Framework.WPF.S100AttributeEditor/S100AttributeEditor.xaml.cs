@@ -31,6 +31,8 @@ namespace S100Framework.WPF
                     var instance = attributeBinding.CreateInstance();
                     if (instance is SimpleAttribute simpleAttribute)
                         this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                    else if(instance is DateAttribute dateAttribute)
+                        this.SelectedObject?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
                     else if (instance is ComplexAttribute complexAttribute)
                         this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
                     else

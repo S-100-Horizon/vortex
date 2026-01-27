@@ -67,6 +67,25 @@
                 </Border>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodel:DateAttributeViewModel}">
+                <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                    <DockPanel LastChildFill="True" Background="Transparent">
+                        <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" 
+                               Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                            <Button DockPanel.Dock="Right" Style="{StaticResource DeleteSimpleAttributeIconButtonStyle}">
+                                <i:Interaction.Behaviors>
+                                    <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" Parameter="{Binding}" Parent="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}" />
+                                </i:Interaction.Behaviors>
+                            </Button>
+                            <ContentPresenter x:Name="ContentItem" DockPanel.Dock="Left"
+                              Content="{Binding}" 
+                              ContentTemplateSelector="{StaticResource PropSelector}"/>
+                        </DockPanel>
+                        <TextBlock DockPanel.Dock="Left" Text="{Binding code}" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
+                    </DockPanel>
+                </Border>
+            </DataTemplate>
+
             <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
                 <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0" Style="{DynamicResource Esri_ExpanderBorderless}">
                     <Expander.HeaderTemplate>

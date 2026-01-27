@@ -184,13 +184,19 @@
 
     <!-- Templates for Date/Time -->
     <DataTemplate x:Key="DateTimeEditorTemplate">
-        <xctk:DateTimeUpDown Value="{Binding value}" Format="Custom" FormatString="yyyyMMdd HH:mm" Watermark="[UNKNOWN]"/>
+        <xctk:DateTimeUpDown Value="{Binding value}" Format="Custom" FormatString="yyyy-MM-dd HH:mm" Watermark="[yyyy-MM-dd HH:mm]" ShowButtonSpinner="False"/>
     </DataTemplate>
     <DataTemplate x:Key="DateOnlyEditorTemplate">
-        <xctk:DateTimeUpDown Value="{Binding value}" Format="ShortDate" FormatString="yyyyMMdd" Watermark="[UNKNOWN]"/>
+        <xctk:DateTimePicker 
+            Value="{Binding value}" 
+            Format="Custom" 
+            FormatString="yyyy-MM-dd" 
+            Watermark="[yyyy-MM-dd]" 
+            ShowButtonSpinner="False"
+            ShowDropDownButton="True" TimePickerVisibility="Collapsed"/>
     </DataTemplate>
     <DataTemplate x:Key="TimeEditorTemplate">
-        <xctk:DateTimeUpDown Value="{Binding value}" Format="ShortTime" FormatString="HH:mm" Watermark="[UNKNOWN]"/>
+        <xctk:DateTimeUpDown Value="{Binding value}" Format="Custom" FormatString="HH:mm" Watermark="[HH:mm]" ShowButtonSpinner="False"/>
     </DataTemplate>
     <DataTemplate x:Key="TruncatedDateEditorTemplate">
         <xctk:WatermarkTextBox Watermark="[UNKNOWN]">
