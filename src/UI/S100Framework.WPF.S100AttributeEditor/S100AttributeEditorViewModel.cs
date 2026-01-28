@@ -264,13 +264,13 @@ namespace S100Framework.WPF.ViewModel
             if (sender is AttributeViewModel attribute) {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(attributeBindings)));
             }
-            if (sender is InformationBindingViewModel informationBinding) {
+            else if (sender is InformationBindingViewModel informationBinding) {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(informationBindings)));
             }
-            if (sender is FeatureBindingViewModel featureBinding) {
+            else if (sender is FeatureBindingViewModel featureBinding) {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(featureBindings)));
             }
-            if (System.Diagnostics.Debugger.IsAttached)
+            else if (System.Diagnostics.Debugger.IsAttached)
                 System.Diagnostics.Debugger.Break();
         }
 
@@ -331,5 +331,12 @@ namespace S100Framework.WPF.ViewModel
         private readonly S100FC.InformationType? _informationType = default;
         private readonly S100FC.FeatureType? _featureType = default;
         private readonly string _uid;
+
+        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
+            featureBinding[] featureBindings = [];
+            foreach(var binding in viewmodel.featureBindings) {
+            }
+            return featureBindings;
+        }
     }
 }
