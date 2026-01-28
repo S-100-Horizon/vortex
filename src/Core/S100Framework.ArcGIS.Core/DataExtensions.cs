@@ -16,9 +16,9 @@
         }
 
         //public static string Crc32(this Feature feature) => $"{System.IO.Hashing.Crc32.HashToUInt32(feature.GetGlobalID().ToByteArray())}";
-        public static string UID(this Feature feature) => $"{Convert.ToInt64(feature["UID"])}";
+        public static string UID(this Feature feature) => Convert.ToString(feature["UID"])!;
 
         //public static string Crc32(this Row row) => $"{System.IO.Hashing.Crc32.HashToUInt32(row.GetGlobalID().ToByteArray())}";
-        public static string UID(this Row row) => $"{Convert.ToInt64(row["UID"])}";
+        public static string UID(this Row row) => Convert.ToString(row["UID"])!;
     }
 }

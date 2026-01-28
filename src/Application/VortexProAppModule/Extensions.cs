@@ -11,7 +11,7 @@ namespace ArcGIS.Desktop.Editing.Attributes
 
         }
 
-        public static string UID(this Inspector inspector) => $"{Convert.ToInt64(inspector["UID"])}";
+        public static string UID(this Inspector inspector) => Convert.ToString(inspector["UID"]);
     }
 }
 
