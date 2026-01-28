@@ -528,14 +528,46 @@ namespace VortexProAppModule
                 var updated = false;
 
                 if (sender is S100AttributeEditorViewModel viewModel) {
-                    var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
-                    if (Inspector.IsNull("json")) {
-                        Inspector["json"] = json;
-                        updated |= true;
+                    if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.attributeBindings))) {                        
+                        if(viewModel.Instance is S100FC.InformationType informationType) {
+                            var flatten = informationType.Flatten();
+                            if (Inspector.IsNull("flatten")) {
+                                Inspector["flatten"] = flatten;
+                                updated |= true;
+                            }
+                            else if (string.Compare(flatten, Convert.ToString(Inspector["flatten"]), true) != 0) {
+                                Inspector["flatten"] = flatten;
+                                updated |= true;
+                            }
+                        }
+                        if (viewModel.Instance is S100FC.FeatureType featureType) {
+                            var flatten = featureType.Flatten();
+                            if (Inspector.IsNull("flatten")) {
+                                Inspector["flatten"] = flatten;
+                                updated |= true;
+                            }
+                            else if (string.Compare(flatten, Convert.ToString(Inspector["flatten"]), true) != 0) {
+                                Inspector["flatten"] = flatten;
+                                updated |= true;
+                            }
+                        }
+
+                        //TODO: DELETE [JSON]
+                        var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
+                        if (Inspector.IsNull("json")) {
+                            Inspector["json"] = json;
+                            updated |= true;
+                        }
+                        else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
+                            Inspector["json"] = json;
+                            updated |= true;
+                        }
                     }
-                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
-                        Inspector["json"] = json;
-                        updated |= true;
+                    if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
+                        
+                    }
+                    if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
+                        ;
                     }
                 }
             }, TaskCreationOptions.None);

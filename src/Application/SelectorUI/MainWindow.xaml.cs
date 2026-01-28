@@ -27,25 +27,25 @@ namespace SelectorUI
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            //var featureType = new TestFeature {
-            //    featuresDetectedNested = new featuresDetectedNested {
-            //        featureName = [new featureName {
-            //            name ="Nested",
-            //            language="eng",
-            //        }],
-            //    },
+            var featureType = new TestFeature {
+                featuresDetectedNested = new featuresDetectedNested {
+                    featureName = [new featureName {
+                        name ="Nested",
+                        language="eng",
+                    }],
+                },
 
-            //    categoryOfTemporalVariation = 1,
-            //    dataAssessment = 1,
+                categoryOfTemporalVariation = 1,
+                dataAssessment = 1,
 
-            //    featuresDetected = new featuresDetected {
-            //        significantFeaturesDetected = true,
-            //        leastDepthOfDetectedFeaturesMeasured = false,
-            //    },
-            //    zoneOfConfidence = [new zoneOfConfidence {
-            //        categoryOfZoneOfConfidenceInData = 1,
-            //    }]
-            //};
+                featuresDetected = new featuresDetected {
+                    significantFeaturesDetected = true,
+                    leastDepthOfDetectedFeaturesMeasured = false,
+                },
+                zoneOfConfidence = [new zoneOfConfidence {
+                    categoryOfZoneOfConfidenceInData = 1,
+                }]
+            };
 
             //var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
 
@@ -67,9 +67,9 @@ namespace SelectorUI
 
             //};
 
-            var featureType = new S100FC.S128.FeatureTypes.ElectronicProduct {
+            //var featureType = new S100FC.S128.FeatureTypes.ElectronicProduct {
 
-            };
+            //};
 
             var selectedObject = new S100AttributeEditorViewModel(featureType, "123456") {
                 RequestInformation = async (s, e) => {
