@@ -382,7 +382,7 @@ namespace S100FC
             }
         }
 
-        protected void SetAttribute(attributeBinding[] attribute) {
+        protected void SetAttribute(string code, attributeBinding?[] attribute) {
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
@@ -462,7 +462,7 @@ namespace S100FC
             }
         }
 
-        protected void SetAttribute(attributeBinding[] attribute) {
+        protected void SetAttribute(string code, attributeBinding?[] attribute) {
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
                 if (binding.upper == 1) {
@@ -548,24 +548,38 @@ namespace S100FC
             }
         }
 
-        public void SetAttribute(attributeBinding?[] attribute) {
-            if (attribute == null) return;
-            foreach (var a in attribute) {
-                var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
-                if (binding.upper == 1) {
-                    var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
-                    if (value == default) {
-                        this.attributeBindings = [.. this.attributeBindings, a];
-                    }
-                    else {
-                        var index = Array.IndexOf(this.attributeBindings, value);
-                        this.attributeBindings[index] = a;
-                    }
-                }
-                else {
-                    this.attributeBindings = [.. this.attributeBindings, a];
+        public void SetAttribute(string code, attributeBinding?[] attribute) {
+            if (attribute == null || !attribute.Any()) {
+                this.attributeBindings = [.. this.attributeBindings.Where(e=>!e.S100FC_code.Equals(code))];
+
+                foreach (var binding in attributeBindingsCatalogue.Where(e => e.lower > 0)) {
+                    for (int i = 0; i < binding.lower; i++)
+                        this.SetAttribute(binding.CreateInstance()!);
                 }
             }
+            else {
+                this.attributeBindings = [.. attribute!]; 
+            }
+
+
+                //foreach (var a in attribute) {
+                //    if (a is null) continue;
+
+                //    var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
+                //    if (binding.upper == 1) {
+                //        var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(a.S100FC_code));
+                //        if (value == default) {
+                //            this.attributeBindings = [.. this.attributeBindings, a];
+                //        }
+                //        else {
+                //            var index = Array.IndexOf(this.attributeBindings, value);
+                //            this.attributeBindings[index] = a;
+                //        }
+                //    }
+                //    else {
+                //        this.attributeBindings = [.. this.attributeBindings, a];
+                //    }
+                //}
         }
 
         protected TAttribute? GetAttributeValue<TAttribute>(string name) where TAttribute : attributeBinding {

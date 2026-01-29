@@ -1492,7 +1492,7 @@ namespace S100FC.S128.ComplexAttributes
 		}
 		[JsonIgnore]
 		public String?[] deliveryPoint {
-			set { base.SetAttribute([.. value.Select(e=> new deliveryPoint { value = e })]); }
+			set { base.SetAttribute("deliveryPoint", [.. value.Select(e=> new deliveryPoint { value = e })]); }
 			get { return base.GetAttributeValues<deliveryPoint>(nameof(deliveryPoint)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
@@ -1737,7 +1737,7 @@ namespace S100FC.S128.ComplexAttributes
 		}
 		[JsonIgnore]
 		public String?[] text {
-			set { base.SetAttribute([.. value.Select(e=> new text { value = e })]); }
+			set { base.SetAttribute("text", [.. value.Select(e=> new text { value = e })]); }
 			get { return base.GetAttributeValues<text>(nameof(text)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -2247,7 +2247,7 @@ namespace S100FC.S128.ComplexAttributes
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		#endregion
@@ -2327,7 +2327,7 @@ namespace S100FC.S128.ComplexAttributes
 		}
 		[JsonIgnore]
 		public int?[] telecommunicationService {
-			set { base.SetAttribute([.. value.Select(e=> new telecommunicationService { value = e })]); }
+			set { base.SetAttribute("telecommunicationService", [.. value.Select(e=> new telecommunicationService { value = e })]); }
 			get { return base.GetAttributeValues<telecommunicationService>(nameof(telecommunicationService)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -2375,7 +2375,7 @@ namespace S100FC.S128.ComplexAttributes
 		#region Attributes
 		[JsonIgnore]
 		public int?[] typeOfTimeIntervalUnit {
-			set { base.SetAttribute([.. value.Select(e=> new typeOfTimeIntervalUnit { value = e })]); }
+			set { base.SetAttribute("typeOfTimeIntervalUnit", [.. value.Select(e=> new typeOfTimeIntervalUnit { value = e })]); }
 			get { return base.GetAttributeValues<typeOfTimeIntervalUnit>(nameof(typeOfTimeIntervalUnit)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
@@ -3159,27 +3159,27 @@ namespace S100FC.S128.InformationTypes
 		}
 		[JsonIgnore]
 		public contactAddress?[] contactAddress {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("contactAddress", value); }
 			get { return base.GetAttributeValues<contactAddress>(nameof(contactAddress)); }
 		}
 		[JsonIgnore]
 		public information?[] information {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("information", value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
 		public onlineResource?[] onlineResource {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("onlineResource", value); }
 			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
 		}
 		[JsonIgnore]
 		public telecommunications?[] telecommunications {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("telecommunications", value); }
 			get { return base.GetAttributeValues<telecommunications>(nameof(telecommunications)); }
 		}
 		[JsonIgnore]
 		public sourceIndication?[] sourceIndication {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("sourceIndication", value); }
 			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
 		}
 		#endregion
@@ -3287,7 +3287,7 @@ namespace S100FC.S128.InformationTypes
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		#endregion
@@ -3339,22 +3339,22 @@ namespace S100FC.S128.InformationTypes
 		#region Attributes
 		[JsonIgnore]
 		public information?[] information {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("information", value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
 		public onlineResource?[] onlineResource {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("onlineResource", value); }
 			get { return base.GetAttributeValues<onlineResource>(nameof(onlineResource)); }
 		}
 		[JsonIgnore]
 		public pricing?[] pricing {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("pricing", value); }
 			get { return base.GetAttributeValues<pricing>(nameof(pricing)); }
 		}
 		[JsonIgnore]
 		public sourceIndication?[] sourceIndication {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("sourceIndication", value); }
 			get { return base.GetAttributeValues<sourceIndication>(nameof(sourceIndication)); }
 		}
 		#endregion
@@ -3577,7 +3577,7 @@ namespace S100FC.S128.FeatureTypes
 		}
 		[JsonIgnore]
 		public int?[] catalogueElementClassification {
-			set { base.SetAttribute([.. value.Select(e=> new catalogueElementClassification { value = e })]); }
+			set { base.SetAttribute("catalogueElementClassification", [.. value.Select(e=> new catalogueElementClassification { value = e })]); }
 			get { return base.GetAttributeValues<catalogueElementClassification>(nameof(catalogueElementClassification)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
@@ -3592,7 +3592,7 @@ namespace S100FC.S128.FeatureTypes
 		}
 		[JsonIgnore]
 		public int?[] iMOMaritimeService {
-			set { base.SetAttribute([.. value.Select(e=> new iMOMaritimeService { value = e })]); }
+			set { base.SetAttribute("iMOMaritimeService", [.. value.Select(e=> new iMOMaritimeService { value = e })]); }
 			get { return base.GetAttributeValues<iMOMaritimeService>(nameof(iMOMaritimeService)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
@@ -3602,12 +3602,12 @@ namespace S100FC.S128.FeatureTypes
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
 		public information?[] information {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("information", value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
@@ -3622,7 +3622,7 @@ namespace S100FC.S128.FeatureTypes
 		}
 		[JsonIgnore]
 		public supportFile?[] supportFile {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("supportFile", value); }
 			get { return base.GetAttributeValues<supportFile>(nameof(supportFile)); }
 		}
 		[JsonIgnore]
@@ -3799,12 +3799,12 @@ namespace S100FC.S128.FeatureTypes
 		#region Attributes
 		[JsonIgnore]
 		public double?[] approximateGridResolution {
-			set { base.SetAttribute([.. value.Select(e=> new approximateGridResolution { value = e })]); }
+			set { base.SetAttribute("approximateGridResolution", [.. value.Select(e=> new approximateGridResolution { value = e })]); }
 			get { return base.GetAttributeValues<approximateGridResolution>(nameof(approximateGridResolution)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
 		public int?[] compilationScale {
-			set { base.SetAttribute([.. value.Select(e=> new compilationScale { value = e })]); }
+			set { base.SetAttribute("compilationScale", [.. value.Select(e=> new compilationScale { value = e })]); }
 			get { return base.GetAttributeValues<compilationScale>(nameof(compilationScale)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
@@ -3829,7 +3829,7 @@ namespace S100FC.S128.FeatureTypes
 		}
 		[JsonIgnore]
 		public int?[] navigationPurpose {
-			set { base.SetAttribute([.. value.Select(e=> new navigationPurpose { value = e })]); }
+			set { base.SetAttribute("navigationPurpose", [.. value.Select(e=> new navigationPurpose { value = e })]); }
 			get { return base.GetAttributeValues<navigationPurpose>(nameof(navigationPurpose)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]

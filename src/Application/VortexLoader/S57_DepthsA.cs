@@ -57,8 +57,10 @@ namespace S100Framework.Applications
                     case 1: {     // DEPARE // SKIN OF EARTH
                             var instance = new DepthArea {
                                 depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2.GetValueOrDefault()
                             };
+
+                            if(drval2.HasValue)
+                                instance.depthRangeMaximumValue = drval2.GetValueOrDefault();
 
                             // TODO: Spatial association to Spatial Quality
 
@@ -93,10 +95,11 @@ namespace S100Framework.Applications
 
                     case 5: {     // DRGARE // SKIN OF EARTH
                             var instance = new DredgedArea {
-                                depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2,
+                                depthRangeMinimumValue = drval1,                                
                             };
 
+                            if (drval2.HasValue)
+                                instance.depthRangeMaximumValue = drval2.GetValueOrDefault();
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {

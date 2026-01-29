@@ -773,7 +773,11 @@ namespace TestAttributes
                     if (host.KnownTypesComplex.Contains(referenceCode)) {
                         roslyn.AppendLine($"\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
-                        roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
+
+                        if (upper > 1)
+                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(\"{referenceCode}\", value); }}");
+                        else
+                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(value); }}");
                         if (upper > 1)
                             roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})); }}");
                         else
@@ -788,7 +792,7 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t[JsonIgnore]");
                         roslyn.AppendLine($"\t\tpublic {prefix} {referenceCode} {{");
                         if (upper > 1) {
-                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute([.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
+                            roslyn.AppendLine($"\t\t\tset {{ base.SetAttribute(\"{referenceCode}\", [.. value.Select(e=> new {referenceCode} {{ value = e }})]); }}");
                             roslyn.AppendLine($"\t\t\tget {{ return base.GetAttributeValues<{referenceCode}>(nameof({referenceCode})).Select(e=>e.value).ToArray(); }}");
                         }
                         else {

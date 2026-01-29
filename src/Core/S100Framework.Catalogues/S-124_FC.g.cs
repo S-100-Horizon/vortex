@@ -1304,12 +1304,12 @@ namespace S100FC.S124.ComplexAttributes
 		#region Attributes
 		[JsonIgnore]
 		public information?[] information {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("information", value); }
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
 		public int?[] navwarnTypeDetails {
-			set { base.SetAttribute([.. value.Select(e=> new navwarnTypeDetails { value = e })]); }
+			set { base.SetAttribute("navwarnTypeDetails", [.. value.Select(e=> new navwarnTypeDetails { value = e })]); }
 			get { return base.GetAttributeValues<navwarnTypeDetails>(nameof(navwarnTypeDetails)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -1349,12 +1349,12 @@ namespace S100FC.S124.ComplexAttributes
 		#region Attributes
 		[JsonIgnore]
 		public String?[] atoNNumber {
-			set { base.SetAttribute([.. value.Select(e=> new atoNNumber { value = e })]); }
+			set { base.SetAttribute("atoNNumber", [.. value.Select(e=> new atoNNumber { value = e })]); }
 			get { return base.GetAttributeValues<atoNNumber>(nameof(atoNNumber)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
 		public String?[] interoperabilityIdentifier {
-			set { base.SetAttribute([.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
+			set { base.SetAttribute("interoperabilityIdentifier", [.. value.Select(e=> new interoperabilityIdentifier { value = e })]); }
 			get { return base.GetAttributeValues<interoperabilityIdentifier>(nameof(interoperabilityIdentifier)).Select(e=>e.value).ToArray(); }
 		}
 		#endregion
@@ -1604,7 +1604,7 @@ namespace S100FC.S124.ComplexAttributes
 		}
 		[JsonIgnore]
 		public locationName?[] locationName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("locationName", value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); }
 		}
 		#endregion
@@ -1649,7 +1649,7 @@ namespace S100FC.S124.ComplexAttributes
 		}
 		[JsonIgnore]
 		public locationName?[] locationName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("locationName", value); }
 			get { return base.GetAttributeValues<locationName>(nameof(locationName)); }
 		}
 		#endregion
@@ -1770,7 +1770,7 @@ namespace S100FC.S124.InformationTypes
 		#region Attributes
 		[JsonIgnore]
 		public messageSeriesIdentifier?[] messageSeriesIdentifier {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("messageSeriesIdentifier", value); }
 			get { return base.GetAttributeValues<messageSeriesIdentifier>(nameof(messageSeriesIdentifier)); }
 		}
 		[JsonIgnore]
@@ -1846,17 +1846,17 @@ namespace S100FC.S124.InformationTypes
 		#region Attributes
 		[JsonIgnore]
 		public affectedChartPublications?[] affectedChartPublications {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("affectedChartPublications", value); }
 			get { return base.GetAttributeValues<affectedChartPublications>(nameof(affectedChartPublications)); }
 		}
 		[JsonIgnore]
 		public generalArea?[] generalArea {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("generalArea", value); }
 			get { return base.GetAttributeValues<generalArea>(nameof(generalArea)); }
 		}
 		[JsonIgnore]
 		public locality?[] locality {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("locality", value); }
 			get { return base.GetAttributeValues<locality>(nameof(locality)); }
 		}
 		[JsonIgnore]
@@ -1866,7 +1866,7 @@ namespace S100FC.S124.InformationTypes
 		}
 		[JsonIgnore]
 		public navwarnTitle?[] navwarnTitle {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("navwarnTitle", value); }
 			get { return base.GetAttributeValues<navwarnTitle>(nameof(navwarnTitle)); }
 		}
 		[JsonIgnore]
@@ -2058,7 +2058,7 @@ namespace S100FC.S124.FeatureTypes
 		}
 		[JsonIgnore]
 		public fixedDateRange?[] fixedDateRange {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("fixedDateRange", value); }
 			get { return base.GetAttributeValues<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
@@ -2068,12 +2068,12 @@ namespace S100FC.S124.FeatureTypes
 		}
 		[JsonIgnore]
 		public featureName?[] featureName {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
 		public featureReference?[] featureReference {
-			set { base.SetAttribute(value); }
+			set { base.SetAttribute("featureReference", value); }
 			get { return base.GetAttributeValues<featureReference>(nameof(featureReference)); }
 		}
 		#endregion
