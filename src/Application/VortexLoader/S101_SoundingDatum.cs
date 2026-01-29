@@ -111,7 +111,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     buffer["flatten"] = instance.Flatten();
                     //buffer["informationbindings"] = "[]";
 
@@ -135,7 +135,7 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
+                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     buffer["flatten"] = instance.Flatten();
                     //buffer["informationbindings"] = "[]";
 

@@ -16,7 +16,7 @@ namespace S100Framework.Applications
 
             using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
 
-            using var bufferSurface = featureClass.CreateRowBuffer();
+            using var buffer = featureClass.CreateRowBuffer();
 
             using var cursor = naturalFeaturesA.Search(filter, true);
 
@@ -84,18 +84,18 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
 
-                            SetShape(bufferSurface, current.SHAPE);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -150,19 +150,19 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(bufferSurface, current.SHAPE);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                             LandAreas.Instance.Add(current.SHAPE!.Clone());
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -214,18 +214,18 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(bufferSurface, current.Shape);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.Shape);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -266,17 +266,17 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(bufferSurface, current.SHAPE);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -329,17 +329,17 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(bufferSurface, current.SHAPE);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -398,17 +398,17 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            bufferSurface["ps"] = ps101;
-                            bufferSurface["code"] = instance.GetType().Name;
-                            bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                            bufferSurface["flatten"] = instance.Flatten();
-                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(bufferSurface, current.SHAPE);
-                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = featureClass.CreateRow(bufferSurface);
+                            var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {

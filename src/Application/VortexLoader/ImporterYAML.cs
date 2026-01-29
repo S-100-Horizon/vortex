@@ -95,7 +95,7 @@ namespace S100FC.Applications
                     var geometry = dataset.GetFeatureShape(feature);
 
                     // Append row to table
-                    var rowbuffer = geometry switch {
+                    var buffer = geometry switch {
                         MapPoint => bufferPoint,
                         Multipoint => bufferPointSet,
                         Polyline => bufferCurve,
@@ -117,7 +117,7 @@ namespace S100FC.Applications
                         }
 
                         var featureAssociationJSON = JsonSerializer.Serialize(featureAssociations, jsonSerializerOptions);
-                        rowbuffer["featurebindings"] = featureAssociationJSON;
+                        buffer["featurebindings"] = featureAssociationJSON;
                     }
 
                     // Information Association
@@ -131,21 +131,21 @@ namespace S100FC.Applications
                         }
 
                         var informationAssociationJSON = JsonSerializer.Serialize(informationAssociations, jsonSerializerOptions);
-                        rowbuffer["informationbindings"] = informationAssociationJSON;
+                        buffer["informationbindings"] = informationAssociationJSON;
                     }
 
                     // Set Usageband
                     try {
-                        rowbuffer["usageband"] = usageBand;
+                        buffer["usageband"] = usageBand;
                     }
                     catch (Exception ex) {
                         Log.Error("Could not set usageband for feature {feature}. Exception: {ex}", feature.Name, ex.Message);
                     }
 
-                    rowbuffer["ps"] = productSpecification;
-                    rowbuffer["code"] = feature.Name;
-                    rowbuffer["json"] = json;
-                    rowbuffer["flatten"] = flatten;
+                    buffer["ps"] = productSpecification;
+                    buffer["code"] = feature.Name;
+                    //buffer["__json__"] = json;
+                    buffer["flatten"] = flatten;
 
                     if (geometry is MapPoint point) {
                         if (point.HasZ == false)
@@ -185,11 +185,11 @@ namespace S100FC.Applications
                     var flatten = informationType.Attributes.Flatten();
 
                     // Write to table
-                    var rowbuffer = bufferInformationType;
-                    rowbuffer["ps"] = productSpecification;
-                    rowbuffer["code"] = informationType.Name;
-                    rowbuffer["json"] = json;
-                    rowbuffer["flatten"] = flatten;
+                    var buffer = bufferInformationType;
+                    buffer["ps"] = productSpecification;
+                    buffer["code"] = informationType.Name;
+                    //buffer["__json__"] = json;
+                    buffer["flatten"] = flatten;
                     tableInformationType.CreateRow(bufferInformationType);
                 }
             });

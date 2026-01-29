@@ -20,7 +20,7 @@ namespace S100Framework.Applications
 
             using var searchCursor = soundingsP.Search(filter, true);
 
-            using (var bufferPointset = pointset.CreateRowBuffer()) {
+            using (var buffer = pointset.CreateRowBuffer()) {
                 using (var insertCursor = pointset.CreateInsertCursor()) {
 
                     var recordCount = 0;
@@ -61,8 +61,8 @@ namespace S100Framework.Applications
 
                                 var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
 
-                                SetShape(bufferPointset, MultipointBuilderEx.CreateMultipoint(mappoint));
-                                SetUsageBand(bufferPointset, current.PLTS_COMP_SCALE!.Value);
+                                SetShape(buffer, MultipointBuilderEx.CreateMultipoint(mappoint));
+                                SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
 
                                 if (quasou == default || !string.Equals(quasou, "5", StringComparison.OrdinalIgnoreCase)) {
                                     var sounding = new Sounding {
@@ -143,15 +143,15 @@ namespace S100Framework.Applications
                                     sounding.information = result.information.ToArray();
                                     sounding.SetInformationBindings(result.InformationBindings.ToArray());
 
-                                    bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
-                                    bufferPointset["flatten"] = sounding.Flatten();
-                                    bufferPointset["ps"] = ps101;
-                                    bufferPointset["code"] = sounding.GetType().Name;
-                                    bufferPointset["edition"] = ImporterNIS.s101version;
-                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
+                                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
+                                    buffer["flatten"] = sounding.Flatten();
+                                    buffer["ps"] = ps101;
+                                    buffer["code"] = sounding.GetType().Name;
+                                    buffer["edition"] = ImporterNIS.s101version;
+                                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
 
                                     //var featureN = featureClass.CreateRow(bufferPointset);
-                                    var id = insertCursor.Insert(bufferPointset);
+                                    var id = insertCursor.Insert(buffer);
                                     //var name = featureN.Crc32();
 
                                     //if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
@@ -209,14 +209,14 @@ namespace S100Framework.Applications
                                     instance.information = result.information.ToArray();
                                     instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                                    bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
-                                    bufferPointset["flatten"] = instance.Flatten();
-                                    bufferPointset["ps"] = ps101;
-                                    bufferPointset["code"] = instance.GetType().Name;
-                                    bufferPointset["edition"] = ImporterNIS.s101version;
-                                    bufferPointset["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+                                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                    buffer["flatten"] = instance.Flatten();
+                                    buffer["ps"] = ps101;
+                                    buffer["code"] = instance.GetType().Name;
+                                    buffer["edition"] = ImporterNIS.s101version;
+                                    buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
-                                    var oid = insertCursor.Insert(bufferPointset);
+                                    var oid = insertCursor.Insert(buffer);
 
                                     ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, oid.ToString()); Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                                     Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));

@@ -23,7 +23,7 @@ namespace S100Framework.Applications
             using var surface = target.OpenDataset<FeatureClass>(target.GetName("surface"));
             using var featureType = target.OpenDataset<Table>(target.GetName("featuretype"));
 
-            using var bufferFeatureType = featureType.CreateRowBuffer();
+            using var buffer = featureType.CreateRowBuffer();
 
             using var bufferSurface = surface.CreateRowBuffer();
 
@@ -35,15 +35,16 @@ namespace S100Framework.Applications
                     var instance = new Bridge();
                     
 
-                    bufferFeatureType["ps"] = ps101;
-                    bufferFeatureType["code"] = instance.GetType().Name;
-                    bufferFeatureType["edition"] = ImporterNIS.s101version;
-                    bufferFeatureType["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["ps"] = ps101;
+                    buffer["code"] = instance.GetType().Name;
+                    buffer["edition"] = ImporterNIS.s101version;
+                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                    buffer["flatten"] = instance.Flatten();
 
                     //SetShape(buffer, bridge.DissolvedGeometry);
                     //SetUsageBand(buffer, ImporterNIS._compilationScale);
 
-                    var featureN = featureType.CreateRow(bufferFeatureType);
+                    var featureN = featureType.CreateRow(buffer);
                     var name = featureN.UID();
 
                     bridge.Name = name;
@@ -146,7 +147,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -328,7 +329,7 @@ namespace S100Framework.Applications
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = instance.GetType().Name;
                                 bufferSurface["edition"] = ImporterNIS.s101version;
-                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 bufferSurface["flatten"] = instance.Flatten();
                                 bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -425,7 +426,7 @@ namespace S100Framework.Applications
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = instance.GetType().Name;
                                 bufferSurface["edition"] = ImporterNIS.s101version;
-                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                                //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                                 bufferSurface["flatten"] = instance.Flatten();
                                 bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -536,7 +537,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -653,7 +654,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -789,7 +790,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -891,7 +892,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -918,7 +919,7 @@ namespace S100Framework.Applications
                                 bufferSurface["ps"] = ps101;
                                 bufferSurface["code"] = windturbine.GetType().Name;
                                 bufferSurface["edition"] = ImporterNIS.s101version;
-                                bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
+                                //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(windturbine, jsonSerializerOptions);
                                 bufferSurface["flatten"] = windturbine.Flatten();
                                 bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(windturbine.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1040,7 +1041,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1146,7 +1147,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1274,7 +1275,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1361,7 +1362,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1431,7 +1432,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1551,7 +1552,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -1644,7 +1645,7 @@ namespace S100Framework.Applications
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
                             bufferSurface["edition"] = ImporterNIS.s101version;
-                            bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //bufferSurface["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             bufferSurface["flatten"] = instance.Flatten();
                             bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 

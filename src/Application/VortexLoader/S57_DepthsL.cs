@@ -140,7 +140,7 @@ namespace S100Framework.Applications
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+                            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
@@ -221,16 +221,16 @@ namespace S100Framework.Applications
             SpatialQuality spatialQuality101 = new SpatialQuality();
 
             using var informationTypeTable = target.OpenDataset<Table>(target.GetName("informationtype"));
-            using var bufferInformationType = informationTypeTable.CreateRowBuffer();
+            using var buffer = informationTypeTable.CreateRowBuffer();
 
             spatialQuality101.qualityOfHorizontalMeasurement = EnumHelper.GetEnumValue(4);
 
-            bufferInformationType["ps"] = ps101;
-            bufferInformationType["code"] = spatialQuality101.S100FC_code;
-            bufferInformationType["edition"] = ImporterNIS.s101version;
-            bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
+            buffer["ps"] = ps101;
+            buffer["code"] = spatialQuality101.S100FC_code;
+            buffer["edition"] = ImporterNIS.s101version;
+            //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality101, jsonSerializerOptions);
 
-            var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
+            var informationTypeRow = informationTypeTable.CreateRow(buffer);
             var informationName = informationTypeRow.UID();
 
             // create binding

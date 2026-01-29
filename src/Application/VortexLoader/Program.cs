@@ -223,7 +223,7 @@ namespace S100Framework.Applications
                     var rowbuffer = bufferInformationType;
                     rowbuffer["ps"] = dataset.ProductSpecification;
                     rowbuffer["code"] = value.GetType().Name;
-                    rowbuffer["json"] = json;
+                    row//buffer["__json__"] = json;
 
                     tableInformationType.CreateRow(bufferInformationType);
                 }
@@ -246,7 +246,7 @@ namespace S100Framework.Applications
 
                     rowbuffer["ps"] = dataset.ProductSpecification;
                     rowbuffer["code"] = value.GetType().Name;
-                    rowbuffer["json"] = json;
+                    row//buffer["__json__"] = json;
 
                     // Geometry
                     var coordinates = featureType.Coordinates();

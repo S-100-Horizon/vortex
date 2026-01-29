@@ -78,7 +78,8 @@ namespace S100Framework.Applications.Singletons
             bufferInformationType["ps"] = ImporterNIS.ps101;
             bufferInformationType["code"] = nauticalInformation.S100FC_code;
             bufferInformationType["edition"] = ImporterNIS.s101version;
-            bufferInformationType["json"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
+            //bufferInformationType["__json__"] = System.Text.Json.JsonSerializer.Serialize(nauticalInformation, ImporterNIS.jsonSerializerOptions);
+            bufferInformationType["flatten"] = nauticalInformation.Flatten();
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
             var informationName = informationTypeRow.UID();
@@ -159,7 +160,7 @@ namespace S100Framework.Applications.Singletons
                             rowBuffer["ps"] = "S-100.Horizon";
                             rowBuffer["code"] = "supportfile";
                             rowBuffer["edition"] = ImporterNIS.s101version;
-                            rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
+                            //rowbuffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
                             rowBuffer["data_size"] = new FileInfo(filePath).Length;
                             rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
                             insertCursor.Insert(rowBuffer);

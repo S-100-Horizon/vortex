@@ -245,14 +245,16 @@ namespace S100Framework.Applications.Singletons
             using var bufferFeatureType = featuretypeTable.CreateRowBuffer();
 
             var bridgeElements = _instance!.BridgeElements().ToList();
-
+            
             using (var cursor = featuretypeTable.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Bridge'" }, useRecyclingCursor: true)) {
                 while (cursor.MoveNext()) {
                     var row = cursor.Current;
 
                     long oid = row.GetObjectID();
                     //var shape = row.GetShape();
-                    Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
+                    //Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
+
+                    Bridge bridge = (Bridge)S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(Convert.ToString(row["flatten"])!, nameof(Bridge));
 
                     var bindings = _instance!.GetBindings(row.UID());
 
