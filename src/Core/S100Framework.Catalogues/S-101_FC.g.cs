@@ -133,7 +133,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Buried Depth";
 
-		public static implicit operator buriedDepth(double? value) => new buriedDepth { value = value };
+		public static implicit operator buriedDepth(decimal? value) => new buriedDepth { value = value };
 	}
 
 	/// <summary>
@@ -1952,7 +1952,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Default Clearance Depth";
 
-		public static implicit operator defaultClearanceDepth(double? value) => new defaultClearanceDepth { value = value };
+		public static implicit operator defaultClearanceDepth(decimal? value) => new defaultClearanceDepth { value = value };
 	}
 
 	/// <summary>
@@ -1965,7 +1965,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Range Maximum Value";
 
-		public static implicit operator depthRangeMaximumValue(double? value) => new depthRangeMaximumValue { value = value };
+		public static implicit operator depthRangeMaximumValue(decimal? value) => new depthRangeMaximumValue { value = value };
 	}
 
 	/// <summary>
@@ -1978,7 +1978,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Depth Range Minimum Value";
 
-		public static implicit operator depthRangeMinimumValue(double? value) => new depthRangeMinimumValue { value = value };
+		public static implicit operator depthRangeMinimumValue(decimal? value) => new depthRangeMinimumValue { value = value };
 	}
 
 	/// <summary>
@@ -2050,7 +2050,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Elevation";
 
-		public static implicit operator elevation(double? value) => new elevation { value = value };
+		public static implicit operator elevation(decimal? value) => new elevation { value = value };
 	}
 
 	/// <summary>
@@ -2063,7 +2063,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Estimated Range of Transmission";
 
-		public static implicit operator estimatedRangeOfTransmission(double? value) => new estimatedRangeOfTransmission { value = value };
+		public static implicit operator estimatedRangeOfTransmission(decimal? value) => new estimatedRangeOfTransmission { value = value };
 	}
 
 	/// <summary>
@@ -2291,7 +2291,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Height";
 
-		public static implicit operator height(double? value) => new height { value = value };
+		public static implicit operator height(decimal? value) => new height { value = value };
 	}
 
 	/// <summary>
@@ -2304,7 +2304,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Length";
 
-		public static implicit operator horizontalClearanceLength(double? value) => new horizontalClearanceLength { value = value };
+		public static implicit operator horizontalClearanceLength(decimal? value) => new horizontalClearanceLength { value = value };
 	}
 
 	/// <summary>
@@ -2317,7 +2317,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Value";
 
-		public static implicit operator horizontalClearanceValue(double? value) => new horizontalClearanceValue { value = value };
+		public static implicit operator horizontalClearanceValue(decimal? value) => new horizontalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -2330,7 +2330,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Clearance Width";
 
-		public static implicit operator horizontalClearanceWidth(double? value) => new horizontalClearanceWidth { value = value };
+		public static implicit operator horizontalClearanceWidth(decimal? value) => new horizontalClearanceWidth { value = value };
 	}
 
 	/// <summary>
@@ -2343,7 +2343,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Distance Uncertainty";
 
-		public static implicit operator horizontalDistanceUncertainty(double? value) => new horizontalDistanceUncertainty { value = value };
+		public static implicit operator horizontalDistanceUncertainty(decimal? value) => new horizontalDistanceUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -2356,7 +2356,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Length";
 
-		public static implicit operator horizontalLength(double? value) => new horizontalLength { value = value };
+		public static implicit operator horizontalLength(decimal? value) => new horizontalLength { value = value };
 	}
 
 	/// <summary>
@@ -2369,7 +2369,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Width";
 
-		public static implicit operator horizontalWidth(double? value) => new horizontalWidth { value = value };
+		public static implicit operator horizontalWidth(decimal? value) => new horizontalWidth { value = value };
 	}
 
 	/// <summary>
@@ -2382,7 +2382,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Ice Factor";
 
-		public static implicit operator iceFactor(double? value) => new iceFactor { value = value };
+		public static implicit operator iceFactor(decimal? value) => new iceFactor { value = value };
 	}
 
 	/// <summary>
@@ -2504,7 +2504,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Lifting Capacity";
 
-		public static implicit operator liftingCapacity(double? value) => new liftingCapacity { value = value };
+		public static implicit operator liftingCapacity(decimal? value) => new liftingCapacity { value = value };
 	}
 
 	/// <summary>
@@ -2617,7 +2617,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Magnetic Anomaly Value";
 
-		public static implicit operator magneticAnomalyValue(double? value) => new magneticAnomalyValue { value = value };
+		public static implicit operator magneticAnomalyValue(decimal? value) => new magneticAnomalyValue { value = value };
 	}
 
 	/// <summary>
@@ -2692,7 +2692,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Draught";
 
-		public static implicit operator maximumPermittedDraught(double? value) => new maximumPermittedDraught { value = value };
+		public static implicit operator maximumPermittedDraught(decimal? value) => new maximumPermittedDraught { value = value };
 	}
 
 	/// <summary>
@@ -2705,7 +2705,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Vessel Length";
 
-		public static implicit operator maximumPermittedVesselLength(double? value) => new maximumPermittedVesselLength { value = value };
+		public static implicit operator maximumPermittedVesselLength(decimal? value) => new maximumPermittedVesselLength { value = value };
 	}
 
 	/// <summary>
@@ -2969,7 +2969,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Uncertainty";
 
-		public static implicit operator orientationUncertainty(double? value) => new orientationUncertainty { value = value };
+		public static implicit operator orientationUncertainty(decimal? value) => new orientationUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -2982,7 +2982,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Value";
 
-		public static implicit operator orientationValue(double? value) => new orientationValue { value = value };
+		public static implicit operator orientationValue(decimal? value) => new orientationValue { value = value };
 	}
 
 	/// <summary>
@@ -3133,7 +3133,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Radius";
 
-		public static implicit operator radius(double? value) => new radius { value = value };
+		public static implicit operator radius(decimal? value) => new radius { value = value };
 	}
 
 	/// <summary>
@@ -3316,7 +3316,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Bearing";
 
-		public static implicit operator sectorBearing(double? value) => new sectorBearing { value = value };
+		public static implicit operator sectorBearing(decimal? value) => new sectorBearing { value = value };
 	}
 
 	/// <summary>
@@ -3342,7 +3342,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Line Length";
 
-		public static implicit operator sectorLineLength(double? value) => new sectorLineLength { value = value };
+		public static implicit operator sectorLineLength(decimal? value) => new sectorLineLength { value = value };
 	}
 
 	/// <summary>
@@ -3355,7 +3355,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Duration";
 
-		public static implicit operator signalDuration(double? value) => new signalDuration { value = value };
+		public static implicit operator signalDuration(decimal? value) => new signalDuration { value = value };
 	}
 
 	/// <summary>
@@ -3415,7 +3415,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Signal Period";
 
-		public static implicit operator signalPeriod(double? value) => new signalPeriod { value = value };
+		public static implicit operator signalPeriod(decimal? value) => new signalPeriod { value = value };
 	}
 
 	/// <summary>
@@ -3458,7 +3458,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Size of Features Detected";
 
-		public static implicit operator sizeOfFeaturesDetected(double? value) => new sizeOfFeaturesDetected { value = value };
+		public static implicit operator sizeOfFeaturesDetected(decimal? value) => new sizeOfFeaturesDetected { value = value };
 	}
 
 	/// <summary>
@@ -3484,7 +3484,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Limit";
 
-		public static implicit operator speedLimit(double? value) => new speedLimit { value = value };
+		public static implicit operator speedLimit(decimal? value) => new speedLimit { value = value };
 	}
 
 	/// <summary>
@@ -3497,7 +3497,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Maximum";
 
-		public static implicit operator speedMaximum(double? value) => new speedMaximum { value = value };
+		public static implicit operator speedMaximum(decimal? value) => new speedMaximum { value = value };
 	}
 
 	/// <summary>
@@ -3510,7 +3510,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Speed Minimum";
 
-		public static implicit operator speedMinimum(double? value) => new speedMinimum { value = value };
+		public static implicit operator speedMinimum(decimal? value) => new speedMinimum { value = value };
 	}
 
 	/// <summary>
@@ -3600,7 +3600,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Stream Depth";
 
-		public static implicit operator streamDepth(double? value) => new streamDepth { value = value };
+		public static implicit operator streamDepth(decimal? value) => new streamDepth { value = value };
 	}
 
 	/// <summary>
@@ -3613,7 +3613,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Surrounding Depth";
 
-		public static implicit operator surroundingDepth(double? value) => new surroundingDepth { value = value };
+		public static implicit operator surroundingDepth(decimal? value) => new surroundingDepth { value = value };
 	}
 
 	/// <summary>
@@ -3872,7 +3872,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Time Relative to Tide";
 
-		public static implicit operator timeRelativeToTide(double? value) => new timeRelativeToTide { value = value };
+		public static implicit operator timeRelativeToTide(decimal? value) => new timeRelativeToTide { value = value };
 	}
 
 	/// <summary>
@@ -3952,7 +3952,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Fixed";
 
-		public static implicit operator uncertaintyFixed(double? value) => new uncertaintyFixed { value = value };
+		public static implicit operator uncertaintyFixed(decimal? value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -3965,7 +3965,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Variable Factor";
 
-		public static implicit operator uncertaintyVariableFactor(double? value) => new uncertaintyVariableFactor { value = value };
+		public static implicit operator uncertaintyVariableFactor(decimal? value) => new uncertaintyVariableFactor { value = value };
 	}
 
 	/// <summary>
@@ -3991,7 +3991,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Annual Change in Magnetic Variation";
 
-		public static implicit operator valueOfAnnualChangeInMagneticVariation(double? value) => new valueOfAnnualChangeInMagneticVariation { value = value };
+		public static implicit operator valueOfAnnualChangeInMagneticVariation(decimal? value) => new valueOfAnnualChangeInMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4004,7 +4004,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Depth Contour";
 
-		public static implicit operator valueOfDepthContour(double? value) => new valueOfDepthContour { value = value };
+		public static implicit operator valueOfDepthContour(decimal? value) => new valueOfDepthContour { value = value };
 	}
 
 	/// <summary>
@@ -4017,7 +4017,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Magnetic Variation";
 
-		public static implicit operator valueOfMagneticVariation(double? value) => new valueOfMagneticVariation { value = value };
+		public static implicit operator valueOfMagneticVariation(decimal? value) => new valueOfMagneticVariation { value = value };
 	}
 
 	/// <summary>
@@ -4030,7 +4030,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Maximum Range";
 
-		public static implicit operator valueOfMaximumRange(double? value) => new valueOfMaximumRange { value = value };
+		public static implicit operator valueOfMaximumRange(decimal? value) => new valueOfMaximumRange { value = value };
 	}
 
 	/// <summary>
@@ -4043,7 +4043,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Nominal Range";
 
-		public static implicit operator valueOfNominalRange(double? value) => new valueOfNominalRange { value = value };
+		public static implicit operator valueOfNominalRange(decimal? value) => new valueOfNominalRange { value = value };
 	}
 
 	/// <summary>
@@ -4056,7 +4056,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Value of Sounding";
 
-		public static implicit operator valueOfSounding(double? value) => new valueOfSounding { value = value };
+		public static implicit operator valueOfSounding(decimal? value) => new valueOfSounding { value = value };
 	}
 
 	/// <summary>
@@ -4082,7 +4082,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Value";
 
-		public static implicit operator verticalClearanceValue(double? value) => new verticalClearanceValue { value = value };
+		public static implicit operator verticalClearanceValue(decimal? value) => new verticalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -4141,7 +4141,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Length";
 
-		public static implicit operator verticalLength(double? value) => new verticalLength { value = value };
+		public static implicit operator verticalLength(decimal? value) => new verticalLength { value = value };
 	}
 
 	/// <summary>
@@ -4247,7 +4247,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Waterway Distance";
 
-		public static implicit operator waterwayDistance(double? value) => new waterwayDistance { value = value };
+		public static implicit operator waterwayDistance(decimal? value) => new waterwayDistance { value = value };
 	}
 
 	/// <summary>
@@ -4260,7 +4260,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Wave Length Value";
 
-		public static implicit operator waveLengthValue(double? value) => new waveLengthValue { value = value };
+		public static implicit operator waveLengthValue(decimal? value) => new waveLengthValue { value = value };
 	}
 
 	/// <summary>
@@ -4303,7 +4303,7 @@ namespace S100FC.S101.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Berth Depth";
 
-		public static implicit operator minimumBerthDepth(double? value) => new minimumBerthDepth { value = value };
+		public static implicit operator minimumBerthDepth(decimal? value) => new minimumBerthDepth { value = value };
 	}
 
 	/// <summary>
@@ -4418,7 +4418,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<significantFeaturesDetected>(nameof(significantFeaturesDetected))?.value; }
 		}
 		[JsonIgnore]
-		public double? sizeOfFeaturesDetected {
+		public decimal? sizeOfFeaturesDetected {
 			set { base.SetAttribute(new sizeOfFeaturesDetected { value = value }); }
 			get { return base.GetAttributeValue<sizeOfFeaturesDetected>(nameof(sizeOfFeaturesDetected))?.value; }
 		}
@@ -4555,12 +4555,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? horizontalClearanceValue {
+		public decimal? horizontalClearanceValue {
 			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
+		public decimal? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -4600,12 +4600,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? horizontalClearanceValue {
+		public decimal? horizontalClearanceValue {
 			set { base.SetAttribute(new horizontalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceValue>(nameof(horizontalClearanceValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
+		public decimal? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -4645,12 +4645,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -4781,7 +4781,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<referenceLocation>(nameof(referenceLocation))?.value; }
 		}
 		[JsonIgnore]
-		public double? waterwayDistance {
+		public decimal? waterwayDistance {
 			set { base.SetAttribute(new waterwayDistance { value = value }); }
 			get { return base.GetAttributeValue<waterwayDistance>(nameof(waterwayDistance))?.value; }
 		}
@@ -4931,12 +4931,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? orientationUncertainty {
+		public decimal? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -5026,7 +5026,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<radarBand>(nameof(radarBand))?.value; }
 		}
 		[JsonIgnore]
-		public double? waveLengthValue {
+		public decimal? waveLengthValue {
 			set { base.SetAttribute(new waveLengthValue { value = value }); }
 			get { return base.GetAttributeValue<waveLengthValue>(nameof(waveLengthValue))?.value; }
 		}
@@ -5111,12 +5111,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sectorBearing {
+		public decimal? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
 			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? sectorLineLength {
+		public decimal? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -5156,12 +5156,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sectorBearing {
+		public decimal? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
 			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? sectorLineLength {
+		public decimal? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -5246,7 +5246,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? signalDuration {
+		public decimal? signalDuration {
 			set { base.SetAttribute(new signalDuration { value = value }); }
 			get { return base.GetAttributeValue<signalDuration>(nameof(signalDuration))?.value; }
 		}
@@ -5292,12 +5292,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? speedMaximum {
+		public decimal? speedMaximum {
 			set { base.SetAttribute(new speedMaximum { value = value }); }
 			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))?.value; }
 		}
 		[JsonIgnore]
-		public double? speedMinimum {
+		public decimal? speedMinimum {
 			set { base.SetAttribute(new speedMinimum { value = value }); }
 			get { return base.GetAttributeValue<speedMinimum>(nameof(speedMinimum))?.value; }
 		}
@@ -5504,12 +5504,12 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
 		}
 		[JsonIgnore]
-		public double? speedMaximum {
+		public decimal? speedMaximum {
 			set { base.SetAttribute(new speedMaximum { value = value }); }
 			get { return base.GetAttributeValue<speedMaximum>(nameof(speedMaximum))?.value; }
 		}
 		[JsonIgnore]
-		public double? timeRelativeToTide {
+		public decimal? timeRelativeToTide {
 			set { base.SetAttribute(new timeRelativeToTide { value = value }); }
 			get { return base.GetAttributeValue<timeRelativeToTide>(nameof(timeRelativeToTide))?.value; }
 		}
@@ -5698,7 +5698,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? magneticAnomalyValue {
+		public decimal? magneticAnomalyValue {
 			set { base.SetAttribute(new magneticAnomalyValue { value = value }); }
 			get { return base.GetAttributeValue<magneticAnomalyValue>(nameof(magneticAnomalyValue))?.value; }
 		}
@@ -5744,12 +5744,12 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -5789,7 +5789,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? speedLimit {
+		public decimal? speedLimit {
 			set { base.SetAttribute(new speedLimit { value = value }); }
 			get { return base.GetAttributeValue<speedLimit>(nameof(speedLimit))?.value; }
 		}
@@ -5972,7 +5972,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? signalPeriod {
+		public decimal? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
@@ -6190,7 +6190,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<referenceTideType>(nameof(referenceTideType))?.value; }
 		}
 		[JsonIgnore]
-		public double? streamDepth {
+		public decimal? streamDepth {
 			set { base.SetAttribute(new streamDepth { value = value }); }
 			get { return base.GetAttributeValue<streamDepth>(nameof(streamDepth))?.value; }
 		}
@@ -6251,7 +6251,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -6296,7 +6296,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -6346,7 +6346,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<verticalClearanceUnlimited>(nameof(verticalClearanceUnlimited))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -6398,7 +6398,7 @@ namespace S100FC.S101.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -6463,7 +6463,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValue<sectorLimit>(nameof(sectorLimit)); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange {
+		public decimal? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
@@ -6565,7 +6565,7 @@ namespace S100FC.S101.ComplexAttributes
 			get { return base.GetAttributeValues<signalGroup>(nameof(signalGroup)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? signalPeriod {
+		public decimal? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
@@ -7388,7 +7388,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
+		public decimal? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -7403,7 +7403,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationUncertainty {
+		public decimal? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
@@ -7725,7 +7725,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -7832,12 +7832,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<dataAssessment>(nameof(dataAssessment))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -8169,12 +8169,12 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -8604,12 +8604,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<referenceYearForMagneticVariation>(nameof(referenceYearForMagneticVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? valueOfAnnualChangeInMagneticVariation {
+		public decimal? valueOfAnnualChangeInMagneticVariation {
 			set { base.SetAttribute(new valueOfAnnualChangeInMagneticVariation { value = value }); }
 			get { return base.GetAttributeValue<valueOfAnnualChangeInMagneticVariation>(nameof(valueOfAnnualChangeInMagneticVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? valueOfMagneticVariation {
+		public decimal? valueOfMagneticVariation {
 			set { base.SetAttribute(new valueOfMagneticVariation { value = value }); }
 			get { return base.GetAttributeValue<valueOfMagneticVariation>(nameof(valueOfMagneticVariation))?.value; }
 		}
@@ -8878,7 +8878,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -9371,7 +9371,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -9657,7 +9657,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -9788,7 +9788,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -9922,7 +9922,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -10229,7 +10229,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfVegetation>(nameof(categoryOfVegetation))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -10239,7 +10239,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -10249,7 +10249,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -10410,7 +10410,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfIce>(nameof(categoryOfIce))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -10420,7 +10420,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -10445,7 +10445,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -10816,7 +10816,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -11135,7 +11135,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -11358,7 +11358,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -11373,7 +11373,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -11408,7 +11408,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -12291,7 +12291,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -13045,7 +13045,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -13055,7 +13055,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity {
+		public decimal? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
@@ -13095,7 +13095,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -13385,7 +13385,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? iceFactor {
+		public decimal? iceFactor {
 			set { base.SetAttribute(new iceFactor { value = value }); }
 			get { return base.GetAttributeValue<iceFactor>(nameof(iceFactor))?.value; }
 		}
@@ -13961,7 +13961,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -13996,7 +13996,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -14306,7 +14306,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -14316,7 +14316,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -14346,7 +14346,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -14566,7 +14566,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -15139,7 +15139,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -15154,7 +15154,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<function>(nameof(function)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -15189,7 +15189,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -15519,7 +15519,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -15529,7 +15529,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -15569,7 +15569,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -15877,7 +15877,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -15892,7 +15892,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -15937,7 +15937,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -16244,7 +16244,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -16274,7 +16274,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -16531,7 +16531,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -16546,7 +16546,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -16576,7 +16576,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -16964,12 +16964,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -16994,7 +16994,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -17268,7 +17268,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -17293,7 +17293,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -17570,7 +17570,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -17595,7 +17595,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<reportedDate>(nameof(reportedDate))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -17803,7 +17803,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -17813,12 +17813,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -17848,7 +17848,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -18146,7 +18146,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -18156,12 +18156,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -18211,7 +18211,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -18728,7 +18728,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -19086,7 +19086,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -19351,7 +19351,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -19376,7 +19376,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -19617,7 +19617,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -19627,7 +19627,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity {
+		public decimal? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
@@ -19642,7 +19642,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<radarConspicuous>(nameof(radarConspicuous))?.value; }
 		}
 		[JsonIgnore]
-		public double? radius {
+		public decimal? radius {
 			set { base.SetAttribute(new radius { value = value }); }
 			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
 		}
@@ -19662,7 +19662,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -19949,12 +19949,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength {
+		public decimal? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth {
+		public decimal? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
@@ -19964,12 +19964,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? minimumBerthDepth {
+		public decimal? minimumBerthDepth {
 			set { base.SetAttribute(new minimumBerthDepth { value = value }); }
 			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
 		}
@@ -20208,7 +20208,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -20223,7 +20223,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -20258,7 +20258,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -20740,12 +20740,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -20760,12 +20760,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength {
+		public decimal? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth {
+		public decimal? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
@@ -20775,17 +20775,17 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -21016,7 +21016,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -21031,22 +21031,22 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength {
+		public decimal? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth {
+		public decimal? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -21056,12 +21056,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? liftingCapacity {
+		public decimal? liftingCapacity {
 			set { base.SetAttribute(new liftingCapacity { value = value }); }
 			get { return base.GetAttributeValue<liftingCapacity>(nameof(liftingCapacity))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -21076,7 +21076,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -21376,7 +21376,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -21625,12 +21625,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceLength {
+		public decimal? horizontalClearanceLength {
 			set { base.SetAttribute(new horizontalClearanceLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceLength>(nameof(horizontalClearanceLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalClearanceWidth {
+		public decimal? horizontalClearanceWidth {
 			set { base.SetAttribute(new horizontalClearanceWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalClearanceWidth>(nameof(horizontalClearanceWidth))?.value; }
 		}
@@ -21640,7 +21640,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -21830,12 +21830,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -21855,7 +21855,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -22039,12 +22039,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<horizontalClearanceFixed>(nameof(horizontalClearanceFixed)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -23291,12 +23291,12 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
@@ -23316,7 +23316,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -23521,7 +23521,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -23669,7 +23669,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? valueOfDepthContour {
+		public decimal? valueOfDepthContour {
 			set { base.SetAttribute(new valueOfDepthContour { value = value }); }
 			get { return base.GetAttributeValue<valueOfDepthContour>(nameof(valueOfDepthContour))?.value; }
 		}
@@ -23771,12 +23771,12 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
@@ -24469,7 +24469,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -24730,7 +24730,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding {
+		public decimal? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
@@ -24750,12 +24750,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth {
+		public decimal? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? surroundingDepth {
+		public decimal? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
 			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
@@ -24950,7 +24950,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -24985,7 +24985,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding {
+		public decimal? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
@@ -25015,12 +25015,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<pictorialRepresentation>(nameof(pictorialRepresentation))?.value; }
 		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth {
+		public decimal? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? surroundingDepth {
+		public decimal? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
 			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
@@ -25261,7 +25261,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -25271,7 +25271,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -25306,12 +25306,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding {
+		public decimal? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -25331,12 +25331,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<information>(nameof(information)); }
 		}
 		[JsonIgnore]
-		public double? defaultClearanceDepth {
+		public decimal? defaultClearanceDepth {
 			set { base.SetAttribute(new defaultClearanceDepth { value = value }); }
 			get { return base.GetAttributeValue<defaultClearanceDepth>(nameof(defaultClearanceDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? surroundingDepth {
+		public decimal? surroundingDepth {
 			set { base.SetAttribute(new surroundingDepth { value = value }); }
 			get { return base.GetAttributeValue<surroundingDepth>(nameof(surroundingDepth))?.value; }
 		}
@@ -25603,7 +25603,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding {
+		public decimal? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
@@ -25909,7 +25909,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -26112,7 +26112,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -26142,12 +26142,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfSounding {
+		public decimal? valueOfSounding {
 			set { base.SetAttribute(new valueOfSounding { value = value }); }
 			get { return base.GetAttributeValue<valueOfSounding>(nameof(valueOfSounding))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -26408,7 +26408,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<flareStack>(nameof(flareStack))?.value; }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -26438,7 +26438,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -26691,7 +26691,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? buriedDepth {
+		public decimal? buriedDepth {
 			set { base.SetAttribute(new buriedDepth { value = value }); }
 			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
 		}
@@ -27067,7 +27067,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? buriedDepth {
+		public decimal? buriedDepth {
 			set { base.SetAttribute(new buriedDepth { value = value }); }
 			get { return base.GetAttributeValue<buriedDepth>(nameof(buriedDepth))?.value; }
 		}
@@ -27082,12 +27082,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMaximumValue {
+		public decimal? depthRangeMaximumValue {
 			set { base.SetAttribute(new depthRangeMaximumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMaximumValue>(nameof(depthRangeMaximumValue))?.value; }
 		}
@@ -27550,7 +27550,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -27585,7 +27585,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -27998,7 +27998,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -28018,12 +28018,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -28287,7 +28287,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -28447,7 +28447,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -28467,12 +28467,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -28729,7 +28729,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -28898,7 +28898,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -28918,7 +28918,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -29165,7 +29165,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -29180,7 +29180,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -29406,7 +29406,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -29580,7 +29580,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -29707,7 +29707,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
 		}
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -29732,7 +29732,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -29969,7 +29969,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? depthRangeMinimumValue {
+		public decimal? depthRangeMinimumValue {
 			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
 			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
 		}
@@ -29994,7 +29994,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -30788,7 +30788,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -31545,7 +31545,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
@@ -32233,7 +32233,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double?[] orientationValue {
+		public decimal?[] orientationValue {
 			set { base.SetAttribute("orientationValue", [.. value.Select(e=> new orientationValue { value = e })]); }
 			get { return base.GetAttributeValues<orientationValue>(nameof(orientationValue)).Select(e=>e.value).ToArray(); }
 		}
@@ -32585,7 +32585,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -32895,7 +32895,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -32915,7 +32915,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange {
+		public decimal? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}
@@ -33307,12 +33307,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedVesselLength {
+		public decimal? maximumPermittedVesselLength {
 			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
 		}
@@ -33535,7 +33535,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<periodicDateRange>(nameof(periodicDateRange)); }
 		}
 		[JsonIgnore]
-		public double? radius {
+		public decimal? radius {
 			set { base.SetAttribute(new radius { value = value }); }
 			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
 		}
@@ -37440,7 +37440,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -37490,7 +37490,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange {
+		public decimal? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
@@ -37500,7 +37500,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -37793,7 +37793,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -38082,7 +38082,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -38117,7 +38117,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -38347,7 +38347,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -38377,7 +38377,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfNominalRange {
+		public decimal? valueOfNominalRange {
 			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
 		}
@@ -38662,7 +38662,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -38980,7 +38980,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -39293,7 +39293,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -39598,7 +39598,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -39908,7 +39908,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -40211,7 +40211,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -40742,12 +40742,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedVesselLength {
+		public decimal? maximumPermittedVesselLength {
 			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
 		}
@@ -40767,7 +40767,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -41041,7 +41041,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -41061,7 +41061,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<interoperabilityIdentifier>(nameof(interoperabilityIdentifier))?.value; }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -41101,7 +41101,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -41433,7 +41433,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -41448,7 +41448,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -41493,7 +41493,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -41820,7 +41820,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -41835,7 +41835,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -41880,7 +41880,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -42199,7 +42199,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -42214,7 +42214,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -42259,7 +42259,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -42583,7 +42583,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<condition>(nameof(condition))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -42598,7 +42598,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -42643,7 +42643,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -42965,7 +42965,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<colourPattern>(nameof(colourPattern))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -42980,7 +42980,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -43015,7 +43015,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmarkDaymarkShape>(nameof(topmarkDaymarkShape))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -43319,12 +43319,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -43359,7 +43359,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<topmark>(nameof(topmark)); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -43635,12 +43635,12 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? horizontalLength {
+		public decimal? horizontalLength {
 			set { base.SetAttribute(new horizontalLength { value = value }); }
 			get { return base.GetAttributeValue<horizontalLength>(nameof(horizontalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalWidth {
+		public decimal? horizontalWidth {
 			set { base.SetAttribute(new horizontalWidth { value = value }); }
 			get { return base.GetAttributeValue<horizontalWidth>(nameof(horizontalWidth))?.value; }
 		}
@@ -43670,7 +43670,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -43934,7 +43934,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -44106,7 +44106,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<fixedDateRange>(nameof(fixedDateRange)); }
 		}
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
@@ -44297,7 +44297,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValue<signalGroup>(nameof(signalGroup))?.value; }
 		}
 		[JsonIgnore]
-		public double? signalPeriod {
+		public decimal? signalPeriod {
 			set { base.SetAttribute(new signalPeriod { value = value }); }
 			get { return base.GetAttributeValue<signalPeriod>(nameof(signalPeriod))?.value; }
 		}
@@ -44312,7 +44312,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange {
+		public decimal? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}
@@ -44511,7 +44511,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission {
+		public decimal? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
@@ -44703,7 +44703,7 @@ namespace S100FC.S101.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission {
+		public decimal? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
@@ -44911,7 +44911,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<communicationChannel>(nameof(communicationChannel)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission {
+		public decimal? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
@@ -45163,7 +45163,7 @@ namespace S100FC.S101.FeatureTypes
 			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? valueOfMaximumRange {
+		public decimal? valueOfMaximumRange {
 			set { base.SetAttribute(new valueOfMaximumRange { value = value }); }
 			get { return base.GetAttributeValue<valueOfMaximumRange>(nameof(valueOfMaximumRange))?.value; }
 		}

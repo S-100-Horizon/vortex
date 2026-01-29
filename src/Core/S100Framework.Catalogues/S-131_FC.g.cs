@@ -81,7 +81,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Available Berthing Length";
 
-		public static implicit operator availableBerthingLength(double? value) => new availableBerthingLength { value = value };
+		public static implicit operator availableBerthingLength(decimal? value) => new availableBerthingLength { value = value };
 	}
 
 	/// <summary>
@@ -909,7 +909,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Distance";
 
-		public static implicit operator distance(double? value) => new distance { value = value };
+		public static implicit operator distance(decimal? value) => new distance { value = value };
 	}
 
 	/// <summary>
@@ -941,7 +941,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Elevation";
 
-		public static implicit operator elevation(double? value) => new elevation { value = value };
+		public static implicit operator elevation(decimal? value) => new elevation { value = value };
 	}
 
 	/// <summary>
@@ -1089,7 +1089,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Height";
 
-		public static implicit operator height(double? value) => new height { value = value };
+		public static implicit operator height(decimal? value) => new height { value = value };
 	}
 
 	/// <summary>
@@ -1102,7 +1102,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Distance Uncertainty";
 
-		public static implicit operator horizontalDistanceUncertainty(double? value) => new horizontalDistanceUncertainty { value = value };
+		public static implicit operator horizontalDistanceUncertainty(decimal? value) => new horizontalDistanceUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -1280,7 +1280,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Draught";
 
-		public static implicit operator maximumPermittedDraught(double? value) => new maximumPermittedDraught { value = value };
+		public static implicit operator maximumPermittedDraught(decimal? value) => new maximumPermittedDraught { value = value };
 	}
 
 	/// <summary>
@@ -1293,7 +1293,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Maximum Permitted Vessel Length";
 
-		public static implicit operator maximumPermittedVesselLength(double? value) => new maximumPermittedVesselLength { value = value };
+		public static implicit operator maximumPermittedVesselLength(decimal? value) => new maximumPermittedVesselLength { value = value };
 	}
 
 	/// <summary>
@@ -1381,7 +1381,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Berth Depth";
 
-		public static implicit operator minimumBerthDepth(double? value) => new minimumBerthDepth { value = value };
+		public static implicit operator minimumBerthDepth(decimal? value) => new minimumBerthDepth { value = value };
 	}
 
 	/// <summary>
@@ -1528,7 +1528,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Uncertainty";
 
-		public static implicit operator orientationUncertainty(double? value) => new orientationUncertainty { value = value };
+		public static implicit operator orientationUncertainty(decimal? value) => new orientationUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -1541,7 +1541,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Value";
 
-		public static implicit operator orientationValue(double? value) => new orientationValue { value = value };
+		public static implicit operator orientationValue(decimal? value) => new orientationValue { value = value };
 	}
 
 	/// <summary>
@@ -1724,7 +1724,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Radius";
 
-		public static implicit operator radius(double? value) => new radius { value = value };
+		public static implicit operator radius(decimal? value) => new radius { value = value };
 	}
 
 	/// <summary>
@@ -1788,7 +1788,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Safe Working Load";
 
-		public static implicit operator safeWorkingLoad(double? value) => new safeWorkingLoad { value = value };
+		public static implicit operator safeWorkingLoad(decimal? value) => new safeWorkingLoad { value = value };
 	}
 
 	/// <summary>
@@ -1858,7 +1858,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sill Depth";
 
-		public static implicit operator sillDepth(double? value) => new sillDepth { value = value };
+		public static implicit operator sillDepth(decimal? value) => new sillDepth { value = value };
 	}
 
 	/// <summary>
@@ -2174,7 +2174,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Fixed";
 
-		public static implicit operator uncertaintyFixed(double? value) => new uncertaintyFixed { value = value };
+		public static implicit operator uncertaintyFixed(decimal? value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -2187,7 +2187,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Variable Factor";
 
-		public static implicit operator uncertaintyVariableFactor(double? value) => new uncertaintyVariableFactor { value = value };
+		public static implicit operator uncertaintyVariableFactor(decimal? value) => new uncertaintyVariableFactor { value = value };
 	}
 
 	/// <summary>
@@ -2200,7 +2200,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Clearance Value";
 
-		public static implicit operator verticalClearanceValue(double? value) => new verticalClearanceValue { value = value };
+		public static implicit operator verticalClearanceValue(decimal? value) => new verticalClearanceValue { value = value };
 	}
 
 	/// <summary>
@@ -2259,7 +2259,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vertical Length";
 
-		public static implicit operator verticalLength(double? value) => new verticalLength { value = value };
+		public static implicit operator verticalLength(decimal? value) => new verticalLength { value = value };
 	}
 
 	/// <summary>
@@ -2334,7 +2334,7 @@ namespace S100FC.S131.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vessels Characteristics Value";
 
-		public static implicit operator vesselsCharacteristicsValue(double? value) => new vesselsCharacteristicsValue { value = value };
+		public static implicit operator vesselsCharacteristicsValue(decimal? value) => new vesselsCharacteristicsValue { value = value };
 	}
 
 	/// <summary>
@@ -2771,12 +2771,12 @@ namespace S100FC.S131.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -3003,12 +3003,12 @@ namespace S100FC.S131.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? orientationUncertainty {
+		public decimal? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
 		[JsonIgnore]
-		public double? orientationValue {
+		public decimal? orientationValue {
 			set { base.SetAttribute(new orientationValue { value = value }); }
 			get { return base.GetAttributeValue<orientationValue>(nameof(orientationValue))?.value; }
 		}
@@ -3548,12 +3548,12 @@ namespace S100FC.S131.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -3603,7 +3603,7 @@ namespace S100FC.S131.ComplexAttributes
 			get { return base.GetAttributeValue<vesselsCharacteristics>(nameof(vesselsCharacteristics))?.value; }
 		}
 		[JsonIgnore]
-		public double? vesselsCharacteristicsValue {
+		public decimal? vesselsCharacteristicsValue {
 			set { base.SetAttribute(new vesselsCharacteristicsValue { value = value }); }
 			get { return base.GetAttributeValue<vesselsCharacteristicsValue>(nameof(vesselsCharacteristicsValue))?.value; }
 		}
@@ -3728,7 +3728,7 @@ namespace S100FC.S131.ComplexAttributes
 			get { return base.GetAttributeValue<cardinalDirection>(nameof(cardinalDirection))?.value; }
 		}
 		[JsonIgnore]
-		public double? distance {
+		public decimal? distance {
 			set { base.SetAttribute(new distance { value = value }); }
 			get { return base.GetAttributeValue<distance>(nameof(distance))?.value; }
 		}
@@ -6458,7 +6458,7 @@ namespace S100FC.S131.FeatureTypes
 			get { return base.GetAttributeValues<categoryOfCargo>(nameof(categoryOfCargo)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? radius {
+		public decimal? radius {
 			set { base.SetAttribute(new radius { value = value }); }
 			get { return base.GetAttributeValue<radius>(nameof(radius))?.value; }
 		}
@@ -6738,7 +6738,7 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? availableBerthingLength {
+		public decimal? availableBerthingLength {
 			set { base.SetAttribute(new availableBerthingLength { value = value }); }
 			get { return base.GetAttributeValue<availableBerthingLength>(nameof(availableBerthingLength))?.value; }
 		}
@@ -6748,17 +6748,17 @@ namespace S100FC.S131.FeatureTypes
 			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
 		}
 		[JsonIgnore]
-		public double? safeWorkingLoad {
+		public decimal? safeWorkingLoad {
 			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
 			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
 		}
 		[JsonIgnore]
-		public double? minimumBerthDepth {
+		public decimal? minimumBerthDepth {
 			set { base.SetAttribute(new minimumBerthDepth { value = value }); }
 			get { return base.GetAttributeValue<minimumBerthDepth>(nameof(minimumBerthDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? elevation {
+		public decimal? elevation {
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
@@ -7225,17 +7225,17 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? height {
+		public decimal? height {
 			set { base.SetAttribute(new height { value = value }); }
 			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? safeWorkingLoad {
+		public decimal? safeWorkingLoad {
 			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
 			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
 		}
@@ -7419,12 +7419,12 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
+		public decimal? sillDepth {
 			set { base.SetAttribute(new sillDepth { value = value }); }
 			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -7711,7 +7711,7 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
+		public decimal? sillDepth {
 			set { base.SetAttribute(new sillDepth { value = value }); }
 			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
 		}
@@ -7772,12 +7772,12 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
+		public decimal? sillDepth {
 			set { base.SetAttribute(new sillDepth { value = value }); }
 			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -8322,7 +8322,7 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
+		public decimal? sillDepth {
 			set { base.SetAttribute(new sillDepth { value = value }); }
 			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
 		}
@@ -8383,7 +8383,7 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sillDepth {
+		public decimal? sillDepth {
 			set { base.SetAttribute(new sillDepth { value = value }); }
 			get { return base.GetAttributeValue<sillDepth>(nameof(sillDepth))?.value; }
 		}
@@ -8444,17 +8444,17 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? maximumPermittedDraught {
+		public decimal? maximumPermittedDraught {
 			set { base.SetAttribute(new maximumPermittedDraught { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedDraught>(nameof(maximumPermittedDraught))?.value; }
 		}
 		[JsonIgnore]
-		public double? maximumPermittedVesselLength {
+		public decimal? maximumPermittedVesselLength {
 			set { base.SetAttribute(new maximumPermittedVesselLength { value = value }); }
 			get { return base.GetAttributeValue<maximumPermittedVesselLength>(nameof(maximumPermittedVesselLength))?.value; }
 		}
 		[JsonIgnore]
-		public double? verticalLength {
+		public decimal? verticalLength {
 			set { base.SetAttribute(new verticalLength { value = value }); }
 			get { return base.GetAttributeValue<verticalLength>(nameof(verticalLength))?.value; }
 		}
@@ -8542,7 +8542,7 @@ namespace S100FC.S131.FeatureTypes
 			get { return base.GetAttributeValue<bollardDescription>(nameof(bollardDescription))?.value; }
 		}
 		[JsonIgnore]
-		public double? safeWorkingLoad {
+		public decimal? safeWorkingLoad {
 			set { base.SetAttribute(new safeWorkingLoad { value = value }); }
 			get { return base.GetAttributeValue<safeWorkingLoad>(nameof(safeWorkingLoad))?.value; }
 		}
@@ -9167,7 +9167,7 @@ namespace S100FC.S131.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? verticalClearanceValue {
+		public decimal? verticalClearanceValue {
 			set { base.SetAttribute(new verticalClearanceValue { value = value }); }
 			get { return base.GetAttributeValue<verticalClearanceValue>(nameof(verticalClearanceValue))?.value; }
 		}
@@ -9759,7 +9759,7 @@ namespace S100FC.S131.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
+		public decimal? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -9769,7 +9769,7 @@ namespace S100FC.S131.FeatureTypes
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public double? orientationUncertainty {
+		public decimal? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}

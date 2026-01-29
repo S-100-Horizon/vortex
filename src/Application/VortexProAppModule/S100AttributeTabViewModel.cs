@@ -314,12 +314,13 @@ namespace VortexProAppModule
                     }
 
                     object instance;
-                    if (DBNull.Value.Equals(inspector["JSON"]) || string.IsNullOrEmpty(Convert.ToString(inspector["JSON"]))) {
+                    if (DBNull.Value.Equals(inspector["FLATTEN"]) || string.IsNullOrEmpty(Convert.ToString(inspector["FLATTEN"]))) {
                         instance = Activator.CreateInstance(type);
                     }
                     else {
-                        var json = Convert.ToString(inspector["JSON"]);
-                        instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
+                        var json = Convert.ToString(inspector["FLATTEN"]);
+                        instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, code);
+                        //instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 
                     if (instance is S100FC.InformationType informationType) {
@@ -510,13 +511,14 @@ namespace VortexProAppModule
                 var updated = false;
 
                 if (sender is S100AttributeEditorViewModel viewModel) {
-                    var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
-                    if (Inspector.IsNull("json")) {
-                        Inspector["json"] = json;
+                    var json = viewModel.Flatten();
+                    //var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
+                    if (Inspector.IsNull("flatten")) {
+                        Inspector["flatten"] = json;
                         updated |= true;
                     }
-                    else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
-                        Inspector["json"] = json;
+                    else if (string.Compare(json, Convert.ToString(Inspector["flatten"]), true) != 0) {
+                        Inspector["flatten"] = json;
                         updated |= true;
                     }
                 }
@@ -553,13 +555,14 @@ namespace VortexProAppModule
                         }
 
                         //TODO: DELETE [JSON]
-                        var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
-                        if (Inspector.IsNull("json")) {
-                            Inspector["json"] = json;
+                        var json = viewModel.Flatten();
+                        //var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
+                        if (Inspector.IsNull("flatten")) {
+                            Inspector["flatten"] = json;
                             updated |= true;
                         }
-                        else if (string.Compare(json, Convert.ToString(Inspector["json"]), true) != 0) {
-                            Inspector["json"] = json;
+                        else if (string.Compare(json, Convert.ToString(Inspector["flatten"]), true) != 0) {
+                            Inspector["flatten"] = json;
                             updated |= true;
                         }
                     }

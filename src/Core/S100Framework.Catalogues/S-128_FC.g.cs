@@ -68,7 +68,7 @@ namespace S100FC.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Approximate Grid Resolution";
 
-		public static implicit operator approximateGridResolution(double? value) => new approximateGridResolution { value = value };
+		public static implicit operator approximateGridResolution(decimal? value) => new approximateGridResolution { value = value };
 	}
 
 	/// <summary>
@@ -826,7 +826,7 @@ namespace S100FC.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Price";
 
-		public static implicit operator price(double? value) => new price { value = value };
+		public static implicit operator price(decimal? value) => new price { value = value };
 	}
 
 	/// <summary>
@@ -1324,7 +1324,7 @@ namespace S100FC.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Paper Width";
 
-		public static implicit operator paperWidth(double? value) => new paperWidth { value = value };
+		public static implicit operator paperWidth(decimal? value) => new paperWidth { value = value };
 	}
 
 	/// <summary>
@@ -1337,7 +1337,7 @@ namespace S100FC.S128.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Paper Length";
 
-		public static implicit operator paperLength(double? value) => new paperLength { value = value };
+		public static implicit operator paperLength(decimal? value) => new paperLength { value = value };
 	}
 
 	/// <summary>
@@ -1557,12 +1557,12 @@ namespace S100FC.S128.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? paperWidth {
+		public decimal? paperWidth {
 			set { base.SetAttribute(new paperWidth { value = value }); }
 			get { return base.GetAttributeValue<paperWidth>(nameof(paperWidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? paperLength {
+		public decimal? paperLength {
 			set { base.SetAttribute(new paperLength { value = value }); }
 			get { return base.GetAttributeValue<paperLength>(nameof(paperLength))?.value; }
 		}
@@ -1945,7 +1945,7 @@ namespace S100FC.S128.ComplexAttributes
 			get { return base.GetAttributeValue<currency>(nameof(currency))?.value; }
 		}
 		[JsonIgnore]
-		public double? price {
+		public decimal? price {
 			set { base.SetAttribute(new price { value = value }); }
 			get { return base.GetAttributeValue<price>(nameof(price))?.value; }
 		}
@@ -3798,7 +3798,7 @@ namespace S100FC.S128.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public double?[] approximateGridResolution {
+		public decimal?[] approximateGridResolution {
 			set { base.SetAttribute("approximateGridResolution", [.. value.Select(e=> new approximateGridResolution { value = e })]); }
 			get { return base.GetAttributeValues<approximateGridResolution>(nameof(approximateGridResolution)).Select(e=>e.value).ToArray(); }
 		}

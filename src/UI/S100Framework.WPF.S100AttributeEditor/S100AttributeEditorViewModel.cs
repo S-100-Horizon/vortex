@@ -79,6 +79,8 @@ namespace S100Framework.WPF.ViewModel
             this.code = this._informationType.S100FC_code;
             this.attributeBindingsCatalogue = this._informationType.attributeBindingsCatalogue;
 
+            this.Flatten = () => this._informationType.Flatten();
+
             if (informationType is IInformationBindings informationBindings) {
                 this.HasInformationBindings = true;
 
@@ -141,6 +143,8 @@ namespace S100Framework.WPF.ViewModel
             this._uid = uid;
             this.code = this._featureType.S100FC_code;
             this.attributeBindingsCatalogue = this._featureType.attributeBindingsCatalogue;
+
+            this.Flatten = () => this._featureType.Flatten();
 
             if (feature is IInformationBindings informationBindings) {
                 var _informationBindingDefinitions = informationBindings.GetInformationBindingsDefinitions();
@@ -327,6 +331,8 @@ namespace S100Framework.WPF.ViewModel
         #endregion
 
         public object? Instance => this._informationType != default ? this._informationType : this._featureType;
+
+        public Func<string?> Flatten { get; private set; }
 
         private readonly S100FC.InformationType? _informationType = default;
         private readonly S100FC.FeatureType? _featureType = default;

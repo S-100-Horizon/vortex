@@ -201,7 +201,7 @@ namespace S100FC
         [JsonIgnore]
         public override string valueType => "real";
 
-        public double? value { get; set; } = default;
+        public decimal? value { get; set; } = default;
 
         [JsonIgnore]
         public override bool HasValue => value.HasValue;

@@ -877,7 +877,7 @@ namespace S100FC.S124.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Fixed";
 
-		public static implicit operator uncertaintyFixed(double? value) => new uncertaintyFixed { value = value };
+		public static implicit operator uncertaintyFixed(decimal? value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -1451,7 +1451,7 @@ namespace S100FC.S124.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}

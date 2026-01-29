@@ -256,7 +256,7 @@ namespace TestAttributes
                     else {
                         var prefix = valueType.ToLowerInvariant() switch {
                             "boolean" => "Boolean",
-                            "real" => "double",
+                            "real" => "decimal",
                             "text" => "String",
                             //"s100_truncateddate" => "DateOnly",
                             "s100_truncateddate" => "String",

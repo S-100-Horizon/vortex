@@ -71,7 +71,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Base Station Antenna Height";
 
-		public static implicit operator baseStationAntennaHeight(double? value) => new baseStationAntennaHeight { value = value };
+		public static implicit operator baseStationAntennaHeight(decimal? value) => new baseStationAntennaHeight { value = value };
 	}
 
 	/// <summary>
@@ -678,7 +678,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Downlink Bandwidth";
 
-		public static implicit operator downlinkBandwidth(double? value) => new downlinkBandwidth { value = value };
+		public static implicit operator downlinkBandwidth(decimal? value) => new downlinkBandwidth { value = value };
 	}
 
 	/// <summary>
@@ -691,7 +691,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Estimated Range of Transmission";
 
-		public static implicit operator estimatedRangeOfTransmission(double? value) => new estimatedRangeOfTransmission { value = value };
+		public static implicit operator estimatedRangeOfTransmission(decimal? value) => new estimatedRangeOfTransmission { value = value };
 	}
 
 	/// <summary>
@@ -829,7 +829,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Horizontal Distance Uncertainty";
 
-		public static implicit operator horizontalDistanceUncertainty(double? value) => new horizontalDistanceUncertainty { value = value };
+		public static implicit operator horizontalDistanceUncertainty(decimal? value) => new horizontalDistanceUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -1038,7 +1038,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Received Power";
 
-		public static implicit operator minimumReceivedPower(double? value) => new minimumReceivedPower { value = value };
+		public static implicit operator minimumReceivedPower(decimal? value) => new minimumReceivedPower { value = value };
 	}
 
 	/// <summary>
@@ -1051,7 +1051,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Minimum Signal to Interference Noise Ratio";
 
-		public static implicit operator minimumSignalToInterferenceNoiseRatio(double? value) => new minimumSignalToInterferenceNoiseRatio { value = value };
+		public static implicit operator minimumSignalToInterferenceNoiseRatio(decimal? value) => new minimumSignalToInterferenceNoiseRatio { value = value };
 	}
 
 	/// <summary>
@@ -1212,7 +1212,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Orientation Uncertainty";
 
-		public static implicit operator orientationUncertainty(double? value) => new orientationUncertainty { value = value };
+		public static implicit operator orientationUncertainty(decimal? value) => new orientationUncertainty { value = value };
 	}
 
 	/// <summary>
@@ -1225,7 +1225,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Packet Delay";
 
-		public static implicit operator packetDelay(double? value) => new packetDelay { value = value };
+		public static implicit operator packetDelay(decimal? value) => new packetDelay { value = value };
 	}
 
 	/// <summary>
@@ -1290,7 +1290,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Presumed Receiver Antenna Height";
 
-		public static implicit operator presumedReceiverAntennaHeight(double? value) => new presumedReceiverAntennaHeight { value = value };
+		public static implicit operator presumedReceiverAntennaHeight(decimal? value) => new presumedReceiverAntennaHeight { value = value };
 	}
 
 	/// <summary>
@@ -1358,7 +1358,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Bearing";
 
-		public static implicit operator sectorBearing(double? value) => new sectorBearing { value = value };
+		public static implicit operator sectorBearing(decimal? value) => new sectorBearing { value = value };
 	}
 
 	/// <summary>
@@ -1371,7 +1371,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Sector Line Length";
 
-		public static implicit operator sectorLineLength(double? value) => new sectorLineLength { value = value };
+		public static implicit operator sectorLineLength(decimal? value) => new sectorLineLength { value = value };
 	}
 
 	/// <summary>
@@ -1621,7 +1621,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Transmission Power";
 
-		public static implicit operator transmissionPower(double? value) => new transmissionPower { value = value };
+		public static implicit operator transmissionPower(decimal? value) => new transmissionPower { value = value };
 	}
 
 	/// <summary>
@@ -1756,7 +1756,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Fixed";
 
-		public static implicit operator uncertaintyFixed(double? value) => new uncertaintyFixed { value = value };
+		public static implicit operator uncertaintyFixed(decimal? value) => new uncertaintyFixed { value = value };
 	}
 
 	/// <summary>
@@ -1769,7 +1769,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uncertainty Variable Factor";
 
-		public static implicit operator uncertaintyVariableFactor(double? value) => new uncertaintyVariableFactor { value = value };
+		public static implicit operator uncertaintyVariableFactor(decimal? value) => new uncertaintyVariableFactor { value = value };
 	}
 
 	/// <summary>
@@ -1782,7 +1782,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Uplink Bandwidth";
 
-		public static implicit operator uplinkBandwidth(double? value) => new uplinkBandwidth { value = value };
+		public static implicit operator uplinkBandwidth(decimal? value) => new uplinkBandwidth { value = value };
 	}
 
 	/// <summary>
@@ -1844,7 +1844,7 @@ namespace S100FC.S123.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Vessels Characteristics Value";
 
-		public static implicit operator vesselsCharacteristicsValue(double? value) => new vesselsCharacteristicsValue { value = value };
+		public static implicit operator vesselsCharacteristicsValue(decimal? value) => new vesselsCharacteristicsValue { value = value };
 	}
 
 	/// <summary>
@@ -2100,17 +2100,17 @@ namespace S100FC.S123.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? minimumReceivedPower {
+		public decimal? minimumReceivedPower {
 			set { base.SetAttribute(new minimumReceivedPower { value = value }); }
 			get { return base.GetAttributeValue<minimumReceivedPower>(nameof(minimumReceivedPower))?.value; }
 		}
 		[JsonIgnore]
-		public double? presumedReceiverAntennaHeight {
+		public decimal? presumedReceiverAntennaHeight {
 			set { base.SetAttribute(new presumedReceiverAntennaHeight { value = value }); }
 			get { return base.GetAttributeValue<presumedReceiverAntennaHeight>(nameof(presumedReceiverAntennaHeight))?.value; }
 		}
 		[JsonIgnore]
-		public double? minimumSignalToInterferenceNoiseRatio {
+		public decimal? minimumSignalToInterferenceNoiseRatio {
 			set { base.SetAttribute(new minimumSignalToInterferenceNoiseRatio { value = value }); }
 			get { return base.GetAttributeValue<minimumSignalToInterferenceNoiseRatio>(nameof(minimumSignalToInterferenceNoiseRatio))?.value; }
 		}
@@ -2468,12 +2468,12 @@ namespace S100FC.S123.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -2903,12 +2903,12 @@ namespace S100FC.S123.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sectorBearing {
+		public decimal? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
 			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? sectorLineLength {
+		public decimal? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -2948,12 +2948,12 @@ namespace S100FC.S123.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? sectorBearing {
+		public decimal? sectorBearing {
 			set { base.SetAttribute(new sectorBearing { value = value }); }
 			get { return base.GetAttributeValue<sectorBearing>(nameof(sectorBearing))?.value; }
 		}
 		[JsonIgnore]
-		public double? sectorLineLength {
+		public decimal? sectorLineLength {
 			set { base.SetAttribute(new sectorLineLength { value = value }); }
 			get { return base.GetAttributeValue<sectorLineLength>(nameof(sectorLineLength))?.value; }
 		}
@@ -3317,12 +3317,12 @@ namespace S100FC.S123.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public double? uncertaintyFixed {
+		public decimal? uncertaintyFixed {
 			set { base.SetAttribute(new uncertaintyFixed { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyFixed>(nameof(uncertaintyFixed))?.value; }
 		}
 		[JsonIgnore]
-		public double? uncertaintyVariableFactor {
+		public decimal? uncertaintyVariableFactor {
 			set { base.SetAttribute(new uncertaintyVariableFactor { value = value }); }
 			get { return base.GetAttributeValue<uncertaintyVariableFactor>(nameof(uncertaintyVariableFactor))?.value; }
 		}
@@ -3367,7 +3367,7 @@ namespace S100FC.S123.ComplexAttributes
 			get { return base.GetAttributeValue<vesselsCharacteristics>(nameof(vesselsCharacteristics))?.value; }
 		}
 		[JsonIgnore]
-		public double? vesselsCharacteristicsValue {
+		public decimal? vesselsCharacteristicsValue {
 			set { base.SetAttribute(new vesselsCharacteristicsValue { value = value }); }
 			get { return base.GetAttributeValue<vesselsCharacteristicsValue>(nameof(vesselsCharacteristicsValue))?.value; }
 		}
@@ -4537,17 +4537,17 @@ namespace S100FC.S123.InformationTypes
 			get { return base.GetAttributeValues<typeOfConnectivityResource>(nameof(typeOfConnectivityResource)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
-		public double? uplinkBandwidth {
+		public decimal? uplinkBandwidth {
 			set { base.SetAttribute(new uplinkBandwidth { value = value }); }
 			get { return base.GetAttributeValue<uplinkBandwidth>(nameof(uplinkBandwidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? downlinkBandwidth {
+		public decimal? downlinkBandwidth {
 			set { base.SetAttribute(new downlinkBandwidth { value = value }); }
 			get { return base.GetAttributeValue<downlinkBandwidth>(nameof(downlinkBandwidth))?.value; }
 		}
 		[JsonIgnore]
-		public double? packetDelay {
+		public decimal? packetDelay {
 			set { base.SetAttribute(new packetDelay { value = value }); }
 			get { return base.GetAttributeValue<packetDelay>(nameof(packetDelay))?.value; }
 		}
@@ -5589,12 +5589,12 @@ namespace S100FC.S123.FeatureTypes
 			get { return base.GetAttributeValue<communicationStandard>(nameof(communicationStandard))?.value; }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission {
+		public decimal? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
 		[JsonIgnore]
-		public double? baseStationAntennaHeight {
+		public decimal? baseStationAntennaHeight {
 			set { base.SetAttribute(new baseStationAntennaHeight { value = value }); }
 			get { return base.GetAttributeValue<baseStationAntennaHeight>(nameof(baseStationAntennaHeight))?.value; }
 		}
@@ -6415,7 +6415,7 @@ namespace S100FC.S123.FeatureTypes
 			get { return base.GetAttributeValue<languageInformation>(nameof(languageInformation))?.value; }
 		}
 		[JsonIgnore]
-		public double? transmissionPower {
+		public decimal? transmissionPower {
 			set { base.SetAttribute(new transmissionPower { value = value }); }
 			get { return base.GetAttributeValue<transmissionPower>(nameof(transmissionPower))?.value; }
 		}
@@ -6610,7 +6610,7 @@ namespace S100FC.S123.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfRadioStation>(nameof(categoryOfRadioStation))?.value; }
 		}
 		[JsonIgnore]
-		public double? estimatedRangeOfTransmission {
+		public decimal? estimatedRangeOfTransmission {
 			set { base.SetAttribute(new estimatedRangeOfTransmission { value = value }); }
 			get { return base.GetAttributeValue<estimatedRangeOfTransmission>(nameof(estimatedRangeOfTransmission))?.value; }
 		}
@@ -7249,7 +7249,7 @@ namespace S100FC.S123.FeatureTypes
 			get { return base.GetAttributeValue<categoryOfTemporalVariation>(nameof(categoryOfTemporalVariation))?.value; }
 		}
 		[JsonIgnore]
-		public double? horizontalDistanceUncertainty {
+		public decimal? horizontalDistanceUncertainty {
 			set { base.SetAttribute(new horizontalDistanceUncertainty { value = value }); }
 			get { return base.GetAttributeValue<horizontalDistanceUncertainty>(nameof(horizontalDistanceUncertainty))?.value; }
 		}
@@ -7259,7 +7259,7 @@ namespace S100FC.S123.FeatureTypes
 			get { return base.GetAttributeValue<horizontalPositionUncertainty>(nameof(horizontalPositionUncertainty)); }
 		}
 		[JsonIgnore]
-		public double? orientationUncertainty {
+		public decimal? orientationUncertainty {
 			set { base.SetAttribute(new orientationUncertainty { value = value }); }
 			get { return base.GetAttributeValue<orientationUncertainty>(nameof(orientationUncertainty))?.value; }
 		}
