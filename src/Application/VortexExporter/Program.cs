@@ -263,7 +263,7 @@ namespace S100Framework.Applications
 
                             var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;// jsonSerializerOptionsS101
 
-                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                             var feature = new S100FC.YAML.Feature {
                                 Prim = Primitive.NoGeometry,
@@ -326,7 +326,7 @@ namespace S100Framework.Applications
 
                             var code = Convert.ToString(current["code"]);
 
-                            var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+                            var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                             var prim = shapetype switch {
                                 GeometryType.Point => Primitive.Point,
@@ -420,12 +420,12 @@ namespace S100Framework.Applications
                                             var asso = new S100FC.YAML.Association {
                                                 Name = binding.GetType().GenericTypeArguments[0].Name,
                                                 Role = binding.role,
-                                                To = $"110:{binding.featureId!}:1"
+                                                To = $"110:{binding.featureId!.Substring(1)}:1"
                                             };
 
                                             feature?.AddFeatureAssociation(asso);
 
-                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.Substring(1)}:1"));
                                             if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                                 featureTypesAdded.Add(binding.featureId);
                                                 dataset?.AddFeature(noGeometry);
