@@ -211,10 +211,6 @@ namespace S100Framework.Applications
                     case 40: { // M_QUAL_QualityOfData // SKIN OF EARTH
 
                             var instance = new QualityOfBathymetricData {
-                                categoryOfTemporalVariation = default,
-                                dataAssessment = default,
-                                featuresDetected = default!,
-                                fullSeafloorCoverageAchieved = default,
                             };
 
                             // TODO: categoryOfTemporalVariation

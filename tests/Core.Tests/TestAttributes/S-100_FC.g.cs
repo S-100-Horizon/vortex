@@ -215,7 +215,7 @@ namespace S100FC
         public String? value { get; set; } = default;
 
         [JsonIgnore]
-        public override bool HasValue => value == null;
+        public override bool HasValue => value != null;
     }
 
     public abstract class S100_TruncatedDateAttribute : SimpleAttribute
@@ -226,7 +226,7 @@ namespace S100FC
         public String? value { get; set; } = default;
 
         [JsonIgnore]
-        public override bool HasValue => value == null;
+        public override bool HasValue => value != null;
     }
 
     public abstract class DateAttribute : SimpleAttribute
@@ -270,7 +270,7 @@ namespace S100FC
         public String? value { get; set; } = default;
 
         [JsonIgnore]
-        public override bool HasValue => value == null;
+        public override bool HasValue => value != null;
     }
 
     public abstract class UrlTimeAttribute : SimpleAttribute
@@ -281,7 +281,7 @@ namespace S100FC
         public String? value { get; set; } = default;
 
         [JsonIgnore]
-        public override bool HasValue => value == null;
+        public override bool HasValue => value != null;
     }
 
     public abstract class UriTimeAttribute : SimpleAttribute
@@ -292,7 +292,7 @@ namespace S100FC
         public String? value { get; set; } = default;
 
         [JsonIgnore]
-        public override bool HasValue => value == null;
+        public override bool HasValue => value != null;
     }
 
     public abstract class EnumerationAttribute : SimpleAttribute
@@ -529,14 +529,14 @@ namespace S100FC
             return [.. attributeBindingsCatalogue!.Where(e => e.lower > 0)];
         }
 
-        protected void SetAttribute(attributeBinding attribute) {
+        public void SetAttribute(attributeBinding attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
                 var value = this.attributeBindings.SingleOrDefault(e => e.S100FC_code.Equals(attribute.S100FC_code));
-                if (value == default) {                    
-                    if (attribute.HasValue) //TODO:  NULL ???
-                        this.attributeBindings = [.. this.attributeBindings, attribute];
+                if (value == default) {
+                    //if (attribute.HasValue) //TODO:  NULL ???
+                    this.attributeBindings = [.. this.attributeBindings, attribute];
                 }
                 else {
                     var index = Array.IndexOf(this.attributeBindings, value);
@@ -548,7 +548,7 @@ namespace S100FC
             }
         }
 
-        protected void SetAttribute(attributeBinding[] attribute) {
+        public void SetAttribute(attributeBinding?[] attribute) {
             if (attribute == null) return;
             foreach (var a in attribute) {
                 var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(a.S100FC_code));
