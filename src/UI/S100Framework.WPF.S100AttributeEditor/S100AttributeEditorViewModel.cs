@@ -86,6 +86,13 @@ namespace S100Framework.WPF.ViewModel
             }
 
             this.attributeBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is AttributeViewModel attribute) {
+                            attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if (item is SimpleAttributeViewModel simpleAttribute) {
@@ -94,9 +101,27 @@ namespace S100Framework.WPF.ViewModel
                         else if (item is ComplexAttributeViewModel complexAttribute) {
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
-                    }
-                    this.OnPropertyChanged("attributes");
+                    }                    
                 }
+                this.OnPropertyChanged("attributeBindings");
+            };
+
+            this.informationBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is InformationBindingViewModel informationBinding) {
+                            informationBinding.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is InformationBindingViewModel informationBinding) {
+                            informationBinding.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                this.OnPropertyChanged("informationBindings");
             };
 
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
@@ -136,6 +161,13 @@ namespace S100Framework.WPF.ViewModel
             }
 
             this.attributeBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is AttributeViewModel attribute) {
+                            attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if (item is SimpleAttributeViewModel simpleAttribute) {
@@ -145,8 +177,44 @@ namespace S100Framework.WPF.ViewModel
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                     }
-                    this.OnPropertyChanged("attributes");
                 }
+                this.OnPropertyChanged("attributeBindings");
+            };
+
+            this.informationBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is InformationBindingViewModel informationBinding) {
+                            informationBinding.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is InformationBindingViewModel informationBinding) {
+                            informationBinding.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }                    
+                }
+                this.OnPropertyChanged("informationBindings");
+            };
+
+            this.featureBindings.CollectionChanged += (s, e) => {
+                if(e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is FeatureBindingViewModel featureBinding) {
+                            featureBinding.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is FeatureBindingViewModel featureBinding) {
+                            featureBinding.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }                    
+                }
+                this.OnPropertyChanged("featureBindings");
             };
 
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
@@ -193,7 +261,17 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this.PropertyChanged?.Invoke(this, e);
+            if (sender is AttributeViewModel attribute) {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(attributeBindings)));
+            }
+            else if (sender is InformationBindingViewModel informationBinding) {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(informationBindings)));
+            }
+            else if (sender is FeatureBindingViewModel featureBinding) {
+                this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(featureBindings)));
+            }
+            else if (System.Diagnostics.Debugger.IsAttached)
+                System.Diagnostics.Debugger.Break();
         }
 
         #region Operators
@@ -253,5 +331,12 @@ namespace S100Framework.WPF.ViewModel
         private readonly S100FC.InformationType? _informationType = default;
         private readonly S100FC.FeatureType? _featureType = default;
         private readonly string _uid;
+
+        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
+            featureBinding[] featureBindings = [];
+            foreach(var binding in viewmodel.featureBindings) {
+            }
+            return featureBindings;
+        }
     }
 }
