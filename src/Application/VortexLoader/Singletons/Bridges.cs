@@ -271,10 +271,11 @@ namespace S100Framework.Applications.Singletons
                         else {
 
                             var categoryOfBridge = categoriesOfElements[0];
-                            if (categoryOfBridge == 2) { //(opening bridge)
-                                bridge.categoryOfOpeningBridge = 2;
-                            }
-                            else if (categoryOfBridge == 3) { //(swing bridge)
+                            //if (categoryOfBridge == 2) { //(opening bridge)
+                            //    bridge.categoryOfOpeningBridge = 2;   2 IS NOT ALLOWED!!!
+                            //}
+                            //else 
+                            if (categoryOfBridge == 3) { //(swing bridge)
                                 bridge.categoryOfOpeningBridge = 3;
                             }
                             else if (categoryOfBridge == 4) { //(lifting bridge))
@@ -287,7 +288,10 @@ namespace S100Framework.Applications.Singletons
                             else if (categoryOfBridge == 7) { //(drawbridge)
                                 bridge.categoryOfOpeningBridge = 7;
                             }
-
+                            else if (true == bridge.openingBridge) {
+                                if (System.Diagnostics.Debugger.IsAttached)
+                                    System.Diagnostics.Debugger.Break();
+                            }
                         }
 
 

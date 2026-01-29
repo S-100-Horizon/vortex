@@ -24,7 +24,7 @@ namespace PropertyGridApplication
 
         [JsonIgnore]
         public featureName?[] featureName {
-            set { base.SetAttribute(value); }
+            set { base.SetAttribute(nameof(featureName), value); }
             get { return base.GetAttributeValues<featureName>(nameof(this.featureName)); }
         }
     }
