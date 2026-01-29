@@ -3,7 +3,10 @@ using ArcGIS.Core.Geometry;
 using S100FC;
 using S100FC.S101.FeatureAssociation;
 using S100FC.S101.FeatureTypes;
+using S100FC.S101.SimpleAttributes;
+using S100FC.S128.SimpleAttributes;
 using System.Diagnostics;
+using Windows.Security.Authentication.OnlineId;
 
 
 namespace S100Framework.Applications.Singletons
@@ -16,14 +19,17 @@ namespace S100Framework.Applications.Singletons
 
         public List<string> ObjectIDs { get; private set; }
 
+        public List<long> BridgeCategories { get; private set; }
+
         public string BridgeAggregationName { get; set; } = null!;
 
         public Geometry DissolvedGeometry { get; private set; }
 
-        public BridgeElement(int id, List<string> objectIDs, Geometry dissolvedGeometry) {
+        public BridgeElement(int id, List<string> objectIDs, List<long> bridgeCategories, Geometry dissolvedGeometry) {
             this.Id = id;
             this.ObjectIDs = objectIDs;
             this.DissolvedGeometry = dissolvedGeometry;
+            this.BridgeCategories = bridgeCategories;
         }
 
         public bool ContainsOID(string tableName, long oid) {
@@ -35,7 +41,7 @@ namespace S100Framework.Applications.Singletons
     {
         internal List<BridgeElement> GroupAndDissolveToBridgeElements(SQLSyntax syntax, List<FeatureClass> featureclasses, QueryFilter filter) {
             var groups = new List<List<string>>();
-
+            var bridgeCategories = new List<(string ObjectID, long catbrg)>();
             var features = new List<(string ObjectID, Geometry Geometry)>();
 
             foreach (var featureclass in featureclasses) {
@@ -45,9 +51,11 @@ namespace S100Framework.Applications.Singletons
                     while (cursor.MoveNext()) {
                         using (var row = (Feature)cursor.Current) {
                             long oid = row.GetObjectID();
+                            long catbrg = Convert.ToInt32(row["CATBRG"]);
                             var shape = row.GetShape();
 
                             features.Add(($"{tableName}:{oid}", shape));
+                            bridgeCategories.Add(($"{tableName}:{oid}", catbrg));
                         }
                     }
                 }
@@ -113,6 +121,7 @@ namespace S100Framework.Applications.Singletons
 
             foreach (var group in groups) {
                 var geoms = group.Select(oid => features.First(f => f.ObjectID == oid).Geometry).ToList();
+                var cats = group.Select(oid => bridgeCategories.First(f => f.ObjectID == oid).catbrg).ToList();
 
                 Geometry dissolved = null!;
                 if (geoms.Count == 1) {
@@ -122,7 +131,7 @@ namespace S100Framework.Applications.Singletons
                     dissolved = GeometryEngine.Instance.Union(geoms);
                 }
 
-                var element = new BridgeElement(idCounter++, group, dissolved);
+                var element = new BridgeElement(idCounter++, group, cats, dissolved);
 
                 bridgeElements.Add(element);
             }
@@ -251,13 +260,43 @@ namespace S100Framework.Applications.Singletons
 
                     foreach (var binding in bindings) {
                         var relatedBridge = row.UID();
-                        var bridgeElement = bridgeElements.SingleOrDefault(e => e.Name == relatedBridge);
-                        featureBinding featureBinding = new featureBinding<BridgeAggregation> {
-                            role = "theComponent",
-                            roleType = "association",
-                            featureId = binding.ChildName!,
-                            featureType = name,
-                        };
+                        var bridgeElement = bridgeElements.First(e => e.Name == relatedBridge);
+
+                        var categoriesOfElements = bridgeElement.BridgeCategories;
+
+                        var same = new HashSet<long>(categoriesOfElements).Count == 1;
+                        if (!same) {
+                            Logger.Current.Error("Bridge has elements with multiple categoryOfBridge this cannot be converted.");
+                        }
+                        else {
+
+                            var categoryOfBridge = categoriesOfElements[0];
+                            if (categoryOfBridge == 2) { //(opening bridge)
+                                bridge.categoryOfOpeningBridge = 2;
+                            }
+                            else if (categoryOfBridge == 3) { //(swing bridge)
+                                bridge.categoryOfOpeningBridge = 3;
+                            }
+                            else if (categoryOfBridge == 4) { //(lifting bridge))
+                                bridge.categoryOfOpeningBridge = 4;
+                            }
+                            else if (categoryOfBridge == 5) { //(bascule bridge)
+                                bridge.categoryOfOpeningBridge = 5;
+
+                            }
+                            else if (categoryOfBridge == 7) { //(drawbridge)
+                                bridge.categoryOfOpeningBridge = 7;
+                            }
+
+                        }
+
+
+                    featureBinding featureBinding = new featureBinding<BridgeAggregation> {
+                                role = "theComponent",
+                                roleType = "association",
+                                featureId = binding.ChildName!,
+                                featureType = name,
+                            };
                         featureBindings.Add(featureBinding);
                     }
                     row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
@@ -267,12 +306,17 @@ namespace S100Framework.Applications.Singletons
                         return obj.childTypeS101 == typeof(SpanOpening);
                     });
 
+
+
                     var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
                     var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
 
                     //S100FC.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100FC.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
 
                     bridge.openingBridge = canOpen;
+
+
+
                     bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
                     row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge, ImporterNIS.jsonSerializerOptions);
