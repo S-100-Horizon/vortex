@@ -268,7 +268,7 @@ namespace S100Framework.Applications.Singletons
 
                         if (categoriesOfElements.Count() != categoriesOfElements.Distinct().Count()) {
                             var distinct = categoriesOfElements.Distinct();
-                            Logger.Current.Error($"Bridge has elements with multiple categoryOfBridge this cannot be converted ({string.Join(',', distinct)})");
+                            //Logger.Current.Error($"Bridge has elements with multiple categoryOfBridge this cannot be converted ({string.Join(',', distinct)})");
                         }
 
                         if(true == bridge.openingBridge){
