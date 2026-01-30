@@ -713,11 +713,11 @@ namespace S100Framework.Applications
                     parenthesisParts.Add(m.Value);
                 }
             }
-            var signalPeriodN = current.SIGPER == -32767m ? null : current.SIGPER;
+            var signalPeriodN = current.SIGPER == -32767m ? default : current.SIGPER;
 
             var sigseq = current.SIGSEQ;
 
-            lightCharacteristic? lightCharacteristicsValue = default;
+            //lightCharacteristic? lightCharacteristicsValue = default;
 
             //if (current.LITCHR.HasValue) {
             //    lightCharacteristicsValue = EnumHelper.GetEnumValue(current.LITCHR.Value);
@@ -726,19 +726,19 @@ namespace S100Framework.Applications
             var signalSequences = GetSignalSequences(current.SIGSEQ);
 
             var rhythmOfLight = new rhythmOfLight() {
-                //lightCharacteristic = lightCharacteristicsValue,
-                //signalGroup = [..parenthesisParts],
-                //signalPeriod = signalPeriodN,
-                //signalSequence = [.. signalSequences],
+                lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR),
+                signalGroup = [.. parenthesisParts],
+                signalPeriod = signalPeriodN,
+                signalSequence = [.. signalSequences],
             };
-            if (lightCharacteristicsValue != null)
-                rhythmOfLight.lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR);
-            if (parenthesisParts.Any())
-                rhythmOfLight.signalGroup = parenthesisParts.ToArray();
-            if (signalPeriodN.HasValue)
-                rhythmOfLight.signalPeriod = signalPeriodN.Value;
-            if (signalSequences.Any())
-                rhythmOfLight.signalSequence = signalSequences.ToArray();
+            //if (lightCharacteristicsValue != null)
+            //    rhythmOfLight.lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR);
+            //if (parenthesisParts.Any())
+            //    rhythmOfLight.signalGroup = parenthesisParts.ToArray();
+            //if (signalPeriodN.HasValue)
+            //    rhythmOfLight.signalPeriod = signalPeriodN;
+            //if (signalSequences.Any())
+            //    rhythmOfLight.signalSequence = signalSequences.ToArray();
             return rhythmOfLight;
         }
 

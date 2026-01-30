@@ -146,7 +146,7 @@ namespace S100Framework.Applications
 
                     foreach (var ds in datasetNames) {
                         using var cursor = surface.Search(new QueryFilter {
-                            WhereClause = string.IsNullOrEmpty(ds) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and FLATTEN LIKE '%\"datasetName\":\"{ds.ToUpperInvariant()}\"%'",
+                            WhereClause = string.IsNullOrEmpty(ds) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and FLATTEN LIKE '%\"datasetName\":%\"{ds.ToUpperInvariant()}\"%'",
                         }, true);
 
                         while (cursor.MoveNext()) {

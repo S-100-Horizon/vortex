@@ -37,6 +37,8 @@ namespace S100Framework.Applications
 
             instance.rhythmOfLight = ImporterNIS.GetRythmOfLight<LightFogDetector>(current);
 
+            //if (instance.rhythmOfLight.attributeBindings.Count(e => e.S100FC_code.Equals("signalPeriod"))==0) System.Diagnostics.Debugger.Break();
+
             if (current.SIGGEN != null) {
                 instance.signalGeneration = EnumHelper.GetEnumValue(current.SIGGEN.Value);
             }
