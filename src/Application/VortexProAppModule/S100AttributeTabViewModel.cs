@@ -319,7 +319,7 @@ namespace VortexProAppModule
                     }
                     else {
                         var json = Convert.ToString(inspector["FLATTEN"]);
-                        instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, code);
+                        instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, type);
                         //instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 

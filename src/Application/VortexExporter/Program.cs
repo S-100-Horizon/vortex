@@ -146,14 +146,13 @@ namespace S100Framework.Applications
 
                     foreach (var ds in datasetNames) {
                         using var cursor = surface.Search(new QueryFilter {
-                            //WhereClause = string.IsNullOrEmpty(dsnm) ? $"upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"datasetName\":\"{dsnm!.ToUpperInvariant()}\"%'",
-                            WhereClause = string.IsNullOrEmpty(ds) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and JSON LIKE '%\"code\":\"datasetName\",\"value\":\"{ds.ToUpperInvariant()}\"%'"
+                            WhereClause = string.IsNullOrEmpty(ds) ? "upper(ps) = 'S-128'" : $"upper(ps) = 'S-128' and FLATTEN LIKE '%\"datasetName\":\"{ds.ToUpperInvariant()}\"%'",
                         }, true);
 
                         while (cursor.MoveNext()) {
                             var current = (ArcGIS.Core.Data.Feature)cursor.Current;
 
-                            var electricProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(current["json"])!, jsonSerializerOptionsS128);
+                            var electricProduct = (S100FC.S128.FeatureTypes.ElectronicProduct)S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(Convert.ToString(current["flatten"])!, typeof(S100FC.S128.FeatureTypes.ElectronicProduct));
 
                             var shape = (ArcGIS.Core.Geometry.Polygon)current.GetShape().Clone();
 
@@ -213,11 +212,12 @@ namespace S100Framework.Applications
 
                             var name = current.UID();
                             var code = current["code"].ToString()!;
-                            var json = current["json"].ToString()!;
+                            //var json = current["flatten"].ToString()!;
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101); // jsonSerializerOptionsS101
+                            var json = Convert.ToString(current["flatten"])!;
+                            var instance = S100FC.AttributeFlattenExtensions.Unflatten<InformationType>(json, type);                                
 
                             var information = new S100FC.YAML.Information {
                                 Name = code,
@@ -226,18 +226,19 @@ namespace S100Framework.Applications
                             };
                             informationTypes.Add(information);
 
-                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                            //TODO: GetFileNames(json)
+                            //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                            foreach (var filename in filenames) {
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                    var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                    if (file != null) {
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
-                                    }
-                                }
-                            }
+                            //foreach (var filename in filenames) {
+                            //    if (!supportFiles.Contains(filename)) {
+                            //        supportFiles.Add(filename);
+                            //        var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                            //        if (file != null) {
+                            //            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                            //            dataset?.Metadata.AddSupportFile(filename, base64);
+                            //        }
+                            //    }
+                            //}
                         }
                     }
                     catch (Exception ex) {
@@ -536,7 +537,7 @@ namespace S100Framework.Applications
                 return 0;
             }
             catch (Exception ex) {
-                Log.Information(ex.Message);
+                Log.Error(ex, ex.Message);
                 return -1;
             }
         }

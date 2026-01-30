@@ -26,16 +26,16 @@ namespace S100FC
         /// </param> 
         /// <returns> A fully populated instance of <typeparamref name="T"/> created from the JSON data. 
         /// </returns>
-        public static T Unflatten<T>(string attributes, string code) where T : class {
-            var dict = JsonSerializer.Deserialize<Dictionary<string, JsonValue>>(attributes);
-            var root = Unflatten(dict);
+        public static T Unflatten<T>(string attributes, Type type) where T : class {
+            var dict = JsonSerializer.Deserialize<Dictionary<string, JsonValue>>(attributes)!;
+            var root = (JsonObject)Unflatten(dict);
 
-            var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
-            var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", $"{typeof(T).Name}s")}.{code}", true)!;
+            //var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
+            //var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", $"{typeof(T).Name}s")}.{code}", true)!;
 
             var instance = Activator.CreateInstance(type) as T;
 
-            PopulateObject(instance, root as JsonObject);
+            PopulateObject(instance!, root);
             return instance!;
         }
 

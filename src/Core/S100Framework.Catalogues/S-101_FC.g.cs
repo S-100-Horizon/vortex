@@ -41437,7 +41437,8 @@ namespace S100FC.S101.FeatureTypes
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
-		[JsonIgnore]
+
+        [JsonIgnore]
 		public featureName?[] featureName {
 			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
