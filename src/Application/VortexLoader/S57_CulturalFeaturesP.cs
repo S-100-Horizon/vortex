@@ -176,6 +176,8 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
+                            //if (current.OBJECTID == 360) System.Diagnostics.Debugger.Break();
+
                             /*
                                 S - 101 includes the system attribute in the water to indicate that a building that is located offshore is to
                                 be included in ECDIS Base display.This attribute is populated automatically during the conversion
@@ -184,7 +186,7 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
                             buffer["ps"] = ps101;
@@ -302,7 +304,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
                             buffer["ps"] = ps101;
@@ -353,7 +355,7 @@ namespace S100Framework.Applications
                                     instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
 
-                                instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                                instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
                                 buffer["ps"] = ps101;
@@ -570,7 +572,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
                             buffer["ps"] = ps101;

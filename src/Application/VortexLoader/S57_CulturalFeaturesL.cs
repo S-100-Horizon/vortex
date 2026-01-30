@@ -584,7 +584,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
 

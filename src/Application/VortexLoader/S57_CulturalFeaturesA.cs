@@ -531,7 +531,7 @@ namespace S100Framework.Applications
                                 feature at the position of the building in ECDIS Base display.Data Producers should consider removing
                                 these features from their S-101 data during the conversion process.
                             */
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -648,7 +648,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
                             bufferSurface["ps"] = ps101;
                             bufferSurface["code"] = instance.GetType().Name;
@@ -884,7 +884,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
 
@@ -1034,7 +1034,7 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.inTheWater = LandAreas.Instance.Touch(current!.SHAPE!).Count() > 0;
+                            instance.inTheWater = !LandAreas.Instance.Touch(current!.SHAPE!).Any();
 
 
                             bufferSurface["ps"] = ps101;
