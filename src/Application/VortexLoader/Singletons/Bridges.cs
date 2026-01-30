@@ -254,7 +254,7 @@ namespace S100Framework.Applications.Singletons
                     //var shape = row.GetShape();
                     //Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
 
-                    Bridge bridge = (Bridge)S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(Convert.ToString(row["flatten"])!, nameof(Bridge));
+                    Bridge bridge = (Bridge)S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(Convert.ToString(row["flatten"])!, typeof(Bridge));
 
                     var bindings = _instance!.GetBindings(row.UID());
 
