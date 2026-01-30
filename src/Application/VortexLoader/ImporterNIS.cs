@@ -713,7 +713,7 @@ namespace S100Framework.Applications
                     parenthesisParts.Add(m.Value);
                 }
             }
-            var signalPeriodN = current.SIGPER == -32767m ? default : current.SIGPER;
+            //var signalPeriodN = current.SIGPER == -32767m ? default : current.SIGPER;
 
             var sigseq = current.SIGSEQ;
 
@@ -735,7 +735,7 @@ namespace S100Framework.Applications
             //if (parenthesisParts.Any())
             //    rhythmOfLight.signalGroup = parenthesisParts.ToArray();
             if (current.SIGPER.HasValue)
-                rhythmOfLight.signalPeriod = current.SIGPER == -32767m ? default : current.SIGPER.Value;
+                rhythmOfLight.signalPeriod = current.SIGPER == -32767m ? null : current.SIGPER.Value;
             //if (signalSequences.Any())
             //    rhythmOfLight.signalSequence = signalSequences.ToArray();
             return rhythmOfLight;
