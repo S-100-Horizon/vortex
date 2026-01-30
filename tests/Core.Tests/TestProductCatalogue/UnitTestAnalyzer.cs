@@ -1,6 +1,7 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
+using NetTopologySuite.Features;
 using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100FC.S128;
@@ -38,6 +39,19 @@ namespace TestProductCatalogue
 
         [Fact]
         public void Test_flatten() {
+            //var fb = S100FC.S101.Extensions.CreateFeatureBinding("SpanFixed", "BridgeAggregation", "theCollection");
+            //var ib = S100FC.S101.Extensions.CreateInformationBinding("SmallCraftFacility", "AdditionalInformation");
+
+            //var ffb = fb.Flatten();
+            //var fib = ib.Flatten();
+
+
+            //var testF = S100FC.AttributeFlattenExtensions.Unflatten<featureBinding>(ffb, typeof(featureBinding));
+            //var testI = S100FC.AttributeFlattenExtensions.Unflatten<informationBinding>(fib, typeof(informationBinding));
+            //// Set featureId on featurebindings
+            //// binding.featureId = featureAssociation.To;
+
+
             var qob = new QualityOfBathymetricData() {
                 categoryOfTemporalVariation = 5,
                 dataAssessment = 1,
@@ -47,12 +61,11 @@ namespace TestProductCatalogue
                 },
                 fullSeafloorCoverageAchieved = true,
                 zoneOfConfidence = [new() {
-                    categoryOfZoneOfConfidenceInData = 2,
+                    categoryOfZoneOfConfidenceInData = null,
                 }
                 ],
 
             };
-
 
             var jsonf = qob.Flatten();
 
