@@ -136,7 +136,6 @@ namespace S100FC.Applications
                     buffer["usageband"] = usageBand;
                     buffer["ps"] = productSpecification;
                     buffer["code"] = feature.Name;
-                    //buffer["__json__"] = json;
                     buffer["flatten"] = flatten;
 
                     if (geometry is MapPoint point) {
@@ -180,7 +179,6 @@ namespace S100FC.Applications
                     var buffer = bufferInformationType;
                     buffer["ps"] = productSpecification;
                     buffer["code"] = informationType.Name;
-                    //buffer["__json__"] = json;
                     buffer["flatten"] = flatten;
                     tableInformationType.CreateRow(bufferInformationType);
                 }

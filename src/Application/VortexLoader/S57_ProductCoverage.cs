@@ -71,7 +71,6 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps101;
                     buffer["code"] = dataCoverage_m_scl.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage_m_scl, jsonSerializerOptions128);
                     buffer["flatten"] = dataCoverage_m_scl.Flatten();
                     SetShape(buffer, m_sclPolygon.SHAPE);
                     ImporterNIS.SetUsageBand(buffer, Convert.ToInt32(m_sclPolygon.PLTS_COMP_SCALE));
@@ -201,7 +200,6 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(dataCoverage, ImporterNIS.jsonSerializerOptions);
                                 buffer["flatten"] = dataCoverage.Flatten();
                                 buffer["informationbindings"] = "[]";
 
@@ -226,7 +224,6 @@ namespace S100Framework.Applications
                                 buffer["ps"] = ps101;
                                 buffer["code"] = vdat.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;
-                                //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(vdat, ImporterNIS.jsonSerializerOptions);
                                 buffer["flatten"] = vdat.Flatten();
                                 buffer["informationbindings"] = "[]";
 
@@ -256,7 +253,6 @@ namespace S100Framework.Applications
                     buffer["ps"] = ps128;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions128);
                     buffer["flatten"] = instance.Flatten();
                     buffer["informationbindings"] = "[]";
 

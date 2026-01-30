@@ -143,7 +143,6 @@ namespace S100Framework.Applications
                                     sounding.information = result.information.ToArray();
                                     sounding.SetInformationBindings(result.InformationBindings.ToArray());
 
-                                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(sounding, jsonSerializerOptions);
                                     buffer["flatten"] = sounding.Flatten();
                                     buffer["ps"] = ps101;
                                     buffer["code"] = sounding.GetType().Name;
@@ -209,7 +208,7 @@ namespace S100Framework.Applications
                                     instance.information = result.information.ToArray();
                                     instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);
+
                                     buffer["flatten"] = instance.Flatten();
                                     buffer["ps"] = ps101;
                                     buffer["code"] = instance.GetType().Name;

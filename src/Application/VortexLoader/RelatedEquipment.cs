@@ -184,7 +184,6 @@ namespace S100Framework.Applications
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = lightSectored.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(lightSectored, ImporterNIS.jsonSerializerOptions);
                     buffer["flatten"] = lightSectored.Flatten();
                     buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);  //System.Text.Json.JsonSerializer.Serialize(lightSectored.GetInformationBindings(), jsonSerializerOptions);
 
@@ -227,7 +226,6 @@ namespace S100Framework.Applications
                         buffer["ps"] = ImporterNIS.ps101;
                         buffer["code"] = instance.GetType().Name;
                         buffer["edition"] = ImporterNIS.s101version;
-                        //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                         buffer["flatten"] = ((FeatureType)instance).Flatten();
                         if (instance is FeatureType) {
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
@@ -297,7 +295,6 @@ namespace S100Framework.Applications
                 buffer["ps"] = ImporterNIS.ps101;
                 buffer["code"] = instance.GetType().Name;
                 buffer["edition"] = ImporterNIS.s101version;
-                //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                 buffer["flatten"] = ((FeatureType)instance).Flatten();
                 if (instance is FeatureType) {
                     buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize((instance as FeatureType)!.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
@@ -350,7 +347,6 @@ namespace S100Framework.Applications
                     buffer["ps"] = ImporterNIS.ps101;
                     buffer["code"] = instance.GetType().Name;
                     buffer["edition"] = ImporterNIS.s101version;
-                    //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions);
                     buffer["flatten"] = ((FeatureType)instance).Flatten();
 
                     if (instance is FeatureType) {
