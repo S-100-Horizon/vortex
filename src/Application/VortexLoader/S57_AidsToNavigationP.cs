@@ -54,6 +54,8 @@ namespace S100Framework.Applications
                     continue;
                 }
 
+                //if (objectid == 1572) System.Diagnostics.Debugger.Break();
+
                 switch (fcSubtype) {
                     case 1: { // BCNCAR_BeaconCardinal
 
@@ -254,7 +256,7 @@ namespace S100Framework.Applications
                                 instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
-                                instance.height = default(decimal?);
+                                //instance.height = default(decimal?);
                             }
 
                             if (current.MARSYS.HasValue) {

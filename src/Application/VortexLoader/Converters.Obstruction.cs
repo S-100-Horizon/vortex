@@ -99,7 +99,9 @@ namespace S100Framework.Applications
                 instance.surroundingDepth = drval1;
             }
 
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            var defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            if (defaultClearanceDepth.HasValue)
+                instance.defaultClearanceDepth = defaultClearanceDepth.Value;
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
             instance.information = result.information.ToArray();
@@ -205,7 +207,9 @@ namespace S100Framework.Applications
                 instance.surroundingDepth = drval1;
             }
 
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            var defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            if (defaultClearanceDepth.HasValue)
+                instance.defaultClearanceDepth = defaultClearanceDepth.Value;
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
             instance.information = result.information.ToArray();
@@ -310,7 +314,9 @@ namespace S100Framework.Applications
                 instance.surroundingDepth = drval1;
             }
 
-            instance.defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            var defaultClearanceDepth = ImporterNIS.GetDefaultClearanceDepthObstruction(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATOBS, current.OBJECTID ?? -1, current.TableName ?? "Unknown tablename", current.LNAM ?? "Unknown long name");
+            if (defaultClearanceDepth.HasValue)
+                instance.defaultClearanceDepth = defaultClearanceDepth.Value;
 
             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
             instance.information = result.information.ToArray();

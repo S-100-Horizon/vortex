@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100FC;
 using S100FC.S101.FeatureTypes;
+using S100FC.S101.SimpleAttributes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 
@@ -297,6 +298,8 @@ namespace S100Framework.Applications
                             bool coveredByDredgedArea = false;
                             decimal? leastDepth = null;
 
+                            //if (current.OBJECTID == 37) System.Diagnostics.Debugger.Break();
+
                             if (current.SHAPE != null) {
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
                                     leastDepth = depthArea.DRVAL1.HasValue ? depthArea.DRVAL1.Value : null;
@@ -316,15 +319,16 @@ namespace S100Framework.Applications
                                 }
                             }
 
+                            //if (current.OBJECTID == 37) System.Diagnostics.Debugger.Break();
 
-                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth is not null && instance.surroundingDepth is not null;
+                            bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth is not null;
 
                             bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767m);
 
                             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth is not null && instance.surroundingDepth.HasValue);
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
-                                if (!(current.VALSOU.HasValue)) {
+                                if (!(current.VALSOU.HasValue && current.VALSOU.Value != -32767m)) {
                                     if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
                                         (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                         (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
@@ -376,6 +380,7 @@ namespace S100Framework.Applications
                                 Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot set default clearance depth. Check loader.");
                             }
 
+                            if (!instance.valueOfSounding.HasValue && instance.attributeBindings.Count(e => e.S100FC_code.Equals("defaultClearanceDepth")) == 0) System.Diagnostics.Debugger.Break();
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -542,9 +547,12 @@ namespace S100Framework.Applications
                                 instance.surroundingDepth = drval1;
                             }
 
-                            instance.defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
+                            var defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
+                            if (defaultClearanceDepth.HasValue)
+                                instance.defaultClearanceDepth = defaultClearanceDepth;
+                            else if (!instance.valueOfSounding.HasValue && System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 
-                            buffer["ps"] = ps101;
+                                buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);

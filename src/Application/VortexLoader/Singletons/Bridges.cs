@@ -245,12 +245,13 @@ namespace S100Framework.Applications.Singletons
             using var bufferFeatureType = featuretypeTable.CreateRowBuffer();
 
             var bridgeElements = _instance!.BridgeElements().ToList();
-            
+
             using (var cursor = featuretypeTable.CreateUpdateCursor(new QueryFilter() { WhereClause = "code = 'Bridge'" }, useRecyclingCursor: true)) {
                 while (cursor.MoveNext()) {
                     var row = cursor.Current;
 
                     long oid = row.GetObjectID();
+
                     //var shape = row.GetShape();
                     //Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<Bridge>(Convert.ToString(row["json"])!)!;
 
@@ -264,21 +265,57 @@ namespace S100Framework.Applications.Singletons
                         var relatedBridge = row.UID();
                         var bridgeElement = bridgeElements.First(e => e.Name == relatedBridge);
 
-                        var categoriesOfElements = bridgeElement.BridgeCategories;
+                        featureBinding featureBinding = new featureBinding<BridgeAggregation> {
+                            role = "theComponent",
+                            roleType = "association",
+                            featureId = binding.ChildName!,
+                            featureType = name,
+                        };
+                        featureBindings.Add(featureBinding);
+                    }
+                    row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
 
-                        if (categoriesOfElements.Count() != categoriesOfElements.Distinct().Count()) {
-                            var distinct = categoriesOfElements.Distinct();
-                            //Logger.Current.Error($"Bridge has elements with multiple categoryOfBridge this cannot be converted ({string.Join(',', distinct)})");
-                        }
+                    // Update opening bridge
+                    var canOpen = bindings.Any(obj => {
+                        return obj.childTypeS101 == typeof(SpanOpening);
+                    });
 
-                        if(true == bridge.openingBridge){
+
+
+                    var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
+                    var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
+
+                    //S100FC.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100FC.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
+
+                    bridge.openingBridge = canOpen;
+
+                    if (true == bridge.openingBridge) {
+                        foreach (var binding in bindings) {
+                            var relatedBridge = row.UID();
+                            var bridgeElement = bridgeElements.First(e => e.Name == relatedBridge);
+
+                            var categoriesOfElements = bridgeElement.BridgeCategories;
+
+                            if (categoriesOfElements.Count() != categoriesOfElements.Distinct().Count()) {
+                                var distinct = categoriesOfElements.Distinct();
+                                //Logger.Current.Error($"Bridge has elements with multiple categoryOfBridge this cannot be converted ({string.Join(',', distinct)})");
+                            }
+
                             long[] openingCategories = [3, 4, 5, 7];
 
                             var c = bridgeElement.BridgeCategories.Where(e => openingCategories.Contains(e));
 
-                            if (c.Count() != c.Distinct().Count()) {
-                                Logger.Current.Error("Bridge (opening) has elements with multiple categoryOfBridge this cannot be converted.");
+                            if (!c.Any()) {
+                                bridge.categoryOfOpeningBridge = null;  //UNKNOWN
+                                Logger.Current.Error($"Bridge (opening) has no opening elements [{displayName}].");
+                                continue;
+                                //Magretheholmsbroen
                             }
+                            if (c.Count() != c.Distinct().Count()) {
+                                Logger.Current.Error($"Bridge (opening) has elements with multiple categoryOfBridge this cannot be converted [{displayName}].");
+                            }
+
+
 
                             var categoryOfBridge = c.First();
 
@@ -299,42 +336,15 @@ namespace S100Framework.Applications.Singletons
                             else if (categoryOfBridge == 7) { //(drawbridge)
                                 bridge.categoryOfOpeningBridge = 7;
                             }
-                            else if (true == bridge.openingBridge) {
-                                if (System.Diagnostics.Debugger.IsAttached)
-                                    System.Diagnostics.Debugger.Break();
-                            }
+                            else if (System.Diagnostics.Debugger.IsAttached)
+                                System.Diagnostics.Debugger.Break();
                         }
-
-
-                    featureBinding featureBinding = new featureBinding<BridgeAggregation> {
-                                role = "theComponent",
-                                roleType = "association",
-                                featureId = binding.ChildName!,
-                                featureType = name,
-                            };
-                        featureBindings.Add(featureBinding);
                     }
-                    row["featurebindings"] = System.Text.Json.JsonSerializer.Serialize(featureBindings, ImporterNIS.jsonSerializerOptions);
-
-                    // Update opening bridge
-                    var canOpen = bindings.Any(obj => {
-                        return obj.childTypeS101 == typeof(SpanOpening);
-                    });
-
-
-
-                    var displayName = bindings.FirstOrDefault(obj => obj.ChildDisplayName != default)?.ChildDisplayName;
-                    var ndisplayName = bindings.FirstOrDefault(obj => obj.NationalChildDisplayName != default)?.NationalChildDisplayName;
-
-                    //S100FC.S101.FeatureTypes.Bridge bridge = System.Text.Json.JsonSerializer.Deserialize<S100FC.S101.FeatureTypes.Bridge>(Convert.ToString(row["json"].ToString()!))!;
-
-                    bridge.openingBridge = canOpen;
-
 
 
                     bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
-                    row["flatten"] = bridge.Flatten();                        
+                    row["flatten"] = bridge.Flatten();
 
                     cursor.Update(row);
                     //row.Store();
