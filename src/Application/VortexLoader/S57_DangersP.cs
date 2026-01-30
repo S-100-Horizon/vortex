@@ -550,9 +550,9 @@ namespace S100Framework.Applications
                             var defaultClearanceDepth = GetDefaultClearanceDepthWreck(current.SHAPE, current.VALSOU, current.EXPSOU, current.HEIGHT, current.WATLEV, current.CATWRK, current.OBJECTID!.Value, current.TableName!, current.LNAM!);
                             if (defaultClearanceDepth.HasValue)
                                 instance.defaultClearanceDepth = defaultClearanceDepth;
-                            else if (!instance.valueOfSounding.HasValue && System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
+                            //else if (!instance.valueOfSounding.HasValue && System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
 
-                                buffer["ps"] = ps101;
+                            buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
                             buffer["edition"] = ImporterNIS.s101version;
                             //buffer["__json__"] = System.Text.Json.JsonSerializer.Serialize(instance, jsonSerializerOptions);

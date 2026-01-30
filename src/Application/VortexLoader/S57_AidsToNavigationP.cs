@@ -2037,9 +2037,11 @@ namespace S100Framework.Applications
                         //if (light.SECTR1 != null && light.SECTR2 != null) { 
                         var lightSector = new lightSector() {
                             lightVisibility = visibility,
-                            valueOfNominalRange = light.VALNMR.GetValueOrDefault(),
-                            sectorLimit = null
                         };
+                        if (light.VALNMR.HasValue)
+                            lightSector.valueOfNominalRange = light.VALNMR == -32767m ? null : light.VALNMR;
+
+
                         if (light.SECTR1 != null && light.SECTR2 != null) {
                             lightSector.sectorLimit = new sectorLimit() {
                                 sectorLimitOne = new sectorLimitOne() {
@@ -2050,7 +2052,19 @@ namespace S100Framework.Applications
                                 }
                             };
                         }
+                        else if ("1".Equals(light.CATLIT)) {
+                            //TODO: 2026-01-30
+                            lightSector.directionalCharacter = new directionalCharacter {                                
+                            };
+                            if (light.ORIENT.HasValue)
+                                lightSector.directionalCharacter.orientation = new orientation {
+                                    orientationValue = light.ORIENT.Value == -32767m ? null : light.ORIENT.Value,                                    
+                                };
+                        }
                         lightSector.colour = colours;
+
+                        if (lightSector.sectorLimit == null && lightSector.directionalCharacter == null) System.Diagnostics.Debugger.Break();
+
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLightValue.lightCharacteristic,
                             signalGroup = rhythmofLightValue.signalGroup,
