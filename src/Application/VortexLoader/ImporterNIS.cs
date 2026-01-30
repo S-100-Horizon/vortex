@@ -728,15 +728,14 @@ namespace S100Framework.Applications
             var rhythmOfLight = new rhythmOfLight() {
                 lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR),
                 signalGroup = [.. parenthesisParts],
-                signalPeriod = signalPeriodN,
                 signalSequence = [.. signalSequences],
             };
             //if (lightCharacteristicsValue != null)
             //    rhythmOfLight.lightCharacteristic = EnumHelper.GetEnumValue(current.LITCHR);
             //if (parenthesisParts.Any())
             //    rhythmOfLight.signalGroup = parenthesisParts.ToArray();
-            //if (signalPeriodN.HasValue)
-            //    rhythmOfLight.signalPeriod = signalPeriodN;
+            if (current.SIGPER.HasValue)
+                rhythmOfLight.signalPeriod = current.SIGPER == -32767m ? default : current.SIGPER.Value;
             //if (signalSequences.Any())
             //    rhythmOfLight.signalSequence = signalSequences.ToArray();
             return rhythmOfLight;

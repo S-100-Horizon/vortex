@@ -2,6 +2,7 @@
 using S100FC;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
+using S100FC.S101.SimpleAttributes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 using System.Globalization;
@@ -2064,22 +2065,22 @@ namespace S100Framework.Applications
 
                         var sectorCharacteristic = new sectorCharacteristics() {
                             lightCharacteristic = rhythmofLightValue.lightCharacteristic,
-                            signalGroup = rhythmofLightValue.signalGroup,
-                            signalPeriod = rhythmofLightValue.signalPeriod,
-                            signalSequence = rhythmofLightValue.signalSequence,
+                            //signalGroup = rhythmofLightValue.signalGroup, OPTIONAL
+                            //signalPeriod = rhythmofLightValue.signalPeriod, OPTIONAL
+                            //signalSequence = rhythmofLightValue.signalSequence, OPTIONAL
                             lightSector = [lightSector],
                         };
+                        if (rhythmofLightValue.attributeBindings.Any(e => e.S100FC_code.Equals(nameof(signalGroup))))
+                            sectorCharacteristic.signalGroup = rhythmofLightValue.signalGroup;
+                        if (rhythmofLightValue.attributeBindings.Any(e => e.S100FC_code.Equals(nameof(signalPeriod))))
+                            sectorCharacteristic.signalPeriod = rhythmofLightValue.signalPeriod;
+                        if (rhythmofLightValue.attributeBindings.Any(e => e.S100FC_code.Equals(nameof(signalSequence))))
+                            sectorCharacteristic.signalSequence = rhythmofLightValue.signalSequence;
 
                         sectorCharacteristics.Add(sectorCharacteristic);
-
-                        //}
-
                     }
-                    ;
                 }
             }
-            //}
-
             return sectorCharacteristics.ToArray();
         }
     }
