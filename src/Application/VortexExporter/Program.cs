@@ -216,8 +216,10 @@ namespace S100Framework.Applications
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
 
-                            var json = Convert.ToString(current["flatten"])!;
-                            var instance = S100FC.AttributeFlattenExtensions.Unflatten<InformationType>(json, type);                                
+                            var json = Convert.ToString(current["flatten"]);
+                            var instance = string.IsNullOrEmpty(json) ? null : S100FC.AttributeFlattenExtensions.Unflatten<InformationType>(json, type);
+
+                            //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101); // jsonSerializerOptionsS101
 
                             var information = new S100FC.YAML.Information {
                                 Name = code,
@@ -258,11 +260,14 @@ namespace S100Framework.Applications
 
                             var name = current.UID();
                             var code = current["code"].ToString()!;
-                            var json = current["json"].ToString()!;
+                            //var json = current["json"].ToString()!;
+
+                            var json = Convert.ToString(current["flatten"]);                            
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
-                            var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;// jsonSerializerOptionsS101
+                            var instance = string.IsNullOrEmpty(json) ? null : S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(json, type);
+                            //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, jsonSerializerOptionsS101) as S100FC.FeatureType;// jsonSerializerOptionsS101
 
                             var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
@@ -275,16 +280,17 @@ namespace S100Framework.Applications
 
                             featureTypes.Add(feature);
 
-                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                            //TODO: GetFileNames(json)
+                            //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                            foreach (var filename in filenames) {
-                                if (!supportFiles.Contains(filename)) {
-                                    supportFiles.Add(filename);
-                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    dataset?.Metadata.AddSupportFile(filename, base64);
-                                }
-                            }
+                            //foreach (var filename in filenames) {
+                            //    if (!supportFiles.Contains(filename)) {
+                            //        supportFiles.Add(filename);
+                            //        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                            //        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                            //        dataset?.Metadata.AddSupportFile(filename, base64);
+                            //    }
+                            //}
                         }
                     }
                     catch (Exception ex) {
@@ -345,20 +351,22 @@ namespace S100Framework.Applications
                                     continue;
                                 }
 
-                                var json = Convert.ToString(current["json"])!;
-                                var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(json, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
+                                var json = Convert.ToString(current["flatten"])!;
+                                var instance = string.IsNullOrEmpty(json) ? null : S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(json, type);
+                                //var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(json, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
 
 
-                                var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                                //TODO: GetFileNames(json)
+                                //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                foreach (var filename in filenames) {
-                                    if (!supportFiles.Contains(filename)) {
-                                        supportFiles.Add(filename);
-                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                        dataset?.Metadata.AddSupportFile(filename, base64);
-                                    }
-                                }
+                                //foreach (var filename in filenames) {
+                                //    if (!supportFiles.Contains(filename)) {
+                                //        supportFiles.Add(filename);
+                                //        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                //        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                //        dataset?.Metadata.AddSupportFile(filename, base64);
+                                //    }
+                                //}
 
                                 // Surface Masks
                                 var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));

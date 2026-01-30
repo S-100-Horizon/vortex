@@ -67,7 +67,7 @@ namespace S100FC.YAML
                 IntegerAttribute attr => (attr.value, typeof(int)),
                 EnumerationAttribute attr => (attr.value, typeof(int)),
                 CodeListAttribute attr => (attr.value, typeof(int)),
-                RealAttribute attr => (attr.value, typeof(double)),
+                RealAttribute attr => (attr.value, typeof(decimal)),
                 TimeAttribute attr => (attr.value, typeof(Time)),
                 DateAttribute attr => (attr.value, typeof(DateOnly)),
                 DateTimeAttribute attr => (attr.value, typeof(DateTime)),
