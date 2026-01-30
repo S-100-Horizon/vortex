@@ -162,7 +162,10 @@ namespace S100FC.ProductCatalogue
 
                         var code = Convert.ToString(c["code"])!;
                         if (code.Equals(nameof(S100FC.S128.FeatureTypes.ElectronicProduct))) {
-                            var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, this.jsonSerializerOptionsS128)!;
+                            //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, this.jsonSerializerOptionsS128)!;
+                            // todo: correct?
+                            var json = Convert.ToString(c["flatten"])!;
+                            var electronicProduct = S100FC.AttributeFlattenExtensions.Unflatten<ElectronicProduct>(json, typeof(ElectronicProduct));
                             this._electronicProducts.GetOrAdd(electronicProduct.datasetName!.ToUpperInvariant(), electronicProduct);
                         }
                     }
@@ -219,10 +222,9 @@ namespace S100FC.ProductCatalogue
                         };
 
 
-                        var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
+                        var flattened = electronicProduct.Flatten();
 
-                        buffer["json"] = jason;
-                        //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptionsSharedBindings);
+                        buffer["flatten"] = flattened;
                         buffer["shape"] = boundary;
                         surface.CreateRow(buffer);
 
@@ -407,8 +409,8 @@ namespace S100FC.ProductCatalogue
                 ArcGIS.Core.Data.Row row128;
 
                 using var cursorS128 = surface.Search(new QueryFilter {
-                    //WhereClause = $"json LIKE '%\"datasetName\":\"{name}\"%'",
-                    WhereClause = $"json LIKE '%\"{name}\"%'",
+                    //WhereClause = $"json LIKE '%datasetName\":\"{name}\"%'",
+                    WhereClause = $"flatten LIKE '%\"{name}\"%'",
                 }, false);
 
                 cursorS128.MoveNext();
@@ -417,10 +419,16 @@ namespace S100FC.ProductCatalogue
 
                 row128 = cursorS128.Current;
 
-                if (row128.IsNull("json"))
+                //if (row128.IsNull("json"))
+                //    throw new System.ArgumentNullException(nameof(name));
+
+                //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
+
+                if (row128.IsNull("flatten"))
                     throw new System.ArgumentNullException(nameof(name));
 
-                var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
+                var electronicProduct = S100FC.AttributeFlattenExtensions.Unflatten<ElectronicProduct>(Convert.ToString(row128["flatten"])!, typeof(ElectronicProduct));
+                //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
 
                 var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
@@ -486,7 +494,7 @@ namespace S100FC.ProductCatalogue
                 var topology = connection.BuildTopology(filter)!;
 
                 //  InformationTypes
-                {
+                try {
                     using var informationType = connection.OpenDataset<Table>(this.QualifyTableName("informationtype"));
 
                     using var informationCursor = informationType.Search();
@@ -495,11 +503,19 @@ namespace S100FC.ProductCatalogue
 
                         var name = $"{current.UID()}";
                         var code = current["code"].ToString()!;
-                        var json = current["json"].ToString()!;
+                        //var json = current["json"].ToString()!;
+                        //var flatten = current["flatten"].ToString() ?? string.Empty;
+                        var flatten =
+    current.FindField("flatten") != -1 &&
+    current["flatten"] != null &&
+    current["flatten"] != DBNull.Value
+        ? current["flatten"].ToString()
+        : string.Empty;
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
+                        var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.InformationType>(flatten, type);
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.InformationType;
+                        //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.InformationType;
 
                         var information = new YAML.Information {
                             Name = code,
@@ -511,40 +527,17 @@ namespace S100FC.ProductCatalogue
 
                         informationTypes.Add(information);
 
-                        var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                        var filenames = S100FC.YAML.Extensions.GetFileNames(flatten);
 
                         foreach (var filename in filenames) {
                             if (!supportFiles.Contains(filename)) {
                                 supportFiles.Add(filename);
-                                //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                //dataset?.Metadata.AddSupportFile(filename, base64);
                             }
                         }
-
-
-                        //// Support Files
-                        //if (regFileReference.IsMatch(json)) {
-                        //    var matches = regFileReference.Matches(json);
-                        //    foreach (Match m in matches) {
-                        //        var filename = m.Groups["filename"].Value;
-
-                        //        if (!supportFiles.Contains(filename)) {
-                        //            supportFiles.Add(filename);
-                        //        }
-                        //    }
-                        //}
-                        //if (regPictorialRepresentation.IsMatch(json)) {
-                        //    var matches = regPictorialRepresentation.Matches(json);
-                        //    foreach (Match m in matches) {
-                        //        var filename = m.Groups["filename"].Value;
-
-                        //        if (!supportFiles.Contains(filename)) {
-                        //            supportFiles.Add(filename);
-                        //        }
-                        //    }
-                        //}
                     }
+                }
+                catch (Exception ex) {
+                    Log.Information("Table: informationtype: {message} ", ex.Message);
                 }
 
                 // FeatureType
@@ -557,13 +550,22 @@ namespace S100FC.ProductCatalogue
 
                         var name = $"{current.UID()}";
                         var code = current["code"].ToString()!;
-                        var json = current["json"].ToString()!;
-
+                        //   var flatten = current["flatten"].ToString()!;
+                        var flatten =
+current.FindField("flatten") != -1 &&
+current["flatten"] != null &&
+current["flatten"] != DBNull.Value
+? current["flatten"].ToString()
+: string.Empty;
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
-                        var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
+                        var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(flatten, type);
+                        //var json = current["json"].ToString()!;
 
-                        var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+
+                        //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
+
+                        var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                         var feature = new YAML.Feature {
                             Prim = Primitive.NoGeometry,
@@ -574,38 +576,13 @@ namespace S100FC.ProductCatalogue
 
                         featureTypes.Add(feature);
 
-                        var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                        var filenames = S100FC.YAML.Extensions.GetFileNames(flatten);
 
                         foreach (var filename in filenames) {
                             if (!supportFiles.Contains(filename)) {
                                 supportFiles.Add(filename);
-                                //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                //dataset?.Metadata.AddSupportFile(filename, base64);
                             }
                         }
-
-                        //// Support Files
-                        //if (regFileReference.IsMatch(json)) {
-                        //    var matches = regFileReference.Matches(json);
-                        //    foreach (Match m in matches) {
-                        //        var filename = m.Groups["filename"].Value;
-
-                        //        if (!supportFiles.Contains(filename)) {
-                        //            supportFiles.Add(filename);
-                        //        }
-                        //    }
-                        //}
-                        //if (regPictorialRepresentation.IsMatch(json)) {
-                        //    var matches = regPictorialRepresentation.Matches(json);
-                        //    foreach (Match m in matches) {
-                        //        var filename = m.Groups["filename"].Value;
-
-                        //        if (!supportFiles.Contains(filename)) {
-                        //            supportFiles.Add(filename);
-                        //        }
-                        //    }
-                        //}
                     }
                 }
                 catch (Exception ex) {
@@ -645,7 +622,7 @@ namespace S100FC.ProductCatalogue
 
                         var code = Convert.ToString(current["code"]);
 
-                        var foid = $"110:{name}:1";       // Geodatastyrelsen: 110 
+                        var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
                         var prim = shapetype switch {
                             GeometryType.Point => Primitive.Point,
@@ -662,43 +639,27 @@ namespace S100FC.ProductCatalogue
                                 Log.Error("Could not get type: {type} for feature: {name}", code, name);
                                 continue;
                             }
+                            // var flatten = current["flatten"].ToString()!;
+                            var flatten =
+                            current.FindField("flatten") != -1 &&
+                            current["flatten"] != null &&
+                            current["flatten"] != DBNull.Value
+                            ? current["flatten"].ToString()
+                            : string.Empty;
 
-                            var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
+                            var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(flatten, type);
 
-                            var json = Convert.ToString(current["json"])!;
+                            //var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
 
-                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                            // var json = Convert.ToString(current["json"])!;
+
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(flatten);
 
                             foreach (var filename in filenames) {
                                 if (!supportFiles.Contains(filename)) {
                                     supportFiles.Add(filename);
-                                    //var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                    //var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                    //dataset?.Metadata.AddSupportFile(filename, base64);
                                 }
                             }
-
-                            //// Support Files
-                            //if (regFileReference.IsMatch(json)) {
-                            //    var matches = regFileReference.Matches(json);
-                            //    foreach (Match m in matches) {
-                            //        var filename = m.Groups["filename"].Value;
-
-                            //        if (!supportFiles.Contains(filename)) {
-                            //            supportFiles.Add(filename);
-                            //        }
-                            //    }
-                            //}
-                            //if (regPictorialRepresentation.IsMatch(json)) {
-                            //    var matches = regPictorialRepresentation.Matches(json);
-                            //    foreach (Match m in matches) {
-                            //        var filename = m.Groups["filename"].Value;
-
-                            //        if (!supportFiles.Contains(filename)) {
-                            //            supportFiles.Add(filename);
-                            //        }
-                            //    }
-                            //}
 
 
                             // Surface Masks
@@ -760,12 +721,12 @@ namespace S100FC.ProductCatalogue
                                         var asso = new YAML.Association {
                                             Name = binding.GetType().GenericTypeArguments[0].Name,
                                             Role = binding.role,
-                                            To = $"110:{binding!.featureId!}:1"
+                                            To = $"110:{binding!.featureId!.Substring(1)}:1"
                                         };
 
                                         feature?.AddFeatureAssociation(asso);
 
-                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId}:1"));
+                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.Substring(1)}:1"));
                                         if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
                                             featureTypesAdded.Add(binding.featureId);
                                             dataset?.AddFeature(noGeometry);
@@ -795,7 +756,13 @@ namespace S100FC.ProductCatalogue
                     while (attachmentCursor.MoveNext()) {
                         var current = attachmentCursor.Current;
 
-                        var json = current["json"].ToString();
+                        //var json = current["json"].ToString();
+                        var json =
+current.FindField("json") != -1 &&
+current["json"] != null &&
+current["json"] != DBNull.Value
+? current["json"].ToString()
+: string.Empty;
 
                         if (string.IsNullOrEmpty(json))
                             continue;
@@ -839,15 +806,17 @@ namespace S100FC.ProductCatalogue
 
                     using var cursorS128 = surface.Search(new QueryFilter {
                         //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        WhereClause = $"json LIKE '%\"{electronicProduct.datasetName}\"%'", // todo: remake to key/value pair
+                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", // todo: remake to key/value pair
                     }, false);
 
                     cursorS128.MoveNext();
 
                     Debug.Assert(cursorS128.Current != null);
 
+                    var flatten = electronicProduct.Flatten();
+
                     var row128 = cursorS128.Current;
-                    row128["json"] = System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
+                    row128["flatten"] = flatten; //= System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
                     row128.Store();
                     row128.Dispose();
 
@@ -943,14 +912,14 @@ namespace S100FC.ProductCatalogue
                 using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
                 using var cursorS128 = surface.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"{dataset.DatasetName}\"%'",
+                    WhereClause = $"flatten LIKE '%\"{dataset.DatasetName}\"%'",
                 }, false);
 
                 cursorS128.MoveNext();
 
                 Debug.Assert(cursorS128.Current != null);
 
-                if (cursorS128.Current.IsNull("json"))
+                if (cursorS128.Current.IsNull("flatten"))
                     throw new System.ArgumentNullException(nameof(dataset.DatasetName));
 
                 var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";

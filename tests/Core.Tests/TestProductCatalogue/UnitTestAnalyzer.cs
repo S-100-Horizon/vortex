@@ -1,6 +1,8 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
+using S100FC;
+using S100FC.S101.FeatureTypes;
 using S100FC.S128;
 using S100FC.YAML;
 using Serilog;
@@ -34,6 +36,32 @@ namespace TestProductCatalogue
             //}
         }
 
+        [Fact]
+        public void Test_flatten() {
+            var qob = new QualityOfBathymetricData() {
+                categoryOfTemporalVariation = 5,
+                dataAssessment = 1,
+                featuresDetected = new S100FC.S101.ComplexAttributes.featuresDetected {
+                    leastDepthOfDetectedFeaturesMeasured = true,
+                    significantFeaturesDetected = true
+                },
+                fullSeafloorCoverageAchieved = true,
+                zoneOfConfidence = [new() {
+                    categoryOfZoneOfConfidenceInData = 2,
+                }
+                ],
+
+            };
+
+
+            var jsonf = qob.Flatten();
+
+            var res = S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(jsonf, typeof(QualityOfBathymetricData));
+
+
+            System.Diagnostics.Debugger.Break();
+
+        }
         [Fact]
         public void Test_ConnectionSerialization() {
             FastZip fastZip = new();
@@ -230,23 +258,17 @@ namespace TestProductCatalogue
         }
 
         [Fact]
-        public async Task Test_LoadElectronicProducts2() {
-            var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
-            Assert.False(string.IsNullOrEmpty(s57));
+        public async Task Test_ImportS128FromS57() {
+            var s57 = @"C:\Geodatastyrelsen\gdbs\replica.gdb";  // Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
+            var s100 = @"C:\Geodatastyrelsen\gdbs\test128\s100edx.gdb"; // Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
 
-            FastZip fastZip = new();
+            Assert.NotNull(s57);
+            Assert.NotNull(s100);
 
-            var zipFileS100edX = new IO.DirectoryInfo(@"s100edX.gdb");
-
-            if (zipFileS100edX.Exists) {
-                zipFileS100edX.Delete(true);
-            }
-
-
-            fastZip.ExtractZip(Path.Combine(AppContext.BaseDirectory, "s100edX.gdb.zip"), zipFileS100edX.FullName, null);
+            var exist = Directory.Exists(s100);
 
             var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100edX.gdb")));
+                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(s100)));
 
                 var geodatabase = new Geodatabase(connectionFile);
 
@@ -255,7 +277,7 @@ namespace TestProductCatalogue
                     buffer["ps"] = "S-128.Horizon";
                     buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
-                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(Environment.GetEnvironmentVariable("S100-Horizon-S101-Database")!)))],
+                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(s100)))],
                     });
                     table.CreateRow(buffer);
                 }
@@ -339,10 +361,10 @@ namespace TestProductCatalogue
 
             await Task.WhenAll([.. tasks]);
 
-            // 101DK0040349E
+            //// 101DK0040349E
 
-            var p = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
-            await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
+            //var p = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
+            //await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
 
             System.Diagnostics.Debugger.Break();
         }

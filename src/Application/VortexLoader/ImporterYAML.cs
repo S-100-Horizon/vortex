@@ -44,6 +44,7 @@ namespace S100FC.Applications
             geodatabase.ApplyEdits(() => {
                 using var tableInformationType = geodatabase.OpenDataset<Table>(geodatabase.GetName("informationtype"));
                 using var tableFeatureType = geodatabase.OpenDataset<Table>(geodatabase.GetName("featuretype"));
+                using var tableAttachment = geodatabase.OpenDataset<Table>(geodatabase.GetName("attachment"));
 
                 using var fcPoint = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("point"));
                 using var fcPointSet = geodatabase.OpenDataset<FeatureClass>(geodatabase.GetName("pointset"));
@@ -52,6 +53,7 @@ namespace S100FC.Applications
 
                 using var bufferFeatureType = tableFeatureType.CreateRowBuffer();
                 using var bufferInformationType = tableInformationType.CreateRowBuffer();
+                using var bufferAttachment = tableAttachment.CreateRowBuffer();
                 using var bufferPoint = fcPoint.CreateRowBuffer();
                 using var bufferPointSet = fcPointSet.CreateRowBuffer();
                 using var bufferCurve = fcCurve.CreateRowBuffer();
@@ -84,12 +86,8 @@ namespace S100FC.Applications
                     }
 
                     // Serialize to JSON
-                    var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type, jsonSerializerOptions);
-                    var flatten = feature.Attributes.Flatten();
-
-                    // temp fix to ensure everything is serialized. todo: investigate if UnsurveyedArea has 0 mandatory attributes
-                    if (json.Equals("null", StringComparison.CurrentCultureIgnoreCase))
-                        json = "{\"attr\":[]}";
+                    //var json = System.Text.Json.JsonSerializer.Serialize(feature.Attributes, type, jsonSerializerOptions);
+                    var flatten = feature.Attributes?.Flatten() ?? "";
 
                     //  Find corresponding geometry and cast it to ArcGIS.Core.Geometry
                     var geometry = dataset.GetFeatureShape(feature);
@@ -135,13 +133,7 @@ namespace S100FC.Applications
                     }
 
                     // Set Usageband
-                    try {
-                        buffer["usageband"] = usageBand;
-                    }
-                    catch (Exception ex) {
-                        Log.Error("Could not set usageband for feature {feature}. Exception: {ex}", feature.Name, ex.Message);
-                    }
-
+                    buffer["usageband"] = usageBand;
                     buffer["ps"] = productSpecification;
                     buffer["code"] = feature.Name;
                     //buffer["__json__"] = json;
@@ -181,7 +173,7 @@ namespace S100FC.Applications
                     }
 
                     // 2) Serialize to JSON
-                    var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type, jsonSerializerOptions);
+                    //var json = System.Text.Json.JsonSerializer.Serialize(informationType.Attributes, type, jsonSerializerOptions);
                     var flatten = informationType.Attributes.Flatten();
 
                     // Write to table
@@ -192,6 +184,25 @@ namespace S100FC.Applications
                     buffer["flatten"] = flatten;
                     tableInformationType.CreateRow(bufferInformationType);
                 }
+
+
+                // Todo: add support files
+                //foreach(var supportFile in dataset.Metadata.SupportFiles ?? []) {
+                //    using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(supportFile.Content));
+
+                //    // Write to table
+                //    var buffer = bufferAttachment;
+
+                //    buffer["ps"] = productSpecification;
+                //    buffer["code"] = "supportfile";
+                //    buffer["data_size"] = memoryStream.Length;
+                //    buffer["data"] = memoryStream;
+                //    // buffer["json"] = ??
+                //    tableInformationType.CreateRow(bufferInformationType);
+
+                //    tableAttachment.CreateRow(bufferAttachment);
+                //}
+
             });
             return true;
         }

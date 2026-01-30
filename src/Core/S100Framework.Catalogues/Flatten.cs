@@ -30,8 +30,11 @@ namespace S100FC
         /// </param> 
         /// <returns> A fully populated instance of <typeparamref name="T"/> created from the JSON data. 
         /// </returns>
-        public static T Unflatten<T>(string attributes, Type type) where T : class {
-            var dict = JsonSerializer.Deserialize<Dictionary<string, JsonValue>>(attributes)!;
+        public static T Unflatten<T>(string? attributes, Type type) where T : class {
+            if (string.IsNullOrWhiteSpace(attributes)) {
+                return (T)Activator.CreateInstance(type)!;
+            }
+            var dict = JsonSerializer.Deserialize<Dictionary<string, JsonValue>>(attributes) ?? [];
             var root = (JsonObject)Unflatten(dict);
 
             //var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
@@ -45,7 +48,7 @@ namespace S100FC
 
 
 
-    private static void PopulateObject(object target, JsonObject json) {
+        private static void PopulateObject(object target, JsonObject json) {
             var type = target.GetType();
 
             foreach (var (name, node) in json) {
