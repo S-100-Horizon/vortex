@@ -9,6 +9,10 @@ namespace S100FC
 {
     public static class AttributeFlattenExtensions
     {
+        private readonly static JsonSerializerOptions jsonSerializerOptions = new() {
+            WriteIndented = true,
+        };
+
         public static string Flatten(this FeatureType feature) => FlattenAttributes(feature.attributeBindings, feature.attributeBindingsCatalogue);
         public static string Flatten(this InformationType information) => FlattenAttributes(information.attributeBindings, information.attributeBindingsCatalogue);
 
@@ -41,7 +45,7 @@ namespace S100FC
 
 
 
-        private static void PopulateObject(object target, JsonObject json) {
+    private static void PopulateObject(object target, JsonObject json) {
             var type = target.GetType();
 
             foreach (var (name, node) in json) {
@@ -172,9 +176,6 @@ namespace S100FC
         private static JsonValueKind GetSegmentKind(string pathSegment) => int.TryParse(pathSegment, out _) ? JsonValueKind.Array : JsonValueKind.Object;
         private static string FlattenAttributes(attributeBinding[] attributes, attributeBindingDefinition[] catalogue) {
             var root = new JObject();
-            var options = new JsonSerializerOptions() {
-                WriteIndented = true,
-            };
 
             foreach (var attr in attributes) {
                 var isCollection = catalogue.Single(e => e.attribute == attr.S100FC_code).IsCollection;
@@ -183,7 +184,7 @@ namespace S100FC
             }
 
             var flattened = root.Flatten();
-            return JsonSerializer.Serialize(flattened);
+            return JsonSerializer.Serialize(flattened, jsonSerializerOptions);
         }
         private static void AddAttribute(JObject parent, attributeBinding attribute, attributeBindingDefinition[] catalogue, bool isCollection = false) {
             switch (attribute) {
