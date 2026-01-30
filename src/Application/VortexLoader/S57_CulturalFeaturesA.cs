@@ -268,40 +268,40 @@ namespace S100Framework.Applications
                                 SpanOpening instance = null!;
                                 if (current.VERACC.HasValue) {
                                     verticalUncertaintyValue = new verticalUncertainty() {
-                                        uncertaintyFixed = current.VERACC.Value != -32767d ? current.VERACC.Value : null,
+                                        uncertaintyFixed = current.VERACC.Value != -32767m ? current.VERACC.Value : null,
                                     };
 
 
                                     instance = new SpanOpening() {
                                         verticalClearanceClosed = new verticalClearanceClosed() {
-                                            verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
                                             verticalUncertainty = verticalUncertaintyValue,
                                         }
                                         ,
                                         verticalClearanceOpen = new verticalClearanceOpen() {
-                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default(decimal?),
                                             //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                            verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(double)) : default
+                                            verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(decimal)) : default
                                         }
                                     };
                                 }
                                 else {
                                     instance = new SpanOpening() {
                                         verticalClearanceClosed = new verticalClearanceClosed() {
-                                            verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL!.Value : default(decimal?),
                                         }
                                         ,
                                         verticalClearanceOpen = new verticalClearanceOpen() {
-                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP!.Value : default(double?),
+                                            verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP!.Value : default(decimal?),
                                             //Where VERCOP has a value or is populated with an empty (null) value, vertical clearance unlimited will be populated as False.
-                                            verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(double)) : default
+                                            verticalClearanceUnlimited = current.VERCOP.HasValue ? !(current.VERCOP!.Value == default(decimal)) : default
                                         }
                                     };
 
                                 }
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                                 };
 
 
@@ -378,12 +378,12 @@ namespace S100Framework.Applications
 
                                 if (current.VERACC.HasValue) {
                                     verticalUncertaintyValue = new verticalUncertainty() {
-                                        uncertaintyFixed = current.VERACC.Value != -32767d ? current.VERACC.Value : null,
+                                        uncertaintyFixed = current.VERACC.Value != -32767m ? current.VERACC.Value : null,
                                     };
 
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
-                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : null,
+                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : null,
                                             verticalUncertainty = verticalUncertaintyValue
                                         }
                                     };
@@ -391,7 +391,7 @@ namespace S100Framework.Applications
                                 else {
                                     instance = new SpanFixed() {
                                         verticalClearanceFixed = new verticalClearanceFixed() {
-                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR!.Value : null,
+                                            verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR!.Value : null,
                                         }
 
                                     };
@@ -399,8 +399,8 @@ namespace S100Framework.Applications
                                 }
 
                                 instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?)
+                                    horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                    horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?)
                                 };
 
                                 var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
@@ -480,7 +480,7 @@ namespace S100Framework.Applications
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -590,7 +590,7 @@ namespace S100Framework.Applications
                                     instance.function = function;
                             }
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -623,7 +623,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -702,7 +702,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -740,11 +740,11 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
                                 },
-                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
-                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
 
                             };
 
@@ -761,7 +761,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -827,7 +827,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -859,7 +859,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -976,7 +976,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -1009,7 +1009,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1086,7 +1086,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -1117,10 +1117,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
                             else {
-                                //instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1208,7 +1208,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -1241,10 +1241,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
                             else {
-                                //instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1484,7 +1484,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
 
                             // TODO: interoperabilityIdentifier
@@ -1520,10 +1520,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
                             else {
-                                //instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -1582,8 +1582,8 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
-                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767d ? current.HORCLR!.Value : default(double?),
-                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767d ? current.HORACC!.Value : default(double?),
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
                             };
 
                             // TODO: interoperabilityIdentifier
@@ -1603,13 +1603,13 @@ namespace S100Framework.Applications
 
                             instance.verticalClearanceFixed = new() {
                                 verticalUncertainty = new() {
-                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767d ? current.VERACC.Value : default(double?),
-                                    uncertaintyVariableFactor = default(double?)
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
                                 },
-                                //verticalClearanceValue = default(double?)
-                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767d ? current.VERCOP.Value : default(double?),
-                                //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767d ? current.VERCLR.Value : default(double?),
-                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767d ? current.VERCCL.Value : default(double?),
+                                //verticalClearanceValue = default(decimal?)
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
                             };
 
 

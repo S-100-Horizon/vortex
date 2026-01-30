@@ -668,7 +668,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VALSOU.HasValue) {
-                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
                             }
                             else {
 
@@ -676,10 +676,10 @@ namespace S100Framework.Applications
 
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
-                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
-                                //instance.verticalLength = default(double?);
+                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             // TODO: VerticalUncertainty

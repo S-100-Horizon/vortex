@@ -360,7 +360,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -369,7 +369,7 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {

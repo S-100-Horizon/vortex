@@ -230,11 +230,11 @@ namespace S100Framework.Applications
                             */
 
                             if (current.DRVAL1.HasValue) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1 : null;
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767m ? current.DRVAL1 : null;
                             }
 
                             if (current.DRVAL2.HasValue) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2 : null;
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767m ? current.DRVAL2 : null;
                             }
 
                             // TODO: featuresDetected
@@ -392,10 +392,10 @@ namespace S100Framework.Applications
                             };
 
                             if (current.DRVAL1.HasValue) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767m ? current.DRVAL1.Value : null;
                             }
                             if (current.DRVAL2.HasValue) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2.Value : null;
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767m ? current.DRVAL2.Value : null;
                             }
 
                             // TODO: featuresdetected
@@ -409,7 +409,7 @@ namespace S100Framework.Applications
                             // TODO: line spacing minimum
 
                             if (current.SDISMX.HasValue) {
-                                if (current.SDISMX.Value == -32767d) {
+                                if (current.SDISMX.Value == -32767m) {
                                     instance.measurementDistanceMaximum = null;
                                 }
                                 else {
@@ -423,7 +423,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.SDISMN.HasValue) {
-                                if (current.SDISMN.Value == -32767d) {
+                                if (current.SDISMN.Value == -32767m) {
                                     instance.measurementDistanceMaximum = null;
                                 }
                                 else {

@@ -79,8 +79,8 @@ namespace S100Framework.Applications.Singletons
             string pattern = @"-?\d+\.\d+|-?\d+";
 
             string result = Regex.Replace(wkt, pattern, match => {
-                if (double.TryParse(match.Value, NumberStyles.Float, CultureInfo.InvariantCulture, out double number)) {
-                    double rounded = Math.Round(number, decimals);
+                if (decimal.TryParse(match.Value, NumberStyles.Float, CultureInfo.InvariantCulture, out decimal number)) {
+                    decimal rounded = Math.Round(number, decimals);
                     string formatString = "F" + decimals;
                     return rounded.ToString(formatString, CultureInfo.InvariantCulture);
                 }

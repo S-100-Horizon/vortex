@@ -29,7 +29,7 @@ namespace S100Framework.Applications
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             // DODO: Interoperability identifier
@@ -69,11 +69,11 @@ namespace S100Framework.Applications
             }
 
             if (current.VALSOU.HasValue) {
-                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
             }
 
             if (current.WATLEV.HasValue) {
@@ -129,7 +129,7 @@ namespace S100Framework.Applications
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             // DODO: Interoperability identifier
@@ -171,14 +171,14 @@ namespace S100Framework.Applications
 
 
             if (current.VALSOU.HasValue) {
-                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
             }
             else {
 
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
             }
 
             if (current.WATLEV.HasValue) {
@@ -235,7 +235,7 @@ namespace S100Framework.Applications
             instance.featureName = ImporterNIS.GetFeatureName(current.OBJNAM, current.NOBJNM);
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
             else {
 
@@ -280,11 +280,11 @@ namespace S100Framework.Applications
 
 
             if (current.VALSOU.HasValue) {
-                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
             }
 
             if (current.WATLEV.HasValue) {

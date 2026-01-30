@@ -25,7 +25,7 @@ namespace S100Framework.Applications
 
             // flareBearing is not populated. New field.                            
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             // DODO: Interoperability identifier
@@ -47,17 +47,17 @@ namespace S100Framework.Applications
 
             // covered by meta feature hence not to be set
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                 var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
                 if (verticalDatum != default)
                     instance.verticalDatum = verticalDatum.value;
             }
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
             else {
-                instance.height = default(double?);
+                instance.height = default(decimal?);
             }
 
             if (scaleMinimum.HasValue) {

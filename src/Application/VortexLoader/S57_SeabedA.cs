@@ -215,10 +215,10 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
-                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767d) {
-                                //instance.verticalLength = default(double?);
+                            else if (current.VERLEN.HasValue && current.VERLEN.Value == -32767m) {
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {

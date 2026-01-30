@@ -136,7 +136,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.VALSOU.HasValue) {
-                                    instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                                    instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
                                 }
                                 else {
 
@@ -262,7 +262,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VALSOU.HasValue) {
-                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
                             }
                             else {
 
@@ -295,7 +295,7 @@ namespace S100Framework.Applications
 
                             bool coveredByUnsurveyedArea = false;
                             bool coveredByDredgedArea = false;
-                            double? leastDepth = null;
+                            decimal? leastDepth = null;
 
                             if (current.SHAPE != null) {
                                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(current.SHAPE!)) {
@@ -306,48 +306,48 @@ namespace S100Framework.Applications
                                     }
                                     if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
                                         coveredByDredgedArea = true;
-                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                                        instance.surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                                     }
                                     if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
-                                        instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                                        instance.surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                                     }
 
-                                    instance.surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                                    instance.surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                                 }
                             }
 
 
                             bool allCoveringDepthRangeMinimumValuesAreKnown = instance.surroundingDepth is not null && instance.surroundingDepth is not null;
 
-                            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767d);
+                            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (current.VALSOU.HasValue && current.VALSOU.Value == -32767m);
 
                             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth is not null && instance.surroundingDepth.HasValue);
 
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
                                 if (!(current.VALSOU.HasValue)) {
                                     if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
-                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                         (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
 
                                         instance.defaultClearanceDepth = instance.surroundingDepth;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
-                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
 
-                                        instance.defaultClearanceDepth = 0.1d;
+                                        instance.defaultClearanceDepth = 0.1m;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
-                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
 
-                                        instance.defaultClearanceDepth = 0d;
+                                        instance.defaultClearanceDepth = 0m;
                                     }
                                     else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
-                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
-                                       (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
+                                       (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
+                                       (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767m))) {
 
-                                        instance.defaultClearanceDepth = -15d;
+                                        instance.defaultClearanceDepth = -15m;
                                     }
                                     else {
                                         ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
@@ -355,17 +355,17 @@ namespace S100Framework.Applications
                                 }
                             }
                             else if (unknownDepthCoveredByUnsurveyedArea || depthDredgedAreaWhereDepthMinimumValueIsUnknown) {
-                                if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
-                                    instance.defaultClearanceDepth = 0.1d;
+                                    instance.defaultClearanceDepth = 0.1m;
                                 }
-                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                    (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
-                                    instance.defaultClearanceDepth = 0d;
+                                    instance.defaultClearanceDepth = 0m;
                                 }
-                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767d) &&
-                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767d))) {
-                                    instance.defaultClearanceDepth = -15d;
+                                else if ((current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
+                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767m))) {
+                                    instance.defaultClearanceDepth = -15m;
                                 }
                                 else {
                                     ;// Logger.Current.DataError(current.OBJECTID.Value, tableName, longname, $"Cannot convert defaultCleareanceDepth for underwater awash rock. Check S-101 Annex - A.");
@@ -465,7 +465,7 @@ namespace S100Framework.Applications
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -508,7 +508,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VALSOU.HasValue) {
-                                instance.valueOfSounding = current.VALSOU.Value != -32767d ? current.VALSOU.Value : null;
+                                instance.valueOfSounding = current.VALSOU.Value != -32767m ? current.VALSOU.Value : null;
                             }
                             else {
 

@@ -146,7 +146,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -177,10 +177,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
                             else {
-                                //instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.CONVIS.HasValue) {
@@ -259,7 +259,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
 
@@ -296,10 +296,10 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
                             else {
-                                //instance.verticalLength = default(double?);
+                                //instance.verticalLength = default(decimal?);
                             }
 
                             if (current.INFORM is not null && instance.restriction is not null && instance.restriction.Contains(27 /*restriction.SpeedRestricted*/)) {
@@ -447,7 +447,7 @@ namespace S100Framework.Applications
                 };
 
                 return [new vesselSpeedLimit() {
-                    speedLimit = Convert.ToDouble(speed),
+                    speedLimit = Convert.ToDecimal(speed),
                     speedUnits = units
                 }];
             }
@@ -462,7 +462,7 @@ namespace S100Framework.Applications
                 };
 
                 return [new vesselSpeedLimit() {
-                    speedLimit = Convert.ToDouble(speed),
+                    speedLimit = Convert.ToDecimal(speed),
                     speedUnits = units
                 }];
 

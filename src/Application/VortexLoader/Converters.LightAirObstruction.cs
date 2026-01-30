@@ -34,7 +34,7 @@ namespace S100Framework.Applications
 
             // TODO: Interoperability identifier                            
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             if (current.LITVIS != null) {

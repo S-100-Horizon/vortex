@@ -122,7 +122,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767d) {
+                            if (current.ORIENT.HasValue && current.ORIENT.Value != -32767m) {
                                 instance.orientationValue = [current.ORIENT.Value];
                             }
 

@@ -148,11 +148,11 @@ namespace S100Framework.Applications
                             }
 
                             if (current.DRVAL1.HasValue) {
-                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767d ? current.DRVAL1.Value : null;
+                                instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767m ? current.DRVAL1.Value : null;
                             }
 
                             if (current.DRVAL2.HasValue) {
-                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767d ? current.DRVAL2.Value : null;
+                                instance.depthRangeMaximumValue = current.DRVAL2.Value != -32767m ? current.DRVAL2.Value : null;
                             }
 
                             instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);

@@ -50,10 +50,10 @@ namespace S100Framework.Applications
 
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
             else {
-                instance.height = default(double?);
+                instance.height = default(decimal?);
             }
 
 
@@ -146,7 +146,7 @@ namespace S100Framework.Applications
 
 
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             // TODO: interoperabilityidentifier

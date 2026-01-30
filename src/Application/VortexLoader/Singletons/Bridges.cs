@@ -266,13 +266,22 @@ namespace S100Framework.Applications.Singletons
 
                         var categoriesOfElements = bridgeElement.BridgeCategories;
 
-                        var same = new HashSet<long>(categoriesOfElements).Count == 1;
-                        if (!same) {
-                            Logger.Current.Error("Bridge has elements with multiple categoryOfBridge this cannot be converted.");
+                        if (categoriesOfElements.Count() != categoriesOfElements.Distinct().Count()) {
+                            var distinct = categoriesOfElements.Distinct();
+                            Logger.Current.Error($"Bridge has elements with multiple categoryOfBridge this cannot be converted ({string.Join(',', distinct)})");
                         }
-                        else {
 
-                            var categoryOfBridge = categoriesOfElements[0];
+                        if(true == bridge.openingBridge){
+                            long[] openingCategories = [3, 4, 5, 7];
+
+                            var c = bridgeElement.BridgeCategories.Where(e => openingCategories.Contains(e));
+
+                            if (c.Count() != c.Distinct().Count()) {
+                                Logger.Current.Error("Bridge (opening) has elements with multiple categoryOfBridge this cannot be converted.");
+                            }
+
+                            var categoryOfBridge = c.First();
+
                             //if (categoryOfBridge == 2) { //(opening bridge)
                             //    bridge.categoryOfOpeningBridge = 2;   2 IS NOT ALLOWED!!!
                             //}
@@ -325,7 +334,7 @@ namespace S100Framework.Applications.Singletons
 
                     bridge.featureName = ImporterNIS.GetFeatureName(displayName, ndisplayName);
 
-                    row["json"] = System.Text.Json.JsonSerializer.Serialize(bridge, ImporterNIS.jsonSerializerOptions);
+                    row["flatten"] = bridge.Flatten();                        
 
                     cursor.Update(row);
                     //row.Store();

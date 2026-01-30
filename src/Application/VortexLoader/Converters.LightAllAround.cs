@@ -39,7 +39,7 @@ namespace S100Framework.Applications
 
             // flareBearing is not populated. New field.                            
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
 
             // TODO: interoperabilityidentifier
@@ -57,7 +57,7 @@ namespace S100Framework.Applications
             if (current.VALNMR.HasValue) {
                 instance.valueOfNominalRange = current.VALNMR.Value;
 
-                if (current.VALNMR.Value >= 10.0d) {
+                if (current.VALNMR.Value >= 10.0m) {
                     instance.majorLight = true;
                 }
             }
@@ -98,7 +98,7 @@ namespace S100Framework.Applications
             }
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                 var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
                 if (verticalDatum != default)
                     instance.verticalDatum = verticalDatum.value;

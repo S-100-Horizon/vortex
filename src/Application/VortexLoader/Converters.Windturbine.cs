@@ -38,7 +38,7 @@ namespace S100Framework.Applications
                 instance.fixedDateRange = dateRange;
             }
             if (current.HEIGHT.HasValue) {
-                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
             }
             else {
 
@@ -74,20 +74,20 @@ namespace S100Framework.Applications
 
             var verticalUncertainty = new verticalUncertainty();
             if (current.VERACC.HasValue)
-                verticalUncertainty.uncertaintyFixed = current.VERACC.Value != -32767d ? current.VERACC.Value : null;
+                verticalUncertainty.uncertaintyFixed = current.VERACC.Value != -32767m ? current.VERACC.Value : null;
 
             var verticalClearanceFixed = new verticalClearanceFixed {
                 verticalUncertainty = verticalUncertainty
             };
             if (current.VERCLR.HasValue)
-                verticalClearanceFixed.verticalClearanceValue = current.VERCLR.Value != -32767d ? current.VERCLR.Value : null;
+                verticalClearanceFixed.verticalClearanceValue = current.VERCLR.Value != -32767m ? current.VERCLR.Value : null;
 
             instance.verticalClearanceFixed = new() {
                 verticalUncertainty = verticalUncertainty,
             };
 
             if (current.VERLEN.HasValue) {
-                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                 instance.verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3)?.value;
 
             }

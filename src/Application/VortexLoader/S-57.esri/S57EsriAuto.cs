@@ -90,7 +90,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal datum
@@ -196,7 +196,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -405,19 +405,19 @@
 //		/// Value of local magnetic anomaly
 //		/// </summary>
 //		[Description("Value of local magnetic anomaly")]
-//		internal double? VALLMA = default;
+//		internal decimal? VALLMA = default;
 
 //		/// <summary>
 //		/// Value of annual change in magnetic variation
 //		/// </summary>
 //		[Description("Value of annual change in magnetic variation")]
-//		internal double? VALACM = default;
+//		internal decimal? VALACM = default;
 
 //		/// <summary>
 //		/// Value of magnetic variation
 //		/// </summary>
 //		[Description("Value of magnetic variation")]
-//		internal double? VALMAG = default;
+//		internal decimal? VALMAG = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -435,13 +435,13 @@
 //		/// Current velocity
 //		/// </summary>
 //		[Description("Current velocity")]
-//		internal double? CURVEL = default;
+//		internal decimal? CURVEL = default;
 
 //		/// <summary>
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -658,13 +658,13 @@
 //				RYRMGV = Convert.ToString(feature["RYRMGV"]);
 //			}
 //			if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-//				VALLMA = Convert.ToDouble(feature["VALLMA"]);
+//				VALLMA = Convert.ToDecimal(feature["VALLMA"]);
 //			}
 //			if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-//				VALACM = Convert.ToDouble(feature["VALACM"]);
+//				VALACM = Convert.ToDecimal(feature["VALACM"]);
 //			}
 //			if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-//				VALMAG = Convert.ToDouble(feature["VALMAG"]);
+//				VALMAG = Convert.ToDecimal(feature["VALMAG"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -674,10 +674,10 @@
 //				CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
 //			}
 //			if (DBNull.Value != feature["CURVEL"] && feature["CURVEL"] is not null) {
-//				CURVEL = Convert.ToDouble(feature["CURVEL"]);
+//				CURVEL = Convert.ToDecimal(feature["CURVEL"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -919,19 +919,19 @@
 //		/// Value of local magnetic anomaly
 //		/// </summary>
 //		[Description("Value of local magnetic anomaly")]
-//		internal double? VALLMA = default;
+//		internal decimal? VALLMA = default;
 
 //		/// <summary>
 //		/// Value of annual change in magnetic variation
 //		/// </summary>
 //		[Description("Value of annual change in magnetic variation")]
-//		internal double? VALACM = default;
+//		internal decimal? VALACM = default;
 
 //		/// <summary>
 //		/// Value of magnetic variation
 //		/// </summary>
 //		[Description("Value of magnetic variation")]
-//		internal double? VALMAG = default;
+//		internal decimal? VALMAG = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -1070,13 +1070,13 @@
 //				RYRMGV = Convert.ToString(feature["RYRMGV"]);
 //			}
 //			if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-//				VALLMA = Convert.ToDouble(feature["VALLMA"]);
+//				VALLMA = Convert.ToDecimal(feature["VALLMA"]);
 //			}
 //			if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-//				VALACM = Convert.ToDouble(feature["VALACM"]);
+//				VALACM = Convert.ToDecimal(feature["VALACM"]);
 //			}
 //			if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-//				VALMAG = Convert.ToDouble(feature["VALMAG"]);
+//				VALMAG = Convert.ToDecimal(feature["VALMAG"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -1280,19 +1280,19 @@
 //		/// Value of local magnetic anomaly
 //		/// </summary>
 //		[Description("Value of local magnetic anomaly")]
-//		internal double? VALLMA = default;
+//		internal decimal? VALLMA = default;
 
 //		/// <summary>
 //		/// Value of annual change in magnetic variation
 //		/// </summary>
 //		[Description("Value of annual change in magnetic variation")]
-//		internal double? VALACM = default;
+//		internal decimal? VALACM = default;
 
 //		/// <summary>
 //		/// Value of magnetic variation
 //		/// </summary>
 //		[Description("Value of magnetic variation")]
-//		internal double? VALMAG = default;
+//		internal decimal? VALMAG = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -1310,13 +1310,13 @@
 //		/// Current velocity
 //		/// </summary>
 //		[Description("Current velocity")]
-//		internal double? CURVEL = default;
+//		internal decimal? CURVEL = default;
 
 //		/// <summary>
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -1418,7 +1418,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -1551,13 +1551,13 @@
 //				RYRMGV = Convert.ToString(feature["RYRMGV"]);
 //			}
 //			if (DBNull.Value != feature["VALLMA"] && feature["VALLMA"] is not null) {
-//				VALLMA = Convert.ToDouble(feature["VALLMA"]);
+//				VALLMA = Convert.ToDecimal(feature["VALLMA"]);
 //			}
 //			if (DBNull.Value != feature["VALACM"] && feature["VALACM"] is not null) {
-//				VALACM = Convert.ToDouble(feature["VALACM"]);
+//				VALACM = Convert.ToDecimal(feature["VALACM"]);
 //			}
 //			if (DBNull.Value != feature["VALMAG"] && feature["VALMAG"] is not null) {
-//				VALMAG = Convert.ToDouble(feature["VALMAG"]);
+//				VALMAG = Convert.ToDecimal(feature["VALMAG"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -1567,10 +1567,10 @@
 //				CAT_TS = Convert.ToInt32(feature["CAT_TS"]);
 //			}
 //			if (DBNull.Value != feature["CURVEL"] && feature["CURVEL"] is not null) {
-//				CURVEL = Convert.ToDouble(feature["CURVEL"]);
+//				CURVEL = Convert.ToDecimal(feature["CURVEL"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -1622,7 +1622,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -1821,13 +1821,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -1972,10 +1972,10 @@
 //				NATSUR = Convert.ToString(feature["NATSUR"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2182,13 +2182,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -2224,7 +2224,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -2357,10 +2357,10 @@
 //				NATSUR = Convert.ToString(feature["NATSUR"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2380,7 +2380,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -2579,13 +2579,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -2736,10 +2736,10 @@
 //				NATSUR = Convert.ToString(feature["NATSUR"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -2973,7 +2973,7 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -3021,7 +3021,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -3039,13 +3039,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -3057,7 +3057,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -3220,7 +3220,7 @@
 //				EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -3244,7 +3244,7 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
@@ -3253,16 +3253,16 @@
 //				TECSOU = Convert.ToString(feature["TECSOU"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -3496,7 +3496,7 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -3544,7 +3544,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -3562,13 +3562,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -3580,7 +3580,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -3628,7 +3628,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -3773,7 +3773,7 @@
 //				EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -3797,7 +3797,7 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
@@ -3806,16 +3806,16 @@
 //				TECSOU = Convert.ToString(feature["TECSOU"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -3841,7 +3841,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -4064,7 +4064,7 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -4112,7 +4112,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -4130,13 +4130,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -4148,7 +4148,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -4323,7 +4323,7 @@
 //				EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -4347,7 +4347,7 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
@@ -4356,16 +4356,16 @@
 //				TECSOU = Convert.ToString(feature["TECSOU"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -4569,7 +4569,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -4581,13 +4581,13 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -4599,7 +4599,7 @@
 //		/// Value of depth contour
 //		/// </summary>
 //		[Description("Value of depth contour")]
-//		internal double? VALDCO = default;
+//		internal decimal? VALDCO = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -4726,23 +4726,23 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
 //				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["VALDCO"] && feature["VALDCO"] is not null) {
-//				VALDCO = Convert.ToDouble(feature["VALDCO"]);
+//				VALDCO = Convert.ToDecimal(feature["VALDCO"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -4960,7 +4960,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -4972,25 +4972,25 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Buried depth
 //		/// </summary>
 //		[Description("Buried depth")]
-//		internal double? BURDEP = default;
+//		internal decimal? BURDEP = default;
 
 //		/// <summary>
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -5144,22 +5144,22 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-//				BURDEP = Convert.ToDouble(feature["BURDEP"]);
+//				BURDEP = Convert.ToDecimal(feature["BURDEP"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -5384,7 +5384,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -5396,7 +5396,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -5450,7 +5450,7 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -5604,13 +5604,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -5638,7 +5638,7 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -5850,7 +5850,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -5982,7 +5982,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -6178,7 +6178,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -6232,13 +6232,13 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// Quality of sounding measurement
@@ -6250,7 +6250,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Technique of sounding measurement
@@ -6407,7 +6407,7 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -6434,16 +6434,16 @@
 //				CATTSS = Convert.ToInt32(feature["CATTSS"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["QUASOU"] && feature["QUASOU"] is not null) {
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["TECSOU"] && feature["TECSOU"] is not null) {
 //				TECSOU = Convert.ToString(feature["TECSOU"]);
@@ -6656,7 +6656,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -6710,13 +6710,13 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// Quality of sounding measurement
@@ -6728,7 +6728,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Technique of sounding measurement
@@ -6879,7 +6879,7 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -6906,16 +6906,16 @@
 //				CATTSS = Convert.ToInt32(feature["CATTSS"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["QUASOU"] && feature["QUASOU"] is not null) {
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["TECSOU"] && feature["TECSOU"] is not null) {
 //				TECSOU = Convert.ToString(feature["TECSOU"]);
@@ -7125,7 +7125,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -7179,7 +7179,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -7312,7 +7312,7 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -7341,7 +7341,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -7642,13 +7642,13 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Estimated range of transmission
 //		/// </summary>
 //		[Description("Estimated range of transmission")]
-//		internal double? ESTRNG = default;
+//		internal decimal? ESTRNG = default;
 
 //		/// <summary>
 //		/// Exhibition condition of light
@@ -7660,25 +7660,25 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Light characteristic
@@ -7714,7 +7714,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -7744,13 +7744,13 @@
 //		/// Sector limit one
 //		/// </summary>
 //		[Description("Sector limit one")]
-//		internal double? SECTR1 = default;
+//		internal decimal? SECTR1 = default;
 
 //		/// <summary>
 //		/// Sector limit two
 //		/// </summary>
 //		[Description("Sector limit two")]
-//		internal double? SECTR2 = default;
+//		internal decimal? SECTR2 = default;
 
 //		/// <summary>
 //		/// Signal frequency
@@ -7774,7 +7774,7 @@
 //		/// Signal period
 //		/// </summary>
 //		[Description("Signal period")]
-//		internal double? SIGPER = default;
+//		internal decimal? SIGPER = default;
 
 //		/// <summary>
 //		/// Signal sequence
@@ -7798,19 +7798,19 @@
 //		/// Value of maximum range
 //		/// </summary>
 //		[Description("Value of maximum range")]
-//		internal double? VALMXR = default;
+//		internal decimal? VALMXR = default;
 
 //		/// <summary>
 //		/// Value of nominal range
 //		/// </summary>
 //		[Description("Value of nominal range")]
-//		internal double? VALNMR = default;
+//		internal decimal? VALNMR = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -7822,7 +7822,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -7846,7 +7846,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -8036,25 +8036,25 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["ESTRNG"] && feature["ESTRNG"] is not null) {
-//				ESTRNG = Convert.ToDouble(feature["ESTRNG"]);
+//				ESTRNG = Convert.ToDecimal(feature["ESTRNG"]);
 //			}
 //			if (DBNull.Value != feature["EXCLIT"] && feature["EXCLIT"] is not null) {
 //				EXCLIT = Convert.ToInt32(feature["EXCLIT"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["LITCHR"] && feature["LITCHR"] is not null) {
 //				LITCHR = Convert.ToInt32(feature["LITCHR"]);
@@ -8072,7 +8072,7 @@
 //				NATCON = Convert.ToString(feature["NATCON"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -8087,10 +8087,10 @@
 //				RADWAL = Convert.ToString(feature["RADWAL"]);
 //			}
 //			if (DBNull.Value != feature["SECTR1"] && feature["SECTR1"] is not null) {
-//				SECTR1 = Convert.ToDouble(feature["SECTR1"]);
+//				SECTR1 = Convert.ToDecimal(feature["SECTR1"]);
 //			}
 //			if (DBNull.Value != feature["SECTR2"] && feature["SECTR2"] is not null) {
-//				SECTR2 = Convert.ToDouble(feature["SECTR2"]);
+//				SECTR2 = Convert.ToDecimal(feature["SECTR2"]);
 //			}
 //			if (DBNull.Value != feature["SIGFRQ"] && feature["SIGFRQ"] is not null) {
 //				SIGFRQ = Convert.ToInt32(feature["SIGFRQ"]);
@@ -8102,7 +8102,7 @@
 //				SIGGRP = Convert.ToString(feature["SIGGRP"]);
 //			}
 //			if (DBNull.Value != feature["SIGPER"] && feature["SIGPER"] is not null) {
-//				SIGPER = Convert.ToDouble(feature["SIGPER"]);
+//				SIGPER = Convert.ToDecimal(feature["SIGPER"]);
 //			}
 //			if (DBNull.Value != feature["SIGSEQ"] && feature["SIGSEQ"] is not null) {
 //				SIGSEQ = Convert.ToString(feature["SIGSEQ"]);
@@ -8114,19 +8114,19 @@
 //				TOPSHP = Convert.ToInt32(feature["TOPSHP"]);
 //			}
 //			if (DBNull.Value != feature["VALMXR"] && feature["VALMXR"] is not null) {
-//				VALMXR = Convert.ToDouble(feature["VALMXR"]);
+//				VALMXR = Convert.ToDecimal(feature["VALMXR"]);
 //			}
 //			if (DBNull.Value != feature["VALNMR"] && feature["VALNMR"] is not null) {
-//				VALNMR = Convert.ToDouble(feature["VALNMR"]);
+//				VALNMR = Convert.ToDecimal(feature["VALNMR"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -8140,7 +8140,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -8338,13 +8338,13 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Periodic date end
@@ -8368,7 +8368,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -8380,7 +8380,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -8516,10 +8516,10 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["PEREND"] && feature["PEREND"] is not null) {
 //				PEREND = Convert.ToString(feature["PEREND"]);
@@ -8531,13 +8531,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -9153,7 +9153,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -9309,7 +9309,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -10055,7 +10055,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -10238,7 +10238,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -10876,7 +10876,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -10888,13 +10888,13 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -11039,16 +11039,16 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -11246,7 +11246,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -11264,7 +11264,7 @@
 //		/// Depth
 //		/// </summary>
 //		[Description("Depth")]
-//		internal double? DEPTH = default;
+//		internal decimal? DEPTH = default;
 
 //		/// <summary>
 //		/// Exposition of sounding
@@ -11294,7 +11294,7 @@
 //		/// Entry date
 //		/// </summary>
 //		[Description("Entry date")]
-//		internal double? ENTRY_DATE = default;
+//		internal decimal? ENTRY_DATE = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -11342,7 +11342,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -11433,7 +11433,7 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
@@ -11443,7 +11443,7 @@
 //				base.FcSubtype = this.FCSUBTYPE.Value;
 //			}
 //			if (DBNull.Value != feature["DEPTH"] && feature["DEPTH"] is not null) {
-//				DEPTH = Convert.ToDouble(feature["DEPTH"]);
+//				DEPTH = Convert.ToDecimal(feature["DEPTH"]);
 //			}
 //			if (DBNull.Value != feature["EXPSOU"] && feature["EXPSOU"] is not null) {
 //				EXPSOU = Convert.ToInt32(feature["EXPSOU"]);
@@ -11458,7 +11458,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["ENTRY_DATE"] && feature["ENTRY_DATE"] is not null) {
-//				ENTRY_DATE = Convert.ToDouble(feature["ENTRY_DATE"]);
+//				ENTRY_DATE = Convert.ToDecimal(feature["ENTRY_DATE"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -11483,7 +11483,7 @@
 //				NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -11706,43 +11706,43 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Lifting capacity
 //		/// </summary>
 //		[Description("Lifting capacity")]
-//		internal double? LIFCAP = default;
+//		internal decimal? LIFCAP = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -11772,7 +11772,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -11784,13 +11784,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -11802,7 +11802,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -11898,7 +11898,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Pilot district
@@ -11910,7 +11910,7 @@
 //		/// Radius
 //		/// </summary>
 //		[Description("Radius")]
-//		internal double? RADIUS = default;
+//		internal decimal? RADIUS = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -11928,7 +11928,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -12082,25 +12082,25 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-//				LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
+//				LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -12115,22 +12115,22 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -12179,13 +12179,13 @@
 //				NPLDST = Convert.ToString(feature["NPLDST"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PILDST"] && feature["PILDST"] is not null) {
 //				PILDST = Convert.ToString(feature["PILDST"]);
 //			}
 //			if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-//				RADIUS = Convert.ToDouble(feature["RADIUS"]);
+//				RADIUS = Convert.ToDecimal(feature["RADIUS"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -12195,7 +12195,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -12436,43 +12436,43 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Lifting capacity
 //		/// </summary>
 //		[Description("Lifting capacity")]
-//		internal double? LIFCAP = default;
+//		internal decimal? LIFCAP = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -12502,7 +12502,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -12514,13 +12514,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -12532,7 +12532,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -12704,25 +12704,25 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-//				LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
+//				LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -12737,22 +12737,22 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -13004,43 +13004,43 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Lifting capacity
 //		/// </summary>
 //		[Description("Lifting capacity")]
-//		internal double? LIFCAP = default;
+//		internal decimal? LIFCAP = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -13070,7 +13070,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -13082,13 +13082,13 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -13100,7 +13100,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -13178,7 +13178,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Pilot district
@@ -13190,7 +13190,7 @@
 //		/// Radius
 //		/// </summary>
 //		[Description("Radius")]
-//		internal double? RADIUS = default;
+//		internal decimal? RADIUS = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -13344,25 +13344,25 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-//				LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
+//				LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -13377,22 +13377,22 @@
 //				QUASOU = Convert.ToString(feature["QUASOU"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -13432,13 +13432,13 @@
 //				NPLDST = Convert.ToString(feature["NPLDST"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PILDST"] && feature["PILDST"] is not null) {
 //				PILDST = Convert.ToString(feature["PILDST"]);
 //			}
 //			if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-//				RADIUS = Convert.ToDouble(feature["RADIUS"]);
+//				RADIUS = Convert.ToDecimal(feature["RADIUS"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -13620,7 +13620,7 @@
 //		/// Buried depth
 //		/// </summary>
 //		[Description("Buried depth")]
-//		internal double? BURDEP = default;
+//		internal decimal? BURDEP = default;
 
 //		/// <summary>
 //		/// Category of bridge
@@ -13704,7 +13704,7 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Function
@@ -13716,19 +13716,19 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -13764,25 +13764,25 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance, closed
 //		/// </summary>
 //		[Description("Vertical clearance, closed")]
-//		internal double? VERCCL = default;
+//		internal decimal? VERCCL = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical clearance, open
 //		/// </summary>
 //		[Description("Vertical clearance, open")]
-//		internal double? VERCOP = default;
+//		internal decimal? VERCOP = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -13794,7 +13794,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -13848,7 +13848,7 @@
 //		/// Lifting capacity
 //		/// </summary>
 //		[Description("Lifting capacity")]
-//		internal double? LIFCAP = default;
+//		internal decimal? LIFCAP = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -13978,7 +13978,7 @@
 //				IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
 //			}
 //			if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-//				BURDEP = Convert.ToDouble(feature["BURDEP"]);
+//				BURDEP = Convert.ToDecimal(feature["BURDEP"]);
 //			}
 //			if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
 //				CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -14020,19 +14020,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
 //				FUNCTN = Convert.ToString(feature["FUNCTN"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -14050,22 +14050,22 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-//				VERCCL = Convert.ToDouble(feature["VERCCL"]);
+//				VERCCL = Convert.ToDecimal(feature["VERCCL"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-//				VERCOP = Convert.ToDouble(feature["VERCOP"]);
+//				VERCOP = Convert.ToDecimal(feature["VERCOP"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -14093,7 +14093,7 @@
 //				CATSIL = Convert.ToInt32(feature["CATSIL"]);
 //			}
 //			if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-//				LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
+//				LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -14278,7 +14278,7 @@
 //		/// Buried depth
 //		/// </summary>
 //		[Description("Buried depth")]
-//		internal double? BURDEP = default;
+//		internal decimal? BURDEP = default;
 
 //		/// <summary>
 //		/// Category of bridge
@@ -14362,7 +14362,7 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Function
@@ -14374,19 +14374,19 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -14422,25 +14422,25 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance, closed
 //		/// </summary>
 //		[Description("Vertical clearance, closed")]
-//		internal double? VERCCL = default;
+//		internal decimal? VERCCL = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical clearance, open
 //		/// </summary>
 //		[Description("Vertical clearance, open")]
-//		internal double? VERCOP = default;
+//		internal decimal? VERCOP = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -14452,7 +14452,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -14488,19 +14488,19 @@
 //		/// Ice factor
 //		/// </summary>
 //		[Description("Ice factor")]
-//		internal double? ICEFAC = default;
+//		internal decimal? ICEFAC = default;
 
 //		/// <summary>
 //		/// Lifting capacity
 //		/// </summary>
 //		[Description("Lifting capacity")]
-//		internal double? LIFCAP = default;
+//		internal decimal? LIFCAP = default;
 
 //		/// <summary>
 //		/// Vertical clearance, safe
 //		/// </summary>
 //		[Description("Vertical clearance, safe")]
-//		internal double? VERCSA = default;
+//		internal decimal? VERCSA = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -14624,7 +14624,7 @@
 //				IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
 //			}
 //			if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-//				BURDEP = Convert.ToDouble(feature["BURDEP"]);
+//				BURDEP = Convert.ToDecimal(feature["BURDEP"]);
 //			}
 //			if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
 //				CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -14666,19 +14666,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
 //				FUNCTN = Convert.ToString(feature["FUNCTN"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -14696,22 +14696,22 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-//				VERCCL = Convert.ToDouble(feature["VERCCL"]);
+//				VERCCL = Convert.ToDecimal(feature["VERCCL"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-//				VERCOP = Convert.ToDouble(feature["VERCOP"]);
+//				VERCOP = Convert.ToDecimal(feature["VERCOP"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -14730,13 +14730,13 @@
 //				CATPIP = Convert.ToString(feature["CATPIP"]);
 //			}
 //			if (DBNull.Value != feature["ICEFAC"] && feature["ICEFAC"] is not null) {
-//				ICEFAC = Convert.ToDouble(feature["ICEFAC"]);
+//				ICEFAC = Convert.ToDecimal(feature["ICEFAC"]);
 //			}
 //			if (DBNull.Value != feature["LIFCAP"] && feature["LIFCAP"] is not null) {
-//				LIFCAP = Convert.ToDouble(feature["LIFCAP"]);
+//				LIFCAP = Convert.ToDecimal(feature["LIFCAP"]);
 //			}
 //			if (DBNull.Value != feature["VERCSA"] && feature["VERCSA"] is not null) {
-//				VERCSA = Convert.ToDouble(feature["VERCSA"]);
+//				VERCSA = Convert.ToDecimal(feature["VERCSA"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -14918,7 +14918,7 @@
 //		/// Buried depth
 //		/// </summary>
 //		[Description("Buried depth")]
-//		internal double? BURDEP = default;
+//		internal decimal? BURDEP = default;
 
 //		/// <summary>
 //		/// Category of bridge
@@ -15002,7 +15002,7 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Function
@@ -15014,19 +15014,19 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -15062,25 +15062,25 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical clearance, closed
 //		/// </summary>
 //		[Description("Vertical clearance, closed")]
-//		internal double? VERCCL = default;
+//		internal decimal? VERCCL = default;
 
 //		/// <summary>
 //		/// Vertical clearance
 //		/// </summary>
 //		[Description("Vertical clearance")]
-//		internal double? VERCLR = default;
+//		internal decimal? VERCLR = default;
 
 //		/// <summary>
 //		/// Vertical clearance, open
 //		/// </summary>
 //		[Description("Vertical clearance, open")]
-//		internal double? VERCOP = default;
+//		internal decimal? VERCOP = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -15092,7 +15092,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -15164,7 +15164,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -15288,7 +15288,7 @@
 //				IS_CONFLATE = Convert.ToInt32(feature["IS_CONFLATE"]);
 //			}
 //			if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-//				BURDEP = Convert.ToDouble(feature["BURDEP"]);
+//				BURDEP = Convert.ToDecimal(feature["BURDEP"]);
 //			}
 //			if (DBNull.Value != feature["CATBRG"] && feature["CATBRG"] is not null) {
 //				CATBRG = Convert.ToString(feature["CATBRG"]);
@@ -15330,19 +15330,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["FUNCTN"] && feature["FUNCTN"] is not null) {
 //				FUNCTN = Convert.ToString(feature["FUNCTN"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -15360,22 +15360,22 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERCCL"] && feature["VERCCL"] is not null) {
-//				VERCCL = Convert.ToDouble(feature["VERCCL"]);
+//				VERCCL = Convert.ToDecimal(feature["VERCCL"]);
 //			}
 //			if (DBNull.Value != feature["VERCLR"] && feature["VERCLR"] is not null) {
-//				VERCLR = Convert.ToDouble(feature["VERCLR"]);
+//				VERCLR = Convert.ToDecimal(feature["VERCLR"]);
 //			}
 //			if (DBNull.Value != feature["VERCOP"] && feature["VERCOP"] is not null) {
-//				VERCOP = Convert.ToDouble(feature["VERCOP"]);
+//				VERCOP = Convert.ToDecimal(feature["VERCOP"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -15413,7 +15413,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -15630,13 +15630,13 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -15666,7 +15666,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -15678,7 +15678,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -15720,7 +15720,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -15862,10 +15862,10 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -15880,13 +15880,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -15909,7 +15909,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -16126,13 +16126,13 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -16162,7 +16162,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -16174,7 +16174,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -16322,10 +16322,10 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -16340,13 +16340,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -16568,13 +16568,13 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -16604,7 +16604,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -16616,7 +16616,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -16782,10 +16782,10 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -16800,13 +16800,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -17049,31 +17049,31 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -17091,7 +17091,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -17103,7 +17103,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -17127,7 +17127,7 @@
 //		/// Elevation
 //		/// </summary>
 //		[Description("Elevation")]
-//		internal double? ELEVAT = default;
+//		internal decimal? ELEVAT = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -17275,19 +17275,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -17296,13 +17296,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -17315,7 +17315,7 @@
 //				CATCOA = Convert.ToInt32(feature["CATCOA"]);
 //			}
 //			if (DBNull.Value != feature["ELEVAT"] && feature["ELEVAT"] is not null) {
-//				ELEVAT = Convert.ToDouble(feature["ELEVAT"]);
+//				ELEVAT = Convert.ToDecimal(feature["ELEVAT"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -17545,31 +17545,31 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -17587,7 +17587,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -17599,7 +17599,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -17629,7 +17629,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -17777,19 +17777,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -17798,13 +17798,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -17821,7 +17821,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -18050,31 +18050,31 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal clearance
 //		/// </summary>
 //		[Description("Horizontal clearance")]
-//		internal double? HORCLR = default;
+//		internal decimal? HORCLR = default;
 
 //		/// <summary>
 //		/// Horizontal length
 //		/// </summary>
 //		[Description("Horizontal length")]
-//		internal double? HORLEN = default;
+//		internal decimal? HORLEN = default;
 
 //		/// <summary>
 //		/// Horizontal width
 //		/// </summary>
 //		[Description("Horizontal width")]
-//		internal double? HORWID = default;
+//		internal decimal? HORWID = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -18092,7 +18092,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -18104,7 +18104,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -18264,19 +18264,19 @@
 //				DATSTA = Convert.ToString(feature["DATSTA"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORCLR"] && feature["HORCLR"] is not null) {
-//				HORCLR = Convert.ToDouble(feature["HORCLR"]);
+//				HORCLR = Convert.ToDecimal(feature["HORCLR"]);
 //			}
 //			if (DBNull.Value != feature["HORLEN"] && feature["HORLEN"] is not null) {
-//				HORLEN = Convert.ToDouble(feature["HORLEN"]);
+//				HORLEN = Convert.ToDecimal(feature["HORLEN"]);
 //			}
 //			if (DBNull.Value != feature["HORWID"] && feature["HORWID"] is not null) {
-//				HORWID = Convert.ToDouble(feature["HORWID"]);
+//				HORWID = Convert.ToDecimal(feature["HORWID"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -18285,13 +18285,13 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -18534,7 +18534,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -18546,13 +18546,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -18564,7 +18564,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -18727,22 +18727,22 @@
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -18985,7 +18985,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -18997,13 +18997,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -19015,7 +19015,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -19045,7 +19045,7 @@
 //		/// Radius
 //		/// </summary>
 //		[Description("Radius")]
-//		internal double? RADIUS = default;
+//		internal decimal? RADIUS = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -19063,7 +19063,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -19214,22 +19214,22 @@
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -19245,7 +19245,7 @@
 //				CATDPG = Convert.ToString(feature["CATDPG"]);
 //			}
 //			if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-//				RADIUS = Convert.ToDouble(feature["RADIUS"]);
+//				RADIUS = Convert.ToDecimal(feature["RADIUS"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -19255,7 +19255,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -19490,7 +19490,7 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Status
@@ -19502,13 +19502,13 @@
 //		/// Value of sounding
 //		/// </summary>
 //		[Description("Value of sounding")]
-//		internal double? VALSOU = default;
+//		internal decimal? VALSOU = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -19520,7 +19520,7 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Water level effect
@@ -19562,7 +19562,7 @@
 //		/// Radius
 //		/// </summary>
 //		[Description("Radius")]
-//		internal double? RADIUS = default;
+//		internal decimal? RADIUS = default;
 
 //		/// <summary>
 //		/// SCAMIN step
@@ -19713,22 +19713,22 @@
 //				RESTRN = Convert.ToString(feature["RESTRN"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["STATUS"] && feature["STATUS"] is not null) {
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VALSOU"] && feature["VALSOU"] is not null) {
-//				VALSOU = Convert.ToDouble(feature["VALSOU"]);
+//				VALSOU = Convert.ToDecimal(feature["VALSOU"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["WATLEV"] && feature["WATLEV"] is not null) {
 //				WATLEV = Convert.ToInt32(feature["WATLEV"]);
@@ -19750,7 +19750,7 @@
 //				JRSDTN = Convert.ToInt32(feature["JRSDTN"]);
 //			}
 //			if (DBNull.Value != feature["RADIUS"] && feature["RADIUS"] is not null) {
-//				RADIUS = Convert.ToDouble(feature["RADIUS"]);
+//				RADIUS = Convert.ToDecimal(feature["RADIUS"]);
 //			}
 //			if (DBNull.Value != feature["SCAMIN_STEP"] && feature["SCAMIN_STEP"] is not null) {
 //				SCAMIN_STEP = Convert.ToInt32(feature["SCAMIN_STEP"]);
@@ -19956,13 +19956,13 @@
 //		/// Sounding distance - minimum
 //		/// </summary>
 //		[Description("Sounding distance - minimum")]
-//		internal double? SDISMN = default;
+//		internal decimal? SDISMN = default;
 
 //		/// <summary>
 //		/// Sounding distance - maximum
 //		/// </summary>
 //		[Description("Sounding distance - maximum")]
-//		internal double? SDISMX = default;
+//		internal decimal? SDISMX = default;
 
 //		/// <summary>
 //		/// Survey authority
@@ -20022,19 +20022,19 @@
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// Horizontal accuracy
 //		/// </summary>
 //		[Description("Horizontal accuracy")]
-//		internal double? HORACC = default;
+//		internal decimal? HORACC = default;
 
 //		/// <summary>
 //		/// Horizontal datum
@@ -20052,7 +20052,7 @@
 //		/// Orientation
 //		/// </summary>
 //		[Description("Orientation")]
-//		internal double? ORIENT = default;
+//		internal decimal? ORIENT = default;
 
 //		/// <summary>
 //		/// Publication reference
@@ -20064,7 +20064,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? POSACC = default;
+//		internal decimal? POSACC = default;
 
 //		/// <summary>
 //		/// Shift parameters
@@ -20076,13 +20076,13 @@
 //		/// Sounding accuracy
 //		/// </summary>
 //		[Description("Sounding accuracy")]
-//		internal double? SOUACC = default;
+//		internal decimal? SOUACC = default;
 
 //		/// <summary>
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -20224,10 +20224,10 @@
 //				SCVAL2 = Convert.ToInt32(feature["SCVAL2"]);
 //			}
 //			if (DBNull.Value != feature["SDISMN"] && feature["SDISMN"] is not null) {
-//				SDISMN = Convert.ToDouble(feature["SDISMN"]);
+//				SDISMN = Convert.ToDecimal(feature["SDISMN"]);
 //			}
 //			if (DBNull.Value != feature["SDISMX"] && feature["SDISMX"] is not null) {
-//				SDISMX = Convert.ToDouble(feature["SDISMX"]);
+//				SDISMX = Convert.ToDecimal(feature["SDISMX"]);
 //			}
 //			if (DBNull.Value != feature["SURATH"] && feature["SURATH"] is not null) {
 //				SURATH = Convert.ToString(feature["SURATH"]);
@@ -20258,13 +20258,13 @@
 //				CSCALE = Convert.ToInt32(feature["CSCALE"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["HORACC"] && feature["HORACC"] is not null) {
-//				HORACC = Convert.ToDouble(feature["HORACC"]);
+//				HORACC = Convert.ToDecimal(feature["HORACC"]);
 //			}
 //			if (DBNull.Value != feature["HORDAT"] && feature["HORDAT"] is not null) {
 //				HORDAT = Convert.ToInt32(feature["HORDAT"]);
@@ -20273,22 +20273,22 @@
 //				MARSYS = Convert.ToInt32(feature["MARSYS"]);
 //			}
 //			if (DBNull.Value != feature["ORIENT"] && feature["ORIENT"] is not null) {
-//				ORIENT = Convert.ToDouble(feature["ORIENT"]);
+//				ORIENT = Convert.ToDecimal(feature["ORIENT"]);
 //			}
 //			if (DBNull.Value != feature["PUBREF"] && feature["PUBREF"] is not null) {
 //				PUBREF = Convert.ToString(feature["PUBREF"]);
 //			}
 //			if (DBNull.Value != feature["POSACC"] && feature["POSACC"] is not null) {
-//				POSACC = Convert.ToDouble(feature["POSACC"]);
+//				POSACC = Convert.ToDecimal(feature["POSACC"]);
 //			}
 //			if (DBNull.Value != feature["SHIPAM"] && feature["SHIPAM"] is not null) {
 //				SHIPAM = Convert.ToString(feature["SHIPAM"]);
 //			}
 //			if (DBNull.Value != feature["SOUACC"] && feature["SOUACC"] is not null) {
-//				SOUACC = Convert.ToDouble(feature["SOUACC"]);
+//				SOUACC = Convert.ToDecimal(feature["SOUACC"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
@@ -20497,13 +20497,13 @@
 //		/// Sounding distance - minimum
 //		/// </summary>
 //		[Description("Sounding distance - minimum")]
-//		internal double? SDISMN = default;
+//		internal decimal? SDISMN = default;
 
 //		/// <summary>
 //		/// Sounding distance - maximum
 //		/// </summary>
 //		[Description("Sounding distance - maximum")]
-//		internal double? SDISMX = default;
+//		internal decimal? SDISMX = default;
 
 //		/// <summary>
 //		/// Survey authority
@@ -20675,10 +20675,10 @@
 //				SCVAL2 = Convert.ToInt32(feature["SCVAL2"]);
 //			}
 //			if (DBNull.Value != feature["SDISMN"] && feature["SDISMN"] is not null) {
-//				SDISMN = Convert.ToDouble(feature["SDISMN"]);
+//				SDISMN = Convert.ToDecimal(feature["SDISMN"]);
 //			}
 //			if (DBNull.Value != feature["SDISMX"] && feature["SDISMX"] is not null) {
-//				SDISMX = Convert.ToDouble(feature["SDISMX"]);
+//				SDISMX = Convert.ToDecimal(feature["SDISMX"]);
 //			}
 //			if (DBNull.Value != feature["SURATH"] && feature["SURATH"] is not null) {
 //				SURATH = Convert.ToString(feature["SURATH"]);
@@ -20915,7 +20915,7 @@
 //		/// Vertical accuracy
 //		/// </summary>
 //		[Description("Vertical accuracy")]
-//		internal double? VERACC = default;
+//		internal decimal? VERACC = default;
 
 //		/// <summary>
 //		/// Vertical datum
@@ -20927,25 +20927,25 @@
 //		/// Vertical length
 //		/// </summary>
 //		[Description("Vertical length")]
-//		internal double? VERLEN = default;
+//		internal decimal? VERLEN = default;
 
 //		/// <summary>
 //		/// Buried depth
 //		/// </summary>
 //		[Description("Buried depth")]
-//		internal double? BURDEP = default;
+//		internal decimal? BURDEP = default;
 
 //		/// <summary>
 //		/// Depth range value 1
 //		/// </summary>
 //		[Description("Depth range value 1")]
-//		internal double? DRVAL1 = default;
+//		internal decimal? DRVAL1 = default;
 
 //		/// <summary>
 //		/// Depth range value 2
 //		/// </summary>
 //		[Description("Depth range value 2")]
-//		internal double? DRVAL2 = default;
+//		internal decimal? DRVAL2 = default;
 
 //		/// <summary>
 //		/// FCSubtype
@@ -20987,7 +20987,7 @@
 //		/// Height
 //		/// </summary>
 //		[Description("Height")]
-//		internal double? HEIGHT = default;
+//		internal decimal? HEIGHT = default;
 
 //		/// <summary>
 //		/// Nature of construction
@@ -21017,7 +21017,7 @@
 //		/// Positional Accuracy
 //		/// </summary>
 //		[Description("Positional Accuracy")]
-//		internal double? P_POSACC = default;
+//		internal decimal? P_POSACC = default;
 
 //		/// <summary>
 //		/// Horizontal Datum
@@ -21159,22 +21159,22 @@
 //				STATUS = Convert.ToString(feature["STATUS"]);
 //			}
 //			if (DBNull.Value != feature["VERACC"] && feature["VERACC"] is not null) {
-//				VERACC = Convert.ToDouble(feature["VERACC"]);
+//				VERACC = Convert.ToDecimal(feature["VERACC"]);
 //			}
 //			if (DBNull.Value != feature["VERDAT"] && feature["VERDAT"] is not null) {
 //				VERDAT = Convert.ToInt32(feature["VERDAT"]);
 //			}
 //			if (DBNull.Value != feature["VERLEN"] && feature["VERLEN"] is not null) {
-//				VERLEN = Convert.ToDouble(feature["VERLEN"]);
+//				VERLEN = Convert.ToDecimal(feature["VERLEN"]);
 //			}
 //			if (DBNull.Value != feature["BURDEP"] && feature["BURDEP"] is not null) {
-//				BURDEP = Convert.ToDouble(feature["BURDEP"]);
+//				BURDEP = Convert.ToDecimal(feature["BURDEP"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL1"] && feature["DRVAL1"] is not null) {
-//				DRVAL1 = Convert.ToDouble(feature["DRVAL1"]);
+//				DRVAL1 = Convert.ToDecimal(feature["DRVAL1"]);
 //			}
 //			if (DBNull.Value != feature["DRVAL2"] && feature["DRVAL2"] is not null) {
-//				DRVAL2 = Convert.ToDouble(feature["DRVAL2"]);
+//				DRVAL2 = Convert.ToDecimal(feature["DRVAL2"]);
 //			}
 //			if (DBNull.Value != feature["FCSUBTYPE"] && feature["FCSUBTYPE"] is not null) {
 //				FCSUBTYPE = Convert.ToInt32(feature["FCSUBTYPE"]);
@@ -21196,7 +21196,7 @@
 //				CONVIS = Convert.ToInt32(feature["CONVIS"]);
 //			}
 //			if (DBNull.Value != feature["HEIGHT"] && feature["HEIGHT"] is not null) {
-//				HEIGHT = Convert.ToDouble(feature["HEIGHT"]);
+//				HEIGHT = Convert.ToDecimal(feature["HEIGHT"]);
 //			}
 //			if (DBNull.Value != feature["NATCON"] && feature["NATCON"] is not null) {
 //				NATCON = Convert.ToString(feature["NATCON"]);
@@ -21212,7 +21212,7 @@
 //				P_QUAPOS = Convert.ToInt32(feature["P_QUAPOS"]);
 //			}
 //			if (DBNull.Value != feature["P_POSACC"] && feature["P_POSACC"] is not null) {
-//				P_POSACC = Convert.ToDouble(feature["P_POSACC"]);
+//				P_POSACC = Convert.ToDecimal(feature["P_POSACC"]);
 //			}
 //			if (DBNull.Value != feature["P_HORDAT"] && feature["P_HORDAT"] is not null) {
 //				P_HORDAT = Convert.ToInt32(feature["P_HORDAT"]);
@@ -22274,7 +22274,7 @@
 //		/// Entry date
 //		/// </summary>
 //		[Description("Entry date")]
-//		internal double? ENTRY_DATE = default;
+//		internal decimal? ENTRY_DATE = default;
 
 //		/// <summary>
 //		/// Source universal ID
@@ -22381,7 +22381,7 @@
 //				DEST_UID = Convert.ToString(row["DEST_UID"]);
 //			}
 //			if (DBNull.Value != row["ENTRY_DATE"] && row["ENTRY_DATE"] is not null) {
-//				ENTRY_DATE = Convert.ToDouble(row["ENTRY_DATE"]);
+//				ENTRY_DATE = Convert.ToDecimal(row["ENTRY_DATE"]);
 //			}
 //			if (DBNull.Value != row["SRC_UID"] && row["SRC_UID"] is not null) {
 //				SRC_UID = Convert.ToString(row["SRC_UID"]);

@@ -116,7 +116,7 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -160,7 +160,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -251,10 +251,10 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityidentifier                            
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
-                                instance.height = default(double?);
+                                instance.height = default(decimal?);
                             }
 
                             if (current.MARSYS.HasValue) {
@@ -294,7 +294,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -379,10 +379,10 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
                             else {
-                                instance.height = default(double?);
+                                instance.height = default(decimal?);
                             }
 
                             // TODO: interoperabilityidentifier
@@ -424,7 +424,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -516,7 +516,7 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -558,7 +558,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.CONVIS.HasValue /*&& current.CONVIS.Value != -32767*/) {
@@ -671,7 +671,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -885,7 +885,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -995,7 +995,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1101,7 +1101,7 @@ namespace S100Framework.Applications
                             }
 
                             if (current.VERLEN.HasValue) {
-                                instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                             }
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1205,7 +1205,7 @@ namespace S100Framework.Applications
                                         }
 
                                         if (current.VERLEN.HasValue) {
-                                            instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                            instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                                         }
 
                                         if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -1320,7 +1320,7 @@ namespace S100Framework.Applications
                                 }
 
                                 if (current.VERLEN.HasValue) {
-                                    instance.verticalLength = current.VERLEN.Value != -32767d ? current.VERLEN.Value : null;
+                                    instance.verticalLength = current.VERLEN.Value != -32767m ? current.VERLEN.Value : null;
                                 }
 
                                 var topmark = relatedEquipment?.GetTopMark<SpecialPurposeGeneralBuoy>(current);
@@ -1749,7 +1749,7 @@ namespace S100Framework.Applications
                                 instance.fixedDateRange = dateRange;
                             }
                             if (current.HEIGHT.HasValue) {
-                                instance.height = current.HEIGHT.Value != -32767d ? current.HEIGHT.Value : null;
+                                instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
                             }
 
                             // TODO: interoperabilityidentifier
@@ -1948,7 +1948,7 @@ namespace S100Framework.Applications
             foreach (var part in parts) {
                 string[] split = part.Split('-');
                 if (split.Length == 2) {
-                    if (double.TryParse(split[0], CultureInfo.InvariantCulture, out double waveLength)) {
+                    if (decimal.TryParse(split[0], CultureInfo.InvariantCulture, out decimal waveLength)) {
                         string band = split[1];
                         radarWaveLengths = [.. radarWaveLengths, new radarWaveLength() {
                             radarBand = band,

@@ -388,12 +388,12 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static double? GetDefaultClearanceDepthWreck(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
+        internal static decimal? GetDefaultClearanceDepthWreck(Geometry? shape, decimal? valsou, int? expsou, decimal? height, int? watlev, int? catwrk, long objectid, string tablename, string lnam) {
 
             bool coveredByUnsurveyedArea = false;
             bool coveredByDredgedArea = false;
-            double? surroundingDepth = null;
-            double? leastDepth = null;
+            decimal? surroundingDepth = null;
+            decimal? leastDepth = null;
 
             if (shape != null) {
                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
@@ -410,29 +410,29 @@ namespace S100Framework.Applications
                     }
                     if (depthArea.FcSubtype is 5) {  // DRGARE
                         coveredByDredgedArea = true;
-                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                        surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                     }
                     if (depthArea.FcSubtype is 1) {  // DEPARE
-                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                        surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                     }
 
-                    surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                 }
             }
 
             bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
 
-            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou is -32767d);
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou is -32767m);
 
             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
 
-            bool valsouIsKnown = valsou is not null && valsou is not -32767d;
-            bool valsouIsUnknown = valsou is -32767d;
+            bool valsouIsKnown = valsou is not null && valsou is not -32767m;
+            bool valsouIsUnknown = valsou is -32767m;
 
             bool catwrkIsUnknown = catwrk is -32767;
 
-            bool heightIsKnown = height is not null && height is not -32767d;
-            bool heightIsUnknown = height is -32767d;
+            bool heightIsKnown = height is not null && height is not -32767m;
+            bool heightIsUnknown = height is -32767m;
             bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3;
 
 
@@ -458,30 +458,30 @@ namespace S100Framework.Applications
                 else if ((catwrk is 1) &&
                     ((watlev is 1 || watlev is 2 || watlev is 4 || watlev is 5 || watlev is -32767))) {
 
-                    return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
+                    return 20.1m > (leastDepth - 66) ? 20.1m : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if (catwrk is 1 &&
                     (expsou is null || (expsou is 2))) {
-                    return 20.1 > (leastDepth - 66) ? 20.1 : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
+                    return 20.1m > (leastDepth - 66) ? 20.1m : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if ((expsou is null || (expsou is 2)) &&
                     valsouIsUnknown &&
                     (watlev is 3 || watlev is 5)) {
-                    return 0d;
+                    return 0m;
                 }
                 else if ((expsou is null || (expsou is 2)) &&
                     valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
 
-                    return -15d;
+                    return -15m;
                 }
                 else if (((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767)) &&
                     (watlev is 1 || watlev is 2 || watlev is 4 || watlev is 5 || watlev is -32767)) {
-                    return -15d;
+                    return -15m;
                 }
                 else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767) &&
                     (expsou is null || (expsou is 2))) {
-                    return -15d;
+                    return -15m;
                 }
                 else {
                     Logger.Current.DataError(objectid, tablename, lnam, $"1:Cannot set default clearance depth. Check loader.");
@@ -493,27 +493,27 @@ namespace S100Framework.Applications
 
                 if (catwrk is 1 &&
                     (watlev is 3 || watlev is -32767)) {
-                    return 20.1d;
+                    return 20.1m;
                 }
                 else if (valsouIsUnknown &&
                     (watlev is 3 || watlev is 5)) {
-                    return 0d;
+                    return 0m;
                 }
                 else if (valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
-                    return -15d;
+                    return -15m;
                 }
                 else if (catwrkIsUnknown &&
                     (watlev is 3 || watlev is 5)) {
-                    return 0d;
+                    return 0m;
                 }
                 else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5) &&
                     (watlev is 3 || watlev is 5)) {
-                    return -15d;
+                    return -15m;
                 }
                 else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767) &&
                     (watlev is 4 || watlev is -32767)) {
-                    return -15d;
+                    return -15m;
                 }
                 else {
                     Logger.Current.DataError(objectid, tablename, lnam, $"2:Cannot set default clearance depth. Check loader.");
@@ -526,12 +526,12 @@ namespace S100Framework.Applications
             }
         }
 
-        internal static double? GetDefaultClearanceDepthObstruction(Geometry? shape, double? valsou, int? expsou, double? height, int? watlev, int? catobs, long objectid, string tablename, string lnam) {
+        internal static decimal? GetDefaultClearanceDepthObstruction(Geometry? shape, decimal? valsou, int? expsou, decimal? height, int? watlev, int? catobs, long objectid, string tablename, string lnam) {
 
             bool coveredByUnsurveyedArea = false;
             bool coveredByDredgedArea = false;
-            double? surroundingDepth = null;
-            double? leastDepth = null;
+            decimal? surroundingDepth = null;
+            decimal? leastDepth = null;
 
             if (shape != null) {
                 foreach (DepthsA depthArea in SpatialRelationResolver.Instance.GetSpatialRelatedValueFrom<DepthsA>(shape)) {
@@ -543,26 +543,26 @@ namespace S100Framework.Applications
                     }
                     if (depthArea.FcSubtype!.Value == 5) {  // DRGARE
                         coveredByDredgedArea = true;
-                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                        surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                     }
                     if (depthArea.FcSubtype!.Value == 1) {  // DEPARE
-                        surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                        surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                     }
 
-                    surroundingDepth = leastDepth != -32767d ? leastDepth : null;
+                    surroundingDepth = leastDepth != -32767m ? leastDepth : null;
                 }
             }
 
             bool allCoveringDepthRangeMinimumValuesAreKnown = surroundingDepth.HasValue;
 
-            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou.Value == -32767d);
+            bool unknownDepthCoveredByUnsurveyedArea = coveredByUnsurveyedArea && (valsou.HasValue && valsou.Value == -32767m);
 
             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !surroundingDepth.HasValue;
 
-            bool valsouIsKnown = valsou.HasValue && valsou.Value != -32767d;
-            bool valsouIsUnknown = valsou.HasValue && valsou.Value == -32767d;
-            bool heightIsKnown = height.HasValue && height.Value != -32767d;
-            bool heightIsUnknown = height.HasValue && height.Value == -32767d;
+            bool valsouIsKnown = valsou.HasValue && valsou.Value != -32767m;
+            bool valsouIsUnknown = valsou.HasValue && valsou.Value == -32767m;
+            bool heightIsKnown = height.HasValue && height.Value != -32767m;
+            bool heightIsUnknown = height.HasValue && height.Value == -32767m;
             bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3;
 
 
@@ -587,24 +587,24 @@ namespace S100Framework.Applications
                 else if ((catobs is 6) &&
                     (expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown) {
-                    return 0.1d;
+                    return 0.1m;
                 }
                 else if ((expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     watlev is 3) {
-                    return 0.1d;
+                    return 0.1m;
                 }
                 else if ((catobs is not 6) &&
                     (expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     (watlev is 5)) {
-                    return 0d;
+                    return 0m;
                 }
                 else if ((catobs is not 6) &&
                     (expsou is null || (expsou is 2 || expsou is -32767)) &&
                     valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
-                    return -15d;
+                    return -15m;
                 }
                 else {
                     Logger.Current.DataError(objectid, tablename, lnam, $"1:Cannot set default clearance depth. Check loader.");
@@ -616,21 +616,21 @@ namespace S100Framework.Applications
 
                 if ((catobs is 6) &&
                     valsouIsUnknown) {
-                    return 0.1d;
+                    return 0.1m;
                 }
                 else if (valsouIsUnknown &&
                     (watlev is 3)) {
-                    return 0.1d;
+                    return 0.1m;
                 }
                 else if ((catobs is 6) &&
                     valsouIsUnknown &&
                     (watlev is 5)) {
-                    return 0d;
+                    return 0m;
                 }
                 else if ((catobs is not 6) &&
                     valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
-                    return -15d;
+                    return -15m;
                 }
                 else {
                     Logger.Current.DataError(objectid, tablename, lnam, $"2:Cannot set default clearance depth. Check loader.");
@@ -713,7 +713,7 @@ namespace S100Framework.Applications
                     parenthesisParts.Add(m.Value);
                 }
             }
-            var signalPeriodN = current.SIGPER == -32767 ? null : current.SIGPER;
+            var signalPeriodN = current.SIGPER == -32767m ? null : current.SIGPER;
 
             var sigseq = current.SIGSEQ;
 
@@ -781,7 +781,7 @@ namespace S100Framework.Applications
 
                 foreach (Match match in matches) {
                     if (!string.IsNullOrEmpty(match.Groups[1].Value)) {
-                        var duration = double.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
+                        var duration = decimal.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
                         // Interval of light
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
@@ -789,7 +789,7 @@ namespace S100Framework.Applications
                         });
                     }
                     else if (!string.IsNullOrEmpty(match.Groups[2].Value)) {
-                        var duration = double.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
+                        var duration = decimal.Parse(match.Groups[2].Value, CultureInfo.InvariantCulture);
                         // Eclipse
                         signalSequences.Add(new signalSequence() {
                             signalDuration = duration,
