@@ -16,8 +16,6 @@ namespace S100FC
 
         public static string Flatten(this FeatureType feature) => FlattenAttributes(feature.attributeBindings, feature.attributeBindingsCatalogue);
         public static string Flatten(this InformationType information) => FlattenAttributes(information.attributeBindings, information.attributeBindingsCatalogue);
-        //public static string Flatten(this featureBinding[] binding) => FlattenBinding(binding);
-        //public static string Flatten(this informationBinding[] binding) => FlattenBinding(binding);
         /// <summary> 
         /// Creates and populates an instance of the specified type, FeatureType or InformationType, using the provided JSON attribute data and type code. 
         /// </summary> 
@@ -47,27 +45,6 @@ namespace S100FC
             PopulateObject(instance!, root);
             return instance!;
         }
-
-        //public static object UnflattenBinding(string? attributes, Type type) {
-        //    if (string.IsNullOrWhiteSpace(attributes)) {
-        //        return Activator.CreateInstance(type)!;
-        //    }
-
-
-        //    var dict = JsonSerializer.Deserialize<Dictionary<string, JsonValue>>(attributes) ?? [];
-        //    var root = (JsonObject)Unflatten(dict);
-
-        //    //var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
-        //    //var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", $"{typeof(T).Name}s")}.{code}", true)!;
-
-        //    var fb = S100FC.S101.Extensions.CreateFeatureBinding("SpanFixed", "BridgeAggregation", "theCollection");
-
-        //    var instance = Activator.CreateInstance(type);
-
-        //    PopulateObject(instance!, root);
-        //    return instance!;
-        //}
-
 
         private static void PopulateObject(object target, JsonObject json) {
             var type = target.GetType();
@@ -198,17 +175,6 @@ namespace S100FC
             return node;
         }
         private static JsonValueKind GetSegmentKind(string pathSegment) => int.TryParse(pathSegment, out _) ? JsonValueKind.Array : JsonValueKind.Object;
-
-        //private static string FlattenBinding(object[] binding) {
-        //    var json = JsonSerializer.Serialize(binding);
-
-        //    var jObj = JObject.Parse(json);
-
-        //    // Flatten a JObject to a dictionary. 
-        //    var flattened = jObj.Flatten(includeNullAndEmptyValues: false);
-
-        //    return JsonSerializer.Serialize(flattened, jsonSerializerOptions);
-        //}
 
         private static string FlattenAttributes(attributeBinding[] attributes, attributeBindingDefinition[] catalogue) {
             var root = new JObject();
