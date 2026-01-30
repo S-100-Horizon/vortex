@@ -228,19 +228,18 @@ namespace S100Framework.Applications
                             };
                             informationTypes.Add(information);
 
-                            //TODO: GetFileNames(json)
-                            //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                            //foreach (var filename in filenames) {
-                            //    if (!supportFiles.Contains(filename)) {
-                            //        supportFiles.Add(filename);
-                            //        var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                            //        if (file != null) {
-                            //            var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                            //            dataset?.Metadata.AddSupportFile(filename, base64);
-                            //        }
-                            //    }
-                            //}
+                            foreach (var filename in filenames) {
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes?.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                    if (file != null) {
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -280,17 +279,16 @@ namespace S100Framework.Applications
 
                             featureTypes.Add(feature);
 
-                            //TODO: GetFileNames(json)
-                            //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                            var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                            //foreach (var filename in filenames) {
-                            //    if (!supportFiles.Contains(filename)) {
-                            //        supportFiles.Add(filename);
-                            //        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                            //        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                            //        dataset?.Metadata.AddSupportFile(filename, base64);
-                            //    }
-                            //}
+                            foreach (var filename in filenames) {
+                                if (!supportFiles.Contains(filename)) {
+                                    supportFiles.Add(filename);
+                                    var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                    var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                    dataset?.Metadata.AddSupportFile(filename, base64);
+                                }
+                            }
                         }
                     }
                     catch (Exception ex) {
@@ -356,17 +354,16 @@ namespace S100Framework.Applications
                                 //var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(json, type, jsonSerializerOptionsS101) as S100FC.FeatureType;
 
 
-                                //TODO: GetFileNames(json)
-                                //var filenames = S100FC.YAML.Extensions.GetFileNames(json);
+                                var filenames = S100FC.YAML.Extensions.GetFileNames(json);
 
-                                //foreach (var filename in filenames) {
-                                //    if (!supportFiles.Contains(filename)) {
-                                //        supportFiles.Add(filename);
-                                //        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
-                                //        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
-                                //        dataset?.Metadata.AddSupportFile(filename, base64);
-                                //    }
-                                //}
+                                foreach (var filename in filenames) {
+                                    if (!supportFiles.Contains(filename)) {
+                                        supportFiles.Add(filename);
+                                        var file = directoryNotes.GetFiles(filename.Replace("101DK00", "DK"), SearchOption.AllDirectories).First();
+                                        var base64 = Convert.ToBase64String(IO.File.ReadAllBytes(file.FullName));
+                                        dataset?.Metadata.AddSupportFile(filename, base64);
+                                    }
+                                }
 
                                 // Surface Masks
                                 var topologySurface = topology.Surfaces.FirstOrDefault(e => e.Ref!.Equals(name, StringComparison.InvariantCultureIgnoreCase));

@@ -172,6 +172,9 @@ namespace S100FC
         private static JsonValueKind GetSegmentKind(string pathSegment) => int.TryParse(pathSegment, out _) ? JsonValueKind.Array : JsonValueKind.Object;
         private static string FlattenAttributes(attributeBinding[] attributes, attributeBindingDefinition[] catalogue) {
             var root = new JObject();
+            var options = new JsonSerializerOptions() {
+                WriteIndented = true,
+            };
 
             foreach (var attr in attributes) {
                 var isCollection = catalogue.Single(e => e.attribute == attr.S100FC_code).IsCollection;

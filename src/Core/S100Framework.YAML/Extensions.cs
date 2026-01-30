@@ -152,21 +152,35 @@
             }
         }
         public static IEnumerable<string> GetFileNames(string json) {
-            using var doc = JsonDocument.Parse(json);
+            if(string.IsNullOrWhiteSpace(json))
+                return [];
+            //using var doc = JsonDocument.Parse(json);
+            var dict = JsonSerializer.Deserialize<Dictionary<string, JsonElement>>(json) ?? [];
 
-            foreach (var attr in doc.RootElement.GetProperty("attr").EnumerateArray()) {
-                if (!attr.TryGetProperty("attr", out var innerAttrs))
-                    continue;
+            // doc.RootElement.
+            var keys = new[] { "fileReference", "pictorialRepresentation" };
 
-                foreach (var inner in innerAttrs.EnumerateArray()) {
-                    var code = inner.GetProperty("code").GetString();
+            var results = dict
+                .Where(kvp =>
+                    keys.Any(k => kvp.Key.Contains(k, StringComparison.OrdinalIgnoreCase)) &&
+                    kvp.Value.ValueKind == JsonValueKind.String)
+                .Select(kvp => kvp.Value.GetString()!);
 
-                    if (code?.Equals("fileReference", StringComparison.OrdinalIgnoreCase) == true
-                        || code?.Equals("pictorialRepresentation", StringComparison.OrdinalIgnoreCase) == true) {
-                        yield return inner.GetProperty("value").GetString()!;
-                    }
-                }
-            }
+
+            return results ?? [];
+            //foreach (var attr in doc.RootElement.GetProperty("attr").EnumerateArray()) {
+            //    if (!attr.TryGetProperty("attr", out var innerAttrs))
+            //        continue;
+
+            //    foreach (var inner in innerAttrs.EnumerateArray()) {
+            //        var code = inner.GetProperty("code").GetString();
+
+            //        if (code?.Equals("fileReference", StringComparison.OrdinalIgnoreCase) == true
+            //            || code?.Equals("pictorialRepresentation", StringComparison.OrdinalIgnoreCase) == true) {
+            //            yield return inner.GetProperty("value").GetString()!;
+            //        }
+            //    }
+            //}
         }
 
         public static string Serialize(this Dataset? dataset) {
