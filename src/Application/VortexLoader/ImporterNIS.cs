@@ -1016,14 +1016,12 @@ namespace S100Framework.Applications
                 // TODO: make information binding -> Nautical Information - binding.
                 if (!string.IsNullOrEmpty(ntxtds) && ntxtds.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
-                    string? fileLocator = default;
                     string fileReference = ntxtds;
                     string language = "eng";
 
                     var instance = new NauticalInformation {
                         information = [
                                 new information() {
-                                fileLocator = fileLocator,
                                 fileReference = FixFilename(fileReference) ?? default,
                                 language = language
                                 }]
@@ -1047,14 +1045,12 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(txtdsc) && txtdsc.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
 
-                    string? fileLocator = default;
                     string fileReference = txtdsc;
                     string language = "eng";
 
                     var instance = new NauticalInformation {
                         information = [
                                 new information() {
-                                fileLocator = fileLocator,
                                 fileReference = FixFilename(fileReference) ?? default,
                                 language = language,
                             }]
@@ -1065,12 +1061,10 @@ namespace S100Framework.Applications
                     // information.Add(instance);
                 }
                 else if (!string.IsNullOrEmpty(txtdsc)) {
-                    string? fileLocator = default;
                     string fileReference = txtdsc;
                     string language = "eng";
 
                     var instance = new information {
-                        fileLocator = fileLocator,
                         language = language,
                         text = txtdsc,
                     };
@@ -1089,14 +1083,12 @@ namespace S100Framework.Applications
                     if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                         var filePath = System.IO.Path.Combine(_notesPath, value);
 
-                        string? fileLocator = default;
                         string fileReference = txtdsc;
                         string language = "eng";
 
                         var instance = new NauticalInformation {
                             information = [
                                 new information() {
-                                fileLocator = fileLocator,
                                 fileReference = FixFilename(fileReference) ?? default,
                                 language = language
                             }]
@@ -1106,12 +1098,10 @@ namespace S100Framework.Applications
 
                     }
                     else if (!string.IsNullOrEmpty(value)) {
-                        string? fileLocator = default;
                         string fileReference = value;
                         string language = "eng";
 
                         var instance = new information {
-                            fileLocator = fileLocator,
                             language = language,
                             text = value,
                         };
@@ -1132,25 +1122,22 @@ namespace S100Framework.Applications
                         if (!string.IsNullOrEmpty(value) && value.EndsWith(".txt", StringComparison.InvariantCultureIgnoreCase)) {
                             var filePath = System.IO.Path.Combine(_notesPath, value);
 
-                            string? fileLocator = default;
                             string fileReference = value;
                             string language = "dan";
 
                             var instance = new NauticalInformation {
                                 information = [new information() {
-                                    fileLocator = fileLocator,
                                     fileReference = FixFilename(fileReference) ?? default,
                                     language = language
-                                }]
+                                }]                                
                             };
+
                         }
                         else if (!string.IsNullOrEmpty(value)) {
-                            string? fileLocator = default;
                             string fileReference = value;
                             string language = "dan";
 
                             var instance = new information {
-                                fileLocator = fileLocator,
                                 language = language,
                                 text = value,
                             };
