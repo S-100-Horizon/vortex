@@ -265,7 +265,10 @@
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
                                     <ComboBox ItemsSource="{Binding featureUIDs}"                                              
                                               SelectedValue="{Binding featureUID}"
-                                              Padding="2">
+                                              Padding="2"
+                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
+                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
+                                              DropDownOpened="FeatureUID_OnDropDownOpened">
                                         <ComboBox.Style>
                                             <Style TargetType="ComboBox">
                                                 <Setter Property="IsEnabled" Value="True" />
