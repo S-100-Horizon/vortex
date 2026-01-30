@@ -3,10 +3,7 @@ using ArcGIS.Core.Geometry;
 using S100FC;
 using S100FC.S101.FeatureAssociation;
 using S100FC.S101.FeatureTypes;
-using S100FC.S101.SimpleAttributes;
-using S100FC.S128.SimpleAttributes;
 using System.Diagnostics;
-using Windows.Security.Authentication.OnlineId;
 
 
 namespace S100Framework.Applications.Singletons

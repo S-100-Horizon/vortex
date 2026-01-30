@@ -2054,11 +2054,11 @@ namespace S100Framework.Applications
                         }
                         else if ("1".Equals(light.CATLIT)) {
                             //TODO: 2026-01-30
-                            lightSector.directionalCharacter = new directionalCharacter {                                
+                            lightSector.directionalCharacter = new directionalCharacter {
                             };
                             if (light.ORIENT.HasValue)
                                 lightSector.directionalCharacter.orientation = new orientation {
-                                    orientationValue = light.ORIENT.Value == -32767m ? null : light.ORIENT.Value,                                    
+                                    orientationValue = light.ORIENT.Value == -32767m ? null : light.ORIENT.Value,
                                 };
                         }
                         lightSector.colour = colours;

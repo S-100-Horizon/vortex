@@ -6,7 +6,6 @@ using S100FC.S101.FeatureTypes;
 using S100FC.S101.SimpleAttributes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
-using System.ComponentModel;
 
 namespace S100Framework.Applications
 {
@@ -33,7 +32,7 @@ namespace S100Framework.Applications
 
                 foreach (var bridge in Bridges.Instance.BridgeElements()) {
                     var instance = new Bridge();
-                    
+
 
                     buffer["ps"] = ps101;
                     buffer["code"] = instance.GetType().Name;
@@ -179,7 +178,7 @@ namespace S100Framework.Applications
                                 }
                                 relatedBridge = relatedBridges[0];
                             }
-                            
+
                             bool openingBridge = false;
                             List<bridgeFunction> bridgeFunctionValue = [];
                             int? scaleMinimum = default;
@@ -196,7 +195,7 @@ namespace S100Framework.Applications
                                 continue;
                             }
 
-                            
+
 
 
                             if (current.CATBRG != default && current.CATBRG == "1") {
