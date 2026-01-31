@@ -1090,7 +1090,7 @@ namespace S100FC.YAML
 
                 emitter.Emit(new SequenceStart(null, null, true, SequenceStyle.Block));     // YAML List
 
-                foreach (var attr in flattenedAttributes) {
+                foreach (var attr in flattenedAttributes) {                    
                     emitter.Emit(new MappingStart());                                       // YAML Object
 
                     emitter.Emit(new Scalar("Name"));                                       // YAML Primitive type
