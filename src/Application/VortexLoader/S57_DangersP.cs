@@ -378,7 +378,9 @@ namespace S100Framework.Applications
                                 Logger.Current.DataError(current.OBJECTID!.Value, current.TableName!, current.LNAM ?? "Unknown LNAM", $"Cannot set default clearance depth. Check loader.");
                             }
 
-                            if (!instance.valueOfSounding.HasValue && instance.attributeBindings.Count(e => e.S100FC_code.Equals("defaultClearanceDepth")) == 0) System.Diagnostics.Debugger.Break();
+                            if (!instance.valueOfSounding.HasValue && instance.attributeBindings.Count(e => e.S100FC_code.Equals("defaultClearanceDepth")) == 0) {
+                                Logger.Current.Error("!instance.valueOfSounding.HasValue && !defaultClearanceDepth");                                
+                            }
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
