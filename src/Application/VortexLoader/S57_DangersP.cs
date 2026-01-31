@@ -229,7 +229,9 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.NATSUR != null) {
                                 instance.natureOfSurface = EnumHelper.GetEnumValue(current.NATSUR);
@@ -413,7 +415,9 @@ namespace S100Framework.Applications
                                 instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue(current.CATWAT);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -467,7 +471,9 @@ namespace S100Framework.Applications
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue(current.EXPSOU.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;

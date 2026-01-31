@@ -98,7 +98,9 @@ namespace S100Framework.Applications
                                 instance.pictorialRepresentation = FixFilename(current.PICREP);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information = result.information.ToArray();

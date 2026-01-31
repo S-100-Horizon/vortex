@@ -79,7 +79,9 @@ namespace S100Framework.Applications
                                 instance.status = GetSingleStatus(current.STATUS)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information = result.information.ToArray();
@@ -116,7 +118,9 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT ?? default;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -170,7 +174,9 @@ namespace S100Framework.Applications
                                     instance.categoryOfLandRegion = categoryOfLandRegion;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: Interoperabilityidentifier
 
@@ -232,7 +238,9 @@ namespace S100Framework.Applications
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue(current.CATSEA.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -281,7 +289,9 @@ namespace S100Framework.Applications
                                 instance.categoryOfSlope = EnumHelper.GetEnumValue(current.CATSLO.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.COLOUR != default) {
                                 var colours = GetColours(current.COLOUR);
@@ -357,7 +367,9 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;

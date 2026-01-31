@@ -64,8 +64,9 @@ namespace S100Framework.Applications
 
                             // new S-101
                             //instance.categoryOfCargo
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -149,7 +150,9 @@ namespace S100Framework.Applications
 
                             // TODO: DateDisused
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -229,8 +232,9 @@ namespace S100Framework.Applications
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue(current.EXPSOU.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -339,7 +343,9 @@ namespace S100Framework.Applications
                                 instance.vesselSpeedLimit = ImporterNIS.GetVesselSpeedLimit(current.INFORM);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information = result.information.ToArray();

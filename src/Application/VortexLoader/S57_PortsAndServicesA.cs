@@ -77,7 +77,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -154,7 +156,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -242,7 +246,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
 
                             if (current.HEIGHT.HasValue) {
@@ -364,7 +370,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -443,7 +451,9 @@ namespace S100Framework.Applications
 
                             // TODO: elevation ??? 
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -529,7 +539,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -632,8 +644,9 @@ namespace S100Framework.Applications
                                     instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767m ? current.DRVAL1.Value : null;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
-
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -760,7 +773,9 @@ namespace S100Framework.Applications
                                 instance.depthRangeMinimumValue = current.DRVAL1.Value != -32767m ? current.DRVAL1.Value : null;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             instance.horizontalClearanceOpen = new horizontalClearanceOpen() {
                                 horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
@@ -864,7 +879,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -964,7 +981,9 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value)?.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -1172,7 +1191,9 @@ namespace S100Framework.Applications
 
                                 // elevation is new 
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -1276,7 +1297,9 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value)?.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -1367,7 +1390,9 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value)?.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -1495,7 +1520,9 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value)?.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -1605,7 +1632,9 @@ namespace S100Framework.Applications
                                     instance.colourPattern = GetColourPattern(current.COLPAT)!.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -1711,7 +1740,9 @@ namespace S100Framework.Applications
 
                             // TODO: Destination - new S-101 att.
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {

@@ -61,7 +61,9 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -115,7 +117,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: InteroperabilityIdentifier
 
@@ -185,7 +189,9 @@ namespace S100Framework.Applications
                                     instance.categoryOfLandRegion = categoryOfLandRegion;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: Interoperabilityidentifier
 
@@ -312,7 +318,9 @@ namespace S100Framework.Applications
                                 instance.categoryOfSeaArea = EnumHelper.GetEnumValue(current.CATSEA.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -369,7 +377,9 @@ namespace S100Framework.Applications
                                 instance.elevation = current.ELEVAT.Value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;

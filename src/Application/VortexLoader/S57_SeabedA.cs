@@ -305,7 +305,9 @@ namespace S100Framework.Applications
                                     instance.categoryOfWeedKelp = EnumHelper.GetEnumValue(current.CATWED.Value);
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 // TODO: interoperabilityIdentifier
 

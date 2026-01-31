@@ -139,7 +139,9 @@ namespace S100Framework.Applications
                                 instance.condition = GetCondition(current.CONDTN.Value)?.value;
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -225,7 +227,9 @@ namespace S100Framework.Applications
                                     instance.condition = GetCondition(current.CONDTN.Value)?.value;
                                 }
 
-                                instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                                if (featureName is not null)
+                                    instance.featureName = featureName;
 
                                 DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                                 if (dateRange != default) {
@@ -425,7 +429,9 @@ namespace S100Framework.Applications
                                 instance.categoryOfWaterTurbulence = EnumHelper.GetEnumValue(current.CATWAT.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
@@ -462,7 +468,9 @@ namespace S100Framework.Applications
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue(current.EXPSOU.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             if (current.HEIGHT.HasValue) {
                                 instance.height = current.HEIGHT.Value != -32767m ? current.HEIGHT.Value : null;
