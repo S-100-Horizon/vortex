@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using S100FC;
 using S100FC.S101.FeatureTypes;
+using S100FC.S122.ComplexAttributes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 
@@ -69,7 +70,9 @@ namespace S100Framework.Applications
 
                             // new S-101
                             //instance.categoryOfCargo
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -149,7 +152,9 @@ namespace S100Framework.Applications
 
                             // new S-101
                             //instance.categoryOfCargo
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -215,7 +220,9 @@ namespace S100Framework.Applications
                                 instance.jurisdiction = EnumHelper.GetEnumValue(current.JRSDTN.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -317,13 +324,45 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // COSARE_ContinentalShelfArea
-                            throw new NotImplementedException($"No COSARE_ContinentalShelfArea in DK or GL. {tableName}");
+                            var instance = new ContinentalShelfArea {
+                            };
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            if (current.NATION != default) {
+                                instance.nationality = [GetNation(current.NATION)];
+                            }
+
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                         }
+                        break;
 
                     case 30: { // CTSARE_CargoTranshipmentArea
                             var instance = new CargoTranshipmentArea {
-                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
@@ -383,7 +422,6 @@ namespace S100Framework.Applications
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
-
                         }
                         break;
                     case 35: { // CUSZNE_CustomZone
@@ -400,7 +438,9 @@ namespace S100Framework.Applications
 
                             // TODO: DateDisused
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -512,8 +552,10 @@ namespace S100Framework.Applications
                         }
                     case 65: { // FSHZNE_FisheryZone
                             var instance = new FisheryZone {
-                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
                             };
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -562,9 +604,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 70: { // HRBARE_HarbourAreaAdministrative
-                            var instance = new HarbourAreaAdministrative {
-                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            var instance = new HarbourAreaAdministrative {                                
                             };
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             // TODO: interoperabilityIdentifier
 
@@ -635,7 +679,9 @@ namespace S100Framework.Applications
                                 instance.expositionOfSounding = EnumHelper.GetEnumValue(current.EXPSOU.Value);
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -746,7 +792,9 @@ namespace S100Framework.Applications
                                 }
                             }
 
-                            instance.featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
                             DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
                             if (dateRange != default) {
@@ -813,9 +861,11 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 110: { // SPLARE_SeaPlaneLandingArea
-                            var instance = new SeaplaneLandingArea {
-                                featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
+                            var instance = new SeaplaneLandingArea {                                
                             };
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
 
 
                             // TODO: interoperabilityIdentifier
