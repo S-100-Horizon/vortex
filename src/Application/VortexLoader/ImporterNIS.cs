@@ -1032,7 +1032,7 @@ namespace S100Framework.Applications
 
                     var instance = new information {
                         language = language,
-                        text = ntxtds,
+                        text = ntxtds?.Trim(),
                     };
                     result.information.Add(instance);
                 }
@@ -1065,7 +1065,7 @@ namespace S100Framework.Applications
 
                     var instance = new information {
                         language = language,
-                        text = txtdsc,
+                        text = txtdsc?.Trim(),
                     };
                     result.information.Add(instance);
                 }
@@ -1102,7 +1102,7 @@ namespace S100Framework.Applications
 
                         var instance = new information {
                             language = language,
-                            text = value,
+                            text = value?.Trim(),
                         };
                         result.information.Add(instance);
                     }
@@ -1138,7 +1138,7 @@ namespace S100Framework.Applications
 
                             var instance = new information {
                                 language = language,
-                                text = value,
+                                text = value?.Trim(),
                             };
                             result.information.Add(instance);
                         }
