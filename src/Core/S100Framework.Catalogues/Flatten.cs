@@ -3,6 +3,7 @@
 using Newtonsoft.Json.Linq;
 using S100FC;
 using System.Collections;
+using System.Globalization;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
@@ -10,8 +11,18 @@ namespace S100FC
 {
     public static class AttributeFlattenExtensions
     {
+        public class DecimalTrimConverter : System.Text.Json.Serialization.JsonConverter<decimal>
+        {
+            public override decimal Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+                => reader.GetDecimal();
+
+            public override void Write(Utf8JsonWriter writer, decimal value, JsonSerializerOptions options)
+                => writer.WriteRawValue(value.ToString("G29",CultureInfo.InvariantCulture));
+        }
+
         private readonly static JsonSerializerOptions jsonSerializerOptions = new() {
             WriteIndented = true,
+            Converters = { new DecimalTrimConverter() },
         };
 
         public static string Flatten(this FeatureType feature) => FlattenAttributes(feature.attributeBindings, feature.attributeBindingsCatalogue);
@@ -180,6 +191,7 @@ namespace S100FC
             var root = new JObject();
 
             foreach (var attr in attributes) {
+                if (attr.S100FC_code.StartsWith("wave")) System.Diagnostics.Debugger.Break();
                 var isCollection = catalogue.Single(e => e.attribute == attr.S100FC_code).IsCollection;
 
                 AddAttribute(root, attr, catalogue, isCollection);
