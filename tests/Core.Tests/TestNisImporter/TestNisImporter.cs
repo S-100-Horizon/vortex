@@ -711,12 +711,15 @@ namespace TestNisImporter
 
         [Fact]
         public void BuildImportS57ToGeodatabaseScripts() {
-            var root = new IO.DirectoryInfo(@"\\ENC_ROOT\");
+            var root = new IO.DirectoryInfo(@"e:\ArcGIS\Projects\NOAA\08CGD_ENCs\ENC_ROOT");
 
             var python = new StringBuilder();
 
+            var filter = "US4";
             foreach (var enc in root.EnumerateDirectories()) {
                 if (enc.Name.Contains("cancel", StringComparison.InvariantCultureIgnoreCase)) continue;
+                if (!enc.Name.Contains(filter)) continue;
+
                 var command = ImportS57ToGeodatabase(enc, "geodatabase.gdb", (e) => true);
 
                 python.AppendLine(command);

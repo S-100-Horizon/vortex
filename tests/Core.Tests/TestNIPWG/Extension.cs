@@ -1,4 +1,5 @@
-﻿using System;
+﻿using S100FC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace S100Framework.DomainModel.S128
 {
     public static class Extension
     {
-        public static FeatureTypes.ElectronicProduct ApplyScamin(this FeatureTypes.ElectronicProduct feature, int compilationScale) {
+        public static S100FC.S128.FeatureTypes.ElectronicProduct ApplyScamin(this S100FC.S128.FeatureTypes.ElectronicProduct feature, int compilationScale) {
             feature.minimumDisplayScale = compilationScale switch {
                 < 22000 => 22000,
                 < 90000 => 90000,
