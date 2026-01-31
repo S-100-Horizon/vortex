@@ -65,6 +65,7 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No M_HOPA_HorizontalDatumShiftParameters in DK or GL. {tableName}");
                         }
                     case 30: { // M_NPUB_NauticalPublicationInformation
+                            //if (current.OBJECTID == 6) System.Diagnostics.Debugger.Break();
                             var instance = new InformationArea();
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
@@ -79,7 +80,9 @@ namespace S100Framework.Applications
                             }
 
                             if (current.PUBREF != default) {
-                                ;
+                                instance.information = [new information {
+                                    headline = current.PUBREF.Equals("-32767") ? null : current.PUBREF.Trim(),
+                                }];
                             }
 
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
