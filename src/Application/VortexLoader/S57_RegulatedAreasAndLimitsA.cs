@@ -334,6 +334,14 @@ namespace S100Framework.Applications
                                 instance.nationality = [GetNation(current.NATION)];
                             }
 
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
                             instance.information = result.information.ToArray();
@@ -351,6 +359,11 @@ namespace S100Framework.Applications
 
                             var featureN = featureClass.CreateRow(buffer);
                             var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
 
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
