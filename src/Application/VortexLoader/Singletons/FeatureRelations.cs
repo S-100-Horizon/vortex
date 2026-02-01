@@ -1004,6 +1004,40 @@ namespace S100Framework.Applications.Singletons
                             }
                         }
                     }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("metadataa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;                            
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new MetaDataA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("portsandservicesa")) {
+                        if (idIndex.ContainsKey(currentGlobalId)) {
+                            loadedRelatedObjectsCount++;
+                            foreach (var kvp in _srcObjectToSlaves) {
+                                var key = kvp.Key;
+                                var list = kvp.Value;
+
+                                if (list.Any(o => o.GlobalId == currentGlobalId)) {
+                                    foreach (var obj in list) {
+                                        if (obj.GlobalId == currentGlobalId) {
+                                            obj.S57Object = new PortsAndServicesA((Feature)cursorRelated.Current);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }                    
                     else {
                         throw new NotSupportedException($"GetRelated: {destinationFeatureClassName}");
                     }
