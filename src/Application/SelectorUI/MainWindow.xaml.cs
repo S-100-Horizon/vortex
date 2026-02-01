@@ -49,20 +49,6 @@ namespace SelectorUI
 
             //var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
 
-            //selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
-            //    roleType = "association",
-            //    role = "theQualityInformation",
-            //    informationType = "SpatialQuality",
-            //    informationId = RandomString(5),
-            //};
-
-            //selectedObject += new featureBinding<UpdatedInformation> {
-            //    roleType = "association",
-            //    role = "theUpdate",
-            //    featureType = "UpdateInformation",
-            //    featureId = RandomString(5),
-            //};
-
             //var featureType = new IslandGroup {
 
             //};
@@ -90,6 +76,20 @@ namespace SelectorUI
                     }
                     return result;
                 },
+            };
+
+            selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
+                roleType = "association",
+                role = "theQualityInformation",
+                informationType = "SpatialQuality",
+                informationId = RandomString(5),
+            };
+
+            selectedObject += new featureBinding<UpdatedInformation> {
+                roleType = "association",
+                role = "theUpdate",
+                featureType = "UpdateInformation",
+                featureId = RandomString(5),
             };
 
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
