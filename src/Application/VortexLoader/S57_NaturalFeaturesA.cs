@@ -362,8 +362,81 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: {    // SLOGRD_SlopingGround
-                            throw new NotImplementedException($"No SLOGRD_SlopingGround\r\n in DK or GL. {tableName}");
+                            var instance = new SlopingGround();
+
+                            if (current.CATSLO.HasValue) {
+                                if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
+                                    throw new NotImplementedException();    //  If it is required to encode a sand dune or sand hill, it must be done using the feature Sloping Ground with attribute category of slope = 3 (dune) or 4 (hill) and attribute nature of surface = 4 (sand). If these features are positioned along the coastline, a Coastline feature must also be encoded.
+
+                                instance.categoryOfSlope = EnumHelper.GetEnumValue(current.CATSLO.Value);
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            if (current.COLOUR != default) {
+                                var colours = GetColours(current.COLOUR);
+                                if (colours is not null && colours.Any())
+                                    instance.colour = colours;
+                            }
+
+                            if (current.NATSUR != default) {
+                                var natureOfSurface = EnumHelper.GetEnumValues(current.NATSUR);
+                                if (natureOfSurface is not null && natureOfSurface.Any())
+                                    instance.natureOfSurface = natureOfSurface;
+                            }
+                            if (current.CONRAD != default) {
+                                instance.radarConspicuous = current.CONRAD!.Value switch {
+                                    1 => true,      //  radar conspicuous
+                                    2 => false,     //  not radar conspicuous
+                                    4 => true,      //  radar conspicuous (has radar reflector)
+                                    -32767 => default,
+                                    _ => throw new NotImplementedException(),
+                                };
+                            }
+
+                            if (current.CONVIS != default) {
+                                instance.visualProminence = EnumHelper.GetEnumValue(current.CONVIS!);
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                         }
+                        break;
 
                     case 35: {    // VEGATN
                             var instance = new Vegetation {
