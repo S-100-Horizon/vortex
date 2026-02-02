@@ -79,13 +79,6 @@ namespace S100Framework.Applications
                                     instance.scaleMinimum = scamin.Value;
                             }
 
-                            if (current.PUBREF != default) {
-                                instance.information = [new information {
-                                    language = "eng",
-                                    headline = current.PUBREF.Equals("-32767") ? null : current.PUBREF.Trim(),
-                                }];
-                            }
-
                             if (!string.IsNullOrEmpty(current.SORDAT)) {
                                 if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
                                     instance.reportedDate = reportedDate;
@@ -104,7 +97,18 @@ namespace S100Framework.Applications
                                 instance.featureName = featureName;
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            //instance.information = result.information.ToArray();
+
+                            var informations = result.information.ToArray();
+
+                            if (current.PUBREF != default) {
+                                informations = [..informations, new information {
+                                    language = "eng",
+                                    headline = current.PUBREF.Equals("-32767") ? null : current.PUBREF.Trim(),
+                                }];
+                            }
+
+                            if (informations.Any())
+                                instance.information = informations;
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;

@@ -1,5 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using S100FC;
+using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -79,7 +80,17 @@ namespace S100Framework.Applications
                             }
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information = result.information.ToArray();
+                            var informations = result.information.ToArray();
+
+                            if (current.PUBREF != default) {
+                                informations = [..informations, new information {
+                                    language = "eng",
+                                    headline = current.PUBREF.Equals("-32767") ? null : current.PUBREF.Trim(),
+                                }];
+                            }
+
+                            if (informations.Any())
+                                instance.information = informations;
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             if (current.PICREP != default) {
