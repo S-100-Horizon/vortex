@@ -479,6 +479,10 @@ namespace VortexProAppModule
                     this.IsVisible = Visibility.Collapsed;
                 }
                 else {
+                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["featureBindings"]), _jsonOptions);
+                    foreach (var featureBinding in featureBindings)
+                        this.SelectedProperty += featureBinding;
+
                     this.IsSelectedSchemaEnabled = false;
                     this.IsSelectedModelTypeEnabled = false;
 
