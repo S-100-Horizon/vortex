@@ -103,7 +103,7 @@ namespace S100Framework.Applications
                                 instance.featureName = featureName;
 
                             var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
-                            instance.information = result.information.ToArray();
+                            //instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
                             buffer["ps"] = ps101;
