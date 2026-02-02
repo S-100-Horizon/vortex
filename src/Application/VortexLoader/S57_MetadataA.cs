@@ -81,6 +81,7 @@ namespace S100Framework.Applications
 
                             if (current.PUBREF != default) {
                                 instance.information = [new information {
+                                    language = "eng",
                                     headline = current.PUBREF.Equals("-32767") ? null : current.PUBREF.Trim(),
                                 }];
                             }
