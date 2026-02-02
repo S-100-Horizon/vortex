@@ -1,13 +1,8 @@
-using ArcGIS.Core.Data;
-using ICSharpCode.SharpZipLib.Zip;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using Microsoft.AspNetCore.Mvc; // Required for ApiVersion
-using Microsoft.OpenApi.Models; // Required for AddApiVersioning
 using S100FC.S128;
 using Serilog;
-using Serilog.Events;
 using System.Reflection;
-using System.Text.Json;
 
 namespace ProductCatalogueService
 {
@@ -16,33 +11,25 @@ namespace ProductCatalogueService
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
+           // var development = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) == true;
 
-            // logging 
-            builder.Host.UseSerilog((context, loggerConfiguration) => {
-                loggerConfiguration.MinimumLevel.Information()
-                     .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
-                     .Enrich.FromLogContext()
-                     .Enrich.WithProperty("MachineName", Environment.MachineName)
-                     .WriteTo.Console(outputTemplate: outputTemplate, restrictedToMinimumLevel: LogEventLevel.Verbose)
-                     .WriteTo.File("ProductCatalogue.log",
-                            rollingInterval: RollingInterval.Infinite,
-                            retainedFileCountLimit: 1,
-                            shared: true,
-                            outputTemplate: outputTemplate);
-
-                if (System.Diagnostics.Debugger.IsAttached) {
-                    loggerConfiguration = loggerConfiguration
-                        .WriteTo.File(
-                            System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "ProductCatalogue", "ProductCatalogueAPI-developer.log"),
-                            rollingInterval: RollingInterval.Month,
-                            retainedFileCountLimit: 1,
-                            shared: true,
-                            outputTemplate: outputTemplate);
-                }
-            });
+            // Logging
+            Log.Logger = new LoggerConfiguration()
+             .MinimumLevel.Information()
+             .Enrich.FromLogContext()
+             .WriteTo.Console()
+             .WriteTo.File(
+                path: "ProductCatalogue.log",
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 365,
+                shared: true,
+                flushToDiskInterval: TimeSpan.FromMinutes(10),
+                outputTemplate: outputTemplate)
+             .CreateLogger();
+            builder.Host.UseSerilog(Log.Logger);
+            Log.Information("Logger registered...");
 
             // Add services to the container.
-            //  builder.Services.AddControllers();
             builder.Services.AddControllers()
              .AddJsonOptions(options => {
                  var o = options.JsonSerializerOptions;
