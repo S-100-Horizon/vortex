@@ -342,7 +342,6 @@ namespace ProductCatalogueService.Controllers
 
                     var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-                    // todo: kald med s57
                     tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                 }
             });
