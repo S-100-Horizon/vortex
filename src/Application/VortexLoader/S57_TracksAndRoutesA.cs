@@ -236,8 +236,74 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // FERYRT_FerryRoute
-                            throw new NotImplementedException($"No FERYRT_FerryRoute in DK or GL. {tableName}");
+                            var instance = new FerryRoute();
+
+                            if (current.CATFRY.HasValue) {
+                                var categoryOfFerry = EnumHelper.GetEnumValues(current.CATFRY.Value);
+                                if (categoryOfFerry is not null)
+                                    instance.categoryOfFerry = categoryOfFerry;
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+
+                            SetShape(buffer, current.SHAPE);
+                            ImporterNIS.SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
+
                         }
+                        break;
+
                     case 15: { // ISTZNE_InshoreTrafficZone
                             var instance = new InshoreTrafficZone();
 
