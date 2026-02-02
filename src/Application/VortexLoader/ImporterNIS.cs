@@ -433,7 +433,7 @@ namespace S100Framework.Applications
 
             bool heightIsKnown = height is not null && height is not -32767m;
             bool heightIsUnknown = height is -32767m;
-            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3;
+            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3 || expsou == -32767;
 
 
             if (allCoveringDepthRangeMinimumValuesAreKnown) {
@@ -980,7 +980,7 @@ namespace S100Framework.Applications
         }
 
 
-        internal static featureName[] GetFeatureName(string? objname, string? nobjnme) {
+        internal static featureName[]? GetFeatureName(string? objname, string? nobjnme) {
             List<featureName> featureName = [];
             if (objname != default) {
                 var objnam = objname.Trim();
@@ -1005,7 +1005,9 @@ namespace S100Framework.Applications
                 }
             }
 
-            return featureName.ToArray();
+            if (featureName.Any())
+                return featureName.ToArray();
+            return null;
         }
 
         internal static InformationResult BindNauticalInformationFrom(int sourceObjectid, string? sourceTableName, string? ntxtds, string? txtdsc, string? inform, string? ninform) {
@@ -1128,7 +1130,7 @@ namespace S100Framework.Applications
                                 information = [new information() {
                                     fileReference = FixFilename(fileReference) ?? default,
                                     language = language
-                                }]                                
+                                }]
                             };
 
                         }

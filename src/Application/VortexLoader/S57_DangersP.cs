@@ -55,6 +55,8 @@ namespace S100Framework.Applications
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
                 //Decimal defaultClearanceDepth = -1;
 
+                if (current.OBJECTID == 298) System.Diagnostics.Debugger.Break();
+
                 switch (fcSubtype) {
                     case 1: { // CTNARE
                             var instance = new CautionArea();
