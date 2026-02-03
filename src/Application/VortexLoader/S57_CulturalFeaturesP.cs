@@ -937,8 +937,76 @@ namespace S100Framework.Applications
                             throw new NotImplementedException($"No ROADWY_Road in DK or GL. {tableName}");
                         }
                     case 55: { // RUNWAY_Runway
-                            throw new NotImplementedException($"No RUNWAY_Runway in DK or GL. {tableName}");
+                            var instance = new Runway();
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.NATCON != default) {
+                                var natureOfConstruction = EnumHelper.GetEnumValues(current.NATCON);
+                                if (natureOfConstruction is not null && natureOfConstruction.Any())
+                                    instance.natureOfConstruction = natureOfConstruction;
+                            }
+
+                            DateHelper.TryGetPeriodicDateRange(current.PERSTA, current.PEREND, out var periodicDateRange);
+                            if (periodicDateRange != default) {
+                                instance.periodicDateRange = periodicDateRange;
+                            }
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate = reportedDate;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                         }
+                        break;
                     case 60: { // SILTNK_SiloTank
                             var instance = new SiloTank();
 
