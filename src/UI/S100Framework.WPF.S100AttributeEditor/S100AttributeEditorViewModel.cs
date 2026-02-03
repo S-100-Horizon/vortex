@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -294,15 +295,17 @@ namespace S100Framework.WPF.ViewModel
 
         public static S100AttributeEditorViewModel operator +(S100AttributeEditorViewModel viewModel, featureBinding featureBinding) {
             var association = featureBinding.GetType().GetGenericArguments()[0].Name;
-            
-            //var definitions = viewModel.featureBindingDefinitions!.Where(e => e.association.Equals(association));
 
-            //viewModel.featureBindings.Add(new FeatureBindingViewModel([.. definitions]) {
-            //    roleType = featureBinding.roleType,
-            //    role = featureBinding.role,
-            //    featureType = featureBinding.featureType,
-            //    featureId = featureBinding.featureId,
-            //});
+            var definitions = viewModel.featureBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(association));
+
+            //viewModel.featureBindings.Add(new FeatureBindingViewModel(viewModel.featureBindingDefinitions));
+
+            viewModel.featureBindings.Add(new FeatureBindingViewModel(definitions) {
+                roleType = featureBinding.roleType,
+                role = featureBinding.role,
+                featureType = featureBinding.featureType,                
+                featureUID = new FeatureTypeID(featureBinding.featureType!, featureBinding.featureId),
+            });
             return viewModel;
         }
 

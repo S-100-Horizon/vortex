@@ -235,7 +235,6 @@ namespace S100Framework.WPF.ViewModel
 
             this.association = informationBinding.Key;
 
-
             foreach (var e in this._informationBindingDefinitions) {
                 this.roles.Add(e.role);
             }
@@ -263,6 +262,13 @@ namespace S100Framework.WPF.ViewModel
                     this.informationUIDs.Clear();
                 }
                 else if (e.PropertyName.Equals(nameof(informationType))) {
+                }
+                else if (e.PropertyName.Equals(nameof(informationUID))) {
+                    if (this.informationUID is not null) {
+                        if (!this.informationUIDs.Contains(this.informationUID)) {
+                            this.informationUIDs.Insert(0, this.informationUID);
+                        }
+                    }
                 }
             };
 
@@ -364,6 +370,13 @@ namespace S100Framework.WPF.ViewModel
                     this.featureUIDs.Clear();
                 }
                 else if (e.PropertyName.Equals(nameof(featureType))) {
+                }
+                else if (e.PropertyName.Equals(nameof(featureUID))) {
+                    if (this.featureUID is not null) {
+                        if (!this.featureUIDs.Contains(this.featureUID)) {
+                            this.featureUIDs.Insert(0, this.featureUID);
+                        }
+                    }
                 }
             };
         }
