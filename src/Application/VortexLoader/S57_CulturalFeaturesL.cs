@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using S100FC;
+using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
@@ -990,8 +991,100 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 55: { // TUNNEL_Tunnel
-                            throw new NotImplementedException($"No TUNNEL_Tunnel in DK and GL. {tableName}");
+                            var instance = new Tunnel();
+
+                            if (current.CONDTN.HasValue) {
+                                instance.condition = GetCondition(current.CONDTN.Value)?.value;
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            instance.horizontalClearanceFixed = new horizontalClearanceFixed() {
+                                horizontalClearanceValue = current.HORCLR.HasValue && current.HORCLR.Value != -32767m ? current.HORCLR!.Value : default(decimal?),
+                                horizontalDistanceUncertainty = current.HORACC.HasValue && current.HORACC.Value != -32767m ? current.HORACC!.Value : default(decimal?),
+                            };
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (!string.IsNullOrEmpty(current.SORDAT)) {
+                                if (DateHelper.TryConvertSordat(current.SORDAT, out var reportedDate)) {
+                                    instance.reportedDate = reportedDate;
+                                }
+                                else {
+                                    Logger.Current.DataError(current.OBJECTID ?? -1, current.GetType().Name, current.LNAM ?? "Unknown LNAM", $"Cannot convert date {current.SORDAT}");
+                                }
+                            }
+
+                            if (current.STATUS != default) {
+                                instance.status = GetStatus(current.STATUS);
+                            }
+
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                //verticalClearanceValue = default(decimal?)
+                                //verticalClearanceValue = current.VERCOP.HasValue && current.VERCOP.Value != -32767m ? current.VERCOP.Value : default(decimal?),
+                                //verticalClearanceValue = current.VERCLR.HasValue && current.VERCLR.Value != -32767m ? current.VERCLR.Value : default(decimal?),
+                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                            };
+
+
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            if (verticalDatum != null) {
+                                var update = true;
+                                foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
+                                    if (elm.Item2.value == verticalDatum.value) {
+                                        update = false;
+                                    }
+                                }
+                                if (update)
+                                    instance.verticalDatum = verticalDatum.value;
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            if (current.PICREP != default) {
+                                instance.pictorialRepresentation = FixFilename(current.PICREP);
+                            }
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                         }
+                        break;
+
                     default:
                         // code block
                         System.Diagnostics.Debugger.Break();
