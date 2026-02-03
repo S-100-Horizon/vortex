@@ -228,11 +228,11 @@ namespace S100Framework.Applications
 
                 }
                 else {
-                    /*var whereClause = filter.WhereClause.Clone();
-                    filter.WhereClause = $"{whereClause} and globalid = '{{CA71EEFC-AF9F-4DB0-A55E-FD9D394FF58D}}'";
-                    filter.WhereClause = $"{whereClause}";
+                    /*var whereClause = QueryFilter.WhereClause.Clone();
+                    QueryFilter.WhereClause = $"{whereClause} and globalid = '{{EEC8A630-411C-43E0-8EF3-97B7A5FD5E4F}}'";
+                    QueryFilter.WhereClause = $"{whereClause}";
                     */
-
+                    
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
                     Logger.Current.Information($"Converting Product Coverages");
@@ -433,7 +433,8 @@ namespace S100Framework.Applications
 
             bool heightIsKnown = height is not null && height is not -32767m;
             bool heightIsUnknown = height is -32767m;
-            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3 || expsou == -32767;
+            bool expositionOfSoundingIs1Or3 = expsou is 1 || expsou is 3; // || expsou == -32767;
+            bool expositionOfSoundingIsUnknown = expsou is -32767;
 
 
             if (allCoveringDepthRangeMinimumValuesAreKnown) {
@@ -461,15 +462,15 @@ namespace S100Framework.Applications
                     return 20.1m > (leastDepth - 66) ? 20.1m : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
                 else if (catwrk is 1 &&
-                    (expsou is null || (expsou is 2))) {
+                    (expsou is null || expositionOfSoundingIsUnknown || (expsou is 2))) {
                     return 20.1m > (leastDepth - 66) ? 20.1m : (leastDepth - 66); // 20.1 or least depth - 66, whichever is largest
                 }
-                else if ((expsou is null || (expsou is 2)) &&
+                else if ((expsou is null || expositionOfSoundingIsUnknown || (expsou is 2)) &&
                     valsouIsUnknown &&
                     (watlev is 3 || watlev is 5)) {
                     return 0m;
                 }
-                else if ((expsou is null || (expsou is 2)) &&
+                else if ((expsou is null || expositionOfSoundingIsUnknown || (expsou is 2)) &&
                     valsouIsUnknown &&
                     (watlev is 4 || watlev is -32767)) {
 
@@ -480,7 +481,7 @@ namespace S100Framework.Applications
                     return -15m;
                 }
                 else if ((catwrk is 2 || catwrk is 3 || catwrk is 4 || catwrk is 5 || catwrk is -32767) &&
-                    (expsou is null || (expsou is 2))) {
+                    (expsou is null || expositionOfSoundingIsUnknown || (expsou is 2))) {
                     return -15m;
                 }
                 else {
@@ -700,8 +701,8 @@ namespace S100Framework.Applications
                 mandatory
             */
 
-            //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
-            List<string> parenthesisParts = [];
+                    //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+                    List<string> parenthesisParts = [];
 
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
                 string pattern = @"\([^()]*\)";
