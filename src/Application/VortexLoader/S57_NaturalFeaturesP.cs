@@ -283,8 +283,13 @@ namespace S100Framework.Applications
                             var instance = new SlopingGround();
 
                             if (current.CATSLO.HasValue) {
-                                if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
-                                    throw new NotImplementedException();    //  If it is required to encode a sand dune or sand hill, it must be done using the feature Sloping Ground with attribute category of slope = 3 (dune) or 4 (hill) and attribute nature of surface = 4 (sand). If these features are positioned along the coastline, a Coastline feature must also be encoded.
+                                // SAND DUNE OR SAND HILL
+                            //    if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
+                            //        throw new NotImplementedException();    //
+
+                                //  If it is required to encode a sand dune or sand hill, it must be done using
+                                //  the feature Sloping Ground with attribute category of slope = 3 (dune) or 4 (hill) and attribute nature of surface = 4 (sand).
+                                //  If these features are positioned along the coastline, a Coastline feature must also be encoded.
 
                                 instance.categoryOfSlope = EnumHelper.GetEnumValue(current.CATSLO.Value);
                             }

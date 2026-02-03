@@ -403,6 +403,8 @@ namespace S100Framework.Applications
 
                             bool depthDredgedAreaWhereDepthMinimumValueIsUnknown = coveredByDredgedArea && !(instance.surroundingDepth is not null && instance.surroundingDepth.HasValue);
 
+                            bool expositionOfSoundingIsUnknown = current.EXPSOU is -32767;
+
                             if (allCoveringDepthRangeMinimumValuesAreKnown) {
                                 if (!(current.VALSOU.HasValue && current.VALSOU.Value != -32767m)) {
                                     if (current.EXPSOU.HasValue && (current.EXPSOU.Value == 1 || current.EXPSOU.Value == 3) &&
@@ -411,19 +413,19 @@ namespace S100Framework.Applications
 
                                         instance.defaultClearanceDepth = instance.surroundingDepth;
                                     }
-                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || expositionOfSoundingIsUnknown || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 3))) {
 
                                         instance.defaultClearanceDepth = 0.1m;
                                     }
-                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || expositionOfSoundingIsUnknown || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 5))) {
 
                                         instance.defaultClearanceDepth = 0m;
                                     }
-                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || (!current.EXPSOU.HasValue)) &&
+                                    else if (((current.EXPSOU.HasValue && current.EXPSOU.Value == 2) || expositionOfSoundingIsUnknown || (!current.EXPSOU.HasValue)) &&
                                        (current.VALSOU.HasValue && current.VALSOU.Value == -32767m) &&
                                        (current.WATLEV.HasValue && (current.WATLEV.Value == 4 || current.WATLEV.Value == -32767m))) {
 
