@@ -898,17 +898,17 @@ namespace S100Framework.Applications
                             instance.information = result.information.ToArray();
                             instance.SetInformationBindings(result.InformationBindings.ToArray());
 
-                            buffer["ps"] = ps101;
-                            buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
+                            bufferSurface["ps"] = ps101;
+                            bufferSurface["code"] = instance.GetType().Name;
+                            bufferSurface["edition"] = ImporterNIS.s101version;
 
-                            buffer["flatten"] = instance.Flatten();
-                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+                            bufferSurface["flatten"] = instance.Flatten();
+                            bufferSurface["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
-                            SetShape(buffer, current.SHAPE);
-                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+                            SetShape(bufferSurface, current.SHAPE);
+                            SetUsageBand(bufferSurface, current.PLTS_COMP_SCALE!.Value);
 
-                            var featureN = surface.CreateRow(buffer);
+                            var featureN = surface.CreateRow(bufferSurface);
                             var name = featureN.UID();
 
                             if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
