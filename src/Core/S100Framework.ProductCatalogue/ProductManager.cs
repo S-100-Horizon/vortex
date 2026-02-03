@@ -162,10 +162,9 @@ namespace S100FC.ProductCatalogue
 
                         var code = Convert.ToString(c["code"])!;
                         if (code.Equals(nameof(S100FC.S128.FeatureTypes.ElectronicProduct))) {
-                            //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(c["json"])!, this.jsonSerializerOptionsS128)!;
-                            // todo: correct?
-                            var json = Convert.ToString(c["flatten"])!;
-                            var electronicProduct = S100FC.AttributeFlattenExtensions.Unflatten<ElectronicProduct>(json, typeof(ElectronicProduct));
+                            var json = c["flatten"];
+
+                            var electronicProduct = S100FC.AttributeFlattenExtensions.Unflatten<ElectronicProduct>(json.ToString(), typeof(ElectronicProduct));
                             this._electronicProducts.GetOrAdd(electronicProduct.datasetName!.ToUpperInvariant(), electronicProduct);
                         }
                     }
@@ -751,18 +750,16 @@ current["flatten"] != DBNull.Value
                     using var attachmentTable = connection.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                     using var attachmentCursor = attachmentTable.Search(new QueryFilter {
-                        WhereClause = "code = 'supportfile'"    // Todo code is not supportfile, key/value pairs
+                        WhereClause = "code = 'supportfile'"
                     });
                     while (attachmentCursor.MoveNext()) {
                         var current = attachmentCursor.Current;
 
-                        //var json = current["json"].ToString();
-                        var json =
-current.FindField("json") != -1 &&
-current["json"] != null &&
-current["json"] != DBNull.Value
-? current["json"].ToString()
-: string.Empty;
+                        var json = current.FindField("json") != -1
+                            && current["json"] != null
+                            && current["json"] != DBNull.Value
+                            ? current["json"].ToString()
+                            : string.Empty;
 
                         if (string.IsNullOrEmpty(json))
                             continue;
@@ -806,7 +803,7 @@ current["json"] != DBNull.Value
 
                     using var cursorS128 = surface.Search(new QueryFilter {
                         //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", // todo: remake to key/value pair
+                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", 
                     }, false);
 
                     cursorS128.MoveNext();
@@ -828,6 +825,7 @@ current["json"] != DBNull.Value
 
                     buffer["ps"] = "S-128.Horizon";
                     buffer["code"] = nameof(Dataset);
+                    buffer["edition"] = featureCatalogue.VersionNumber.ToString();
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
                         DatasetName = electronicProduct.datasetName!,
                         Edition = electronicProduct.editionNumber!.Value,
