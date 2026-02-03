@@ -51,21 +51,13 @@ namespace S100Framework.Applications
             foreach (var m_sclPolygon in allM_CSCL) {
                 var serie = m_sclPolygon.DSNM!.ToString();
 
-                var displayScale = DisplayScale.GetDisplayScale(serie!) ?? default;
+                var displayScale = DisplayScale.GetDisplayScale(serie!)!;
                 var dataCoverage_m_scl = new DataCoverage {
-                    maximumDisplayScale = default,
-                    minimumDisplayScale = default,
-                    optimumDisplayScale = default,
+                    maximumDisplayScale = displayScale.MaximumDisplayScale,
+                    optimumDisplayScale = displayScale.OptimumDisplayScale,
                 };
 
-                if (displayScale != null) {
-                    dataCoverage_m_scl.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                    dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
-                    dataCoverage_m_scl.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                }
-                else {
-                    Logger.Current.DataError(m_sclPolygon.OBJECTID ?? -1, m_sclPolygon.TableName ?? "Unknown table name", m_sclPolygon.LNAM ?? "Unknown LNAM", "Optimumdisplayscale must be set");
-                }
+                dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale;
 
                 {
                     buffer["ps"] = ps101;
@@ -147,7 +139,13 @@ namespace S100Framework.Applications
                     var plts_comp_scale = productCoverage.PLTS_COMP_SCALE ?? default;
 
                     //var displayScale = DisplayScale.GetNearestBelowKey(plts_comp_scale) ?? default;
-                    var displayScale = DisplayScale.GetDisplayScale(serie) ?? default;
+                    var displayScale = DisplayScale.GetDisplayScale(serie!)!;
+                    var dataCoverage_m_scl = new DataCoverage {
+                        maximumDisplayScale = displayScale.MaximumDisplayScale,
+                        optimumDisplayScale = displayScale.OptimumDisplayScale,
+                    };
+
+                    dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale;
 
                     var coverageShape = productCoverage.SHAPE!;
 
@@ -184,19 +182,13 @@ namespace S100Framework.Applications
 
                             // DATACOVERAGE
                             var dataCoverage = new DataCoverage {
-                                maximumDisplayScale = default,
-                                minimumDisplayScale = default,
-                                optimumDisplayScale = default,
+                                maximumDisplayScale = displayScale.MaximumDisplayScale,
+                                optimumDisplayScale = displayScale.OptimumDisplayScale,
                             };
 
-                            if (displayScale != null) {
-                                dataCoverage.maximumDisplayScale = displayScale.MaximumDisplayScale;
-                                dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale.GetValueOrDefault();
-                                dataCoverage.optimumDisplayScale = displayScale.OptimumDisplayScale;
-                            }
-                            else {
-                                Logger.Current.DataError(productCoverage.OBJECTID ?? -1, "DataCoverage", "Calculated", "Optimumdisplayscale must be set");
-                            } {
+                            dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale;
+
+                            {
                                 buffer["ps"] = ps101;
                                 buffer["code"] = dataCoverage.GetType().Name;
                                 buffer["edition"] = ImporterNIS.s101version;

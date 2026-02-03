@@ -5,7 +5,7 @@
     {
         public int MaximumDisplayScale { get; set; }
         public int OptimumDisplayScale { get; set; }
-        public int? MinimumDisplayScale { get; set; }
+        public int? MinimumDisplayScale { get; set; } = null;
 
         public static readonly Dictionary<int, DisplayScale> DisplayScales = new Dictionary<int, DisplayScale>
         {
@@ -34,7 +34,7 @@
 
         public static DisplayScale? GetDisplayScale(string series) {
             DisplayScale scale = series.ToUpperInvariant() switch {
-                "DK4" => new DisplayScale(11000, 22000, null),
+                "DK4" => new DisplayScale(11000, 22000, 9999999),
                 "DK5" => new DisplayScale(6000, 12000, 22000),
 
                 //"dk4" => new DisplayScale(11000, 22000, 90000),
