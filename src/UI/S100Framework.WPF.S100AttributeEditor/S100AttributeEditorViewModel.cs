@@ -294,7 +294,7 @@ namespace S100Framework.WPF.ViewModel
 
         public static S100AttributeEditorViewModel operator +(S100AttributeEditorViewModel viewModel, featureBinding featureBinding) {
             var association = featureBinding.GetType().GetGenericArguments()[0].Name;
-
+            
             //var definitions = viewModel.featureBindingDefinitions!.Where(e => e.association.Equals(association));
 
             //viewModel.featureBindings.Add(new FeatureBindingViewModel([.. definitions]) {

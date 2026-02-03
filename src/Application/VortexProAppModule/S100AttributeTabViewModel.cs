@@ -479,9 +479,11 @@ namespace VortexProAppModule
                     this.IsVisible = Visibility.Collapsed;
                 }
                 else {
-                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["featureBindings"]), _jsonOptions);
-                    foreach (var featureBinding in featureBindings)
-                        this.SelectedProperty += featureBinding;
+                    if (!Inspector.IsNull("featureBindings")) {
+                        var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["featureBindings"]), _jsonOptions);
+                        foreach (var featureBinding in featureBindings)
+                            this.SelectedProperty += featureBinding;
+                    }
 
                     this.IsSelectedSchemaEnabled = false;
                     this.IsSelectedModelTypeEnabled = false;
@@ -534,8 +536,8 @@ namespace VortexProAppModule
                 var updated = false;
 
                 if (sender is S100AttributeEditorViewModel viewModel) {
-                    if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.attributeBindings))) {                        
-                        if(viewModel.Instance is S100FC.InformationType informationType) {
+                    if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.attributeBindings))) {
+                        if (viewModel.Instance is S100FC.InformationType informationType) {
                             var flatten = informationType.Flatten();
                             if (Inspector.IsNull("flatten")) {
                                 Inspector["flatten"] = flatten;
@@ -571,7 +573,7 @@ namespace VortexProAppModule
                         }
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
-                        
+
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
                         var featureBindings = (featureBinding[])viewModel;
