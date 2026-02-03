@@ -479,6 +479,11 @@ namespace VortexProAppModule
                     this.IsVisible = Visibility.Collapsed;
                 }
                 else {
+                    if (!Inspector.IsNull("informationBindings")) {
+                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["informationBindings"]), _jsonOptions);
+                        foreach (var informationBinding in informationBindings)
+                            this.SelectedProperty += informationBinding;
+                    }
                     if (!Inspector.IsNull("featureBindings")) {
                         var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["featureBindings"]), _jsonOptions);
                         foreach (var featureBinding in featureBindings)
