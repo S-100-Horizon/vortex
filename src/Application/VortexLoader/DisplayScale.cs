@@ -37,6 +37,8 @@
                 "DK4" => new DisplayScale(11000, 22000, 9999999),
                 "DK5" => new DisplayScale(6000, 12000, 22000),
 
+                "US4" => new DisplayScale(22000, 45000, 9999999),
+
                 //"dk4" => new DisplayScale(11000, 22000, 90000),
                 //"dk5" => new DisplayScale(6000, 12000, 22000),
                 //"gl4" => new DisplayScale(11000, 22000, 90000),

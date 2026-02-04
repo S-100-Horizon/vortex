@@ -3,8 +3,10 @@ using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
 using NetTopologySuite.Features;
 using S100FC;
+using S100FC.ProductCatalogue;
 using S100FC.S101.FeatureTypes;
 using S100FC.S128;
+using S100FC.S128.FeatureTypes;
 using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -35,86 +37,6 @@ namespace TestProductCatalogue
             //if (!geodatabase.Exists) {
             //    fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
             //}
-        }
-
-        [Fact]
-        public void Test_flatten() {
-            var qob = new QualityOfBathymetricData() {
-                categoryOfTemporalVariation = 5,
-                dataAssessment = 1,
-                featuresDetected = new S100FC.S101.ComplexAttributes.featuresDetected {
-                    leastDepthOfDetectedFeaturesMeasured = true,
-                    significantFeaturesDetected = true
-                },
-                fullSeafloorCoverageAchieved = true,
-                zoneOfConfidence = [new() {
-                    categoryOfZoneOfConfidenceInData = null,
-                }
-                ],
-                depthRangeMaximumValue = null,
-                depthRangeMinimumValue = 5
-
-            };
-
-            var jsonf = qob.Flatten();
-
-            var res = S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(jsonf, typeof(QualityOfBathymetricData));
-
-
-            System.Diagnostics.Debugger.Break();
-
-        }
-        [Fact]
-        public void Test_ConnectionSerialization() {
-            FastZip fastZip = new();
-
-            var geodatabase = new IO.DirectoryInfo(@"s100ed8.gdb");
-            if (!geodatabase.Exists) {
-                fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
-            }
-
-            var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s100ed8.gdb")));
-            using var connection = new Geodatabase(connectionFile);
-
-            System.Diagnostics.Debugger.Break();
-
-
-
-        }
-
-
-
-        [Fact]
-        public void Test_CreateS128() {
-
-
-            var electronicProduct = new S100FC.S128.FeatureTypes.ElectronicProduct {
-                datasetName = "101DK43403E",
-                typeOfProductFormat = 2,                 //IsoIec8211,
-                notForNavigation = true,
-                issueDate = DateOnly.FromDateTime(DateTime.Now),
-                editionNumber = 0,
-                agencyResponsibleForProduction = "Danish Geodata Agency",
-                specificUsage = 1,
-                productSpecification = new(),
-            };
-
-            //foreach (var binding in electronicProduct.attributeBindings) {
-            //    Console.WriteLine(  );
-            //}
-
-            var jsonSerializerOptions = new JsonSerializerOptions {
-                WriteIndented = false,
-                Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
-                PropertyNameCaseInsensitive = true,
-            }.AppendTypeInfoResolver();
-
-
-
-
-            var jason = System.Text.Json.JsonSerializer.Serialize(electronicProduct, jsonSerializerOptions);
-
-            System.Diagnostics.Debugger.Break();
         }
 
         [Fact]
@@ -261,31 +183,46 @@ namespace TestProductCatalogue
 
         [Fact]
         public async Task Test_ImportS128FromS57() {
-            var s57 = @"C:\Geodatastyrelsen\gdbs\replica.gdb";  // Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
-            var s100 = @"C:\Geodatastyrelsen\gdbs\test128\s100edx.gdb"; // Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
+            var s57 = Environment.GetEnvironmentVariable("s57_import");
+            var s128 = Environment.GetEnvironmentVariable("s128_import");
 
             Assert.NotNull(s57);
-            Assert.NotNull(s100);
+            Assert.NotNull(s128);
 
-            var exist = Directory.Exists(s100);
+            var exist57 = IO.File.Exists(s57);
+            var exist128 = IO.File.Exists(s128);
 
+            Assert.True(exist57 && exist128);
+
+            // S128 ProductManager
             var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(s100)));
+                if (".sde".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(s128)));
 
-                var geodatabase = new Geodatabase(connectionFile);
+                    //    // Manually set S101 database if not already configured
 
-                using (var table = geodatabase.OpenDataset<Table>("configuration")) {
-                    using var buffer = table.CreateRowBuffer();
-                    buffer["ps"] = "S-128.Horizon";
-                    buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
-                        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(s100)))],
-                    });
-                    table.CreateRow(buffer);
+                    //    //using (var table = geodatabase.OpenDataset<Table>("configuration")) {
+                    //    //    using var buffer = table.CreateRowBuffer();
+                    //    //    buffer["ps"] = "S-128.Horizon";
+                    //    //    buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
+                    //    //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
+                    //    //        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(s128)))],
+                    //    //    });
+                    //    //    table.CreateRow(buffer);
+                    //    //}
+
+                    return new Geodatabase(connectionFile);
                 }
+                else if (".gdb".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(s128)));
 
-                return geodatabase;
+                    return new Geodatabase(connectionFile);
+                }
+                else {
+                    throw new InvalidOperationException("Connectionfile path for S128-Database is neither .gdb nor .sde");
+                }
             });
+
             Assert.NotNull(productManager);
 
             var tasks = new List<Task>();
@@ -355,7 +292,6 @@ namespace TestProductCatalogue
 
                         var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
 
-                        // todo: kald med s57
                         tasks.Add(productManager.ElectronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
                     }
                 }
@@ -363,40 +299,54 @@ namespace TestProductCatalogue
 
             await Task.WhenAll([.. tasks]);
 
-            //// 101DK0040349E
 
-            //var p = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
-            //await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
+            // Create new datasets & exchangesets
+            foreach (var productName in productManager.ElectronicProductManager.ToArray()) {
+                var dataset = await productManager.ElectronicProductManager.CreateNewDatasetAsync(productName);
+                var product = productManager.ElectronicProductManager.ElectronicProduct(productName);
 
-            System.Diagnostics.Debugger.Break();
-        }
+                var yaml = dataset.Serialize();
 
-        [Fact]
-        public async Task Test_Export() {
-            //var s101 = Environment.GetEnvironmentVariable("S100-Horizon-S101-Database");
-            //Assert.False(string.IsNullOrEmpty(s101));
 
-            FastZip fastZip = new();
+                var datasetName = product.datasetName;
 
-            var zipFileS128 = new IO.DirectoryInfo(@"s128ed8.gdb");
+                var dir = IO.Directory.CreateDirectory(productManager.ElectronicProductManager.OutputFolder);
 
-            if (zipFileS128.Exists) {
-                zipFileS128.Delete(true);
+                var exchangeset = IO.Directory.CreateDirectory(Path.Combine(dir.FullName, datasetName, $"{product.editionNumber}"));
+
+                // Write temp YAML file for the compiler
+                IO.File.WriteAllText(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"), yaml);
+
+                var catalogue = Path.Combine(AppContext.BaseDirectory, "101_Feature_Catalogue_2.0.0.xml");
+
+                if (!IO.File.Exists(catalogue))
+                    throw new NullReferenceException("Could not find featurecatalogue!");
+
+                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName}";
+
+
+                var p = new Process();
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = true;
+                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                p.StartInfo.FileName = @"C:\Program Files\s100compiler\s100compiler.exe";
+                p.StartInfo.Arguments = commandline;
+                p.StartInfo.WorkingDirectory = exchangeset.FullName;
+                p.EnableRaisingEvents = true;
+                p.Exited += (s, e) => {
+                };
+
+                p.Start();
+                p.WaitForExit();
+
+                if (p.ExitCode != 0) {
+                    Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
+                    throw new ArgumentException(commandline);
+                }
+
+                // Cleanup temp yaml
+                IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
             }
-            fastZip.ExtractZip("s128ed8.gdb.zip", zipFileS128.FullName, null);
-
-            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
-                var connectionFile = new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(@"s128ed8.gdb")));
-
-                return new Geodatabase(connectionFile);
-            });
-            Assert.NotNull(productManager);
-
-
-
-            var dataset = await productManager.ElectronicProductManager.CreateNewEditionAsync("101DK0040349E");
-
-            var yaml = dataset.Serialize();
 
             System.Diagnostics.Debugger.Break();
         }

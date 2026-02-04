@@ -256,7 +256,7 @@ namespace S100FC.YAML
                             this.CompositeCurves.Added.Count +
                             this.CompositeCurves.Deleted.Count +
                             this.Surfaces.Added.Count +
-                            this.Surfaces.Deleted.Count) == 0;
+                            this.Surfaces.Deleted.Count) != 0;
 
         [YamlIgnore]
         internal FeatureDiff Features { get; init; } = features;

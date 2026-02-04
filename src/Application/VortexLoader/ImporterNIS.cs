@@ -858,6 +858,9 @@ namespace S100Framework.Applications
                 "5" => 5,   //colourPattern.StripesDirectionUnknown,
                 "6" => 6,   //colourPattern.BorderStripe,
                 "-32767" => default,
+
+                "3,4" => 3, //US
+
                 _ => throw new IndexOutOfRangeException($"Colourpattern value is not legal {colorPattern}")
             };
             return colourPat;

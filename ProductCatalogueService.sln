@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.10.35013.160
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 17.10.0.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.Catalogues", "src\Core\S100Framework.Catalogues\S100Framework.Catalogues.csproj", "{FC277E10-106E-4985-A520-23782561460F}"
 EndProject

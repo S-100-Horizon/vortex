@@ -212,14 +212,17 @@ namespace ProductCatalogueService.Controllers
             }
 
             // Check if product has any updates before creating new update
-            //var dirty = await _electronicProductManager.IsDirtyAsync(name);
+            var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            //if (!dirty) {
-            //    response.Success = false;
-            //    response.Message = $"Product has no updates.";
-            //    response.DurationMs = sw.ElapsedMilliseconds;
-            //    return BadRequest(response);
-            //}
+            if (!dirty) {
+                response.Success = false;
+                response.Message = $"Product has no updates.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return BadRequest(response);
+            }
+
+            // todo: detect updates properly
+            return StatusCode(StatusCodes.Status501NotImplemented, response);
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
@@ -255,115 +258,6 @@ namespace ProductCatalogueService.Controllers
             this.CreateExchangeSet(product, update);
 
             response.DurationMs = sw.ElapsedMilliseconds;
-            return Ok(response);
-        }
-
-        /// <summary>
-        /// Imports all existing products from a S-57 database
-        /// </summary>
-        /// <param name="createAll"> If set to true, will create a new dataset for each product, and may take up to 10 minutes to complete.</param>
-        /// <returns>An collection with all imported productnames.</returns>
-        [ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("import", Name = "LoadElectronicProducts")]
-        public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
-            var response = new ApiResponse<string[]>();
-            var sw = Stopwatch.StartNew();
-            var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
-
-            if (string.IsNullOrEmpty(s57)) {
-                response.Success = false;
-                response.Message = $"No S-57 database was configured";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status500InternalServerError, response);
-            }
-
-            var tasks = new List<Task>();
-            await productManager.Dispatch(() => {
-                var connectionFile = new Uri(IO.Path.GetFullPath(s57));
-
-                Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
-
-                if (IO.File.Exists(s57) && ".sde".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
-                }
-                else if (IO.Directory.Exists(s57) && ".gdb".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
-                    createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
-                }
-
-                var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification {
-                    editionDate = S100FC.S101.Summary.VersionDate,
-                    name = S100FC.S101.Summary.ProductId,
-                    version = S100FC.S101.Summary.Version.ToString(),
-                };
-
-
-
-                using var geodatabase = createGeodatabase();
-
-                var definitionTables = geodatabase.GetDefinitions<TableDefinition>();
-                var definitionFeatureClasses = geodatabase.GetDefinitions<FeatureClassDefinition>();
-
-                using var tableProductCoverage = geodatabase.OpenDataset<FeatureClass>(definitionFeatureClasses.Single(e => e.GetName().EndsWith("ProductCoverage")).GetName());
-
-                using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
-                using var cursor = tableProductDefinitions.Search(new QueryFilter {
-                    WhereClause = "1 = 1",
-                }, true);
-
-                while (cursor.MoveNext()) {
-                    var c = cursor.Current;
-
-                    var series = Convert.ToString(c["series"])!.ToString();
-
-                    var name = "101DK00" + Convert.ToString(c["DSNM"])![2..];
-                    var specificUsage = name[7] switch {
-                        '5' => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
-                        '4' => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
-                        '3' => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
-                        '2' => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
-                        '1' => 1, //S100FC.S128.specificUsage.NavigationalPurposeOverview,
-                        _ => throw new InvalidDataException(),
-                    };
-
-                    using var coverage = tableProductCoverage.Search(new QueryFilter {
-                        WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
-                    }, true);
-
-                    var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
-                    while (coverage.MoveNext()) {
-                        var current = (ArcGIS.Core.Data.Feature)coverage.Current;
-                        var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
-
-                        polygons.Add(polygon);
-                        continue;
-                    }
-                    Debug.Assert(polygons.Any());
-
-                    var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
-
-                    tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
-                }
-            });
-
-            await Task.WhenAll([.. tasks]);
-
-            var products = _electronicProductManager.ToArray();
-
-            if (createAll) {
-                foreach (var productName in products) {
-                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
-                    var product = _electronicProductManager.ElectronicProduct(productName);
-
-                    var yaml = dataset.Serialize();
-                    this.CreateExchangeSet(product, yaml);
-                }
-            }
-
-            response.Data = products;
-            response.DurationMs = sw.ElapsedMilliseconds;
-            response.TotalHits = products.Length;
-
             return Ok(response);
         }
 
@@ -407,5 +301,122 @@ namespace ProductCatalogueService.Controllers
             // Cleanup temp yaml
             IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
         }
+
+
+        ///// <summary>
+        ///// Imports all existing products from a S-57 database
+        ///// </summary>
+        ///// <param name="createAll"> If set to true, will create a new dataset for each product, and may take up to 10 minutes to complete.</param>
+        ///// <returns>An collection with all imported productnames.</returns>
+        //[ProducesResponseType(typeof(ApiResponse<string[]>), StatusCodes.Status200OK, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        //[HttpPost("import", Name = "LoadElectronicProducts")]
+        //public async Task<IActionResult> LoadElectronicProducts(bool createAll = false) {
+        //    var response = new ApiResponse<string[]>();
+        //    var sw = Stopwatch.StartNew();
+        //    var s57 = Environment.GetEnvironmentVariable("S100-Horizon-S57-Database");
+
+        //    if (string.IsNullOrEmpty(s57)) {
+        //        response.Success = false;
+        //        response.Message = $"No S-57 database was configured";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return StatusCode(StatusCodes.Status500InternalServerError, response);
+        //    }
+
+        //    Log.Information("S-57 env: {s57}", s57);
+        //    Log.Information("Exists? {exist}", IO.File.Exists(s57));
+
+        //    var tasks = new List<Task>();
+        //    await productManager.Dispatch(() => {
+        //        var connectionFile = new Uri(IO.Path.GetFullPath(s57));
+
+        //        Func<Geodatabase> createGeodatabase; // = () => { throw new NotImplementedException(); };
+
+        //        if (IO.File.Exists(s57) && ".sde".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+        //            createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };
+        //        }
+        //        else if (IO.Directory.Exists(s57) && ".gdb".Equals(IO.Path.GetExtension(s57), StringComparison.InvariantCultureIgnoreCase)) {
+        //            createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(connectionFile)); };
+        //        }
+        //        else {
+        //            throw new InvalidDataException("Extension must be either .sde or .gdb");
+        //        }
+
+        //        var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification {
+        //            editionDate = S100FC.S101.Summary.VersionDate,
+        //            name = S100FC.S101.Summary.ProductId,
+        //            version = S100FC.S101.Summary.Version.ToString(),
+        //        };
+
+
+
+        //        using var geodatabase = createGeodatabase();
+
+        //        var definitionTables = geodatabase.GetDefinitions<TableDefinition>();
+        //        var definitionFeatureClasses = geodatabase.GetDefinitions<FeatureClassDefinition>();
+
+        //        using var tableProductCoverage = geodatabase.OpenDataset<FeatureClass>(definitionFeatureClasses.Single(e => e.GetName().EndsWith("ProductCoverage")).GetName());
+
+        //        using var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName());
+        //        using var cursor = tableProductDefinitions.Search(new QueryFilter {
+        //            WhereClause = "1 = 1",
+        //        }, true);
+
+        //        while (cursor.MoveNext()) {
+        //            var c = cursor.Current;
+
+        //            var series = Convert.ToString(c["series"])!.ToString();
+
+        //            var name = "101DK00" + Convert.ToString(c["DSNM"])![2..];
+        //            var specificUsage = name[7] switch {
+        //                '5' => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+        //                '4' => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+        //                '3' => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+        //                '2' => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+        //                '1' => 1, //S100FC.S128.specificUsage.NavigationalPurposeOverview,
+        //                _ => throw new InvalidDataException(),
+        //            };
+
+        //            using var coverage = tableProductCoverage.Search(new QueryFilter {
+        //                WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
+        //            }, true);
+
+        //            var polygons = new List<ArcGIS.Core.Geometry.Polygon>();
+        //            while (coverage.MoveNext()) {
+        //                var current = (ArcGIS.Core.Data.Feature)coverage.Current;
+        //                var polygon = (ArcGIS.Core.Geometry.Polygon)current.GetShape();
+
+        //                polygons.Add(polygon);
+        //                continue;
+        //            }
+        //            Debug.Assert(polygons.Any());
+
+        //            var cover = (ArcGIS.Core.Geometry.Polygon)GeometryEngine.Instance.Union(polygons);
+
+        //            tasks.Add(_electronicProductManager.CreateElectronicProductAsync(name, productSpecification, specificUsage, cover));
+        //        }
+        //    });
+
+        //    await Task.WhenAll([.. tasks]);
+
+        //    var products = _electronicProductManager.ToArray();
+
+        //    if (createAll) {
+        //        foreach (var productName in products) {
+        //            var dataset = await _electronicProductManager.CreateNewDatasetAsync(productName);
+        //            var product = _electronicProductManager.ElectronicProduct(productName);
+
+        //            var yaml = dataset.Serialize();
+        //            this.CreateExchangeSet(product, yaml);
+        //        }
+        //    }
+
+        //    response.Data = products;
+        //    response.DurationMs = sw.ElapsedMilliseconds;
+        //    response.TotalHits = products.Length;
+
+        //    return Ok(response);
+        //}
+
     }
 }

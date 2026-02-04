@@ -1,4 +1,5 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
 using S100FC.S128;
 using S100FC.S128.FeatureTypes;
@@ -10,6 +11,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using IO = System.IO;
 
 namespace S100FC.ProductCatalogue
@@ -343,12 +345,10 @@ namespace S100FC.ProductCatalogue
                 throw new System.ArgumentNullException(nameof(name));
             name = name.ToUpperInvariant();
 
-            if (!this._electronicProducts.ContainsKey(name))
-                throw new System.ArgumentException(nameof(name));
+            if (!this._electronicProducts.TryGetValue(name, out var electronicProduct))
+                throw new ArgumentException(null, nameof(name));
 
-            var electronicProduct = this._electronicProducts[name];
-
-            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+            var connection = this._connections[electronicProduct.productSpecification!.name]!;
 
             var dataset = await this.GetLatestDataset(name);
 
@@ -358,13 +358,16 @@ namespace S100FC.ProductCatalogue
             var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
 
             var dirty = await this.Dispatch(() => {
+                int features = 0;
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
                     using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}"));
 
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
+                        // If fields has been created or updated since the last dataset was created, flag as dirty
                         return true;
+                        
                     }
                 }
                 return false;
@@ -478,7 +481,7 @@ namespace S100FC.ProductCatalogue
                 ENCVer = "INT.IHO.S-101.2.0",
                 FCVer = "2.0",
                 verticalDatum = "Baltic Sea Chart Datum 2000,44",
-                //Update = (uint?)electronicProduct.updateNumber,   // Bug in s100ocompiler and must always be null 
+                //Update = (uint?)electronicProduct.updateNumber,   // todo: Bug in s100ocompiler and must always be null 
             };
 
             var supportFiles = new List<string>();
@@ -513,8 +516,6 @@ namespace S100FC.ProductCatalogue
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
                         var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.InformationType>(flatten, type);
-
-                        //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.InformationType;
 
                         var information = new YAML.Information {
                             Name = code,
@@ -648,10 +649,6 @@ current["flatten"] != DBNull.Value
 
                             var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(flatten, type);
 
-                            //var instance = current.IsNull("json") ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
-
-                            // var json = Convert.ToString(current["json"])!;
-
                             var filenames = S100FC.YAML.Extensions.GetFileNames(flatten);
 
                             foreach (var filename in filenames) {
@@ -713,7 +710,7 @@ current["flatten"] != DBNull.Value
                                     foreach (var binding in featureBindings) {
                                         var roleType = binding.roleType;
 
-                                        // Skip association roleType for now
+                                        // Skip association roleType
                                         if (roleType == "association")
                                             continue;
 
@@ -803,7 +800,8 @@ current["flatten"] != DBNull.Value
 
                     using var cursorS128 = surface.Search(new QueryFilter {
                         //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", 
+                        WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                        //WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", 
                     }, false);
 
                     cursorS128.MoveNext();
@@ -920,10 +918,10 @@ current["flatten"] != DBNull.Value
                 if (cursorS128.Current.IsNull("flatten"))
                     throw new System.ArgumentNullException(nameof(dataset.DatasetName));
 
-                var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
+                //var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date < {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
+                var whereClause = $"upper(ps) = 'S-101' AND (created_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}' OR last_edited_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}')";
 
 
-                // var specificUsage = S100FC.S128.SimpleAttributes.specificUsage.listedValues.FirstOrDefault(e => e.code == electronicProduct.specificUsage);
                 if (specificUsage != null)
                     whereClause += $" AND usageband = {specificUsage.value}";
 

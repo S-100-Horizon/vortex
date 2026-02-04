@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:S100Framework.WPF"
              xmlns:localcontrols="clr-namespace:S100Framework.WPF.Controls"
              xmlns:viewmodel="clr-namespace:S100Framework.WPF.ViewModel;assembly=S100Framework.WPF"
@@ -47,6 +48,7 @@
             <converters:PercentageConverter x:Key="PercentageConverter"/>
             <converters:CalculateExpanderWidthConverter x:Key="CalculateExpanderWidthConverter"/>
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <converters:BindingAttributeEnabled x:Key="BindingAttributeEnabled"/>
 
             <DataTemplate DataType="{x:Type viewmodel:SimpleAttributeViewModel}">
                 <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
@@ -151,11 +153,9 @@
                                 <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
                                     <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
-                              SelectedValue="{Binding role}"                  
-                              Padding="2"
-                              IsEnabled="True"
-                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                              Foreground="{DynamicResource Esri_TextMenuBrush}"/>
+                                              SelectedValue="{Binding role}"                  
+                                              Padding="2"
+                                              IsEnabled="True"/>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                             </DockPanel>
@@ -167,18 +167,7 @@
                                     <ComboBox x:Name="informationType" ItemsSource="{Binding informationTypes}" 
                                               SelectedValue="{Binding informationType}"                  
                                               Padding="2"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}">
-                                        <ComboBox.Style>
-                                            <Style TargetType="ComboBox">
-                                                <Setter Property="IsEnabled" Value="True" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding SelectedItem, ElementName=role}" Value="{x:Null}">
-                                                        <Setter Property="IsEnabled" Value="False" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ComboBox.Style>
+                                              IsEnabled="{Binding role, Converter={StaticResource BindingAttributeEnabled}}">
                                     </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="informationType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
@@ -191,19 +180,8 @@
                                     <ComboBox ItemsSource="{Binding informationUIDs}" 
                                               SelectedValue="{Binding informationUID}"                  
                                               Padding="2"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
+                                              IsEnabled="{Binding informationType, Converter={StaticResource BindingAttributeEnabled}}"
                                               DropDownOpened="InformationUID_OnDropDownOpened">
-                                        <ComboBox.Style>
-                                            <Style TargetType="ComboBox">
-                                                <Setter Property="IsEnabled" Value="True" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding SelectedValue, ElementName=informationType}" Value="{x:Null}">
-                                                        <Setter Property="IsEnabled" Value="False" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ComboBox.Style>
                                     </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="information" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
@@ -212,7 +190,7 @@
                     </StackPanel>
                 </Expander>
             </DataTemplate>
-            
+
             <DataTemplate DataType="{x:Type viewmodel:FeatureBindingViewModel}">
                 <Expander Header="{Binding association}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0" Style="{DynamicResource Esri_ExpanderBorderless}">
                     <StackPanel Orientation="Vertical" Margin="20,0,0,0">
@@ -243,17 +221,8 @@
                                     <FrameworkElement DockPanel.Dock="Right" Width="18"/>
                                     <ComboBox x:Name="featureType" ItemsSource="{Binding featureTypes}" 
                                               SelectedValue="{Binding featureType}"                  
-                                              Padding="2">
-                                        <ComboBox.Style>
-                                            <Style TargetType="ComboBox">
-                                                <Setter Property="IsEnabled" Value="True" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding SelectedItem, ElementName=role}" Value="{x:Null}">
-                                                        <Setter Property="IsEnabled" Value="False" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ComboBox.Style>
+                                              Padding="2"
+                                              IsEnabled="{Binding role, Converter={StaticResource BindingAttributeEnabled}}">
                                     </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="featureType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
@@ -266,19 +235,8 @@
                                     <ComboBox ItemsSource="{Binding featureUIDs}"                                              
                                               SelectedValue="{Binding featureUID}"
                                               Padding="2"
-                                              Background="{DynamicResource Esri_BackgroundPressedBrush}" 
-                                              Foreground="{DynamicResource Esri_TextMenuBrush}"
+                                              IsEnabled="{Binding featureType, Converter={StaticResource BindingAttributeEnabled}}"
                                               DropDownOpened="FeatureUID_OnDropDownOpened">
-                                        <ComboBox.Style>
-                                            <Style TargetType="ComboBox">
-                                                <Setter Property="IsEnabled" Value="True" />
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding SelectedValue, ElementName=featureType}" Value="{x:Null}">
-                                                        <Setter Property="IsEnabled" Value="False" />
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </ComboBox.Style>
                                     </ComboBox>
                                 </DockPanel>
                                 <TextBlock DockPanel.Dock="Left" Text="feature" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
