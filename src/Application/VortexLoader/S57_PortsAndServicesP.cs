@@ -358,12 +358,72 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // DISMAR_DistanceMark
-                            throw new NotImplementedException($"No DISMAR_DistanceMark in DK or GL. {tableName}");
+                            var instance = new DistanceMark();
+
+                            /*
+                                The S-57 attribute CATDIS has been replaced in S-101 by the mandatory Boolean type attribute
+                                distance mark visible. Where CATDIS has not been populated, or has been populated with value
+                                1 (distance mark not physically installed) or an empty (null) value, distance mark visible will be set
+                                to False. Where CATDIS has been populated with a value other than 1, distance mark visible will
+                                be set to True.                             
+                            */
+                            if (!current.CATDIS.HasValue) {
+                                instance.distanceMarkVisible = false
+                            } else if (current.CATDIS.HasValue && current.CATDIS is not 1) {
+                                instance.distanceMarkVisible = true;
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            // TODO: INFORM measured distance value
+
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                instance.scaleMinimum = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE.Value, isRelatedToStructure: false);
+                            }
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
                         }
+                        break;
                     case 25: { // GATCON_Gate
                             var instance = new Gate();
 
-                            if (current.CATGAT.HasValue) {
+                            if (current.CATGAT.HasValue && ) {
                                 instance.categoryOfGate = EnumHelper.GetEnumValue(current.CATGAT.Value);
                             }
 
