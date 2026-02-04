@@ -583,15 +583,15 @@ namespace VortexProAppModule
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
                         var featureBindings = (featureBinding[])viewModel;
 
-                        var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, this._jsonOptions);
-                        if (Inspector.IsNull("featureBindings")) {
-                            Inspector["featureBindings"] = json;
-                            updated |= true;
-                        }
-                        else if (string.Compare(json, Convert.ToString(Inspector["featureBindings"]), true) != 0) {
-                            Inspector["featureBindings"] = json;
-                            updated |= true;
-                        }
+                        //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, this._jsonOptions);
+                        //if (Inspector.IsNull("featureBindings")) {
+                        //    Inspector["featureBindings"] = json;
+                        //    updated |= true;
+                        //}
+                        //else if (string.Compare(json, Convert.ToString(Inspector["featureBindings"]), true) != 0) {
+                        //    Inspector["featureBindings"] = json;
+                        //    updated |= true;
+                        //}
                     }
                 }
             }, TaskCreationOptions.None);

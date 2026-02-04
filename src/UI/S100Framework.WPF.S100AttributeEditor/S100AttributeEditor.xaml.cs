@@ -9,6 +9,7 @@ using System.Windows.Input;
 namespace S100Framework.WPF
 {
     using S100Framework.WPF.ViewModel;
+    using Xceed.Wpf.AvalonDock.Properties;
 
     /// <summary>
     /// Interaction logic for S100AttributeEditor.xaml
@@ -21,8 +22,13 @@ namespace S100Framework.WPF
 
         public ICommand DeleteAttributeCommand { get; }
 
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+        //protected static void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
+        //    ;
+        //}
 
         protected void OnCreateAttributeCommand(object? parameter) {
             if (this.SelectedObject is null) return;
@@ -31,7 +37,7 @@ namespace S100Framework.WPF
                     var instance = attributeBinding.CreateInstance();
                     if (instance is SimpleAttribute simpleAttribute)
                         this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
-                    else if(instance is DateAttribute dateAttribute)
+                    else if (instance is DateAttribute dateAttribute)
                         this.SelectedObject?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
                     else if (instance is DateTimeAttribute dateTimeAttribute)
                         this.SelectedObject?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
@@ -152,9 +158,9 @@ namespace S100Framework.WPF
 
         public static readonly DependencyProperty IsEditingEnabledProperty =
             DependencyProperty.Register(
-                nameof(IsEditingEnabled), 
-                typeof(Boolean), 
-                typeof(S100AttributeEditor), 
+                nameof(IsEditingEnabled),
+                typeof(Boolean),
+                typeof(S100AttributeEditor),
                 new UIPropertyMetadata(false, IsEditingEnabledChanged));
 
         public Boolean IsEditingEnabled {
@@ -175,7 +181,14 @@ namespace S100Framework.WPF
 
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is S100AttributeEditor grid) {
+                if (grid._selectedObject is not null) {
+                    //grid._selectedObject.PropertyChanged -= OnPropertyChanged;
+                }
                 grid._selectedObject = e.NewValue as S100AttributeEditorViewModel;
+
+                if (grid._selectedObject != null) {
+                    //grid._selectedObject.PropertyChanged += OnPropertyChanged;
+                }
             }
         }
 
