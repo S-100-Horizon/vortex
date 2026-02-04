@@ -368,7 +368,7 @@ namespace S100Framework.Applications
                                 be set to True.                             
                             */
                             if (!current.CATDIS.HasValue) {
-                                instance.distanceMarkVisible = false
+                                instance.distanceMarkVisible = false;
                             } else if (current.CATDIS.HasValue && current.CATDIS is not 1) {
                                 instance.distanceMarkVisible = true;
                             }
@@ -423,7 +423,7 @@ namespace S100Framework.Applications
                     case 25: { // GATCON_Gate
                             var instance = new Gate();
 
-                            if (current.CATGAT.HasValue && ) {
+                            if (current.CATGAT.HasValue) {
                                 instance.categoryOfGate = EnumHelper.GetEnumValue(current.CATGAT.Value);
                             }
 
