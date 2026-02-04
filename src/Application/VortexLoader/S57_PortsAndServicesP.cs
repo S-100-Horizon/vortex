@@ -386,6 +386,8 @@ namespace S100Framework.Applications
                             // TODO: interoperabilityIdentifier
 
                             // TODO: INFORM measured distance value
+                            instance.measuredDistanceValue = new() {};
+
 
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
