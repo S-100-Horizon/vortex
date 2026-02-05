@@ -47,35 +47,38 @@ namespace S100Framework.Applications
                 var status = current.STATUS ?? default;
 
                 switch (fcSubtype) {
+                    case 1: { // LOCMAG_LocalMagneticAnomaly
+                            throw new NotImplementedException("No LOCMAG_LocalMagneticAnomaly in DK | GL NIS");
+                        }
                     case 5: { // LOCMAG_LocalMagneticAnomaly
                             var instance = new LocalMagneticAnomaly {
                                 /* s-65 Annex B -> LOCMAG
-The S-57 mandatory attribute VALLMA has been remodelled in S-101 as the mandatory complex
-attribute value of local magnetic anomaly, having sub-attributes magnetic anomaly value
-(mandatory) and reference direction, where:
-- magnetic anomaly value is intended to indicate both the positive (easterly) and negative
-(westerly) values where only a single instance of value of local magnetic anomaly is encoded,
-having no populated value for reference direction; or
-- magnetic anomaly value is intended to indicate an anomaly in a single direction, where only a
-single instance of value of local magnetic anomaly is encoded and reference direction is
-populated; or
-- magnetic anomaly value is intended to indicate an anomaly that is different in a positive
-(easterly) and negative (westerly) direction, where two instances of value of local magnetic
-anomaly are encoded and reference direction is populated for both instances.
+                                        The S-57 mandatory attribute VALLMA has been remodelled in S-101 as the mandatory complex
+                                        attribute value of local magnetic anomaly, having sub-attributes magnetic anomaly value
+                                        (mandatory) and reference direction, where:
+                                        - magnetic anomaly value is intended to indicate both the positive (easterly) and negative
+                                        (westerly) values where only a single instance of value of local magnetic anomaly is encoded,
+                                        having no populated value for reference direction; or
+                                        - magnetic anomaly value is intended to indicate an anomaly in a single direction, where only a
+                                        single instance of value of local magnetic anomaly is encoded and reference direction is
+                                        populated; or
+                                        - magnetic anomaly value is intended to indicate an anomaly that is different in a positive
+                                        (easterly) and negative (westerly) direction, where two instances of value of local magnetic
+                                        anomaly are encoded and reference direction is populated for both instances.
 
-** During the automated conversion process, the value populated in VALLMA will be converted across
-to magnetic anomaly value, noting that the value of VALLMA will be converted from minutes to
-decimal degrees for magnetic anomaly value. 
+                                        ** During the automated conversion process, the value populated in VALLMA will be converted across
+                                        to magnetic anomaly value, noting that the value of VALLMA will be converted from minutes to
+                                        decimal degrees for magnetic anomaly value. 
 
-Data Producers will be required to confirm whether
-the value populated in VALLMA is intended to indicate both the positive (easterly) and negative
-(westerly) values of the anomaly, or a disparate range; noting that S-57 guidance recommends
-encoding the values of a range in INFORM for the LOCMAG. Where the anomaly is a disparate
-range, Data Producers will be required to adjust value of local magnetic anomaly in accordance
-with the guidance above; and if the information contained in INFORM relates only to the range of
-anomaly values, remove the associated instance of the complex attribute information (see clause
-2.3).
-*/
+                                        Data Producers will be required to confirm whether
+                                        the value populated in VALLMA is intended to indicate both the positive (easterly) and negative
+                                        (westerly) values of the anomaly, or a disparate range; noting that S-57 guidance recommends
+                                        encoding the values of a range in INFORM for the LOCMAG. Where the anomaly is a disparate
+                                        range, Data Producers will be required to adjust value of local magnetic anomaly in accordance
+                                        with the guidance above; and if the information contained in INFORM relates only to the range of
+                                        anomaly values, remove the associated instance of the complex attribute information (see clause
+                                        2.3).
+                                        */
 
 
                                 featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
@@ -198,30 +201,90 @@ anomaly values, remove the associated instance of the complex attribute informat
                             throw new NotImplementedException("No T_TIMS_TideTimeSeries in DK | GL NIS");
                         }
 
-                    case 30: { // TIDEWY_Tideway
-                            throw new NotImplementedException("No TIDEWY_Tideway in DK | GL NIS");
-                        }
+                    case 30: { // TS_FEB_TidalStreamFloodEbb
+                            var instance = new TidalStreamFloodEbb();
 
-                    case 35: { // TS_FEB_TidalStreamFloodEbb
-                            throw new NotImplementedException("No TS_FEB_TidalStreamFloodEbb in DK | GL NIS");
-                        }
 
-                    case 40: { // TS_PAD_TidalStreamPanelData
+                            if (current.CAT_TS.HasValue) {
+                                instance.categoryOfTidalStream = EnumHelper.GetEnumValue(current.CAT_TS.Value);
+                            }
+
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            //The S-57 attributes PEREND and PERSTA for TS_FEB will not be converted.It is considered that
+                            //these attributes are not relevant for Tidal Stream – Flood / Ebb in S - 101.
+
+                            DateHelper.TryGetFixedDateRange(current.DATSTA, current.DATEND, out var dateRange);
+                            if (dateRange != default) {
+                                instance.fixedDateRange = dateRange;
+                            }
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.ORIENT.HasValue) {
+                                instance.orientation = new() {
+                                    orientationValue = current.ORIENT.HasValue && current.ORIENT.Value != -32767m ? current.ORIENT : default(decimal?),
+                                    orientationUncertainty = default(decimal?)
+                                };
+                            }
+
+                            if (current.CURVEL.HasValue) {
+                                instance.speed = new() {
+                                    speedMaximum = current.CURVEL
+                                };
+                            }
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment!.CreateRelatedPointEquipment(current, instance, featureN, instance.scaleMinimum);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
+
+                        }
+                        break;
+                    case 35: { // TS_PAD_TidalStreamPanelData
                             throw new NotImplementedException("No TS_PAD_TidalStreamPanelData in DK | GL NIS");
                         }
 
-                    case 45: { // TS_PNH_TidalStreamNonHarmonicPrediction
+                    case 40: { // TS_PNH_TidalStreamNonHarmonicPrediction
                             throw new NotImplementedException("No TS_PNH_TidalStreamNonHarmonicPrediction in DK | GL NIS");
                         }
 
-                    case 50: { // TS_PRH_TidalStreamHarmonicPrediction
+                    case 45: { // TS_PRH_TidalStreamHarmonicPrediction
                             throw new NotImplementedException("No TS_PRH_TidalStreamHarmonicPrediction in DK | GL NIS");
                         }
 
-                    case 55: { // TS_TIS_TidalStreamTimeSeries
+                    case 50: { // TS_TIS_TidalStreamTimeSeries
                             throw new NotImplementedException("No TS_TIS_TidalStreamTimeSeries in DK | GL NIS");
                         }
-
                     default:
                         // code block
                         //System.Diagnostics.Debugger.Break();
