@@ -27,10 +27,15 @@ namespace S100Framework.Applications
 
             if (value is string strValue) {
                 array = [];
-                var values = strValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                var values = strValue.Split(new[] { ',' });
                 for (int i = 0; i < values.Length; i++) {
-                    var v = GetEnumValue(values[i]);
-                    array = [.. array, GetEnumValue(values[i])];
+                    if (string.IsNullOrEmpty(values[i])) {
+                        array = [.. array, null];
+                    }
+                    else {
+                        var v = GetEnumValue(values[i]);
+                        array = [.. array, GetEnumValue(values[i])];
+                    }
                 }
             }
             if (value is int intValue) {
