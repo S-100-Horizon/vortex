@@ -8,7 +8,6 @@ namespace ProductCatalogueService
         public static async Task AddS100(this IServiceCollection services) {
             try {
                 // Setup ArcGIS and ProductManager
-                Log.Logger.Information("ArcGIS Core Host Initialized");
                 ArcGIS.Core.Hosting.Host.Initialize(ArcGIS.Core.Hosting.Host.LicenseProductCode.ArcGISPro);
                 Log.Logger.Information("ArcGIS Core Host Initialized");
 
