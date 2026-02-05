@@ -367,9 +367,10 @@ namespace S100Framework.Applications
                                 to False. Where CATDIS has been populated with a value other than 1, distance mark visible will
                                 be set to True.                             
                             */
-                            if (!current.CATDIS.HasValue) {
+                            if (!current.CATDIS.HasValue || (current.CATDIS.HasValue && current.CATDIS.Value == 1) || (current.CATDIS.HasValue && current.CATDIS.Value == -32767)) {
                                 instance.distanceMarkVisible = false;
-                            } else if (current.CATDIS.HasValue && current.CATDIS is not 1) {
+                            }
+                            else if (current.CATDIS.HasValue) {
                                 instance.distanceMarkVisible = true;
                             }
 
@@ -387,13 +388,13 @@ namespace S100Framework.Applications
 
 
                             decimal? dist = default;
-                            
+
                             if (decimal.TryParse(current.INFORM, out decimal value)) {
                                 dist = value;
                             }
 
                             // TODO: INFORM measured distance value
-                                instance.measuredDistanceValue = new() {
+                            instance.measuredDistanceValue = new() {
                                 waterwayDistance = dist.HasValue ? dist.Value : default,
                                 distanceUnitOfMeasurement = 4 // TODO: dismark Is Nautical Miles the correct unit of measurement
 
