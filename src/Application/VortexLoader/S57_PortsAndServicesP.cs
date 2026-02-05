@@ -385,7 +385,20 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
+
+                            decimal? dist = default;
+                            
+                            if (decimal.TryParse(current.INFORM, out decimal value)) {
+                                dist = value;
+                            }
+
                             // TODO: INFORM measured distance value
+                                instance.measuredDistanceValue = new() {
+                                waterwayDistance = dist.HasValue ? dist.Value : default,
+                                distanceUnitOfMeasurement = 4 // TODO: dismark Is Nautical Miles the correct unit of measurement
+
+                            };
+
 
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
