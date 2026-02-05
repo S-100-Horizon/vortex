@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
+using S100FC.Catalogues;
 using S100FC.S128;
 using S100FC.S128.FeatureTypes;
 using S100FC.YAML;
@@ -40,7 +41,7 @@ namespace S100FC.ProductCatalogue
 
         ElectronicProduct? ElectronicProduct(string name);
 
-        Task<string> GetLatestDatasetYAML(string name);
+        Task<string> GetLatestDatasetYAML(string name, int edition);
 
         string OutputFolder { get; }
     }
@@ -224,7 +225,7 @@ namespace S100FC.ProductCatalogue
 
 
                         var flattened = electronicProduct.Flatten();
-
+                        buffer["edition"] = "2.0.0"; //featureCatalogue.VersionNumber.ToString();           // todo: fix
                         buffer["flatten"] = flattened;
                         buffer["shape"] = boundary;
                         surface.CreateRow(buffer);
@@ -250,7 +251,7 @@ namespace S100FC.ProductCatalogue
                 throw new System.ArgumentException(nameof(name));
 
             var result = await this.GetElectronicProductAsync(name);
-
+            
             if (result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue)
                 throw new InvalidOperationException();
 
@@ -358,7 +359,6 @@ namespace S100FC.ProductCatalogue
             var filter = await this.BuildSpatialQueryFilter(dataset, electronicProduct.specificUsage);
 
             var dirty = await this.Dispatch(() => {
-                int features = 0;
                 string[] tableNames = ["point", "pointset", "curve", "surface"];
                 foreach (var baseTableName in tableNames) {
                     using var fc = connection.OpenDataset<FeatureClass>(this.QualifyTableName($"{baseTableName}"));
@@ -366,8 +366,10 @@ namespace S100FC.ProductCatalogue
                     using var cursor = fc.Search(filter, true);
                     while (cursor.MoveNext()) {
                         // If fields has been created or updated since the last dataset was created, flag as dirty
+
+                        // todo: detect deleted rows?
                         return true;
-                        
+
                     }
                 }
                 return false;
@@ -375,25 +377,37 @@ namespace S100FC.ProductCatalogue
 
             return dirty;
         }
-        public async Task<string> GetLatestDatasetYAML(string name) {
+        public async Task<string> GetLatestDatasetYAML(string datasetName, int edition) {
             return await this.Dispatch(() => {
-                using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+                using var attachment = _geodatabase!.OpenDataset<Table>(QualifyTableName("attachment"));
+
                 using var cursor = attachment.Search(new QueryFilter {
-                    WhereClause = $"json LIKE '%\"DatasetName\":\"{name}\"%'",
-                    PostfixClause = "ORDER BY created_date DESC",
+                    WhereClause = $"json LIKE '%\"DatasetName\":\"{datasetName}\"%' AND json LIKE '%\"Edition\":{edition}%'",
+                    PostfixClause = "ORDER BY created_date ASC"
                 }, true);
 
                 if (!cursor.MoveNext())
-                    throw new ArgumentNullException("cursor found no hits");
+                    throw new InvalidOperationException("No dataset rows found");
 
-                if (cursor.Current["data"] is not MemoryStream stream)
-                    throw new ArgumentNullException("Column 'data' is not a memory stream");
+                var rootYAML = ReadData(cursor); // root YAML
 
-                stream.Position = 0;
-                using var reader = new StreamReader(stream);
+                while (cursor.MoveNext()) {
+                    var delta = ReadData(cursor);
+                    if (!string.IsNullOrEmpty(delta))
+                        rootYAML = S100FC.YAML.DatasetComparer.AppendUpdate(rootYAML, delta);
+                }
 
-                return reader.ReadToEnd();
+                return rootYAML;
             });
+        }
+
+        private static string ReadData(RowCursor cursor) {
+            if (cursor.Current["data"] is not MemoryStream stream)
+                throw new InvalidOperationException("Column 'data' is not a MemoryStream");
+
+            stream.Position = 0;
+            using var reader = new StreamReader(stream);
+            return reader.ReadToEnd();
         }
         ElectronicProduct? IElectronicProductManager.ElectronicProduct(string name) => this._electronicProducts.GetValueOrDefault(name.ToUpperInvariant());
 
@@ -421,16 +435,10 @@ namespace S100FC.ProductCatalogue
 
                 row128 = cursorS128.Current;
 
-                //if (row128.IsNull("json"))
-                //    throw new System.ArgumentNullException(nameof(name));
-
-                //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
-
                 if (row128.IsNull("flatten"))
                     throw new System.ArgumentNullException(nameof(name));
 
                 var electronicProduct = S100FC.AttributeFlattenExtensions.Unflatten<ElectronicProduct>(Convert.ToString(row128["flatten"])!, typeof(ElectronicProduct));
-                //var electronicProduct = System.Text.Json.JsonSerializer.Deserialize<S100FC.S128.FeatureTypes.ElectronicProduct>(Convert.ToString(row128["json"])!, this.jsonSerializerOptionsS128)!;
 
                 var shapeCoverage = (ArcGIS.Core.Geometry.Polygon)((ArcGIS.Core.Data.Feature)cursorS128.Current).GetShape();
 
@@ -505,14 +513,11 @@ namespace S100FC.ProductCatalogue
 
                         var name = $"{current.UID()}";
                         var code = current["code"].ToString()!;
-                        //var json = current["json"].ToString()!;
-                        //var flatten = current["flatten"].ToString() ?? string.Empty;
-                        var flatten =
-    current.FindField("flatten") != -1 &&
-    current["flatten"] != null &&
-    current["flatten"] != DBNull.Value
-        ? current["flatten"].ToString()
-        : string.Empty;
+                        var flatten = current.FindField("flatten") != -1 &&
+                            current["flatten"] != null &&
+                            current["flatten"] != DBNull.Value ?
+                            current["flatten"].ToString() :
+                            string.Empty;
 
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{code}", true)!;
                         var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.InformationType>(flatten, type);
@@ -550,20 +555,14 @@ namespace S100FC.ProductCatalogue
 
                         var name = $"{current.UID()}";
                         var code = current["code"].ToString()!;
-                        //   var flatten = current["flatten"].ToString()!;
-                        var flatten =
-current.FindField("flatten") != -1 &&
-current["flatten"] != null &&
-current["flatten"] != DBNull.Value
-? current["flatten"].ToString()
-: string.Empty;
+                        var flatten = current.FindField("flatten") != -1 &&
+                           current["flatten"] != null &&
+                           current["flatten"] != DBNull.Value ?
+                           current["flatten"].ToString() :
+                           string.Empty;
                         var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
                         var instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(flatten, type);
-                        //var json = current["json"].ToString()!;
-
-
-                        //var instance = DBNull.Value.Equals(current["json"]) ? null : System.Text.Json.JsonSerializer.Deserialize(Convert.ToString(current["json"])!, type, this.jsonSerializerOptionsS101) as S100FC.FeatureType;
 
                         var foid = $"110:{name.Substring(1)}:1";       // Geodatastyrelsen: 110 
 
@@ -800,8 +799,8 @@ current["flatten"] != DBNull.Value
 
                     using var cursorS128 = surface.Search(new QueryFilter {
                         //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        //WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'", 
+                        //WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'",
                     }, false);
 
                     cursorS128.MoveNext();
@@ -811,7 +810,7 @@ current["flatten"] != DBNull.Value
                     var flatten = electronicProduct.Flatten();
 
                     var row128 = cursorS128.Current;
-                    row128["flatten"] = flatten; //= System.Text.Json.JsonSerializer.Serialize(electronicProduct, this.jsonSerializerOptionsS128);
+                    row128["flatten"] = flatten;
                     row128.Store();
                     row128.Dispose();
 
@@ -919,7 +918,10 @@ current["flatten"] != DBNull.Value
                     throw new System.ArgumentNullException(nameof(dataset.DatasetName));
 
                 //var whereClause = $"upper(ps) = 'S-101' AND (created_date > {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss} OR last_edited_date < {dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss})";
-                var whereClause = $"upper(ps) = 'S-101' AND (created_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}' OR last_edited_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}')";
+                //var whereClause = $"upper(ps) = 'S-101' AND (created_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}' OR last_edited_date > DATE '{dataset.TimestampUTC:dd-MM-yyyy HH:mm:ss}')";
+                var whereClause = $"UPPER(ps) = 'S-101' AND (" +
+                                  $"created_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}' " +
+                                  $"OR last_edited_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}')";
 
 
                 if (specificUsage != null)

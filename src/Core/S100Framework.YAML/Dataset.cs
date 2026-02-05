@@ -299,20 +299,56 @@ namespace S100FC.YAML
             // Compare Metadata
             var metadataUpdate = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
 
-            // Compare Points
-            var pointDiff = GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
 
-            // Compare Depths
-            var depthDiff = GeometryEquals<PointSet>(rootDataset.Depths!, updateDataset.Depths!);
+            // Point
+            var pointDiff = CompareGeometries<Point>(
+                rootDataset.Points.Select(e => e.Value),
+                updateDataset.Points.Select(e => e.Value),
+                p => p.Location!,
+                p => p.Name!);
 
-            // Compare Curves
-            var curveDiff = GeometryEquals<Curve>(rootDataset.Curves!, updateDataset.Curves!);
+            // PointSet
+            var depthDiff = CompareGeometries<PointSet>(
+                rootDataset.Depths.Select(e => e.Value),
+                updateDataset.Depths.Select(e => e.Value),
+                ps => ps.Location!,
+                ps => ps.Name!);
 
-            // Compare Composite Curves
-            var compositeCurveDiff = GeometryEquals<CompositeCurve>(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
+            // Curve
+            var curveDiff = CompareGeometries<Curve>(
+                rootDataset.Curves.Select(e => e.Value),
+                updateDataset.Curves.Select(e => e.Value),
+                c => c.Vertices!,
+                c => c.Name!);
 
-            // Compare Surfaces
-            var surfaceDiff = GeometryEquals<Surface>(rootDataset.Surfaces!, updateDataset.Surfaces!);
+            // CompositeCurve
+            var compositeCurveDiff = CompareGeometries<CompositeCurve>(
+                rootDataset.CompositeCurves.Select(e => e.Value),
+                updateDataset.CompositeCurves.Select(e => e.Value),
+                cc => cc.Components,
+                cc => cc.Name!);
+
+            // Surface
+            var surfaceDiff = CompareGeometries<Surface>(
+                rootDataset.Surfaces.Select(e => e.Value),
+                updateDataset.Surfaces.Select(e => e.Value),
+                s => s.Exterior,
+                s => s.Name!);
+
+            //// Compare Points
+            //var pointDiff = PointEquals(rootDataset.Points, updateDataset.Points); // GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
+
+            //// Compare Depths
+            //var depthDiff = PointSetEquals(rootDataset.Depths, updateDataset.Depths); // GeometryEquals<PointSet>(rootDataset.Depths!, updateDataset.Depths!);
+
+            //// Compare Curves
+            //var curveDiff = CurveEquals(rootDataset.Curves, updateDataset.Curves); // GeometryEquals<Curve>(rootDataset.Curves!, updateDataset.Curves!);
+
+            //// Compare Composite Curves
+            //var compositeCurveDiff = CompositeCurveEquals(rootDataset.CompositeCurves, updateDataset.CompositeCurves); // GeometryEquals<CompositeCurve>(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
+
+            //// Compare Surfaces
+            //var surfaceDiff = SurfaceEquals(rootDataset.Surfaces, updateDataset.Surfaces); // GeometryEquals<Surface>(rootDataset.Surfaces!, updateDataset.Surfaces!);
 
             // Build result return it
             var result = new DatasetDelta(
@@ -807,6 +843,34 @@ namespace S100FC.YAML
 
             return informationTypeDiff;
         }
+
+
+
+
+        public static GeometryDiff CompareGeometries<T>(IEnumerable<T> original, IEnumerable<T> updated, Func<T, object> keySelector, Func<T, string> nameSelector) where T : Geometry {
+            // Build dictionaries keyed by the comparison property
+            var originalDict = original.ToDictionary(keySelector, g => g);
+            var updatedDict = updated.ToDictionary(keySelector, g => g);
+
+            // Added = in updated but not in original
+            var added = updatedDict.Keys
+                .Except(originalDict.Keys)
+                .ToDictionary(k => nameSelector(updatedDict[k]), k => (Geometry)updatedDict[k]);
+
+            // Deleted = in original but not in updated
+            var deleted = originalDict.Keys
+                .Except(updatedDict.Keys)
+                .ToDictionary(k => nameSelector(originalDict[k]), k => (Geometry)originalDict[k]);
+
+            return new GeometryDiff(added, deleted);
+        }
+
+
+
+
+
+
+
         private static GeometryDiff GeometryEquals<T>(Dictionary<string, T> originalDict, Dictionary<string, T> updatedDict) where T : Geometry {
             // Updated
             var updatedKeys = originalDict.Keys
@@ -827,6 +891,105 @@ namespace S100FC.YAML
                     .ToDictionary(k => originalDict[k].Name!, k => originalDict[k] as Geometry)
             );
             return geometryDiff;
+        }
+        private static GeometryDiff PointEquals(Dictionary<string, Point> originalDict, Dictionary<string, Point> updatedDict) {
+            // Match points by Location
+            var updatedKeys = originalDict.Keys
+                .Where(k => updatedDict.Values.Any(u => u.Location != null &&
+                                                        originalDict[k].Location != null &&
+                                                        !originalDict[k].Location!.Equals(u.Location)));
+
+            // Added: keys in updatedDict that are new or changed
+            var added = updatedDict.Values
+                .Where(u => !originalDict.Values.Any(o => o.Location != null && o.Location.Equals(u.Location)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            // Deleted: keys in originalDict that are removed or changed
+            var deleted = originalDict.Values
+                .Where(o => !updatedDict.Values.Any(u => u.Location != null && u.Location.Equals(o.Location)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            return new GeometryDiff(added, deleted);
+        }
+
+        private static GeometryDiff PointSetEquals(Dictionary<string, PointSet> originalDict, Dictionary<string, PointSet> updatedDict) {
+            // Match points by Location
+            var updatedKeys = originalDict.Keys
+                .Where(k => updatedDict.Values.Any(u => u.Location != null &&
+                                                        originalDict[k].Location != null &&
+                                                        !originalDict[k].Location!.Equals(u.Location)));
+
+            // Added: keys in updatedDict that are new or changed
+            var added = updatedDict.Values
+                .Where(u => !originalDict.Values.Any(o => o.Location != null && o.Location.Equals(u.Location)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            // Deleted: keys in originalDict that are removed or changed
+            var deleted = originalDict.Values
+                .Where(o => !updatedDict.Values.Any(u => u.Location != null && u.Location.Equals(o.Location)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            return new GeometryDiff(added, deleted);
+        }
+
+        private static GeometryDiff CurveEquals(Dictionary<string, Curve> originalDict, Dictionary<string, Curve> updatedDict) {
+            // Match points by Location
+            var updatedKeys = originalDict.Keys
+                .Where(k => updatedDict.Values.Any(u => u.Vertices != null &&
+                                                        originalDict[k].Vertices != null &&
+                                                        !originalDict[k].Vertices!.Equals(u.Vertices)));
+
+            // Added: keys in updatedDict that are new or changed
+            var added = updatedDict.Values
+                .Where(u => !originalDict.Values.Any(o => o.Vertices != null && o.Vertices.Equals(u.Vertices)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            // Deleted: keys in originalDict that are removed or changed
+            var deleted = originalDict.Values
+                .Where(o => !updatedDict.Values.Any(u => u.Vertices != null && u.Vertices.Equals(o.Vertices)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            return new GeometryDiff(added, deleted);
+        }
+        
+        private static GeometryDiff CompositeCurveEquals(Dictionary<string, CompositeCurve> originalDict, Dictionary<string, CompositeCurve> updatedDict) {
+            // Match points by Location
+            var updatedKeys = originalDict.Keys
+                .Where(k => updatedDict.Values.Any(u => u.Components != null &&
+                                                        originalDict[k].Components != null &&
+                                                        !originalDict[k].Components!.Equals(u.Components)));
+
+            // Added: keys in updatedDict that are new or changed
+            var added = updatedDict.Values
+                .Where(u => !originalDict.Values.Any(o => o.Components != null && o.Components.Equals(u.Components)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            // Deleted: keys in originalDict that are removed or changed
+            var deleted = originalDict.Values
+                .Where(o => !updatedDict.Values.Any(u => u.Components != null && u.Components.Equals(o.Components)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            return new GeometryDiff(added, deleted);
+        }
+
+        private static GeometryDiff SurfaceEquals(Dictionary<string, Surface> originalDict, Dictionary<string, Surface> updatedDict) {
+            // Match points by Location
+            var updatedKeys = originalDict.Keys
+                .Where(k => updatedDict.Values.Any(u => u.Exterior != null &&
+                                                        originalDict[k].Exterior != null &&
+                                                        !originalDict[k].Exterior!.Equals(u.Exterior)));
+
+            // Added: keys in updatedDict that are new or changed
+            var added = updatedDict.Values
+                .Where(u => !originalDict.Values.Any(o => o.Exterior != null && o.Exterior.Equals(u.Exterior)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            // Deleted: keys in originalDict that are removed or changed
+            var deleted = originalDict.Values
+                .Where(o => !updatedDict.Values.Any(u => u.Exterior != null && u.Exterior.Equals(o.Exterior)))
+                .ToDictionary(p => p.Name!, p => (Geometry)p);
+
+            return new GeometryDiff(added, deleted);
         }
 
         public class DatasetUpdate

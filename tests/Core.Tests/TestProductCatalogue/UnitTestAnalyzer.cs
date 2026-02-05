@@ -189,8 +189,8 @@ namespace TestProductCatalogue
             Assert.NotNull(s57);
             Assert.NotNull(s128);
 
-            var exist57 = IO.File.Exists(s57);
-            var exist128 = IO.File.Exists(s128);
+            var exist57 = IO.Path.Exists(s57);
+            var exist128 = IO.Path.Exists(s128);
 
             Assert.True(exist57 && exist128);
 
@@ -198,18 +198,6 @@ namespace TestProductCatalogue
             var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
                 if (".sde".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
                     var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(s128)));
-
-                    //    // Manually set S101 database if not already configured
-
-                    //    //using (var table = geodatabase.OpenDataset<Table>("configuration")) {
-                    //    //    using var buffer = table.CreateRowBuffer();
-                    //    //    buffer["ps"] = "S-128.Horizon";
-                    //    //    buffer["code"] = nameof(S100Horizon.Settings.ProductCatalogue);
-                    //    //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new S100Horizon.Settings.ProductCatalogue {
-                    //    //        Connections = [new S100Horizon.Settings.Connection("S-101", new Uri(IO.Path.GetFullPath(s128)))],
-                    //    //    });
-                    //    //    table.CreateRow(buffer);
-                    //    //}
 
                     return new Geodatabase(connectionFile);
                 }
@@ -222,6 +210,10 @@ namespace TestProductCatalogue
                     throw new InvalidOperationException("Connectionfile path for S128-Database is neither .gdb nor .sde");
                 }
             });
+
+            var products = productManager.ElectronicProductManager.ToArray();
+
+
 
             Assert.NotNull(productManager);
 
@@ -257,8 +249,8 @@ namespace TestProductCatalogue
 
                 using (var tableProductDefinitions = geodatabase.OpenDataset<Table>(definitionTables.Single(e => e.GetName().EndsWith("ProductDefinitions")).GetName())) {
                     using var cursor = tableProductDefinitions.Search(new QueryFilter {
-                        //WhereClause = "upper(ExportType) <> 'CANCEL'",
-                        WhereClause = "1 = 1",
+                        WhereClause = "upper(ExportType) <> 'CANCEL'",
+                        //WhereClause = "1 = 1",
                     }, true);
 
                     while (cursor.MoveNext()) {
@@ -275,6 +267,10 @@ namespace TestProductCatalogue
                             '1' => 1, // NavigationalPurposeOverview,
                             _ => throw new InvalidDataException(),
                         };
+
+                        // ONLY DK4
+                        if (specificUsage != 4)
+                            continue;
 
                         using var coverage = tableProductCoverage.Search(new QueryFilter {
                             WhereClause = $"DSNM = '{Convert.ToString(c["DSNM"])}'",
@@ -297,11 +293,53 @@ namespace TestProductCatalogue
                 }
             });
 
+            System.Diagnostics.Debugger.Break();
             await Task.WhenAll([.. tasks]);
 
+            System.Diagnostics.Debugger.Break();
+        }
 
-            // Create new datasets & exchangesets
-            foreach (var productName in productManager.ElectronicProductManager.ToArray()) {
+
+        [Fact]
+        public async Task Test_CreateAllDatasets() {
+            var s128 = Environment.GetEnvironmentVariable("s128_import");
+            Assert.NotNull(s128);
+            var exist128 = IO.Path.Exists(s128);
+            Assert.True(exist128);
+
+
+
+            // S128 ProductManager
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                if (".sde".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(s128)));
+
+                    return new Geodatabase(connectionFile);
+                }
+                else if (".gdb".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(s128)));
+
+                    return new Geodatabase(connectionFile);
+                }
+                else {
+                    throw new InvalidOperationException("Connectionfile path for S128-Database is neither .gdb nor .sde");
+                }
+            });
+
+            var products = productManager.ElectronicProductManager.ToArray();
+
+            foreach (var productName in products) {
+                var ds = productManager.ElectronicProductManager.ElectronicProduct(productName);
+
+                // Only DK4
+                if (ds.specificUsage != 4)
+                    continue;
+
+                // avoid crashing on previous erros
+                if (ds.editionNumber.HasValue && ds.editionNumber > 0) {
+                    continue;
+
+                }
                 var dataset = await productManager.ElectronicProductManager.CreateNewDatasetAsync(productName);
                 var product = productManager.ElectronicProductManager.ElectronicProduct(productName);
 
@@ -312,7 +350,9 @@ namespace TestProductCatalogue
 
                 var dir = IO.Directory.CreateDirectory(productManager.ElectronicProductManager.OutputFolder);
 
-                var exchangeset = IO.Directory.CreateDirectory(Path.Combine(dir.FullName, datasetName, $"{product.editionNumber}"));
+                // write .000 file locally temporary, and move after for performance
+                // var exchangeset = IO.Directory.CreateDirectory(Path.Combine(dir.FullName, datasetName, $"{product.editionNumber}"));
+                var exchangeset = IO.Directory.CreateDirectory(Path.Combine(AppContext.BaseDirectory, "temp", datasetName, $"{product.editionNumber}"));
 
                 // Write temp YAML file for the compiler
                 IO.File.WriteAllText(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"), yaml);
@@ -321,9 +361,7 @@ namespace TestProductCatalogue
 
                 if (!IO.File.Exists(catalogue))
                     throw new NullReferenceException("Could not find featurecatalogue!");
-
-                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName}";
-
+                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\" -C {datasetName}"; 
 
                 var p = new Process();
                 p.StartInfo.CreateNoWindow = true;
@@ -347,6 +385,72 @@ namespace TestProductCatalogue
                 // Cleanup temp yaml
                 IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
             }
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
+        [Fact]
+        public async Task Test_AppendUpdate() {
+            var s128 = Environment.GetEnvironmentVariable("S100-Horizon-S128-Database");
+
+            Assert.NotNull(s128);
+
+            Geodatabase _geodatabase = default;
+            // S128 ProductManager
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                if (".sde".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(s128)));
+                    _geodatabase = new Geodatabase(connectionFile);
+                    return new Geodatabase(connectionFile);
+                }
+                else if (".gdb".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(s128)));
+                    _geodatabase = new Geodatabase(connectionFile);
+                    return new Geodatabase(connectionFile);
+                }
+                else {
+                    throw new InvalidOperationException("Connectionfile path for S128-Database is neither .gdb nor .sde");
+                }
+            });
+
+            Assert.NotNull(productManager);
+
+            var uid = "P655";  // Wreck that exists in 101DK0040349E
+
+            // 3) Save to gdb from yaml. ImporterYAML
+            await productManager.Dispatch(() => {
+                _geodatabase!.ApplyEdits(() => {
+                    using var point = _geodatabase.OpenDataset<FeatureClass>("point");
+
+                    using var cursor = point.Search(new QueryFilter {
+                        WhereClause = $"UID = '{uid!.Replace("'", "''")}'"
+                    }, false);
+
+                    if (!cursor.MoveNext())
+                        throw new InvalidOperationException("Feature not found");
+
+                    using var row = (ArcGIS.Core.Data.Feature)cursor.Current;
+
+                    var flattened = row["flatten"] as string
+                        ?? throw new InvalidOperationException("Flatten field is null");
+
+                    var wreck = S100FC.AttributeFlattenExtensions
+                        .Unflatten<FeatureType>(
+                            flattened,
+                            typeof(S100FC.S101.FeatureTypes.Wreck)) as Wreck
+                        ?? throw new InvalidOperationException("Unflatten failed");
+
+                    // update attribute
+                    wreck.scaleMinimum = 420420;
+
+                    // serialize back
+                    row["flatten"] = wreck.Flatten();
+
+                    // persist
+                    row.Store();
+                });
+            });
 
             System.Diagnostics.Debugger.Break();
         }
