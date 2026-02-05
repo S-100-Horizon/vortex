@@ -1,4 +1,7 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Internal;
+using S100FC;
+using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 
@@ -12,7 +15,7 @@ namespace S100Framework.Applications
             using var TidesAndVariationsL = source.OpenDataset<FeatureClass>(source.GetName(tableName));
             Subtypes.Instance.RegisterSubtypes(TidesAndVariationsL);
 
-            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("surface"));
+            using var featureClass = target.OpenDataset<FeatureClass>(target.GetName("curve"));
 
 
             using var buffer = featureClass.CreateRowBuffer();
@@ -38,19 +41,70 @@ namespace S100Framework.Applications
                     throw new Exception("Ups. Not supported");
                 }
 
-
-
                 var fcSubtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
 
-                //switch (fcSubtype) {
-                throw new NotImplementedException("No TidesAndVariationLs in DK | GL NIS");
-                //}
+                switch (fcSubtype) {
+                    case 5: { // LOCMAG_LocalMagneticAnomaly
+                            throw new NotImplementedException("No MAGVAR_MagneticVariation in DK | GL NIS");
+                        }
+                    case 10: { // MAGVAR_MagneticVariation
+                            throw new NotImplementedException("No MAGVAR_MagneticVariation in DK | GL NIS");
+                        }
+                    case 15: { // TIDEWY_Tideway
+                            var instance = new Tideway();
+                            
+                            var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
+                            if (featureName is not null)
+                                instance.featureName = featureName;
+
+                            // TODO: interoperabilityIdentifier
+
+                            if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
+                                string subtype = "";
+                                if (current.TableName != default && current.FCSUBTYPE.HasValue && !Subtypes.Instance.TryGetSubtype(current.TableName, current.FCSUBTYPE.Value, out subtype))
+                                    throw new NotSupportedException($"Unknown subtype for {current.TableName}, {current.FCSUBTYPE.Value}");
+                                var scamin = Scamin.Instance.GetMinimumScale(current, subtype, current.PLTS_COMP_SCALE!.Value, isRelatedToStructure: false);
+                                if (scamin.HasValue)
+                                    instance.scaleMinimum = scamin.Value;
+                            }
+
+                            var result = ImporterNIS.AddInformation(current.OBJECTID!.Value, current.TableName!, current.NTXTDS, current.TXTDSC, current.INFORM, current.NINFOM);
+                            instance.information = result.information.ToArray();
+                            instance.SetInformationBindings(result.InformationBindings.ToArray());
+
+                            buffer["ps"] = ps101;
+                            buffer["code"] = instance.GetType().Name;
+                            buffer["edition"] = ImporterNIS.s101version;
+
+                            buffer["flatten"] = instance.Flatten();
+                            buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
+
+                            SetShape(buffer, current.SHAPE);
+                            SetUsageBand(buffer, current.PLTS_COMP_SCALE!.Value);
+
+                            var featureN = featureClass.CreateRow(buffer);
+                            var name = featureN.UID();
+                            if (FeatureRelations.Instance.HasSlaves(current.GLOBALID)) {
+                                relatedEquipment?.CreateRelatedLineEquipment(current, instance, featureN);
+                            }
+
+                            ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
+
+
+                        }
+                        break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
+                        break;
+                }
+                Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
             }
-            Logger.Current.DataTotalCount(tableName, recordCount, ConversionAnalytics.Instance.GetConvertedCount(tableName));
+
+
         }
-
-
     }
 }

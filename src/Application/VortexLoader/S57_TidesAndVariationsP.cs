@@ -47,35 +47,38 @@ namespace S100Framework.Applications
                 var status = current.STATUS ?? default;
 
                 switch (fcSubtype) {
+                    case 1: { // LOCMAG_LocalMagneticAnomaly
+                            throw new NotImplementedException("No LOCMAG_LocalMagneticAnomaly in DK | GL NIS");
+                        }
                     case 5: { // LOCMAG_LocalMagneticAnomaly
                             var instance = new LocalMagneticAnomaly {
                                 /* s-65 Annex B -> LOCMAG
-The S-57 mandatory attribute VALLMA has been remodelled in S-101 as the mandatory complex
-attribute value of local magnetic anomaly, having sub-attributes magnetic anomaly value
-(mandatory) and reference direction, where:
-- magnetic anomaly value is intended to indicate both the positive (easterly) and negative
-(westerly) values where only a single instance of value of local magnetic anomaly is encoded,
-having no populated value for reference direction; or
-- magnetic anomaly value is intended to indicate an anomaly in a single direction, where only a
-single instance of value of local magnetic anomaly is encoded and reference direction is
-populated; or
-- magnetic anomaly value is intended to indicate an anomaly that is different in a positive
-(easterly) and negative (westerly) direction, where two instances of value of local magnetic
-anomaly are encoded and reference direction is populated for both instances.
+                                        The S-57 mandatory attribute VALLMA has been remodelled in S-101 as the mandatory complex
+                                        attribute value of local magnetic anomaly, having sub-attributes magnetic anomaly value
+                                        (mandatory) and reference direction, where:
+                                        - magnetic anomaly value is intended to indicate both the positive (easterly) and negative
+                                        (westerly) values where only a single instance of value of local magnetic anomaly is encoded,
+                                        having no populated value for reference direction; or
+                                        - magnetic anomaly value is intended to indicate an anomaly in a single direction, where only a
+                                        single instance of value of local magnetic anomaly is encoded and reference direction is
+                                        populated; or
+                                        - magnetic anomaly value is intended to indicate an anomaly that is different in a positive
+                                        (easterly) and negative (westerly) direction, where two instances of value of local magnetic
+                                        anomaly are encoded and reference direction is populated for both instances.
 
-** During the automated conversion process, the value populated in VALLMA will be converted across
-to magnetic anomaly value, noting that the value of VALLMA will be converted from minutes to
-decimal degrees for magnetic anomaly value. 
+                                        ** During the automated conversion process, the value populated in VALLMA will be converted across
+                                        to magnetic anomaly value, noting that the value of VALLMA will be converted from minutes to
+                                        decimal degrees for magnetic anomaly value. 
 
-Data Producers will be required to confirm whether
-the value populated in VALLMA is intended to indicate both the positive (easterly) and negative
-(westerly) values of the anomaly, or a disparate range; noting that S-57 guidance recommends
-encoding the values of a range in INFORM for the LOCMAG. Where the anomaly is a disparate
-range, Data Producers will be required to adjust value of local magnetic anomaly in accordance
-with the guidance above; and if the information contained in INFORM relates only to the range of
-anomaly values, remove the associated instance of the complex attribute information (see clause
-2.3).
-*/
+                                        Data Producers will be required to confirm whether
+                                        the value populated in VALLMA is intended to indicate both the positive (easterly) and negative
+                                        (westerly) values of the anomaly, or a disparate range; noting that S-57 guidance recommends
+                                        encoding the values of a range in INFORM for the LOCMAG. Where the anomaly is a disparate
+                                        range, Data Producers will be required to adjust value of local magnetic anomaly in accordance
+                                        with the guidance above; and if the information contained in INFORM relates only to the range of
+                                        anomaly values, remove the associated instance of the complex attribute information (see clause
+                                        2.3).
+                                        */
 
 
                                 featureName = GetFeatureName(current.OBJNAM, current.NOBJNM)
@@ -198,30 +201,24 @@ anomaly values, remove the associated instance of the complex attribute informat
                             throw new NotImplementedException("No T_TIMS_TideTimeSeries in DK | GL NIS");
                         }
 
-                    case 30: { // TIDEWY_Tideway
-                            throw new NotImplementedException("No TIDEWY_Tideway in DK | GL NIS");
-                        }
-
-                    case 35: { // TS_FEB_TidalStreamFloodEbb
+                    case 30: { // TS_FEB_TidalStreamFloodEbb
                             throw new NotImplementedException("No TS_FEB_TidalStreamFloodEbb in DK | GL NIS");
                         }
-
-                    case 40: { // TS_PAD_TidalStreamPanelData
+                    case 35: { // TS_PAD_TidalStreamPanelData
                             throw new NotImplementedException("No TS_PAD_TidalStreamPanelData in DK | GL NIS");
                         }
 
-                    case 45: { // TS_PNH_TidalStreamNonHarmonicPrediction
+                    case 40: { // TS_PNH_TidalStreamNonHarmonicPrediction
                             throw new NotImplementedException("No TS_PNH_TidalStreamNonHarmonicPrediction in DK | GL NIS");
                         }
 
-                    case 50: { // TS_PRH_TidalStreamHarmonicPrediction
+                    case 45: { // TS_PRH_TidalStreamHarmonicPrediction
                             throw new NotImplementedException("No TS_PRH_TidalStreamHarmonicPrediction in DK | GL NIS");
                         }
 
-                    case 55: { // TS_TIS_TidalStreamTimeSeries
+                    case 50: { // TS_TIS_TidalStreamTimeSeries
                             throw new NotImplementedException("No TS_TIS_TidalStreamTimeSeries in DK | GL NIS");
                         }
-
                     default:
                         // code block
                         //System.Diagnostics.Debugger.Break();
