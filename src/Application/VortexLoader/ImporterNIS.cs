@@ -850,6 +850,9 @@ namespace S100Framework.Applications
         //}
 
         internal static colourPattern? GetColourPattern(string colorPattern) {
+            if (colorPattern.Contains(",")) {
+                Logger.Current.Error("Multiple colorPatterns not supported in S-101!");
+            }
             var colourPat = colorPattern switch {
                 "1" => 1,   //colourPattern.HorizontalStripes,
                 "2" => 2,   //colourPattern.VerticalStripes,
