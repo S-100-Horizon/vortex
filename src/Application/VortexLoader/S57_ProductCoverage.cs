@@ -186,7 +186,7 @@ namespace S100Framework.Applications
                                 optimumDisplayScale = displayScale.OptimumDisplayScale,
                             };
 
-                            dataCoverage_m_scl.minimumDisplayScale = displayScale.MinimumDisplayScale;
+                            dataCoverage.minimumDisplayScale = displayScale.MinimumDisplayScale;
 
                             {
                                 buffer["ps"] = ps101;

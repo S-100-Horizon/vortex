@@ -8,6 +8,23 @@ namespace TestS100FC
     {
         private readonly ITestOutputHelper output = output;
 
+
+        [Fact]
+        public void CompareDataset() {
+            var latestPath = @"C:\\Geodatastyrelsen\\yamlupdatetest\latest.yaml";
+            var incomingPath = @"C:\\Geodatastyrelsen\\yamlupdatetest\incoming.yaml";
+
+            var latest = System.IO.File.ReadAllText(latestPath);
+            var incoming = System.IO.File.ReadAllText(incomingPath);
+
+            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
+
+
+            System.Diagnostics.Debugger.Break();
+
+        }
+
+
         [Fact]
         public void Test_Build_Dataset_Update() {
             // Setup

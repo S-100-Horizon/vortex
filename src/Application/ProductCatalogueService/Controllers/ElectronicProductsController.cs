@@ -201,6 +201,8 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newupdate", Name = "NewUpdate")]
         public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
+            return StatusCode(StatusCodes.Status501NotImplemented);
+
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
@@ -222,8 +224,6 @@ namespace ProductCatalogueService.Controllers
             }
 
             // todo: detect updates properly
-            return StatusCode(StatusCodes.Status501NotImplemented, response);
-
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
             var incoming = dataset.Serialize();
@@ -237,7 +237,7 @@ namespace ProductCatalogueService.Controllers
 
             var product = _electronicProductManager.ElectronicProduct(name)!;
 
-            var latest = await _electronicProductManager.GetLatestDatasetYAML(name);
+            var latest = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
 
             // Build YAML Delta
             var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
@@ -300,6 +300,58 @@ namespace ProductCatalogueService.Controllers
 
             // Cleanup temp yaml
             IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+        }
+
+
+        /// <summary>
+        /// Creates all datasets in s128 database.
+        /// </summary>
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("alldatasets", Name = "NewDatasets")]
+        public async Task<IActionResult> CreateAllDatasets() {
+            var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
+
+            var products = _electronicProductManager.ToArray();
+            int i = 1;
+            int total = products.Length;
+
+            foreach (var name in products) {
+                try {
+                    _logger.LogInformation("creating dataset {i}/{total}: {name}", i, total, name);
+                    var product = _electronicProductManager.ElectronicProduct(name)!;
+                    if (product.editionNumber.HasValue && product.editionNumber.Value > 0) {
+                        throw new InvalidOperationException();
+                    }
+                    // Create exchange set
+                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+                    var yaml = dataset.Serialize();
+
+                    this.CreateExchangeSet(product, yaml);
+                    _logger.LogInformation("Exchangeset created successfully");
+                }
+                catch (InvalidOperationException) {
+                    _logger.LogWarning("Dataset already has update. skipping");
+                }
+                catch (IndexOutOfRangeException) {
+                    _logger.LogWarning("Topology IndexOutOfRangeException! skipping");
+                }
+                catch (AggregateException) {
+                    _logger.LogWarning("Topology AggregateException! skipping");
+                }
+                catch (ArgumentException) {
+                    _logger.LogWarning("s100compiler exception for exchangeset. Probably missing minimumScale on DataCoverage skipping");
+                }
+                catch (Exception ex) {
+                    _logger.LogError("Unexpected exception: {ex}", ex);
+                }
+                i++;
+            }
+            response.DurationMs = sw.ElapsedMilliseconds;
+            response.Message = $"Datasets created: {products.Length}";
+            return Ok(response);
         }
 
 

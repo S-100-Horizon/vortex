@@ -22,7 +22,7 @@ namespace S100Framework.Applications
         {
             [Option('d', "dnsm", Required = false, HelpText = "")]
             public string? Dataset { get; set; }
-           
+
             [Option('b', "bulk", Required = false, HelpText = "Multiple datasets. Example: -b dataset1 dataset2 dataset3")]
             public IEnumerable<string> DatasetBulk { get; set; } = [];
 
@@ -97,6 +97,7 @@ namespace S100Framework.Applications
                 string? output = default;
                 bool exchangeset = false;
                 string[] datasetNames = [];
+                string? wildcard = default;
 
                 IO.DirectoryInfo? directoryNotes = default;
 
@@ -116,8 +117,14 @@ namespace S100Framework.Applications
 
                     datasetNames = [.. o.DatasetBulk];
 
-                    if(o.Dataset != null)
+                    if (o.Dataset != null) {
                         datasetNames = [.. datasetNames, o.Dataset];
+                    }
+
+                    if (o.Dataset != null && o.Dataset.Contains("%")) {
+                        datasetNames = [];
+                        wildcard = o.Dataset;
+                    }
 
 
                     exchangeset = o.ExchangeSet;
@@ -127,7 +134,7 @@ namespace S100Framework.Applications
                     output = o.OutputPath;
                 });
 
-                if(datasetNames.Length == 0)
+                if (datasetNames.Length == 0 && string.IsNullOrEmpty(wildcard))
                     throw new ArgumentNullException("No datasets specified. Use -d or -b to specify dataset(s).");
 
                 Directory.CreateDirectory(output!);
@@ -143,6 +150,22 @@ namespace S100Framework.Applications
                 var datasets = new List<(Dataset Dataset, SpatialQueryFilter Filter)>();
                 {
                     using var surface = source.OpenDataset<FeatureClass>(definitionFeatures.Single(e => e.GetAliasName().Equals("surface")).GetName());
+
+                    if (!string.IsNullOrEmpty(wildcard)) {
+                        using var cursor = surface.Search(new QueryFilter {
+                            WhereClause = $"upper(ps) = 'S-128' and FLATTEN LIKE '%\"datasetName\":%\"{wildcard}\"%'",
+                        }, true);
+
+                        while (cursor.MoveNext()) {
+                            var current = (ArcGIS.Core.Data.Feature)cursor.Current;
+
+                            var electricProduct = (S100FC.S128.FeatureTypes.ElectronicProduct)S100FC.AttributeFlattenExtensions.Unflatten<FeatureType>(Convert.ToString(current["flatten"])!, typeof(S100FC.S128.FeatureTypes.ElectronicProduct));
+
+                            datasetNames = [.. datasetNames, electricProduct.datasetName!];
+                        }
+
+                        ;
+                    }
 
                     foreach (var ds in datasetNames) {
                         using var cursor = surface.Search(new QueryFilter {
@@ -261,7 +284,7 @@ namespace S100Framework.Applications
                             var code = current["code"].ToString()!;
                             //var json = current["json"].ToString()!;
 
-                            var json = Convert.ToString(current["flatten"]);                            
+                            var json = Convert.ToString(current["flatten"]);
 
                             var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "FeatureTypes")}.{code}", true)!;
 
@@ -486,7 +509,7 @@ namespace S100Framework.Applications
 
                         if (IO.Directory.Exists(IO.Path.Combine(output, datasetName)))
                             IO.Directory.Delete(IO.Path.Combine(output, datasetName), true);
-                       // IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));
+                        // IO.Directory.CreateDirectory(IO.Path.Combine(output, datasetName));
 
                         if (!exchangeset) {
                             Log.Information("s100compiler.exe -f {dataset}.yaml -d {dataset}.000 -c 101_Feature_Catalogue_2.0.0.xml", datasetName);
