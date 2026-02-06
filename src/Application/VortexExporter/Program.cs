@@ -121,7 +121,7 @@ namespace S100Framework.Applications
                         datasetNames = [.. datasetNames, o.Dataset];
                     }
 
-                    if (o.Dataset != null && o.Dataset.Contains("*")) {
+                    if (o.Dataset != null && o.Dataset.Contains("%")) {
                         datasetNames = [];
                         wildcard = o.Dataset;
                     }
