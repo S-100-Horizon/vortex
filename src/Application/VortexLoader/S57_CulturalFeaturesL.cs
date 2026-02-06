@@ -117,7 +117,16 @@ namespace S100Framework.Applications
                             var instance = new CableOverhead();
 
                             if (current.CATCBL.HasValue) {
-                                instance.categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
+
+                                /*      
+                                        if CATCBL is 4 telephone or 5 telegraph it will convert into S-101 value 10 telecommunications cable
+                                 */
+                                if (current.CATCBL is 4 || current.CATCBL is 5) {
+                                    instance.categoryOfCable = 10;
+                                }
+                                else {
+                                    instance.categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
+                                }
                             }
 
                             instance.verticalClearanceFixed = new() {
