@@ -555,6 +555,8 @@ namespace S100Framework.Applications
                                 Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
                                 return p.ExitCode;
                             }
+
+                            IO.Directory.Move(IO.Path.Combine(output, "S100_ROOT"), IO.Path.Combine(output, $"{datasetName}_ROOT"));
                         }
                     }
                     Log.Information("------------------------------------------------------------");
