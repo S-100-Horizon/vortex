@@ -117,9 +117,7 @@ namespace S100Framework.Applications
                             var instance = new CableOverhead();
 
                             if (current.CATCBL.HasValue) {
-                                var categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
-                                if (categoryOfCable is not null)
-                                    instance.categoryOfCable = categoryOfCable;
+                                instance.categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
                             }
 
                             instance.verticalClearanceFixed = new() {
@@ -129,7 +127,6 @@ namespace S100Framework.Applications
                                 },
                                 verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
                             };
-
 
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
