@@ -116,6 +116,21 @@ namespace S100Framework.Applications
                     case 5: { // CBLOHD_CableOverhead
                             var instance = new CableOverhead();
 
+                            if (current.CATCBL.HasValue) {
+                                var categoryOfCable = EnumHelper.GetEnumValue(current.CATCBL.Value);
+                                if (categoryOfCable is not null)
+                                    instance.categoryOfCable = categoryOfCable;
+                            }
+
+                            instance.verticalClearanceFixed = new() {
+                                verticalUncertainty = new() {
+                                    uncertaintyFixed = current.VERACC.HasValue && current.VERACC.Value != -32767m ? current.VERACC.Value : default(decimal?),
+                                    uncertaintyVariableFactor = default(decimal?)
+                                },
+                                verticalClearanceValue = current.VERCCL.HasValue && current.VERCCL.Value != -32767m ? current.VERCCL.Value : default(decimal?),
+                            };
+
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
@@ -134,6 +149,9 @@ namespace S100Framework.Applications
                             if (current.STATUS != default) {
                                 instance.status = GetStatus(current.STATUS);
                             }
+
+
+
 
                             var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
                             if (verticalDatum != null) {
