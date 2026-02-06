@@ -3,6 +3,7 @@ using ArcGIS.Core.Geometry;
 using S100FC;
 using S100FC.S101.ComplexAttributes;
 using S100FC.S101.FeatureTypes;
+using S100FC.S101.SimpleAttributes;
 using S100Framework.Applications.S57.esri;
 using S100Framework.Applications.Singletons;
 
@@ -53,6 +54,54 @@ namespace S100Framework.Applications
                     case 1: { // BRIDGE_Bridge
                             var instance = new Bridge() {
                             };
+
+                            var openingBridge = false;
+
+                            if (current.CATBRG != default && current.CATBRG == "1") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "2") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "3") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "4") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "5") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "6") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "7") {
+                                openingBridge = true;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "8") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "9") {
+                                openingBridge = false;
+                                instance.bridgeFunction = [3,   /*bridgeFunction.Pedestrian*/];
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "10") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "11") {
+                                openingBridge = false;
+                                instance.bridgeFunction = [4,   /*bridgeFunction.Aqueduct*/];
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "12") {
+                                openingBridge = false;
+                            }
+                            else if (current.CATBRG != default && current.CATBRG == "-32767") {
+                                openingBridge = false;
+                                Logger.Current.DataError(objectid, tableName, longname, $"CATBRG is unknown hence OpeningBridge unknown - OpeningBridge set to false");
+                            }
+
+                            instance.openingBridge = openingBridge;
+
                             if (current.PLTS_COMP_SCALE.HasValue && current.SHAPE != null) {
                                 string subtype = "";
 
