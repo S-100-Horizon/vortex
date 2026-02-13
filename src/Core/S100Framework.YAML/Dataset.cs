@@ -134,7 +134,8 @@ namespace S100FC.YAML
 
     public record FeatureDiff(
         Dictionary<string, object> Added,
-        Dictionary<string, object> Deleted
+        Dictionary<string, object> Deleted,
+        Dictionary<string, object> Updated
     );
 
     public record MetadataDiff(
@@ -152,14 +153,9 @@ namespace S100FC.YAML
         Dictionary<string, object> Deleted
     );
 
-    public record GeometryDiff(
-        Dictionary<string, Geometry> Added,
-        Dictionary<string, Geometry> Deleted
-    );
-
     public class MetadataUpdate()
     {
-        public string OrganisationName { get; set; }
+        public string? OrganisationName { get; set; }
         public string? City { get; set; }
         public string? AdministrativeArea { get; set; }
         public string? ElectronicMailAddress { get; set; }
@@ -169,27 +165,24 @@ namespace S100FC.YAML
         public string? PrivateKey { get; set; }
         public string? Certificate { get; set; }
 
-        public string Producer { get; set; }
-        public string ProducerCode { get; set; }
+        public string? Producer { get; set; }
+        public string? ProducerCode { get; set; }
         public ICollection<SupportFileUpdate>? SupportFiles { get; set; }
     }
     public class SupportFileUpdate()
     {
         [YamlMember(Order = 0)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [YamlMember(Order = 1)]
-        public string Content { get; set; }
+        public string? Content { get; set; }
     }
+    public sealed record DeletedFeature(
+        string Name,
+        string Foid
+    );
 
-    public class DatasetDelta(GeometryDiff points,
-                             GeometryDiff depths,
-                             GeometryDiff curves,
-                             GeometryDiff compositeCurves,
-                             GeometryDiff surfaces,
-                             //SupportFileDiff supportFiles,
-                             MetadataUpdate metadata,
-                             FeatureDiff features,
-                             InformationTypeDiff informationTypes)
+
+    public class DatasetDelta()
     {
         public string? CellName { get; set; }
         public string? Comment { get; set; }
@@ -200,80 +193,66 @@ namespace S100FC.YAML
         [YamlMember(Alias = "FCVer", ApplyNamingConventions = false)]
         public string? FCVer { get; set; }
 
-        public MetadataUpdate Metadata => metadata;
+        public MetadataUpdate? Metadata { get; set; }
 
-        [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false)]
-        public ICollection<object>? InformationTypesAdded => this.InformationTypes.Added.Count != 0 ? this.InformationTypes?.Added.Values : null;
-        [YamlMember(Alias = "InfDel", ApplyNamingConventions = false)]
-        public ICollection<string>? InformationTypesDeleted => this.InformationTypes.Deleted.Count != 0 ? this.InformationTypes?.Deleted.Keys : null;
-        [YamlMember(Alias = "Features", ApplyNamingConventions = false)]
-        public ICollection<object>? FeaturesAdded => this.Features.Added.Count != 0 ? this.Features?.Added.Values : null;
-        [YamlMember(Alias = "FDel", ApplyNamingConventions = false)]
-        public ICollection<string>? FeaturesDeleted => this.Features.Deleted.Count != 0 ? this.Features?.Deleted.Keys : null;
+        [YamlMember(Alias = "InformationTypes", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<object> InformationTypesAdded { get; set; } = [];
+        [YamlMember(Alias = "InfDel", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<string> InformationTypesDeleted { get; set; } = [];
+        [YamlMember(Alias = "Features", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<object> FeaturesAdded { get; set; } = [];
+        [YamlMember(Alias = "FDel", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<DeletedFeature> FeaturesDeleted { get; set; } = [];
+        [YamlMember(Alias = "GDel", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<string> GeometriesDeleted { get; set; } = [];
+        [YamlMember(Alias = "Points", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<Geometry> PointsAdded { get; set; } = [];
+        [YamlMember(Alias = "Depths", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<Geometry> DepthsAdded { get; set; } = [];
+        [YamlMember(Alias = "Curves", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<Geometry> CurvesAdded { get; set; } = [];
+        [YamlMember(Alias = "CompositeCurves", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<Geometry> CompositeCurvesAdded { get; set; } = [];
+        [YamlMember(Alias = "Surfaces", ApplyNamingConventions = false, DefaultValuesHandling = DefaultValuesHandling.OmitEmptyCollections)]
+        public ICollection<Geometry> SurfacesAdded { get; set; } = [];
 
-        [YamlMember(Alias = "Points", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? PointsAdded => this.Points.Added.Count != 0 ? this.Points?.Added.Values : null;
-        [YamlMember(Alias = "Depths", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? DepthsAdded => this.Depths.Added.Count != 0 ? this.Depths?.Added.Values : null;
-        [YamlMember(Alias = "Curves", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? CurvesAdded => this.Curves.Added.Count != 0 ? this.Curves?.Added.Values : null;
-        [YamlMember(Alias = "CompositeCurves", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? CompositeCurvesAdded => this.CompositeCurves.Added.Count != 0 ? this.CompositeCurves?.Added.Values : null;
-        [YamlMember(Alias = "Surfaces", ApplyNamingConventions = false)]
-        public ICollection<Geometry>? SurfacesAdded => this.Surfaces.Added.Count != 0 ? this.Surfaces?.Added.Values : null;
+        public void AddGeometryDiff(string type, Geometry data) {
+            switch (type?.ToLowerInvariant()) {
+                case "point":
+                    if (data is Point p) this.PointsAdded.Add(p);
+                    break;
 
-        [YamlMember(Alias = "GDel", ApplyNamingConventions = false)]
-        public ICollection<string>? GeometriesDeleted {
-            get {
-                var all = this.Points.Deleted.Keys
-                    .Concat(this.Depths.Deleted.Keys)
-                    .Concat(this.Curves.Deleted.Keys)
-                    .Concat(this.CompositeCurves.Deleted.Keys)
-                    .Concat(this.Surfaces.Deleted.Keys);
+                case "pointset":
+                    if (data is PointSet ps) this.DepthsAdded.Add(ps);
+                    break;
 
-                return all.Any() ? [.. all] : null;
+                case "curve":
+                    if (data is Curve c) this.CurvesAdded.Add(c);
+                    break;
+
+                case "surface":
+                    if (data is Surface s) this.SurfacesAdded.Add(s);
+                    break;
+
+                case "compositecurve":
+                    if (data is CompositeCurve cc) this.CompositeCurvesAdded.Add(cc);
+                    break;
+
+                default:
+                    throw new NotImplementedException($"Geometry type '{type}' is not supported.");
             }
         }
 
-        //[YamlMember(Alias = "fileAdd", ApplyNamingConventions = false)]
-        // public ICollection<string>? SupportFilesAdded => SupportFiles.Added.Count != 0 ? SupportFiles?.Added.Values : null;
-        //[YamlMember(Alias = "fileDel", ApplyNamingConventions = false)]
-        //public ICollection<string>? SupportFilesDeleted => SupportFiles.Deleted.Count != 0 ? SupportFiles?.Deleted.Keys : null;
-
         [YamlIgnore]
-        public bool Any => (this.Features.Added.Count +
-                            this.Features.Deleted.Count +
-                            this.InformationTypes.Added.Count +
-                            this.InformationTypes.Deleted.Count +
-                            // SupportFiles.Added.Count +
-                            // SupportFiles.Deleted.Count +
-                            this.Points.Added.Count +
-                            this.Points.Deleted.Count +
-                            this.Depths.Added.Count +
-                            this.Depths.Deleted.Count +
-                            this.Curves.Added.Count +
-                            this.Curves.Deleted.Count +
-                            this.CompositeCurves.Added.Count +
-                            this.CompositeCurves.Deleted.Count +
-                            this.Surfaces.Added.Count +
-                            this.Surfaces.Deleted.Count) != 0;
-
-        [YamlIgnore]
-        internal FeatureDiff Features { get; init; } = features;
-        [YamlIgnore]
-        internal InformationTypeDiff InformationTypes { get; init; } = informationTypes;
-        // [YamlIgnore]
-        //internal SupportFileDiff SupportFiles { get; init; } = supportFiles;
-        [YamlIgnore]
-        internal GeometryDiff Points { get; init; } = points;
-        [YamlIgnore]
-        internal GeometryDiff Depths { get; init; } = depths;
-        [YamlIgnore]
-        internal GeometryDiff Curves { get; init; } = curves;
-        [YamlIgnore]
-        internal GeometryDiff CompositeCurves { get; init; } = compositeCurves;
-        [YamlIgnore]
-        internal GeometryDiff Surfaces { get; init; } = surfaces;
+        public bool HasEdits => this.PointsAdded.Count != 0 ||
+                            this.CurvesAdded.Count != 0 ||
+                            this.CompositeCurvesAdded.Count != 0 ||
+                            this.SurfacesAdded.Count != 0 ||
+                            this.FeaturesAdded.Count != 0 ||
+                            this.FeaturesDeleted.Count != 0 ||
+                            this.GeometriesDeleted.Count != 0 ||
+                            this.InformationTypesAdded.Count != 0 ||
+                            this.InformationTypesDeleted.Count != 0;
     }
 
     public static class DatasetComparer
@@ -282,88 +261,96 @@ namespace S100FC.YAML
         /// Compares two YAML datasets and build a delta object
         /// </summary>
         /// <returns>A DatasetDelta object, which can be serialized to a delta yaml dataset</returns>
+
         public static DatasetDelta Compare(string root, string update) {
+            var delta = new DatasetDelta();
             var rootDataset = ReadDataset(root);
             var updateDataset = ReadDataset(update);
 
+            var features = FeatureEquals(rootDataset.Features, updateDataset.Features);
+            var informationTypes = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
+            var metadata = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
 
-            // Compare SupportFiles
-            // var supportFileDiff = SupportFileEquals(rootDataset.SupportFiles, updateDataset.SupportFiles);
+            // Iterate new features
+            foreach (var feature in features.Added) {
+                delta.FeaturesAdded.Add(feature.Value);
+                var dict = feature.Value as Dictionary<object, object>;
+                var targetType = dict?["Prim"]?.ToString() ?? "";
+                var id = dict?["Geometry"]?.ToString() ?? "";
 
-            // Compare InformationTypes
-            var informationTypeDiff = InformationTypeEquals(rootDataset.InformationTypes, updateDataset.InformationTypes);
+                // Figure out if the newly added feature references a new or existing geometry
+                var rootGeometryDict = rootDataset.Dictionary(targetType)!;
+                var updateGeometryDict = updateDataset.Dictionary(targetType)!;
 
-            // Compare Features
-            var featureDiff = FeatureEquals(rootDataset.Features, updateDataset.Features);
-
-            // Compare Metadata
-            var metadataUpdate = MetadataEquals(rootDataset.Metadata, updateDataset.Metadata);
+                if (!rootGeometryDict.ContainsKey(id))
+                    delta.AddGeometryDiff(targetType, updateGeometryDict[id]);
+            }
 
 
-            // Point
-            var pointDiff = CompareGeometries<Point>(
-                rootDataset.Points.Select(e => e.Value),
-                updateDataset.Points.Select(e => e.Value),
-                p => p.Location!,
-                p => p.Name!);
+            // Iterate updated features
+            foreach (var feature in features.Updated) {
+                delta.FeaturesAdded.Add(feature.Value);
+               
 
-            // PointSet
-            var depthDiff = CompareGeometries<PointSet>(
-                rootDataset.Depths.Select(e => e.Value),
-                updateDataset.Depths.Select(e => e.Value),
-                ps => ps.Location!,
-                ps => ps.Name!);
 
-            // Curve
-            var curveDiff = CompareGeometries<Curve>(
-                rootDataset.Curves.Select(e => e.Value),
-                updateDataset.Curves.Select(e => e.Value),
-                c => c.Vertices!,
-                c => c.Name!);
+                var dict = feature.Value as Dictionary<object, object>;
+                var targetType = dict?["Prim"]?.ToString() ?? "";
+                var id = dict?["Geometry"]?.ToString() ?? "";
+                var name = dict?["Name"]?.ToString() ?? "";
+                var foid = feature.Key;
 
-            // CompositeCurve
-            var compositeCurveDiff = CompareGeometries<CompositeCurve>(
-                rootDataset.CompositeCurves.Select(e => e.Value),
-                updateDataset.CompositeCurves.Select(e => e.Value),
-                cc => cc.Components,
-                cc => cc.Name!);
+                delta.FeaturesDeleted.Add(new(name, feature.Key));
 
-            // Surface
-            var surfaceDiff = CompareGeometries<Surface>(
-                rootDataset.Surfaces.Select(e => e.Value),
-                updateDataset.Surfaces.Select(e => e.Value),
-                s => s.Exterior,
-                s => s.Name!);
+                if (!rootDataset.Features.TryGetValue(foid, out var featureValue))
+                    throw new InvalidOperationException("Incorrectly labelled as an update"); // Incorrectly labelled as an update
 
-            //// Compare Points
-            //var pointDiff = PointEquals(rootDataset.Points, updateDataset.Points); // GeometryEquals<Point>(rootDataset.Points!, updateDataset.Points!);
+                var oldDict = featureValue as Dictionary<object, object>;
+                var oldId = oldDict?.ContainsKey("Geometry") == true ? oldDict["Geometry"]?.ToString() ?? "" : "";
 
-            //// Compare Depths
-            //var depthDiff = PointSetEquals(rootDataset.Depths, updateDataset.Depths); // GeometryEquals<PointSet>(rootDataset.Depths!, updateDataset.Depths!);
+                // 3. If geometries are the same, do nothing
+                if (id == oldId)
+                    continue;
 
-            //// Compare Curves
-            //var curveDiff = CurveEquals(rootDataset.Curves, updateDataset.Curves); // GeometryEquals<Curve>(rootDataset.Curves!, updateDataset.Curves!);
+                var rootGeometryDict = rootDataset.Dictionary(targetType)!;
+                var updateGeometryDict = updateDataset.Dictionary(targetType)!;
 
-            //// Compare Composite Curves
-            //var compositeCurveDiff = CompositeCurveEquals(rootDataset.CompositeCurves, updateDataset.CompositeCurves); // GeometryEquals<CompositeCurve>(rootDataset.CompositeCurves!, updateDataset.CompositeCurves!);
 
-            //// Compare Surfaces
-            //var surfaceDiff = SurfaceEquals(rootDataset.Surfaces, updateDataset.Surfaces); // GeometryEquals<Surface>(rootDataset.Surfaces!, updateDataset.Surfaces!);
+                // If new feature is updated to a geometry that DOESNT exist in root, Add new _geometriesAdded && check for cleanup
+                if (!rootGeometryDict.ContainsKey(id))
+                    delta.AddGeometryDiff(targetType, updateGeometryDict[id]);
 
-            // Build result return it
-            var result = new DatasetDelta(
-                points: pointDiff,
-                depths: depthDiff,
-                curves: curveDiff,
-                compositeCurves: compositeCurveDiff,
-                surfaces: surfaceDiff,
-                //  supportFiles: supportFileDiff,
-                metadata: metadataUpdate,
-                features: featureDiff,
-                informationTypes: informationTypeDiff
-            );
 
-            return result;
+                // If the old geometry is no longer referenced by any feature in the new dataset, cleanup
+                if (!updateGeometryDict.ContainsKey(oldId!))
+                    delta.GeometriesDeleted.Add(oldId!);
+            }
+
+
+            // Iterate deleted features
+            foreach (var feature in features.Deleted) {
+              
+
+                var dict = feature.Value as Dictionary<object, object>;
+                var targetType = dict?["Prim"]?.ToString() ?? "";
+                var id = dict?["Geometry"]?.ToString() ?? "";
+                var name = dict?["Name"]?.ToString() ?? "";
+                var updateGeometryDict = updateDataset.Dictionary(targetType)!;
+
+
+                delta.FeaturesDeleted.Add(new(name, feature.Key));
+
+                // If the geometry is no longer referenced by any feature in the new dataset, cleanup
+                if (!updateGeometryDict.ContainsKey(id))
+                    delta.GeometriesDeleted.Add(id);
+            }
+
+
+            delta.Metadata = metadata;
+            delta.InformationTypesAdded = informationTypes.Added.Values;
+            delta.InformationTypesDeleted = informationTypes.Deleted.Keys;
+
+
+            return delta;
         }
 
         private static DatasetUpdate ReadDataset(string dataset) {
@@ -395,7 +382,7 @@ namespace S100FC.YAML
             var metadata = metadataDict?.ToDictionary(
                 kvp => kvp.Key.ToString()!,
                 kvp => kvp.Value
-            );
+            )!;
 
 
             // Read SupportFiles
@@ -639,7 +626,7 @@ namespace S100FC.YAML
                 }
             }
             // InformationType add
-            if (updates.TryGetValue("infAdd", out var infAddValue)) {
+            if (updates.TryGetValue("InformationTypes", out var infAddValue)) {
                 var infAdds = (infAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
 
                 foreach (var infAdd in infAdds) {
@@ -648,7 +635,7 @@ namespace S100FC.YAML
                 }
             }
             // Feature delete
-            if (updates.TryGetValue("fDel", out var featureDelValue)) {
+            if (updates.TryGetValue("FDel", out var featureDelValue)) {
                 var fDels = featureDelValue as List<object> ?? [];
                 foreach (var fDel in fDels) {
                     var feature = features.FirstOrDefault(e => e["Foid"].ToString() == fDel.ToString());
@@ -658,7 +645,7 @@ namespace S100FC.YAML
                 }
             }
             // Feature add
-            if (updates.TryGetValue("fAdd", out var featureAddValue)) {
+            if (updates.TryGetValue("Features", out var featureAddValue)) {
                 var fAdds = (featureAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
 
                 foreach (var fAdd in fAdds) {
@@ -667,7 +654,7 @@ namespace S100FC.YAML
                 }
             }
             // Geometry delete
-            if (updates.TryGetValue("gDel", out var geometryDelValue)) {
+            if (updates.TryGetValue("GDel", out var geometryDelValue)) {
                 var gDels = geometryDelValue as List<object> ?? [];
                 foreach (var gDel in gDels) {
                     // Points
@@ -702,7 +689,7 @@ namespace S100FC.YAML
                 }
             }
             // Geometry add
-            if (updates.TryGetValue("gAdd", out var geometryAddValue)) {
+            if (updates.TryGetValue("Points", out var geometryAddValue)) {
                 var gAdds = (geometryAddValue as List<object>)!.Cast<Dictionary<object, object>>().ToList();
 
                 foreach (var gAdd in gAdds) {
@@ -749,22 +736,17 @@ namespace S100FC.YAML
         }
         private static FeatureDiff FeatureEquals(Dictionary<string, object> rootFeatures, Dictionary<string, object> updateFeatures) {
             // Updated
-            var updatedKeys = rootFeatures.Keys
-                .Intersect(updateFeatures.Keys)
-                .Where(k => !Converter.Serialize(rootFeatures[k]).Equals(Converter.Serialize(updateFeatures[k])));
+            var updatedKeys = rootFeatures.Keys.Intersect(updateFeatures.Keys).Where(k => !Converter.Serialize(rootFeatures[k]).Equals(Converter.Serialize(updateFeatures[k])));
 
             var featureDiff = new FeatureDiff(
                 // Added
-                updateFeatures.Keys
-                    .Except(rootFeatures.Keys)
-                    .Concat(updatedKeys)
-                    .ToDictionary(k => k!, k => updateFeatures[k]),
+                updateFeatures.Keys.Except(rootFeatures.Keys).ToDictionary(k => k!, k => updateFeatures[k]),
 
                 // Deleted
-                rootFeatures.Keys
-                    .Except(updateFeatures.Keys)
-                    .Concat(updatedKeys)
-                    .ToDictionary(k => k!, k => rootFeatures[k])
+                rootFeatures.Keys.Except(updateFeatures.Keys).ToDictionary(k => k!, k => rootFeatures[k]),
+
+                // Updated
+                updatedKeys.ToDictionary(k => k!, k => updateFeatures[k])
             );
 
             return featureDiff;
@@ -845,156 +827,9 @@ namespace S100FC.YAML
         }
 
 
-
-
-        public static GeometryDiff CompareGeometries<T>(IEnumerable<T> original, IEnumerable<T> updated, Func<T, object> keySelector, Func<T, string> nameSelector) where T : Geometry {
-            // Build dictionaries keyed by the comparison property
-            var originalDict = original.ToDictionary(keySelector, g => g);
-            var updatedDict = updated.ToDictionary(keySelector, g => g);
-
-            // Added = in updated but not in original
-            var added = updatedDict.Keys
-                .Except(originalDict.Keys)
-                .ToDictionary(k => nameSelector(updatedDict[k]), k => (Geometry)updatedDict[k]);
-
-            // Deleted = in original but not in updated
-            var deleted = originalDict.Keys
-                .Except(updatedDict.Keys)
-                .ToDictionary(k => nameSelector(originalDict[k]), k => (Geometry)originalDict[k]);
-
-            return new GeometryDiff(added, deleted);
-        }
-
-
-
-
-
-
-
-        private static GeometryDiff GeometryEquals<T>(Dictionary<string, T> originalDict, Dictionary<string, T> updatedDict) where T : Geometry {
-            // Updated
-            var updatedKeys = originalDict.Keys
-                .Intersect(updatedDict.Keys)
-                .Where(k => !originalDict[k].Equals(updatedDict[k]));
-
-            var geometryDiff = new GeometryDiff(
-                // Added 
-                updatedDict.Keys
-                    .Except(originalDict.Keys)
-                    .Concat(updatedKeys)
-                    .ToDictionary(k => updatedDict[k].Name!, k => updatedDict[k] as Geometry),
-
-                // Deleted 
-                originalDict.Keys
-                    .Except(updatedDict.Keys)
-                    .Concat(updatedKeys)
-                    .ToDictionary(k => originalDict[k].Name!, k => originalDict[k] as Geometry)
-            );
-            return geometryDiff;
-        }
-        private static GeometryDiff PointEquals(Dictionary<string, Point> originalDict, Dictionary<string, Point> updatedDict) {
-            // Match points by Location
-            var updatedKeys = originalDict.Keys
-                .Where(k => updatedDict.Values.Any(u => u.Location != null &&
-                                                        originalDict[k].Location != null &&
-                                                        !originalDict[k].Location!.Equals(u.Location)));
-
-            // Added: keys in updatedDict that are new or changed
-            var added = updatedDict.Values
-                .Where(u => !originalDict.Values.Any(o => o.Location != null && o.Location.Equals(u.Location)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            // Deleted: keys in originalDict that are removed or changed
-            var deleted = originalDict.Values
-                .Where(o => !updatedDict.Values.Any(u => u.Location != null && u.Location.Equals(o.Location)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            return new GeometryDiff(added, deleted);
-        }
-
-        private static GeometryDiff PointSetEquals(Dictionary<string, PointSet> originalDict, Dictionary<string, PointSet> updatedDict) {
-            // Match points by Location
-            var updatedKeys = originalDict.Keys
-                .Where(k => updatedDict.Values.Any(u => u.Location != null &&
-                                                        originalDict[k].Location != null &&
-                                                        !originalDict[k].Location!.Equals(u.Location)));
-
-            // Added: keys in updatedDict that are new or changed
-            var added = updatedDict.Values
-                .Where(u => !originalDict.Values.Any(o => o.Location != null && o.Location.Equals(u.Location)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            // Deleted: keys in originalDict that are removed or changed
-            var deleted = originalDict.Values
-                .Where(o => !updatedDict.Values.Any(u => u.Location != null && u.Location.Equals(o.Location)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            return new GeometryDiff(added, deleted);
-        }
-
-        private static GeometryDiff CurveEquals(Dictionary<string, Curve> originalDict, Dictionary<string, Curve> updatedDict) {
-            // Match points by Location
-            var updatedKeys = originalDict.Keys
-                .Where(k => updatedDict.Values.Any(u => u.Vertices != null &&
-                                                        originalDict[k].Vertices != null &&
-                                                        !originalDict[k].Vertices!.Equals(u.Vertices)));
-
-            // Added: keys in updatedDict that are new or changed
-            var added = updatedDict.Values
-                .Where(u => !originalDict.Values.Any(o => o.Vertices != null && o.Vertices.Equals(u.Vertices)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            // Deleted: keys in originalDict that are removed or changed
-            var deleted = originalDict.Values
-                .Where(o => !updatedDict.Values.Any(u => u.Vertices != null && u.Vertices.Equals(o.Vertices)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            return new GeometryDiff(added, deleted);
-        }
-        
-        private static GeometryDiff CompositeCurveEquals(Dictionary<string, CompositeCurve> originalDict, Dictionary<string, CompositeCurve> updatedDict) {
-            // Match points by Location
-            var updatedKeys = originalDict.Keys
-                .Where(k => updatedDict.Values.Any(u => u.Components != null &&
-                                                        originalDict[k].Components != null &&
-                                                        !originalDict[k].Components!.Equals(u.Components)));
-
-            // Added: keys in updatedDict that are new or changed
-            var added = updatedDict.Values
-                .Where(u => !originalDict.Values.Any(o => o.Components != null && o.Components.Equals(u.Components)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            // Deleted: keys in originalDict that are removed or changed
-            var deleted = originalDict.Values
-                .Where(o => !updatedDict.Values.Any(u => u.Components != null && u.Components.Equals(o.Components)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            return new GeometryDiff(added, deleted);
-        }
-
-        private static GeometryDiff SurfaceEquals(Dictionary<string, Surface> originalDict, Dictionary<string, Surface> updatedDict) {
-            // Match points by Location
-            var updatedKeys = originalDict.Keys
-                .Where(k => updatedDict.Values.Any(u => u.Exterior != null &&
-                                                        originalDict[k].Exterior != null &&
-                                                        !originalDict[k].Exterior!.Equals(u.Exterior)));
-
-            // Added: keys in updatedDict that are new or changed
-            var added = updatedDict.Values
-                .Where(u => !originalDict.Values.Any(o => o.Exterior != null && o.Exterior.Equals(u.Exterior)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            // Deleted: keys in originalDict that are removed or changed
-            var deleted = originalDict.Values
-                .Where(o => !updatedDict.Values.Any(u => u.Exterior != null && u.Exterior.Equals(o.Exterior)))
-                .ToDictionary(p => p.Name!, p => (Geometry)p);
-
-            return new GeometryDiff(added, deleted);
-        }
-
         public class DatasetUpdate
         {
-            // public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
+            //public Dictionary<string, SupportFile> SupportFiles { get; init; } = [];
             public Dictionary<string, object> Metadata { get; init; } = [];
             public Dictionary<string, object> Features { get; init; } = [];
             public Dictionary<string, object> InformationTypes { get; init; } = [];
@@ -1003,6 +838,18 @@ namespace S100FC.YAML
             public Dictionary<string, Curve> Curves { get; init; } = [];
             public Dictionary<string, CompositeCurve> CompositeCurves { get; init; } = [];
             public Dictionary<string, Surface> Surfaces { get; init; } = [];
+
+            public Dictionary<string, Geometry>? Dictionary(string type) {
+                return type?.ToLowerInvariant() switch {
+                    "point" => this.Points.ToDictionary(k => k.Key, v => (Geometry)v.Value),
+                    "pointset" => this.Depths.ToDictionary(k => k.Key, v => (Geometry)v.Value),
+                    "curve" => this.Curves.ToDictionary(k => k.Key, v => (Geometry)v.Value),
+                    "surface" => this.Surfaces.ToDictionary(k => k.Key, v => (Geometry)v.Value),
+                    "compositecurve" => this.CompositeCurves.ToDictionary(k => k.Key, v => (Geometry)v.Value),
+                    "" => null,
+                    _ => null
+                };
+            }
         }
     }
 

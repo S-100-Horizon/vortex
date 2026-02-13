@@ -206,22 +206,37 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(name) == null) {
+
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+
+            if (product == null) {
                 response.Success = false;
                 response.Message = $"No electronic product with name '{name}' was found.";
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return StatusCode(StatusCodes.Status404NotFound, response);
             }
 
-            // Check if product has any updates before creating new update
-            var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            if (!dirty) {
+            var dirtyYaml = await _electronicProductManager.IsDirtyYamlAsync(name);
+
+            if(!dirtyYaml) {
                 response.Success = false;
                 response.Message = $"Product has no updates.";
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return BadRequest(response);
+
             }
+
+            //// Check if product has any updates before creating new update
+            //var dirty = await _electronicProductManager.IsDirtyAsync(name);
+
+            //if (!dirty) {
+            //    response.Success = false;
+            //    response.Message = $"Product has no updates.";
+            //    response.DurationMs = sw.ElapsedMilliseconds;
+            //    return BadRequest(response);
+            //}
 
             // todo: detect updates properly
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
@@ -235,14 +250,14 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var product = _electronicProductManager.ElectronicProduct(name)!;
-
             var latest = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
+
+
 
             // Build YAML Delta
             var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
-            //if(!delta.Any)
+            //if(!delta.HasEdits)
             // TODO: Do something
 
             // Populate metadata

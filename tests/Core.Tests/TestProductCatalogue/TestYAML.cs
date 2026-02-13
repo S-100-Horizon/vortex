@@ -20,6 +20,15 @@ namespace TestS100FC
             var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
 
+
+
+            var seriously = S100FC.YAML.Converter.Serialize(delta);
+            
+            
+            var appended = DatasetComparer.AppendUpdate(latest, seriously);
+
+
+
             System.Diagnostics.Debugger.Break();
 
         }
@@ -55,14 +64,14 @@ namespace TestS100FC
             }
 
             // Compare the appended root dataset with the incoming update
-            var datasetDiff = DatasetComparer.Compare(yamlRoot, incomingDataset);
+            //var datasetDiff = DatasetComparer.Compare(yamlRoot, incomingDataset);
 
-            // Build and write new update delta
-            var datasetDiffed = Converter.Serialize(datasetDiff);
+            //// Build and write new update delta
+            //var datasetDiffed = Converter.Serialize(datasetDiff);
 
-            System.Diagnostics.Debugger.Break();
-            // Create new update
-            System.IO.File.WriteAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", DSNM, $"{edition}", $"{DSNM}_{update:D3}.yaml"), datasetDiffed);
+            //System.Diagnostics.Debugger.Break();
+            //// Create new update
+            //System.IO.File.WriteAllText(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "s100ed8", DSNM, $"{edition}", $"{DSNM}_{update:D3}.yaml"), datasetDiffed);
         }
 
         [Fact]

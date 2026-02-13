@@ -38,6 +38,7 @@ namespace S100FC.ProductCatalogue
         Task<bool> QueryUpdatesAsync(string name, Action<object> action);
 
         Task<bool> IsDirtyAsync(string name);
+        Task<bool> IsDirtyYamlAsync(string name);
 
         ElectronicProduct? ElectronicProduct(string name);
 
@@ -251,7 +252,7 @@ namespace S100FC.ProductCatalogue
                 throw new System.ArgumentException(nameof(name));
 
             var result = await this.GetElectronicProductAsync(name);
-            
+
             if (result.ElectronicProduct.editionNumber.HasValue && result.ElectronicProduct.updateNumber.HasValue)
                 throw new InvalidOperationException();
 
@@ -260,6 +261,29 @@ namespace S100FC.ProductCatalogue
             result.ElectronicProduct.updateNumber = 0;
 
             return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.NewDataset);
+        }
+
+        async Task<bool> IElectronicProductManager.IsDirtyYamlAsync(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new System.ArgumentNullException(nameof(name));
+
+            name = name.ToUpperInvariant();
+
+            if (!this._electronicProducts.ContainsKey(name))
+                throw new System.ArgumentException(nameof(name));
+
+            var result = await this.GetElectronicProductAsync(name);
+
+            var dataset = await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter, ExportTypes.Update, false);
+
+            var latest = await this.GetLatestDatasetYAML(name, result.ElectronicProduct.editionNumber!.Value);
+
+
+            var incoming = dataset.Serialize();
+
+            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
+
+            return delta.HasEdits;
         }
 
         async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string name) {
@@ -470,7 +494,7 @@ namespace S100FC.ProductCatalogue
             });
         }
 
-        private async Task<YAML.Dataset> CreateDatasetAsync(ElectronicProduct electronicProduct, SpatialQueryFilter filter, ExportTypes exportType) {
+        private async Task<YAML.Dataset> CreateDatasetAsync(ElectronicProduct electronicProduct, SpatialQueryFilter filter, ExportTypes exportType, bool applyEdits = true) {
             var timestamp = DateTime.UtcNow;
 
             var featureCatalogue = S100FC.Catalogues.FeatureCatalogue.Catalogues.Single(e => e.ProductID.Equals("S-101"));
@@ -794,52 +818,54 @@ namespace S100FC.ProductCatalogue
                 }
 
                 // Apply Edits
-                this._geodatabase!.ApplyEdits(() => {
-                    using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
+                if (applyEdits) {
+                    this._geodatabase!.ApplyEdits(() => {
+                        using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
-                    using var cursorS128 = surface.Search(new QueryFilter {
-                        //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        //WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'",
-                    }, false);
+                        using var cursorS128 = surface.Search(new QueryFilter {
+                            //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                            //WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
+                            WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'",
+                        }, false);
 
-                    cursorS128.MoveNext();
+                        cursorS128.MoveNext();
 
-                    Debug.Assert(cursorS128.Current != null);
+                        Debug.Assert(cursorS128.Current != null);
 
-                    var flatten = electronicProduct.Flatten();
+                        var flatten = electronicProduct.Flatten();
 
-                    var row128 = cursorS128.Current;
-                    row128["flatten"] = flatten;
-                    row128.Store();
-                    row128.Dispose();
+                        var row128 = cursorS128.Current;
+                        row128["flatten"] = flatten;
+                        row128.Store();
+                        row128.Dispose();
 
-                    this._electronicProducts[electronicProduct.datasetName!.ToUpperInvariant()] = electronicProduct;
+                        this._electronicProducts[electronicProduct.datasetName!.ToUpperInvariant()] = electronicProduct;
 
-                    using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+                        using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
-                    using var buffer = attachment.CreateRowBuffer();
+                        using var buffer = attachment.CreateRowBuffer();
 
-                    buffer["ps"] = "S-128.Horizon";
-                    buffer["code"] = nameof(Dataset);
-                    buffer["edition"] = featureCatalogue.VersionNumber.ToString();
-                    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
-                        DatasetName = electronicProduct.datasetName!,
-                        Edition = electronicProduct.editionNumber!.Value,
-                        Update = electronicProduct.updateNumber ?? 0,
-                        ExportTypes = exportType,
-                        TimestampUTC = timestamp
-                    }, this.jsonSerializerOptionsS128);
+                        buffer["ps"] = "S-128.Horizon";
+                        buffer["code"] = nameof(Dataset);
+                        buffer["edition"] = featureCatalogue.VersionNumber.ToString();
+                        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
+                            DatasetName = electronicProduct.datasetName!,
+                            Edition = electronicProduct.editionNumber!.Value,
+                            Update = electronicProduct.updateNumber ?? 0,
+                            ExportTypes = exportType,
+                            TimestampUTC = timestamp
+                        }, this.jsonSerializerOptionsS128);
 
-                    var yaml = dataset.Serialize();
+                        var yaml = dataset.Serialize();
 
-                    using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
+                        using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
 
-                    buffer["data_size"] = memoryStream.Length;
-                    buffer["data"] = memoryStream;
+                        buffer["data_size"] = memoryStream.Length;
+                        buffer["data"] = memoryStream;
 
-                    attachment.CreateRow(buffer);
-                });
+                        attachment.CreateRow(buffer);
+                    });
+                }
                 return dataset!;
             });
         }
