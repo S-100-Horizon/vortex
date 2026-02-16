@@ -154,6 +154,7 @@
                 <MultiBinding Converter="{StaticResource AttributeBindingDefinitionConverter}">
                     <Binding/>
                     <Binding RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                    <Binding Path="DataContext" RelativeSource="{RelativeSource AncestorType=Expander}"/>
                 </MultiBinding>
             </Setter.Value>
         </Setter>

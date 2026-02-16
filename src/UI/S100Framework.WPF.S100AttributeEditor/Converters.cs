@@ -47,12 +47,19 @@ namespace S100Framework.WPF.Converters
     public class AttributeBindingDefinitionConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture) {
-            if ((values.Length != 2)) return false;
+            if ((values.Length != 3)) return false;
 
             var attributeBindingDefinition = values[0] as attributeBindingDefinition;
 
-            if (values[1] is S100AttributeEditor attributeEditor) {
-                return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
+            if(attributeBindingDefinition is null) return false;
+
+            if (values[2] == DependencyProperty.UnsetValue) {                
+                if (values[1] is S100AttributeEditor attributeEditor) {
+                    return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
+                }
+            }
+            if (values[2] is IAttributeBindingContainer attributeBindingContainer) {
+                return attributeBindingContainer.HasCapacity(attributeBindingDefinition);
             }
             return false;
         }
