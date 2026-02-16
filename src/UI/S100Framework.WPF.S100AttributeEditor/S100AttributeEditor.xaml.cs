@@ -31,22 +31,44 @@ namespace S100Framework.WPF
         //}
 
         protected void OnCreateAttributeCommand(object? parameter) {
+            var e = parameter as SelectionChangedBehaviorEventArgs;
+
+            var container = e?.Parameter as IAttributeBindingContainer;
+
             if (this.SelectedObject is null) return;
-            if (parameter is attributeBindingDefinition attributeBinding) {
-                if (this.SelectedObject!.HasCapacity(attributeBinding)) {
+
+            if (e?.SelectedItem is attributeBindingDefinition attributeBinding) {
+                if (container!.HasCapacity(attributeBinding)) {
                     var instance = attributeBinding.CreateInstance();
                     if (instance is SimpleAttribute simpleAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                        container?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                     else if (instance is DateAttribute dateAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                        container?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
                     else if (instance is DateTimeAttribute dateTimeAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+                        container?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
                     else if (instance is ComplexAttribute complexAttribute)
-                        this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
+                        container?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
                     else
                         throw new NotImplementedException();
                 }
             }
+
+            //if (e?.SelectedItem is attributeBindingDefinition attributeBinding) {
+            //    if (e.SelectedObject!.HasCapacity(attributeBinding)) {
+            //        var instance = attributeBinding.CreateInstance();
+            //        if (instance is SimpleAttribute simpleAttribute)
+            //            this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+            //        else if (instance is DateAttribute dateAttribute)
+            //            this.SelectedObject?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+            //        else if (instance is DateTimeAttribute dateTimeAttribute)
+            //            this.SelectedObject?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+            //        else if (instance is ComplexAttribute complexAttribute)
+            //            this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
+            //        else
+            //            throw new NotImplementedException();
+            //    }
+            //}
+
             if (parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
                 if (this.SelectedObject!.HasCapacity(informationBinding)) {
                     this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));

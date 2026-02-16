@@ -121,6 +121,11 @@
                                               ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}" 
                                               ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}}"
                                               DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
+                                        <i:Interaction.Behaviors>
+                                            <local:SelectionChangedBehavior 
+                                                Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                                                Parameter="{Binding DataContext, RelativeSource={RelativeSource AncestorType=Expander}}"/>
+                                        </i:Interaction.Behaviors>
                                     </ComboBox>
                                     <Button Grid.Column="1" Style="{StaticResource DeleteComplexAttributeIconButtonStyle}">
                                         <i:Interaction.Behaviors>
@@ -265,7 +270,9 @@
                       ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
                       DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
                         <i:Interaction.Behaviors>
-                            <local:SelectionChangedBehavior Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
+                            <local:SelectionChangedBehavior 
+                                Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"                                 
+                                Parameter="{Binding SelectedObject, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
                         </i:Interaction.Behaviors>
                     </ComboBox>
                     <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />

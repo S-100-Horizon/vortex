@@ -5,6 +5,12 @@ using System.Windows.Input;
 
 namespace S100Framework.WPF
 {
+    public class SelectionChangedBehaviorEventArgs {
+        public object? SelectedItem { get; set; }
+
+        public object? Parameter { get; set; }
+    }
+
     public class SelectionChangedBehavior : Behavior<ComboBox>
     {
         public static readonly DependencyProperty CommandProperty =
@@ -13,6 +19,14 @@ namespace S100Framework.WPF
         public ICommand Command {
             get => (ICommand)this.GetValue(CommandProperty);
             set => this.SetValue(CommandProperty, value);
+        }
+
+        public static readonly DependencyProperty ParameterProperty =
+            DependencyProperty.Register(nameof(Parameter), typeof(object), typeof(SelectionChangedBehavior));
+
+        public object? Parameter {
+            get => (object?)this.GetValue(ParameterProperty);
+            set => this.SetValue(ParameterProperty, value);
         }
 
         protected override void OnAttached() {
@@ -28,7 +42,11 @@ namespace S100Framework.WPF
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e) {
             if (this.AssociatedObject.SelectedItem != null) {
                 if (this.Command?.CanExecute(this.AssociatedObject.SelectedItem) == true) {
-                    this.Command.Execute(this.AssociatedObject.SelectedItem);
+                    //this.Command.Execute(this.AssociatedObject.SelectedItem);
+                    this.Command.Execute(new SelectionChangedBehaviorEventArgs {
+                        SelectedItem = this.AssociatedObject.SelectedItem,
+                        Parameter = this.Parameter,
+                    });
 
                     this.AssociatedObject.SelectedItem = null;
                 }

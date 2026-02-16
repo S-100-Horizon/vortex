@@ -12,7 +12,7 @@ using System.Windows.Data;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer
     {
         public class RequestInformationsEventArgs(string? informationType) : EventArgs
         {
@@ -26,7 +26,7 @@ namespace S100Framework.WPF.ViewModel
 
         public delegate Task<string[]> RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
 
-        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
+        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);        
 
         public class informationBindingContainer
         {
@@ -105,7 +105,7 @@ namespace S100Framework.WPF.ViewModel
                         else if (item is ComplexAttributeViewModel complexAttribute) {
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
-                    }                    
+                    }
                 }
                 this.OnPropertyChanged("attributeBindings");
             };
@@ -200,13 +200,13 @@ namespace S100Framework.WPF.ViewModel
                         if (item is InformationBindingViewModel informationBinding) {
                             informationBinding.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
-                    }                    
+                    }
                 }
                 this.OnPropertyChanged("informationBindings");
             };
 
             this.featureBindings.CollectionChanged += (s, e) => {
-                if(e.OldItems is not null) {
+                if (e.OldItems is not null) {
                     foreach (var item in e.OldItems) {
                         if (item is FeatureBindingViewModel featureBinding) {
                             featureBinding.PropertyChanged -= this.Viewmodel_PropertyChanged;
@@ -218,7 +218,7 @@ namespace S100Framework.WPF.ViewModel
                         if (item is FeatureBindingViewModel featureBinding) {
                             featureBinding.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
-                    }                    
+                    }
                 }
                 this.OnPropertyChanged("featureBindings");
             };
@@ -304,7 +304,7 @@ namespace S100Framework.WPF.ViewModel
             viewModel.featureBindings.Add(new FeatureBindingViewModel(definitions) {
                 roleType = featureBinding.roleType,
                 role = featureBinding.role,
-                featureType = featureBinding.featureType,                
+                featureType = featureBinding.featureType,
                 featureUID = new FeatureTypeID(featureBinding.featureType!, featureBinding.featureId),
             });
             return viewModel;
@@ -344,7 +344,7 @@ namespace S100Framework.WPF.ViewModel
 
         public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
             featureBinding[] featureBindings = [];
-            foreach(var binding in viewmodel.featureBindings) {
+            foreach (var binding in viewmodel.featureBindings) {
             }
             return featureBindings;
         }

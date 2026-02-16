@@ -6,6 +6,15 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.WPF.ViewModel
 {
+    public interface IAttributeBindingContainer
+    {
+        bool HasCapacity(attributeBindingDefinition binding);
+        bool HasCapacity(IGrouping<string, informationBindingDefinition> binding);
+        bool HasCapacity(IGrouping<string, featureBindingDefinition> binding);
+
+        ObservableCollection<AttributeViewModel> attributeBindings { get; set; }
+    }
+
     public class InformationTypeID(string informationType, string UID)
     {
         public string UID { get; set; } = UID;
@@ -159,7 +168,7 @@ namespace S100Framework.WPF.ViewModel
         public S100FC.DateTimeAttribute? _attribute { get; init; } = default;
     }
 
-    public class ComplexAttributeViewModel : AttributeViewModel
+    public class ComplexAttributeViewModel : AttributeViewModel, IAttributeBindingContainer
     {
         public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
 
@@ -198,6 +207,14 @@ namespace S100Framework.WPF.ViewModel
         public bool HasCapacity(attributeBindingDefinition binding) {
             var count = this.attributeBindings.Count(e => e.code.Equals(binding.attribute));
             return binding.upper > count;
+        }
+
+        public bool HasCapacity(IGrouping<string, informationBindingDefinition> binding) {
+            return false;
+        }
+
+        public bool HasCapacity(IGrouping<string, featureBindingDefinition> binding) {
+            return false;
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
