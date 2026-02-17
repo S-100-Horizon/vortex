@@ -31,7 +31,7 @@ namespace S100Framework.WPF
 
         protected override void OnAttached() {
             base.OnAttached();
-            this.AssociatedObject.SelectionChanged += this.OnSelectionChanged;
+            this.AssociatedObject.SelectionChanged += this.OnSelectionChanged;            
         }
 
         protected override void OnDetaching() {

@@ -190,6 +190,7 @@ namespace S100Framework.WPF.ViewModel
                         }
                     }
                 }
+                //base.OnPropertyChanged(nameof(attributeBindings));
             };
 
             foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {

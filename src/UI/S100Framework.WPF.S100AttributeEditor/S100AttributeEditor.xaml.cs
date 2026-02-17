@@ -8,6 +8,7 @@ using System.Windows.Input;
 
 namespace S100Framework.WPF
 {
+    using Microsoft.VisualBasic;
     using S100Framework.WPF.ViewModel;
     using Xceed.Wpf.AvalonDock.Properties;
 
@@ -83,6 +84,7 @@ namespace S100Framework.WPF
 
         protected void OnDeleteAttributeCommand(object? parameter) {
             if (this.SelectedObject is null) return;
+
             if (parameter is ClickedBehavior.DeleteAttributeCommandEventArgs e) {
                 if (e.parameter is SimpleAttributeViewModel simpleAttribute) {
                     if (e.parent is ItemsControl itemsControl) {
@@ -91,14 +93,20 @@ namespace S100Framework.WPF
                         if (index >= 0) {
                             collection.RemoveAt(index);
                         }
+
                     }
                 }
                 if (e.parameter is ComplexAttributeViewModel complexAttribute) {
+
+                    if (e.parent is IAttributeBindingContainer attributeBindingContainer) {
+                        var index = attributeBindingContainer.attributeBindings.IndexOf(complexAttribute);
+                        attributeBindingContainer.attributeBindings.RemoveAt(index);
+                    }
                     if (e.parent is ItemsControl itemsControl) {
                         var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
                         var index = collection.IndexOf(complexAttribute);
                         if (index >= 0) {
-                            collection.RemoveAt(index);
+                            collection.RemoveAt(index);                            
                         }
                     }
                 }

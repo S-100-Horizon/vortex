@@ -119,7 +119,7 @@
                                     </Grid.ColumnDefinitions>
                                     <ComboBox Grid.Column="0" Style="{StaticResource ButtonLikeComboBox}" 
                                               ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}" 
-                                              ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}}"
+                                              ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}, Mode=TwoWay}"
                                               DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
                                         <i:Interaction.Behaviors>
                                             <local:SelectionChangedBehavior 
@@ -129,7 +129,11 @@
                                     </ComboBox>
                                     <Button Grid.Column="1" Style="{StaticResource DeleteComplexAttributeIconButtonStyle}">
                                         <i:Interaction.Behaviors>
-                                            <local:ClickedBehavior Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" Parameter="{Binding  DataContext, RelativeSource={RelativeSource AncestorType=Expander}}" Parent="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}" />
+                                            <local:ClickedBehavior 
+                                                Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
+                                                Parameter="{Binding  DataContext, RelativeSource={RelativeSource AncestorType=Expander}}"                                                 
+                                                Parent="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
+                                                />
                                         </i:Interaction.Behaviors>
                                     </Button>
                                 </Grid>
