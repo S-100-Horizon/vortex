@@ -331,7 +331,7 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<FeatureBindingViewModel> featureBindings { get; set; } = [];
 
-        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
+        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];        
         #endregion
 
         public object? Instance => this._informationType != default ? this._informationType : this._featureType;

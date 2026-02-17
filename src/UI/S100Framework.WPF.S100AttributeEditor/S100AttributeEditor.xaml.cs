@@ -212,14 +212,17 @@ namespace S100Framework.WPF
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is S100AttributeEditor grid) {
                 if (grid._selectedObject is not null) {
-                    //grid._selectedObject.PropertyChanged -= OnPropertyChanged;
+                    grid._selectedObject.PropertyChanged -= OnPropertyChanged;
                 }
                 grid._selectedObject = e.NewValue as S100AttributeEditorViewModel;
 
                 if (grid._selectedObject != null) {
-                    //grid._selectedObject.PropertyChanged += OnPropertyChanged;
+                    grid._selectedObject.PropertyChanged += OnPropertyChanged;
                 }
             }
+        }
+
+        private static void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
         }
 
         private static void IsEditingEnabledChanged(DependencyObject sender, DependencyPropertyChangedEventArgs args) {
@@ -230,5 +233,10 @@ namespace S100Framework.WPF
 
         private S100AttributeEditorViewModel? _selectedObject;
 
+        private void attributeBindingsCatalogue_DropDownOpened(object sender, EventArgs e) {
+            if (sender is ComboBox comboBox) {
+                comboBox.Items.Refresh();
+            }
+        }
     }
 }

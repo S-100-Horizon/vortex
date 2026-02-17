@@ -107,7 +107,7 @@
                 </Border>
             </DataTemplate>
 
-            <HierarchicalDataTemplate DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
+            <HierarchicalDataTemplate x:Name="attributeBindingsContainer" DataType="{x:Type viewmodel:ComplexAttributeViewModel}" ItemsSource="{Binding attributeBindings}">
                 <Expander Header="{Binding code}" IsExpanded="True" Background="Transparent" HorizontalAlignment="Stretch" Margin="0,2,0,0" Style="{DynamicResource Esri_ExpanderBorderless}">
                     <Expander.HeaderTemplate>
                         <DataTemplate>
@@ -117,10 +117,11 @@
                                         <ColumnDefinition Width="29.986"/>
                                         <ColumnDefinition Width="20"/>
                                     </Grid.ColumnDefinitions>
-                                    <ComboBox Grid.Column="0" Style="{StaticResource ButtonLikeComboBox}" 
+                                    <ComboBox x:Name="attributeBindingsCatalogue" Grid.Column="0" Style="{StaticResource ButtonLikeComboBox}" 
                                               ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}" 
-                                              ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}, Mode=TwoWay}"
-                                              DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
+                                              ItemsSource="{Binding DataContext.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType=Expander}}"
+                                              DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12" 
+                                              DropDownOpened="attributeBindingsCatalogue_DropDownOpened">
                                         <i:Interaction.Behaviors>
                                             <local:SelectionChangedBehavior 
                                                 Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
@@ -131,9 +132,9 @@
                                         <i:Interaction.Behaviors>
                                             <local:ClickedBehavior 
                                                 Command="{Binding DeleteAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" 
-                                                Parameter="{Binding  DataContext, RelativeSource={RelativeSource AncestorType=Expander}}"                                                 
-                                                Parent="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"
-                                                />
+                                                Parameter="{Binding  DataContext, RelativeSource={RelativeSource AncestorType=Expander}}"    
+                                                Parent="{Binding RelativeSource={RelativeSource AncestorType=ItemsControl, AncestorLevel=1}}"/>
+                                            <!--Parent="{Binding Source={x:Reference attributeBindingsContainer}}"-->
                                         </i:Interaction.Behaviors>
                                     </Button>
                                 </Grid>
@@ -268,11 +269,12 @@
                 </Grid.RowDefinitions>
 
                 <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
-                    <ComboBox DockPanel.Dock="Right" 
-                      Style="{StaticResource ButtonLikeComboBox}"
-                      ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}"
-                      ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
-                      DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12">
+                    <ComboBox x:Name="attributeBindingsCatalogue" DockPanel.Dock="Right" 
+                              Style="{StaticResource ButtonLikeComboBox}"
+                              ItemContainerStyle="{StaticResource AttributeBindingButtonLikeComboBoxItemStyle}"
+                              ItemsSource="{Binding SelectedObject.attributeBindingsCatalogue, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                              DisplayMemberPath="attribute" FontWeight="Normal" FontSize="12"
+                              DropDownOpened="attributeBindingsCatalogue_DropDownOpened">
                         <i:Interaction.Behaviors>
                             <local:SelectionChangedBehavior 
                                 Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"                                 
@@ -282,7 +284,7 @@
                     <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />
                 </DockPanel>
 
-                <ItemsControl Grid.Row="1"
+                <ItemsControl x:Name="attributeBindingsContainer" Grid.Row="1"
                    ItemsSource="{Binding SelectedObject.attributeBindings, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"/>
             </Grid>
 
