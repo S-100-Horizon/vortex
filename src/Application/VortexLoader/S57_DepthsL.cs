@@ -139,7 +139,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            buffer["edition"] = ImporterNIS.s101version;
+                            
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -227,7 +227,7 @@ namespace S100Framework.Applications
 
             buffer["ps"] = ps101;
             buffer["code"] = spatialQuality101.S100FC_code;
-            buffer["edition"] = ImporterNIS.s101version;
+            
             buffer["flatten"] = spatialQuality101.Flatten();
 
             var informationTypeRow = informationTypeTable.CreateRow(buffer);

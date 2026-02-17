@@ -226,7 +226,6 @@ namespace S100FC.ProductCatalogue
 
 
                         var flattened = electronicProduct.Flatten();
-                        buffer["edition"] = "2.0.0"; //featureCatalogue.VersionNumber.ToString();           // todo: fix
                         buffer["flatten"] = flattened;
                         buffer["shape"] = boundary;
                         surface.CreateRow(buffer);
@@ -847,7 +846,6 @@ namespace S100FC.ProductCatalogue
 
                         buffer["ps"] = "S-128.Horizon";
                         buffer["code"] = nameof(Dataset);
-                        buffer["edition"] = featureCatalogue.VersionNumber.ToString();
                         buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
                             DatasetName = electronicProduct.datasetName!,
                             Edition = electronicProduct.editionNumber!.Value,

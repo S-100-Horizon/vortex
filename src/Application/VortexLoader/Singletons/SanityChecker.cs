@@ -140,12 +140,6 @@ namespace S100Framework.Applications.Singletons
                 while (cursor.MoveNext()) {
                     recordCount++;
                     var feature = cursor.Current;
-                    var edition = feature["edition"];
-                    if (edition == null || edition == DBNull.Value || string.IsNullOrEmpty(edition.ToString())) {
-                        errorCount++;
-                        tableErrorCount++;
-                    }
-
                 }
 
                 if (tableErrorCount > 0) {

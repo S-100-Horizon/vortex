@@ -77,7 +77,6 @@ namespace S100Framework.Applications.Singletons
 
             bufferInformationType["ps"] = ImporterNIS.ps101;
             bufferInformationType["code"] = nauticalInformation.S100FC_code;
-            bufferInformationType["edition"] = ImporterNIS.s101version;
             bufferInformationType["flatten"] = nauticalInformation.Flatten();
 
             var informationTypeRow = informationTypeTable.CreateRow(bufferInformationType);
@@ -157,8 +156,7 @@ namespace S100Framework.Applications.Singletons
                             };
 
                             rowBuffer["ps"] = "S-100.Horizon";
-                            rowBuffer["code"] = "supportfile";
-                            rowBuffer["edition"] = ImporterNIS.s101version;
+                            rowBuffer["code"] = "supportfile";                            
                             rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
                             rowBuffer["data_size"] = new FileInfo(filePath).Length;
                             rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
