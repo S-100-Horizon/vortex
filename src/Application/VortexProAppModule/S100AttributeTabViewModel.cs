@@ -481,7 +481,7 @@ namespace VortexProAppModule
                 }
                 else {
                     if (!Inspector.IsNull("informationBindings")) {
-                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["informationBindings"]), _jsonOptions);
+                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(Inspector["informationBindings"]), _jsonOptions);
                         foreach (var informationBinding in informationBindings)
                             this.SelectedProperty += informationBinding;
                     }
@@ -579,14 +579,24 @@ namespace VortexProAppModule
                         }
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
+                        var informationBindings = (informationBinding[])viewModel;
 
+                        var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+
+                        if (Inspector.IsNull("informationBindings")) {
+                            Inspector["informationBindings"] = json;
+                            updated |= true;
+                        }
+                        else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
+                            Inspector["informationBindings"] = json;
+                            updated |= true;
+                        }
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
                         var featureBindings = (featureBinding[])viewModel;
 
                         var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
 
-                        //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, this._jsonOptions);
                         if (Inspector.IsNull("featureBindings")) {
                             Inspector["featureBindings"] = json;
                             updated |= true;

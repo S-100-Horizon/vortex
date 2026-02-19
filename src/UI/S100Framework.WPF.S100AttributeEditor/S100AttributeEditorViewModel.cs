@@ -233,6 +233,21 @@ namespace S100Framework.WPF.ViewModel
                 else if (e is ComplexAttribute complexAttribute)
                     this.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
             }
+
+            //note: Must be added right by the end!
+            this.attributeBindings.CollectionChanged += (s, e) => {
+                ;
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                    }
+                }
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        æøå
+                    }
+                }
+
+            };
         }
 
         public bool HasInformationBindings { get; init; } = false;
@@ -341,6 +356,20 @@ namespace S100Framework.WPF.ViewModel
         private readonly S100FC.InformationType? _informationType = default;
         private readonly S100FC.FeatureType? _featureType = default;
         private readonly string _uid;
+
+        public static explicit operator informationBinding[](S100AttributeEditorViewModel viewmodel) {
+            informationBinding[] informationBinding = [];
+            foreach (var binding in viewmodel.informationBindings) {
+                if (binding.roleType is null) continue;
+
+                var f = binding.informationBindingDefinition!.CreateInstance()!;
+                f.informationType = binding.informationType;
+                f.informationId = binding.informationUID?.UID!;
+
+                informationBinding = [.. informationBinding, f];
+            }
+            return informationBinding;
+        }
 
         public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
             featureBinding[] featureBindings = [];
