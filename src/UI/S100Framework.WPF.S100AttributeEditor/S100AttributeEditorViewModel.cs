@@ -236,14 +236,24 @@ namespace S100Framework.WPF.ViewModel
 
             //note: Must be added right by the end!
             this.attributeBindings.CollectionChanged += (s, e) => {
-                ;
                 if (e.OldItems is not null) {
                     foreach (var item in e.OldItems) {
+                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._featureType.RemoveAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._featureType.RemoveAttribute(complexAttributeViewModel.attribute);
+                        }
                     }
                 }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
-                        æøå
+                        if(item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._featureType.SetAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if(item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._featureType.SetAttribute(complexAttributeViewModel.attribute);
+                        }
                     }
                 }
 

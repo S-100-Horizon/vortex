@@ -74,8 +74,6 @@ namespace VortexProAppModule
 
         private SelectedType _selectedModelType = default;
 
-        //private S100AttributeEditorControlHost _host;
-
         private ObservableCollection<string> _schemas = [];
 
         private string _selectedSchema = default;
@@ -87,11 +85,7 @@ namespace VortexProAppModule
         };
 
         private S100AttributeEditorViewModel _selectedProperty = default;
-
-        //private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
-
-        //private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
-
+        
         private Boolean _isEditingEnabled = false;
 
         private Boolean _isVisible = false;
@@ -201,8 +195,6 @@ namespace VortexProAppModule
                             if (featuretype != default) {
                                 var featureCatalogue = this._module.GetFeatureCatalogue(this.SelectedSchema);
 
-                                //var featureType = featureCatalogue.FeatureTypes.Single(e => e.Code.Equals(featuretype));
-
                                 this._selectedTemplate = new SelectedTemplate(this.SelectedSchema, featuretype);
 
                                 this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
@@ -247,8 +239,6 @@ namespace VortexProAppModule
                         "surface" => this._inspectorHandleFeatureType,
                         "informationtype" => this._inspectorHandleInformationType,
                         "featuretype" => this._inspectorHandleFeatureType,
-                        //"featureassociation" => _inspectorHandleFeatureAssociation,
-                        //"informationassociation" => _inspectorHandleInformationAssociation,
 
                         _ => throw new NotImplementedException(),
                     };
@@ -320,8 +310,7 @@ namespace VortexProAppModule
                     }
                     else {
                         var json = Convert.ToString(inspector["FLATTEN"]);
-                        instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, type);
-                        //instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
+                        instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, type);                        
                     }
 
                     if (instance is S100FC.InformationType informationType) {
@@ -565,10 +554,8 @@ namespace VortexProAppModule
                                 updated |= true;
                             }
                         }
-
-                        //TODO: DELETE [JSON]
+                        
                         var json = viewModel.Flatten();
-                        //var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
                         if (Inspector.IsNull("flatten")) {
                             Inspector["flatten"] = json;
                             updated |= true;

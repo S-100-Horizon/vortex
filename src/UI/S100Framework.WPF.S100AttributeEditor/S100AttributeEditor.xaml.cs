@@ -10,6 +10,7 @@ namespace S100Framework.WPF
 {
     using Microsoft.VisualBasic;
     using S100Framework.WPF.ViewModel;
+    using Windows.Foundation.Collections;
     using Xceed.Wpf.AvalonDock.Properties;
 
     /// <summary>
@@ -212,14 +213,20 @@ namespace S100Framework.WPF
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is S100AttributeEditor grid) {
                 if (grid._selectedObject is not null) {
+                    grid._selectedObject.attributeBindings.CollectionChanged -= OnCollectionChanged;
                     grid._selectedObject.PropertyChanged -= OnPropertyChanged;
                 }
                 grid._selectedObject = e.NewValue as S100AttributeEditorViewModel;
 
                 if (grid._selectedObject != null) {
                     grid._selectedObject.PropertyChanged += OnPropertyChanged;
+                    grid._selectedObject.attributeBindings.CollectionChanged += OnCollectionChanged;
                 }
             }
+        }
+
+        private static void OnCollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+            ;
         }
 
         private static void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
