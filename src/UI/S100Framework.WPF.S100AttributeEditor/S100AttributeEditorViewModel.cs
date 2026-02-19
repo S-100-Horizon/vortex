@@ -23,10 +23,22 @@ namespace S100Framework.WPF.ViewModel
         {
             public string? FeatureType { get; } = featureType;
         }
+        public class SelectInformationTypesEvenArgs(InformationTypeID[] uids) : EventArgs
+        {
+            public InformationTypeID[] UIDs { get; } = uids;
+        }
+
+        public class SelectFeatureTypesEvenArgs(FeatureTypeID[] uids) : EventArgs {
+            public FeatureTypeID[] UIDs { get; } = uids;
+        }
 
         public delegate Task<string[]> RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
 
-        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);        
+        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
+
+        public delegate Task SelectInformationTypesEventHandler(object? sender, SelectInformationTypesEvenArgs e);
+
+        public delegate Task SelectFeatureTypessEventHandler(object? sender, SelectFeatureTypesEvenArgs e);
 
         public class informationBindingContainer
         {
@@ -74,6 +86,10 @@ namespace S100Framework.WPF.ViewModel
         public RequestInformationsEventHandler RequestInformation = async (s, e) => { return []; };
 
         public RequestFeaturesEventHandler RequestFeatures = async (s, e) => { return []; };
+
+        public SelectInformationTypesEventHandler SelectInformationTypes = async (s, e) => { };
+
+        public SelectFeatureTypessEventHandler SelectFeatureTypes = async (s, e) => { };
 
         public S100AttributeEditorViewModel(S100FC.InformationType informationType, string uid) {
             this._informationType = informationType;

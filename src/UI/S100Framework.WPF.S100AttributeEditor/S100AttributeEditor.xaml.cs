@@ -105,7 +105,7 @@ namespace S100Framework.WPF
                         var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
                         var index = collection.IndexOf(complexAttribute);
                         if (index >= 0) {
-                            collection.RemoveAt(index);                            
+                            collection.RemoveAt(index);
                         }
                     }
                 }
@@ -241,6 +241,26 @@ namespace S100Framework.WPF
         private void attributeBindingsCatalogue_DropDownOpened(object sender, EventArgs e) {
             if (sender is ComboBox comboBox) {
                 comboBox.Items.Refresh();
+            }
+        }
+
+        private void Button_SelectInformationBindings(object sender, RoutedEventArgs e) {
+            if (this._selectedObject is null) return;
+
+            if (this._selectedObject.informationBindings.Any()) {
+                var uids = this._selectedObject.informationBindings.Where(e => e.informationUID != null);
+                if (uids.Any())
+                    this._selectedObject.SelectInformationTypes?.Invoke(this, new S100AttributeEditorViewModel.SelectInformationTypesEvenArgs([.. uids.Select(e => e.informationUID)!]));
+            }
+        }
+
+        private void Button_SelectFeatureBindings(object sender, RoutedEventArgs e) {
+            if (this._selectedObject is null) return;
+
+            if (this._selectedObject.featureBindings.Any()) {
+                var uids = this._selectedObject.featureBindings.Where(e => e.featureUID != null);
+                if (uids.Any())
+                    this._selectedObject.SelectFeatureTypes?.Invoke(this, new S100AttributeEditorViewModel.SelectFeatureTypesEvenArgs([.. uids.Select(e => e.featureUID)!]));
             }
         }
     }

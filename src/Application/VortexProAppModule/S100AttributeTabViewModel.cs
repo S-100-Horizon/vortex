@@ -360,6 +360,11 @@ namespace VortexProAppModule
                                     return result;
                                 }, TaskCreationOptions.None);
                             },
+
+                            SelectInformationTypes = async (s, e) => {
+
+                            },
+
                             RequestFeatures = async (s, e) => {
                                 if (MapView.Active is null)
                                     return [];
@@ -394,6 +399,20 @@ namespace VortexProAppModule
                                     }
                                     return result;
                                 }, TaskCreationOptions.None);
+                            },
+
+                            SelectFeatureTypes = async (s, e) => {
+                                var mapView = MapView.Active;
+                                if (mapView is null) return;
+
+                                if (e.UIDs.Any()) {
+                                    foreach(var layer in mapView.Map.Layers.OfType<FeatureLayer>()) {
+                                        
+                                    }
+
+                                    //var selection = layers.ToDictionary(l => l.Name, l => e.UIDs.Select(e=>e.UID).ToList());
+                                    //mapView.Map.SetSelection()
+                                }
                             },
                         };
                     }
