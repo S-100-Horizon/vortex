@@ -4991,6 +4991,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Applicability)],
+					CreateInstance = () => new informationBinding<InformationAssociation.InclusionType>() {
+						roleType = "association",
+						role = "isApplicableTo",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4999,6 +5003,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RelatedOrganisation>() {
+						roleType = "association",
+						role = "theOrganisation",
+					},
 				},
 			];
 
@@ -5181,6 +5189,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(AbstractRxN)],
+					CreateInstance = () => new informationBinding<InformationAssociation.InclusionType>() {
+						roleType = "association",
+						role = "theApplicableRxN",
+					},
 				},
 			];
 
@@ -5247,6 +5259,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5255,6 +5271,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(AbstractRxN)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RelatedOrganisation>() {
+						roleType = "association",
+						role = "organisationRelatedRxN",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5263,6 +5283,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 			];
 
@@ -5651,6 +5675,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityContact>() {
+						roleType = "association",
+						role = "theAuthority",
+					},
 				},
 			];
 
@@ -6002,6 +6030,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(NonStandardWorkingDay)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ExceptionalWorkday>() {
+						roleType = "association",
+						role = "partialWorkingDay",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6010,6 +6042,10 @@ namespace S100FC.S131.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityHours>() {
+						roleType = "association",
+						role = "theAuthority_srvHrs",
+					},
 				},
 			];
 
@@ -6232,6 +6268,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Applicability)],
+					CreateInstance = () => new informationBinding<InformationAssociation.PermissionType>() {
+						roleType = "association",
+						role = "permission",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6240,6 +6280,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(AbstractRxN)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AssociatedRxN>() {
+						roleType = "association",
+						role = "theRxN",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6248,6 +6292,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -6274,6 +6322,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -6309,6 +6361,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 			];
 
@@ -6350,6 +6406,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceControl>() {
+						roleType = "association",
+						role = "controlAuthority",
+					},
 				},
 			];
 
@@ -6396,6 +6456,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Infrastructure>() {
+						roleType = "association",
+						role = "infrastructureLocation",
+					},
 				},
 			];
 
@@ -6504,6 +6568,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6512,6 +6580,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -6535,6 +6607,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(MooringWarpingFacility)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility>() {
+						roleType = "association",
+						role = "auxiliaryFacility",
+					},
 				},
 			];
 
@@ -6653,6 +6729,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -6672,6 +6752,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -6707,6 +6791,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7025,6 +7113,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7033,6 +7125,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7056,6 +7152,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(BerthPosition)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Demarcation>() {
+						roleType = "association",
+						role = "demarcationIndicator",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -7064,6 +7164,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection),nameof(Terminal)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -7188,6 +7292,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(Berth)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Demarcation>() {
+						roleType = "composition",
+						role = "demarcatedFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -7196,6 +7304,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(MooringWarpingFacility)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility>() {
+						roleType = "association",
+						role = "auxiliaryFacility",
+					},
 				},
 			];
 
@@ -7363,6 +7475,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7371,6 +7487,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7394,6 +7514,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -7461,6 +7585,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7607,6 +7735,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7626,6 +7758,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -7686,6 +7822,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -7741,6 +7881,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7814,6 +7958,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7937,6 +8085,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7945,6 +8097,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -7968,6 +8124,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(OuterLimit)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.JurisdictionalLimit>() {
+						roleType = "association",
+						role = "limitExtent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -7976,6 +8136,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "association",
+						role = "layoutUnit",
+					},
 				},
 			];
 
@@ -8074,6 +8238,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -8082,6 +8250,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8105,6 +8277,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaAdministrative)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -8113,6 +8289,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Subsection>() {
+						roleType = "aggregation",
+						role = "constitute",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8121,6 +8301,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Subsection>() {
+						roleType = "association",
+						role = "subUnit",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8129,6 +8313,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Infrastructure>() {
+						roleType = "association",
+						role = "hasInfrastructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8137,6 +8325,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(AnchorageArea),nameof(Berth),nameof(DockArea),nameof(DumpingGround),nameof(FenderLine),nameof(HarbourBasin),nameof(PilotBoardingPlace),nameof(SeaplaneLandingArea),nameof(Terminal),nameof(TurningBasin),nameof(WaterwayArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "association",
+						role = "layoutUnit",
+					},
 				},
 			];
 
@@ -8237,6 +8429,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8256,6 +8452,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -8291,6 +8491,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8352,6 +8556,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8413,6 +8621,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8606,6 +8818,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -8614,6 +8830,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8637,6 +8857,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(AnchorBerth),nameof(BerthPosition)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PrimaryAuxiliaryFacility>() {
+						roleType = "association",
+						role = "primaryFacility",
+					},
 				},
 			];
 
@@ -8767,6 +8991,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -8888,6 +9116,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(Entrance)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LimitEntrance>() {
+						roleType = "association",
+						role = "entranceReference",
+					},
 				},
 			];
 
@@ -8907,6 +9139,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaAdministrative)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.JurisdictionalLimit>() {
+						roleType = "association",
+						role = "limitReference",
+					},
 				},
 			];
 
@@ -9012,6 +9248,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9031,6 +9271,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -9123,6 +9367,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9142,6 +9390,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -9197,6 +9449,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9238,6 +9494,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9374,6 +9634,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(AvailablePortServices)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceAvailability>() {
+						roleType = "association",
+						role = "serviceDescriptionReference",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -9382,6 +9646,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9405,6 +9673,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9413,6 +9685,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Berth)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "association",
+						role = "layoutUnit",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9421,6 +9697,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(HarbourPhysicalInfrastructure)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Infrastructure>() {
+						roleType = "association",
+						role = "hasInfrastructure",
+					},
 				},
 			];
 
@@ -9517,6 +9797,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9536,6 +9820,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -9628,6 +9916,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "facilityOperatingHours",
+					},
 				},
 			];
 
@@ -9647,6 +9939,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(HarbourAreaSection)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.LayoutDivision>() {
+						roleType = "aggregation",
+						role = "componentOf",
+					},
 				},
 			];
 
@@ -10097,6 +10393,10 @@ namespace S100FC.S131.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(FeatureType)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "composition",
+						role = "thePositionProvider",
+					},
 				},
 			];
 

@@ -345,6 +345,13 @@ namespace S100Framework.WPF.ViewModel
         public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
             featureBinding[] featureBindings = [];
             foreach (var binding in viewmodel.featureBindings) {
+                if (binding.roleType is null) continue;
+
+                var f = binding.featureBindingDefinition!.CreateInstance()!;
+                f.featureType = binding.featureType;
+                f.featureId = binding.featureUID?.UID!;
+
+                featureBindings = [..featureBindings,f];
             }
             return featureBindings;
         }

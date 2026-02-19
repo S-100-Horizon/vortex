@@ -365,8 +365,10 @@ namespace S100Framework.WPF.ViewModel
                 this.roles.Add(e.role);
             }
 
-            this.PropertyChanged += (s, e) => {
+            this.PropertyChanged += (s, e) => {                
                 if (string.IsNullOrEmpty(e.PropertyName)) {
+                    this._featureBindingDefinition = null;
+
                     this.role = null;
                     this.roleType = null;
                     this.featureTypes.Clear();
@@ -375,12 +377,12 @@ namespace S100Framework.WPF.ViewModel
                     this.featureUID = null;
                 }
                 else if (e.PropertyName.Equals(nameof(role))) {
-                    var featureBinding = this._featureBindingDefinitions.Single(e => e.role.Equals(this.role));
-                    this.roleType = featureBinding.roleType;
+                    this._featureBindingDefinition = this._featureBindingDefinitions.Single(e => e.role.Equals(this.role));
+                    this.roleType = this._featureBindingDefinition.roleType;
 
                     this.featureType = null;
                     this.featureTypes.Clear();
-                    foreach (var featureType in featureBinding.featureTypes) {
+                    foreach (var featureType in this._featureBindingDefinition.featureTypes) {
                         this.featureTypes.Add(featureType);
                     }
 
@@ -398,6 +400,10 @@ namespace S100Framework.WPF.ViewModel
                 }
             };
         }
+
+        private featureBindingDefinition? _featureBindingDefinition { get; set; } = null;
+
+        public featureBindingDefinition? featureBindingDefinition => this._featureBindingDefinition;
 
         private string? _roleType;
         public string? roleType {
@@ -440,5 +446,9 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private featureBindingDefinition[] _featureBindingDefinitions;
+
+        public static explicit operator featureBinding(FeatureBindingViewModel viewmodel) {
+            return null;
+        }
     }
 }

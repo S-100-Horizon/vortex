@@ -7501,6 +7501,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -7690,6 +7694,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -7797,6 +7805,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -7960,6 +7972,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.QualityOfBathymetricDataComposition>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
 				},
 			];
 
@@ -7978,6 +7994,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8061,6 +8081,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8144,6 +8168,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8410,6 +8438,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8541,6 +8573,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdateAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -8549,6 +8585,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdateAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8557,6 +8597,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(CautionArea),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContiguousZone),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(CustomZone),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DepthArea),nameof(DepthContour),nameof(DepthNoBottomFound),nameof(DiscolouredWater),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(ExclusiveEconomicZone),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InshoreTrafficZone),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalDirectionOfBuoyage),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MagneticVariation),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(NavigationLine),nameof(NavigationalSystemOfMarks),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(QualityOfBathymetricData),nameof(QualityOfNonBathymetricData),nameof(QualityOfSurvey),nameof(RadarLine),nameof(RadarRange),nameof(RadarReflector),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RecommendedTrafficLanePart),nameof(RescueStation),nameof(RestrictedArea),nameof(Retroreflector),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(Sandwave),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(SeparationZoneOrLine),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SmallCraftFacility),nameof(SlopeTopline),nameof(SlopingGround),nameof(Sounding),nameof(SoundingDatum),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StraightTerritorialSeaBaseline),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TerritorialSeaArea),nameof(TidalStreamPanelData),nameof(TidalStreamFloodEbb),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(Tunnel),nameof(TwoWayRoute),nameof(TwoWayRoutePart),nameof(UnderwaterAwashRock),nameof(UnsurveyedArea),nameof(UpdateInformation),nameof(Vegetation),nameof(VerticalDatumOfData),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdatedObject",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8565,6 +8609,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8682,6 +8730,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -8700,6 +8752,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -8813,6 +8869,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -8831,6 +8891,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -8839,6 +8903,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9008,6 +9076,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9026,6 +9098,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9034,6 +9110,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9165,6 +9245,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9183,6 +9267,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(IslandGroup)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.IslandAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9191,6 +9279,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9199,6 +9291,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9296,6 +9392,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9314,6 +9414,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(LandArea),nameof(IslandGroup)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.IslandAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -9322,6 +9426,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(IslandGroup)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.IslandAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9330,6 +9438,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9338,6 +9450,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9460,6 +9576,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9478,6 +9598,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9486,6 +9610,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9592,6 +9720,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9610,6 +9742,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9618,6 +9754,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9723,6 +9863,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9741,6 +9885,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9749,6 +9897,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -9867,6 +10019,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -9885,6 +10041,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -9893,6 +10053,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10011,6 +10175,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10029,6 +10197,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10037,6 +10209,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10169,6 +10345,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10187,6 +10367,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10195,6 +10379,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10350,6 +10538,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10368,6 +10560,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10376,6 +10572,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10568,6 +10768,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10586,6 +10790,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10594,6 +10802,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10751,6 +10963,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10769,6 +10985,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10777,6 +10997,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -10946,6 +11170,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -10964,6 +11192,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -10972,6 +11204,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -11065,6 +11301,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -11083,6 +11323,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -11091,6 +11335,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -11283,6 +11531,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -11301,6 +11553,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -11309,6 +11565,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -11602,6 +11862,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -11620,6 +11884,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -11628,6 +11896,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -11636,6 +11908,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -11644,6 +11920,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -11652,6 +11932,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -11820,6 +12104,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -11838,6 +12126,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -11846,6 +12138,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -12002,6 +12298,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -12020,6 +12320,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12028,6 +12332,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -12184,6 +12492,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -12202,6 +12514,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Building),nameof(Landmark),nameof(OffshorePlatform)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12210,6 +12526,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12218,6 +12538,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -12504,6 +12828,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -12522,6 +12850,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(SpanFixed),nameof(SpanOpening),nameof(Pontoon),nameof(PylonBridgeSupport)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.BridgeAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12530,6 +12862,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -12538,6 +12874,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12546,6 +12886,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12554,6 +12898,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -12708,6 +13056,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -12726,6 +13078,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.BridgeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12734,6 +13090,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -12742,6 +13102,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12750,6 +13114,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12758,6 +13126,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -12924,6 +13296,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -12942,6 +13318,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.BridgeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12950,6 +13330,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -12958,6 +13342,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12966,6 +13354,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -12974,6 +13366,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -13291,6 +13687,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -13309,6 +13709,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -13317,6 +13721,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13325,6 +13733,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13333,6 +13745,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -13583,6 +13999,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -13601,6 +14021,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadarReflector)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13609,6 +14033,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13617,6 +14045,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -13852,6 +14284,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -13870,6 +14306,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(RadarReflector)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -13878,6 +14318,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13886,6 +14330,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -13894,6 +14342,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -14183,6 +14635,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -14201,6 +14657,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.BridgeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -14209,6 +14669,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(StructureOverNavigableWater)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RoofedStructureAggregation>() {
+						roleType = "aggregation",
+						role = "theRoofedStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14217,6 +14681,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -14225,6 +14693,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14233,6 +14705,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14241,6 +14717,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -14501,6 +14981,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -14519,6 +15003,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14527,6 +15015,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -14670,6 +15162,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -14688,6 +15184,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14696,6 +15196,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -14853,6 +15357,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -14871,6 +15379,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -14879,6 +15391,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -15059,6 +15575,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -15077,6 +15597,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -15085,6 +15609,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -15391,6 +15919,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -15409,6 +15941,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -15417,6 +15953,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -15425,6 +15965,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -15433,6 +15977,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -15441,6 +15989,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -15449,6 +16001,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -15771,6 +16327,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -15789,6 +16349,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -15797,6 +16361,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -15805,6 +16373,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -15813,6 +16385,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -15821,6 +16397,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -16150,6 +16730,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -16168,6 +16752,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -16176,6 +16764,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16184,6 +16776,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16192,6 +16788,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -16430,6 +17030,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -16448,6 +17052,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -16456,6 +17064,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -16464,6 +17076,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16472,6 +17088,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16480,6 +17100,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -16734,6 +17358,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -16752,6 +17380,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16760,6 +17392,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -16879,6 +17515,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -16897,6 +17537,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -16905,6 +17549,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -17159,6 +17807,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -17177,6 +17829,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(Bollard)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -17185,6 +17841,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -17193,6 +17853,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -17201,6 +17865,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -17452,6 +18120,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -17470,6 +18142,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -17478,6 +18154,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -17486,6 +18166,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -17494,6 +18178,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -17502,6 +18190,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -17510,6 +18202,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -17718,6 +18414,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -17736,6 +18436,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -17744,6 +18448,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -18037,6 +18745,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -18055,6 +18767,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -18063,6 +18779,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18071,6 +18791,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18079,6 +18803,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -18429,6 +19157,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -18447,6 +19179,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18455,6 +19191,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(PylonBridgeSupport)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RoofedStructureAggregation>() {
+						roleType = "association",
+						role = "theSupport",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18463,6 +19203,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18471,6 +19215,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18479,6 +19227,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -18648,6 +19400,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -18666,6 +19422,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18674,6 +19434,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -18854,6 +19618,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -18872,6 +19640,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -18880,6 +19652,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -19009,6 +19785,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -19027,6 +19807,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19035,6 +19819,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19043,6 +19831,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -19266,6 +20058,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -19284,6 +20080,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19292,6 +20092,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -19537,6 +20341,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -19555,6 +20363,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19563,6 +20375,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -19855,6 +20671,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -19873,6 +20693,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -19881,6 +20705,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19889,6 +20717,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -19897,6 +20729,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -20121,6 +20957,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -20139,6 +20979,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(MooringTrot)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.MooringTrotAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20147,6 +20991,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20155,6 +21003,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -20439,6 +21291,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -20457,6 +21313,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -20465,6 +21325,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -20473,6 +21337,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20481,6 +21349,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20489,6 +21361,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -20668,6 +21544,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -20686,6 +21566,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Dolphin),nameof(FortifiedStructure),nameof(Hulk),nameof(Landmark),nameof(OffshorePlatform),nameof(Pile),nameof(PylonBridgeSupport),nameof(ShorelineConstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20694,6 +21578,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20702,6 +21590,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -20946,6 +21838,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -20964,6 +21860,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -20972,6 +21872,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -21262,6 +22166,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -21280,6 +22188,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -21288,6 +22200,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21296,6 +22212,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21304,6 +22224,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -21504,6 +22428,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -21522,6 +22450,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.BridgeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21530,6 +22462,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -21538,6 +22474,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21546,6 +22486,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21554,6 +22498,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -21770,6 +22718,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -21788,6 +22740,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21796,6 +22752,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -21964,6 +22924,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -21982,6 +22946,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -21990,6 +22958,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22156,6 +23128,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22174,6 +23150,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22182,6 +23162,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22287,6 +23271,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22305,6 +23293,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Berth),nameof(CableSubmarine),nameof(MooringBuoy),nameof(Obstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.MooringTrotAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22313,6 +23305,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22321,6 +23317,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22431,6 +23431,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22449,6 +23453,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22457,6 +23465,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22599,6 +23611,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22617,6 +23633,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22625,6 +23645,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22779,6 +23803,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22797,6 +23825,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22805,6 +23837,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -22911,6 +23947,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -22929,6 +23969,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -22937,6 +23981,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -23066,6 +24114,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23084,6 +24136,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23092,6 +24148,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -23236,6 +24296,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23254,6 +24318,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23262,6 +24330,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -23454,6 +24526,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23472,6 +24548,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23480,6 +24560,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23488,6 +24572,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -23597,6 +24685,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23615,6 +24707,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23623,6 +24719,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -23631,6 +24731,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -23728,6 +24832,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23746,6 +24854,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -23835,6 +24947,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23853,6 +24969,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -23943,6 +25063,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -23961,6 +25085,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -24026,6 +25154,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24044,6 +25176,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -24158,6 +25294,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24176,6 +25316,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -24184,6 +25328,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -24290,6 +25438,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24308,6 +25460,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -24316,6 +25472,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -24409,6 +25569,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24427,6 +25591,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -24435,6 +25603,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -24528,6 +25700,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24546,6 +25722,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -24635,6 +25815,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24653,6 +25837,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -24661,6 +25849,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -24880,6 +26072,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -24898,6 +26094,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -24906,6 +26106,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -25174,6 +26378,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -25192,6 +26400,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -25200,6 +26412,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -25208,6 +26424,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -25506,6 +26726,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -25524,6 +26748,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(MooringTrot)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.MooringTrotAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -25532,6 +26760,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -25540,6 +26772,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -25712,6 +26948,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -25730,6 +26970,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -25738,6 +26982,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -25831,6 +27079,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -25849,6 +27101,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -26013,6 +27269,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -26031,6 +27291,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -26039,6 +27303,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26047,6 +27315,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26055,6 +27327,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -26318,6 +27594,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -26336,6 +27616,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26344,6 +27628,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -26612,6 +27900,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -26630,6 +27922,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(Helipad),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored),nameof(Bollard),nameof(LightAirObstruction)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -26638,6 +27934,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26646,6 +27946,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26654,6 +27958,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -26818,6 +28126,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -26836,6 +28148,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(MooringTrot)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.MooringTrotAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26844,6 +28160,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -26852,6 +28172,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -27012,6 +28336,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -27030,6 +28358,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -27038,6 +28370,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -27280,6 +28616,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -27298,6 +28638,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -27306,6 +28650,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -27475,6 +28823,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -27493,6 +28845,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -27501,6 +28857,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -27757,6 +29117,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -27775,6 +29139,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -27783,6 +29151,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -27938,6 +29310,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -27956,6 +29332,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -27964,6 +29344,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -28193,6 +29577,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -28211,6 +29599,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28219,6 +29611,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28227,6 +29623,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -28235,6 +29635,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 			];
 
@@ -28360,6 +29764,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -28378,6 +29786,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(Building),nameof(Daymark),nameof(Dolphin),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(LightAllAround),nameof(LightSectored),nameof(NavigationLine),nameof(Pile),nameof(RadarTransponderBeacon),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(SafeWaterBeacon),nameof(SiloTank),nameof(SpecialPurposeGeneralBeacon)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -28386,6 +29798,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -28394,6 +29810,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28402,6 +29822,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28410,6 +29834,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -28635,6 +30063,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -28653,6 +30085,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(FairwaySystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28661,6 +30097,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(CautionArea),nameof(Daymark),nameof(DredgedArea),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Landmark),nameof(Pile),nameof(RangeSystem),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RestrictedArea),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(SweptArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "association",
+						role = "theAuxiliaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28669,6 +30109,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28677,6 +30121,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -28814,6 +30262,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -28832,6 +30284,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28840,6 +30296,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28848,6 +30308,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -28856,6 +30320,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -29081,6 +30549,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -29099,6 +30571,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -29107,6 +30583,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29115,6 +30595,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29123,6 +30607,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -29324,6 +30812,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -29342,6 +30834,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TwoWayRouteAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -29350,6 +30846,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29358,6 +30858,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -29479,6 +30983,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -29497,6 +31005,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29505,6 +31017,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(TwoWayRoutePart)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TwoWayRouteAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -29513,6 +31029,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29521,6 +31041,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29529,6 +31053,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -29659,6 +31187,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -29677,6 +31209,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -29890,6 +31426,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -29908,6 +31448,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -29916,6 +31460,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29924,6 +31472,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -29932,6 +31484,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -30170,6 +31726,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -30188,6 +31748,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -30196,6 +31760,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30204,6 +31772,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30212,6 +31784,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -30337,6 +31913,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -30355,6 +31935,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30363,6 +31947,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.DeepWaterRouteAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -30371,6 +31959,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30379,6 +31971,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30387,6 +31983,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -30530,6 +32130,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -30548,6 +32152,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30556,6 +32164,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -30711,6 +32323,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -30729,6 +32345,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30737,6 +32357,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30745,6 +32369,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -30892,6 +32520,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -30910,6 +32542,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -30918,6 +32554,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -31024,6 +32664,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31042,6 +32686,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31050,6 +32698,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -31156,6 +32808,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31174,6 +32830,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31182,6 +32842,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -31313,6 +32977,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31331,6 +32999,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31339,6 +33011,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -31470,6 +33146,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31488,6 +33168,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31496,6 +33180,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -31625,6 +33313,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31643,6 +33335,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Building),nameof(Crane),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(Landmark),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(SiloTank),nameof(WindTurbine),nameof(Bridge),nameof(Conveyor),nameof(FloatingDock),nameof(Hulk),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(ShorelineConstruction),nameof(SpanFixed),nameof(SpanOpening),nameof(StructureOverNavigableWater)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31651,6 +33347,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(InshoreTrafficZone),nameof(PrecautionaryArea),nameof(RestrictedArea),nameof(SeparationZoneOrLine),nameof(TrafficSeparationScheme),nameof(TrafficSeparationSchemeBoundary),nameof(TrafficSeparationSchemeCrossing),nameof(TrafficSeparationSchemeLanePart),nameof(TrafficSeparationSchemeRoundabout),nameof(TwoWayRoute),nameof(TwoWayRoutePart)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -31659,6 +33359,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -31667,6 +33371,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(CautionArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.CautionAreaAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31675,6 +33383,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31683,6 +33395,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -31812,6 +33528,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31830,6 +33550,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ASLAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31838,6 +33562,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31846,6 +33574,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -31967,6 +33699,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -31985,6 +33721,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ASLAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -31993,6 +33733,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32001,6 +33745,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -32122,6 +33870,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -32140,6 +33892,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Daymark),nameof(EmergencyWreckMarkingBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(Pile),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32148,6 +33904,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ASLAggregation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -32156,6 +33916,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(CautionArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.CautionAreaAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32164,6 +33928,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32172,6 +33940,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -32351,6 +34123,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -32369,6 +34145,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32377,6 +34157,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -32520,6 +34304,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -32538,6 +34326,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32546,6 +34338,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -32664,6 +34460,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -32682,6 +34482,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32690,6 +34494,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -32820,6 +34628,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -32838,6 +34650,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -32846,6 +34662,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33025,6 +34845,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -33043,6 +34867,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -33051,6 +34879,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33232,6 +35064,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -33250,6 +35086,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -33258,6 +35098,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33450,6 +35294,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -33468,6 +35316,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -33476,6 +35328,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33644,6 +35500,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -33662,6 +35522,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -33670,6 +35534,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33813,6 +35681,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -33831,6 +35703,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -33839,6 +35715,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -33995,6 +35875,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34013,6 +35897,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34021,6 +35909,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -34201,6 +36093,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34219,6 +36115,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34227,6 +36127,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -34369,6 +36273,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34387,6 +36295,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34395,6 +36307,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -34550,6 +36466,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34568,6 +36488,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34576,6 +36500,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -34731,6 +36659,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34749,6 +36681,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.CautionAreaAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -34757,6 +36693,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34765,6 +36705,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -34910,6 +36854,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -34928,6 +36876,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -34936,6 +36888,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -35053,6 +37009,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35071,6 +37031,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -35172,6 +37136,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35190,6 +37158,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -35198,6 +37170,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -35291,6 +37267,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35309,6 +37289,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -35410,6 +37394,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35428,6 +37416,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -35542,6 +37534,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35560,6 +37556,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -35568,6 +37568,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -35711,6 +37715,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35729,6 +37737,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -35737,6 +37749,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -35843,6 +37859,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35861,6 +37881,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -35869,6 +37893,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -35975,6 +38003,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -35993,6 +38025,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36001,6 +38037,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -36119,6 +38159,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36137,6 +38181,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36145,6 +38193,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -36301,6 +38353,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36319,6 +38375,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36327,6 +38387,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -36420,6 +38484,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36438,6 +38506,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -36564,6 +38636,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36582,6 +38658,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -36708,6 +38788,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36726,6 +38810,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36734,6 +38822,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -36839,6 +38931,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -36857,6 +38953,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(PilotBoardingPlace)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PilotageDistrictAssociation>() {
+						roleType = "association",
+						role = "theComponent",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36865,6 +38965,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -36873,6 +38977,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -37006,6 +39114,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -37024,6 +39136,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37032,6 +39148,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -37137,6 +39257,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -37155,6 +39279,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37163,6 +39291,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -37331,6 +39463,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -37349,6 +39485,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -37357,6 +39497,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(TrafficSeparationScheme)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TrafficSeparationSchemeAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37365,6 +39509,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37373,6 +39521,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -37686,6 +39838,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -37704,6 +39860,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37712,6 +39872,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -37720,6 +39884,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37728,6 +39896,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -37736,6 +39908,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -37975,6 +40151,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -37993,6 +40173,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(FogSignal),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(RadarTransponderBeacon),nameof(Retroreflector)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "composition",
@@ -38001,6 +40185,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(Conveyor),nameof(Dolphin),nameof(FishingFacility),nameof(FortifiedStructure),nameof(IsolatedDangerBeacon),nameof(Landmark),nameof(LateralBeacon),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -38009,6 +40197,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38017,6 +40209,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38025,6 +40221,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -38250,6 +40450,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -38268,6 +40472,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38276,6 +40484,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38284,6 +40496,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -38530,6 +40746,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -38548,6 +40768,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(Conveyor),nameof(Landmark),nameof(OffshorePlatform),nameof(PylonBridgeSupport),nameof(SpanFixed),nameof(SpanOpening),nameof(WindTurbine),nameof(LightAllAround),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38556,6 +40780,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38564,6 +40792,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -38824,6 +41056,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -38842,6 +41078,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -38850,6 +41090,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -38858,6 +41102,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38866,6 +41114,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -38874,6 +41126,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -39142,6 +41398,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -39160,6 +41420,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39168,6 +41432,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39176,6 +41444,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39184,6 +41456,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39192,6 +41468,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -39447,6 +41727,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -39465,6 +41749,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39473,6 +41761,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39481,6 +41773,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39489,6 +41785,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39497,6 +41797,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -39752,6 +42056,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -39770,6 +42078,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39778,6 +42090,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -39786,6 +42102,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39794,6 +42114,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -39802,6 +42126,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -40070,6 +42398,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -40088,6 +42420,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -40096,6 +42432,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -40104,6 +42444,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40112,6 +42456,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40120,6 +42468,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -40350,6 +42702,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -40368,6 +42724,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40376,6 +42736,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40384,6 +42748,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40392,6 +42760,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -40645,6 +43017,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -40663,6 +43039,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40671,6 +43051,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40679,6 +43063,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -40925,6 +43313,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -40943,6 +43335,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40951,6 +43347,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -40959,6 +43359,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(MooringTrot)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.MooringTrotAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40967,6 +43371,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -40975,6 +43383,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -41305,6 +43717,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -41323,6 +43739,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41331,6 +43751,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41339,6 +43763,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41347,6 +43775,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -41355,6 +43787,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -41363,6 +43799,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -41437,8 +43877,7 @@ namespace S100FC.S101.FeatureTypes
 			set { base.SetAttribute(new elevation { value = value }); }
 			get { return base.GetAttributeValue<elevation>(nameof(elevation))?.value; }
 		}
-
-        [JsonIgnore]
+		[JsonIgnore]
 		public featureName?[] featureName {
 			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
@@ -41698,6 +44137,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -41716,6 +44159,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41724,6 +44171,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41732,6 +44183,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -41740,6 +44195,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -41748,6 +44207,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -41756,6 +44219,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -42077,6 +44544,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -42095,6 +44566,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42103,6 +44578,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42111,6 +44590,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42119,6 +44602,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42127,6 +44614,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42135,6 +44626,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -42456,6 +44951,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -42474,6 +44973,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42482,6 +44985,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42490,6 +44997,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42498,6 +45009,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42506,6 +45021,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42514,6 +45033,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -42848,6 +45371,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -42866,6 +45393,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(LightSectored)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42874,6 +45405,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42882,6 +45417,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -42890,6 +45429,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42898,6 +45441,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -42906,6 +45453,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -43189,6 +45740,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -43207,6 +45762,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(LightSectored),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "composition",
@@ -43215,6 +45774,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43223,6 +45786,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43231,6 +45798,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43239,6 +45810,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43247,6 +45822,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43255,6 +45834,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -43525,6 +46108,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -43543,6 +46130,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43551,6 +46142,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43559,6 +46154,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43567,6 +46166,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43575,6 +46178,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -43829,6 +46436,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -43847,6 +46458,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(Daymark),nameof(DistanceMark),nameof(FogSignal),nameof(LightAllAround),nameof(LightFogDetector),nameof(PhysicalAISAidToNavigation),nameof(RadarTransponderBeacon),nameof(Retroreflector),nameof(SignalStationTraffic),nameof(SignalStationWarning)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "association",
+						role = "theEquipment",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43855,6 +46470,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(ArchipelagicSeaLane),nameof(DeepWaterRoute),nameof(FairwaySystem),nameof(TrafficSeparationScheme),nameof(TwoWayRoute)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.AidsToNavigationAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -43863,6 +46482,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Fairway)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.FairwayAuxiliary>() {
+						roleType = "aggregation",
+						role = "thePrimaryFeature",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43871,6 +46494,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -43879,6 +46506,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -44047,6 +46678,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -44065,6 +46700,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44073,6 +46712,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -44203,6 +46846,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -44221,6 +46868,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(CableOverhead),nameof(PipelineOverhead)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44229,6 +46880,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 			];
 
@@ -44445,6 +47100,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -44463,6 +47122,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44471,6 +47134,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44479,6 +47146,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -44637,6 +47308,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -44655,6 +47330,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44663,6 +47342,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44671,6 +47354,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -44842,6 +47529,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -44860,6 +47551,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -44868,6 +47563,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -45059,6 +47758,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -45077,6 +47780,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45085,6 +47792,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -45288,6 +47999,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -45306,6 +48021,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(LightAllAround),nameof(LightSectored),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45314,6 +48033,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45322,6 +48045,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -45330,6 +48057,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RangeSystem)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystemAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 			];
 
@@ -45531,6 +48262,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -45549,6 +48284,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(PilotageDistrict)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PilotageDistrictAssociation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45557,6 +48296,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45565,6 +48308,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -45662,6 +48409,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -45680,6 +48431,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45688,6 +48443,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -45842,6 +48601,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation),nameof(NonStandardWorkingDay),nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -45860,6 +48623,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -45868,6 +48635,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46023,6 +48794,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -46041,6 +48816,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46049,6 +48828,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46057,6 +48840,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46216,6 +49003,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -46234,6 +49025,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(Bridge),nameof(Building),nameof(Crane),nameof(CardinalBeacon),nameof(CardinalBuoy),nameof(Conveyor),nameof(Dolphin),nameof(EmergencyWreckMarkingBuoy),nameof(FishingFacility),nameof(FloatingDock),nameof(FortifiedStructure),nameof(Hulk),nameof(InstallationBuoy),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightFloat),nameof(LightVessel),nameof(MooringBuoy),nameof(OffshorePlatform),nameof(Pile),nameof(PipelineOverhead),nameof(Pontoon),nameof(PylonBridgeSupport),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(ShorelineConstruction),nameof(SiloTank),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(StructureOverNavigableWater),nameof(WindTurbine),nameof(Wreck),nameof(Daymark)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.StructureEquipment>() {
+						roleType = "composition",
+						role = "theStructure",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46242,6 +49037,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46250,6 +49049,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46409,6 +49212,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -46427,6 +49234,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46435,6 +49246,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46678,6 +49493,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -46696,6 +49515,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46704,6 +49527,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46847,6 +49674,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ContactDetails),nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -46865,6 +49696,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(UpdateInformation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.UpdatedInformation>() {
+						roleType = "association",
+						role = "theUpdate",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -46873,6 +49708,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 
@@ -46984,6 +49823,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(AdministrationArea),nameof(AirportAirfield),nameof(AnchorBerth),nameof(AnchorageArea),nameof(ArchipelagicSeaLane),nameof(ArchipelagicSeaLaneArea),nameof(ArchipelagicSeaLaneAxis),nameof(Berth),nameof(Bollard),nameof(Bridge),nameof(Building),nameof(BuiltUpArea),nameof(CableArea),nameof(CableOverhead),nameof(CableSubmarine),nameof(Canal),nameof(CardinalBuoy),nameof(CardinalBeacon),nameof(CargoTranshipmentArea),nameof(Causeway),nameof(Chart1Feature),nameof(Checkpoint),nameof(CoastGuardStation),nameof(Coastline),nameof(CollisionRegulationsLimit),nameof(ContinentalShelfArea),nameof(Conveyor),nameof(Crane),nameof(CurrentNonGravitational),nameof(Dam),nameof(Daymark),nameof(DeepWaterRoute),nameof(DeepWaterRouteCentreline),nameof(DeepWaterRoutePart),nameof(DistanceMark),nameof(DockArea),nameof(Dolphin),nameof(DredgedArea),nameof(DryDock),nameof(DumpingGround),nameof(Dyke),nameof(EmergencyWreckMarkingBuoy),nameof(Fairway),nameof(FairwaySystem),nameof(FenceWall),nameof(FerryRoute),nameof(FisheryZone),nameof(FishingFacility),nameof(FishingGround),nameof(FloatingDock),nameof(FogSignal),nameof(FortifiedStructure),nameof(FoulGround),nameof(FreePortArea),nameof(Gate),nameof(Gridiron),nameof(HarbourAreaAdministrative),nameof(HarbourFacility),nameof(Helipad),nameof(Hulk),nameof(IceArea),nameof(InformationArea),nameof(InstallationBuoy),nameof(IslandGroup),nameof(IsolatedDangerBeacon),nameof(IsolatedDangerBuoy),nameof(Lake),nameof(LandArea),nameof(LandElevation),nameof(LandRegion),nameof(Landmark),nameof(LateralBeacon),nameof(LateralBuoy),nameof(LightAirObstruction),nameof(LightAllAround),nameof(LightFloat),nameof(LightFogDetector),nameof(LightSectored),nameof(LightVessel),nameof(LocalMagneticAnomaly),nameof(LockBasin),nameof(LogPond),nameof(MarineFarmCulture),nameof(MarinePollutionRegulationsArea),nameof(MilitaryPracticeArea),nameof(MooringArea),nameof(MooringBuoy),nameof(MooringTrot),nameof(Obstruction),nameof(OffshorePlatform),nameof(OffshoreProductionArea),nameof(OilBarrier),nameof(PhysicalAISAidToNavigation),nameof(Pile),nameof(PilotBoardingPlace),nameof(PilotageDistrict),nameof(PipelineOverhead),nameof(PipelineSubmarineOnLand),nameof(Pontoon),nameof(PrecautionaryArea),nameof(ProductionStorageArea),nameof(PylonBridgeSupport),nameof(RadarLine),nameof(RadarRange),nameof(RadarStation),nameof(RadarTransponderBeacon),nameof(RadioCallingInPoint),nameof(RadioStation),nameof(Railway),nameof(RangeSystem),nameof(Rapids),nameof(RecommendedRouteCentreline),nameof(RecommendedTrack),nameof(RescueStation),nameof(RestrictedArea),nameof(River),nameof(Road),nameof(Runway),nameof(SafeWaterBeacon),nameof(SafeWaterBuoy),nameof(SeaAreaNamedWaterArea),nameof(SeabedArea),nameof(Seagrass),nameof(SeaplaneLandingArea),nameof(ShorelineConstruction),nameof(SignalStationTraffic),nameof(SignalStationWarning),nameof(SiloTank),nameof(SlopeTopline),nameof(SlopingGround),nameof(SmallCraftFacility),nameof(Sounding),nameof(SpanFixed),nameof(SpanOpening),nameof(SpecialPurposeGeneralBeacon),nameof(SpecialPurposeGeneralBuoy),nameof(Spring),nameof(StructureOverNavigableWater),nameof(SubmarinePipelineArea),nameof(SubmarineTransitLane),nameof(SweptArea),nameof(TidalStreamFloodEbb),nameof(TidalStreamPanelData),nameof(Tideway),nameof(TrafficSeparationScheme),nameof(Tunnel),nameof(TwoWayRoute),nameof(UnderwaterAwashRock),nameof(Vegetation),nameof(VesselTrafficServiceArea),nameof(VirtualAISAidToNavigation),nameof(WaterTurbulence),nameof(Waterfall),nameof(WeedKelp),nameof(WindTurbine),nameof(Wreck)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "composition",
+						role = "thePositionProvider",
+					},
 				},
 			];
 
@@ -47054,6 +49897,10 @@ namespace S100FC.S101.FeatureTypes
 					lower = 0,
 					upper = 2,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 

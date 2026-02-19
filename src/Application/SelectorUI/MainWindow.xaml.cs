@@ -78,6 +78,17 @@ namespace SelectorUI
                 },
             };
 
+            var featureBinding = new featureBinding<UpdatedInformation> {
+                roleType = "association",
+                role = "theUpdate",
+                featureType = "UpdateInformation",
+                featureId = RandomString(5),
+            };
+
+            var json1 = System.Text.Json.JsonSerializer.Serialize(featureBinding, jsonSerializerOptions);
+
+
+
             selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
                 roleType = "association",
                 role = "theQualityInformation",
@@ -85,12 +96,13 @@ namespace SelectorUI
                 informationId = RandomString(5),
             };
 
-            selectedObject += new featureBinding<UpdatedInformation> {
-                roleType = "association",
-                role = "theUpdate",
-                featureType = "UpdateInformation",
-                featureId = RandomString(5),
-            };
+            selectedObject += featureBinding;
+
+
+            var bindings = (featureBinding[])selectedObject;
+
+            var json2 = System.Text.Json.JsonSerializer.Serialize(bindings, jsonSerializerOptions);
+
 
             selectedObject.PropertyChanged += this.PropertyGrid_PropertyChanged;
 

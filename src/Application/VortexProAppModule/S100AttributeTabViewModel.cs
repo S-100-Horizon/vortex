@@ -21,6 +21,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 
@@ -583,15 +584,17 @@ namespace VortexProAppModule
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
                         var featureBindings = (featureBinding[])viewModel;
 
+                        var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+
                         //var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, this._jsonOptions);
-                        //if (Inspector.IsNull("featureBindings")) {
-                        //    Inspector["featureBindings"] = json;
-                        //    updated |= true;
-                        //}
-                        //else if (string.Compare(json, Convert.ToString(Inspector["featureBindings"]), true) != 0) {
-                        //    Inspector["featureBindings"] = json;
-                        //    updated |= true;
-                        //}
+                        if (Inspector.IsNull("featureBindings")) {
+                            Inspector["featureBindings"] = json;
+                            updated |= true;
+                        }
+                        else if (string.Compare(json, Convert.ToString(Inspector["featureBindings"]), true) != 0) {
+                            Inspector["featureBindings"] = json;
+                            updated |= true;
+                        }
                     }
                 }
             }, TaskCreationOptions.None);
@@ -761,8 +764,13 @@ namespace VortexProAppModule
         public S100AttributeEditorViewModel SelectedProperty {
             get => this._selectedProperty;
             set {
+                if (this._selectedProperty is not null) {
+                    this._selectedProperty.PropertyChanged -= this.OnPropertyChanged;
+                }
                 this.SetProperty(ref this._selectedProperty, value);
-                this._selectedProperty.PropertyChanged += this.OnPropertyChanged;
+                if (this._selectedProperty is not null) {
+                    this._selectedProperty.PropertyChanged += this.OnPropertyChanged;
+                }
             }
         }
 

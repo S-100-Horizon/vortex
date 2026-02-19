@@ -1822,6 +1822,10 @@ namespace S100FC.S124.InformationTypes
 					lower = 1,
 					upper = 1,
 					informationTypes = [nameof(NavwarnPreamble)],
+					CreateInstance = () => new informationBinding<InformationAssociation.navwarnReferences>() {
+						roleType = "association",
+						role = "theWarning",
+					},
 				},
 			];
 
@@ -1970,6 +1974,10 @@ namespace S100FC.S124.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(References)],
+					CreateInstance = () => new informationBinding<InformationAssociation.navwarnReferences>() {
+						roleType = "association",
+						role = "theReferences",
+					},
 				},
 			];
 
@@ -2129,6 +2137,10 @@ namespace S100FC.S124.FeatureTypes
 					lower = 1,
 					upper = 1,
 					informationTypes = [nameof(NavwarnPreamble)],
+					CreateInstance = () => new informationBinding<InformationAssociation.navwarnPreambleContent>() {
+						roleType = "association",
+						role = "header",
+					},
 				},
 			];
 
@@ -2147,6 +2159,10 @@ namespace S100FC.S124.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(NavwarnAreaAffected)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.areaAffected>() {
+						roleType = "association",
+						role = "affects",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -2155,6 +2171,10 @@ namespace S100FC.S124.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(TextPlacement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "thePositionProvider",
+					},
 				},
 			];
 
@@ -2198,6 +2218,10 @@ namespace S100FC.S124.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(NavwarnPart)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.areaAffected>() {
+						roleType = "association",
+						role = "impacts",
+					},
 				},
 			];
 
@@ -2304,6 +2328,10 @@ namespace S100FC.S124.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(NavwarnPart)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.TextAssociation>() {
+						roleType = "association",
+						role = "theCartographicText",
+					},
 				},
 			];
 

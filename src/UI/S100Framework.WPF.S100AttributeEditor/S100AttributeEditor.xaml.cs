@@ -70,12 +70,12 @@ namespace S100Framework.WPF
             //    }
             //}
 
-            if (parameter is IGrouping<string, informationBindingDefinition> informationBinding) {
+            if (e?.SelectedItem is IGrouping<string, informationBindingDefinition> informationBinding) {
                 if (this.SelectedObject!.HasCapacity(informationBinding)) {
                     this.SelectedObject?.informationBindings.Add(new InformationBindingViewModel(informationBinding));
                 }
             }
-            if (parameter is IGrouping<string, featureBindingDefinition> featureBinding) {
+            if (e?.SelectedItem is IGrouping<string, featureBindingDefinition> featureBinding) {
                 if (this.SelectedObject!.HasCapacity(featureBinding)) {
                     this.SelectedObject?.featureBindings.Add(new FeatureBindingViewModel(featureBinding));
                 }
