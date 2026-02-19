@@ -89,6 +89,9 @@ namespace S100Framework.Applications
                 else if (IO.Directory.Exists(source) && ".gdb".Equals(IO.Path.GetExtension(source), StringComparison.OrdinalIgnoreCase)) {
                     createGeodatabase = () => { return new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(source)))); };
                 }
+                else if (source.StartsWith("https://")) {
+                    createGeodatabase = () => { return new Geodatabase(new ServiceConnectionProperties(new Uri(source))); };
+                }
                 else
                     throw new System.ArgumentOutOfRangeException(nameof(source));
 
@@ -168,7 +171,7 @@ namespace S100Framework.Applications
                         //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
                         using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
                         using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
-                        using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
+                        //using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
 
                         Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
                         DeleteAll(featureType);//featureType.DeleteRows(query);
@@ -182,8 +185,8 @@ namespace S100Framework.Applications
                         DeleteAll(surface); // surface.DeleteRows(query);
                         Logger.Current.Information($"Deleting data from destination: {attachment.GetName()}");
                         DeleteAll(attachment); // surface.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {messages.GetName()}");
-                        DeleteAll(messages); // surface.DeleteRows(query);
+                        //Logger.Current.Information($"Deleting data from destination: {messages.GetName()}");
+                        //DeleteAll(messages); // surface.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
                         //associationBinding.DeleteRows(query);
                         //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");

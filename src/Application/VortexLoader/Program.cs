@@ -129,20 +129,6 @@ namespace S100Framework.Applications
                         };
 
                         var geodatabase = new Geodatabase(serviceProps);
-
-                        var destinationVersion = geodatabase.GetVersionManager().GetVersionNames().FirstOrDefault(name => name.EndsWith("20250203", StringComparison.OrdinalIgnoreCase));
-
-                        if (destinationVersion == null) {
-                            geodatabase.GetVersionManager().CreateVersion(new VersionDescription() {
-                                AccessType = VersionAccessType.Public,
-                                Description = "S-57 Conversion",
-                                Name = "20250203"
-                            });
-                        }
-
-                        serviceProps.Version = destinationVersion;
-                        geodatabase = new Geodatabase(serviceProps);
-
                         return geodatabase;
                     };
 
