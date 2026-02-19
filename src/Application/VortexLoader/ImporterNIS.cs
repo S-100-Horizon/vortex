@@ -156,45 +156,53 @@ namespace S100Framework.Applications
 
             using (Geodatabase source = createGeodatabase()) {
                 //#if null
-                Store(() => {
+                {
+                    var query = new QueryFilter {
+                        WhereClause = $"1=1",
+                    };
+                    using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
+                    using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
+                    using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
+                    using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
+                    using var attachment = destination.OpenDataset<Table>(destination.GetName("attachment"));
+
+                    //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
+                    //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
+                    using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
+                    using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
+                    //using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
+
                     if (!append) {
-                        var query = new QueryFilter {
-                            WhereClause = $"1=1",
-                        };
-                        using var point = destination.OpenDataset<FeatureClass>(destination.GetName("point"));
-                        using var pointset = destination.OpenDataset<FeatureClass>(destination.GetName("pointset"));
-                        using var curve = destination.OpenDataset<FeatureClass>(destination.GetName("curve"));
-                        using var surface = destination.OpenDataset<FeatureClass>(destination.GetName("surface"));
-                        using var attachment = destination.OpenDataset<Table>(destination.GetName("attachment"));
-
-                        //using var associationBinding = destination.OpenDataset<Table>(destination.GetName("associationbinding"));
-                        //using var attributeBinding = destination.OpenDataset<Table>(destination.GetName("attributebinding"));                                               
-                        using var informationtype = destination.OpenDataset<Table>(destination.GetName("InformationType"));
-                        using var featureType = destination.OpenDataset<Table>(destination.GetName("featureType"));
-                        //using var messages = destination.OpenDataset<Table>(destination.GetName("messages"));
-
-                        Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
-                        DeleteAll(featureType);//featureType.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
-                        DeleteAll(point); // point.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
-                        DeleteAll(pointset); // pointset.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
-                        DeleteAll(curve); // curve.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
-                        DeleteAll(surface); // surface.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {attachment.GetName()}");
-                        DeleteAll(attachment); // surface.DeleteRows(query);
-                        //Logger.Current.Information($"Deleting data from destination: {messages.GetName()}");
-                        //DeleteAll(messages); // surface.DeleteRows(query);
-                        //Logger.Current.Information($"Deleting data from destination: {associationBinding.GetName()}");
-                        //associationBinding.DeleteRows(query);
-                        //Logger.Current.Information($"Deleting data from destination: {attributeBinding.GetName()}");
-                        //attributeBinding.DeleteRows(query);
-                        Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
-                        DeleteAll(informationtype); // informationtype.DeleteRows(query);
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {featureType.GetName()}");
+                            DeleteAll(featureType);//featureType.DeleteRows(query);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {point.GetName()}");
+                            DeleteAll(point); // point.DeleteRows(query);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {pointset.GetName()}");
+                            DeleteAll(pointset); // pointset.DeleteRows(query);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {curve.GetName()}");
+                            DeleteAll(curve); // curve.DeleteRows(query);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {surface.GetName()}");
+                            DeleteAll(surface); // surface.DeleteRows(query);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {attachment.GetName()}");
+                            DeleteAll(attachment);
+                        });
+                        Store(() => {
+                            Logger.Current.Information($"Deleting data from destination: {informationtype.GetName()}");
+                            DeleteAll(informationtype);
+                        });
                     }
-                });
+                }
 
                 Logger.Current.Information($"Loading subtypes codes to subtype name");
                 Subtypes.Initialize(source);
@@ -235,7 +243,7 @@ namespace S100Framework.Applications
                     QueryFilter.WhereClause = $"{whereClause} and globalid = '{{EEC8A630-411C-43E0-8EF3-97B7A5FD5E4F}}'";
                     QueryFilter.WhereClause = $"{whereClause}";
                     */
-                    
+
                     Logger.Current.Information($"Converting all tables: {QueryFilter.WhereClause}");
 
                     Logger.Current.Information($"Converting Product Coverages");
@@ -704,8 +712,8 @@ namespace S100Framework.Applications
                 mandatory
             */
 
-                    //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
-                    List<string> parenthesisParts = [];
+            //current.SIGGRP != default ? new List<string> { current.SIGGRP } : new();
+            List<string> parenthesisParts = [];
 
             if (!String.IsNullOrEmpty(current.SIGGRP)) {
                 string pattern = @"\([^()]*\)";
