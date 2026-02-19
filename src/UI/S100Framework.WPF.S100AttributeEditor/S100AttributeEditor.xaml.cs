@@ -94,11 +94,9 @@ namespace S100Framework.WPF
                         if (index >= 0) {
                             collection.RemoveAt(index);
                         }
-
                     }
                 }
                 if (e.parameter is ComplexAttributeViewModel complexAttribute) {
-
                     if (e.parent is IAttributeBindingContainer attributeBindingContainer) {
                         var index = attributeBindingContainer.attributeBindings.IndexOf(complexAttribute);
                         attributeBindingContainer.attributeBindings.RemoveAt(index);

@@ -146,7 +146,7 @@ namespace S100Framework.Applications
                                     buffer["flatten"] = sounding.Flatten();
                                     buffer["ps"] = ps101;
                                     buffer["code"] = sounding.GetType().Name;
-                                    
+
                                     buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(sounding.GetInformationBindings(), ImporterNIS.jsonSerializerOptions);
 
                                     //var featureN = featureClass.CreateRow(bufferPointset);
@@ -212,7 +212,7 @@ namespace S100Framework.Applications
                                     buffer["flatten"] = instance.Flatten();
                                     buffer["ps"] = ps101;
                                     buffer["code"] = instance.GetType().Name;
-                                    
+
                                     buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
 
                                     var oid = insertCursor.Insert(buffer);

@@ -156,7 +156,7 @@ namespace S100Framework.Applications.Singletons
                             };
 
                             rowBuffer["ps"] = "S-100.Horizon";
-                            rowBuffer["code"] = "supportfile";                            
+                            rowBuffer["code"] = "supportfile";
                             rowBuffer["json"] = System.Text.Json.JsonSerializer.Serialize(supportFile, ImporterNIS.jsonSerializerOptions);
                             rowBuffer["data_size"] = new FileInfo(filePath).Length;
                             rowBuffer["data"] = new MemoryStream(File.ReadAllBytes(filePath));
