@@ -4049,6 +4049,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -4139,6 +4143,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Applicability)],
+					CreateInstance = () => new informationBinding<InformationAssociation.InclusionType>() {
+						roleType = "association",
+						role = "isApplicableTo",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4147,6 +4155,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.relatedOrganisation>() {
+						roleType = "association",
+						role = "theOrganisation",
+					},
 				},
 			];
 
@@ -4317,6 +4329,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(AbstractRxN)],
+					CreateInstance = () => new informationBinding<InformationAssociation.InclusionType>() {
+						roleType = "association",
+						role = "theApplicableRxN",
+					},
 				},
 			];
 
@@ -4383,6 +4399,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4391,6 +4411,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 			];
 
@@ -4509,6 +4533,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastTransmission>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -4795,6 +4823,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityContact>() {
+						roleType = "association",
+						role = "theAuthority",
+					},
 				},
 			];
 
@@ -4891,6 +4923,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ExceptionalWorkday>() {
+						roleType = "association",
+						role = "theServiceHours_nsdy",
+					},
 				},
 			];
 
@@ -4980,6 +5016,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4988,6 +5028,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -4996,6 +5040,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TelemedicalAssistanceService)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TMAS>() {
+						roleType = "association",
+						role = "theTMAS",
+					},
 				},
 			];
 
@@ -5126,6 +5174,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority),nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AuthorityHours>() {
+						roleType = "association",
+						role = "theAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5134,6 +5186,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(NonStandardWorkingDay)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ExceptionalWorkday>() {
+						roleType = "association",
+						role = "partialWorkingDay",
+					},
 				},
 			];
 
@@ -5290,6 +5346,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RadioServiceControl>() {
+						roleType = "association",
+						role = "theControlCentre",
+					},
 				},
 			];
 
@@ -5393,6 +5453,10 @@ namespace S100FC.S123.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastTransmission>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 			];
 
@@ -5524,6 +5588,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(AbstractRxN)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AssociatedRxN>() {
+						roleType = "association",
+						role = "theRxN",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5532,6 +5600,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Applicability)],
+					CreateInstance = () => new informationBinding<InformationAssociation.PermissionType>() {
+						roleType = "association",
+						role = "permission",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5540,6 +5612,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(NauticalInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AdditionalInformation>() {
+						roleType = "association",
+						role = "theInformation",
+					},
 				},
 			];
 
@@ -5682,6 +5758,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ConnectivityService>() {
+						roleType = "association",
+						role = "connectivityServiceProvider",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5690,6 +5770,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5698,6 +5782,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5706,6 +5794,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ConnectivityQualityOfService)],
+					CreateInstance = () => new informationBinding<InformationAssociation.AvailableQoS>() {
+						roleType = "association",
+						role = "theQoS",
+					},
 				},
 			];
 
@@ -5737,6 +5829,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -5829,6 +5925,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5837,6 +5937,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RadioServiceControl>() {
+						roleType = "association",
+						role = "theControlCentre",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5845,6 +5949,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -5853,6 +5961,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 			];
 
@@ -5884,6 +5996,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -5945,6 +6061,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(FuzzyAreaAggregate)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.fuzzyZoneAggregation>() {
+						roleType = "composition",
+						role = "theCollection",
+					},
 				},
 			];
 
@@ -6012,6 +6132,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6020,6 +6144,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6028,6 +6156,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6036,6 +6168,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6044,6 +6180,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -6079,6 +6219,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -6146,6 +6290,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6154,6 +6302,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6162,6 +6314,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6170,6 +6326,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6178,6 +6338,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -6213,6 +6377,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -6318,6 +6486,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6326,6 +6498,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6334,6 +6510,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6342,6 +6522,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6350,6 +6534,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -6385,6 +6573,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -6489,6 +6681,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6497,6 +6693,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RadioServiceControl>() {
+						roleType = "association",
+						role = "theControlCentre",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6505,6 +6705,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6513,6 +6717,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6521,6 +6729,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6529,6 +6741,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -6568,6 +6784,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "aggregation",
@@ -6576,6 +6796,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					featureTypes = [nameof(RadioServiceAreaAggregate)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.coreAggregation>() {
+						roleType = "aggregation",
+						role = "theCollection",
+					},
 				},
 			];
 
@@ -6721,6 +6945,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6729,6 +6957,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RadioServiceControl>() {
+						roleType = "association",
+						role = "theControlCentre",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6737,6 +6969,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6745,6 +6981,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6753,6 +6993,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6761,6 +7005,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -6800,6 +7048,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(ConnectivitySubscriptionArea),nameof(GMDSSArea),nameof(METAREA),nameof(NAVAREA),nameof(NAVTEXServiceArea),nameof(RadioServiceArea),nameof(WeatherForecastAndWarningArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceArea",
+					},
 				},
 			];
 
@@ -6855,6 +7107,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6863,6 +7119,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(RadioControlCentre)],
+					CreateInstance = () => new informationBinding<InformationAssociation.RadioServiceControl>() {
+						roleType = "association",
+						role = "theControlCentre",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6871,6 +7131,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TelemedicalAssistanceService)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TMAS>() {
+						roleType = "association",
+						role = "theTMAS",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6879,6 +7143,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 			];
 
@@ -6990,6 +7258,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(Authority)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceCoordination>() {
+						roleType = "association",
+						role = "coordinatingAuthority",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -6998,6 +7270,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ServiceContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7006,6 +7282,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ServiceHours)],
+					CreateInstance = () => new informationBinding<InformationAssociation.LocationHours>() {
+						roleType = "association",
+						role = "theServiceHours",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7014,6 +7294,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(BroadcastDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.BroadcastService>() {
+						roleType = "association",
+						role = "theBroadcastDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -7022,6 +7306,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(TransmissionDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.TransmissionService>() {
+						roleType = "association",
+						role = "theTransmissionDetails",
+					},
 				},
 			];
 
@@ -7057,6 +7345,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ServiceProvisionArea>() {
+						roleType = "association",
+						role = "serviceProvider",
+					},
 				},
 			];
 
@@ -7097,6 +7389,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 1,
 					upper = 2147483647,
 					featureTypes = [nameof(IndeterminateZone)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.fuzzyZoneAggregation>() {
+						roleType = "composition",
+						role = "theFuzzyComponent",
+					},
 				},
 			];
 
@@ -7137,6 +7433,10 @@ namespace S100FC.S123.FeatureTypes
 					lower = 1,
 					upper = 1,
 					featureTypes = [nameof(RadioServiceArea)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.coreAggregation>() {
+						roleType = "aggregation",
+						role = "theComponent",
+					},
 				},
 			];
 

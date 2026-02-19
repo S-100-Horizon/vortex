@@ -576,7 +576,7 @@ namespace S100FC
 
         public void SetAttribute(string code, attributeBinding?[] attributes) {
             if (attributes == null || !attributes.Any()) {
-                this.attributeBindings = [.. this.attributeBindings.Where(e=>!e.S100FC_code.Equals(code))];
+                this.attributeBindings = [.. this.attributeBindings.Where(e => !e.S100FC_code.Equals(code))];
 
                 foreach (var binding in attributeBindingsCatalogue.Where(e => e.attribute.Equals(code) && e.lower > 0)) {
                     for (int i = 0; i < binding.lower; i++) {
@@ -585,7 +585,7 @@ namespace S100FC
                 }
             }
             else {
-                this.attributeBindings = [..this.attributeBindings.Where(e => !e.S100FC_code.Equals(code)), ..attributes!];
+                this.attributeBindings = [.. this.attributeBindings.Where(e => !e.S100FC_code.Equals(code)), .. attributes!];
             }
         }
 
@@ -637,6 +637,8 @@ namespace S100FC
         public bool IsOptional => this.lower == 0;
 
         public string[] informationTypes { get; init; } = [];
+
+        public Func<informationBinding?> CreateInstance { get; init; } = () => null;
     }
 
     public class featureBindingDefinition
@@ -653,6 +655,8 @@ namespace S100FC
         public bool IsOptional => this.lower == 0;
 
         public string[] featureTypes { get; init; } = [];
+
+        public Func<featureBinding?> CreateInstance { get; init; } = () => null;
     }
 
     public abstract class Association

@@ -3106,6 +3106,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(PriceInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.PriceOfNauticalProduct>() {
+						roleType = "association",
+						role = "thePriceInformation",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3114,6 +3118,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ProducerInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ProductionDetails>() {
+						roleType = "association",
+						role = "theProducer",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3122,6 +3130,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(DistributorInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.DistributionDetails>() {
+						roleType = "association",
+						role = "theDistributor",
+					},
 				},
 			];
 
@@ -3241,6 +3253,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(ProducerInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ProducerContact>() {
+						roleType = "association",
+						role = "theProducer",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3249,6 +3265,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 1,
 					informationTypes = [nameof(DistributorInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.DistributorContact>() {
+						roleType = "association",
+						role = "theDistributor",
+					},
 				},
 			];
 
@@ -3402,6 +3422,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					CreateInstance = () => new informationBinding<InformationAssociation.PriceOfNauticalProduct>() {
+						roleType = "association",
+						role = "theCatalogueOfNauticalProduct",
+					},
 				},
 			];
 
@@ -3465,6 +3489,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ProducerContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3473,6 +3501,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ProductionDetails>() {
+						roleType = "association",
+						role = "catalogueHeader",
+					},
 				},
 			];
 
@@ -3528,6 +3560,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					CreateInstance = () => new informationBinding<InformationAssociation.DistributionDetails>() {
+						roleType = "association",
+						role = "catalogueHeader",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3536,6 +3572,10 @@ namespace S100FC.S128.InformationTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(ContactDetails)],
+					CreateInstance = () => new informationBinding<InformationAssociation.DistributorContact>() {
+						roleType = "association",
+						role = "theContactDetails",
+					},
 				},
 			];
 
@@ -3731,6 +3771,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(IndicationOfCarriageRequirement)],
+					CreateInstance = () => new informationBinding<InformationAssociation.CarriageRequirement>() {
+						roleType = "association",
+						role = "theRequirement",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3739,6 +3783,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					informationTypes = [nameof(PriceInformation)],
+					CreateInstance = () => new informationBinding<InformationAssociation.PriceOfElement>() {
+						roleType = "association",
+						role = "thePriceInformation",
+					},
 				},
 				new informationBindingDefinition {
 					roleType = "association",
@@ -3747,6 +3795,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 1,
 					upper = 2147483647,
 					informationTypes = [nameof(CatalogueSectionHeader)],
+					CreateInstance = () => new informationBinding<InformationAssociation.ProductPackage>() {
+						roleType = "association",
+						role = "elementContainer",
+					},
 				},
 			];
 
@@ -3773,6 +3825,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(CatalogueElement)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.ProductMapping>() {
+						roleType = "association",
+						role = "theReference",
+					},
 				},
 			];
 
@@ -4017,6 +4073,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(NavigationalProduct)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Correlated>() {
+						roleType = "association",
+						role = "theMain",
+					},
 				},
 				new featureBindingDefinition {
 					roleType = "association",
@@ -4025,6 +4085,10 @@ namespace S100FC.S128.FeatureTypes
 					lower = 0,
 					upper = 2147483647,
 					featureTypes = [nameof(NavigationalProduct)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.Correlated>() {
+						roleType = "association",
+						role = "thePanel",
+					},
 				},
 			];
 
