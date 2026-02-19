@@ -52,9 +52,9 @@ namespace S100Framework.WPF
                 }
             }
 
-            if (sender is ComboBox comboBox) {
-                comboBox.Items.Refresh();
-            }
+            //if (sender is ComboBox comboBox) {
+            //    comboBox.Items.Refresh();
+            //}
         }
     }
 

@@ -869,6 +869,12 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
                         roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
                         roslyn.AppendLine($"\t\t\t\t\tinformationTypes = [{string.Join(',', informationTypes.Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
+
+                        roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new informationBinding<InformationAssociation.{association}>() {{");
+                        roslyn.AppendLine($"\t\t\t\t\t\troleType = \"{roleType}\",");
+                        roslyn.AppendLine($"\t\t\t\t\t\trole = \"{role}\",");
+                        roslyn.AppendLine($"\t\t\t\t\t}},");
+
                         roslyn.AppendLine($"\t\t\t\t}},");
                     }
                 }
@@ -923,6 +929,12 @@ namespace TestAttributes
                         roslyn.AppendLine($"\t\t\t\t\tlower = {lower},");
                         roslyn.AppendLine($"\t\t\t\t\tupper = {upper},");
                         roslyn.AppendLine($"\t\t\t\t\tfeatureTypes = [{string.Join(',', featureTypes.Select(e => $"nameof({e.Attribute("ref")!.Value})"))}],");
+
+                        roslyn.AppendLine($"\t\t\t\t\tCreateInstance = () => new featureBinding<FeatureAssociation.{association}>() {{");
+                        roslyn.AppendLine($"\t\t\t\t\t\troleType = \"{roleType}\",");
+                        roslyn.AppendLine($"\t\t\t\t\t\trole = \"{role}\",");
+                        roslyn.AppendLine($"\t\t\t\t\t}},");
+
                         roslyn.AppendLine($"\t\t\t\t}},");
                     }
                 }
