@@ -89,7 +89,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -145,7 +145,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -207,7 +207,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -259,7 +259,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -284,8 +284,8 @@ namespace S100Framework.Applications
 
                             if (current.CATSLO.HasValue) {
                                 // SAND DUNE OR SAND HILL
-                            //    if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
-                            //        throw new NotImplementedException();    //
+                                //    if ((current.CATSLO == 3 || current.CATSLO == 4) && (!string.IsNullOrEmpty(current.NATSUR) && current.NATSUR.Equals("4")))
+                                //        throw new NotImplementedException();    //
 
                                 //  If it is required to encode a sand dune or sand hill, it must be done using
                                 //  the feature Sloping Ground with attribute category of slope = 3 (dune) or 4 (hill) and attribute nature of surface = 4 (sand).
@@ -340,7 +340,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -408,7 +408,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);

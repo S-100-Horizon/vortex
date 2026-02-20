@@ -21,7 +21,6 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
 using System.Windows.Input;
 using System.Xml.Linq;
 
@@ -74,8 +73,6 @@ namespace VortexProAppModule
 
         private SelectedType _selectedModelType = default;
 
-        //private S100AttributeEditorControlHost _host;
-
         private ObservableCollection<string> _schemas = [];
 
         private string _selectedSchema = default;
@@ -87,10 +84,6 @@ namespace VortexProAppModule
         };
 
         private S100AttributeEditorViewModel _selectedProperty = default;
-
-        //private SelectedInformationTypeObjectViewModel _selectedInformationProperty = default;
-
-        //private SelectedFeatureTypeObjectViewModel _selectedFeatureProperty = default;
 
         private Boolean _isEditingEnabled = false;
 
@@ -201,8 +194,6 @@ namespace VortexProAppModule
                             if (featuretype != default) {
                                 var featureCatalogue = this._module.GetFeatureCatalogue(this.SelectedSchema);
 
-                                //var featureType = featureCatalogue.FeatureTypes.Single(e => e.Code.Equals(featuretype));
-
                                 this._selectedTemplate = new SelectedTemplate(this.SelectedSchema, featuretype);
 
                                 this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
@@ -247,8 +238,6 @@ namespace VortexProAppModule
                         "surface" => this._inspectorHandleFeatureType,
                         "informationtype" => this._inspectorHandleInformationType,
                         "featuretype" => this._inspectorHandleFeatureType,
-                        //"featureassociation" => _inspectorHandleFeatureAssociation,
-                        //"informationassociation" => _inspectorHandleInformationAssociation,
 
                         _ => throw new NotImplementedException(),
                     };
@@ -321,7 +310,6 @@ namespace VortexProAppModule
                     else {
                         var json = Convert.ToString(inspector["FLATTEN"]);
                         instance = S100FC.AttributeFlattenExtensions.Unflatten<S100FC.FeatureType>(json, type);
-                        //instance = System.Text.Json.JsonSerializer.Deserialize(json, type, featureCatalogue.DefaultJsonOptions);
                     }
 
                     if (instance is S100FC.InformationType informationType) {
@@ -337,7 +325,7 @@ namespace VortexProAppModule
                                         if (selection.GetCount() == 0) continue;
 
                                         using var cursor = selection.Search(new QueryFilter {
-                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
+                                            WhereClause = $"UPPER(PS) = '{this.SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
                                         }, true);
 
                                         while (cursor.MoveNext()) {
@@ -362,7 +350,7 @@ namespace VortexProAppModule
                                         if (selection.GetCount() == 0) continue;
 
                                         using var cursor = selection.Search(new QueryFilter {
-                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
+                                            WhereClause = $"UPPER(PS) = '{this.SelectedSchema}' AND UPPER(CODE) = '{e.InformationType.ToUpperInvariant()}'"
                                         }, true);
 
                                         while (cursor.MoveNext()) {
@@ -372,6 +360,11 @@ namespace VortexProAppModule
                                     return result;
                                 }, TaskCreationOptions.None);
                             },
+
+                            SelectInformationTypes = async (s, e) => {
+
+                            },
+
                             RequestFeatures = async (s, e) => {
                                 if (MapView.Active is null)
                                     return [];
@@ -384,7 +377,7 @@ namespace VortexProAppModule
                                             if (selection.GetCount() == 0) continue;
 
                                             using var cursor = selection.Search(new QueryFilter {
-                                                WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
+                                                WhereClause = $"UPPER(PS) = '{this.SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
                                             }, true);
 
                                             while (cursor.MoveNext()) {
@@ -397,7 +390,7 @@ namespace VortexProAppModule
                                         if (selection.GetCount() == 0) continue;
 
                                         using var cursor = selection.Search(new QueryFilter {
-                                            WhereClause = $"UPPER(PS) = '{SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
+                                            WhereClause = $"UPPER(PS) = '{this.SelectedSchema}' AND UPPER(CODE) = '{e.FeatureType.ToUpperInvariant()}'"
                                         }, true);
 
                                         while (cursor.MoveNext()) {
@@ -406,6 +399,20 @@ namespace VortexProAppModule
                                     }
                                     return result;
                                 }, TaskCreationOptions.None);
+                            },
+
+                            SelectFeatureTypes = async (s, e) => {
+                                var mapView = MapView.Active;
+                                if (mapView is null) return;
+
+                                if (e.UIDs.Any()) {
+                                    foreach(var layer in mapView.Map.Layers.OfType<FeatureLayer>()) {
+                                        
+                                    }
+
+                                    //var selection = layers.ToDictionary(l => l.Name, l => e.UIDs.Select(e=>e.UID).ToList());
+                                    //mapView.Map.SetSelection()
+                                }
                             },
                         };
                     }
@@ -480,13 +487,13 @@ namespace VortexProAppModule
                     this.IsVisible = Visibility.Collapsed;
                 }
                 else {
-                    if (!Inspector.IsNull("informationBindings")) {
-                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(Inspector["informationBindings"]), _jsonOptions);
+                    if (!this.Inspector.IsNull("informationBindings")) {
+                        var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(this.Inspector["informationBindings"]), this._jsonOptions);
                         foreach (var informationBinding in informationBindings)
                             this.SelectedProperty += informationBinding;
                     }
-                    if (!Inspector.IsNull("featureBindings")) {
-                        var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(Inspector["featureBindings"]), _jsonOptions);
+                    if (!this.Inspector.IsNull("featureBindings")) {
+                        var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(this.Inspector["featureBindings"]), this._jsonOptions);
                         foreach (var featureBinding in featureBindings)
                             this.SelectedProperty += featureBinding;
                     }
@@ -525,12 +532,12 @@ namespace VortexProAppModule
                 if (sender is S100AttributeEditorViewModel viewModel) {
                     var json = viewModel.Flatten();
                     //var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
-                    if (Inspector.IsNull("flatten")) {
-                        Inspector["flatten"] = json;
+                    if (this.Inspector.IsNull("flatten")) {
+                        this.Inspector["flatten"] = json;
                         updated |= true;
                     }
-                    else if (string.Compare(json, Convert.ToString(Inspector["flatten"]), true) != 0) {
-                        Inspector["flatten"] = json;
+                    else if (string.Compare(json, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
+                        this.Inspector["flatten"] = json;
                         updated |= true;
                     }
                 }
@@ -545,64 +552,62 @@ namespace VortexProAppModule
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.attributeBindings))) {
                         if (viewModel.Instance is S100FC.InformationType informationType) {
                             var flatten = informationType.Flatten();
-                            if (Inspector.IsNull("flatten")) {
-                                Inspector["flatten"] = flatten;
+                            if (this.Inspector.IsNull("flatten")) {
+                                this.Inspector["flatten"] = flatten;
                                 updated |= true;
                             }
-                            else if (string.Compare(flatten, Convert.ToString(Inspector["flatten"]), true) != 0) {
-                                Inspector["flatten"] = flatten;
+                            else if (string.Compare(flatten, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
+                                this.Inspector["flatten"] = flatten;
                                 updated |= true;
                             }
                         }
                         if (viewModel.Instance is S100FC.FeatureType featureType) {
                             var flatten = featureType.Flatten();
-                            if (Inspector.IsNull("flatten")) {
-                                Inspector["flatten"] = flatten;
+                            if (this.Inspector.IsNull("flatten")) {
+                                this.Inspector["flatten"] = flatten;
                                 updated |= true;
                             }
-                            else if (string.Compare(flatten, Convert.ToString(Inspector["flatten"]), true) != 0) {
-                                Inspector["flatten"] = flatten;
+                            else if (string.Compare(flatten, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
+                                this.Inspector["flatten"] = flatten;
                                 updated |= true;
                             }
                         }
 
-                        //TODO: DELETE [JSON]
                         var json = viewModel.Flatten();
-                        //var json = System.Text.Json.JsonSerializer.Serialize(viewModel.Instance, this._jsonOptions);
-                        if (Inspector.IsNull("flatten")) {
-                            Inspector["flatten"] = json;
+                        if (this.Inspector.IsNull("flatten")) {
+                            this.Inspector["flatten"] = json;
                             updated |= true;
                         }
-                        else if (string.Compare(json, Convert.ToString(Inspector["flatten"]), true) != 0) {
-                            Inspector["flatten"] = json;
+                        else if (string.Compare(json, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
+                            this.Inspector["flatten"] = json;
                             updated |= true;
                         }
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
                         var informationBindings = (informationBinding[])viewModel;
 
-                        var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                        var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, this._module.GetFeatureCatalogue(this.SelectedSchema).DefaultJsonOptions);
 
-                        if (Inspector.IsNull("informationBindings")) {
-                            Inspector["informationBindings"] = json;
+                        if (this.Inspector.IsNull("informationBindings")) {
+                            this.Inspector["informationBindings"] = json;
                             updated |= true;
                         }
-                        else if (string.Compare(json, Convert.ToString(Inspector["informationBindings"]), true) != 0) {
-                            Inspector["informationBindings"] = json;
+                        else if (string.Compare(json, Convert.ToString(this.Inspector["informationBindings"]), true) != 0) {
+                            this.Inspector["informationBindings"] = json;
                             updated |= true;
                         }
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.featureBindings))) {
                         var featureBindings = (featureBinding[])viewModel;
 
-                        var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, _module.GetFeatureCatalogue(SelectedSchema).DefaultJsonOptions);
+                        var json = System.Text.Json.JsonSerializer.Serialize(featureBindings, this._module.GetFeatureCatalogue(this.SelectedSchema).DefaultJsonOptions);
 
-                        if (Inspector.IsNull("featureBindings")) {
-                            Inspector["featureBindings"] = json;
+                        if (this.Inspector.IsNull("featureBindings")) {
+                            this.Inspector["featureBindings"] = json;
                             updated |= true;
                         }
-                        else if (string.Compare(json, Convert.ToString(Inspector["featureBindings"]), true) != 0) {
-                            Inspector["featureBindings"] = json;
+                        else if (string.Compare(json, Convert.ToString(this.Inspector["featureBindings"]), true) != 0) {
+                            this.Inspector["featureBindings"] = json;
                             updated |= true;
                         }
                     }

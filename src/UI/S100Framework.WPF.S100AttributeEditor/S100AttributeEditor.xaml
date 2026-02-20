@@ -317,15 +317,22 @@
                 </Grid.RowDefinitions>
 
                 <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
-                    <ComboBox DockPanel.Dock="Right" 
-                      Style="{StaticResource ButtonLikeComboBox}"
-                      ItemsSource="{Binding SelectedObject.featureBindingDefinitions.GroupBy, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
-                      DisplayMemberPath="Key" FontWeight="Normal" FontSize="12">
-                        <i:Interaction.Behaviors>
-                            <local:SelectionChangedBehavior 
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                        <Button Style="{DynamicResource Esri_SmallButton}" Margin="0,0,5,0" ToolTip="Select all elements" Click="Button_SelectFeatureBindings">
+                            <StackPanel Orientation ="Horizontal">
+                                <Image Source ="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/SelectionSelectAll16.png"/>
+                            </StackPanel>
+                        </Button>
+                        <ComboBox 
+                            Style="{StaticResource ButtonLikeComboBox}"
+                            ItemsSource="{Binding SelectedObject.featureBindingDefinitions.GroupBy, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}"
+                            DisplayMemberPath="Key" FontWeight="Normal" FontSize="12">
+                            <i:Interaction.Behaviors>
+                                <local:SelectionChangedBehavior 
                                 Command="{Binding CreateAttributeCommand, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
-                        </i:Interaction.Behaviors>
-                    </ComboBox>
+                            </i:Interaction.Behaviors>
+                        </ComboBox>
+                    </StackPanel>
                     <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="FeatureBindings" FontWeight="Bold" VerticalAlignment="Center" />
                 </DockPanel>
 

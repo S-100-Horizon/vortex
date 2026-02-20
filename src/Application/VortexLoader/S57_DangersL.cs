@@ -114,7 +114,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -143,7 +143,7 @@ namespace S100Framework.Applications
                             }
                             // Foul ground
                             if (current.CATOBS.HasValue && current.CATOBS.Value == 7) {
-                                var instance = new FoulGround {                                    
+                                var instance = new FoulGround {
                                 };
                                 var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                                 if (featureName is not null)
@@ -204,7 +204,7 @@ namespace S100Framework.Applications
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                
+
 
                                 buffer["flatten"] = instance.Flatten();
                                 buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -231,7 +231,7 @@ namespace S100Framework.Applications
 
                                 buffer["ps"] = ps101;
                                 buffer["code"] = instance.GetType().Name;
-                                
+
 
                                 buffer["flatten"] = instance.Flatten();
                                 buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -303,7 +303,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);

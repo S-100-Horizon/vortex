@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Internal;
 using S100FC;
 using S100FC.S101.FeatureTypes;
 using S100Framework.Applications.S57.esri;
@@ -54,7 +53,7 @@ namespace S100Framework.Applications
                         }
                     case 15: { // TIDEWY_Tideway
                             var instance = new Tideway();
-                            
+
                             var featureName = GetFeatureName(current.OBJNAM, current.NOBJNM);
                             if (featureName is not null)
                                 instance.featureName = featureName;
@@ -76,7 +75,7 @@ namespace S100Framework.Applications
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);

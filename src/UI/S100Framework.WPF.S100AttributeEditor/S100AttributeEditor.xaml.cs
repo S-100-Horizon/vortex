@@ -10,6 +10,7 @@ namespace S100Framework.WPF
 {
     using Microsoft.VisualBasic;
     using S100Framework.WPF.ViewModel;
+    using Windows.Foundation.Collections;
     using Xceed.Wpf.AvalonDock.Properties;
 
     /// <summary>
@@ -93,11 +94,9 @@ namespace S100Framework.WPF
                         if (index >= 0) {
                             collection.RemoveAt(index);
                         }
-
                     }
                 }
                 if (e.parameter is ComplexAttributeViewModel complexAttribute) {
-
                     if (e.parent is IAttributeBindingContainer attributeBindingContainer) {
                         var index = attributeBindingContainer.attributeBindings.IndexOf(complexAttribute);
                         attributeBindingContainer.attributeBindings.RemoveAt(index);
@@ -106,7 +105,7 @@ namespace S100Framework.WPF
                         var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
                         var index = collection.IndexOf(complexAttribute);
                         if (index >= 0) {
-                            collection.RemoveAt(index);                            
+                            collection.RemoveAt(index);
                         }
                     }
                 }
@@ -212,14 +211,20 @@ namespace S100Framework.WPF
         private static void OnSelectedObjectChanged(DependencyObject d, DependencyPropertyChangedEventArgs e) {
             if (d is S100AttributeEditor grid) {
                 if (grid._selectedObject is not null) {
+                    grid._selectedObject.attributeBindings.CollectionChanged -= OnCollectionChanged;
                     grid._selectedObject.PropertyChanged -= OnPropertyChanged;
                 }
                 grid._selectedObject = e.NewValue as S100AttributeEditorViewModel;
 
                 if (grid._selectedObject != null) {
                     grid._selectedObject.PropertyChanged += OnPropertyChanged;
+                    grid._selectedObject.attributeBindings.CollectionChanged += OnCollectionChanged;
                 }
             }
+        }
+
+        private static void OnCollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+            ;
         }
 
         private static void OnPropertyChanged(object? sender, PropertyChangedEventArgs e) {
@@ -236,6 +241,26 @@ namespace S100Framework.WPF
         private void attributeBindingsCatalogue_DropDownOpened(object sender, EventArgs e) {
             if (sender is ComboBox comboBox) {
                 comboBox.Items.Refresh();
+            }
+        }
+
+        private void Button_SelectInformationBindings(object sender, RoutedEventArgs e) {
+            if (this._selectedObject is null) return;
+
+            if (this._selectedObject.informationBindings.Any()) {
+                var uids = this._selectedObject.informationBindings.Where(e => e.informationUID != null);
+                if (uids.Any())
+                    this._selectedObject.SelectInformationTypes?.Invoke(this, new S100AttributeEditorViewModel.SelectInformationTypesEvenArgs([.. uids.Select(e => e.informationUID)!]));
+            }
+        }
+
+        private void Button_SelectFeatureBindings(object sender, RoutedEventArgs e) {
+            if (this._selectedObject is null) return;
+
+            if (this._selectedObject.featureBindings.Any()) {
+                var uids = this._selectedObject.featureBindings.Where(e => e.featureUID != null);
+                if (uids.Any())
+                    this._selectedObject.SelectFeatureTypes?.Invoke(this, new S100AttributeEditorViewModel.SelectFeatureTypesEvenArgs([.. uids.Select(e => e.featureUID)!]));
             }
         }
     }

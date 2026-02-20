@@ -23,10 +23,22 @@ namespace S100Framework.WPF.ViewModel
         {
             public string? FeatureType { get; } = featureType;
         }
+        public class SelectInformationTypesEvenArgs(InformationTypeID[] uids) : EventArgs
+        {
+            public InformationTypeID[] UIDs { get; } = uids;
+        }
+
+        public class SelectFeatureTypesEvenArgs(FeatureTypeID[] uids) : EventArgs {
+            public FeatureTypeID[] UIDs { get; } = uids;
+        }
 
         public delegate Task<string[]> RequestInformationsEventHandler(object? sender, RequestInformationsEventArgs e);
 
-        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);        
+        public delegate Task<string[]> RequestFeaturesEventHandler(object? sender, RequestFeaturesEventArgs e);
+
+        public delegate Task SelectInformationTypesEventHandler(object? sender, SelectInformationTypesEvenArgs e);
+
+        public delegate Task SelectFeatureTypessEventHandler(object? sender, SelectFeatureTypesEvenArgs e);
 
         public class informationBindingContainer
         {
@@ -74,6 +86,10 @@ namespace S100Framework.WPF.ViewModel
         public RequestInformationsEventHandler RequestInformation = async (s, e) => { return []; };
 
         public RequestFeaturesEventHandler RequestFeatures = async (s, e) => { return []; };
+
+        public SelectInformationTypesEventHandler SelectInformationTypes = async (s, e) => { };
+
+        public SelectFeatureTypessEventHandler SelectFeatureTypes = async (s, e) => { };
 
         public S100AttributeEditorViewModel(S100FC.InformationType informationType, string uid) {
             this._informationType = informationType;
@@ -236,14 +252,24 @@ namespace S100Framework.WPF.ViewModel
 
             //note: Must be added right by the end!
             this.attributeBindings.CollectionChanged += (s, e) => {
-                ;
                 if (e.OldItems is not null) {
                     foreach (var item in e.OldItems) {
+                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._featureType.RemoveAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._featureType.RemoveAttribute(complexAttributeViewModel.attribute);
+                        }
                     }
                 }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
-                        æøå
+                        if(item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._featureType.SetAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if(item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._featureType.SetAttribute(complexAttributeViewModel.attribute);
+                        }
                     }
                 }
 
