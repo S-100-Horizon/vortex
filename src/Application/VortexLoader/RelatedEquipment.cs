@@ -193,7 +193,7 @@ namespace S100Framework.Applications
                     var featureN = featureClass.CreateRow(buffer);
                     var equipmentName = featureN.UID();
 
-                    if (equipmentName == null) {
+                    if (equipmentName == null || string.IsNullOrEmpty(equipmentName)) {
                         throw new NotSupportedException("empty equipment name");
                     }
 
