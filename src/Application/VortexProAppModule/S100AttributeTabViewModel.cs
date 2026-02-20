@@ -1,10 +1,13 @@
 ﻿using ActiproSoftware.Windows.Extensions;
+using ArcGIS.Core;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Events;
+
 using ArcGIS.Desktop.Core;
 using ArcGIS.Desktop.Editing;
 using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
+using ArcGIS.Desktop.Framework.Utilities;
 using ArcGIS.Desktop.Mapping;
 using S100FC;
 using S100FC.Catalogues;
@@ -523,6 +526,7 @@ namespace VortexProAppModule
                 this.NotifyPropertyChanged(() => this.IsCreateButtonEnabled);
             }
             catch (System.Exception ex) {
+                DiagnosticHelper.Error(ex);
                 if (System.Diagnostics.Debugger.IsAttached) System.Diagnostics.Debugger.Break();
             }
         }
