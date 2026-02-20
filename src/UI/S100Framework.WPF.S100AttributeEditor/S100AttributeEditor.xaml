@@ -281,7 +281,7 @@
                                 Parameter="{Binding SelectedObject, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" />
                         </i:Interaction.Behaviors>
                     </ComboBox>
-                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Margin="2,0,0,0"  Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="{Binding SelectedObject.code, RelativeSource={RelativeSource AncestorType={x:Type local:S100AttributeEditor}}}" FontWeight="Bold" VerticalAlignment="Center" />
                 </DockPanel>
 
                 <ItemsControl x:Name="attributeBindingsContainer" Grid.Row="1"
@@ -314,7 +314,7 @@
                             </i:Interaction.Behaviors>
                         </ComboBox>
                     </StackPanel>
-                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="InformationBindings" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Margin="2,0,0,0"  Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="InformationBindings" FontWeight="Bold" VerticalAlignment="Center" />
                 </DockPanel>
 
                 <ItemsControl Grid.Row="1"
@@ -348,7 +348,7 @@
                             </i:Interaction.Behaviors>
                         </ComboBox>
                     </StackPanel>
-                    <TextBlock Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="FeatureBindings" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Margin="2,0,0,0" Style="{DynamicResource Esri_TextBlockH3}" DockPanel.Dock="Left" Text="FeatureBindings" FontWeight="Bold" VerticalAlignment="Center" />
                 </DockPanel>
 
                 <ItemsControl Grid.Row="1"
