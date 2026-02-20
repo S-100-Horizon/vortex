@@ -296,7 +296,11 @@
 
                 <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                        <Button Style="{DynamicResource Esri_SmallButton}" Margin="0,0,5,0" ToolTip="Select all elements" Click="Button_SelectInformationBindings">
+                        <Button Background="Transparent"
+                                BorderThickness="0" Padding="0"
+                                Margin="0,0,5,0" 
+                                ToolTip="Select all elements"                                 
+                                Click="Button_SelectInformationBindings">
                             <StackPanel Orientation ="Horizontal">
                                 <Image Source ="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/SelectionSelectAll16.png"/>
                             </StackPanel>
@@ -325,7 +329,11 @@
 
                 <DockPanel Grid.Row="0" LastChildFill="True" Background="#C7D4D5">
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
-                        <Button Style="{DynamicResource Esri_SmallButton}" Margin="0,0,5,0" ToolTip="Select all elements" Click="Button_SelectFeatureBindings">
+                        <Button Background="Transparent"
+                                BorderThickness="0" Padding="0"
+                                Margin="0,0,5,0" 
+                                ToolTip="Select all elements"                                 
+                                Click="Button_SelectFeatureBindings">
                             <StackPanel Orientation ="Horizontal">
                                 <Image Source ="pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/SelectionSelectAll16.png"/>
                             </StackPanel>
