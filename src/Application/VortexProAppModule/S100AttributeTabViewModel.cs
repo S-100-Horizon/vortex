@@ -362,7 +362,19 @@ namespace VortexProAppModule
                             },
 
                             SelectInformationTypes = async (s, e) => {
+                                var mapView = MapView.Active;
+                                if (mapView is null) return;
 
+                                if (e.UIDs.Any()) {
+                                    await QueuedTask.Run(() => {
+                                        var query = new QueryFilter {
+                                            WhereClause = $"UID IN ({string.Join(',', e.UIDs.Select(e => $"'{e.UID}'"))})",
+                                        };
+                                        foreach (var layer in mapView.Map.StandaloneTables) {
+                                            layer.Select(query, SelectionCombinationMethod.Add);
+                                        }
+                                    }, TaskCreationOptions.None);
+                                }
                             },
 
                             RequestFeatures = async (s, e) => {
@@ -406,12 +418,17 @@ namespace VortexProAppModule
                                 if (mapView is null) return;
 
                                 if (e.UIDs.Any()) {
-                                    foreach(var layer in mapView.Map.Layers.OfType<FeatureLayer>()) {
-                                        
-                                    }
-
-                                    //var selection = layers.ToDictionary(l => l.Name, l => e.UIDs.Select(e=>e.UID).ToList());
-                                    //mapView.Map.SetSelection()
+                                    await QueuedTask.Run(() => {
+                                        var query = new QueryFilter {
+                                            WhereClause = $"UID IN ({string.Join(',', e.UIDs.Select(e => $"'{e.UID}'"))})",
+                                        };
+                                        foreach (var layer in mapView.Map.Layers.OfType<FeatureLayer>()) {
+                                            layer.Select(query, SelectionCombinationMethod.Add);
+                                        }
+                                        foreach (var layer in mapView.Map.StandaloneTables) {
+                                            layer.Select(query, SelectionCombinationMethod.Add);
+                                        }
+                                    }, TaskCreationOptions.None);
                                 }
                             },
                         };
