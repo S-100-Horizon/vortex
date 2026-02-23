@@ -105,7 +105,7 @@ anomaly values, remove the associated instance of the complex attribute informat
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -170,7 +170,7 @@ anomaly values, remove the associated instance of the complex attribute informat
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -220,7 +220,7 @@ anomaly values, remove the associated instance of the complex attribute informat
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -289,7 +289,7 @@ anomaly values, remove the associated instance of the complex attribute informat
 
                             buffer["ps"] = ps101;
                             buffer["code"] = instance.GetType().Name;
-                            
+
 
                             buffer["flatten"] = instance.Flatten();
                             buffer["informationbindings"] = System.Text.Json.JsonSerializer.Serialize(instance.GetInformationBindings(), jsonSerializerOptions);
@@ -305,7 +305,7 @@ anomaly values, remove the associated instance of the complex attribute informat
 
                             ConversionAnalytics.Instance.AddConverted(tableName, current.GLOBALID, name);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance, ImporterNIS.jsonSerializerOptions));
-                        } 
+                        }
                         break;
                     case 40: { // TS_PAD_TidalStreamPanelData
                             throw new NotImplementedException("No TS_PAD_TidalStreamPanelData in DK | GL NIS");

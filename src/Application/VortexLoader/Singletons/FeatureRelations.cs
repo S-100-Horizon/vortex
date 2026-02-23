@@ -1006,7 +1006,7 @@ namespace S100Framework.Applications.Singletons
                     }
                     else if (destinationFeatureClassName.Split('.').Last().ToLower().Equals("metadataa")) {
                         if (idIndex.ContainsKey(currentGlobalId)) {
-                            loadedRelatedObjectsCount++;                            
+                            loadedRelatedObjectsCount++;
                             foreach (var kvp in _srcObjectToSlaves) {
                                 var key = kvp.Key;
                                 var list = kvp.Value;
@@ -1037,7 +1037,7 @@ namespace S100Framework.Applications.Singletons
                                 }
                             }
                         }
-                    }                    
+                    }
                     else {
                         throw new NotSupportedException($"GetRelated: {destinationFeatureClassName}");
                     }

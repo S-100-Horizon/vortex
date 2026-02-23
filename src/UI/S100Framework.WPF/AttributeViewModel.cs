@@ -259,6 +259,7 @@ namespace S100Framework.WPF.ViewModel
 
             this.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName)) {
+                    this._informationBindingDefinition = null;
                     this.role = null;
                     this.roleType = null;
                     this.informationTypes.Clear();
@@ -267,12 +268,12 @@ namespace S100Framework.WPF.ViewModel
                     this.informationUID = null;
                 }
                 else if (e.PropertyName.Equals(nameof(role))) {
-                    var featureBinding = this._informationBindingDefinitions.Single(e => e.role.Equals(this.role));
-                    this.roleType = featureBinding.roleType;
+                    this._informationBindingDefinition = this._informationBindingDefinitions.Single(e => e.role.Equals(this.role));
+                    this.roleType = this._informationBindingDefinition.roleType;
 
                     this.informationType = null;
                     this.informationTypes.Clear();
-                    foreach (var featureType in featureBinding.informationTypes) {
+                    foreach (var featureType in this._informationBindingDefinition.informationTypes) {
                         this.informationTypes.Add(featureType);
                     }
 
@@ -292,6 +293,11 @@ namespace S100Framework.WPF.ViewModel
 
             this.role = this.roles[0];
         }
+
+        private informationBindingDefinition? _informationBindingDefinition { get; set; } = null;
+
+        public informationBindingDefinition? informationBindingDefinition => this._informationBindingDefinition;
+
 
         private string? _roleType;
         public string? roleType {
