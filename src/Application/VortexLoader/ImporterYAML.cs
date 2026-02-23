@@ -163,7 +163,7 @@ namespace S100FC.Applications
                     }
                 }
 
-                foreach (var informationType in dataset.InformationTypes!) {
+                foreach (var informationType in dataset.InformationTypes ?? []) {
                     // 1) Cast feature.Attributes to S101 Model
                     var type = featureCatalogue.Assembly!.GetType($"{S100FC.Catalogues.FeatureCatalogue.Namespace("S101", "InformationTypes")}.{informationType!.Attributes!.S100FC_code}", true) ?? default;
                     if (type == default) {
