@@ -45,6 +45,9 @@ namespace TestAttributes
             var output = roslyn.ToString();
 
             File.WriteAllText(@".\..\..\..\S-101_FC.g.cs", output, Encoding.UTF8);
+
+            var csv = this.TypeWriter(ps);
+            this._output.WriteLine(csv);
         }
 
         [Fact]
@@ -123,6 +126,47 @@ namespace TestAttributes
 
             File.WriteAllText(@".\..\..\..\S-131_FC.g.cs", output, Encoding.UTF8);
         }
+
+
+        private string TypeWriter(XDocument ps) {
+            var csv = new StringBuilder();
+            csv.AppendLine("code;syperType;");
+
+            var navigator = ps.CreateNavigator();
+            navigator.MoveToFollowing(XPathNodeType.Element);
+
+            var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+            foreach (var s in scopes)
+                xmlNamespaceManager.AddNamespace(s.Key, s.Value);
+
+            foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
+                var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
+                var name = element.Element(XName.Get("name", scopes["S100FC"]))!.Value;
+
+                var row = new StringBuilder();
+
+                row.Append($"{code};");
+
+                var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
+                if (superType != null)
+                    row.Append($"{superType.Value};");                
+                else
+                    row.Append($";");
+
+                var attributeBindings = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager);
+
+                foreach (var attributeBinding in attributeBindings.OrderBy(e=>e.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!)) {
+                    var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
+                    row.Append($"{referenceCode};");
+                }
+                csv.AppendLine(row.ToString());
+            }
+
+            return csv.ToString();
+        }
+
 
         private StringBuilder RoslynBuilder(XDocument ps, string? id = null) {
             var roslyn = new StringBuilder();

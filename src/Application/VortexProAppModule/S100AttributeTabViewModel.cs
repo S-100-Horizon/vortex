@@ -594,15 +594,15 @@ namespace VortexProAppModule
                             }
                         }
 
-                        var json = viewModel.Flatten();
-                        if (this.Inspector.IsNull("flatten")) {
-                            this.Inspector["flatten"] = json;
-                            updated |= true;
-                        }
-                        else if (string.Compare(json, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
-                            this.Inspector["flatten"] = json;
-                            updated |= true;
-                        }
+                        //var json = viewModel.Flatten();
+                        //if (this.Inspector.IsNull("flatten")) {
+                        //    this.Inspector["flatten"] = json;
+                        //    updated |= true;
+                        //}
+                        //else if (string.Compare(json, Convert.ToString(this.Inspector["flatten"]), true) != 0) {
+                        //    this.Inspector["flatten"] = json;
+                        //    updated |= true;
+                        //}
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
                         var informationBindings = (informationBinding[])viewModel;
