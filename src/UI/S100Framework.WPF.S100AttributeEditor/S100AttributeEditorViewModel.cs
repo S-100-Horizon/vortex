@@ -2,6 +2,7 @@
 using S100FC.S128.SimpleAttributes;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
@@ -330,13 +331,14 @@ namespace S100Framework.WPF.ViewModel
         public static S100AttributeEditorViewModel operator +(S100AttributeEditorViewModel viewModel, informationBinding informationBinding) {
             var association = informationBinding.GetType().GetGenericArguments()[0].Name;
 
-            //var definition = viewModel.informationBindingDefinitions!.Single(e => e.association.Equals(association));
+            var definitions = viewModel.informationBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(association));
 
-            //viewModel.informationBindings.Add(new InformationBindingViewModel(definition) {
-            //    informationType = informationBinding.informationType,
-            //    informationId = informationBinding.informationId,
-            //});
-            //viewModel.informationBindings.Add(new InformationBindingViewModel(informationBinding));
+            viewModel.informationBindings.Add(new InformationBindingViewModel(definitions) {
+                roleType = informationBinding.roleType,
+                role = informationBinding.role,
+                informationType = informationBinding.informationType,
+                informationUID = new InformationTypeID(informationBinding.informationType!, informationBinding.informationId),
+            });
             return viewModel;
         }
 
@@ -344,8 +346,6 @@ namespace S100Framework.WPF.ViewModel
             var association = featureBinding.GetType().GetGenericArguments()[0].Name;
 
             var definitions = viewModel.featureBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(association));
-
-            //viewModel.featureBindings.Add(new FeatureBindingViewModel(viewModel.featureBindingDefinitions));
 
             viewModel.featureBindings.Add(new FeatureBindingViewModel(definitions) {
                 roleType = featureBinding.roleType,
@@ -390,28 +390,32 @@ namespace S100Framework.WPF.ViewModel
 
         public static explicit operator informationBinding[](S100AttributeEditorViewModel viewmodel) {
             informationBinding[] informationBinding = [];
-            foreach (var binding in viewmodel.informationBindings) {
-                if (binding.roleType is null) continue;
+            if (viewmodel.informationBindings.Any()) {
+                foreach (var binding in viewmodel.informationBindings.ToImmutableArray()) {
+                    if (binding.roleType is null) continue;
 
-                var f = binding.informationBindingDefinition!.CreateInstance()!;
-                f.informationType = binding.informationType;
-                f.informationId = binding.informationUID?.UID!;
+                    var f = binding.informationBindingDefinition!.CreateInstance()!;
+                    f.informationType = binding.informationType;
+                    f.informationId = binding.informationUID?.UID!;
 
-                informationBinding = [.. informationBinding, f];
+                    informationBinding = [.. informationBinding, f];
+                }
             }
             return informationBinding;
         }
 
-        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
+        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {            
             featureBinding[] featureBindings = [];
-            foreach (var binding in viewmodel.featureBindings) {
-                if (binding.roleType is null) continue;
+            if (viewmodel.featureBindings.Any()) {
+                foreach (var binding in viewmodel.featureBindings.ToImmutableArray()) {
+                    if (binding.roleType is null) continue;
 
-                var f = binding.featureBindingDefinition!.CreateInstance()!;
-                f.featureType = binding.featureType;
-                f.featureId = binding.featureUID?.UID!;
+                    var f = binding.featureBindingDefinition!.CreateInstance()!;
+                    f.featureType = binding.featureType;
+                    f.featureId = binding.featureUID?.UID!;
 
-                featureBindings = [..featureBindings,f];
+                    featureBindings = [.. featureBindings, f];
+                }
             }
             return featureBindings;
         }

@@ -4,7 +4,7 @@ namespace ArcGIS.Desktop.Editing.Attributes
 {
     internal static class Extensions
     {
-        public static bool IsNull(this Inspector inspector, string fieldName) {
+        public static bool IsNull(this Inspector inspector, string fieldName) {            
             if (inspector[fieldName] == null) return true;
             if (DBNull.Value.Equals(inspector[fieldName])) return true;
             return false;
