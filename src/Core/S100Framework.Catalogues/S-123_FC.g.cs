@@ -1472,7 +1472,7 @@ namespace S100FC.S123.SimpleAttributes
 	}
 
 	/// <summary>
-	/// A code specified for a communication system to indicate the subject group or message type of the transmitted content, e.g., message type of DGNSS, subject code for NAVDAT, or subject indicator character for NAVTEX. 
+	/// A code specified for a communication system to indicate the subject group or message type of the transmitted content, e.g., message type of DGNSS, subject code for NAVDAT, or subject indicator character for NAVTEX.
 	/// </summary>
 	public class subjectOrMessageTypeCode : S100FC.TextAttribute
 	{

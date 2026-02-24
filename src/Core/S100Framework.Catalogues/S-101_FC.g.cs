@@ -7489,7 +7489,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfNonBathymetricData.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfNonBathymetricData.featureBindingsDefinitions;
 
@@ -7611,7 +7628,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => DataCoverage.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DataCoverage.featureBindingsDefinitions;
 
@@ -7682,7 +7716,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationalSystemOfMarks.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationalSystemOfMarks.featureBindingsDefinitions;
 
@@ -7793,7 +7844,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LocalDirectionOfBuoyage.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LocalDirectionOfBuoyage.featureBindingsDefinitions;
 
@@ -7977,9 +8045,25 @@ namespace S100FC.S101.FeatureTypes
 						role = "theQualityInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.QualityOfBathymetricDataComposition> QualityOfBathymetricDataComposition => new informationBinding<InformationAssociation.QualityOfBathymetricDataComposition> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
 			roleType = "association",
 			role = "theQualityInformation",
 		};
@@ -8069,7 +8153,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SoundingDatum.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SoundingDatum.featureBindingsDefinitions;
 
@@ -8156,7 +8257,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VerticalDatumOfData.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VerticalDatumOfData.featureBindingsDefinitions;
 
@@ -8426,7 +8544,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => QualityOfSurvey.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => QualityOfSurvey.featureBindingsDefinitions;
 
@@ -8561,7 +8696,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => UpdateInformation.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UpdateInformation.featureBindingsDefinitions;
 
@@ -8735,11 +8887,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MagneticVariation.featureBindingsDefinitions;
@@ -8874,11 +9042,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LocalMagneticAnomaly.featureBindingsDefinitions;
@@ -9081,11 +9265,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Coastline.featureBindingsDefinitions;
@@ -9250,11 +9450,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandArea.featureBindingsDefinitions;
@@ -9397,11 +9613,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IslandGroup.featureBindingsDefinitions;
@@ -9581,11 +9813,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandElevation.featureBindingsDefinitions;
@@ -9725,11 +9973,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => River.featureBindingsDefinitions;
@@ -9868,11 +10132,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Rapids.featureBindingsDefinitions;
@@ -10024,11 +10304,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Waterfall.featureBindingsDefinitions;
@@ -10180,11 +10476,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Lake.featureBindingsDefinitions;
@@ -10350,11 +10662,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LandRegion.featureBindingsDefinitions;
@@ -10543,11 +10871,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Vegetation.featureBindingsDefinitions;
@@ -10773,11 +11117,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IceArea.featureBindingsDefinitions;
@@ -10968,11 +11328,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SlopingGround.featureBindingsDefinitions;
@@ -11175,11 +11551,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SlopeTopline.featureBindingsDefinitions;
@@ -11306,11 +11698,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Tideway.featureBindingsDefinitions;
@@ -11536,11 +11944,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => BuiltUpArea.featureBindingsDefinitions;
@@ -11867,11 +12291,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Building.featureBindingsDefinitions;
@@ -12109,11 +12549,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AirportAirfield.featureBindingsDefinitions;
@@ -12303,11 +12759,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Runway.featureBindingsDefinitions;
@@ -12497,11 +12969,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Helipad.featureBindingsDefinitions;
@@ -12833,11 +13321,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Bridge.featureBindingsDefinitions;
@@ -13061,11 +13565,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpanFixed.featureBindingsDefinitions;
@@ -13301,11 +13821,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpanOpening.featureBindingsDefinitions;
@@ -13692,11 +14228,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Conveyor.featureBindingsDefinitions;
@@ -14004,11 +14556,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableOverhead.featureBindingsDefinitions;
@@ -14289,11 +14857,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PipelineOverhead.featureBindingsDefinitions;
@@ -14640,11 +15224,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PylonBridgeSupport.featureBindingsDefinitions;
@@ -14986,11 +15586,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FenceWall.featureBindingsDefinitions;
@@ -15167,11 +15783,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Railway.featureBindingsDefinitions;
@@ -15362,11 +15994,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Road.featureBindingsDefinitions;
@@ -15580,11 +16228,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Tunnel.featureBindingsDefinitions;
@@ -15924,11 +16588,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Landmark.featureBindingsDefinitions;
@@ -16332,11 +17012,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SiloTank.featureBindingsDefinitions;
@@ -16735,11 +17431,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WindTurbine.featureBindingsDefinitions;
@@ -17035,11 +17747,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FortifiedStructure.featureBindingsDefinitions;
@@ -17363,11 +18091,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ProductionStorageArea.featureBindingsDefinitions;
@@ -17520,11 +18264,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Checkpoint.featureBindingsDefinitions;
@@ -17812,11 +18572,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Hulk.featureBindingsDefinitions;
@@ -18125,11 +18901,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Pile.featureBindingsDefinitions;
@@ -18419,11 +19211,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dyke.featureBindingsDefinitions;
@@ -18750,11 +19558,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ShorelineConstruction.featureBindingsDefinitions;
@@ -19162,11 +19986,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => StructureOverNavigableWater.featureBindingsDefinitions;
@@ -19405,11 +20245,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Causeway.featureBindingsDefinitions;
@@ -19623,11 +20479,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Canal.featureBindingsDefinitions;
@@ -19790,11 +20662,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DistanceMark.featureBindingsDefinitions;
@@ -20063,11 +20951,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Gate.featureBindingsDefinitions;
@@ -20346,11 +21250,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dam.featureBindingsDefinitions;
@@ -20676,11 +21596,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Crane.featureBindingsDefinitions;
@@ -20962,11 +21898,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Berth.featureBindingsDefinitions;
@@ -21296,11 +22248,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Dolphin.featureBindingsDefinitions;
@@ -21549,11 +22517,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Bollard.featureBindingsDefinitions;
@@ -21843,11 +22827,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DryDock.featureBindingsDefinitions;
@@ -22171,11 +23171,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FloatingDock.featureBindingsDefinitions;
@@ -22433,11 +23449,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Pontoon.featureBindingsDefinitions;
@@ -22723,11 +23755,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DockArea.featureBindingsDefinitions;
@@ -22929,11 +23977,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Gridiron.featureBindingsDefinitions;
@@ -23133,11 +24197,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LockBasin.featureBindingsDefinitions;
@@ -23276,11 +24356,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringTrot.featureBindingsDefinitions;
@@ -23436,11 +24532,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeaAreaNamedWaterArea.featureBindingsDefinitions;
@@ -23616,11 +24728,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TidalStreamFloodEbb.featureBindingsDefinitions;
@@ -23808,11 +24936,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CurrentNonGravitational.featureBindingsDefinitions;
@@ -23952,11 +25096,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WaterTurbulence.featureBindingsDefinitions;
@@ -24119,11 +25279,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TidalStreamPanelData.featureBindingsDefinitions;
@@ -24301,11 +25477,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Sounding.featureBindingsDefinitions;
@@ -24531,11 +25723,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DredgedArea.featureBindingsDefinitions;
@@ -24690,11 +25898,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SweptArea.featureBindingsDefinitions;
@@ -24837,11 +26061,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthContour.featureBindingsDefinitions;
@@ -24952,11 +26192,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthArea.featureBindingsDefinitions;
@@ -25068,11 +26324,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DepthNoBottomFound.featureBindingsDefinitions;
@@ -25159,11 +26431,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnsurveyedArea.featureBindingsDefinitions;
@@ -25299,11 +26587,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeabedArea.featureBindingsDefinitions;
@@ -25443,11 +26747,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => WeedKelp.featureBindingsDefinitions;
@@ -25574,11 +26894,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Seagrass.featureBindingsDefinitions;
@@ -25705,11 +27041,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Sandwave.featureBindingsDefinitions;
@@ -25820,11 +27172,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Spring.featureBindingsDefinitions;
@@ -26077,11 +27445,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => UnderwaterAwashRock.featureBindingsDefinitions;
@@ -26383,11 +27767,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Wreck.featureBindingsDefinitions;
@@ -26731,11 +28131,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Obstruction.featureBindingsDefinitions;
@@ -26953,11 +28369,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FoulGround.featureBindingsDefinitions;
@@ -27084,11 +28516,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DiscolouredWater.featureBindingsDefinitions;
@@ -27274,11 +28722,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FishingFacility.featureBindingsDefinitions;
@@ -27599,11 +29063,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MarineFarmCulture.featureBindingsDefinitions;
@@ -27905,11 +29385,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OffshorePlatform.featureBindingsDefinitions;
@@ -28131,11 +29627,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableSubmarine.featureBindingsDefinitions;
@@ -28341,11 +29853,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CableArea.featureBindingsDefinitions;
@@ -28621,11 +30149,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PipelineSubmarineOnLand.featureBindingsDefinitions;
@@ -28828,11 +30372,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SubmarinePipelineArea.featureBindingsDefinitions;
@@ -29122,11 +30682,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OffshoreProductionArea.featureBindingsDefinitions;
@@ -29315,11 +30891,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationLine.featureBindingsDefinitions;
@@ -29582,11 +31174,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrack.featureBindingsDefinitions;
@@ -29769,11 +31377,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RangeSystem.featureBindingsDefinitions;
@@ -30068,11 +31692,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Fairway.featureBindingsDefinitions;
@@ -30267,11 +31907,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FairwaySystem.featureBindingsDefinitions;
@@ -30554,11 +32210,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedRouteCentreline.featureBindingsDefinitions;
@@ -30817,11 +32489,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TwoWayRoutePart.featureBindingsDefinitions;
@@ -30988,11 +32676,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TwoWayRoute.featureBindingsDefinitions;
@@ -31192,11 +32896,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrafficLanePart.featureBindingsDefinitions;
@@ -31431,11 +33151,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRouteCentreline.featureBindingsDefinitions;
@@ -31731,11 +33467,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRoutePart.featureBindingsDefinitions;
@@ -31918,11 +33670,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DeepWaterRoute.featureBindingsDefinitions;
@@ -32135,11 +33903,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InshoreTrafficZone.featureBindingsDefinitions;
@@ -32328,11 +34112,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PrecautionaryArea.featureBindingsDefinitions;
@@ -32525,11 +34325,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeLanePart.featureBindingsDefinitions;
@@ -32669,11 +34485,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeparationZoneOrLine.featureBindingsDefinitions;
@@ -32813,11 +34645,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeBoundary.featureBindingsDefinitions;
@@ -32982,11 +34830,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeCrossing.featureBindingsDefinitions;
@@ -33151,11 +35015,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationSchemeRoundabout.featureBindingsDefinitions;
@@ -33318,11 +35198,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TrafficSeparationScheme.featureBindingsDefinitions;
@@ -33533,11 +35429,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLaneArea.featureBindingsDefinitions;
@@ -33704,11 +35616,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLaneAxis.featureBindingsDefinitions;
@@ -33875,11 +35803,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ArchipelagicSeaLane.featureBindingsDefinitions;
@@ -34128,11 +36072,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadioCallingInPoint.featureBindingsDefinitions;
@@ -34309,11 +36269,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FerryRoute.featureBindingsDefinitions;
@@ -34465,11 +36441,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarLine.featureBindingsDefinitions;
@@ -34633,11 +36625,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarRange.featureBindingsDefinitions;
@@ -34850,11 +36858,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarStation.featureBindingsDefinitions;
@@ -35069,11 +37093,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorageArea.featureBindingsDefinitions;
@@ -35299,11 +37339,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringArea.featureBindingsDefinitions;
@@ -35505,11 +37561,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AnchorBerth.featureBindingsDefinitions;
@@ -35686,11 +37758,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SeaplaneLandingArea.featureBindingsDefinitions;
@@ -35880,11 +37968,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => DumpingGround.featureBindingsDefinitions;
@@ -36098,11 +38202,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MilitaryPracticeArea.featureBindingsDefinitions;
@@ -36278,11 +38398,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => AdministrationArea.featureBindingsDefinitions;
@@ -36471,11 +38607,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CargoTranshipmentArea.featureBindingsDefinitions;
@@ -36664,11 +38816,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CautionArea.featureBindingsDefinitions;
@@ -36859,11 +39027,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InformationArea.featureBindingsDefinitions;
@@ -37014,11 +39198,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ContiguousZone.featureBindingsDefinitions;
@@ -37141,11 +39341,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ContinentalShelfArea.featureBindingsDefinitions;
@@ -37272,11 +39488,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CustomZone.featureBindingsDefinitions;
@@ -37399,11 +39631,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => ExclusiveEconomicZone.featureBindingsDefinitions;
@@ -37539,11 +39787,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FisheryZone.featureBindingsDefinitions;
@@ -37720,11 +39984,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FishingGround.featureBindingsDefinitions;
@@ -37864,11 +40144,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FreePortArea.featureBindingsDefinitions;
@@ -38008,11 +40304,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourAreaAdministrative.featureBindingsDefinitions;
@@ -38164,11 +40476,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LogPond.featureBindingsDefinitions;
@@ -38358,11 +40686,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => OilBarrier.featureBindingsDefinitions;
@@ -38489,11 +40833,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => StraightTerritorialSeaBaseline.featureBindingsDefinitions;
@@ -38641,11 +41001,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TerritorialSeaArea.featureBindingsDefinitions;
@@ -38793,11 +41169,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SubmarineTransitLane.featureBindingsDefinitions;
@@ -38936,11 +41328,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotageDistrict.featureBindingsDefinitions;
@@ -39119,11 +41527,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CollisionRegulationsLimit.featureBindingsDefinitions;
@@ -39262,11 +41686,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MarinePollutionRegulationsArea.featureBindingsDefinitions;
@@ -39468,11 +41908,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RestrictedArea.featureBindingsDefinitions;
@@ -39843,11 +42299,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAllAround.featureBindingsDefinitions;
@@ -40156,11 +42628,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightSectored.featureBindingsDefinitions;
@@ -40455,11 +42943,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFogDetector.featureBindingsDefinitions;
@@ -40751,11 +43255,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAirObstruction.featureBindingsDefinitions;
@@ -41061,11 +43581,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LateralBuoy.featureBindingsDefinitions;
@@ -41403,11 +43939,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CardinalBuoy.featureBindingsDefinitions;
@@ -41732,11 +44284,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IsolatedDangerBuoy.featureBindingsDefinitions;
@@ -42061,11 +44629,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SafeWaterBuoy.featureBindingsDefinitions;
@@ -42403,11 +44987,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpecialPurposeGeneralBuoy.featureBindingsDefinitions;
@@ -42707,11 +45307,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => EmergencyWreckMarkingBuoy.featureBindingsDefinitions;
@@ -43022,11 +45638,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => InstallationBuoy.featureBindingsDefinitions;
@@ -43318,11 +45950,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => MooringBuoy.featureBindingsDefinitions;
@@ -43722,11 +46370,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LateralBeacon.featureBindingsDefinitions;
@@ -44142,11 +46806,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CardinalBeacon.featureBindingsDefinitions;
@@ -44549,11 +47229,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => IsolatedDangerBeacon.featureBindingsDefinitions;
@@ -44956,11 +47652,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SafeWaterBeacon.featureBindingsDefinitions;
@@ -45376,11 +48088,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SpecialPurposeGeneralBeacon.featureBindingsDefinitions;
@@ -45745,11 +48473,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Daymark.featureBindingsDefinitions;
@@ -46113,11 +48857,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFloat.featureBindingsDefinitions;
@@ -46441,11 +49201,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightVessel.featureBindingsDefinitions;
@@ -46683,11 +49459,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Retroreflector.featureBindingsDefinitions;
@@ -46851,11 +49643,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarReflector.featureBindingsDefinitions;
@@ -47105,11 +49913,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => FogSignal.featureBindingsDefinitions;
@@ -47313,11 +50137,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PhysicalAISAidToNavigation.featureBindingsDefinitions;
@@ -47534,11 +50374,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VirtualAISAidToNavigation.featureBindingsDefinitions;
@@ -47763,11 +50619,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadioStation.featureBindingsDefinitions;
@@ -48004,11 +50876,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RadarTransponderBeacon.featureBindingsDefinitions;
@@ -48267,11 +51155,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PilotBoardingPlace.featureBindingsDefinitions;
@@ -48414,11 +51318,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VesselTrafficServiceArea.featureBindingsDefinitions;
@@ -48606,11 +51526,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => CoastGuardStation.featureBindingsDefinitions;
@@ -48799,11 +51735,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationWarning.featureBindingsDefinitions;
@@ -49008,11 +51960,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SignalStationTraffic.featureBindingsDefinitions;
@@ -49217,11 +52185,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RescueStation.featureBindingsDefinitions;
@@ -49498,11 +52482,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => HarbourFacility.featureBindingsDefinitions;
@@ -49679,11 +52679,27 @@ namespace S100FC.S101.FeatureTypes
 						role = "theInformation",
 					},
 				},
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
 
 		public static informationBinding<InformationAssociation.AdditionalInformation> AdditionalInformation => new informationBinding<InformationAssociation.AdditionalInformation> {
 			roleType = "association",
 			role = "theInformation",
+		};
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
 		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SmallCraftFacility.featureBindingsDefinitions;
@@ -49811,7 +52827,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => TextPlacement.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => TextPlacement.featureBindingsDefinitions;
 
@@ -49885,7 +52918,24 @@ namespace S100FC.S101.FeatureTypes
 		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => Chart1Feature.informationBindingsDefinitions;
 
 		public static informationBindingDefinition[] informationBindingsDefinitions => [
+				new informationBindingDefinition {
+					roleType = "association",
+					role = "theQualityInformation",
+					association = "SpatialAssociation",
+					lower = 0,
+					upper = 1,
+					informationTypes = [nameof(SpatialQuality)],
+					CreateInstance = () => new informationBinding<InformationAssociation.SpatialAssociation>() {
+						roleType = "association",
+						role = "theQualityInformation",
+					},
+				},
 			];
+
+		public static informationBinding<InformationAssociation.SpatialAssociation> SpatialAssociation => new informationBinding<InformationAssociation.SpatialAssociation> {
+			roleType = "association",
+			role = "theQualityInformation",
+		};
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Chart1Feature.featureBindingsDefinitions;
 
@@ -49950,186 +53000,376 @@ namespace S100FC.S101
 
 	public static class Extensions {
 		public static informationBinding CreateInformationBinding(string informationType, string association) => $"{informationType}::{association}" switch {
+			"QualityOfNonBathymetricData::SpatialAssociation" => QualityOfNonBathymetricData.SpatialAssociation,
+			"DataCoverage::SpatialAssociation" => DataCoverage.SpatialAssociation,
+			"NavigationalSystemOfMarks::SpatialAssociation" => NavigationalSystemOfMarks.SpatialAssociation,
+			"LocalDirectionOfBuoyage::SpatialAssociation" => LocalDirectionOfBuoyage.SpatialAssociation,
 			"QualityOfBathymetricData::QualityOfBathymetricDataComposition" => QualityOfBathymetricData.QualityOfBathymetricDataComposition,
+			"QualityOfBathymetricData::SpatialAssociation" => QualityOfBathymetricData.SpatialAssociation,
+			"SoundingDatum::SpatialAssociation" => SoundingDatum.SpatialAssociation,
+			"VerticalDatumOfData::SpatialAssociation" => VerticalDatumOfData.SpatialAssociation,
+			"QualityOfSurvey::SpatialAssociation" => QualityOfSurvey.SpatialAssociation,
+			"UpdateInformation::SpatialAssociation" => UpdateInformation.SpatialAssociation,
 			"MagneticVariation::AdditionalInformation" => MagneticVariation.AdditionalInformation,
+			"MagneticVariation::SpatialAssociation" => MagneticVariation.SpatialAssociation,
 			"LocalMagneticAnomaly::AdditionalInformation" => LocalMagneticAnomaly.AdditionalInformation,
+			"LocalMagneticAnomaly::SpatialAssociation" => LocalMagneticAnomaly.SpatialAssociation,
 			"Coastline::AdditionalInformation" => Coastline.AdditionalInformation,
+			"Coastline::SpatialAssociation" => Coastline.SpatialAssociation,
 			"LandArea::AdditionalInformation" => LandArea.AdditionalInformation,
+			"LandArea::SpatialAssociation" => LandArea.SpatialAssociation,
 			"IslandGroup::AdditionalInformation" => IslandGroup.AdditionalInformation,
+			"IslandGroup::SpatialAssociation" => IslandGroup.SpatialAssociation,
 			"LandElevation::AdditionalInformation" => LandElevation.AdditionalInformation,
+			"LandElevation::SpatialAssociation" => LandElevation.SpatialAssociation,
 			"River::AdditionalInformation" => River.AdditionalInformation,
+			"River::SpatialAssociation" => River.SpatialAssociation,
 			"Rapids::AdditionalInformation" => Rapids.AdditionalInformation,
+			"Rapids::SpatialAssociation" => Rapids.SpatialAssociation,
 			"Waterfall::AdditionalInformation" => Waterfall.AdditionalInformation,
+			"Waterfall::SpatialAssociation" => Waterfall.SpatialAssociation,
 			"Lake::AdditionalInformation" => Lake.AdditionalInformation,
+			"Lake::SpatialAssociation" => Lake.SpatialAssociation,
 			"LandRegion::AdditionalInformation" => LandRegion.AdditionalInformation,
+			"LandRegion::SpatialAssociation" => LandRegion.SpatialAssociation,
 			"Vegetation::AdditionalInformation" => Vegetation.AdditionalInformation,
+			"Vegetation::SpatialAssociation" => Vegetation.SpatialAssociation,
 			"IceArea::AdditionalInformation" => IceArea.AdditionalInformation,
+			"IceArea::SpatialAssociation" => IceArea.SpatialAssociation,
 			"SlopingGround::AdditionalInformation" => SlopingGround.AdditionalInformation,
+			"SlopingGround::SpatialAssociation" => SlopingGround.SpatialAssociation,
 			"SlopeTopline::AdditionalInformation" => SlopeTopline.AdditionalInformation,
+			"SlopeTopline::SpatialAssociation" => SlopeTopline.SpatialAssociation,
 			"Tideway::AdditionalInformation" => Tideway.AdditionalInformation,
+			"Tideway::SpatialAssociation" => Tideway.SpatialAssociation,
 			"BuiltUpArea::AdditionalInformation" => BuiltUpArea.AdditionalInformation,
+			"BuiltUpArea::SpatialAssociation" => BuiltUpArea.SpatialAssociation,
 			"Building::AdditionalInformation" => Building.AdditionalInformation,
+			"Building::SpatialAssociation" => Building.SpatialAssociation,
 			"AirportAirfield::AdditionalInformation" => AirportAirfield.AdditionalInformation,
+			"AirportAirfield::SpatialAssociation" => AirportAirfield.SpatialAssociation,
 			"Runway::AdditionalInformation" => Runway.AdditionalInformation,
+			"Runway::SpatialAssociation" => Runway.SpatialAssociation,
 			"Helipad::AdditionalInformation" => Helipad.AdditionalInformation,
+			"Helipad::SpatialAssociation" => Helipad.SpatialAssociation,
 			"Bridge::AdditionalInformation" => Bridge.AdditionalInformation,
+			"Bridge::SpatialAssociation" => Bridge.SpatialAssociation,
 			"SpanFixed::AdditionalInformation" => SpanFixed.AdditionalInformation,
+			"SpanFixed::SpatialAssociation" => SpanFixed.SpatialAssociation,
 			"SpanOpening::AdditionalInformation" => SpanOpening.AdditionalInformation,
+			"SpanOpening::SpatialAssociation" => SpanOpening.SpatialAssociation,
 			"Conveyor::AdditionalInformation" => Conveyor.AdditionalInformation,
+			"Conveyor::SpatialAssociation" => Conveyor.SpatialAssociation,
 			"CableOverhead::AdditionalInformation" => CableOverhead.AdditionalInformation,
+			"CableOverhead::SpatialAssociation" => CableOverhead.SpatialAssociation,
 			"PipelineOverhead::AdditionalInformation" => PipelineOverhead.AdditionalInformation,
+			"PipelineOverhead::SpatialAssociation" => PipelineOverhead.SpatialAssociation,
 			"PylonBridgeSupport::AdditionalInformation" => PylonBridgeSupport.AdditionalInformation,
+			"PylonBridgeSupport::SpatialAssociation" => PylonBridgeSupport.SpatialAssociation,
 			"FenceWall::AdditionalInformation" => FenceWall.AdditionalInformation,
+			"FenceWall::SpatialAssociation" => FenceWall.SpatialAssociation,
 			"Railway::AdditionalInformation" => Railway.AdditionalInformation,
+			"Railway::SpatialAssociation" => Railway.SpatialAssociation,
 			"Road::AdditionalInformation" => Road.AdditionalInformation,
+			"Road::SpatialAssociation" => Road.SpatialAssociation,
 			"Tunnel::AdditionalInformation" => Tunnel.AdditionalInformation,
+			"Tunnel::SpatialAssociation" => Tunnel.SpatialAssociation,
 			"Landmark::AdditionalInformation" => Landmark.AdditionalInformation,
+			"Landmark::SpatialAssociation" => Landmark.SpatialAssociation,
 			"SiloTank::AdditionalInformation" => SiloTank.AdditionalInformation,
+			"SiloTank::SpatialAssociation" => SiloTank.SpatialAssociation,
 			"WindTurbine::AdditionalInformation" => WindTurbine.AdditionalInformation,
+			"WindTurbine::SpatialAssociation" => WindTurbine.SpatialAssociation,
 			"FortifiedStructure::AdditionalInformation" => FortifiedStructure.AdditionalInformation,
+			"FortifiedStructure::SpatialAssociation" => FortifiedStructure.SpatialAssociation,
 			"ProductionStorageArea::AdditionalInformation" => ProductionStorageArea.AdditionalInformation,
+			"ProductionStorageArea::SpatialAssociation" => ProductionStorageArea.SpatialAssociation,
 			"Checkpoint::AdditionalInformation" => Checkpoint.AdditionalInformation,
+			"Checkpoint::SpatialAssociation" => Checkpoint.SpatialAssociation,
 			"Hulk::AdditionalInformation" => Hulk.AdditionalInformation,
+			"Hulk::SpatialAssociation" => Hulk.SpatialAssociation,
 			"Pile::AdditionalInformation" => Pile.AdditionalInformation,
+			"Pile::SpatialAssociation" => Pile.SpatialAssociation,
 			"Dyke::AdditionalInformation" => Dyke.AdditionalInformation,
+			"Dyke::SpatialAssociation" => Dyke.SpatialAssociation,
 			"ShorelineConstruction::AdditionalInformation" => ShorelineConstruction.AdditionalInformation,
+			"ShorelineConstruction::SpatialAssociation" => ShorelineConstruction.SpatialAssociation,
 			"StructureOverNavigableWater::AdditionalInformation" => StructureOverNavigableWater.AdditionalInformation,
+			"StructureOverNavigableWater::SpatialAssociation" => StructureOverNavigableWater.SpatialAssociation,
 			"Causeway::AdditionalInformation" => Causeway.AdditionalInformation,
+			"Causeway::SpatialAssociation" => Causeway.SpatialAssociation,
 			"Canal::AdditionalInformation" => Canal.AdditionalInformation,
+			"Canal::SpatialAssociation" => Canal.SpatialAssociation,
 			"DistanceMark::AdditionalInformation" => DistanceMark.AdditionalInformation,
+			"DistanceMark::SpatialAssociation" => DistanceMark.SpatialAssociation,
 			"Gate::AdditionalInformation" => Gate.AdditionalInformation,
+			"Gate::SpatialAssociation" => Gate.SpatialAssociation,
 			"Dam::AdditionalInformation" => Dam.AdditionalInformation,
+			"Dam::SpatialAssociation" => Dam.SpatialAssociation,
 			"Crane::AdditionalInformation" => Crane.AdditionalInformation,
+			"Crane::SpatialAssociation" => Crane.SpatialAssociation,
 			"Berth::AdditionalInformation" => Berth.AdditionalInformation,
+			"Berth::SpatialAssociation" => Berth.SpatialAssociation,
 			"Dolphin::AdditionalInformation" => Dolphin.AdditionalInformation,
+			"Dolphin::SpatialAssociation" => Dolphin.SpatialAssociation,
 			"Bollard::AdditionalInformation" => Bollard.AdditionalInformation,
+			"Bollard::SpatialAssociation" => Bollard.SpatialAssociation,
 			"DryDock::AdditionalInformation" => DryDock.AdditionalInformation,
+			"DryDock::SpatialAssociation" => DryDock.SpatialAssociation,
 			"FloatingDock::AdditionalInformation" => FloatingDock.AdditionalInformation,
+			"FloatingDock::SpatialAssociation" => FloatingDock.SpatialAssociation,
 			"Pontoon::AdditionalInformation" => Pontoon.AdditionalInformation,
+			"Pontoon::SpatialAssociation" => Pontoon.SpatialAssociation,
 			"DockArea::AdditionalInformation" => DockArea.AdditionalInformation,
+			"DockArea::SpatialAssociation" => DockArea.SpatialAssociation,
 			"Gridiron::AdditionalInformation" => Gridiron.AdditionalInformation,
+			"Gridiron::SpatialAssociation" => Gridiron.SpatialAssociation,
 			"LockBasin::AdditionalInformation" => LockBasin.AdditionalInformation,
+			"LockBasin::SpatialAssociation" => LockBasin.SpatialAssociation,
 			"MooringTrot::AdditionalInformation" => MooringTrot.AdditionalInformation,
+			"MooringTrot::SpatialAssociation" => MooringTrot.SpatialAssociation,
 			"SeaAreaNamedWaterArea::AdditionalInformation" => SeaAreaNamedWaterArea.AdditionalInformation,
+			"SeaAreaNamedWaterArea::SpatialAssociation" => SeaAreaNamedWaterArea.SpatialAssociation,
 			"TidalStreamFloodEbb::AdditionalInformation" => TidalStreamFloodEbb.AdditionalInformation,
+			"TidalStreamFloodEbb::SpatialAssociation" => TidalStreamFloodEbb.SpatialAssociation,
 			"CurrentNonGravitational::AdditionalInformation" => CurrentNonGravitational.AdditionalInformation,
+			"CurrentNonGravitational::SpatialAssociation" => CurrentNonGravitational.SpatialAssociation,
 			"WaterTurbulence::AdditionalInformation" => WaterTurbulence.AdditionalInformation,
+			"WaterTurbulence::SpatialAssociation" => WaterTurbulence.SpatialAssociation,
 			"TidalStreamPanelData::AdditionalInformation" => TidalStreamPanelData.AdditionalInformation,
+			"TidalStreamPanelData::SpatialAssociation" => TidalStreamPanelData.SpatialAssociation,
 			"Sounding::AdditionalInformation" => Sounding.AdditionalInformation,
+			"Sounding::SpatialAssociation" => Sounding.SpatialAssociation,
 			"DredgedArea::AdditionalInformation" => DredgedArea.AdditionalInformation,
+			"DredgedArea::SpatialAssociation" => DredgedArea.SpatialAssociation,
 			"SweptArea::AdditionalInformation" => SweptArea.AdditionalInformation,
+			"SweptArea::SpatialAssociation" => SweptArea.SpatialAssociation,
 			"DepthContour::AdditionalInformation" => DepthContour.AdditionalInformation,
+			"DepthContour::SpatialAssociation" => DepthContour.SpatialAssociation,
 			"DepthArea::AdditionalInformation" => DepthArea.AdditionalInformation,
+			"DepthArea::SpatialAssociation" => DepthArea.SpatialAssociation,
 			"DepthNoBottomFound::AdditionalInformation" => DepthNoBottomFound.AdditionalInformation,
+			"DepthNoBottomFound::SpatialAssociation" => DepthNoBottomFound.SpatialAssociation,
 			"UnsurveyedArea::AdditionalInformation" => UnsurveyedArea.AdditionalInformation,
+			"UnsurveyedArea::SpatialAssociation" => UnsurveyedArea.SpatialAssociation,
 			"SeabedArea::AdditionalInformation" => SeabedArea.AdditionalInformation,
+			"SeabedArea::SpatialAssociation" => SeabedArea.SpatialAssociation,
 			"WeedKelp::AdditionalInformation" => WeedKelp.AdditionalInformation,
+			"WeedKelp::SpatialAssociation" => WeedKelp.SpatialAssociation,
 			"Seagrass::AdditionalInformation" => Seagrass.AdditionalInformation,
+			"Seagrass::SpatialAssociation" => Seagrass.SpatialAssociation,
 			"Sandwave::AdditionalInformation" => Sandwave.AdditionalInformation,
+			"Sandwave::SpatialAssociation" => Sandwave.SpatialAssociation,
 			"Spring::AdditionalInformation" => Spring.AdditionalInformation,
+			"Spring::SpatialAssociation" => Spring.SpatialAssociation,
 			"UnderwaterAwashRock::AdditionalInformation" => UnderwaterAwashRock.AdditionalInformation,
+			"UnderwaterAwashRock::SpatialAssociation" => UnderwaterAwashRock.SpatialAssociation,
 			"Wreck::AdditionalInformation" => Wreck.AdditionalInformation,
+			"Wreck::SpatialAssociation" => Wreck.SpatialAssociation,
 			"Obstruction::AdditionalInformation" => Obstruction.AdditionalInformation,
+			"Obstruction::SpatialAssociation" => Obstruction.SpatialAssociation,
 			"FoulGround::AdditionalInformation" => FoulGround.AdditionalInformation,
+			"FoulGround::SpatialAssociation" => FoulGround.SpatialAssociation,
 			"DiscolouredWater::AdditionalInformation" => DiscolouredWater.AdditionalInformation,
+			"DiscolouredWater::SpatialAssociation" => DiscolouredWater.SpatialAssociation,
 			"FishingFacility::AdditionalInformation" => FishingFacility.AdditionalInformation,
+			"FishingFacility::SpatialAssociation" => FishingFacility.SpatialAssociation,
 			"MarineFarmCulture::AdditionalInformation" => MarineFarmCulture.AdditionalInformation,
+			"MarineFarmCulture::SpatialAssociation" => MarineFarmCulture.SpatialAssociation,
 			"OffshorePlatform::AdditionalInformation" => OffshorePlatform.AdditionalInformation,
+			"OffshorePlatform::SpatialAssociation" => OffshorePlatform.SpatialAssociation,
 			"CableSubmarine::AdditionalInformation" => CableSubmarine.AdditionalInformation,
+			"CableSubmarine::SpatialAssociation" => CableSubmarine.SpatialAssociation,
 			"CableArea::AdditionalInformation" => CableArea.AdditionalInformation,
+			"CableArea::SpatialAssociation" => CableArea.SpatialAssociation,
 			"PipelineSubmarineOnLand::AdditionalInformation" => PipelineSubmarineOnLand.AdditionalInformation,
+			"PipelineSubmarineOnLand::SpatialAssociation" => PipelineSubmarineOnLand.SpatialAssociation,
 			"SubmarinePipelineArea::AdditionalInformation" => SubmarinePipelineArea.AdditionalInformation,
+			"SubmarinePipelineArea::SpatialAssociation" => SubmarinePipelineArea.SpatialAssociation,
 			"OffshoreProductionArea::AdditionalInformation" => OffshoreProductionArea.AdditionalInformation,
+			"OffshoreProductionArea::SpatialAssociation" => OffshoreProductionArea.SpatialAssociation,
 			"NavigationLine::AdditionalInformation" => NavigationLine.AdditionalInformation,
+			"NavigationLine::SpatialAssociation" => NavigationLine.SpatialAssociation,
 			"RecommendedTrack::AdditionalInformation" => RecommendedTrack.AdditionalInformation,
+			"RecommendedTrack::SpatialAssociation" => RecommendedTrack.SpatialAssociation,
 			"RangeSystem::AdditionalInformation" => RangeSystem.AdditionalInformation,
+			"RangeSystem::SpatialAssociation" => RangeSystem.SpatialAssociation,
 			"Fairway::AdditionalInformation" => Fairway.AdditionalInformation,
+			"Fairway::SpatialAssociation" => Fairway.SpatialAssociation,
 			"FairwaySystem::AdditionalInformation" => FairwaySystem.AdditionalInformation,
+			"FairwaySystem::SpatialAssociation" => FairwaySystem.SpatialAssociation,
 			"RecommendedRouteCentreline::AdditionalInformation" => RecommendedRouteCentreline.AdditionalInformation,
+			"RecommendedRouteCentreline::SpatialAssociation" => RecommendedRouteCentreline.SpatialAssociation,
 			"TwoWayRoutePart::AdditionalInformation" => TwoWayRoutePart.AdditionalInformation,
+			"TwoWayRoutePart::SpatialAssociation" => TwoWayRoutePart.SpatialAssociation,
 			"TwoWayRoute::AdditionalInformation" => TwoWayRoute.AdditionalInformation,
+			"TwoWayRoute::SpatialAssociation" => TwoWayRoute.SpatialAssociation,
 			"RecommendedTrafficLanePart::AdditionalInformation" => RecommendedTrafficLanePart.AdditionalInformation,
+			"RecommendedTrafficLanePart::SpatialAssociation" => RecommendedTrafficLanePart.SpatialAssociation,
 			"DeepWaterRouteCentreline::AdditionalInformation" => DeepWaterRouteCentreline.AdditionalInformation,
+			"DeepWaterRouteCentreline::SpatialAssociation" => DeepWaterRouteCentreline.SpatialAssociation,
 			"DeepWaterRoutePart::AdditionalInformation" => DeepWaterRoutePart.AdditionalInformation,
+			"DeepWaterRoutePart::SpatialAssociation" => DeepWaterRoutePart.SpatialAssociation,
 			"DeepWaterRoute::AdditionalInformation" => DeepWaterRoute.AdditionalInformation,
+			"DeepWaterRoute::SpatialAssociation" => DeepWaterRoute.SpatialAssociation,
 			"InshoreTrafficZone::AdditionalInformation" => InshoreTrafficZone.AdditionalInformation,
+			"InshoreTrafficZone::SpatialAssociation" => InshoreTrafficZone.SpatialAssociation,
 			"PrecautionaryArea::AdditionalInformation" => PrecautionaryArea.AdditionalInformation,
+			"PrecautionaryArea::SpatialAssociation" => PrecautionaryArea.SpatialAssociation,
 			"TrafficSeparationSchemeLanePart::AdditionalInformation" => TrafficSeparationSchemeLanePart.AdditionalInformation,
+			"TrafficSeparationSchemeLanePart::SpatialAssociation" => TrafficSeparationSchemeLanePart.SpatialAssociation,
 			"SeparationZoneOrLine::AdditionalInformation" => SeparationZoneOrLine.AdditionalInformation,
+			"SeparationZoneOrLine::SpatialAssociation" => SeparationZoneOrLine.SpatialAssociation,
 			"TrafficSeparationSchemeBoundary::AdditionalInformation" => TrafficSeparationSchemeBoundary.AdditionalInformation,
+			"TrafficSeparationSchemeBoundary::SpatialAssociation" => TrafficSeparationSchemeBoundary.SpatialAssociation,
 			"TrafficSeparationSchemeCrossing::AdditionalInformation" => TrafficSeparationSchemeCrossing.AdditionalInformation,
+			"TrafficSeparationSchemeCrossing::SpatialAssociation" => TrafficSeparationSchemeCrossing.SpatialAssociation,
 			"TrafficSeparationSchemeRoundabout::AdditionalInformation" => TrafficSeparationSchemeRoundabout.AdditionalInformation,
+			"TrafficSeparationSchemeRoundabout::SpatialAssociation" => TrafficSeparationSchemeRoundabout.SpatialAssociation,
 			"TrafficSeparationScheme::AdditionalInformation" => TrafficSeparationScheme.AdditionalInformation,
+			"TrafficSeparationScheme::SpatialAssociation" => TrafficSeparationScheme.SpatialAssociation,
 			"ArchipelagicSeaLaneArea::AdditionalInformation" => ArchipelagicSeaLaneArea.AdditionalInformation,
+			"ArchipelagicSeaLaneArea::SpatialAssociation" => ArchipelagicSeaLaneArea.SpatialAssociation,
 			"ArchipelagicSeaLaneAxis::AdditionalInformation" => ArchipelagicSeaLaneAxis.AdditionalInformation,
+			"ArchipelagicSeaLaneAxis::SpatialAssociation" => ArchipelagicSeaLaneAxis.SpatialAssociation,
 			"ArchipelagicSeaLane::AdditionalInformation" => ArchipelagicSeaLane.AdditionalInformation,
+			"ArchipelagicSeaLane::SpatialAssociation" => ArchipelagicSeaLane.SpatialAssociation,
 			"RadioCallingInPoint::AdditionalInformation" => RadioCallingInPoint.AdditionalInformation,
+			"RadioCallingInPoint::SpatialAssociation" => RadioCallingInPoint.SpatialAssociation,
 			"FerryRoute::AdditionalInformation" => FerryRoute.AdditionalInformation,
+			"FerryRoute::SpatialAssociation" => FerryRoute.SpatialAssociation,
 			"RadarLine::AdditionalInformation" => RadarLine.AdditionalInformation,
+			"RadarLine::SpatialAssociation" => RadarLine.SpatialAssociation,
 			"RadarRange::AdditionalInformation" => RadarRange.AdditionalInformation,
+			"RadarRange::SpatialAssociation" => RadarRange.SpatialAssociation,
 			"RadarStation::AdditionalInformation" => RadarStation.AdditionalInformation,
+			"RadarStation::SpatialAssociation" => RadarStation.SpatialAssociation,
 			"AnchorageArea::AdditionalInformation" => AnchorageArea.AdditionalInformation,
+			"AnchorageArea::SpatialAssociation" => AnchorageArea.SpatialAssociation,
 			"MooringArea::AdditionalInformation" => MooringArea.AdditionalInformation,
+			"MooringArea::SpatialAssociation" => MooringArea.SpatialAssociation,
 			"AnchorBerth::AdditionalInformation" => AnchorBerth.AdditionalInformation,
+			"AnchorBerth::SpatialAssociation" => AnchorBerth.SpatialAssociation,
 			"SeaplaneLandingArea::AdditionalInformation" => SeaplaneLandingArea.AdditionalInformation,
+			"SeaplaneLandingArea::SpatialAssociation" => SeaplaneLandingArea.SpatialAssociation,
 			"DumpingGround::AdditionalInformation" => DumpingGround.AdditionalInformation,
+			"DumpingGround::SpatialAssociation" => DumpingGround.SpatialAssociation,
 			"MilitaryPracticeArea::AdditionalInformation" => MilitaryPracticeArea.AdditionalInformation,
+			"MilitaryPracticeArea::SpatialAssociation" => MilitaryPracticeArea.SpatialAssociation,
 			"AdministrationArea::AdditionalInformation" => AdministrationArea.AdditionalInformation,
+			"AdministrationArea::SpatialAssociation" => AdministrationArea.SpatialAssociation,
 			"CargoTranshipmentArea::AdditionalInformation" => CargoTranshipmentArea.AdditionalInformation,
+			"CargoTranshipmentArea::SpatialAssociation" => CargoTranshipmentArea.SpatialAssociation,
 			"CautionArea::AdditionalInformation" => CautionArea.AdditionalInformation,
+			"CautionArea::SpatialAssociation" => CautionArea.SpatialAssociation,
 			"InformationArea::AdditionalInformation" => InformationArea.AdditionalInformation,
+			"InformationArea::SpatialAssociation" => InformationArea.SpatialAssociation,
 			"ContiguousZone::AdditionalInformation" => ContiguousZone.AdditionalInformation,
+			"ContiguousZone::SpatialAssociation" => ContiguousZone.SpatialAssociation,
 			"ContinentalShelfArea::AdditionalInformation" => ContinentalShelfArea.AdditionalInformation,
+			"ContinentalShelfArea::SpatialAssociation" => ContinentalShelfArea.SpatialAssociation,
 			"CustomZone::AdditionalInformation" => CustomZone.AdditionalInformation,
+			"CustomZone::SpatialAssociation" => CustomZone.SpatialAssociation,
 			"ExclusiveEconomicZone::AdditionalInformation" => ExclusiveEconomicZone.AdditionalInformation,
+			"ExclusiveEconomicZone::SpatialAssociation" => ExclusiveEconomicZone.SpatialAssociation,
 			"FisheryZone::AdditionalInformation" => FisheryZone.AdditionalInformation,
+			"FisheryZone::SpatialAssociation" => FisheryZone.SpatialAssociation,
 			"FishingGround::AdditionalInformation" => FishingGround.AdditionalInformation,
+			"FishingGround::SpatialAssociation" => FishingGround.SpatialAssociation,
 			"FreePortArea::AdditionalInformation" => FreePortArea.AdditionalInformation,
+			"FreePortArea::SpatialAssociation" => FreePortArea.SpatialAssociation,
 			"HarbourAreaAdministrative::AdditionalInformation" => HarbourAreaAdministrative.AdditionalInformation,
+			"HarbourAreaAdministrative::SpatialAssociation" => HarbourAreaAdministrative.SpatialAssociation,
 			"LogPond::AdditionalInformation" => LogPond.AdditionalInformation,
+			"LogPond::SpatialAssociation" => LogPond.SpatialAssociation,
 			"OilBarrier::AdditionalInformation" => OilBarrier.AdditionalInformation,
+			"OilBarrier::SpatialAssociation" => OilBarrier.SpatialAssociation,
 			"StraightTerritorialSeaBaseline::AdditionalInformation" => StraightTerritorialSeaBaseline.AdditionalInformation,
+			"StraightTerritorialSeaBaseline::SpatialAssociation" => StraightTerritorialSeaBaseline.SpatialAssociation,
 			"TerritorialSeaArea::AdditionalInformation" => TerritorialSeaArea.AdditionalInformation,
+			"TerritorialSeaArea::SpatialAssociation" => TerritorialSeaArea.SpatialAssociation,
 			"SubmarineTransitLane::AdditionalInformation" => SubmarineTransitLane.AdditionalInformation,
+			"SubmarineTransitLane::SpatialAssociation" => SubmarineTransitLane.SpatialAssociation,
 			"PilotageDistrict::AdditionalInformation" => PilotageDistrict.AdditionalInformation,
+			"PilotageDistrict::SpatialAssociation" => PilotageDistrict.SpatialAssociation,
 			"CollisionRegulationsLimit::AdditionalInformation" => CollisionRegulationsLimit.AdditionalInformation,
+			"CollisionRegulationsLimit::SpatialAssociation" => CollisionRegulationsLimit.SpatialAssociation,
 			"MarinePollutionRegulationsArea::AdditionalInformation" => MarinePollutionRegulationsArea.AdditionalInformation,
+			"MarinePollutionRegulationsArea::SpatialAssociation" => MarinePollutionRegulationsArea.SpatialAssociation,
 			"RestrictedArea::AdditionalInformation" => RestrictedArea.AdditionalInformation,
+			"RestrictedArea::SpatialAssociation" => RestrictedArea.SpatialAssociation,
 			"LightAllAround::AdditionalInformation" => LightAllAround.AdditionalInformation,
+			"LightAllAround::SpatialAssociation" => LightAllAround.SpatialAssociation,
 			"LightSectored::AdditionalInformation" => LightSectored.AdditionalInformation,
+			"LightSectored::SpatialAssociation" => LightSectored.SpatialAssociation,
 			"LightFogDetector::AdditionalInformation" => LightFogDetector.AdditionalInformation,
+			"LightFogDetector::SpatialAssociation" => LightFogDetector.SpatialAssociation,
 			"LightAirObstruction::AdditionalInformation" => LightAirObstruction.AdditionalInformation,
+			"LightAirObstruction::SpatialAssociation" => LightAirObstruction.SpatialAssociation,
 			"LateralBuoy::AdditionalInformation" => LateralBuoy.AdditionalInformation,
+			"LateralBuoy::SpatialAssociation" => LateralBuoy.SpatialAssociation,
 			"CardinalBuoy::AdditionalInformation" => CardinalBuoy.AdditionalInformation,
+			"CardinalBuoy::SpatialAssociation" => CardinalBuoy.SpatialAssociation,
 			"IsolatedDangerBuoy::AdditionalInformation" => IsolatedDangerBuoy.AdditionalInformation,
+			"IsolatedDangerBuoy::SpatialAssociation" => IsolatedDangerBuoy.SpatialAssociation,
 			"SafeWaterBuoy::AdditionalInformation" => SafeWaterBuoy.AdditionalInformation,
+			"SafeWaterBuoy::SpatialAssociation" => SafeWaterBuoy.SpatialAssociation,
 			"SpecialPurposeGeneralBuoy::AdditionalInformation" => SpecialPurposeGeneralBuoy.AdditionalInformation,
+			"SpecialPurposeGeneralBuoy::SpatialAssociation" => SpecialPurposeGeneralBuoy.SpatialAssociation,
 			"EmergencyWreckMarkingBuoy::AdditionalInformation" => EmergencyWreckMarkingBuoy.AdditionalInformation,
+			"EmergencyWreckMarkingBuoy::SpatialAssociation" => EmergencyWreckMarkingBuoy.SpatialAssociation,
 			"InstallationBuoy::AdditionalInformation" => InstallationBuoy.AdditionalInformation,
+			"InstallationBuoy::SpatialAssociation" => InstallationBuoy.SpatialAssociation,
 			"MooringBuoy::AdditionalInformation" => MooringBuoy.AdditionalInformation,
+			"MooringBuoy::SpatialAssociation" => MooringBuoy.SpatialAssociation,
 			"LateralBeacon::AdditionalInformation" => LateralBeacon.AdditionalInformation,
+			"LateralBeacon::SpatialAssociation" => LateralBeacon.SpatialAssociation,
 			"CardinalBeacon::AdditionalInformation" => CardinalBeacon.AdditionalInformation,
+			"CardinalBeacon::SpatialAssociation" => CardinalBeacon.SpatialAssociation,
 			"IsolatedDangerBeacon::AdditionalInformation" => IsolatedDangerBeacon.AdditionalInformation,
+			"IsolatedDangerBeacon::SpatialAssociation" => IsolatedDangerBeacon.SpatialAssociation,
 			"SafeWaterBeacon::AdditionalInformation" => SafeWaterBeacon.AdditionalInformation,
+			"SafeWaterBeacon::SpatialAssociation" => SafeWaterBeacon.SpatialAssociation,
 			"SpecialPurposeGeneralBeacon::AdditionalInformation" => SpecialPurposeGeneralBeacon.AdditionalInformation,
+			"SpecialPurposeGeneralBeacon::SpatialAssociation" => SpecialPurposeGeneralBeacon.SpatialAssociation,
 			"Daymark::AdditionalInformation" => Daymark.AdditionalInformation,
+			"Daymark::SpatialAssociation" => Daymark.SpatialAssociation,
 			"LightFloat::AdditionalInformation" => LightFloat.AdditionalInformation,
+			"LightFloat::SpatialAssociation" => LightFloat.SpatialAssociation,
 			"LightVessel::AdditionalInformation" => LightVessel.AdditionalInformation,
+			"LightVessel::SpatialAssociation" => LightVessel.SpatialAssociation,
 			"Retroreflector::AdditionalInformation" => Retroreflector.AdditionalInformation,
+			"Retroreflector::SpatialAssociation" => Retroreflector.SpatialAssociation,
 			"RadarReflector::AdditionalInformation" => RadarReflector.AdditionalInformation,
+			"RadarReflector::SpatialAssociation" => RadarReflector.SpatialAssociation,
 			"FogSignal::AdditionalInformation" => FogSignal.AdditionalInformation,
+			"FogSignal::SpatialAssociation" => FogSignal.SpatialAssociation,
 			"PhysicalAISAidToNavigation::AdditionalInformation" => PhysicalAISAidToNavigation.AdditionalInformation,
+			"PhysicalAISAidToNavigation::SpatialAssociation" => PhysicalAISAidToNavigation.SpatialAssociation,
 			"VirtualAISAidToNavigation::AdditionalInformation" => VirtualAISAidToNavigation.AdditionalInformation,
+			"VirtualAISAidToNavigation::SpatialAssociation" => VirtualAISAidToNavigation.SpatialAssociation,
 			"RadioStation::AdditionalInformation" => RadioStation.AdditionalInformation,
+			"RadioStation::SpatialAssociation" => RadioStation.SpatialAssociation,
 			"RadarTransponderBeacon::AdditionalInformation" => RadarTransponderBeacon.AdditionalInformation,
+			"RadarTransponderBeacon::SpatialAssociation" => RadarTransponderBeacon.SpatialAssociation,
 			"PilotBoardingPlace::AdditionalInformation" => PilotBoardingPlace.AdditionalInformation,
+			"PilotBoardingPlace::SpatialAssociation" => PilotBoardingPlace.SpatialAssociation,
 			"VesselTrafficServiceArea::AdditionalInformation" => VesselTrafficServiceArea.AdditionalInformation,
+			"VesselTrafficServiceArea::SpatialAssociation" => VesselTrafficServiceArea.SpatialAssociation,
 			"CoastGuardStation::AdditionalInformation" => CoastGuardStation.AdditionalInformation,
+			"CoastGuardStation::SpatialAssociation" => CoastGuardStation.SpatialAssociation,
 			"SignalStationWarning::AdditionalInformation" => SignalStationWarning.AdditionalInformation,
+			"SignalStationWarning::SpatialAssociation" => SignalStationWarning.SpatialAssociation,
 			"SignalStationTraffic::AdditionalInformation" => SignalStationTraffic.AdditionalInformation,
+			"SignalStationTraffic::SpatialAssociation" => SignalStationTraffic.SpatialAssociation,
 			"RescueStation::AdditionalInformation" => RescueStation.AdditionalInformation,
+			"RescueStation::SpatialAssociation" => RescueStation.SpatialAssociation,
 			"HarbourFacility::AdditionalInformation" => HarbourFacility.AdditionalInformation,
+			"HarbourFacility::SpatialAssociation" => HarbourFacility.SpatialAssociation,
 			"SmallCraftFacility::AdditionalInformation" => SmallCraftFacility.AdditionalInformation,
+			"SmallCraftFacility::SpatialAssociation" => SmallCraftFacility.SpatialAssociation,
+			"TextPlacement::SpatialAssociation" => TextPlacement.SpatialAssociation,
+			"Chart1Feature::SpatialAssociation" => Chart1Feature.SpatialAssociation,
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};

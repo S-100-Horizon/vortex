@@ -17,7 +17,7 @@ namespace S100FC
                 => reader.GetDecimal();
 
             public override void Write(Utf8JsonWriter writer, decimal value, JsonSerializerOptions options)
-                => writer.WriteRawValue(value.ToString("G29",CultureInfo.InvariantCulture));
+                => writer.WriteRawValue(value.ToString("G29", CultureInfo.InvariantCulture));
         }
 
         private readonly static JsonSerializerOptions jsonSerializerOptions = new() {
@@ -243,7 +243,7 @@ namespace S100FC
                     break;
                 case ComplexAttribute c:
                     if (isCollection) {
-                        var array = parent[attribute.S100FC_code] as JArray ?? new JArray();
+                        var array = parent[attribute.S100FC_code] as JArray ?? [];
                         var obj = new JObject();
 
                         foreach (var child in c.attributeBindings) {

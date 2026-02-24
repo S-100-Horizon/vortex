@@ -40,7 +40,7 @@ namespace TestAttributes
         public void Test_S101_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml"));
 
-            var roslyn = this.RoslynBuilder(ps);
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true);
 
             var output = roslyn.ToString();
 
@@ -151,13 +151,13 @@ namespace TestAttributes
 
                 var superType = element.Elements(XName.Get("superType", scopes["S100FC"])).FirstOrDefault();
                 if (superType != null)
-                    row.Append($"{superType.Value};");                
+                    row.Append($"{superType.Value};");
                 else
                     row.Append($";");
 
                 var attributeBindings = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager);
 
-                foreach (var attributeBinding in attributeBindings.OrderBy(e=>e.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!)) {
+                foreach (var attributeBinding in attributeBindings.OrderBy(e => e.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!)) {
                     var referenceCode = attributeBinding.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!;
                     row.Append($"{referenceCode};");
                 }
@@ -168,7 +168,41 @@ namespace TestAttributes
         }
 
 
-        private StringBuilder RoslynBuilder(XDocument ps, string? id = null) {
+        // Define namespaces
+        private static XNamespace s100fc = "http://www.iho.int/S100FC/5.2";
+        private static XNamespace s100base = "http://www.iho.int/S100Base/5.0";
+        private static XNamespace xsi = "http://www.w3.org/2001/XMLSchema-instance";
+
+        private static XElement informationBindingSpatialAssociation =
+            new XElement(s100fc + "informationBinding",
+                new XAttribute(XNamespace.Xmlns + "S100FC", s100fc),
+                new XAttribute(XNamespace.Xmlns + "S100Base", s100base),
+                new XAttribute(XNamespace.Xmlns + "xsi", xsi),
+                new XAttribute("roleType", "association"),
+
+                new XElement(s100fc + "multiplicity",
+                    new XElement(s100base + "lower", 0),
+                    new XElement(s100base + "upper",
+                        new XAttribute(xsi + "nil", "false"),
+                        new XAttribute("infinite", "false"),
+                        1
+                    )
+                ),
+
+                new XElement(s100fc + "association",
+                    new XAttribute("ref", "SpatialAssociation")
+                ),
+
+                new XElement(s100fc + "role",
+                    new XAttribute("ref", "theQualityInformation")
+                ),
+
+                new XElement(s100fc + "informationType",
+                    new XAttribute("ref", "SpatialQuality")
+                )
+            );
+
+        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false) {
             var roslyn = new StringBuilder();
 
             roslyn.AppendLine("using System;");
@@ -220,6 +254,9 @@ namespace TestAttributes
                     var valueType = element.Element(XName.Get("valueType", scopes["S100FC"]))!.Value;
 
                     var definition = element.Element(XName.Get("definition", scopes["S100FC"]))!.Value;
+
+                    definition = definition.Trim().TrimEnd('\t').Trim(Environment.NewLine.ToArray());
+
                     roslyn.AppendLine("\t/// <summary>");
                     roslyn.AppendLine($"\t/// {definition}");
                     roslyn.AppendLine("\t/// </summary>");
@@ -513,6 +550,7 @@ namespace TestAttributes
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
                             informationAssociationCreators = informationAssociationCreators,
+                            informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
                         });
                         if (!success) {
                             notFinished = true;
@@ -556,6 +594,10 @@ namespace TestAttributes
                     foreach (var element in ps.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager)) {
                         var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
 
+                        var informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Union([informationBindingSpatialAssociation]);
+                        
+                        var spatialAssociation = supportingSpatialAssociation && element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Any(e => Enum.Parse<Primitives>(e.Value!) != Primitives.noGeometry);
+
                         var success = this.ClassBuilder(roslyn, element, "FeatureType, IInformationBindings, IFeatureBindings", new ClassBuilderHost {
                             KnownTypes = featureTypesKnown,
                             KnownTypesAbstract = abstractTypesKnown,
@@ -564,11 +606,12 @@ namespace TestAttributes
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
                             informationAssociationCreators = informationAssociationCreators,
                             featureAssociationCreators = featureAssociationCreators,
+                            informationBindings = () => spatialAssociation ? informationBindings() : element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
                         }, (b) => {
 
                         }, (b) => {
-                            //  permittedPrimitives
                             var permittedValues = element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Select(e => $"Primitives.{e.Value!}");
+
                             if (permittedValues.Any()) {
                                 b.AppendLine();
                                 b.AppendLine("\t\t[JsonIgnore]");
@@ -749,6 +792,8 @@ namespace TestAttributes
 
             public ICollection<string> informationAssociationCreators { get; init; } = [];
             public ICollection<string> featureAssociationCreators { get; init; } = [];
+
+            public Func<IEnumerable<XElement>> informationBindings { get; init; } = () => [];
         }
 
         private bool ClassBuilder(StringBuilder roslyn, XElement element, string type, ClassBuilderHost host, Action<StringBuilder>? pre = default, Action<StringBuilder>? post = default) {
@@ -885,7 +930,8 @@ namespace TestAttributes
             if (localNameInformationTypes.Contains(element.Name.LocalName)) {
                 roslyn.AppendLine($"\t\tpublic override informationBindingDefinition[] GetInformationBindingsDefinitions() => {code}.informationBindingsDefinitions;");
                 roslyn.AppendLine();
-                var informationBindings = element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager);
+                //var informationBindings = element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager);
+                var informationBindings = host.informationBindings();
                 roslyn.AppendLine($"\t\tpublic static informationBindingDefinition[] informationBindingsDefinitions => [");
                 if (informationBindings.Any()) {
                     //roslyn.AppendLine("\t\t[JsonIgnore]");
