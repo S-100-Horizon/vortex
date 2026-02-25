@@ -84,7 +84,9 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(name) == null) {
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+            if (product == null) {
                 response.Success = false;
                 response.Message = $"No electronic product with name '{name}' was found.";
                 response.DurationMs = sw.ElapsedMilliseconds;
@@ -95,9 +97,10 @@ namespace ProductCatalogueService.Controllers
             var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
             var yaml = dataset.Serialize();
 
-            var product = _electronicProductManager.ElectronicProduct(name)!;
+        
+            var (index, sign) = this.CreateExchangeSet(product, yaml);
 
-            this.CreateExchangeSet(product, yaml);
+            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewDataset, yaml, index, sign);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
@@ -164,7 +167,9 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(name) == null) {
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+            if (product == null) {
                 response.Success = false;
                 response.Message = $"No electronic product with name '{name}' was found.";
                 response.DurationMs = sw.ElapsedMilliseconds;
@@ -172,6 +177,11 @@ namespace ProductCatalogueService.Controllers
             }
 
             var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
+
+            //product = _electronicProductManager.ElectronicProduct(name)!; // get updated product with new edition number
+
+            product.editionNumber += 1;
+            product.updateNumber = null; // 0;
 
             var yaml = dataset.Serialize();
 
@@ -183,10 +193,11 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var product = _electronicProductManager.ElectronicProduct(name)!;
+          
 
-            this.CreateExchangeSet(product, yaml);
-
+            var (index, sign) = this.CreateExchangeSet(product, yaml);
+            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewEdition, yaml, index, sign);
+            
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
         }
@@ -201,7 +212,7 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newupdate", Name = "NewUpdate")]
         public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
-            return StatusCode(StatusCodes.Status501NotImplemented);
+           // return StatusCode(StatusCodes.Status501NotImplemented);
 
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
@@ -218,28 +229,24 @@ namespace ProductCatalogueService.Controllers
             }
 
 
-            var dirtyYaml = await _electronicProductManager.IsDirtyYamlAsync(name);
+            // Check if product has any updates before creating new update
+            var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            if(!dirtyYaml) {
+            if (!dirty) {
                 response.Success = false;
                 response.Message = $"Product has no updates.";
                 response.DurationMs = sw.ElapsedMilliseconds;
                 return BadRequest(response);
-
             }
 
-            //// Check if product has any updates before creating new update
-            //var dirty = await _electronicProductManager.IsDirtyAsync(name);
-
-            //if (!dirty) {
-            //    response.Success = false;
-            //    response.Message = $"Product has no updates.";
-            //    response.DurationMs = sw.ElapsedMilliseconds;
-            //    return BadRequest(response);
-            //}
+           // return Ok(dirty);
 
             // todo: detect updates properly
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
+
+
+            //product = _electronicProductManager.ElectronicProduct(name)!; // get updated product with new edition number
+            product.updateNumber = product.updateNumber.HasValue ? product.updateNumber += 1 : product.updateNumber = 1;
 
             var incoming = dataset.Serialize();
 
@@ -250,7 +257,7 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-            var latest = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
+            var (latest, prevIndex) = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
 
 
 
@@ -258,30 +265,34 @@ namespace ProductCatalogueService.Controllers
             var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
             //if(!delta.HasEdits)
-            // TODO: Do something
-
+            // TODO: Do something. Rollback updatenumber?
+            
             // Populate metadata
             delta.CellName = product.datasetName;
             delta.Comment = "Not for navigation!";
             delta.Edition = product.editionNumber!.Value;
-            //delta.Update = product.updateNumber!.Value;       // Hide for now until bugfix in s100compiler
+            delta.Update = product.updateNumber;
             delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
             delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
 
             var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
 
-            this.CreateExchangeSet(product, update);
+            var (index, sign) = this.CreateExchangeSet(product, update, prevIndex);
+
+            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.Update, update, index, sign);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
         }
 
-        private void CreateExchangeSet(ElectronicProduct product, string yaml) {
+        private (string index, string sign) CreateExchangeSet(ElectronicProduct product, string yaml, string prevIndex = "") {
             var datasetName = product.datasetName;
 
             var dir = IO.Directory.CreateDirectory(_electronicProductManager.OutputFolder);
 
             var exchangeset = IO.Directory.CreateDirectory(Path.Combine(dir.FullName, datasetName, $"{product.editionNumber}"));
+
+            var update = product.updateNumber.HasValue ? product.updateNumber.Value.ToString("D3") : "000";
 
             // Write temp YAML file for the compiler
             IO.File.WriteAllText(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"), yaml);
@@ -291,7 +302,21 @@ namespace ProductCatalogueService.Controllers
             if (!IO.File.Exists(catalogue))
                 throw new NullReferenceException("Could not find featurecatalogue!");
 
-            var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName}";
+            var input = IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml");
+            var output = exchangeset.FullName;
+            var indexFile = $"{datasetName.Replace("101DK00", "")}_{update}.idx";
+
+            var commandline = $"-f \"{input}\" -c \"{catalogue}\" -d \"{output}\" -C \"{datasetName}\" -l \"{indexFile}\"";
+
+            if (!string.IsNullOrEmpty(prevIndex)) {
+                var prevIndexPath = Path.Combine(exchangeset.FullName, "prev.idx");
+                IO.File.WriteAllText(prevIndexPath, prevIndex);
+                commandline += $" -L {prevIndexPath}";
+            }
+               
+
+
+            //var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName} -L {datasetName}_000.idx";
 
 
             var p = new Process();
@@ -313,8 +338,18 @@ namespace ProductCatalogueService.Controllers
                 throw new ArgumentException(commandline);
             }
 
+            var index = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, indexFile));
+            var sign = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, "S100_ROOT", "CATALOG.SIGN"));
+
+
             // Cleanup temp yaml
             IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+
+            // Cleanup temp index
+            IO.File.Delete(Path.Combine(exchangeset.FullName, indexFile));
+            IO.File.Delete(Path.Combine(exchangeset.FullName, "prev.idx"));
+
+            return (index, sign);
         }
 
 

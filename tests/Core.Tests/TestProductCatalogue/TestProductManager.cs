@@ -16,7 +16,7 @@ using IO = System.IO;
 
 namespace TestProductCatalogue
 {
-    public class UnitTestAnalyzer
+    public class TestProductManager
     {
         private readonly ITestOutputHelper output;
 
@@ -26,7 +26,7 @@ namespace TestProductCatalogue
             PropertyNameCaseInsensitive = true,
         };
 
-        public UnitTestAnalyzer(ITestOutputHelper output) {
+        public TestProductManager(ITestOutputHelper output) {
             this.output = output;
 
             ArcGIS.Core.Hosting.Host.Initialize();
@@ -38,6 +38,76 @@ namespace TestProductCatalogue
             //    fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
             //}
         }
+
+
+
+        [Fact]
+        public async Task Test_Archiving() {
+
+            var s128 = Environment.GetEnvironmentVariable("s128_import");
+            Assert.NotNull(s128);
+            var exist128 = IO.Path.Exists(s128);
+
+            Assert.True(exist128);
+
+            Geodatabase _geodatabase = default;
+            // S128 ProductManager
+            var productManager = await S100FC.ProductCatalogue.ProductManager.CreateInstanceAsync(() => {
+                if (".sde".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new DatabaseConnectionFile(new Uri(System.IO.Path.GetFullPath(s128)));
+                    _geodatabase = new Geodatabase(connectionFile);
+                    return new Geodatabase(connectionFile);
+                }
+                else if (".gdb".Equals(System.IO.Path.GetExtension(s128), StringComparison.OrdinalIgnoreCase)) {
+                    var connectionFile = new FileGeodatabaseConnectionPath(new Uri(Path.GetFullPath(s128)));
+                    _geodatabase = new Geodatabase(connectionFile);
+                    return new Geodatabase(connectionFile);
+                }
+                else {
+                    throw new InvalidOperationException("Connectionfile path for S128-Database is neither .gdb nor .sde");
+                }
+            });
+
+            Assert.NotNull(productManager);
+
+
+
+
+            //await productManager.Dispatch(() => {
+            //    var product = productManager.ElectronicProductManager.ElectronicProduct("101DK0040349E");
+  
+            //    string[] tableNames = ["point", "pointset", "curve", "surface"];
+
+            //    foreach (var baseTableName in tableNames) {
+            //        using var fc = _geodatabase.OpenDataset<FeatureClass>(baseTableName);
+
+            //        if (fc.IsArchiveEnabled()) {
+            //            // Get the actual Archive Table (usually baseName_H)
+            //            using var archiveTable = fc.GetArchiveTable();
+
+            //            // Format date for SQL (Pro SDK handles parameterization best via QueryFilter)
+            //            // Note: Use the field name constants if available, or strings "GDB_FROM_DATE"
+            //            var queryFilter = new QueryFilter {
+            //                // We only care about records that STARTED after our date X
+            //                WhereClause = $"GDB_FROM_DATE > '{sinceDate:yyyy-MM-dd HH:mm:ss}'"
+            //            };
+
+            //            // We only need to know IF there are changes, so we can use a count or just check the first row
+            //            using var archiveCursor = archiveTable.Search(queryFilter, true);
+
+            //            if (archiveCursor.MoveNext()) {
+            //                Console.WriteLine($"Table {baseTableName} has changes since {sinceDate}");
+            //                // Found a change! You can set your 'isDirty' flag here
+            //            }
+            //            else {
+            //                Console.WriteLine($"No changes in {baseTableName}");
+            //            }
+            //        }
+            //    }
+            //});
+        }
+
+
 
         [Fact]
         public async Task Test_ProductManagerCreation() {
@@ -361,7 +431,7 @@ namespace TestProductCatalogue
 
                 if (!IO.File.Exists(catalogue))
                     throw new NullReferenceException("Could not find featurecatalogue!");
-                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\" -C {datasetName}"; 
+                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\" -C {datasetName}";
 
                 var p = new Process();
                 p.StartInfo.CreateNoWindow = true;
