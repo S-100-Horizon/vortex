@@ -53,7 +53,7 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse<ElectronicProduct>), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpGet("{name}", Name = "GetElectronicProduct")]
-        public IActionResult GetElectronicProduct(string name = "101DK0040349E") {
+        public IActionResult GetElectronicProduct(string name) {
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse<ElectronicProduct>();
             var product = _electronicProductManager.ElectronicProduct(name);
@@ -72,85 +72,85 @@ namespace ProductCatalogueService.Controllers
             return Ok(response);
         }
 
-        /// <summary>
-        /// Creates a new dataset.
-        /// </summary>
-        /// <param name="name">The name of the dataset.</param>
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("{name}/newdataset", Name = "NewDataset")]
-        public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
-            var sw = Stopwatch.StartNew();
-            var response = new ApiResponse();
+        ///// <summary>
+        ///// Creates a new dataset.
+        ///// </summary>
+        ///// <param name="name">The name of the dataset.</param>
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        //[HttpPost("{name}/newdataset", Name = "NewDataset")]
+        //public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
+        //    var sw = Stopwatch.StartNew();
+        //    var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(name) == null) {
-                response.Success = false;
-                response.Message = $"No electronic product with name '{name}' was found.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status404NotFound, response);
-            }
+        //    if (_electronicProductManager.ElectronicProduct(name) == null) {
+        //        response.Success = false;
+        //        response.Message = $"No electronic product with name '{name}' was found.";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return StatusCode(StatusCodes.Status404NotFound, response);
+        //    }
 
-            // Create exchange set?
-            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-            var yaml = dataset.Serialize();
+        //    // Create exchange set?
+        //    var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+        //    var yaml = dataset.Serialize();
 
-            var product = _electronicProductManager.ElectronicProduct(name)!;
+        //    var product = _electronicProductManager.ElectronicProduct(name)!;
 
-            this.CreateExchangeSet(product, yaml);
+        //    this.CreateExchangeSet(product, yaml);
 
-            response.DurationMs = sw.ElapsedMilliseconds;
-            return Ok(response);
-        }
+        //    response.DurationMs = sw.ElapsedMilliseconds;
+        //    return Ok(response);
+        //}
 
-        /// <summary>
-        /// Creates a new Electronic Product in the S-128 database.
-        /// </summary>
-        /// <param name="name">The name of the dataset.</param>
-        /// <param name="product">
-        /// The request payload containing the dataset boundary (AOI) and usage band.
-        /// The <c>aoi</c> should be provided in ArcGIS JSON geometry format.
-        /// </param>
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost()]
-        public async Task<IActionResult> CreateElectronicProduct([FromBody] CreateProductRequest product) {
-            var sw = Stopwatch.StartNew();
-            var response = new ApiResponse();
+        ///// <summary>
+        ///// Creates a new Electronic Product in the S-128 database.
+        ///// </summary>
+        ///// <param name="name">The name of the dataset.</param>
+        ///// <param name="product">
+        ///// The request payload containing the dataset boundary (AOI) and usage band.
+        ///// The <c>aoi</c> should be provided in ArcGIS JSON geometry format.
+        ///// </param>
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        //[HttpPost()]
+        //public async Task<IActionResult> CreateElectronicProduct([FromBody] CreateProductRequest product) {
+        //    var sw = Stopwatch.StartNew();
+        //    var response = new ApiResponse();
 
-            if (_electronicProductManager.ElectronicProduct(product.Name) != null) {
-                response.Success = false;
-                response.Message = $"An electronic product with name '{product.Name}' already exists.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status404NotFound, response);
-            }
+        //    if (_electronicProductManager.ElectronicProduct(product.Name) != null) {
+        //        response.Success = false;
+        //        response.Message = $"An electronic product with name '{product.Name}' already exists.";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return StatusCode(StatusCodes.Status404NotFound, response);
+        //    }
 
-            //var boundary = GetBoundaryFromGeoJSON(aoi);
-            var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
+        //    //var boundary = GetBoundaryFromGeoJSON(aoi);
+        //    var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
 
-            var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
-                name = "S-101",
-                version = "2.0.0",
-                editionDate = DateOnly.FromDateTime(DateTime.Today)
-            };
+        //    var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
+        //        name = "S-101",
+        //        version = "2.0.0",
+        //        editionDate = DateOnly.FromDateTime(DateTime.Today)
+        //    };
 
-            var specificUsage = product.UsageBand switch {
-                SpecificUsage.NavigationalPurposeOverview => 1, // S100FC.S128.specificUsage.NavigationalPurposeOverview,
-                SpecificUsage.NavigationalPurposeGeneral => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
-                SpecificUsage.NavigationalPurposeCoastal => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
-                SpecificUsage.NavigationalPurposeApproach => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
-                SpecificUsage.NavigationalPurposeHarbour => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
-                SpecificUsage.NavigationalPurposeBerthing => 6, //S100FC.S128.specificUsage.NavigationalPurposeBerthing,
-                _ => throw new ArgumentNullException(),
-            };
+        //    var specificUsage = product.UsageBand switch {
+        //        SpecificUsage.NavigationalPurposeOverview => 1, // S100FC.S128.specificUsage.NavigationalPurposeOverview,
+        //        SpecificUsage.NavigationalPurposeGeneral => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+        //        SpecificUsage.NavigationalPurposeCoastal => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+        //        SpecificUsage.NavigationalPurposeApproach => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+        //        SpecificUsage.NavigationalPurposeHarbour => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+        //        SpecificUsage.NavigationalPurposeBerthing => 6, //S100FC.S128.specificUsage.NavigationalPurposeBerthing,
+        //        _ => throw new ArgumentNullException(),
+        //    };
 
-            await _electronicProductManager.CreateElectronicProductAsync(product.Name, productSpecification, specificUsage, boundary);
+        //    await _electronicProductManager.CreateElectronicProductAsync(product.Name, productSpecification, specificUsage, boundary);
 
-            response.DurationMs = sw.ElapsedMilliseconds;
+        //    response.DurationMs = sw.ElapsedMilliseconds;
 
-            return Ok(response);
-        }
+        //    return Ok(response);
+        //}
 
         /// <summary>
         /// Creates a new edition.
@@ -160,7 +160,7 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newedition", Name = "NewEdition")]
-        public async Task<IActionResult> NewEdition(string name = "101DK0040349E") {
+        public async Task<IActionResult> NewEdition(string name) {
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
@@ -191,90 +191,90 @@ namespace ProductCatalogueService.Controllers
             return Ok(response);
         }
 
-        /// <summary>
-        /// Creates a new update.
-        /// </summary>
-        /// <param name="name">The name of the dataset.</param>
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("{name}/newupdate", Name = "NewUpdate")]
-        public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
-            return StatusCode(StatusCodes.Status501NotImplemented);
+        ///// <summary>
+        ///// Creates a new update.
+        ///// </summary>
+        ///// <param name="name">The name of the dataset.</param>
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        //[HttpPost("{name}/newupdate", Name = "NewUpdate")]
+        //public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
+        //    return StatusCode(StatusCodes.Status501NotImplemented);
 
-            var sw = Stopwatch.StartNew();
-            var response = new ApiResponse();
-
-
-            var product = _electronicProductManager.ElectronicProduct(name);
+        //    var sw = Stopwatch.StartNew();
+        //    var response = new ApiResponse();
 
 
-            if (product == null) {
-                response.Success = false;
-                response.Message = $"No electronic product with name '{name}' was found.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status404NotFound, response);
-            }
+        //    var product = _electronicProductManager.ElectronicProduct(name);
 
 
-            var dirtyYaml = await _electronicProductManager.IsDirtyYamlAsync(name);
-
-            if(!dirtyYaml) {
-                response.Success = false;
-                response.Message = $"Product has no updates.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return BadRequest(response);
-
-            }
-
-            //// Check if product has any updates before creating new update
-            //var dirty = await _electronicProductManager.IsDirtyAsync(name);
-
-            //if (!dirty) {
-            //    response.Success = false;
-            //    response.Message = $"Product has no updates.";
-            //    response.DurationMs = sw.ElapsedMilliseconds;
-            //    return BadRequest(response);
-            //}
-
-            // todo: detect updates properly
-            var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
-
-            var incoming = dataset.Serialize();
-
-            if (string.IsNullOrEmpty(incoming)) {
-                response.Success = false;
-                response.Message = $"An error occured attempting to read dataset '{name}'.";
-                response.DurationMs = sw.ElapsedMilliseconds;
-                return StatusCode(StatusCodes.Status500InternalServerError, response);
-            }
-
-            var latest = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
+        //    if (product == null) {
+        //        response.Success = false;
+        //        response.Message = $"No electronic product with name '{name}' was found.";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return StatusCode(StatusCodes.Status404NotFound, response);
+        //    }
 
 
+        //    var dirtyYaml = await _electronicProductManager.IsDirtyYamlAsync(name);
 
-            // Build YAML Delta
-            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
+        //    if(!dirtyYaml) {
+        //        response.Success = false;
+        //        response.Message = $"Product has no updates.";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return BadRequest(response);
 
-            //if(!delta.HasEdits)
-            // TODO: Do something
+        //    }
 
-            // Populate metadata
-            delta.CellName = product.datasetName;
-            delta.Comment = "Not for navigation!";
-            delta.Edition = product.editionNumber!.Value;
-            //delta.Update = product.updateNumber!.Value;       // Hide for now until bugfix in s100compiler
-            delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
-            delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
+        //    //// Check if product has any updates before creating new update
+        //    //var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
-            var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
+        //    //if (!dirty) {
+        //    //    response.Success = false;
+        //    //    response.Message = $"Product has no updates.";
+        //    //    response.DurationMs = sw.ElapsedMilliseconds;
+        //    //    return BadRequest(response);
+        //    //}
 
-            this.CreateExchangeSet(product, update);
+        //    // todo: detect updates properly
+        //    var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
-            response.DurationMs = sw.ElapsedMilliseconds;
-            return Ok(response);
-        }
+        //    var incoming = dataset.Serialize();
+
+        //    if (string.IsNullOrEmpty(incoming)) {
+        //        response.Success = false;
+        //        response.Message = $"An error occured attempting to read dataset '{name}'.";
+        //        response.DurationMs = sw.ElapsedMilliseconds;
+        //        return StatusCode(StatusCodes.Status500InternalServerError, response);
+        //    }
+
+        //    var latest = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
+
+
+
+        //    // Build YAML Delta
+        //    var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
+
+        //    //if(!delta.HasEdits)
+        //    // TODO: Do something
+
+        //    // Populate metadata
+        //    delta.CellName = product.datasetName;
+        //    delta.Comment = "Not for navigation!";
+        //    delta.Edition = product.editionNumber!.Value;
+        //    //delta.Update = product.updateNumber!.Value;       // Hide for now until bugfix in s100compiler
+        //    delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
+        //    delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
+
+        //    var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
+
+        //    this.CreateExchangeSet(product, update);
+
+        //    response.DurationMs = sw.ElapsedMilliseconds;
+        //    return Ok(response);
+        //}
 
         private void CreateExchangeSet(ElectronicProduct product, string yaml) {
             var datasetName = product.datasetName;
@@ -318,56 +318,56 @@ namespace ProductCatalogueService.Controllers
         }
 
 
-        /// <summary>
-        /// Creates all datasets in s128 database.
-        /// </summary>
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
-        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        [HttpPost("alldatasets", Name = "NewDatasets")]
-        public async Task<IActionResult> CreateAllDatasets() {
-            var sw = Stopwatch.StartNew();
-            var response = new ApiResponse();
+        ///// <summary>
+        ///// Creates all datasets in s128 database.
+        ///// </summary>
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        //[HttpPost("alldatasets", Name = "NewDatasets")]
+        //public async Task<IActionResult> CreateAllDatasets() {
+        //    var sw = Stopwatch.StartNew();
+        //    var response = new ApiResponse();
 
-            var products = _electronicProductManager.ToArray();
-            int i = 1;
-            int total = products.Length;
+        //    var products = _electronicProductManager.ToArray();
+        //    int i = 1;
+        //    int total = products.Length;
 
-            foreach (var name in products) {
-                try {
-                    _logger.LogInformation("creating dataset {i}/{total}: {name}", i, total, name);
-                    var product = _electronicProductManager.ElectronicProduct(name)!;
-                    if (product.editionNumber.HasValue && product.editionNumber.Value > 0) {
-                        throw new InvalidOperationException();
-                    }
-                    // Create exchange set
-                    var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-                    var yaml = dataset.Serialize();
+        //    foreach (var name in products) {
+        //        try {
+        //            _logger.LogInformation("creating dataset {i}/{total}: {name}", i, total, name);
+        //            var product = _electronicProductManager.ElectronicProduct(name)!;
+        //            if (product.editionNumber.HasValue && product.editionNumber.Value > 0) {
+        //                throw new InvalidOperationException();
+        //            }
+        //            // Create exchange set
+        //            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+        //            var yaml = dataset.Serialize();
 
-                    this.CreateExchangeSet(product, yaml);
-                    _logger.LogInformation("Exchangeset created successfully");
-                }
-                catch (InvalidOperationException) {
-                    _logger.LogWarning("Dataset already has update. skipping");
-                }
-                catch (IndexOutOfRangeException) {
-                    _logger.LogWarning("Topology IndexOutOfRangeException! skipping");
-                }
-                catch (AggregateException) {
-                    _logger.LogWarning("Topology AggregateException! skipping");
-                }
-                catch (ArgumentException) {
-                    _logger.LogWarning("s100compiler exception for exchangeset. Probably missing minimumScale on DataCoverage skipping");
-                }
-                catch (Exception ex) {
-                    _logger.LogError("Unexpected exception: {ex}", ex);
-                }
-                i++;
-            }
-            response.DurationMs = sw.ElapsedMilliseconds;
-            response.Message = $"Datasets created: {products.Length}";
-            return Ok(response);
-        }
+        //            this.CreateExchangeSet(product, yaml);
+        //            _logger.LogInformation("Exchangeset created successfully");
+        //        }
+        //        catch (InvalidOperationException) {
+        //            _logger.LogWarning("Dataset already has update. skipping");
+        //        }
+        //        catch (IndexOutOfRangeException) {
+        //            _logger.LogWarning("Topology IndexOutOfRangeException! skipping");
+        //        }
+        //        catch (AggregateException) {
+        //            _logger.LogWarning("Topology AggregateException! skipping");
+        //        }
+        //        catch (ArgumentException) {
+        //            _logger.LogWarning("s100compiler exception for exchangeset. Probably missing minimumScale on DataCoverage skipping");
+        //        }
+        //        catch (Exception ex) {
+        //            _logger.LogError("Unexpected exception: {ex}", ex);
+        //        }
+        //        i++;
+        //    }
+        //    response.DurationMs = sw.ElapsedMilliseconds;
+        //    response.Message = $"Datasets created: {products.Length}";
+        //    return Ok(response);
+        //}
 
 
         ///// <summary>
