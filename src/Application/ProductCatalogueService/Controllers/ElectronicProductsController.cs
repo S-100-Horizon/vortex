@@ -109,7 +109,6 @@ namespace ProductCatalogueService.Controllers
         /// <summary>
         /// Creates a new Electronic Product in the S-128 database.
         /// </summary>
-        /// <param name="name">The name of the dataset.</param>
         /// <param name="product">
         /// The request payload containing the dataset boundary (AOI) and usage band.
         /// The <c>aoi</c> should be provided in ArcGIS JSON geometry format.
@@ -334,9 +333,11 @@ namespace ProductCatalogueService.Controllers
             p.WaitForExit();
 
             if (p.ExitCode != 0) {
-                Log.Error("\"{filename}\" {arguments}", p.StartInfo.FileName, commandline);
+                _logger.LogError("\"{filename}\" {arguments} for product: {product}", p.StartInfo.FileName, commandline, product.datasetName);
                 throw new ArgumentException(commandline);
             }
+
+            _logger.LogInformation("S100 compiler run succesfully! Starting cleanup for temp index and yaml files for product: {product}", product.datasetName);
 
             var index = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, indexFile));
             var sign = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, "S100_ROOT", "CATALOG.SIGN"));

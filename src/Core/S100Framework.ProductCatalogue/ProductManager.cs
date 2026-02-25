@@ -399,29 +399,24 @@ namespace S100FC.ProductCatalogue
                         using var archiveCursor = archiveTable.Search(new QueryFilter {
                             WhereClause = filter.WhereClause,
                         }, true);
-                        var rows = 0;
                         while (archiveCursor.MoveNext()) {
-                            // If fields has been created or updated since the last dataset was created, flag as dirty
-                            var fields = archiveCursor.Current.GetFields();
-
-                            var fieldNames = fields.Select(e => e.Name).ToArray();
-                            rows++;
-                            Console.WriteLine();
+                            var cur = archiveCursor.Current;
+                            var id = cur["UID"]?.ToString();
+                            Log.Information("Change detected for {id} in {table}. Stopping further detection", id, baseTableName);
                             return true;
                         }
-
                     }
+                    else {
+                        Log.Warning("Archive is not enabled on {tableName}. Should only happen while debugging! Checking for 'created_date' or 'last_edited_date' instead", baseTableName);
+                        filter.WhereClause = $"UPPER(ps) = 'S-101' AND (" +
+                                             $"created_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}' " +
+                                             $"OR last_edited_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}')";
 
-                    System.Diagnostics.Debugger.Break();
-
-                    //using var cursor = fc.Search(filter, true);
-                    //while (cursor.MoveNext()) {
-                    //    // If fields has been created or updated since the last dataset was created, flag as dirty
-
-                    //    // todo: detect deleted rows?
-                    //    return true;
-
-                    //}
+                        using var cursor = fc.Search(filter, true);
+                        while (cursor.MoveNext()) {
+                            return true;
+                        }
+                    }
                 }
                 return false;
             });
@@ -556,10 +551,12 @@ namespace S100FC.ProductCatalogue
 
             var connection = this._connections["S-101"]!;
 
+            var update = electronicProduct.updateNumber.HasValue ? electronicProduct.updateNumber.Value.ToString("D3") : "000";
+
             electronicProduct.issueDate = DateOnly.FromDateTime(timestamp);
 
             var dataset = new S100FC.YAML.Dataset {
-                CellName = $"{electronicProduct!.datasetName!}.000",
+                CellName = $"{electronicProduct!.datasetName!}.{update}",
                 Comment = electronicProduct.notForNavigation.HasValue ? "Not for navigation!" : string.Empty,
                 Edition = (uint?)electronicProduct.editionNumber,
                 ENCVer = "INT.IHO.S-101.2.0",
@@ -687,7 +684,7 @@ namespace S100FC.ProductCatalogue
                         var current = (ArcGIS.Core.Data.Feature)featureCursor.Current;
                         var name = $"{current.UID()}";
 
-                        if(name == "C1579567")
+                        if (name == "C1579567")
                             System.Diagnostics.Debugger.Break();
 
                         // Only map geometry, and keep name seperate so foids remain unique
@@ -971,6 +968,8 @@ namespace S100FC.ProductCatalogue
                     buffer["data"] = memoryStream;
 
                     attachment.CreateRow(buffer);
+
+                    Log.Information("Edits applied for dataset {datasetName} with edition {edition} and update {update}", electronicProduct.datasetName, electronicProduct.editionNumber, electronicProduct.updateNumber);
                 });
             });
         }
