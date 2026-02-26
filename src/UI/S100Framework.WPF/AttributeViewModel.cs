@@ -179,39 +179,6 @@ namespace S100Framework.WPF.ViewModel
 
             this.attributeBindingsCatalogue = this._attribute.attributeBindingsCatalogue;
 
-            //this.attributeBindings.CollectionChanged += (s, e) => {
-            //    if (e.OldItems is not null) {
-            //        foreach (var item in e.OldItems) {
-            //            if (item is AttributeViewModel attribute) {
-            //                attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
-            //            }
-            //        }
-            //    }
-            //    if (e.NewItems is not null) {
-            //        foreach (var item in e.NewItems) {
-            //            if (item is SimpleAttributeViewModel simpleAttribute) {
-            //                simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
-            //            }
-            //            else if (item is ComplexAttributeViewModel complexAttribute) {
-            //                complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
-            //            }
-            //        }
-            //    }
-            //    base.OnPropertyChanged(nameof(attributeBindings));
-            //};
-
-            foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
-                if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
-                else if (e is ComplexAttribute complexAttribute) {
-                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
-                    this.attributeBindings.Add(viewmodel);
-                }
-            }
-
-            //note: Must be added right by the end!
             this.attributeBindings.CollectionChanged += (s, e) => {
                 if (e.OldItems is not null) {
                     foreach (var item in e.OldItems) {
@@ -229,16 +196,32 @@ namespace S100Framework.WPF.ViewModel
                 }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
-                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
-                            this._attribute.SetAttribute(simpleAttributeViewModel.attribute);
-                            simpleAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        if (item is SimpleAttributeViewModel simpleAttribute) {
+                            this._attribute.SetAttribute(simpleAttribute.attribute);
+                            simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
-                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
-                            this._attribute.SetAttribute(complexAttributeViewModel.attribute);
-                            complexAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        else if (item is ComplexAttributeViewModel complexAttribute) {
+                            this._attribute.SetAttribute(complexAttribute.attribute);
+                            complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                     }
                 }
+                //base.OnPropertyChanged(nameof(attributeBindings));
+            };
+
+            foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                if (e is SimpleAttribute simpleAttribute) {
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
+                    this.attributeBindings.Add(viewmodel);
+                }
+                else if (e is ComplexAttribute complexAttribute) {
+                    var viewmodel = new ComplexAttributeViewModel(ref complexAttribute);
+                    this.attributeBindings.Add(viewmodel);
+                }
+            }
+
+            //note: Must be added right by the end!
+            this.attributeBindings.CollectionChanged += (s, e) => {               
                 base.OnPropertyChanged(nameof(attributeBindings));
             };
         }
@@ -262,7 +245,7 @@ namespace S100Framework.WPF.ViewModel
             //else
             base.OnPropertyChanged(e.PropertyName);
         }
-      
+
         private readonly S100FC.ComplexAttribute? _attribute = default;
     }
 
@@ -409,7 +392,7 @@ namespace S100Framework.WPF.ViewModel
                 this.roles.Add(e.role);
             }
 
-            this.PropertyChanged += (s, e) => {                
+            this.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName)) {
                     this._featureBindingDefinition = null;
 
