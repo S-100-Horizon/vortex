@@ -113,6 +113,36 @@ namespace S100Framework.WPF.ViewModel
         public S100FC.SimpleAttribute? _attribute { get; init; } = default;
     }
 
+    public class EnumerationAttributeViewModel : AttributeViewModel
+    {
+        public EnumerationAttributeViewModel(ref EnumerationAttribute attribute) : base(attribute) {
+            this._attribute = attribute;
+
+            this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
+        }
+
+        public string valueType => this._attribute!.valueType;
+
+        private object? _value;
+
+        public object? value {
+            get {
+                return this._value;
+            }
+            set {
+                attribute.GetType().GetProperty("value")!.SetValue(_attribute, value);
+                this.SetProperty(ref this._value, value);
+            }
+        }
+
+        public int[] permitedValues { get; set; } = [];
+
+        public S100FC.EnumerationAttribute? _attribute { get; init; } = default;
+    }
+
+
+
+
     public class DateAttributeViewModel : AttributeViewModel
     {
         public DateAttributeViewModel(ref DateAttribute attribute) : base(attribute) {

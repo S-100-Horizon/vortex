@@ -29,7 +29,8 @@ namespace S100Framework.WPF.ViewModel
             public InformationTypeID[] UIDs { get; } = uids;
         }
 
-        public class SelectFeatureTypesEvenArgs(FeatureTypeID[] uids) : EventArgs {
+        public class SelectFeatureTypesEvenArgs(FeatureTypeID[] uids) : EventArgs
+        {
             public FeatureTypeID[] UIDs { get; } = uids;
         }
 
@@ -150,6 +151,11 @@ namespace S100Framework.WPF.ViewModel
                     this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
                 else if (e is DateTimeAttribute dateTimeAttribute)
                     this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+                else if (e is EnumerationAttribute enumerationAttribute) {
+                    this.attributeBindings.Add(new EnumerationAttributeViewModel(ref enumerationAttribute) {
+                        permitedValues = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code))!.permitedValues!,
+                    });
+                }
                 else if (e is SimpleAttribute simpleAttribute)
                     this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)
@@ -253,6 +259,11 @@ namespace S100Framework.WPF.ViewModel
                     this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
                 else if (e is DateTimeAttribute dateTimeAttribute)
                     this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+                else if (e is EnumerationAttribute enumerationAttribute) {
+                    this.attributeBindings.Add(new EnumerationAttributeViewModel(ref enumerationAttribute) {
+                        permitedValues = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code))!.permitedValues!,
+                    });
+                }
                 else if (e is SimpleAttribute simpleAttribute)
                     this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
                 else if (e is ComplexAttribute complexAttribute)
@@ -385,7 +396,7 @@ namespace S100Framework.WPF.ViewModel
 
         public ObservableCollection<FeatureBindingViewModel> featureBindings { get; set; } = [];
 
-        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];        
+        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
         #endregion
 
         public object? Instance => this._informationType != default ? this._informationType : this._featureType;
@@ -412,7 +423,7 @@ namespace S100Framework.WPF.ViewModel
             return informationBinding;
         }
 
-        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {            
+        public static explicit operator featureBinding[](S100AttributeEditorViewModel viewmodel) {
             featureBinding[] featureBindings = [];
             if (viewmodel.featureBindings.Any()) {
                 foreach (var binding in viewmodel.featureBindings.ToImmutableArray()) {
