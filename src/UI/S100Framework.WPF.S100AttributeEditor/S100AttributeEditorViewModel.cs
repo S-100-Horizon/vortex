@@ -183,26 +183,34 @@ namespace S100Framework.WPF.ViewModel
                 this.HasFeatureBindings = this.featureBindingDefinitions is not null;
             }
 
-            //this.attributeBindings.CollectionChanged += (s, e) => {
-            //    if (e.OldItems is not null) {
-            //        foreach (var item in e.OldItems) {
-            //            if (item is AttributeViewModel attribute) {
-            //                attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
-            //            }
-            //        }
-            //    }
-            //    if (e.NewItems is not null) {
-            //        foreach (var item in e.NewItems) {
-            //            if (item is SimpleAttributeViewModel simpleAttribute) {
-            //                simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
-            //            }
-            //            else if (item is ComplexAttributeViewModel complexAttribute) {
-            //                complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
-            //            }
-            //        }
-            //    }
-            //    this.OnPropertyChanged("attributeBindings");
-            //};
+            this.attributeBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._featureType.RemoveAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._featureType.RemoveAttribute(complexAttributeViewModel.attribute);
+                        }
+                        if (item is AttributeViewModel attribute) {
+                            attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                if (e.NewItems is not null) {
+                    foreach (var item in e.NewItems) {
+                        if (item is SimpleAttributeViewModel simpleAttribute) {
+                            this._featureType.SetAttribute(simpleAttribute.attribute);
+                            simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                        else if (item is ComplexAttributeViewModel complexAttribute) {
+                            this._featureType.SetAttribute(complexAttribute.attribute);
+                            complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
+                //this.OnPropertyChanged("attributeBindings");
+            };
 
             this.informationBindings.CollectionChanged += (s, e) => {
                 if (e.OldItems is not null) {
@@ -253,31 +261,31 @@ namespace S100Framework.WPF.ViewModel
 
             //note: Must be added right by the end!
             this.attributeBindings.CollectionChanged += (s, e) => {
-                if (e.OldItems is not null) {
-                    foreach (var item in e.OldItems) {
-                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
-                            this._featureType.RemoveAttribute(simpleAttributeViewModel.attribute);
-                        }
-                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
-                            this._featureType.RemoveAttribute(complexAttributeViewModel.attribute);
-                        }
-                        if (item is AttributeViewModel attribute) {
-                            attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
-                        }
-                    }
-                }
-                if (e.NewItems is not null) {
-                    foreach (var item in e.NewItems) {
-                        if(item is SimpleAttributeViewModel simpleAttributeViewModel) {
-                            this._featureType.SetAttribute(simpleAttributeViewModel.attribute);
-                            simpleAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
-                        }
-                        if(item is ComplexAttributeViewModel complexAttributeViewModel) {
-                            this._featureType.SetAttribute(complexAttributeViewModel.attribute);
-                            complexAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
-                        }
-                    }
-                }
+                //if (e.OldItems is not null) {
+                //    foreach (var item in e.OldItems) {
+                //        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                //            this._featureType.RemoveAttribute(simpleAttributeViewModel.attribute);
+                //        }
+                //        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
+                //            this._featureType.RemoveAttribute(complexAttributeViewModel.attribute);
+                //        }
+                //        if (item is AttributeViewModel attribute) {
+                //            //attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                //        }
+                //    }
+                //}
+                //if (e.NewItems is not null) {
+                //    foreach (var item in e.NewItems) {
+                //        if(item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                //            this._featureType.SetAttribute(simpleAttributeViewModel.attribute);
+                //            simpleAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
+                //        }
+                //        if(item is ComplexAttributeViewModel complexAttributeViewModel) {
+                //            this._featureType.SetAttribute(complexAttributeViewModel.attribute);
+                //            complexAttributeViewModel.PropertyChanged += this.Viewmodel_PropertyChanged;
+                //        }
+                //    }
+                //}
                 this.OnPropertyChanged("attributeBindings");
             };
         }
