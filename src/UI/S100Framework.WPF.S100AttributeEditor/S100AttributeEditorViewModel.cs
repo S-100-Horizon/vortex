@@ -147,17 +147,14 @@ namespace S100Framework.WPF.ViewModel
             };
 
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                var attributeBindingDefinition = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code));
+
                 if (e is DateAttribute dateAttribute)
-                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute, attributeBindingDefinition));
                 else if (e is DateTimeAttribute dateTimeAttribute)
-                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
-                else if (e is EnumerationAttribute enumerationAttribute) {
-                    this.attributeBindings.Add(new EnumerationAttributeViewModel(ref enumerationAttribute) {
-                        permitedValues = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code))!.permitedValues!,
-                    });
-                }
+                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute, attributeBindingDefinition));
                 else if (e is SimpleAttribute simpleAttribute)
-                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute, attributeBindingDefinition));
                 else if (e is ComplexAttribute complexAttribute)
                     this.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
             }
@@ -255,17 +252,14 @@ namespace S100Framework.WPF.ViewModel
             };
 
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                var attributeBindingDefinition = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code));
+
                 if (e is DateAttribute dateAttribute)
-                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                    this.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute, attributeBindingDefinition));
                 else if (e is DateTimeAttribute dateTimeAttribute)
-                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
-                else if (e is EnumerationAttribute enumerationAttribute) {
-                    this.attributeBindings.Add(new EnumerationAttributeViewModel(ref enumerationAttribute) {
-                        permitedValues = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code))!.permitedValues!,
-                    });
-                }
+                    this.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute, attributeBindingDefinition));
                 else if (e is SimpleAttribute simpleAttribute)
-                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
+                    this.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute, attributeBindingDefinition));
                 else if (e is ComplexAttribute complexAttribute)
                     this.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
             }

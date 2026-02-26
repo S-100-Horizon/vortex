@@ -42,12 +42,12 @@ namespace S100Framework.WPF
             if (e?.SelectedItem is attributeBindingDefinition attributeBinding) {
                 if (container!.HasCapacity(attributeBinding)) {
                     var instance = attributeBinding.CreateInstance();
-                    if (instance is SimpleAttribute simpleAttribute)
-                        container?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
-                    else if (instance is DateAttribute dateAttribute)
-                        container?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                    if (instance is DateAttribute dateAttribute)
+                        container?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute, attributeBinding));
                     else if (instance is DateTimeAttribute dateTimeAttribute)
-                        container?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+                        container?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute, attributeBinding));
+                    else if (instance is SimpleAttribute simpleAttribute)
+                        container?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute, attributeBinding));                   
                     else if (instance is ComplexAttribute complexAttribute)
                         container?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
                     else

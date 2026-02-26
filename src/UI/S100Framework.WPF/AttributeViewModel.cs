@@ -90,8 +90,9 @@ namespace S100Framework.WPF.ViewModel
 
     public class SimpleAttributeViewModel : AttributeViewModel
     {
-        public SimpleAttributeViewModel(ref SimpleAttribute attribute) : base(attribute) {
+        public SimpleAttributeViewModel(ref SimpleAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -111,42 +112,17 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.SimpleAttribute? _attribute { get; init; } = default;
+
+        public int[]? permitedValues => this._attributeBindingDefinition?.permitedValues;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
-
-    public class EnumerationAttributeViewModel : AttributeViewModel
-    {
-        public EnumerationAttributeViewModel(ref EnumerationAttribute attribute) : base(attribute) {
-            this._attribute = attribute;
-
-            this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
-        }
-
-        public string valueType => this._attribute!.valueType;
-
-        private object? _value;
-
-        public object? value {
-            get {
-                return this._value;
-            }
-            set {
-                attribute.GetType().GetProperty("value")!.SetValue(_attribute, value);
-                this.SetProperty(ref this._value, value);
-            }
-        }
-
-        public int[] permitedValues { get; set; } = [];
-
-        public S100FC.EnumerationAttribute? _attribute { get; init; } = default;
-    }
-
-
-
 
     public class DateAttributeViewModel : AttributeViewModel
     {
-        public DateAttributeViewModel(ref DateAttribute attribute) : base(attribute) {
+        public DateAttributeViewModel(ref DateAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -171,12 +147,15 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.DateAttribute? _attribute { get; init; } = default;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
 
     public class DateTimeAttributeViewModel : AttributeViewModel
     {
-        public DateTimeAttributeViewModel(ref DateTimeAttribute attribute) : base(attribute) {
+        public DateTimeAttributeViewModel(ref DateTimeAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -196,6 +175,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.DateTimeAttribute? _attribute { get; init; } = default;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
 
     public class ComplexAttributeViewModel : AttributeViewModel, IAttributeBindingContainer
@@ -240,8 +221,10 @@ namespace S100Framework.WPF.ViewModel
             };
 
             foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                var attributeBindingDefinition = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code));
+
                 if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute, attributeBindingDefinition);
                     this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
