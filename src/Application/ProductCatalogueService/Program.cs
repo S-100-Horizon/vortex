@@ -11,11 +11,14 @@ namespace ProductCatalogueService
         private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
         public static async Task Main(string[] args) {
             var builder = WebApplication.CreateBuilder(args);
-           // var development = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) == true;
+            // var development = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")?.Equals("Development", StringComparison.OrdinalIgnoreCase) == true;
 
             // Logging
             Log.Logger = new LoggerConfiguration()
              .MinimumLevel.Information()
+             .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+             .MinimumLevel.Override("Microsoft.AspNetCore", Serilog.Events.LogEventLevel.Warning)
+             .MinimumLevel.Override("Microsoft.Hosting.Lifetime", Serilog.Events.LogEventLevel.Warning)
              .Enrich.FromLogContext()
              .WriteTo.Console()
              .WriteTo.File(

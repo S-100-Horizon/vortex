@@ -1,8 +1,10 @@
 ﻿//using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using ArcGIS.Core.SystemCore;
 using CommandLine;
 using ICSharpCode.SharpZipLib.Zip;
+using NetTopologySuite.Utilities;
 using S100FC.Applications;
 
 //using S100Framework.DomainModel
@@ -123,6 +125,11 @@ namespace S100Framework.Applications
                     };
                 }
                 else if (Uri.IsWellFormedUriString(target, UriKind.Absolute)) {
+                    var arcGisSignOn = ArcGISSignOn.Instance;
+
+                    var signedId = arcGisSignOn.IsSignedOn(new Uri("https://nuvion.gst.dk/portal"));
+                    Assert.IsTrue(signedId);
+
                     createGeodatabase = () => {
                         var serviceProps = new ServiceConnectionProperties(new Uri(target, UriKind.Absolute)) {
                             Version = "sde.DEFAULT"

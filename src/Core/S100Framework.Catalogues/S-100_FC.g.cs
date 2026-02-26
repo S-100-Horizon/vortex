@@ -364,7 +364,7 @@ namespace S100FC
             return (binding.upper - this.attributeBindings.Where(e => e.GetType().Name.Equals(code)).Count());
         }
 
-        protected void SetAttribute(attributeBinding? attribute) {
+        public void SetAttribute(attributeBinding attribute) {
             if (attribute == null) return;
             var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
             if (binding.upper == 1) {
@@ -379,6 +379,15 @@ namespace S100FC
             }
             else {
                 this.attributeBindings = [.. this.attributeBindings, attribute];
+            }
+        }
+
+        public void RemoveAttribute(attributeBinding attribute) {
+            if (attribute == null) return;
+            var binding = attributeBindingsCatalogue!.Single(e => e.attribute.Equals(attribute.S100FC_code));
+            this.attributeBindings = [.. this.attributeBindings.Where(e => e != attribute)];
+            if (binding.lower > this.attributeBindings.Count(e => e.S100FC_code.Equals(attribute.S100FC_code))) {
+                this.attributeBindings = [.. this.attributeBindings, binding.CreateInstance()!];
             }
         }
 
@@ -581,7 +590,6 @@ namespace S100FC
             if (binding.lower > this.attributeBindings.Count(e => e.S100FC_code.Equals(attribute.S100FC_code))) {
                 this.attributeBindings = [.. this.attributeBindings, binding.CreateInstance()!];
             }
-
         }
 
         public void SetAttribute(string code, attributeBinding?[] attributes) {

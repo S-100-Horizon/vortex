@@ -180,12 +180,28 @@ namespace S100Framework.WPF.ViewModel
             this.attributeBindingsCatalogue = this._attribute.attributeBindingsCatalogue;
 
             this.attributeBindings.CollectionChanged += (s, e) => {
+                if (e.OldItems is not null) {
+                    foreach (var item in e.OldItems) {
+                        if (item is SimpleAttributeViewModel simpleAttributeViewModel) {
+                            this._attribute.RemoveAttribute(simpleAttributeViewModel.attribute);
+                        }
+                        if (item is ComplexAttributeViewModel complexAttributeViewModel) {
+                            this._attribute.RemoveAttribute(complexAttributeViewModel.attribute);
+                        }
+
+                        if (item is AttributeViewModel attribute) {
+                            attribute.PropertyChanged -= this.Viewmodel_PropertyChanged;
+                        }
+                    }
+                }
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if (item is SimpleAttributeViewModel simpleAttribute) {
+                            this._attribute.SetAttribute(simpleAttribute.attribute);
                             simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                         else if (item is ComplexAttributeViewModel complexAttribute) {
+                            this._attribute.SetAttribute(complexAttribute.attribute);
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                     }
@@ -203,6 +219,11 @@ namespace S100Framework.WPF.ViewModel
                     this.attributeBindings.Add(viewmodel);
                 }
             }
+
+            //note: Must be added right by the end!
+            this.attributeBindings.CollectionChanged += (s, e) => {               
+                base.OnPropertyChanged(nameof(attributeBindings));
+            };
         }
 
         public bool HasCapacity(attributeBindingDefinition binding) {
@@ -371,7 +392,7 @@ namespace S100Framework.WPF.ViewModel
                 this.roles.Add(e.role);
             }
 
-            this.PropertyChanged += (s, e) => {                
+            this.PropertyChanged += (s, e) => {
                 if (string.IsNullOrEmpty(e.PropertyName)) {
                     this._featureBindingDefinition = null;
 
