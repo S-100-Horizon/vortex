@@ -42,13 +42,12 @@ namespace S100FC.ProductCatalogue
         Task<bool> QueryUpdatesAsync(string name, Action<object> action);
 
         Task<bool> IsDirtyAsync(string name);
-        Task<bool> IsDirtyYamlAsync(string name);
 
         ElectronicProduct? ElectronicProduct(string name);
 
         Task<(string yaml, string index)> GetLatestDatasetYAML(string name, int edition);
 
-        Task ApplyEditsAsync(string name, ExportTypes exportType, string yaml, string index, string sign);
+        Task CreateAttachmentAsync(string name, ExportTypes exportType, string yaml, string index, string sign);
 
         string OutputFolder { get; }
     }
@@ -263,32 +262,9 @@ namespace S100FC.ProductCatalogue
 
             // set ed/upd
             result.ElectronicProduct.editionNumber = 1;
-            result.ElectronicProduct.updateNumber = 0;
+            result.ElectronicProduct.updateNumber = null;
 
             return await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter);
-        }
-
-        async Task<bool> IElectronicProductManager.IsDirtyYamlAsync(string name) {
-            if (string.IsNullOrEmpty(name))
-                throw new System.ArgumentNullException(nameof(name));
-
-            name = name.ToUpperInvariant();
-
-            if (!this._electronicProducts.ContainsKey(name))
-                throw new System.ArgumentException(nameof(name));
-
-            var result = await this.GetElectronicProductAsync(name);
-
-            var dataset = await this.CreateDatasetAsync(result.ElectronicProduct, result.Filter);
-
-            var (yaml, index) = await this.GetLatestDatasetYAML(name, result.ElectronicProduct.editionNumber!.Value);
-
-
-            var incoming = dataset.Serialize();
-
-            var delta = S100FC.YAML.DatasetComparer.Compare(yaml, incoming);
-
-            return delta.HasEdits;
         }
 
         async Task<YAML.Dataset> IElectronicProductManager.CreateNewEditionAsync(string name) {
@@ -301,7 +277,6 @@ namespace S100FC.ProductCatalogue
 
             var result = await this.GetElectronicProductAsync(name);
 
-            // bliver ikke opdateret i den nye AppendUpdates? todo
             result.ElectronicProduct.editionNumber += 1;
             result.ElectronicProduct.updateNumber = null; //0;
 
@@ -870,68 +845,10 @@ namespace S100FC.ProductCatalogue
                 }
 
                 // Apply Edits
-                //if (applyEdits) {
-                //    this._geodatabase!.ApplyEdits(() => {
-                //        using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
-
-                //        using var cursorS128 = surface.Search(new QueryFilter {
-                //            //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                //            //WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                //            WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'",
-                //        }, false);
-
-                //        cursorS128.MoveNext();
-
-                //        Debug.Assert(cursorS128.Current != null);
-
-                //        var flatten = electronicProduct.Flatten();
-
-                //        var row128 = cursorS128.Current;
-                //        row128["flatten"] = flatten;
-                //        row128.Store();
-                //        row128.Dispose();
-
-                //        this._electronicProducts[electronicProduct.datasetName!.ToUpperInvariant()] = electronicProduct;
-
-                //        using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
-
-                //        using var buffer = attachment.CreateRowBuffer();
-
-                //        buffer["ps"] = "S-128.Horizon";
-                //        buffer["code"] = nameof(Dataset);
-                //        buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
-                //            DatasetName = electronicProduct.datasetName!,
-                //            Edition = electronicProduct.editionNumber!.Value,
-                //            Update = electronicProduct.updateNumber ?? 0,
-                //            ExportTypes = exportType,
-                //            TimestampUTC = timestamp
-                //        }, this.jsonSerializerOptionsS128);
-
-                //        var yaml = dataset.Serialize();
-
-                //        using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
-
-                //        buffer["data_size"] = memoryStream.Length;
-                //        buffer["data"] = memoryStream;
-
-                //        attachment.CreateRow(buffer);
-                //    });
-                //}
-
-                return dataset!;
-            });
-        }
-
-        public async Task ApplyEditsAsync(string name, ExportTypes exportType, string yaml, string index, string sign) {
-            var electronicProduct = this._electronicProducts[name.ToUpperInvariant()];
-            var timestamp = DateTime.UtcNow;
-            await this.Dispatch(() => {
                 this._geodatabase!.ApplyEdits(() => {
                     using var surface = this._geodatabase!.OpenDataset<FeatureClass>(this.QualifyTableName("surface"));
 
                     using var cursorS128 = surface.Search(new QueryFilter {
-                        //WhereClause = $"json LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
-                        //WhereClause = $"flatten LIKE '%\"datasetName\":\"{electronicProduct.datasetName}\"%'",
                         WhereClause = $"flatten LIKE '%\"{electronicProduct.datasetName}\"%'",
                     }, false);
 
@@ -948,6 +865,39 @@ namespace S100FC.ProductCatalogue
 
                     this._electronicProducts[electronicProduct.datasetName!.ToUpperInvariant()] = electronicProduct;
 
+                    //using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
+
+                    //using var buffer = attachment.CreateRowBuffer();
+
+                    //buffer["ps"] = "S-128.Horizon";
+                    //buffer["code"] = nameof(Dataset);
+                    //buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
+                    //    DatasetName = electronicProduct.datasetName!,
+                    //    Edition = electronicProduct.editionNumber!.Value,
+                    //    Update = electronicProduct.updateNumber,
+                    //    ExportTypes = exportType,
+                    //    TimestampUTC = timestamp
+                    //}, this.jsonSerializerOptionsS128);
+
+                    //var yaml = dataset.Serialize();
+
+                    //using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(yaml));
+
+                    //buffer["data_size"] = memoryStream.Length;
+                    //buffer["data"] = memoryStream;
+
+                    //attachment.CreateRow(buffer);
+                });
+
+                return dataset!;
+            });
+        }
+
+        public async Task CreateAttachmentAsync(string name, ExportTypes exportType, string yaml, string index, string sign) {
+            var electronicProduct = this._electronicProducts[name.ToUpperInvariant()];
+            var timestamp = DateTime.UtcNow;
+            await this.Dispatch(() => {
+                this._geodatabase!.ApplyEdits(() => {
                     using var attachment = this._geodatabase!.OpenDataset<Table>(this.QualifyTableName("attachment"));
 
                     using var buffer = attachment.CreateRowBuffer();
@@ -957,7 +907,7 @@ namespace S100FC.ProductCatalogue
                     buffer["json"] = System.Text.Json.JsonSerializer.Serialize(new Dataset {
                         DatasetName = electronicProduct.datasetName!,
                         Edition = electronicProduct.editionNumber!.Value,
-                        Update = electronicProduct.updateNumber ?? 0,
+                        Update = electronicProduct.updateNumber,
                         ExportTypes = exportType,
                         TimestampUTC = timestamp
                     }, this.jsonSerializerOptionsS128);
@@ -969,7 +919,7 @@ namespace S100FC.ProductCatalogue
 
                     attachment.CreateRow(buffer);
 
-                    Log.Information("Edits applied for dataset {datasetName} with edition {edition} and update {update}", electronicProduct.datasetName, electronicProduct.editionNumber, electronicProduct.updateNumber);
+                    Log.Information("Attachemnt created for dataset {datasetName} with edition {edition} and update {update}", electronicProduct.datasetName, electronicProduct.editionNumber, electronicProduct.updateNumber);
                 });
             });
         }

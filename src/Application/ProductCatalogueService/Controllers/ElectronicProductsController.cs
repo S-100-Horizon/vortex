@@ -98,9 +98,9 @@ namespace ProductCatalogueService.Controllers
             var yaml = dataset.Serialize();
 
 
-            var (index, sign) = this.CreateExchangeSet(product, yaml);
+            var (index, sign) = this.CreateExchangeSet(name, yaml);
 
-            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewDataset, yaml, index, sign);
+            await _electronicProductManager.CreateAttachmentAsync(name, ExportTypes.NewDataset, yaml, index, sign);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
@@ -177,11 +177,6 @@ namespace ProductCatalogueService.Controllers
 
             var dataset = await _electronicProductManager.CreateNewEditionAsync(name);
 
-            //product = _electronicProductManager.ElectronicProduct(name)!; // get updated product with new edition number
-
-            product.editionNumber += 1;
-            product.updateNumber = null; // 0;
-
             var yaml = dataset.Serialize();
 
 
@@ -194,8 +189,8 @@ namespace ProductCatalogueService.Controllers
 
 
 
-            var (index, sign) = this.CreateExchangeSet(product, yaml);
-            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewEdition, yaml, index, sign);
+            var (index, sign) = this.CreateExchangeSet(name, yaml);
+            await _electronicProductManager.CreateAttachmentAsync(name, ExportTypes.NewEdition, yaml, index, sign);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
@@ -235,8 +230,6 @@ namespace ProductCatalogueService.Controllers
 
             var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
-            product.updateNumber = product.updateNumber.HasValue ? product.updateNumber += 1 : product.updateNumber = 1;
-
             var incoming = dataset.Serialize();
 
             if (string.IsNullOrEmpty(incoming)) {
@@ -252,21 +245,28 @@ namespace ProductCatalogueService.Controllers
             // Build YAML Delta
             var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
-            //if(!delta.HasEdits)
-            // TODO: Do something. Rollback updatenumber?
+            if (!delta.HasEdits) {
+                _logger.LogError("No edits found for product {product} during NewUpdate.", name);
+                response.Success = false;
+                response.Message = $"An error occured identifying edits.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
 
-            var update = S100FC.YAML.Converter.Serialize(delta);   
+            var update = S100FC.YAML.Converter.Serialize(delta);
 
-            var (index, sign) = this.CreateExchangeSet(product, update, prevIndex);
+            var (index, sign) = this.CreateExchangeSet(name, update, prevIndex);
 
-            await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.Update, update, index, sign);
+            await _electronicProductManager.CreateAttachmentAsync(name, ExportTypes.Update, update, index, sign);
 
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
         }
 
-        private (string index, string sign) CreateExchangeSet(ElectronicProduct product, string yaml, string prevIndex = "") {
-            var datasetName = product.datasetName;
+        private (string index, string sign) CreateExchangeSet(string dsnm, string yaml, string prevIndex = "") {
+            var product = _electronicProductManager.ElectronicProduct(dsnm);
+
+            var datasetName = product!.datasetName;
 
             var dir = IO.Directory.CreateDirectory(_electronicProductManager.OutputFolder);
 

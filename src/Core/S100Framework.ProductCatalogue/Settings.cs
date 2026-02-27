@@ -33,7 +33,7 @@ namespace S100FC.ProductCatalogue
         public required DateTime TimestampUTC { get; set; } = DateTime.UtcNow;
 
         public required int Edition { get; set; }
-        public required int Update { get; set; }
+        public int? Update { get; set; }
 
         public required ExportTypes ExportTypes { get; set; }
     }
