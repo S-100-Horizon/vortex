@@ -72,17 +72,17 @@ namespace ProductCatalogueService.Controllers
             return Ok(response);
         }
 
-        ///// <summary>
-        ///// Creates a new dataset.
-        ///// </summary>
-        ///// <param name="name">The name of the dataset.</param>
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
-        //[ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
-        //[HttpPost("{name}/newdataset", Name = "NewDataset")]
-        //public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
-        //    var sw = Stopwatch.StartNew();
-        //    var response = new ApiResponse();
+        /// <summary>
+        /// Creates a new dataset.
+        /// </summary>
+        /// <param name="name">The name of the dataset.</param>
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound, "application/json")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
+        [HttpPost("{name}/newdataset", Name = "NewDataset")]
+        public async Task<IActionResult> NewDataset(string name = "101DK0040349E") {
+            var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
 
             var product = _electronicProductManager.ElectronicProduct(name);
 
@@ -93,11 +93,11 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status404NotFound, response);
             }
 
-        //    // Create exchange set?
-        //    var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
-        //    var yaml = dataset.Serialize();
+            // Create exchange set?
+            var dataset = await _electronicProductManager.CreateNewDatasetAsync(name);
+            var yaml = dataset.Serialize();
 
-        
+
             var (index, sign) = this.CreateExchangeSet(product, yaml);
 
             await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewDataset, yaml, index, sign);
@@ -121,38 +121,38 @@ namespace ProductCatalogueService.Controllers
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
-        //    if (_electronicProductManager.ElectronicProduct(product.Name) != null) {
-        //        response.Success = false;
-        //        response.Message = $"An electronic product with name '{product.Name}' already exists.";
-        //        response.DurationMs = sw.ElapsedMilliseconds;
-        //        return StatusCode(StatusCodes.Status404NotFound, response);
-        //    }
+            if (_electronicProductManager.ElectronicProduct(product.Name) != null) {
+                response.Success = false;
+                response.Message = $"An electronic product with name '{product.Name}' already exists.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status404NotFound, response);
+            }
 
-        //    //var boundary = GetBoundaryFromGeoJSON(aoi);
-        //    var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
+            //var boundary = GetBoundaryFromGeoJSON(aoi);
+            var boundary = PolygonBuilderEx.FromJson(product.Aoi.ToString());
 
-        //    var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
-        //        name = "S-101",
-        //        version = "2.0.0",
-        //        editionDate = DateOnly.FromDateTime(DateTime.Today)
-        //    };
+            var productSpecification = new S100FC.S128.ComplexAttributes.productSpecification() {
+                name = "S-101",
+                version = "2.0.0",
+                editionDate = DateOnly.FromDateTime(DateTime.Today)
+            };
 
-        //    var specificUsage = product.UsageBand switch {
-        //        SpecificUsage.NavigationalPurposeOverview => 1, // S100FC.S128.specificUsage.NavigationalPurposeOverview,
-        //        SpecificUsage.NavigationalPurposeGeneral => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
-        //        SpecificUsage.NavigationalPurposeCoastal => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
-        //        SpecificUsage.NavigationalPurposeApproach => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
-        //        SpecificUsage.NavigationalPurposeHarbour => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
-        //        SpecificUsage.NavigationalPurposeBerthing => 6, //S100FC.S128.specificUsage.NavigationalPurposeBerthing,
-        //        _ => throw new ArgumentNullException(),
-        //    };
+            var specificUsage = product.UsageBand switch {
+                SpecificUsage.NavigationalPurposeOverview => 1, // S100FC.S128.specificUsage.NavigationalPurposeOverview,
+                SpecificUsage.NavigationalPurposeGeneral => 2, //S100FC.S128.specificUsage.NavigationalPurposeGeneral,
+                SpecificUsage.NavigationalPurposeCoastal => 3, //S100FC.S128.specificUsage.NavigationalPurposeCoastal,
+                SpecificUsage.NavigationalPurposeApproach => 4, //S100FC.S128.specificUsage.NavigationalPurposeApproach,
+                SpecificUsage.NavigationalPurposeHarbour => 5, //S100FC.S128.specificUsage.NavigationalPurposeHarbour,
+                SpecificUsage.NavigationalPurposeBerthing => 6, //S100FC.S128.specificUsage.NavigationalPurposeBerthing,
+                _ => throw new ArgumentNullException(),
+            };
 
-        //    await _electronicProductManager.CreateElectronicProductAsync(product.Name, productSpecification, specificUsage, boundary);
+            await _electronicProductManager.CreateElectronicProductAsync(product.Name, productSpecification, specificUsage, boundary);
 
-        //    response.DurationMs = sw.ElapsedMilliseconds;
+            response.DurationMs = sw.ElapsedMilliseconds;
 
-        //    return Ok(response);
-        //}
+            return Ok(response);
+        }
 
         /// <summary>
         /// Creates a new edition.
@@ -192,11 +192,11 @@ namespace ProductCatalogueService.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, response);
             }
 
-          
+
 
             var (index, sign) = this.CreateExchangeSet(product, yaml);
             await _electronicProductManager.ApplyEditsAsync(name, ExportTypes.NewEdition, yaml, index, sign);
-            
+
             response.DurationMs = sw.ElapsedMilliseconds;
             return Ok(response);
         }
@@ -211,24 +211,19 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newupdate", Name = "NewUpdate")]
         public async Task<IActionResult> NewUpdate(string name = "101DK0040349E") {
-           // return StatusCode(StatusCodes.Status501NotImplemented);
-
-        //    var sw = Stopwatch.StartNew();
-        //    var response = new ApiResponse();
-
-
-        //    var product = _electronicProductManager.ElectronicProduct(name);
-
-
-        //    if (product == null) {
-        //        response.Success = false;
-        //        response.Message = $"No electronic product with name '{name}' was found.";
-        //        response.DurationMs = sw.ElapsedMilliseconds;
-        //        return StatusCode(StatusCodes.Status404NotFound, response);
-        //    }
-
+            var sw = Stopwatch.StartNew();
+            var response = new ApiResponse();
 
             // Check if product has any updates before creating new update
+            var product = _electronicProductManager.ElectronicProduct(name);
+
+            if (product == null) {
+                response.Success = false;
+                response.Message = $"No electronic product with name '{name}' was found.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status404NotFound, response);
+            }
+
             var dirty = await _electronicProductManager.IsDirtyAsync(name);
 
             if (!dirty) {
@@ -238,43 +233,29 @@ namespace ProductCatalogueService.Controllers
                 return BadRequest(response);
             }
 
-           // return Ok(dirty);
+            var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
 
-        //    // todo: detect updates properly
-        //    var dataset = await _electronicProductManager.CreateNewUpdateAsync(name);
-
-
-            //product = _electronicProductManager.ElectronicProduct(name)!; // get updated product with new edition number
             product.updateNumber = product.updateNumber.HasValue ? product.updateNumber += 1 : product.updateNumber = 1;
 
             var incoming = dataset.Serialize();
 
-        //    if (string.IsNullOrEmpty(incoming)) {
-        //        response.Success = false;
-        //        response.Message = $"An error occured attempting to read dataset '{name}'.";
-        //        response.DurationMs = sw.ElapsedMilliseconds;
-        //        return StatusCode(StatusCodes.Status500InternalServerError, response);
-        //    }
+            if (string.IsNullOrEmpty(incoming)) {
+                response.Success = false;
+                response.Message = $"An error occured attempting to read dataset '{name}'.";
+                response.DurationMs = sw.ElapsedMilliseconds;
+                return StatusCode(StatusCodes.Status500InternalServerError, response);
+            }
 
             var (latest, prevIndex) = await _electronicProductManager.GetLatestDatasetYAML(name, product.editionNumber!.Value);
 
 
-
-        //    // Build YAML Delta
-        //    var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
+            // Build YAML Delta
+            var delta = S100FC.YAML.DatasetComparer.Compare(latest, incoming);
 
             //if(!delta.HasEdits)
             // TODO: Do something. Rollback updatenumber?
-            
-            // Populate metadata
-            delta.CellName = product.datasetName;
-            delta.Comment = "Not for navigation!";
-            delta.Edition = product.editionNumber!.Value;
-            delta.Update = product.updateNumber;
-            delta.ENCVer = $"INT.IHO.{product.productSpecification?.name}.{product.productSpecification?.version}";         // delta.ENCVer = "INT.IHO.S-101.2.0.0";
-            delta.FCVer = product.productSpecification?.version;        // delta.FCVer = "2.0.0";
 
-        //    var update = S100FC.YAML.Converter.Serialize(delta);     // Only delta
+            var update = S100FC.YAML.Converter.Serialize(delta);   
 
             var (index, sign) = this.CreateExchangeSet(product, update, prevIndex);
 
@@ -312,7 +293,7 @@ namespace ProductCatalogueService.Controllers
                 IO.File.WriteAllText(prevIndexPath, prevIndex);
                 commandline += $" -L {prevIndexPath}";
             }
-               
+
 
 
             //var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\"  -C {datasetName} -L {datasetName}_000.idx";

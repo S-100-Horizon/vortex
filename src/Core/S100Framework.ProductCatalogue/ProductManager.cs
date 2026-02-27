@@ -1074,30 +1074,17 @@ namespace S100FC.ProductCatalogue
                 //                  $"created_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}' " +
                 //                  $"OR last_edited_date > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}')";
 
-                SQLSyntax sqlSyntax = _geodatabase.GetSQLSyntax();
+                var sqlSyntax = _geodatabase.GetSQLSyntax();
 
-                // 2. Format the date correctly for the underlying DBMS (SQL Server in your case)
-                string formattedDate = sqlSyntax.Format(dataset.TimestampUTC, SQLDateTimeType.Timestamp);
+                var formattedDate = sqlSyntax.Format(dataset.TimestampUTC, SQLDateTimeType.Timestamp);
 
-                // Archive table
-                var whereClause = $"UPPER(ps) = 'S-101' AND GDB_FROM_DATE > {formattedDate}";
-                //var whereClause = $"UPPER(ps) = 'S-101' AND GDB_FROM_DATE > DATE '{dataset.TimestampUTC:yyyy-MM-dd HH:mm:ss}'";
 
-                //    WhereClause = $"GDB_FROM_DATE > '{sinceDate:yyyy-MM-dd HH:mm:ss}'"
-
+                //var whereClause = $"UPPER(ps) = 'S-101' AND GDB_FROM_DATE > {formattedDate}";
+                var whereClause = $"UPPER(ps) = 'S-101' AND (GDB_FROM_DATE > {formattedDate} OR GDB_TO_DATE > {formattedDate})";
 
                 if (specificUsage != null)
                     whereClause += $" AND usageband = {specificUsage.value}";
 
-
-                //whereClause += specificUsage switch {
-                //    S100FC.S128.specificUsage.NavigationalPurposeOverview => $" AND usageband = 1",
-                //    S100FC.S128.specificUsage.NavigationalPurposeGeneral => $" AND usageband = 2",
-                //    S100FC.S128.specificUsage.NavigationalPurposeCoastal => $" AND usageband = 3",
-                //    S100FC.S128.specificUsage.NavigationalPurposeApproach => $" AND usageband = 4",
-                //    S100FC.S128.specificUsage.NavigationalPurposeHarbour => $" AND usageband = 5",
-                //    _ => "",
-                //};
 
                 ArcGIS.Core.Geometry.Polygon shapeCoverage;
 

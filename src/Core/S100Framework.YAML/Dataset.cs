@@ -192,6 +192,8 @@ namespace S100FC.YAML
         public string? ENCVer { get; set; }
         [YamlMember(Alias = "FCVer", ApplyNamingConventions = false)]
         public string? FCVer { get; set; }
+        [YamlMember(Alias = "verticalDatum ", ApplyNamingConventions = false)]
+        public string? VerticalDatum { get; set; }
 
         public MetadataUpdate? Metadata { get; set; }
 
@@ -350,7 +352,22 @@ namespace S100FC.YAML
             delta.InformationTypesDeleted = informationTypes.Deleted.Keys;
 
 
+            // Populate dataset information (CellName, Comment, Edition, Update, ENCVer, FCVer, VerticalDatum) from the update dataset
+            delta.PopulateDatasetInformation(update);
+
             return delta;
+        }
+
+        private static void PopulateDatasetInformation(this DatasetDelta delta, string incoming) {
+            var rawDictionary = S100FC.YAML.Converter.Deserialize<Dictionary<object, object>>(incoming);
+
+            delta.CellName = rawDictionary["CellName"]?.ToString();
+            delta.Comment = rawDictionary["Comment"]?.ToString();
+            delta.Edition = rawDictionary["Edition"] as int?;
+            delta.Update = rawDictionary["Update"] as int?;
+            delta.ENCVer = rawDictionary["encver"]?.ToString();
+            delta.FCVer = rawDictionary["FCVer"]?.ToString();
+            delta.VerticalDatum = rawDictionary["verticalDatum"]?.ToString();
         }
 
         private static DatasetUpdate ReadDataset(string dataset) {

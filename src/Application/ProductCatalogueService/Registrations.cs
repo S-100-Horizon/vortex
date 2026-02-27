@@ -13,7 +13,7 @@ namespace ProductCatalogueService
 
                 // Connect to prod
                 var path = Environment.GetEnvironmentVariable("S100-Horizon-S128-Database");
-
+                path = "C:/geodatastyrelsen/gdbs/BalticSea2026.gdb";
                 Log.Logger.Information("S100-Horizon-S128-Database: {env}", path);
 
                 if (string.IsNullOrEmpty(path))
