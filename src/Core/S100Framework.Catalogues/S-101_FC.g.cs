@@ -139,6 +139,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The designated call-sign of a station (radio station, radar station, pilot, ...).
 	/// </summary>
+	[StringLengthConstraint(150)]
 	public class callSign : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -1814,6 +1815,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// Instructions provided on how to contact a particular person, organisation or service.
 	/// </summary>
+	[StringLengthConstraint(300)]
 	public class contactInstructions : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -1897,6 +1899,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// A day which is not fixed in the Gregorian calendar.
 	/// </summary>
+	[StringLengthConstraint(150)]
 	public class dateVariable : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -1945,6 +1948,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.
 	/// </summary>
+	[RangeConstraint<double>(-30.0d, 12500.0d, Closure.openInterval)]
 	public class defaultClearanceDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1958,6 +1962,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum (deepest) value of a depth range.
 	/// </summary>
+	[RangeConstraint<double>(-30d, 12500d, Closure.openInterval)]
 	public class depthRangeMaximumValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1971,6 +1976,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum (shoalest) value of a depth range.
 	/// </summary>
+	[RangeConstraint<double>(-30d, 12500d, Closure.openInterval)]
 	public class depthRangeMinimumValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1984,6 +1990,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The place or general direction to which a vessel is going or directed.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class destination : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2043,6 +2050,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The altitude of the ground level of a feature, measured from a specified vertical datum.
 	/// </summary>
+	[RangeConstraint<double>(0d, default, Closure.geSemiInterval)]
 	public class elevation : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2056,6 +2064,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The estimated range of a non-optical electromagnetic transmission.
 	/// </summary>
+	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
 	public class estimatedRangeOfTransmission : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2106,6 +2115,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The location of a fragment of text or other information in a support file.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class fileLocator : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2271,6 +2281,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// Words set at the head of a passage or page to introduce or categorize.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class headline : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2610,6 +2621,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation.
 	/// </summary>
+	[RangeConstraint<double>(0.1d, 180.0d, Closure.closedInterval)]
 	public class magneticAnomalyValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2763,6 +2775,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
 	/// </summary>
+	[StringLengthConstraint(9)]
 	public class mMSICode : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2802,6 +2815,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The individual name of a feature.
 	/// </summary>
+	[StringLengthConstraint(75)]
 	public class name : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2815,6 +2829,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// Name of the online resource.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class nameOfResource : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2975,6 +2990,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
+	[RangeConstraint<double>(0.0d, 360.0d, Closure.geLtInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -3139,6 +3155,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// Information relating to the point of origin for a measured distance as indicated on a distance mark.
 	/// </summary>
+	[StringLengthConstraint(75)]
 	public class referenceLocation : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3200,6 +3217,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The regulation citation for a feature.
 	/// </summary>
+	[StringLengthConstraint(50)]
 	public class regulationCitation : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3309,6 +3327,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.
 	/// </summary>
+	[RangeConstraint<double>(0.0d, 360.0d, Closure.geLtInterval)]
 	public class sectorBearing : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -3395,6 +3414,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The number of signals, the combination of signals or the morse character(s) within one period of full sequence.
 	/// </summary>
+	[StringLengthConstraint(15)]
 	public class signalGroup : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3464,6 +3484,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The publication, document, or reference work from which information comes or is acquired.
 	/// </summary>
+	[StringLengthConstraint(150)]
 	public class source : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3534,6 +3555,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The name of the reference tide station with reference water level for tidal stream panel observations.
 	/// </summary>
+	[StringLengthConstraint(50)]
 	public class stationName : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3547,6 +3569,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The identification number of the reference tide station with reference water level for tidal stream panel observations.
 	/// </summary>
+	[StringLengthConstraint(15)]
 	public class stationNumber : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3619,6 +3642,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The authority which was responsible for the survey.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class surveyAuthority : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3734,6 +3758,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// An identifier, such as words, numbers, letters, symbols, or any combination of those used to establish a contact to a particular person, organisation or service.
 	/// </summary>
+	[StringLengthConstraint(50)]
 	public class telecommunicationIdentifier : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3770,6 +3795,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// A non-formatted digital text string.
 	/// </summary>
+	[StringLengthConstraint(300)]
 	public class text : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -3783,6 +3809,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -4147,6 +4174,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The classification of a vessel, normally as defined by length or gross tonnage.
 	/// </summary>
+	[StringLengthConstraint(50)]
 	public class vesselClass : S100FC.TextAttribute
 	{
 		[JsonIgnore]

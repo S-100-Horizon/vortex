@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Xml.Serialization;
@@ -8,12 +9,53 @@ using System.Xml.Serialization;
 
 namespace S100FC
 {
+    public enum Closure : int
+    {
+        openInterval = 0,
+        geLtInterval = 1,
+        gtLeInterval = 2,
+        closedInterval = 3,
+        gtSemiInterval = 4,
+        geSemiInterval = 5,
+        ltSemiInterval = 6,
+        leSemiInterval = 7,
+    }
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class OrderAttribute(int order) : System.Attribute
     {
         public int Order { get; set; } = order;
     }
 
+    public abstract class ConstraintAttribute() : System.Attribute
+    {
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class PrecisionConstraintAttribute(int precision) : ConstraintAttribute
+    {
+        public int Precision = precision;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class StringLengthConstraintAttribute(int stringLength) : ConstraintAttribute
+    {
+        public int StringLength = stringLength;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class TextPatternConstraint(string textPattern) : ConstraintAttribute
+    {
+        public string TextPattern = textPattern;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class RangeConstraintAttribute<TValue>(TValue lowerBound, TValue? upperBound, Closure closure) : ConstraintAttribute where TValue : INumber<TValue?>
+    {
+        public TValue LowerBound = lowerBound;
+        public TValue? UpperBound = upperBound;
+        public Closure Closure = closure;
+    }
 }
 
 namespace S100FC.S100

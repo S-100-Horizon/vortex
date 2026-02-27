@@ -684,6 +684,7 @@ namespace S100FC.S123.SimpleAttributes
 	/// <summary>
 	/// The estimated range of a non-optical electromagnetic transmission.
 	/// </summary>
+	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
 	public class estimatedRangeOfTransmission : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1351,6 +1352,7 @@ namespace S100FC.S123.SimpleAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.
 	/// </summary>
+	[RangeConstraint<double>(0.0d, 360.0d, Closure.geLtInterval)]
 	public class sectorBearing : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1420,6 +1422,7 @@ namespace S100FC.S123.SimpleAttributes
 	/// <summary>
 	/// The publication, document, or reference work from which information comes or is acquired.
 	/// </summary>
+	[StringLengthConstraint(150)]
 	public class source : S100FC.TextAttribute
 	{
 		[JsonIgnore]

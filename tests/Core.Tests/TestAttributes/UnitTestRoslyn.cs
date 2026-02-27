@@ -261,6 +261,8 @@ namespace TestAttributes
                     roslyn.AppendLine($"\t/// {definition}");
                     roslyn.AppendLine("\t/// </summary>");
 
+                    var constraints = element.Element(XName.Get("constraints", scopes["S100FC"]));                    
+
                     if (valueType.Equals("enumeration")) {
                         attributesKnownTypes.Add(code, "int");
                         roslyn.AppendLine($"\tpublic class {code} : S100FC.EnumerationAttribute");
@@ -368,6 +370,49 @@ namespace TestAttributes
                             "uri" => "UriTimeAttribute",
                             _ => throw new InvalidDataException(),
                         };
+
+                        if (constraints != default) {
+                            if (constraints.Element(XName.Get("stringLength", scopes["S100CD"])) != default) {
+                                var stringLength = constraints.Element(XName.Get("stringLength", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[StringLengthConstraint({stringLength})]");
+                            }
+                            if (constraints.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                                var precision = constraints.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[PrecisionConstraint({int.Parse(precision)})]");
+                            }
+                            if (constraints.Element(XName.Get("textPattern", scopes["S100CD"])) != default) {
+                                var textPattern = constraints.Element(XName.Get("textPattern", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[TextPatternConstraint(@\"{textPattern}\")]"); //Replace("\\","\\\\")
+                            }
+                            if (constraints.Element(XName.Get("range", scopes["S100CD"])) != default) {
+                                var lowerBound = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("lowerBound", scopes["S100Base"]));
+                                var upperBound = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("upperBound", scopes["S100Base"]));
+                                var closure = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("closure", scopes["S100Base"]));
+
+                                var unit = prefix switch {
+                                    "decimal" => "d",   // "m"
+                                    "double" => "d",
+                                    "int" => "",
+                                    _ => "",
+                                };
+
+                                var _prefix = prefix.Equals("decimal") ? "double" : prefix;
+
+                                Func<string, string> converter = prefix switch {
+                                    "double" => (v) => v,   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                    "decimal" => (v) => v,
+                                    "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
+                                    _ => throw new InvalidOperationException()
+                                };
+
+                                if (!(lowerBound is null && upperBound is null)) {
+                                    if (upperBound is null)
+                                        roslyn.AppendLine($"\t[RangeConstraint<{_prefix}>({converter(lowerBound!.Value)}{unit}, default, Closure.{closure!.Value})]");
+                                    else
+                                        roslyn.AppendLine($"\t[RangeConstraint<{_prefix}>({converter(lowerBound!.Value)}{unit}, {converter(upperBound!.Value)}{unit}, Closure.{closure!.Value})]");
+                                }
+                            }
+                        }
 
                         attributesKnownTypes.Add(code, prefix);
                         roslyn.AppendLine($"\tpublic class {code} : S100FC.{type}");
@@ -595,7 +640,7 @@ namespace TestAttributes
                         var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
 
                         var informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Union([informationBindingSpatialAssociation]);
-                        
+
                         var spatialAssociation = supportingSpatialAssociation && element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Any(e => Enum.Parse<Primitives>(e.Value!) != Primitives.noGeometry);
 
                         var success = this.ClassBuilder(roslyn, element, "FeatureType, IInformationBindings, IFeatureBindings", new ClassBuilderHost {

@@ -528,6 +528,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The place or general direction to which a vessel is going or directed.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class destination : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -580,6 +581,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class frequencyShoreStationReceives : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -593,6 +595,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class frequencyShoreStationTransmits : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -619,6 +622,8 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraint<double>(0d, default, Closure.geSemiInterval)]
 	public class horizontalDistanceUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -645,6 +650,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.
 	/// </summary>
+	[TextPatternConstraint(@"urn:mrn:.+")]
 	public class interoperabilityIdentifier : S100FC.UrnTimeAttribute
 	{
 		[JsonIgnore]
@@ -719,6 +725,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class maximumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -749,6 +756,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class minimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -857,6 +865,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class optimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1213,6 +1222,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1226,6 +1236,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraint<int>(0, 50, Closure.gtLeInterval)]
 	public class textOffsetDistance : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1268,6 +1279,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The thickness of ice that the ship can safely transit.
 	/// </summary>
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class thicknessOfIceCapability : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1307,6 +1319,7 @@ namespace S100FC.S122.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class uncertaintyFixed : S100FC.RealAttribute
 	{
 		[JsonIgnore]

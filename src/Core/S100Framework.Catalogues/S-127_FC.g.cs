@@ -833,6 +833,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class frequencyShoreStationReceives : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -846,6 +847,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class frequencyShoreStationTransmits : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1020,6 +1022,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class maximumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1033,6 +1036,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class minimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1046,6 +1050,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
 	/// </summary>
+	[StringLengthConstraint(9)]
+	[TextPatternConstraint(@"\d{9}")]
 	public class mMSICode : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -1098,6 +1104,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The time duration prior to the time the service is needed, when notice must be provided to the service provider.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class noticeTimeHours : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1179,6 +1186,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
 	public class optimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1192,6 +1200,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the accuracy of a bearing.
 	/// </summary>
+	[PrecisionConstraint(3)]
+	[RangeConstraint<double>(0.000d, 360.000d, Closure.closedInterval)]
 	public class orientationUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1205,6 +1215,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraint<double>(0.0d, 360.0d, Closure.closedInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1710,6 +1722,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1723,6 +1736,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraint<int>(0, 50, Closure.gtLeInterval)]
 	public class textOffsetDistance : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1765,6 +1779,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The thickness of ice that the ship can safely transit.
 	/// </summary>
+	[PrecisionConstraint(0)]
+	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
 	public class thicknessOfIceCapability : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1823,6 +1839,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// A fixed allowance given by an authority, which is added to draught in order to maintain a minimum under keel clearance.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class underKeelAllowanceFixed : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1836,6 +1853,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// A percentage value, given by an authority, which is applied to ship's beam in order to calculate under keel allowance.
 	/// </summary>
+	[PrecisionConstraint(0)]
+	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
 	public class underKeelAllowanceVariableBeamBased : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1849,6 +1868,8 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// A percentage value, given by an authority, which is applied to ship's draught in order to calculate under keel allowance.
 	/// </summary>
+	[PrecisionConstraint(0)]
+	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
 	public class underKeelAllowanceVariableDraughtBased : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1862,6 +1883,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class uncertaintyFixed : S100FC.RealAttribute
 	{
 		[JsonIgnore]
