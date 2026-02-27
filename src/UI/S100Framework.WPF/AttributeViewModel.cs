@@ -1,8 +1,9 @@
 ﻿using S100FC;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reflection;
 using System.Runtime.CompilerServices;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -88,18 +89,35 @@ namespace S100Framework.WPF.ViewModel
         public S100FC.attributeBinding attribute { get; protected set; }
     }
 
-    public class SimpleAttributeViewModel : AttributeViewModel
+    public class SimpleAttributeViewModel : AttributeViewModel, INotifyDataErrorInfo
     {
         public SimpleAttributeViewModel(ref SimpleAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
             this._attributeBindingDefinition = attributeBindingDefinition;
 
-            this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
+            var type = attribute.GetType();
+            this.value = type.GetProperty("value")!.GetValue(attribute);
+
+            var attributes = type.GetCustomAttributes(true);
+
+            this._validators = [];
+
+            var stringLengthConstraintAttribute = attributes.SingleOrDefault(e => e is StringLengthConstraintAttribute) as StringLengthConstraintAttribute;
+            if (stringLengthConstraintAttribute is not null) {
+                this._validators = [.. this._validators, () => {
+                    if(this._value is String text){
+                        if(text.Length>stringLengthConstraintAttribute.StringLength)
+                            this._errors = $"Text length must not exceed {stringLengthConstraintAttribute.StringLength}!";
+                    }
+                }];
+            }
         }
 
         public string valueType => this._attribute!.valueType;
 
         private object? _value;
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
         public object? value {
             get {
@@ -108,6 +126,8 @@ namespace S100Framework.WPF.ViewModel
             set {
                 attribute.GetType().GetProperty("value")!.SetValue(_attribute, value);
                 this.SetProperty(ref this._value, value);
+
+                this.Validate();
             }
         }
 
@@ -116,6 +136,22 @@ namespace S100Framework.WPF.ViewModel
         public int[]? permitedValues => this._attributeBindingDefinition?.permitedValues;
 
         private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
+
+        public bool HasErrors => !string.IsNullOrEmpty(this._errors);
+
+        public IEnumerable GetErrors(string? propertyName) {
+            return new string?[]{ this._errors};
+        }
+
+        private void Validate() {
+            this._errors = string.Empty;
+            foreach (var action in this._validators)
+                action.Invoke();
+        }
+
+        private Action[] _validators = [];
+
+        private string? _errors = string.Empty;
     }
 
     public class DateAttributeViewModel : AttributeViewModel
