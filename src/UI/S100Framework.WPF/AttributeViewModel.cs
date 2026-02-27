@@ -12,7 +12,7 @@ namespace S100Framework.WPF.ViewModel
         bool HasCapacity(IGrouping<string, informationBindingDefinition> binding);
         bool HasCapacity(IGrouping<string, featureBindingDefinition> binding);
 
-        ObservableCollection<AttributeViewModel> attributeBindings { get; set; }
+        void AddAttribute(AttributeViewModel attribute);
     }
 
     public class InformationTypeID(string informationType, string UID)
@@ -90,8 +90,9 @@ namespace S100Framework.WPF.ViewModel
 
     public class SimpleAttributeViewModel : AttributeViewModel
     {
-        public SimpleAttributeViewModel(ref SimpleAttribute attribute) : base(attribute) {
+        public SimpleAttributeViewModel(ref SimpleAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -111,12 +112,17 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.SimpleAttribute? _attribute { get; init; } = default;
+
+        public int[]? permitedValues => this._attributeBindingDefinition?.permitedValues;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
 
     public class DateAttributeViewModel : AttributeViewModel
     {
-        public DateAttributeViewModel(ref DateAttribute attribute) : base(attribute) {
+        public DateAttributeViewModel(ref DateAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -141,12 +147,15 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.DateAttribute? _attribute { get; init; } = default;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
 
     public class DateTimeAttributeViewModel : AttributeViewModel
     {
-        public DateTimeAttributeViewModel(ref DateTimeAttribute attribute) : base(attribute) {
+        public DateTimeAttributeViewModel(ref DateTimeAttribute attribute, attributeBindingDefinition attributeBindingDefinition) : base(attribute) {
             this._attribute = attribute;
+            this._attributeBindingDefinition = attributeBindingDefinition;
 
             this.value = (DateTime?)attribute.GetType().GetProperty("value")!.GetValue(attribute);
         }
@@ -166,6 +175,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         public S100FC.DateTimeAttribute? _attribute { get; init; } = default;
+
+        private S100FC.attributeBindingDefinition? _attributeBindingDefinition { get; init; } = default;
     }
 
     public class ComplexAttributeViewModel : AttributeViewModel, IAttributeBindingContainer
@@ -197,21 +208,20 @@ namespace S100Framework.WPF.ViewModel
                 if (e.NewItems is not null) {
                     foreach (var item in e.NewItems) {
                         if (item is SimpleAttributeViewModel simpleAttribute) {
-                            this._attribute.SetAttribute(simpleAttribute.attribute);
                             simpleAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                         else if (item is ComplexAttributeViewModel complexAttribute) {
-                            this._attribute.SetAttribute(complexAttribute.attribute);
                             complexAttribute.PropertyChanged += this.Viewmodel_PropertyChanged;
                         }
                     }
                 }
-                //base.OnPropertyChanged(nameof(attributeBindings));
             };
 
             foreach (var e in attribute.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
+                var attributeBindingDefinition = this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code));
+
                 if (e is SimpleAttribute simpleAttribute) {
-                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute);
+                    var viewmodel = new SimpleAttributeViewModel(ref simpleAttribute, attributeBindingDefinition);
                     this.attributeBindings.Add(viewmodel);
                 }
                 else if (e is ComplexAttribute complexAttribute) {
@@ -221,7 +231,7 @@ namespace S100Framework.WPF.ViewModel
             }
 
             //note: Must be added right by the end!
-            this.attributeBindings.CollectionChanged += (s, e) => {               
+            this.attributeBindings.CollectionChanged += (s, e) => {
                 base.OnPropertyChanged(nameof(attributeBindings));
             };
         }
@@ -237,6 +247,11 @@ namespace S100Framework.WPF.ViewModel
 
         public bool HasCapacity(IGrouping<string, featureBindingDefinition> binding) {
             return false;
+        }
+
+        public void AddAttribute(AttributeViewModel attributeBinding) {
+            this.attributeBindings.Add(attributeBinding);
+            this._attribute?.SetAttribute(attributeBinding.attribute);
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {

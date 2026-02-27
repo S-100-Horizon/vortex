@@ -42,34 +42,18 @@ namespace S100Framework.WPF
             if (e?.SelectedItem is attributeBindingDefinition attributeBinding) {
                 if (container!.HasCapacity(attributeBinding)) {
                     var instance = attributeBinding.CreateInstance();
-                    if (instance is SimpleAttribute simpleAttribute)
-                        container?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
-                    else if (instance is DateAttribute dateAttribute)
-                        container?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
+                    if (instance is DateAttribute dateAttribute)
+                        container?.AddAttribute(new DateAttributeViewModel(ref dateAttribute, attributeBinding));
                     else if (instance is DateTimeAttribute dateTimeAttribute)
-                        container?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
+                        container?.AddAttribute(new DateTimeAttributeViewModel(ref dateTimeAttribute, attributeBinding));
+                    else if (instance is SimpleAttribute simpleAttribute)
+                        container?.AddAttribute(new SimpleAttributeViewModel(ref simpleAttribute, attributeBinding));
                     else if (instance is ComplexAttribute complexAttribute)
-                        container?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
+                        container?.AddAttribute(new ComplexAttributeViewModel(ref complexAttribute));
                     else
                         throw new NotImplementedException();
                 }
             }
-
-            //if (e?.SelectedItem is attributeBindingDefinition attributeBinding) {
-            //    if (e.SelectedObject!.HasCapacity(attributeBinding)) {
-            //        var instance = attributeBinding.CreateInstance();
-            //        if (instance is SimpleAttribute simpleAttribute)
-            //            this.SelectedObject?.attributeBindings.Add(new SimpleAttributeViewModel(ref simpleAttribute));
-            //        else if (instance is DateAttribute dateAttribute)
-            //            this.SelectedObject?.attributeBindings.Add(new DateAttributeViewModel(ref dateAttribute));
-            //        else if (instance is DateTimeAttribute dateTimeAttribute)
-            //            this.SelectedObject?.attributeBindings.Add(new DateTimeAttributeViewModel(ref dateTimeAttribute));
-            //        else if (instance is ComplexAttribute complexAttribute)
-            //            this.SelectedObject?.attributeBindings.Add(new ComplexAttributeViewModel(ref complexAttribute));
-            //        else
-            //            throw new NotImplementedException();
-            //    }
-            //}
 
             if (e?.SelectedItem is IGrouping<string, informationBindingDefinition> informationBinding) {
                 if (this.SelectedObject!.HasCapacity(informationBinding)) {
@@ -97,10 +81,6 @@ namespace S100Framework.WPF
                     }
                 }
                 if (e.parameter is ComplexAttributeViewModel complexAttribute) {
-                    if (e.parent is IAttributeBindingContainer attributeBindingContainer) {
-                        var index = attributeBindingContainer.attributeBindings.IndexOf(complexAttribute);
-                        attributeBindingContainer.attributeBindings.RemoveAt(index);
-                    }
                     if (e.parent is ItemsControl itemsControl) {
                         var collection = (ObservableCollection<AttributeViewModel>)itemsControl.ItemsSource;
                         var index = collection.IndexOf(complexAttribute);

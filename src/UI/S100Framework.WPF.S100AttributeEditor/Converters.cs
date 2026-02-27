@@ -51,9 +51,9 @@ namespace S100Framework.WPF.Converters
 
             var attributeBindingDefinition = values[0] as attributeBindingDefinition;
 
-            if(attributeBindingDefinition is null) return false;
+            if (attributeBindingDefinition is null) return false;
 
-            if (values[2] == DependencyProperty.UnsetValue) {                
+            if (values[2] == DependencyProperty.UnsetValue) {
                 if (values[1] is S100AttributeEditor attributeEditor) {
                     return attributeEditor.SelectedObject!.HasCapacity(attributeBindingDefinition!);
                 }
@@ -76,14 +76,17 @@ namespace S100Framework.WPF.Converters
     {
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is SimpleAttributeViewModel simpleAttributeViewModel) {
-                if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {
+                if (simpleAttributeViewModel._attribute is EnumerationAttribute propertyValue) {                    
                     var method = propertyValue.GetType().GetMethod("get_listedValues", BindingFlags.Public | BindingFlags.Static);
-                    return method!.Invoke(null, new object[] { /* parameters */ });
+                    listedValue[]? listedValues = method!.Invoke(null, new object[] { /* parameters */ }) as listedValue[];
+
+                    if (simpleAttributeViewModel.permitedValues != null) {
+                        listedValues = listedValues?.Where(e => simpleAttributeViewModel.permitedValues.Contains(e.code)).ToArray();
+                    }
+
+                    return listedValues;
                 }
             }
-            //if(value is FeatureBindingItemViewModel featureBindingItem) {
-            //    return featureBindingItem.items;
-            //}
             if (value is Type type && type.IsEnum) {
                 return Enum.GetValues(type);
             }
@@ -100,8 +103,6 @@ namespace S100Framework.WPF.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value is ComplexAttributeViewModel complexAttribute) {
                 return complexAttribute;
-                //var selectedObject = new ComplexAttributeViewModel(complexAttribute);
-                //return selectedObject;
             }
             return null;
         }
