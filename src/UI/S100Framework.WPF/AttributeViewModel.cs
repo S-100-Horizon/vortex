@@ -130,7 +130,13 @@ namespace S100Framework.WPF.ViewModel
 
             var textPatternConstraint = attributes.SingleOrDefault(e => e is TextPatternConstraint) as TextPatternConstraint;
             if (textPatternConstraint is not null) {
-
+                this._validators = [.. this._validators, () => {
+                    if(this._value is String text){
+                        if(!textPatternConstraint.Regex.IsMatch(text)){
+                            this._errors = $"TextPatternConstraint: {textPatternConstraint.TextPattern}!";
+                        }
+                    }
+                }];
             }
 
             var rangeConstraintAttribute = attributes.SingleOrDefault(e => e is RangeConstraintAttribute) as RangeConstraintAttribute;

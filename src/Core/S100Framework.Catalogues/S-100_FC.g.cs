@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 #nullable enable
@@ -47,6 +48,8 @@ namespace S100FC
     public class TextPatternConstraint(string textPattern) : ConstraintAttribute
     {
         public string TextPattern = textPattern;
+
+        public Regex Regex = new Regex(textPattern, RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
     }
 
     public abstract class RangeConstraintAttribute(Closure closure) : ConstraintAttribute {
