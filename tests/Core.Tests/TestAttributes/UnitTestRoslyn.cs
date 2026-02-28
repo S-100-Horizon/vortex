@@ -261,7 +261,7 @@ namespace TestAttributes
                     roslyn.AppendLine($"\t/// {definition}");
                     roslyn.AppendLine("\t/// </summary>");
 
-                    var constraints = element.Element(XName.Get("constraints", scopes["S100FC"]));                    
+                    var constraints = element.Element(XName.Get("constraints", scopes["S100FC"]));
 
                     if (valueType.Equals("enumeration")) {
                         attributesKnownTypes.Add(code, "int");
@@ -389,27 +389,23 @@ namespace TestAttributes
                                 var upperBound = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("upperBound", scopes["S100Base"]));
                                 var closure = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("closure", scopes["S100Base"]));
 
-                                var unit = prefix switch {
-                                    "decimal" => "d",   // "m"
-                                    "double" => "d",
-                                    "int" => "",
-                                    _ => "",
-                                };
-
-                                var _prefix = prefix.Equals("decimal") ? "double" : prefix;
-
-                                Func<string, string> converter = prefix switch {
-                                    "double" => (v) => v,   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
-                                    "decimal" => (v) => v,
-                                    "int" => (v) => $"{int.Parse(v.Split('.')[0])}",
-                                    _ => throw new InvalidOperationException()
-                                };
-
                                 if (!(lowerBound is null && upperBound is null)) {
-                                    if (upperBound is null)
-                                        roslyn.AppendLine($"\t[RangeConstraint<{_prefix}>({converter(lowerBound!.Value)}{unit}, default, Closure.{closure!.Value})]");
-                                    else
-                                        roslyn.AppendLine($"\t[RangeConstraint<{_prefix}>({converter(lowerBound!.Value)}{unit}, {converter(upperBound!.Value)}{unit}, Closure.{closure!.Value})]");
+                                    if (upperBound is null) {
+                                        roslyn.AppendLine(prefix switch {
+                                            "double" => $"\t[RangeConstraintReal({lowerBound!.Value}d, double.MaxValue, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "decimal" => $"\t[RangeConstraintReal({lowerBound!.Value}d, double.MaxValue, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "int" => $"\t[RangeConstraintInteger({int.Parse(lowerBound!.Value.Split('.')[0])}, int.MaxValue, Closure.{closure!.Value})]",
+                                            _ => throw new InvalidOperationException()
+                                        });
+                                    }
+                                    else {
+                                        roslyn.AppendLine(prefix switch {
+                                            "double" => $"\t[RangeConstraintReal({lowerBound!.Value}d, {upperBound!.Value}d, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "decimal" => $"\t[RangeConstraintReal({lowerBound!.Value}d, {upperBound!.Value}d, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "int" => $"\t[RangeConstraintInteger({int.Parse(lowerBound!.Value.Split('.')[0])}, {int.Parse(upperBound!.Value.Split('.')[0])}, Closure.{closure!.Value})]",
+                                            _ => throw new InvalidOperationException()
+                                        });
+                                    }
                                 }
                             }
                         }

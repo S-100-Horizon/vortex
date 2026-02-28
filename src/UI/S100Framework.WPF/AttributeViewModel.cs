@@ -107,9 +107,70 @@ namespace S100Framework.WPF.ViewModel
                 this._validators = [.. this._validators, () => {
                     if(this._value is String text){
                         if(text.Length>stringLengthConstraintAttribute.StringLength)
-                            this._errors = $"Text length must not exceed {stringLengthConstraintAttribute.StringLength}!";
+                            this._errors = $"StringLengthConstraint: {stringLengthConstraintAttribute.StringLength}!";
                     }
                 }];
+            }
+
+            var precisionConstraintAttribute = attributes.SingleOrDefault(e => e is PrecisionConstraintAttribute) as PrecisionConstraintAttribute;
+            if (precisionConstraintAttribute is not null) {
+                this._validators = [.. this._validators, () => {
+                    if(this._value is double _double){
+                        var rounded = Math.Round(_double, precisionConstraintAttribute.Precision);
+                        if(rounded!=_double)
+                            this._errors = $"PrecisionConstraint: {precisionConstraintAttribute.Precision}!";
+                    }
+                    if(this._value is decimal _decimal){
+                        var rounded = Math.Round(_decimal, precisionConstraintAttribute.Precision);
+                        if(rounded!=_decimal)
+                            this._errors = $"PrecisionConstraint: {precisionConstraintAttribute.Precision}!";
+                    }
+                }];
+            }
+
+            var textPatternConstraint = attributes.SingleOrDefault(e => e is TextPatternConstraint) as TextPatternConstraint;
+            if (textPatternConstraint is not null) {
+
+            }
+
+            var rangeConstraintAttribute = attributes.SingleOrDefault(e => e is RangeConstraintAttribute) as RangeConstraintAttribute;
+            if (rangeConstraintAttribute is not null) {
+                if (rangeConstraintAttribute is RangeConstraintRealAttribute rangeConstraintRealAttribute) {
+                    this._validators = [.. this._validators, () => {
+                        var _double = Convert.ToDouble(this._value);
+                        var error = rangeConstraintRealAttribute.Closure switch{
+                            Closure.openInterval => !(_double>rangeConstraintRealAttribute.LowerBound && _double<rangeConstraintRealAttribute.UpperBound),
+                            Closure.geLtInterval => !(_double>=rangeConstraintRealAttribute.LowerBound && _double<rangeConstraintRealAttribute.UpperBound),
+                            Closure.gtLeInterval => !(_double>rangeConstraintRealAttribute.LowerBound && _double<=rangeConstraintRealAttribute.UpperBound),
+                            Closure.closedInterval => !(_double>=rangeConstraintRealAttribute.LowerBound && _double<=rangeConstraintRealAttribute.UpperBound),
+                            //Closure.gtSemiInterval => 
+                            //Closure.geSemiInterval =>
+                            //Closure.ltSemiInterval =>
+                            //Closure.leSemiInterval =>
+                            _ => throw new NotImplementedException(),
+                        };
+                        if(error)
+                            this._errors = $"RangeConstraint: {rangeConstraintAttribute.Closure}, {rangeConstraintRealAttribute.LowerBound}, {rangeConstraintRealAttribute.UpperBound}!";
+                    }];
+                }
+                if (rangeConstraintAttribute is RangeConstraintIntegerAttribute rangeConstraintIntegerAttribute) {
+                    this._validators = [.. this._validators, () => {
+                    var _integer = Convert.ToInt32(this._value);
+                    var error = rangeConstraintIntegerAttribute.Closure switch{
+                        Closure.openInterval => !(_integer>rangeConstraintIntegerAttribute.LowerBound && _integer<rangeConstraintIntegerAttribute.UpperBound),
+                        Closure.geLtInterval => !(_integer>=rangeConstraintIntegerAttribute.LowerBound && _integer<rangeConstraintIntegerAttribute.UpperBound),
+                        Closure.gtLeInterval => !(_integer>rangeConstraintIntegerAttribute.LowerBound && _integer<=rangeConstraintIntegerAttribute.UpperBound),
+                        Closure.closedInterval => !(_integer>=rangeConstraintIntegerAttribute.LowerBound && _integer<=rangeConstraintIntegerAttribute.UpperBound),
+                        //Closure.gtSemiInterval => 
+                        //Closure.geSemiInterval =>
+                        //Closure.ltSemiInterval =>
+                        //Closure.leSemiInterval =>
+                        _ => throw new NotImplementedException(),
+                    };
+                    if(error)
+                        this._errors = $"RangeConstraint: {rangeConstraintAttribute.Closure}, {rangeConstraintIntegerAttribute.LowerBound}, {rangeConstraintIntegerAttribute.UpperBound}!";
+                }];
+                }
             }
         }
 
@@ -140,7 +201,8 @@ namespace S100Framework.WPF.ViewModel
         public bool HasErrors => !string.IsNullOrEmpty(this._errors);
 
         public IEnumerable GetErrors(string? propertyName) {
-            return new string?[]{ this._errors};
+            if (!nameof(value).Equals(propertyName)) return Enumerable.Empty<string>();
+            return new string?[] { this._errors };
         }
 
         private void Validate() {

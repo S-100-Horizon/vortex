@@ -1948,7 +1948,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The depth value determined for an underwater hazard of unknown depth, based on the depth of the surrounding area.
 	/// </summary>
-	[RangeConstraint<double>(-30.0d, 12500.0d, Closure.openInterval)]
+	[RangeConstraintReal(-30.0d, 12500.0d, Closure.openInterval)]
 	public class defaultClearanceDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1962,7 +1962,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The maximum (deepest) value of a depth range.
 	/// </summary>
-	[RangeConstraint<double>(-30d, 12500d, Closure.openInterval)]
+	[RangeConstraintReal(-30d, 12500d, Closure.openInterval)]
 	public class depthRangeMaximumValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1976,7 +1976,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The minimum (shoalest) value of a depth range.
 	/// </summary>
-	[RangeConstraint<double>(-30d, 12500d, Closure.openInterval)]
+	[RangeConstraintReal(-30d, 12500d, Closure.openInterval)]
 	public class depthRangeMinimumValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2050,7 +2050,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The altitude of the ground level of a feature, measured from a specified vertical datum.
 	/// </summary>
-	[RangeConstraint<double>(0d, default, Closure.geSemiInterval)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.geSemiInterval)]
 	public class elevation : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2064,7 +2064,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The estimated range of a non-optical electromagnetic transmission.
 	/// </summary>
-	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class estimatedRangeOfTransmission : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2621,7 +2621,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The value of the deviation from the normal magnetic variation.
 	/// </summary>
-	[RangeConstraint<double>(0.1d, 180.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.1d, 180.0d, Closure.closedInterval)]
 	public class magneticAnomalyValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2990,7 +2990,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, 360.0d, Closure.geLtInterval)]
+	[RangeConstraintReal(0.0d, 360.0d, Closure.geLtInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -3327,7 +3327,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// A sector is the part of a circle between two straight lines drawn from the centre to the circumference. Sector bearing specifies the limit of the sector.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, 360.0d, Closure.geLtInterval)]
+	[RangeConstraintReal(0.0d, 360.0d, Closure.geLtInterval)]
 	public class sectorBearing : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -3809,7 +3809,7 @@ namespace S100FC.S101.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
+	[RangeConstraintInteger(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]

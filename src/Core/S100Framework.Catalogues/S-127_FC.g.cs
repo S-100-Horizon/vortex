@@ -833,7 +833,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationReceives : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -847,7 +847,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationTransmits : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1022,7 +1022,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class maximumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1036,7 +1036,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class minimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1186,7 +1186,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class optimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1201,7 +1201,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// The best estimate of the accuracy of a bearing.
 	/// </summary>
 	[PrecisionConstraint(3)]
-	[RangeConstraint<double>(0.000d, 360.000d, Closure.closedInterval)]
+	[RangeConstraintReal(0.000d, 360.000d, Closure.closedInterval)]
 	public class orientationUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1216,7 +1216,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0.0d, 360.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.0d, 360.0d, Closure.closedInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1722,7 +1722,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
+	[RangeConstraintInteger(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1736,7 +1736,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	[RangeConstraint<int>(0, 50, Closure.gtLeInterval)]
+	[RangeConstraintInteger(0, 50, Closure.gtLeInterval)]
 	public class textOffsetDistance : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1780,7 +1780,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// The thickness of ice that the ship can safely transit.
 	/// </summary>
 	[PrecisionConstraint(0)]
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class thicknessOfIceCapability : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1854,7 +1854,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// A percentage value, given by an authority, which is applied to ship's beam in order to calculate under keel allowance.
 	/// </summary>
 	[PrecisionConstraint(0)]
-	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class underKeelAllowanceVariableBeamBased : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1869,7 +1869,7 @@ namespace S100FC.S127.SimpleAttributes
 	/// A percentage value, given by an authority, which is applied to ship's draught in order to calculate under keel allowance.
 	/// </summary>
 	[PrecisionConstraint(0)]
-	[RangeConstraint<double>(0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class underKeelAllowanceVariableDraughtBased : S100FC.RealAttribute
 	{
 		[JsonIgnore]

@@ -74,7 +74,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The length of a berth or dock which is available for use.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, 10000.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.0d, 10000.0d, Closure.closedInterval)]
 	public class availableBerthingLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -937,7 +937,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The altitude of the ground level of an object, measured from a specified vertical datum.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, 8850.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.0d, 8850.0d, Closure.closedInterval)]
 	public class elevation : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1008,7 +1008,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationReceives : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1022,7 +1022,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationTransmits : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1090,7 +1090,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class height : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1105,7 +1105,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0d, default, Closure.geSemiInterval)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.geSemiInterval)]
 	public class horizontalDistanceUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1272,7 +1272,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class maximumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1287,7 +1287,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0.0d, 30.0d, Closure.gtLeInterval)]
+	[RangeConstraintReal(0.0d, 30.0d, Closure.gtLeInterval)]
 	public class maximumPermittedDraught : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1302,7 +1302,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0.0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class maximumPermittedVesselLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1391,7 +1391,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.
 	/// </summary>
-	[RangeConstraint<double>(0.00d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.00d, double.MaxValue, Closure.gtSemiInterval)]
 	public class minimumBerthDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1405,7 +1405,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class minimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1527,7 +1527,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
-	[RangeConstraint<int>(1, default, Closure.geSemiInterval)]
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class optimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1542,7 +1542,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The best estimate of the accuracy of a bearing.
 	/// </summary>
 	[PrecisionConstraint(3)]
-	[RangeConstraint<double>(0.000d, 360.000d, Closure.geLtInterval)]
+	[RangeConstraintReal(0.000d, 360.000d, Closure.geLtInterval)]
 	public class orientationUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1557,7 +1557,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0.0d, 360.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.0d, 360.0d, Closure.closedInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1742,7 +1742,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// The vector extending from the centre to the periphery of a circular or spherical feature.
 	/// </summary>
 	[PrecisionConstraint(1)]
-	[RangeConstraint<double>(0.0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class radius : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1807,7 +1807,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The maximum safe force or load that a piece of equipment, device, or accessory can handle without breaking or failing under normal conditions.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class safeWorkingLoad : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1878,7 +1878,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The greatest depth over a sill.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, 100.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.0d, 100.0d, Closure.closedInterval)]
 	public class sillDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2076,7 +2076,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	[RangeConstraint<int>(0, 360, Closure.geLtInterval)]
+	[RangeConstraintInteger(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2090,7 +2090,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
-	[RangeConstraint<int>(0, 50, Closure.gtLeInterval)]
+	[RangeConstraintInteger(0, 50, Closure.gtLeInterval)]
 	public class textOffsetDistance : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2133,7 +2133,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The thickness of ice that the ship can safely transit.
 	/// </summary>
-	[RangeConstraint<int>(0, default, Closure.gtSemiInterval)]
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class thicknessOfIceCapability : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2227,7 +2227,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards the feature overhead.
 	/// </summary>
-	[RangeConstraint<double>(0.1d, 100.0d, Closure.closedInterval)]
+	[RangeConstraintReal(0.1d, 100.0d, Closure.closedInterval)]
 	public class verticalClearanceValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2287,7 +2287,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The total vertical length of a feature.
 	/// </summary>
-	[RangeConstraint<double>(0.0d, default, Closure.gtSemiInterval)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class verticalLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]

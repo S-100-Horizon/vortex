@@ -49,12 +49,22 @@ namespace S100FC
         public string TextPattern = textPattern;
     }
 
-    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
-    public class RangeConstraintAttribute<TValue>(TValue lowerBound, TValue? upperBound, Closure closure) : ConstraintAttribute where TValue : INumber<TValue?>
-    {
-        public TValue LowerBound = lowerBound;
-        public TValue? UpperBound = upperBound;
+    public abstract class RangeConstraintAttribute(Closure closure) : ConstraintAttribute {
         public Closure Closure = closure;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class RangeConstraintRealAttribute(double lowerBound, double upperBound, Closure closure) : RangeConstraintAttribute(closure)
+    {
+        public double LowerBound = lowerBound;
+        public double UpperBound = upperBound;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class RangeConstraintIntegerAttribute(int lowerBound, int upperBound, Closure closure) : RangeConstraintAttribute(closure)
+    {
+        public int LowerBound = lowerBound;
+        public int UpperBound = upperBound;
     }
 }
 
