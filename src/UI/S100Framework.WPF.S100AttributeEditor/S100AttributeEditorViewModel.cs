@@ -1,6 +1,7 @@
 ﻿using S100FC;
 using S100FC.S128.SimpleAttributes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -13,7 +14,7 @@ using System.Windows.Data;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer, INotifyDataErrorInfo
     {
         public class RequestInformationsEventArgs(string? informationType) : EventArgs
         {
@@ -314,16 +315,23 @@ namespace S100Framework.WPF.ViewModel
         public void AddAttribute(AttributeViewModel attributeBinding) {
             this.attributeBindings.Add(attributeBinding);
 
-            if(this.Instance is S100FC.InformationType informationType) {
+            if (this.Instance is S100FC.InformationType informationType) {
                 informationType.SetAttribute(attributeBinding.attribute);
             }
             if (this.Instance is S100FC.FeatureType featureType) {
                 featureType.SetAttribute(attributeBinding.attribute);
-            }            
+            }
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
+            this._errors.Clear();
+
             if (sender is AttributeViewModel attribute) {
+                if (!attribute.attribute.IsValid(this.attributeBindings.Select(e => e.attribute))) {
+                    this._errors[attribute.code] = new List<string> { "Dependency" };
+                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(attribute.code));
+                }
+
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(attributeBindings)));
             }
             else if (sender is InformationBindingViewModel informationBinding) {
@@ -335,6 +343,7 @@ namespace S100Framework.WPF.ViewModel
             else if (System.Diagnostics.Debugger.IsAttached)
                 System.Diagnostics.Debugger.Break();
         }
+
 
         #region Operators
         public static S100AttributeEditorViewModel operator +(S100AttributeEditorViewModel viewModel, informationBinding informationBinding) {
@@ -428,5 +437,20 @@ namespace S100Framework.WPF.ViewModel
             }
             return featureBindings;
         }
+
+        #region INotifyDataErrorInfo
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+
+        public bool HasErrors => this._errors.Any();
+
+        public IEnumerable GetErrors(string? propertyName) {
+            if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
+            //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
+
+            return this._errors.First().Value;
+        }
+
+        private readonly Dictionary<string, List<string>> _errors = new();
+        #endregion
     }
 }

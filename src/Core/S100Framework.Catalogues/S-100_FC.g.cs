@@ -221,12 +221,14 @@ namespace S100FC
 
         [JsonIgnore]
         public abstract bool HasValue { get; }
+
+        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
     }
 
     public abstract class SimpleAttribute : attributeBinding
     {
         [JsonIgnore]
-        public abstract string valueType { get; }
+        public abstract string valueType { get; }               
     }
 
     public abstract class BooleanAttribute : SimpleAttribute

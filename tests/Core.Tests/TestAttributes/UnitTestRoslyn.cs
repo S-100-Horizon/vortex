@@ -41,7 +41,43 @@ namespace TestAttributes
         public void Test_S101_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml"));
 
-            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true);
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true, validation: (code, builder) => {
+                if ("defaultClearanceDepth".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
+                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
+                    builder.AppendLine("\t\t\t\tif(e is valueOfSounding valueOfSounding) {");
+                    builder.AppendLine("\t\t\t\t\treturn valueOfSounding.value.HasValue;");
+                    builder.AppendLine("\t\t\t\t}");
+                    builder.AppendLine("\t\t\t\treturn true;");
+                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t}");
+                }
+
+                if ("categoryOfWreck".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
+                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
+                    builder.AppendLine("\t\t\t\tif(e is valueOfSounding valueOfSounding) {");
+                    builder.AppendLine("\t\t\t\t\treturn valueOfSounding.value.HasValue;");
+                    builder.AppendLine("\t\t\t\t}");
+                    builder.AppendLine("\t\t\t\treturn true;");
+                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t}");
+                }
+
+                if ("valueOfSounding".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
+                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
+                    builder.AppendLine("\t\t\t\tif(e is height height) {");
+                    builder.AppendLine("\t\t\t\t\treturn height.value.HasValue;");
+                    builder.AppendLine("\t\t\t\t}");
+                    builder.AppendLine("\t\t\t\treturn true;");
+                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t}");
+                }
+            });
 
             var output = roslyn.ToString();
 
@@ -217,7 +253,7 @@ namespace TestAttributes
                 )
             );
 
-        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false) {
+        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false, Action<string, StringBuilder>? validation = default) {
             var roslyn = new StringBuilder();
 
             roslyn.AppendLine("using System;");
@@ -317,6 +353,7 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}(int? value) => new {code} {{ value = value }};");
+                        validation?.Invoke(code, roslyn);
                         roslyn.AppendLine($"\t}}");
                     }
                     else if (valueType.Equals("S100_CodeList")) {
@@ -349,6 +386,7 @@ namespace TestAttributes
                         }
                         roslyn.AppendLine($"\t\t\t];");
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
+                        validation?.Invoke(code, roslyn);
                         roslyn.AppendLine($"\t}}");
                     }
                     else {
@@ -437,6 +475,8 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix}? value) => new {code} {{ value = value }};");
+
+                        validation?.Invoke(code, roslyn);
                         roslyn.AppendLine($"\t}}");
                     }
                     roslyn.AppendLine();
@@ -737,6 +777,14 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\t}");
                 roslyn.AppendLine();
+
+                //roslyn.AppendLine("\tpublic static class Validation {");
+                //roslyn.AppendLine("\t\tpublic static bool IsValid(SimpleAttribute attribute, IEnumerable<SimpleAttribute> attributes) {");
+                //validation?.Invoke(roslyn);
+                //roslyn.AppendLine("\t\t\treturn true;");
+                //roslyn.AppendLine("\t\t}");
+                //roslyn.AppendLine("\t}");
+                //roslyn.AppendLine();
 
                 roslyn.AppendLine("\tpublic static class Extensions {");
 

@@ -27,7 +27,7 @@ namespace SelectorUI
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            var featureType = new TestFeature {
+            var featureTypeTestFeature = new TestFeature {
                 featuresDetectedNested = new featuresDetectedNested {
                     featureName = [new featureName {
                         name ="Nested",
@@ -47,6 +47,10 @@ namespace SelectorUI
                 }]
             };
 
+            var featureTypeWreck = new Wreck {
+
+            };
+
             //var selectedObject = new S100AttributeEditorViewModel(featureType, "123456");
 
             //var featureType = new IslandGroup {
@@ -57,7 +61,7 @@ namespace SelectorUI
 
             //};
 
-            var selectedObject = new S100AttributeEditorViewModel(featureType, "123456") {
+            var selectedObject = new S100AttributeEditorViewModel(featureTypeWreck, "123456") {
                 RequestInformation = async (s, e) => {
                     var random = new Random(DateTime.Now.Millisecond);
                     string[] result = [];
@@ -78,25 +82,19 @@ namespace SelectorUI
                 },
             };
 
-            var featureBinding = new featureBinding<UpdatedInformation> {
-                roleType = "association",
-                role = "theUpdate",
-                featureType = "UpdateInformation",
-                featureId = RandomString(5),
-            };
+            //selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
+            //    roleType = "association",
+            //    role = "theQualityInformation",
+            //    informationType = "SpatialQuality",
+            //    informationId = RandomString(5),
+            //};
 
-            var json1 = System.Text.Json.JsonSerializer.Serialize(featureBinding, jsonSerializerOptions);
-
-
-
-            selectedObject += new informationBinding<QualityOfBathymetricDataComposition> {
-                roleType = "association",
-                role = "theQualityInformation",
-                informationType = "SpatialQuality",
-                informationId = RandomString(5),
-            };
-
-            selectedObject += featureBinding;
+            //selectedObject += new featureBinding<UpdatedInformation> {
+            //    roleType = "association",
+            //    role = "theUpdate",
+            //    featureType = "UpdateInformation",
+            //    featureId = RandomString(5),
+            //};
 
 
             var bindings = (featureBinding[])selectedObject;
