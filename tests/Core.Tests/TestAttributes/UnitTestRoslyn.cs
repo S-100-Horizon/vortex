@@ -30,10 +30,11 @@ namespace TestAttributes
             this.Test_S122_Build();
             this.Test_S123_Build();
             this.Test_S124_Build();
-            //Test_S125_Build();
+            this.Test_S125_Build();
             this.Test_S127_Build();
             this.Test_S128_Build();
             this.Test_S131_Build();
+            this.Test_S501_Build();
         }
 
         [Fact]
@@ -45,6 +46,20 @@ namespace TestAttributes
             var output = roslyn.ToString();
 
             File.WriteAllText(@".\..\..\..\S-101_FC.g.cs", output, Encoding.UTF8);
+
+            var csv = this.TypeWriter(ps);
+            this._output.WriteLine(csv);
+        }
+
+        [Fact]
+        public void Test_S501_Build() {
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-501-Feature-Catalogue\S-501_FC.xml"));
+
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: false);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-501_FC.g.cs", output, Encoding.UTF8);
 
             var csv = this.TypeWriter(ps);
             this._output.WriteLine(csv);
@@ -85,7 +100,7 @@ namespace TestAttributes
 
         [Fact]
         public void Test_S125_Build() {
-            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml"));
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development-validation\FC\S125FC.xml"));
 
             var roslyn = this.RoslynBuilder(ps, "S125");
 
