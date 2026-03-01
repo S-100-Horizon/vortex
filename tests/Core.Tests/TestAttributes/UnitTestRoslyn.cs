@@ -41,40 +41,39 @@ namespace TestAttributes
         public void Test_S101_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml"));
 
-            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true, validation: (code, builder) => {
-                if ("defaultClearanceDepth".Equals(code)) {
+            var navigator = ps.CreateNavigator();
+            navigator.MoveToFollowing(XPathNodeType.Element);
+
+            var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true, validation: (code, attributes, builder) => {
+                var references = attributes.Select(e => e.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!);
+                
+                if ("UnderwaterAwashRock".Equals(code)) {
                     builder.AppendLine();
                     builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
-                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
-                    builder.AppendLine("\t\t\t\tif(e is valueOfSounding valueOfSounding) {");
-                    builder.AppendLine("\t\t\t\t\treturn valueOfSounding.value.HasValue;");
-                    builder.AppendLine("\t\t\t\t}");
-                    builder.AppendLine("\t\t\t\treturn true;");
-                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue) ");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\treturn true;");
                     builder.AppendLine("\t\t}");
                 }
 
-                if ("categoryOfWreck".Equals(code)) {
+                if ("Wreck".Equals(code)) {
                     builder.AppendLine();
                     builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
-                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
-                    builder.AppendLine("\t\t\t\tif(e is valueOfSounding valueOfSounding) {");
-                    builder.AppendLine("\t\t\t\t\treturn valueOfSounding.value.HasValue;");
-                    builder.AppendLine("\t\t\t\t}");
-                    builder.AppendLine("\t\t\t\treturn true;");
-                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) ");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\treturn true;");
                     builder.AppendLine("\t\t}");
                 }
 
-                if ("valueOfSounding".Equals(code)) {
+                if ("Obstruction".Equals(code)) {
                     builder.AppendLine();
                     builder.AppendLine("\t\tpublic override bool IsValid(IEnumerable<attributeBinding> attributes) {");
-                    builder.AppendLine("\t\t\treturn !attributes.Any(e => {");
-                    builder.AppendLine("\t\t\t\tif(e is height height) {");
-                    builder.AppendLine("\t\t\t\t\treturn height.value.HasValue;");
-                    builder.AppendLine("\t\t\t\t}");
-                    builder.AppendLine("\t\t\t\treturn true;");
-                    builder.AppendLine("\t\t\t});");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) ");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\treturn true;");
                     builder.AppendLine("\t\t}");
                 }
             });
@@ -253,7 +252,7 @@ namespace TestAttributes
                 )
             );
 
-        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false, Action<string, StringBuilder>? validation = default) {
+        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false, Action<string, IEnumerable<XElement>, StringBuilder>? validation = default) {
             var roslyn = new StringBuilder();
 
             roslyn.AppendLine("using System;");
@@ -353,7 +352,9 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}(int? value) => new {code} {{ value = value }};");
-                        validation?.Invoke(code, roslyn);
+
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     else if (valueType.Equals("S100_CodeList")) {
@@ -386,7 +387,9 @@ namespace TestAttributes
                         }
                         roslyn.AppendLine($"\t\t\t];");
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
-                        validation?.Invoke(code, roslyn);
+
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     else {
@@ -476,7 +479,8 @@ namespace TestAttributes
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix}? value) => new {code} {{ value = value }};");
 
-                        validation?.Invoke(code, roslyn);
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     roslyn.AppendLine();
@@ -531,6 +535,7 @@ namespace TestAttributes
                             KnownTypesComplex = attributesKnownComplex,
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager),
+                            validation = validation,
                         });
                         if (!success) {
                             notFinished = true;
@@ -566,6 +571,7 @@ namespace TestAttributes
                         KnownTypesComplex = attributesKnownComplex,
                         KnownAttributeTypes = attributesKnownTypes,
                         Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        validation = validation,
                     }, (b) => {
                         //b.AppendLine("\t\t[JsonIgnore]");
                         //roslyn.AppendLine($"\t\tpublic override string role => \"{role}\";");
@@ -606,6 +612,7 @@ namespace TestAttributes
                         KnownTypesComplex = attributesKnownComplex,
                         KnownAttributeTypes = attributesKnownTypes,
                         Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        validation = validation,
                     }, (b) => {
                         //b.AppendLine("\t\t[JsonIgnore]");
                         //b.AppendLine($"\t\tpublic override string[] roles => [{string.Join(',', roles)}];");
@@ -647,6 +654,7 @@ namespace TestAttributes
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
                             informationAssociationCreators = informationAssociationCreators,
                             informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
+                            validation = validation,
                         });
                         if (!success) {
                             notFinished = true;
@@ -703,6 +711,7 @@ namespace TestAttributes
                             informationAssociationCreators = informationAssociationCreators,
                             featureAssociationCreators = featureAssociationCreators,
                             informationBindings = () => spatialAssociation ? informationBindings() : element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
+                            validation = validation,
                         }, (b) => {
 
                         }, (b) => {
@@ -898,6 +907,8 @@ namespace TestAttributes
             public ICollection<string> featureAssociationCreators { get; init; } = [];
 
             public Func<IEnumerable<XElement>> informationBindings { get; init; } = () => [];
+
+            public Action<string, IEnumerable<XElement>, StringBuilder>? validation { get; set; } = default;
         }
 
         private bool ClassBuilder(StringBuilder roslyn, XElement element, string type, ClassBuilderHost host, Action<StringBuilder>? pre = default, Action<StringBuilder>? post = default) {
@@ -1159,6 +1170,8 @@ namespace TestAttributes
             roslyn.AppendLine("\t\t#endregion");
 
             post?.Invoke(roslyn);
+
+            host.validation?.Invoke(code, host.Attributes, roslyn);
 
             roslyn.AppendLine($"\t}}");
             roslyn.AppendLine();

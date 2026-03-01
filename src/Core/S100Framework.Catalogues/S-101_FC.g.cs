@@ -1707,15 +1707,6 @@ namespace S100FC.S101.SimpleAttributes
 			];
 
 		public static implicit operator categoryOfWreck(int? value) => new categoryOfWreck { value = value };
-
-		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
-			return attributes.Any(e => {
-				if(e is valueOfSounding valueOfSounding) {
-					return valueOfSounding.value.HasValue;
-				}
-				return false;
-			});
-		}
 	}
 
 	/// <summary>
@@ -1966,15 +1957,6 @@ namespace S100FC.S101.SimpleAttributes
 		public override string S100FC_name => "Default Clearance Depth";
 
 		public static implicit operator defaultClearanceDepth(decimal? value) => new defaultClearanceDepth { value = value };
-
-		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
-			return !attributes.Any(e => {
-				if(e is valueOfSounding valueOfSounding) {
-					return valueOfSounding.value.HasValue;
-				}
-				return true;
-			});
-		}
 	}
 
 	/// <summary>
@@ -4102,15 +4084,6 @@ namespace S100FC.S101.SimpleAttributes
 		public override string S100FC_name => "Value of Sounding";
 
 		public static implicit operator valueOfSounding(decimal? value) => new valueOfSounding { value = value };
-
-		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
-			return !attributes.Any(e => {
-				if(e is height height) {
-					return height.value.HasValue;
-				}
-				return true;
-			});
-		}
 	}
 
 	/// <summary>
@@ -27564,6 +27537,12 @@ namespace S100FC.S101.FeatureTypes
 
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
+
+		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
+			if (!this.valueOfSounding.HasValue) 
+				return this.defaultClearanceDepth.HasValue;
+			return true;
+		}
 	}
 
 	/// <summary>
@@ -27902,6 +27881,12 @@ namespace S100FC.S101.FeatureTypes
 
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
+
+		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
+			if (!this.valueOfSounding.HasValue && !this.height.HasValue) 
+				return this.defaultClearanceDepth.HasValue;
+			return true;
+		}
 	}
 
 	/// <summary>
@@ -28266,6 +28251,12 @@ namespace S100FC.S101.FeatureTypes
 
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
+
+		public override bool IsValid(IEnumerable<attributeBinding> attributes) {
+			if (!this.valueOfSounding.HasValue && !this.height.HasValue) 
+				return this.defaultClearanceDepth.HasValue;
+			return true;
+		}
 	}
 
 	/// <summary>

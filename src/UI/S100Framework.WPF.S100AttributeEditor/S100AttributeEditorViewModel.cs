@@ -14,7 +14,7 @@ using System.Windows.Data;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer, INotifyDataErrorInfo
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer
     {
         public class RequestInformationsEventArgs(string? informationType) : EventArgs
         {
@@ -324,13 +324,13 @@ namespace S100Framework.WPF.ViewModel
         }
 
         private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            this._errors.Clear();
+            //this._errors.Clear();
 
             if (sender is AttributeViewModel attribute) {
-                if (!attribute.attribute.IsValid(this.attributeBindings.Select(e => e.attribute))) {
-                    this._errors[attribute.code] = new List<string> { "Dependency" };
-                    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(attribute.code));
-                }
+                //if (!attribute.attribute.IsValid(this.attributeBindings.Select(e => e.attribute))) {
+                //    this._errors[attribute.code] = new List<string> { "Dependency" };
+                //    ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(attribute.code));
+                //}
 
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(attributeBindings)));
             }
@@ -439,18 +439,18 @@ namespace S100Framework.WPF.ViewModel
         }
 
         #region INotifyDataErrorInfo
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+        //public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
 
-        public bool HasErrors => this._errors.Any();
+        //public bool HasErrors => this._errors.Any();
 
-        public IEnumerable GetErrors(string? propertyName) {
-            if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
-            //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
+        //public IEnumerable GetErrors(string? propertyName) {
+        //    if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
+        //    //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
 
-            return this._errors.First().Value;
-        }
+        //    return this._errors.First().Value;
+        //}
 
-        private readonly Dictionary<string, List<string>> _errors = new();
+        //private readonly Dictionary<string, List<string>> _errors = new();
         #endregion
     }
 }

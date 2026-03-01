@@ -220,9 +220,7 @@ namespace S100FC
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract bool HasValue { get; }
-
-        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
+        public abstract bool HasValue { get; }        
     }
 
     public abstract class SimpleAttribute : attributeBinding
@@ -497,6 +495,8 @@ namespace S100FC
 
         [JsonIgnore]
         public override bool HasValue => true;  //TODO: HasValue on ComplexAttribute!!!
+
+        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
     }
 
     public abstract class InformationType : IAttributeBindings
@@ -596,6 +596,8 @@ namespace S100FC
                     this.SetAttribute(binding.CreateInstance()!);
             }
         }
+
+        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
     }
 
     public abstract class FeatureType : IAttributeBindings
@@ -687,6 +689,8 @@ namespace S100FC
                     this.SetAttribute(binding.CreateInstance()!);
             }
         }
+
+        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
     }
 
     public class attributeBindingDefinition
