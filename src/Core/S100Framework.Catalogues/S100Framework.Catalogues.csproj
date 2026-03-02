@@ -12,6 +12,7 @@
     <Compile Remove="DomainModelBase.cs" />
     <Compile Remove="Helper.cs" />
     <Compile Remove="S-125_FC.attribute.g.cs" />
+    <Compile Remove="S-125_FC.g.cs" />
     <Compile Remove="S-201_FC.g.cs" />
   </ItemGroup>
 
