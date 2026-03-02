@@ -361,13 +361,22 @@ namespace S100FC.YAML
         private static void PopulateDatasetInformation(this DatasetDelta delta, string incoming) {
             var rawDictionary = S100FC.YAML.Converter.Deserialize<Dictionary<object, object>>(incoming);
 
-            delta.CellName = rawDictionary["CellName"]?.ToString();
-            delta.Comment = rawDictionary["Comment"]?.ToString();
-            delta.Edition = rawDictionary["Edition"] as int?;
-            delta.Update = rawDictionary["Update"] as int?;
-            delta.ENCVer = rawDictionary["encver"]?.ToString();
-            delta.FCVer = rawDictionary["FCVer"]?.ToString();
-            delta.VerticalDatum = rawDictionary["verticalDatum"]?.ToString();
+            // Get values safely
+            rawDictionary.TryGetValue("CellName", out var cellName);
+            rawDictionary.TryGetValue("Comment", out var comment);
+            rawDictionary.TryGetValue("Edition", out var edition);
+            rawDictionary.TryGetValue("Update", out var update);
+            rawDictionary.TryGetValue("encver", out var encver);
+            rawDictionary.TryGetValue("FCVer", out var fcver);
+            rawDictionary.TryGetValue("verticalDatum", out var verticalDatum);
+
+            delta.CellName = cellName?.ToString();
+            delta.Comment = comment?.ToString();
+            delta.Edition = edition as int?;        // FIX dont work
+            delta.Update = update as int?;          // fix
+            delta.ENCVer = encver?.ToString();
+            delta.FCVer = fcver?.ToString();
+            delta.VerticalDatum = verticalDatum?.ToString();
         }
 
         private static DatasetUpdate ReadDataset(string dataset) {

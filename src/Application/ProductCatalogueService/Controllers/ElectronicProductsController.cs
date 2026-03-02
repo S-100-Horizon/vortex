@@ -284,12 +284,13 @@ namespace ProductCatalogueService.Controllers
 
             var input = IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml");
             var output = exchangeset.FullName;
-            var indexFile = $"{datasetName.Replace("101DK00", "")}_{update}.idx";
+            var prevIndexPath = Path.Combine(exchangeset.FullName, "prev.idx");
+
+            var indexFile = Path.Combine(exchangeset.FullName, $"{datasetName.Replace("101DK00", "")}_{update}.idx");
 
             var commandline = $"-f \"{input}\" -c \"{catalogue}\" -d \"{output}\" -C \"{datasetName}\" -l \"{indexFile}\"";
 
             if (!string.IsNullOrEmpty(prevIndex)) {
-                var prevIndexPath = Path.Combine(exchangeset.FullName, "prev.idx");
                 IO.File.WriteAllText(prevIndexPath, prevIndex);
                 commandline += $" -L {prevIndexPath}";
             }
@@ -320,16 +321,16 @@ namespace ProductCatalogueService.Controllers
 
             _logger.LogInformation("S100 compiler run succesfully! Starting cleanup for temp index and yaml files for product: {product}", product.datasetName);
 
-            var index = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, indexFile));
+            var index = IO.File.ReadAllText(indexFile);
             var sign = IO.File.ReadAllText(Path.Combine(exchangeset.FullName, "S100_ROOT", "CATALOG.SIGN"));
 
 
             // Cleanup temp yaml
-            IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+            IO.File.Delete(input);
 
             // Cleanup temp index
-            IO.File.Delete(Path.Combine(exchangeset.FullName, indexFile));
-            IO.File.Delete(Path.Combine(exchangeset.FullName, "prev.idx"));
+            IO.File.Delete(indexFile);
+            IO.File.Delete(prevIndexPath);
 
             return (index, sign);
         }
