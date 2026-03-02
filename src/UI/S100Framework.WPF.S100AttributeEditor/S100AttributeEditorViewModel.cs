@@ -14,7 +14,7 @@ using System.Windows.Data;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer
+    public class S100AttributeEditorViewModel : INotifyPropertyChanged, IAttributeBindingContainer, INotifyDataErrorInfo
     {
         public class RequestInformationsEventArgs(string? informationType) : EventArgs
         {
@@ -83,8 +83,32 @@ namespace S100Framework.WPF.ViewModel
             this.OnPropertyChanged(propertyName);
             return true;
         }
+        #endregion
 
-        #endregion        
+        #region INotifyDataErrorInfo
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
+
+        private bool _hasErrors = false;
+
+        //public bool HasErrors { get; private set; }
+        public bool HasErrors {
+            get {
+                return this._hasErrors;
+            }
+            set {
+                this.SetProperty(ref this._hasErrors, value);
+            }
+        }
+
+        public IEnumerable GetErrors(string? propertyName) {
+            if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
+            //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
+
+            return this._errors.First().Value;
+        }
+
+        private readonly Dictionary<string, List<string>> _errors = new();
+        #endregion
 
         public RequestInformationsEventHandler RequestInformation = async (s, e) => { return []; };
 
@@ -171,6 +195,8 @@ namespace S100Framework.WPF.ViewModel
             this.attributeBindings.CollectionChanged += (s, e) => {
                 this.OnPropertyChanged("attributeBindings");
             };
+
+            this.Validate();
         }
 
         public S100AttributeEditorViewModel(S100FC.FeatureType feature, string uid) {
@@ -279,6 +305,8 @@ namespace S100Framework.WPF.ViewModel
             this.attributeBindings.CollectionChanged += (s, e) => {
                 this.OnPropertyChanged("attributeBindings");
             };
+
+            this.Validate();
         }
 
         public bool HasInformationBindings { get; init; } = false;
@@ -312,6 +340,20 @@ namespace S100Framework.WPF.ViewModel
             //return definition.upper > count;
         }
 
+        private void Validate() {
+            this._errors.Clear();
+
+            if(this.Instance is InformationType informationType) {
+
+            }
+            else if(this.Instance is FeatureType featureType) {
+                this._errors[nameof(attributeBindings)] = new List<string>();
+                this.HasErrors = !featureType.Validate(this._errors[nameof(attributeBindings)]);
+
+                this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(HasErrors)));
+            }
+        }
+
         public void AddAttribute(AttributeViewModel attributeBinding) {
             this.attributeBindings.Add(attributeBinding);
 
@@ -323,9 +365,7 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {
-            //this._errors.Clear();
-
+        private void Viewmodel_PropertyChanged(object? sender, PropertyChangedEventArgs e) {            
             if (sender is AttributeViewModel attribute) {
                 //if (!attribute.attribute.IsValid(this.attributeBindings.Select(e => e.attribute))) {
                 //    this._errors[attribute.code] = new List<string> { "Dependency" };
@@ -333,6 +373,8 @@ namespace S100Framework.WPF.ViewModel
                 //}
 
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(attributeBindings)));
+
+                this.Validate();
             }
             else if (sender is InformationBindingViewModel informationBinding) {
                 this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(informationBindings)));
@@ -436,21 +478,6 @@ namespace S100Framework.WPF.ViewModel
                 }
             }
             return featureBindings;
-        }
-
-        #region INotifyDataErrorInfo
-        //public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
-        //public bool HasErrors => this._errors.Any();
-
-        //public IEnumerable GetErrors(string? propertyName) {
-        //    if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
-        //    //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
-
-        //    return this._errors.First().Value;
-        //}
-
-        //private readonly Dictionary<string, List<string>> _errors = new();
-        #endregion
+        }        
     }
 }

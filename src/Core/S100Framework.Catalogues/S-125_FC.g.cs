@@ -65,7 +65,7 @@ namespace S100FC.S125.SimpleAttributes
 				new listedValue("Preferred Channel to Starboard", "At a point where a channel divides, when proceeding in the conventional direction of buoyage, the preferred channel (or primary route) is indicated by a modified starboard-hand lateral mark.",8),
 				new listedValue("Isolated Danger", "A mark used alone to indicate a dangerous reef or shoal. The mark may be passed on either hand.",9),
 				new listedValue("Safe Water", "Indicates that there is navigable water around the mark.",10),
-				new listedValue("Special Purpose", "A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners",11),
+				new listedValue("Special Purpose", "A special purpose aid is primarily used to indicate an area or feature, the nature of which is apparent from reference to a chart, Sailing Directions or Notice to Mariners.",11),
 				new listedValue("New Danger Marking", "A mark used to indicate the existence of a recently identified new danger, such as a wreck.",12),
 			];
 
@@ -82,19 +82,19 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Commissioning";
 		public static listedValue[] listedValues => [
-				new listedValue("Buoy establishment", "-",1),
-				new listedValue("Light establishment", "-",2),
-				new listedValue("Beacon establishment", "-",3),
-				new listedValue("Audible signal establishment", "-",4),
-				new listedValue("Fog signal establishment", "-",5),
-				new listedValue("AIS transmitter establishment", "-",6),
-				new listedValue("V-AIS establishment", "-",7),
-				new listedValue("RACON establishment", "-",8),
-				new listedValue("DGPS station establishment", "-",9),
-				new listedValue("eLoran station establishment", "-",10),
-				new listedValue("DGLONASS station establishment", "-",11),
-				new listedValue("e-Chayka station establishment", "-",12),
-				new listedValue("EGNOS station establishment", "-",13),
+				new listedValue("Buoy Establishment", "A new buoy has been or will be established.",1),
+				new listedValue("Light Establishment", "A new light has been or will be established.",2),
+				new listedValue("Beacon Establishment", "A new beacon has been or will be established.",3),
+				new listedValue("Audible Signal Establishment", "A new audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be established.",4),
+				new listedValue("Fog Signal Establishment", "A new fog signal has been or will be established.",5),
+				new listedValue("AIS Transmitter Establishment", "A new AIS site has been or will be established.",6),
+				new listedValue("V-AIS Establishment", "A new V-AIS has been or will be established.",7),
+				new listedValue("RACON Establishment", "A new RACON has been or will be established.",8),
+				new listedValue("DGPS Station Establishment", "A new DGPS station has been or will be established.",9),
+				new listedValue("ELORAN Station Establishment", "A new eLORAN station has been or will be established.",10),
+				new listedValue("DGLONASS Station Establishment", "A new DGLONASS station has been or will be established.",11),
+				new listedValue("E-Chayka Station Establishment", "A new e-Chayka station has been or will be established.",12),
+				new listedValue("EGNOS Station Establishment", "A new EGNOS station has been or will be established.",13),
 			];
 
 		public static implicit operator atonCommissioning(int? value) => new atonCommissioning { value = value };
@@ -110,32 +110,32 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Removal";
 		public static listedValue[] listedValues => [
-				new listedValue("Buoy removal", "",1),
-				new listedValue("Buoy temporary removal", "",2),
-				new listedValue("Light removal", "",3),
-				new listedValue("Light temporary removal", "",4),
-				new listedValue("Beacon removal", "",5),
-				new listedValue("Beacon temporary removal", "",6),
-				new listedValue("Fog signal removal", "",7),
-				new listedValue("Fog signal temporary removal", "",8),
-				new listedValue("Audible signal removal", "",9),
-				new listedValue("Audible signal temporary removal", "",10),
-				new listedValue("AIS transmitter removal", "",11),
-				new listedValue("AIS transmitter temporary removal", "",12),
-				new listedValue("V-AIS removal", "",13),
-				new listedValue("V-AIS temporary removal", "",14),
-				new listedValue("RACON removal", "",15),
-				new listedValue("RACON temporary removal", "",16),
-				new listedValue("DGPS station removal", "",17),
-				new listedValue("DGPS station temporary removal", "",18),
-				new listedValue("EGNOS station removal", "",19),
-				new listedValue("EGNOS station temporary removal", "",20),
-				new listedValue("LORAN station removal", "",21),
-				new listedValue("LORAN station temporary removal", "",22),
-				new listedValue("eLORAN station temporary removal", "",24),
-				new listedValue("Chayka station removal", "",25),
-				new listedValue("Chayka station temporary removal", "",26),
-				new listedValue("e-Chayka station removal", "",27),
+				new listedValue("Buoy Removal", "Buoy has been or will be permanently removed from service.",1),
+				new listedValue("Buoy Temporary Removal", "Buoy has been or will be temporarily removed from service.",2),
+				new listedValue("Light Removal", "Light has been or will be permanently removed from service.",3),
+				new listedValue("Light Temporary Removal", "Light has been or will be temporarily removed from service.",4),
+				new listedValue("Beacon Removal", "Beacon has been or will be permanently removed from service.",5),
+				new listedValue("Beacon Temporary Removal", "Beacon has been or will be temporarily removed from service.",6),
+				new listedValue("Fog Signal Removal", "Fog signal has been or will be permanently removed from service.",7),
+				new listedValue("Fog Signal Temporary Removal", "Fog signal has been or will be temporarily removed from service.",8),
+				new listedValue("Audible Signal Removal", "Audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be permanently removed from service.",9),
+				new listedValue("Audible Signal Temporary Removal", "Audible signal (device activated by e.g. sea state or wind, irrespective of visibility) has been or will be temporarily removed from service.",10),
+				new listedValue("AIS Transmitter Removal", "AIS transmitter has been or will be permanently removed from service.",11),
+				new listedValue("AIS Transmitter Temporary Removal", "AIS transmitter has been or will be temporarily removed from service.",12),
+				new listedValue("V-AIS Removal", "V-AIS has been or will be permanently removed from service.",13),
+				new listedValue("V-AIS Temporary Removal", "V-AIS has been or will be temporarily removed from service.",14),
+				new listedValue("RACON Removal", "RACON has been or will be permanently removed from service.",15),
+				new listedValue("RACON Temporary Removal", "RACON has been or will be temporarily removed from service.",16),
+				new listedValue("DGPS Station Removal", "DGPS station has been or will be permanently removed from service.",17),
+				new listedValue("DGPS Station Temporary Removal", "DGPS station has been or will be temporarily removed from service.",18),
+				new listedValue("EGNOS Station Removal", "EGNOS station has been or will be permanently removed from service.",19),
+				new listedValue("EGNOS Station Temporary Removal", "EGNOS station has been or will be temporarily removed from service.",20),
+				new listedValue("LORAN C Station Removal", "LORAN C station has been or will be permanently removed from service.",21),
+				new listedValue("LORAN C Station Temporary Removal", "LORAN C station has been or will be temporarily removed from service.",22),
+				new listedValue("ELORAN Station Temporary Removal", "The eLORAN station has been or will be temporarily removed from service.",24),
+				new listedValue("Chayka Station Removal", "Chayka station has been or will be permanently removed from service.",25),
+				new listedValue("Chayka Station Temporary Removal", "Chayka station has been or will be temporarily removed from service.",26),
+				new listedValue("E-Chayka Station Removal", "The e-Chayka station has been or will be permanently removed from service.",27),
 			];
 
 		public static implicit operator atonRemoval(int? value) => new atonRemoval { value = value };
@@ -151,22 +151,22 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Aton Replacement";
 		public static listedValue[] listedValues => [
-				new listedValue("Buoy change", "-",1),
-				new listedValue("Buoy temporary change", "-",2),
-				new listedValue("Light change", "-",3),
-				new listedValue("Light temporary change", "-",4),
-				new listedValue("Sector light change", "-",5),
-				new listedValue("Sector light temporary change", "-",6),
-				new listedValue("Beacon change", "-",7),
-				new listedValue("Beaon temporary change", "-",8),
-				new listedValue("Fog signal change", "-",9),
-				new listedValue("Fog signal temporary chagne", "-",10),
-				new listedValue("Audible signal change", "-",11),
-				new listedValue("Audible signal temporary change", "-",12),
-				new listedValue("V-AIS change", "-",13),
-				new listedValue("V-AIS temporary change", "-",14),
-				new listedValue("RACON change", "-",15),
-				new listedValue("RACON temporary change", "-",16),
+				new listedValue("Buoy Change", "The characteristics of the buoy have been or will be changed.",1),
+				new listedValue("Buoy Temporary Change", "The characteristics of the buoy have been or will be temporarily changed.",2),
+				new listedValue("Light Change", "The characteristics of the light have been or will be changed.",3),
+				new listedValue("Light Temporary Change", "The characteristics of the light have been or will be temporarily changed.",4),
+				new listedValue("Sector Light Change", "The characteristics of the sector light have been or will be changed.",5),
+				new listedValue("Sector Light Temporary Change", "The characteristics of the sector light have been or will be temporarily changed.",6),
+				new listedValue("Beacon Change", "The characteristics of the beacon have been or will be changed.",7),
+				new listedValue("Beacon Temporary Change", "The characteristics of the beacon have been or will be temporarily changed.",8),
+				new listedValue("Fog Signal Change", "The characteristics of the fog signal have been or will be changed.",9),
+				new listedValue("Fog Signal Temporary Change", "The characteristics of the fog signal have been or will be temporarily changed.",10),
+				new listedValue("Audible Signal Change", "The characteristics of the audible signal (device activated by e.g. sea state or wind, irrespective of visibility) have been or will be changed.",11),
+				new listedValue("Audible Signal Temporary Change", "The characteristics of the audible signal (device activated by e.g. sea state or wind, irrespective of visibility) have been or will be temporarily changed.",12),
+				new listedValue("V-AIS Change", "The characteristics of the V-AIS have been or will be changed.",13),
+				new listedValue("V-AIS Temporary Change", "The characteristics of the V-AIS have been or will be temporarily changed.",14),
+				new listedValue("RACON Change", "The characteristics of the RACON have been or will be changed.",15),
+				new listedValue("RACON Temporary Change", "The characteristics of the RACON have been or will be temporarily changed.",16),
 			];
 
 		public static implicit operator atonReplacement(int? value) => new atonReplacement { value = value };
@@ -182,17 +182,17 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Fixed Aton Change";
 		public static listedValue[] listedValues => [
-				new listedValue("Beacon missing", "-",1),
-				new listedValue("Beacon damaged", "-",2),
-				new listedValue("Light beacon Unlit", "-",3),
-				new listedValue("Light beacon Unreliable", "-",4),
-				new listedValue("Light beacon Not synchronized", "-",5),
-				new listedValue("Light beacon damaged", "-",6),
-				new listedValue("Beacon topmark missing", "-",7),
-				new listedValue("Beacon topmark damaged", "-",8),
-				new listedValue("Beacon daymark unreliable", "-",9),
-				new listedValue("Floodlit beacon Unlit", "-",10),
-				new listedValue("Beacon restored to normal", "-",11),
+				new listedValue("Beacon Missing", "No beacon at the advertised position.",1),
+				new listedValue("Beacon Damaged", "The beacon has sustained damage due to external factors (wind, sea state, collision with a vessel).",2),
+				new listedValue("Lighted Beacon - Light Unlit", "The light of the beacon is extinguished.",3),
+				new listedValue("Lighted Beacon - Light Unreliable", "The operation of the light on the beacon is unreliable due to technical problems.",4),
+				new listedValue("Lighted Beacon - Light Not Synchronized", "The light on the beacon is no longer synchronized with another light or group of lights.",5),
+				new listedValue("Lighted Beacon - Light Damaged", "The light on the beacon is damaged due to external factors (wind, sea state, collision with a vessel).",6),
+				new listedValue("Beacon Topmark Missing", "The topmark of the beacon is missing.",7),
+				new listedValue("Beacon Topmark Damaged", "The topmark of the beacon is damaged due to external factors (wind, sea state, collision with a vessel).",8),
+				new listedValue("Beacon Daymark Unreliable", "Colour of the beacon daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).",9),
+				new listedValue("Floodlit Beacon - Unlit", "The flood light illuminating the beacon is inoperative.",10),
+				new listedValue("Beacon Restored To Normal", "The beacon has been restored to normal condition.",11),
 			];
 
 		public static implicit operator fixedAtonChange(int? value) => new fixedAtonChange { value = value };
@@ -234,32 +234,32 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Floating Aton Change";
 		public static listedValue[] listedValues => [
-				new listedValue("Buoy adrift", "-",1),
-				new listedValue("Buoy damaged", "-",2),
-				new listedValue("Buoy daymark unreliable", "-",3),
-				new listedValue("Buoy destroyed", "-",4),
-				new listedValue("Buoy missing", "-",5),
-				new listedValue("Buoy move", "-",6),
-				new listedValue("Buoy off position", "-",7),
-				new listedValue("Buoy re-establishment", "-",8),
-				new listedValue("Buoy restored to normal", "-",9),
-				new listedValue("Buoy topmark damaged", "-",10),
-				new listedValue("Buoy topmark missing", "-",11),
-				new listedValue("Buoy will be withdrawn", "-",12),
-				new listedValue("Buoy withdrawn", "-",13),
-				new listedValue("Decommissioned for winter", "-",14),
-				new listedValue("Lifted for Winter", "-",15),
-				new listedValue("Light buoy Light damaged", "-",16),
-				new listedValue("Light buoy Light not sychronized", "-",17),
-				new listedValue("Light buoy Light unlit", "-",18),
-				new listedValue("Light buoy Light unreliable", "-",19),
-				new listedValue("Marine Aids to Navigation unreliable", "-",20),
-				new listedValue("Recommissioned for navigation season", "-",21),
-				new listedValue("Replaced by Winter Spar", "-",22),
-				new listedValue("Seasonal decommissioning complete", "-",23),
-				new listedValue("Seasonal decommissioning in progress", "-",24),
-				new listedValue("Seasonal recommissioning complete", "-",25),
-				new listedValue("Seasonal recommissioning in progress", "-",26),
+				new listedValue("Buoy Adrift", "The buoy is no longer secured to its moorings and is adrift.",1),
+				new listedValue("Buoy Damaged", "The buoy has been damaged due to external factors (wind, sea state, collision with a vessel).",2),
+				new listedValue("Buoy Daymark Unreliable", "Colour of the buoy daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).",3),
+				new listedValue("Buoy Destroyed", "The buoy has suffered extensive damage and is not useable.",4),
+				new listedValue("Buoy Missing", "No buoy at its advertised/charted position or in the vicinity.",5),
+				new listedValue("Buoy Move", "The buoy has been or will be moved intentionally.",6),
+				new listedValue("Buoy off Position", "The buoy has been dragged off its advertised position due to wind or current affecting the mooring system.",7),
+				new listedValue("Buoy Re-established", "The re-establishment of a buoy which was previously announced either destroyed or temporarily removed.",8),
+				new listedValue("Buoy Restored to Normal", "The buoy has been restored to normal condition.",9),
+				new listedValue("Buoy Topmark Damaged", "The topmark of the buoy is damaged due to external factors (wind, sea state, collision with a vessel).",10),
+				new listedValue("Buoy Topmark Missing", "The topmark of the buoy is missing.",11),
+				new listedValue("Buoy Will Be Withdrawn", "The buoy has been scheduled for removal from service for a fixed term.",12),
+				new listedValue("Buoy Withdrawn", "The buoy has been removed from service for a fixed term.",13),
+				new listedValue("Buoy Decommissioned for Winter", "A buoy which remains in the water over winter but which is declared unreliable (may be impacted by ice movement).",14),
+				new listedValue("Lifted for Winter", "An object that has been removed for the Winter season.",15),
+				new listedValue("Light Buoy - Light Damaged", "The light on the buoy is damaged due to external factors (wind, sea state, collision with a vessel).",16),
+				new listedValue("Light Buoy - Light Not Synchronized", "The light on the buoy is no longer synchronized with another light or group of lights.",17),
+				new listedValue("Light Buoy - Light Unlit", "The light on the buoy is extinguished.",18),
+				new listedValue("Light Buoy - Light Unreliable", "The operation of the light on the buoy is unreliable due to technical problems.",19),
+				new listedValue("Marine Aids to Navigation Unreliable", "The position or status of Marine Aids to Navigation, over an extensive area, is unreliable due to a natural event (freshet, storm surge, flooding).",20),
+				new listedValue("Buoy Commissioned for Navigation Season", "A buoy which was in ice over the winter and has been verified undamaged and in advertised position for the navigational season",21),
+				new listedValue("Buoy Replaced by Winter Spar", "A buoy which has been removed and it's location is now marked by a winter spar buoy.",22),
+				new listedValue("Seasonal Decommissioning Complete", "The completion of the process to remove summer buoys (and possibly replace some with winter spar buoys).",23),
+				new listedValue("Seasonal Decommissioning in Progress", "The commencement of the process to remove summer buoys (and possibly replace some with winter spar buoys).",24),
+				new listedValue("Seasonal Commissioning Complete", "The completion of the process to place summer buoys (and the removal of any winter spar buoys).",25),
+				new listedValue("Seasonal Commissioning in Progress", "The commencement of the process to place summer buoys (and the removal of any winter spar buoys).",26),
 			];
 
 		public static implicit operator floatingAtonChange(int? value) => new floatingAtonChange { value = value };
@@ -288,10 +288,10 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Audible Signal Aton Change";
 		public static listedValue[] listedValues => [
-				new listedValue("Audible signal out of service", "-",1),
-				new listedValue("Fog signal out of service", "-",2),
-				new listedValue("Audible signal operating properly", "-",3),
-				new listedValue("Fog signal operating properly", "-",4),
+				new listedValue("Audible Signal Out Of Service", "The audible signal (device activated by e.g. sea state or wind, irrespective of visibility) is inoperative.",1),
+				new listedValue("Fog Signal Out Of Service", "The fog signal is inoperative.",2),
+				new listedValue("Audible Signal Operating Properly", "The audible signal (device activated by e.g. sea state or wind, irrespective of visibility) is operating as advertised.",3),
+				new listedValue("Fog Signal Operating Properly", "The fog signal is operating as advertised.",4),
 			];
 
 		public static implicit operator audibleSignalAtonChange(int? value) => new audibleSignalAtonChange { value = value };
@@ -350,30 +350,30 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Lighted Aton Change";
 		public static listedValue[] listedValues => [
-				new listedValue("Light unlit", "-",1),
-				new listedValue("Light unreliable", "-",2),
-				new listedValue("Light re-establishment", "-",3),
-				new listedValue("Light range reduced", "-",4),
-				new listedValue("Light without rhythm", "-",5),
-				new listedValue("Light out of synchronization", "-",6),
-				new listedValue("Light daymark unreliable", "-",7),
-				new listedValue("Light operating properly", "-",8),
-				new listedValue("Sector light Sector obscured", "-",9),
-				new listedValue("Front leading/rnage light Unlit", "-",10),
-				new listedValue("Rear leading/range light Unlit", "-",11),
-				new listedValue("Front leading/range light Unreliable", "-",12),
-				new listedValue("Rear leading/range light Unreliable", "-",13),
-				new listedValue("Front leading/range light Light range reduced", "-",14),
-				new listedValue("Rear leading/range light Light range reduced", "-",15),
-				new listedValue("Front leading/range light without rhythm", "-",16),
-				new listedValue("Rear leading/range light without rhythm", "-",17),
-				new listedValue("Leading/range lights out of synchronization", "-",18),
-				new listedValue("Front leading/range beacon Unreliable", "-",19),
-				new listedValue("Rear leading/range beacon Unreliable", "-",20),
-				new listedValue("Front leading/range light is operating properly", "-",21),
-				new listedValue("Rear leading/range light is operating properly", "-",22),
-				new listedValue("Front leading/range beacon restored to normal", "-",23),
-				new listedValue("Rear leading/range beacon restored to normal", "-",24),
+				new listedValue("Light Unlit", "The light is extinguished.",1),
+				new listedValue("Light Unreliable", "The light is unreliable due to technical problems.",2),
+				new listedValue("Light Re-Establishment", "The re-establishment of a light which was previously announced as either destroyed or temporarily removed.",3),
+				new listedValue("Light Range Reduced", "The nominal range of the light is less than the advertised range.",4),
+				new listedValue("Light Without Rhythm", "Due to technical problems the light has no more rhythm and is in fixed light mode.",5),
+				new listedValue("Light Out Of Synchronization", "The light is no longer synchronized with another light or group of lights.",6),
+				new listedValue("Light Daymark Unreliable", "The light daymark is not visible due to damage or fading of colours (out of tolerance with colour recommendations).",7),
+				new listedValue("Light Operating Properly", "The light is operating as advertised",8),
+				new listedValue("Sector Light - Sector Obscured", "The light sector has been fully or partly obscured.",9),
+				new listedValue("Front Light Unlit", "The front leading light is extinguished. / The front range light is extinguished.",10),
+				new listedValue("Rear Light Unlit", "The rear leading light is extinguished. / The rear range light is extinguished.",11),
+				new listedValue("Front Light Unreliable", "The operation of the front leading light is unreliable due to technical problems. / The operation of the front range light is unreliable due to technical problems.",12),
+				new listedValue("Rear Light Unreliable", "The operation of the rear leading light is unreliable due to technical problems. / The operation of the rear range light is unreliable due to technical problems.",13),
+				new listedValue("Front Light Range Reduced", "The nominal range of the front leading light is reduced. / The nominal range of the front range light is reduced.",14),
+				new listedValue("Rear Light Range Reduced", "The nominal range of the rear leading light is reduced. / The nominal range of the rear range light is reduced.",15),
+				new listedValue("Front Light Without Rhythm", "Due to technical problems front leading light has no rhythm and is in fixed light mode. / Due to technical problems front range light has no rhythm and is in fixed light mode.",16),
+				new listedValue("Rear Light Without Rhythm", "Due to technical problems, the rear leading light has no rhythm and is in fixed light mode. / Due to technical problems rear range light has no rhythm and is in fixed light mode.",17),
+				new listedValue("Front and Rear Lights out of Synchronization", "The synchronization of the leading lights is abnormal / The synchronization of the range lights is abnormal.",18),
+				new listedValue("Front Beacon Unreliable", "The front leading beacon is damaged, obscured or missing. / The front range beacon is damaged, obscured or missing.",19),
+				new listedValue("Rear Beacon Unreliable", "The rear leading beacon is damaged, obscured or missing. / The rear range beacon is damaged, obscured or missing",20),
+				new listedValue("Front Light is Operating Properly", "The front leading light is operating as advertised. / The front range light is operating as advertised.",21),
+				new listedValue("Rear Light is Operating Properly", "The rear leading light is operating as advertised. / The rear range light is operating as advertised.",22),
+				new listedValue("Front Beacon Restored to Normal", "The front leading beacon has been restored to normal condition. / The front range beacon has been restored to normal condition.",23),
+				new listedValue("Rear Beacon Restored to Normal", "The rear leading beacon has been restored to normal condition. / The rear range beacon has been restored to normal condition.",24),
 			];
 
 		public static implicit operator lightedAtonChange(int? value) => new lightedAtonChange { value = value };
@@ -532,74 +532,74 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Electronic Aton Change";
 		public static listedValue[] listedValues => [
-				new listedValue("AIS transmitter out of service", "-",1),
-				new listedValue("AIS transmitter unreliable", "-",2),
-				new listedValue("AIS trnasmitter operating properly", "-",3),
-				new listedValue("V-AIS out of service", "-",4),
-				new listedValue("V-AIS unrealiable", "-",5),
-				new listedValue("V-AIS operating properly", "-",6),
-				new listedValue("RACON out of service", "-",7),
-				new listedValue("RACON unreliable", "-",8),
-				new listedValue("RACON operating properly", "-",9),
-				new listedValue("DGPS out of service", "-",10),
-				new listedValue("DGPS operating properly", "-",11),
-				new listedValue("DGPS unreliable", "-",12),
-				new listedValue("LORAN C operating properly", "-",13),
-				new listedValue("LORAN C unreliable", "-",14),
-				new listedValue("LORAN C out of service", "-",15),
-				new listedValue("eLORAN operating properly", "-",16),
-				new listedValue("eLORAN unreliable", "-",17),
-				new listedValue("eLORAN out of service", "-",18),
-				new listedValue("DGLONASS operating properly", "-",19),
-				new listedValue("DGLONASS unreliable", "-",20),
-				new listedValue("DGLONASS out of service", "-",21),
-				new listedValue("Chayka operating properly", "-",22),
-				new listedValue("Chayka unreliable", "-",23),
-				new listedValue("Chayka out of service", "-",24),
-				new listedValue("e-Chayka operating properly", "-",25),
-				new listedValue("e-Chayka unreliable", "-",26),
-				new listedValue("e-Chayka out of service", "-",27),
-				new listedValue("EGNOS operating properly", "-",28),
-				new listedValue("EGNOS unreliable", "-",29),
-				new listedValue("EGNOS out of service", "-",30),
+				new listedValue("AIS Transmitter Out Of Service", "The terrestrial AIS transmitter is inoperative due to a technical issue.",1),
+				new listedValue("AIS Transmitter Unreliable", "The terrestrial AIS transmitter is unreliable due to a technical issue or maintenance.",2),
+				new listedValue("AIS Transmitter Operating Properly", "The terrestrial AIS transmitter is operating as advertised.",3),
+				new listedValue("V-AIS Out Of Service", "Virtual AIS aid to navigation is extinguished.",4),
+				new listedValue("V-AIS Unreliable", "Virtual AIS aid is unreliable due to a technical issue or maintenance.",5),
+				new listedValue("V-AIS Operating Properly", "Virtual AIS aid to navigation is operating as advertised.",6),
+				new listedValue("RACON Out Of Service", "The RACON is inoperative.",7),
+				new listedValue("RACON Unreliable", "The RACON is unreliable due to a technical issue or maintenance.",8),
+				new listedValue("RACON Operating Properly", "The RACON is operating as advertised.",9),
+				new listedValue("DGPS Out Of Service", "The DGPS station is inoperative due to a technical issue.",10),
+				new listedValue("DGPS Operating Properly", "The DGPS station is operating as advertised.",11),
+				new listedValue("DGPS Unreliable", "The DGPS station is unreliable due to a technical issue or maintenance.",12),
+				new listedValue("LORAN C - Operating Properly", "The LORAN C station is operating as advertised.",13),
+				new listedValue("LORAN C - Unreliable", "The LORAN C station is unreliable due to a technical issue or maintenance.",14),
+				new listedValue("LORAN C - Out Of Service", "The LORAN C station is inoperative due to a technical issue.",15),
+				new listedValue("ELORAN Operating Properly", "The eLORAN station is operating as advertised.",16),
+				new listedValue("ELORAN Unreliable", "The eLORAN station is unreliable due to a technical issue or maintenance.",17),
+				new listedValue("ELORAN Out Of Service", "The eLORAN station is inoperative due to a technical issue.",18),
+				new listedValue("DGLONASS Operating Properly", "The DGLONASS station is operating as advertised.",19),
+				new listedValue("DGLONASS Unreliable", "The DGLONASS station is unreliable due to a technical issue or maintenance.",20),
+				new listedValue("DGLONASS Out Of Service", "The DGLONASS station is inoperative due to a technical issue.",21),
+				new listedValue("Chayka Operating Properly", "The Chayka station is operating as advertised.",22),
+				new listedValue("Chayka Unreliable", "The Chayka station is unreliable due to a technical issue or maintenance.",23),
+				new listedValue("Chayka Out Of Service", "The Chayka station is inoperative due to a technical issue.",24),
+				new listedValue("E-Chayka Operating Properly", "The e-Chayka station is operating as advertised.",25),
+				new listedValue("E-Chayka Unreliable", "The e-Chayka station is unreliable due to a technical issue or maintenance.",26),
+				new listedValue("E-Chayka Out Of Service", "The e-Chayka station is inoperative due to a technical issue.",27),
+				new listedValue("EGNOS Operating Properly", "The EGNOS station is operating as advertised.",28),
+				new listedValue("EGNOS Unreliable", "The EGNOS station is unreliable due to a technical issue or maintenance.",29),
+				new listedValue("EGNOS Out Of Service", "The EGNOS station is inoperative due to a technical issue.",30),
 			];
 
 		public static implicit operator electronicAtonChange(int? value) => new electronicAtonChange { value = value };
 	}
 
 	/// <summary>
-	/// named associations between two or more aids to navigation and/or navigationally relevant features
+	/// Named associations between two or more aids to navigation and/or navigationally relevant features.
 	/// </summary>
 	public class categoryOfAssociation : S100FC.CodeListAttribute
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfAssociation);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Association";
+		public override string S100FC_name => "Category of Association";
 		public static listedValue[] listedValues => [
-				new listedValue("channel markings", "-",1),
-				new listedValue("danger markings", "-",2),
+				new listedValue("Channel Markings", "A group of channel marks which indicate channel limits.",1),
+				new listedValue("Danger Markings", "One of more aids to navigation and the danger(s) that are marked.",2),
 			];
 	}
 
 	/// <summary>
-	/// named aggregations between two or more aids to navigation and/or navigationally relevant features
+	/// Named aggregations between two or more aids to navigation and/or navigationally relevant features.
 	/// </summary>
 	public class categoryOfAggregation : S100FC.CodeListAttribute
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfAggregation);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Aggregation";
+		public override string S100FC_name => "Category of Aggregation";
 		public static listedValue[] listedValues => [
-				new listedValue("leading line ", "-",1),
-				new listedValue("measured distance ", "-",3),
-				new listedValue("range system ", "-",2),
+				new listedValue("Leading Line", "A line passing through two or more clearly defined charted objects, and along which a vessel can approach safely.",1),
+				new listedValue("Measured Distance", "A course at sea, whose ends are indicated by ranges ashore, and whose length has been accurately measured for determining the speed of vessels.",3),
+				new listedValue("Range System", "Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.",2),
 			];
 	}
 
 	/// <summary>
-	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations,coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
+	/// The Maritime Mobile Service Identity (MMSI) Code is formed of a series of nine digits which are transmitted over the radio path in order to uniquely identify ship stations, ship earth stations, coast stations, coast earth stations, and group calls. These identities are formed in such a way that the identity or part thereof can be used by telephone and telex subscribers connected to the general telecommunications network principally to call ships automatically.
 	/// </summary>
 	public class mMSICode : S100FC.TextAttribute
 	{
@@ -612,24 +612,24 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// Classification of fixed installation buoy
+	/// Classification of fixed installation buoy.
 	/// </summary>
 	public class categoryOfInstallationBuoy : S100FC.EnumerationAttribute
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfInstallationBuoy);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Installation Buoy";
+		public override string S100FC_name => "Category of Installation Buoy";
 		public static listedValue[] listedValues => [
-				new listedValue("Catenary Anchor Leg Mooring", "incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.",1),
-				new listedValue("Single Buoy Mooring", "a mooring structure used by tankers to load and unload in port approaches or in offshore oil and gas fields. The size of the structure can vary between a large mooring buoy and a manned floating structure. Also known as single point mooring (SPM)",2),
+				new listedValue("Catenary Anchor Leg Mooring", "Incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.",1),
+				new listedValue("Catenary Anchor Leg Mooring", "Incorporates a large buoy which remains on the surface at all times and is moored by 4 or more anchors. Mooring hawsers and cargo hoses lead from a turntable on top of the buoy, so that the buoy does not turn as the ship swings to wind and stream.",2),
 			];
 
 		public static implicit operator categoryOfInstallationBuoy(int? value) => new categoryOfInstallationBuoy { value = value };
 	}
 
 	/// <summary>
-	/// -
+	/// The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.
 	/// </summary>
 	public class lightCharacteristic : S100FC.EnumerationAttribute
 	{
@@ -663,12 +663,12 @@ namespace S100FC.S125.SimpleAttributes
 				new listedValue("Ultra Quick-Flash Plus Long-Flash", "A rhythmic light in which a group of ultra quick flashes is followed by one or more long flashes in a regularly repeated sequence with a regular periodicity.",27),
 				new listedValue("Alternating", "A signal light that shows continuously, in any given direction, two or more colours in a regularly repeated sequence with a regular periodicity.",28),
 				new listedValue("Fixed and Alternating Flashing", "A rhythmic light in which a fixed light is combined with a flashing light of higher luminous intensity and different colour.",29),
-				new listedValue("group-occulting light", "An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated.",1),
-				new listedValue("composite group-occulting light", "An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.",2),
-				new listedValue("group flashing light", "A flashing light in which a group of flashes, specified in number, is regularly repeated.",3),
-				new listedValue("composite group-flashing light", "A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.",4),
-				new listedValue("group quick light", "A quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.",5),
-				new listedValue("group very quick light", "A very quick-flashing light in which a group of two or more flashes, which are specified in number, is regularly repeated.",6),
+				new listedValue("Group-Occulting Light", "An occulting light in which a group of two or more eclipses, which are specified in number, is regularly repeated",1),
+				new listedValue("Composite Group-Occulting Light", "An occulting light in which a sequence of groups of one or more eclipses, which are specified in number, is regularly repeated, and the groups comprise different numbers of eclipses.",2),
+				new listedValue("Group Flashing Light", "A flashing light in which a group of flashes, specified in number, is regularly repeated.",3),
+				new listedValue("Composite Group-Flashing Light", "A light similar to a group-flashing light except that successive groups in a period have different numbers of flashes.",4),
+				new listedValue("Group Quick Light", "A light in which flashes are combined in groups including the same number of quick flashes (repetition rate : 50-79 per minute) and in which groups are repeated at regular intervals.",5),
+				new listedValue("Group Very Quick Light", "A light in which very quick flashes are combined in groups including the same number of flashes (repetition rate : 80-159 per minute) and in which groups are repeated at regular intervals.",6),
 			];
 
 		public static implicit operator lightCharacteristic(int? value) => new lightCharacteristic { value = value };
@@ -688,7 +688,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// Details of where post can be delivered such as the apartment, name and/or number of a street, building or PO Box.
 	/// </summary>
 	public class deliveryPoint : S100FC.TextAttribute
 	{
@@ -701,7 +701,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// Known in various countries as a postcode, or ZIP code, the postal code is a series of letters and/or digits that identifies each postal delivery area.
 	/// </summary>
 	public class postalCode : S100FC.TextAttribute
 	{
@@ -714,7 +714,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.
 	/// </summary>
 	public class language : S100FC.TextAttribute
 	{
@@ -740,7 +740,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// The name of a town or city.
 	/// </summary>
 	public class cityName : S100FC.TextAttribute
 	{
@@ -753,7 +753,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// A generic term for an administrative region within a country at a level below that of the sovereign state.
 	/// </summary>
 	public class administrativeDivision : S100FC.TextAttribute
 	{
@@ -766,7 +766,7 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// The name of a nation.
 	/// </summary>
 	public class countryName : S100FC.TextAttribute
 	{
@@ -851,7 +851,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfNavigationLine);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Navigation Line";
+		public override string S100FC_name => "Category of Navigation Line";
 		public static listedValue[] listedValues => [
 				new listedValue("Clearing Line", "A straight line that marks the boundary between a safe and a dangerous area or that passes clear of a navigational danger.",1),
 				new listedValue("Transit Line", "A line passing through one or more fixed marks.",2),
@@ -908,7 +908,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(qualityOfVerticalMeasurement);
 		[JsonIgnore]
-		public override string S100FC_name => "Quality Of Vertical Measurement";
+		public override string S100FC_name => "Quality of Vertical Measurement";
 		public static listedValue[] listedValues => [
 				new listedValue("Depth Known", "The depth from the chart datum to the seabed (or to the top of a drying feature) is known.",1),
 				new listedValue("Depth or Least Depth Unknown", "The depth from chart datum to the seabed, or the shoalest depth of the feature is unknown.",2),
@@ -983,14 +983,14 @@ namespace S100FC.S125.SimpleAttributes
 	}
 
 	/// <summary>
-	/// A flag or attribute indicating whether an object has slats, which are flat, narrow strips of material, often used for ventilation or design.
+	/// A flag or attribute indicating whether an object has slats, which are flat, narrow strips of material, often used for ventilation or design
 	/// </summary>
 	public class isSlatted : S100FC.BooleanAttribute
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(isSlatted);
 		[JsonIgnore]
-		public override string S100FC_name => "Is Slatted";
+		public override string S100FC_name => "IsSlatted";
 
 		public static implicit operator isSlatted(Boolean? value) => new isSlatted { value = value };
 	}
@@ -1029,7 +1029,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(techniqueOfVerticalMeasurement);
 		[JsonIgnore]
-		public override string S100FC_name => "Technique Of Vertical Measurement";
+		public override string S100FC_name => "Technique of Vertical Measurement";
 		public static listedValue[] listedValues => [
 				new listedValue("Found by Echo Sounder", "The depth was measured by using an instrument that determines depth of water by measuring the time interval between emission of a sonic or ultrasonic signal and return of its echo from the bottom.",1),
 				new listedValue("Found by Side Scan Sonar", "The depth was computed from a record produced by active sonar in which fixed acoustic beams are directed into the water perpendicularly to the direction of travel to scan the seabed and generate a record of the seabed configuration.",2),
@@ -1139,14 +1139,14 @@ namespace S100FC.S125.SimpleAttributes
 	/// <summary>
 	/// Identifier from a list of Aids to Navigation publication, such as List of Lights.
 	/// </summary>
-	public class atonNumber : S100FC.TextAttribute
+	public class atoNNumber : S100FC.TextAttribute
 	{
 		[JsonIgnore]
-		public override string S100FC_code => nameof(atonNumber);
+		public override string S100FC_code => nameof(atoNNumber);
 		[JsonIgnore]
-		public override string S100FC_name => "Aton Number";
+		public override string S100FC_name => "AtoN Number";
 
-		public static implicit operator atonNumber(String? value) => new atonNumber { value = value };
+		public static implicit operator atoNNumber(String? value) => new atoNNumber { value = value };
 	}
 
 	/// <summary>
@@ -1203,18 +1203,18 @@ namespace S100FC.S125.SimpleAttributes
 	/// <summary>
 	/// A classification of AIS AtoNs that are transmitted electronically and linked to a real-world object but do not physically exist at the broadcast location.
 	/// </summary>
-	public class categoryOfSyntheticAISAidtoNavigation : S100FC.EnumerationAttribute
+	public class categoryOfSyntheticAISAidToNavigation : S100FC.EnumerationAttribute
 	{
 		[JsonIgnore]
-		public override string S100FC_code => nameof(categoryOfSyntheticAISAidtoNavigation);
+		public override string S100FC_code => nameof(categoryOfSyntheticAISAidToNavigation);
 		[JsonIgnore]
 		public override string S100FC_name => "Category Of Synthetic AIS Aid To Navigation";
 		public static listedValue[] listedValues => [
-				new listedValue("predicted", "-",1),
-				new listedValue("monitored", "-",2),
+				new listedValue("Predicted Synthetic AIS Aid to Navigation", "A Synthetic AIS AtoN that is not equipped with a monitoring device to confirm its position and status.",1),
+				new listedValue("Monitored Synthetic AIS Aid to Navigation", "A Synthetic AIS AtoN equipped with a communication link that confirms the position and status of the AtoN.",2),
 			];
 
-		public static implicit operator categoryOfSyntheticAISAidtoNavigation(int? value) => new categoryOfSyntheticAISAidtoNavigation { value = value };
+		public static implicit operator categoryOfSyntheticAISAidToNavigation(int? value) => new categoryOfSyntheticAISAidToNavigation { value = value };
 	}
 
 	/// <summary>
@@ -1227,7 +1227,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Category Of Physical AIS Aid To Navigation";
 		public static listedValue[] listedValues => [
-				new listedValue("Physical AIS Type 1", "Simple transmission of static, pre-programmed information.",1),
+				new listedValue("Physical AIS Type 1", "Simple transmission of static, pre-programmed information",1),
 				new listedValue("Physical AIS Type 2", "Transmission of dynamic, real-time updated information via connected sensors.",2),
 				new listedValue("Physical AIS Type 3", "Full two-way communication including transmission, remote control and configuration",3),
 			];
@@ -1303,7 +1303,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(natureOfConstruction);
 		[JsonIgnore]
-		public override string S100FC_name => "Nature Of Construction";
+		public override string S100FC_name => "Nature of Construction";
 		public static listedValue[] listedValues => [
 				new listedValue("Masonry", "Constructed of stones or bricks, usually quarried, shaped, and mortared.",1),
 				new listedValue("Concreted", "Constructed of concrete, a material made of sand and gravel that is united by cement into a hardened mass used for roads, foundations, etc.",2),
@@ -1332,7 +1332,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(typeOfBuoy);
 		[JsonIgnore]
-		public override string S100FC_name => "Type Of Buoy";
+		public override string S100FC_name => "Type of Buoy";
 
 		public static implicit operator typeOfBuoy(String? value) => new typeOfBuoy { value = value };
 	}
@@ -1411,7 +1411,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfLandmark);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Landmark";
+		public override string S100FC_name => "Category of Landmark";
 		public static listedValue[] listedValues => [
 				new listedValue("Cairn", "A mound of stones, usually conical or pyramidal, raised as a landmark or to designate a point of importance in surveying.",1),
 				new listedValue("Cemetery", "A site and associated structures devoted to the burial of the dead.",2),
@@ -1517,7 +1517,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfSpecialPurposeMark);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Special Purpose Mark";
+		public override string S100FC_name => "Category of Special Purpose Mark";
 		public static listedValue[] listedValues => [
 				new listedValue("Firing Danger Area Mark", "A mark used to indicate a firing danger area, usually at sea.",1),
 				new listedValue("Target Mark", "Any object toward which something is directed. The distinctive marking or instrumentation of a ground point to aid its identification on a photograph.",2),
@@ -1580,7 +1580,7 @@ namespace S100FC.S125.SimpleAttributes
 				new listedValue("Wreck Mark", "A mark used to indicate the existence of a wreck.",60),
 				new listedValue("Customs Mark", "A mark used to indicate the existence of a customs checkpoint.",61),
 				new listedValue("Causeway Mark", "A mark used to indicate the existence of a causeway.",62),
-				new listedValue("Wave Recorder", "A surface following buoy used to measure wave activity.",63),
+				new listedValue("Wave Recorder", "A surface following buoy or fixed device used to measure wave activity.",63),
 				new listedValue("Jetski Prohibited", "A mark indicating a jetski prohibited area.",64),
 			];
 
@@ -1644,7 +1644,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfFogSignal);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Fog Signal";
+		public override string S100FC_name => "Category of Fog Signal";
 		public static listedValue[] listedValues => [
 				new listedValue("Explosive", "A signal produced by the firing of explosive charges.",1),
 				new listedValue("Diaphone", "A diaphone uses compressed air and generally emits a powerful low-pitched sound, which often concludes with a brief sound of suddenly lowered pitch, termed the 'grunt'.",2),
@@ -1669,7 +1669,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfRadarTransponderBeacon);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Radar Transponder Beacon";
+		public override string S100FC_name => "Category of Radar Transponder Beacon";
 		public static listedValue[] listedValues => [
 				new listedValue("Ramark, Radar Beacon Transmitting Continuously", "A radar marker beacon which continuously transmits a signal appearing as a radial line on a radar screen, the line indicating the direction of the beacon. Ramarks are intended primarily for marine use. The name 'ramark' is derived from the words radar marker.",1),
 				new listedValue("Racon, Radar Transponder Beacon", "A radar beacon which returns a coded signal which provides identification of the beacon, as well as range and bearing. The range and bearing are indicated by the location of the first character received on the radar screen. The name 'racon' is derived from the words radar beacon.",2),
@@ -1713,7 +1713,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(valueOfNominalRange);
 		[JsonIgnore]
-		public override string S100FC_name => "Value Of Nominal Range";
+		public override string S100FC_name => "Value of Nominal Range";
 
 		public static implicit operator valueOfNominalRange(decimal? value) => new valueOfNominalRange { value = value };
 	}
@@ -1726,7 +1726,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfRadioStation);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Radio Station";
+		public override string S100FC_name => "Category of Radio Station";
 		public static listedValue[] listedValues => [
 				new listedValue("Circular (Non-Directional) Marine or Aero-Marine Radiobeacon", "A radio station which need not necessarily be manned, the emissions of which, radiated around the horizon, enable its bearing to be determined by means of the radio direction finder of a ship.",1),
 				new listedValue("Directional Radiobeacon", "A special type of radiobeacon station the emissions of which are intended to provide a definite track for guidance.",2),
@@ -1770,7 +1770,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(estimatedRangeOfTransmission);
 		[JsonIgnore]
-		public override string S100FC_name => "Estimated Range Of Transmission";
+		public override string S100FC_name => "Estimated Range of Transmission";
 
 		public static implicit operator estimatedRangeOfTransmission(decimal? value) => new estimatedRangeOfTransmission { value = value };
 	}
@@ -1807,7 +1807,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(exhibitionConditionOfLight);
 		[JsonIgnore]
-		public override string S100FC_name => "Exhibition Condition Of Light";
+		public override string S100FC_name => "Exhibition Condition of Light";
 		public static listedValue[] listedValues => [
 				new listedValue("Light Shown Without Change of Character", "A light shown throughout the 24 hours without change of character.",1),
 				new listedValue("Daytime Light", "A light which is only exhibited by day.",2),
@@ -1873,7 +1873,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfLight);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Light";
+		public override string S100FC_name => "Category of Light";
 		public static listedValue[] listedValues => [
 				new listedValue("Directional Function", "A light illuminating a sector of very narrow angle and intended to mark a direction to follow.",1),
 				new listedValue("Leading Light", "A light associated with other lights so as to form a leading line to be followed.",4),
@@ -1904,7 +1904,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfOffshorePlatform);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Offshore Platform";
+		public override string S100FC_name => "Category of Offshore Platform";
 		public static listedValue[] listedValues => [
 				new listedValue("Oil Rig", "A temporary mobile structure, either fixed or floating, used in the exploration stages of oil and gas fields.",1),
 				new listedValue("Production Platform", "A term used to indicate a permanent offshore structure equipped to control the flow of oil or gas. It does not include entirely submarine structures.",2),
@@ -1950,7 +1950,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfPile);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Pile";
+		public override string S100FC_name => "Category of Pile";
 		public static listedValue[] listedValues => [
 				new listedValue("Stake", "An elongated wood or metal pole embedded in the seabed to serve as a marker or support.",1),
 				new listedValue("Post", "A vertical piece of timber, metal or concrete forced into the earth or seabed.",3),
@@ -1992,7 +1992,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfSiloTank);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Silo/Tank";
+		public override string S100FC_name => "Category of Silo/Tank";
 		public static listedValue[] listedValues => [
 				new listedValue("Silo in General", "A large storage structure used for storing loose materials.",1),
 				new listedValue("Tank in General", "A fixed structure for storing liquids.",2),
@@ -2011,7 +2011,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfLateralMark);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Lateral Mark";
+		public override string S100FC_name => "Category of Lateral Mark";
 		public static listedValue[] listedValues => [
 				new listedValue("Port-Hand Lateral Mark", "Indicates the port boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".",1),
 				new listedValue("Starboard-Hand Lateral Mark", "Indicates the starboard boundary of a navigational channel or suggested route when proceeding in the \"conventional direction of buoyage\".",2),
@@ -2053,7 +2053,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfCardinalMark);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Cardinal Mark";
+		public override string S100FC_name => "Category of Cardinal Mark";
 		public static listedValue[] listedValues => [
 				new listedValue("North Cardinal Mark", "Quadrant bounded by the true bearing NW-NE taken from the point of interest; it should be passed to the north side of the mark.",1),
 				new listedValue("East Cardinal Mark", "Quadrant bounded by the true bearing NE-SE taken from the point of interest. It should be passed to the east side of the mark.",2),
@@ -2111,7 +2111,7 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(categoryOfTemporalVariation);
 		[JsonIgnore]
-		public override string S100FC_name => "Category Of Temporal Variation";
+		public override string S100FC_name => "Category of Temporal Variation";
 		public static listedValue[] listedValues => [
 				new listedValue("Extreme Event", "Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.",1),
 				new listedValue("Likely to Change and Significant Shoaling Expected", "Continuous or frequent change (for example river siltation, sand waves, seasonal storms, icebergs, etc) that is likely to result in new significant shoaling.",2),
@@ -2160,11 +2160,11 @@ namespace S100FC.S125.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_name => "Change Types";
 		public static listedValue[] listedValues => [
-				new listedValue("Advanced notice of change", "Advance Notice of a change to an established Aid to Navigation or establishment of a new Aid to Navigation.",1),
-				new listedValue("Discrepancy", "Active/Open Discrepancy or Outage to an established Aid to Navigation.",2),
-				new listedValue("Proposed change", "Proposed change to an established Aid to Navigation or the establishment of a new Aid to Navigation (AtoN Authority is requesting feedback from Mariners).",3),
-				new listedValue("Temporary change", "Temporary Change to established or newly established Aid to Navigation to mark a hazard, etc.",4),
-				new listedValue("Permanent change", "A Permanent Change to an established Aid to Navigation or establishment of a new Aid to Navigation, to be used until the S-101 chart can be updated.",5),
+				new listedValue("Advance Notice of Change", "Advance notice of a change to an established Aid to Navigation or establishment of a new Aid to Navigation.",1),
+				new listedValue("Discrepancy", "(1) A difference between results of duplicate or comparable measures of a quantity.  (2) The difference in computed values of a quantity obtained by different processes using data from the same survey.",2),
+				new listedValue("Proposed Change", "Proposed change to an established Aid to Navigation or the establishment of a new Aid to Navigation.",3),
+				new listedValue("Temporary Change", "Temporary change to established or newly established Aid to Navigation to mark a hazard, etc.",4),
+				new listedValue("Permanent Change", "A permanent change to an established Aid to Navigation or establishment of a new Aid to Navigation.",5),
 			];
 
 		public static implicit operator changeTypes(int? value) => new changeTypes { value = value };
@@ -2188,9 +2188,9 @@ namespace S100FC.S125.ComplexAttributes
 
 		#region Attributes
 		[JsonIgnore]
-		public String?[] atonNumber {
-			set { base.SetAttribute("atonNumber", [.. value.Select(e=> new atonNumber { value = e })]); }
-			get { return base.GetAttributeValues<atonNumber>(nameof(atonNumber)).Select(e=>e.value).ToArray(); }
+		public String?[] atoNNumber {
+			set { base.SetAttribute("atoNNumber", [.. value.Select(e=> new atoNNumber { value = e })]); }
+			get { return base.GetAttributeValues<atoNNumber>(nameof(atoNNumber)).Select(e=>e.value).ToArray(); }
 		}
 		[JsonIgnore]
 		public String?[] interoperabilityIdentifier {
@@ -2203,11 +2203,11 @@ namespace S100FC.S125.ComplexAttributes
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
 				new attributeBindingDefinition {
-					attribute = nameof(atonNumber),
+					attribute = nameof(atoNNumber),
 					lower = 0,
 					upper = 2147483647,
 					order = 0,
-					CreateInstance = () => new atonNumber(),
+					CreateInstance = () => new atoNNumber(),
 				},
 				new attributeBindingDefinition {
 					attribute = nameof(interoperabilityIdentifier),
@@ -2222,7 +2222,7 @@ namespace S100FC.S125.ComplexAttributes
 	}
 
 	/// <summary>
-	/// Specific information or description regarding modifications or updates made to an object, system, or dataset. This term typically includes the nature, scope, and reason for the change, as well as any impact it may have on operations or functionality.
+	/// Specific information or description regarding modifications or updates made to an object, system, or dataset. This term typically includes the nature, scope, and reason for the change, as well as any impact it may have on operations or functionality
 	/// </summary>
 	public class changeDetails : S100FC.ComplexAttribute
 	{
@@ -2518,14 +2518,14 @@ namespace S100FC.S125.ComplexAttributes
 	}
 
 	/// <summary>
-	/// Expected outages period.
+	/// A period in time during which a service, system or device is expected to not be operational.
 	/// </summary>
-	public class expectedOutages : S100FC.ComplexAttribute
+	public class expectedOutage : S100FC.ComplexAttribute
 	{
 		[JsonIgnore]
-		public override string S100FC_code => nameof(expectedOutages);
+		public override string S100FC_code => nameof(expectedOutage);
 		[JsonIgnore]
-		public override string S100FC_name => "Expected Outages";
+		public override string S100FC_name => "Expected Outage";
 
 		#region Attributes
 		[JsonIgnore]
@@ -2696,7 +2696,7 @@ namespace S100FC.S125.ComplexAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(multiplicityOfFeatures);
 		[JsonIgnore]
-		public override string S100FC_name => "Multiplicity Of Features";
+		public override string S100FC_name => "Multiplicity of Features";
 
 		#region Attributes
 		[JsonIgnore]
@@ -3140,14 +3140,14 @@ namespace S100FC.S125.ComplexAttributes
 	}
 
 	/// <summary>
-	/// -
+	/// The sequence of times occupied by intervals of light/sound and eclipse/silence for all light characteristics or sound signals.
 	/// </summary>
 	public class rhythmOfLight : S100FC.ComplexAttribute
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(rhythmOfLight);
 		[JsonIgnore]
-		public override string S100FC_name => "Rhythm Of Light";
+		public override string S100FC_name => "Rhythm of Light";
 
 		#region Attributes
 		[JsonIgnore]
@@ -3357,7 +3357,7 @@ namespace S100FC.S125.ComplexAttributes
 	}
 
 	/// <summary>
-	/// A portion or sector of a navigational aid, such as a light or beacon, that is blocked or obscured from view due to obstacles (e.g., landforms, buildings, or other structures). In marine or aviation navigation, it usually refers to an area where the light signal or visibility is intentionally or unintentionally reduced or not visible to vessels or aircraft.
+	/// A portion or sector of a navigational aid, such as a light or beacon, that is blocked or obscured from view due to obstacles (e.g., landforms, buildings, or other structures). In marine or aviation navigation, it usually refers to an area where the light signal or visibility is intentionally or unintentionally reduced or not visible to vessels or aircraft
 	/// </summary>
 	public class obscuredSector : S100FC.ComplexAttribute
 	{
@@ -3635,14 +3635,14 @@ namespace S100FC.S125.FeatureAssociation
 	}
 
 	/// <summary>
-	/// 
+	/// Two or more features in the same horizontal direction, particularly those features so placed as navigational aids to mark any line of importance to vessels, as a channel. The one nearest the observer is the front mark and the one farthest from the observer is the rear mark.
 	/// </summary>
 	public class RangeSystem : S100FC.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(RangeSystem);
 		[JsonIgnore]
-		public override string S100FC_name => "Range system";
+		public override string S100FC_name => "Range System";
 		public static string[] roles => ["navigableTrack","navigationLine"];
 
 		#region Catalogue
@@ -3695,14 +3695,14 @@ namespace S100FC.S125.FeatureAssociation
 	}
 
 	/// <summary>
-	/// 
+	/// A feature association for the binding between a navigation aid or other associated equipment feature and the structure that supports it. The structure itself may or may not be intended as an aid to navigation.
 	/// </summary>
 	public class StructureEquipment : S100FC.FeatureAssociation
 	{
 		[JsonIgnore]
 		public override string S100FC_code => nameof(StructureEquipment);
 		[JsonIgnore]
-		public override string S100FC_name => "Structure equipment";
+		public override string S100FC_name => "Structure/Equipment";
 		public static string[] roles => ["parent","child"];
 
 		#region Catalogue
@@ -3813,7 +3813,7 @@ namespace S100FC.S125.InformationTypes
 	}
 
 	/// <summary>
-	/// This refers to the current operational status or condition of an Aid to Navigation (AtoN). It provides details about whether the navigational aid (such as a buoy, light, or beacon) is functioning properly, temporarily out of service, under maintenance, or has any other status that affects its operation or visibility to mariners.
+	/// This refers to the current operational status or condition of an Aid to Navigation (AtoN). It provides details about whether the navigational aid (such as a buoy, light, or beacon) is functioning properly, temporarily out of service, under maintenance, or has any other status that affects its operation or visibility to mariners
 	/// </summary>
 	public class AtonStatusInformation : S100FC.InformationType, IInformationBindings
 	{
@@ -3879,7 +3879,7 @@ namespace S100FC.S125.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(AidsToNavigation);
 		[JsonIgnore]
-		public override string S100FC_name => "Aids To Navigation";
+		public override string S100FC_name => "Aids to Navigation";
 
 		#region Attributes
 		[JsonIgnore]
@@ -4103,272 +4103,6 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
-	/// </summary>
-	public class NavigationLine : AidsToNavigation
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(NavigationLine);
-		[JsonIgnore]
-		public override string S100FC_name => "Navigation Line";
-
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfNavigationLine {
-			set { base.SetAttribute(new categoryOfNavigationLine { value = value }); }
-			get { return base.GetAttributeValue<categoryOfNavigationLine>(nameof(categoryOfNavigationLine))?.value; }
-		}
-		[JsonIgnore]
-		public orientation? orientation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
-		}
-		[JsonIgnore]
-		public int?[] status {
-			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
-			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(categoryOfNavigationLine),
-					lower = 1,
-					upper = 1,
-					order = 0,
-					permitedValues = [1,2,3],
-					CreateInstance = () => new categoryOfNavigationLine(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(orientation),
-					lower = 1,
-					upper = 1,
-					order = 1,
-					CreateInstance = () => new orientation(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(status),
-					lower = 0,
-					upper = 2147483647,
-					order = 2,
-					CreateInstance = () => new status(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationLine.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationLine.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-				.. AidsToNavigation.featureBindingsDefinitions,
-				new featureBindingDefinition {
-					roleType = "association",
-					role = "navigableTrack",
-					association = "RangeSystem",
-					lower = 0,
-					upper = 2147483647,
-					featureTypes = [nameof(RecommendedTrack)],
-					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystem>() {
-						roleType = "association",
-						role = "navigableTrack",
-					},
-				},
-			];
-
-		public static featureBinding<FeatureAssociation.RangeSystem> RangeSystem(string role) => new featureBinding<FeatureAssociation.RangeSystem> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("RangeSystem") && binding.role.Equals(role)).roleType,
-			role = role,
-		};
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.curve];
-	}
-
-	/// <summary>
-	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
-	/// </summary>
-	public class RecommendedTrack : AidsToNavigation
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(RecommendedTrack);
-		[JsonIgnore]
-		public override string S100FC_name => "Recommended Track";
-
-		#region Attributes
-		[JsonIgnore]
-		public Boolean? basedOnFixedMarks {
-			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
-			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
-		}
-		[JsonIgnore]
-		public decimal? depthRangeMinimumValue {
-			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
-			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
-		}
-		[JsonIgnore]
-		public decimal? maximalPermittedDraught {
-			set { base.SetAttribute(new maximalPermittedDraught { value = value }); }
-			get { return base.GetAttributeValue<maximalPermittedDraught>(nameof(maximalPermittedDraught))?.value; }
-		}
-		[JsonIgnore]
-		public orientation? orientation {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
-		}
-		[JsonIgnore]
-		public int?[] qualityOfVerticalMeasurement {
-			set { base.SetAttribute("qualityOfVerticalMeasurement", [.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
-			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public verticalUncertainty? verticalUncertainty {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
-		}
-		[JsonIgnore]
-		public int?[] status {
-			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
-			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] techniqueOfVerticalMeasurement {
-			set { base.SetAttribute("techniqueOfVerticalMeasurement", [.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
-			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? trafficFlow {
-			set { base.SetAttribute(new trafficFlow { value = value }); }
-			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
-		}
-		[JsonIgnore]
-		public int? verticalDatum {
-			set { base.SetAttribute(new verticalDatum { value = value }); }
-			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(basedOnFixedMarks),
-					lower = 1,
-					upper = 1,
-					order = 0,
-					CreateInstance = () => new basedOnFixedMarks(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(depthRangeMinimumValue),
-					lower = 0,
-					upper = 1,
-					order = 1,
-					CreateInstance = () => new depthRangeMinimumValue(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(maximalPermittedDraught),
-					lower = 0,
-					upper = 1,
-					order = 2,
-					CreateInstance = () => new maximalPermittedDraught(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(orientation),
-					lower = 1,
-					upper = 1,
-					order = 3,
-					CreateInstance = () => new orientation(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(qualityOfVerticalMeasurement),
-					lower = 0,
-					upper = 2147483647,
-					order = 4,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
-					CreateInstance = () => new qualityOfVerticalMeasurement(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(verticalUncertainty),
-					lower = 0,
-					upper = 1,
-					order = 5,
-					CreateInstance = () => new verticalUncertainty(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(status),
-					lower = 0,
-					upper = 2147483647,
-					order = 6,
-					permitedValues = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43],
-					CreateInstance = () => new status(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(techniqueOfVerticalMeasurement),
-					lower = 0,
-					upper = 2147483647,
-					order = 7,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
-					CreateInstance = () => new techniqueOfVerticalMeasurement(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(trafficFlow),
-					lower = 1,
-					upper = 1,
-					order = 8,
-					permitedValues = [1,2,3,4],
-					CreateInstance = () => new trafficFlow(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(verticalDatum),
-					lower = 0,
-					upper = 1,
-					order = 9,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49],
-					CreateInstance = () => new verticalDatum(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RecommendedTrack.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrack.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-				.. AidsToNavigation.featureBindingsDefinitions,
-				new featureBindingDefinition {
-					roleType = "association",
-					role = "navigationLine",
-					association = "RangeSystem",
-					lower = 1,
-					upper = 2147483647,
-					featureTypes = [nameof(NavigationLine)],
-					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystem>() {
-						roleType = "association",
-						role = "navigationLine",
-					},
-				},
-			];
-
-		public static featureBinding<FeatureAssociation.RangeSystem> RangeSystem(string role) => new featureBinding<FeatureAssociation.RangeSystem> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("RangeSystem") && binding.role.Equals(role)).roleType,
-			role = role,
-		};
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.curve];
-	}
-
-	/// <summary>
 	/// The implements used in an operation or activity.
 	/// </summary>
 	public abstract class Equipment : AidsToNavigation
@@ -4424,9 +4158,9 @@ namespace S100FC.S125.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public String? atonNumber {
-			set { base.SetAttribute(new atonNumber { value = value }); }
-			get { return base.GetAttributeValue<atonNumber>(nameof(atonNumber))?.value; }
+		public String? atoNNumber {
+			set { base.SetAttribute(new atoNNumber { value = value }); }
+			get { return base.GetAttributeValue<atoNNumber>(nameof(atoNNumber))?.value; }
 		}
 		[JsonIgnore]
 		public contactAddress? contactAddress {
@@ -4440,11 +4174,11 @@ namespace S100FC.S125.FeatureTypes
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
 				.. base.attributeBindingsCatalogue,
 				new attributeBindingDefinition {
-					attribute = nameof(atonNumber),
+					attribute = nameof(atoNNumber),
 					lower = 1,
 					upper = 1,
 					order = 0,
-					CreateInstance = () => new atonNumber(),
+					CreateInstance = () => new atoNNumber(),
 				},
 				new attributeBindingDefinition {
 					attribute = nameof(contactAddress),
@@ -4797,6 +4531,369 @@ namespace S100FC.S125.FeatureTypes
 
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// A source of light, usually artificial, that serves as an aid to navigation, providing visibility and guidance, especially in low-light conditions. It could be mounted on various structures like buoys, beacons, or lighthouses to indicate a specific location or navigational point
+	/// </summary>
+	public abstract class GenericLight : Equipment
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(GenericLight);
+		[JsonIgnore]
+		public override string S100FC_name => "Generic Light";
+
+		#region Attributes
+		[JsonIgnore]
+		public decimal? height {
+			set { base.SetAttribute(new height { value = value }); }
+			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
+		}
+		[JsonIgnore]
+		public int? verticalDatum {
+			set { base.SetAttribute(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] status {
+			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public decimal? effectiveIntensity {
+			set { base.SetAttribute(new effectiveIntensity { value = value }); }
+			get { return base.GetAttributeValue<effectiveIntensity>(nameof(effectiveIntensity))?.value; }
+		}
+		[JsonIgnore]
+		public decimal? peakIntensity {
+			set { base.SetAttribute(new peakIntensity { value = value }); }
+			get { return base.GetAttributeValue<peakIntensity>(nameof(peakIntensity))?.value; }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(height),
+					lower = 0,
+					upper = 1,
+					order = 0,
+					CreateInstance = () => new height(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(verticalDatum),
+					lower = 0,
+					upper = 1,
+					order = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49],
+					CreateInstance = () => new verticalDatum(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 2147483647,
+					order = 2,
+					permitedValues = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43],
+					CreateInstance = () => new status(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(effectiveIntensity),
+					lower = 0,
+					upper = 1,
+					order = 3,
+					CreateInstance = () => new effectiveIntensity(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(peakIntensity),
+					lower = 0,
+					upper = 1,
+					order = 4,
+					CreateInstance = () => new peakIntensity(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => GenericLight.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => GenericLight.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// A straight line extending towards an area of navigational interest and generally generated by two navigational aids or one navigational aid and a bearing.
+	/// </summary>
+	public class NavigationLine : AidsToNavigation
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(NavigationLine);
+		[JsonIgnore]
+		public override string S100FC_name => "Navigation Line";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfNavigationLine {
+			set { base.SetAttribute(new categoryOfNavigationLine { value = value }); }
+			get { return base.GetAttributeValue<categoryOfNavigationLine>(nameof(categoryOfNavigationLine))?.value; }
+		}
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
+		}
+		[JsonIgnore]
+		public int?[] status {
+			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(categoryOfNavigationLine),
+					lower = 1,
+					upper = 1,
+					order = 0,
+					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfNavigationLine(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(orientation),
+					lower = 1,
+					upper = 1,
+					order = 1,
+					CreateInstance = () => new orientation(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 2147483647,
+					order = 2,
+					CreateInstance = () => new status(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => NavigationLine.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => NavigationLine.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. AidsToNavigation.featureBindingsDefinitions,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "navigableTrack",
+					association = "RangeSystem",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(RecommendedTrack)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystem>() {
+						roleType = "association",
+						role = "navigableTrack",
+					},
+				},
+			];
+
+		public static featureBinding<FeatureAssociation.RangeSystem> RangeSystem(string role) => new featureBinding<FeatureAssociation.RangeSystem> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("RangeSystem") && binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
+	}
+
+	/// <summary>
+	/// A route which has been specially examined to ensure so far as possible that it is free of dangers and along which ships are advised to navigate.
+	/// </summary>
+	public class RecommendedTrack : AidsToNavigation
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(RecommendedTrack);
+		[JsonIgnore]
+		public override string S100FC_name => "Recommended Track";
+
+		#region Attributes
+		[JsonIgnore]
+		public Boolean? basedOnFixedMarks {
+			set { base.SetAttribute(new basedOnFixedMarks { value = value }); }
+			get { return base.GetAttributeValue<basedOnFixedMarks>(nameof(basedOnFixedMarks))?.value; }
+		}
+		[JsonIgnore]
+		public decimal? depthRangeMinimumValue {
+			set { base.SetAttribute(new depthRangeMinimumValue { value = value }); }
+			get { return base.GetAttributeValue<depthRangeMinimumValue>(nameof(depthRangeMinimumValue))?.value; }
+		}
+		[JsonIgnore]
+		public decimal? maximalPermittedDraught {
+			set { base.SetAttribute(new maximalPermittedDraught { value = value }); }
+			get { return base.GetAttributeValue<maximalPermittedDraught>(nameof(maximalPermittedDraught))?.value; }
+		}
+		[JsonIgnore]
+		public orientation? orientation {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<orientation>(nameof(orientation)); }
+		}
+		[JsonIgnore]
+		public int?[] qualityOfVerticalMeasurement {
+			set { base.SetAttribute("qualityOfVerticalMeasurement", [.. value.Select(e=> new qualityOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<qualityOfVerticalMeasurement>(nameof(qualityOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public verticalUncertainty? verticalUncertainty {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<verticalUncertainty>(nameof(verticalUncertainty)); }
+		}
+		[JsonIgnore]
+		public int?[] status {
+			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
+			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] techniqueOfVerticalMeasurement {
+			set { base.SetAttribute("techniqueOfVerticalMeasurement", [.. value.Select(e=> new techniqueOfVerticalMeasurement { value = e })]); }
+			get { return base.GetAttributeValues<techniqueOfVerticalMeasurement>(nameof(techniqueOfVerticalMeasurement)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? trafficFlow {
+			set { base.SetAttribute(new trafficFlow { value = value }); }
+			get { return base.GetAttributeValue<trafficFlow>(nameof(trafficFlow))?.value; }
+		}
+		[JsonIgnore]
+		public int? verticalDatum {
+			set { base.SetAttribute(new verticalDatum { value = value }); }
+			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(basedOnFixedMarks),
+					lower = 1,
+					upper = 1,
+					order = 0,
+					CreateInstance = () => new basedOnFixedMarks(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(depthRangeMinimumValue),
+					lower = 0,
+					upper = 1,
+					order = 1,
+					CreateInstance = () => new depthRangeMinimumValue(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(maximalPermittedDraught),
+					lower = 0,
+					upper = 1,
+					order = 2,
+					CreateInstance = () => new maximalPermittedDraught(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(orientation),
+					lower = 1,
+					upper = 1,
+					order = 3,
+					CreateInstance = () => new orientation(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(qualityOfVerticalMeasurement),
+					lower = 0,
+					upper = 2147483647,
+					order = 4,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11],
+					CreateInstance = () => new qualityOfVerticalMeasurement(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(verticalUncertainty),
+					lower = 0,
+					upper = 1,
+					order = 5,
+					CreateInstance = () => new verticalUncertainty(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(status),
+					lower = 0,
+					upper = 2147483647,
+					order = 6,
+					permitedValues = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43],
+					CreateInstance = () => new status(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(techniqueOfVerticalMeasurement),
+					lower = 0,
+					upper = 2147483647,
+					order = 7,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18],
+					CreateInstance = () => new techniqueOfVerticalMeasurement(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(trafficFlow),
+					lower = 1,
+					upper = 1,
+					order = 8,
+					permitedValues = [1,2,3,4],
+					CreateInstance = () => new trafficFlow(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(verticalDatum),
+					lower = 0,
+					upper = 1,
+					order = 9,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49],
+					CreateInstance = () => new verticalDatum(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => RecommendedTrack.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => RecommendedTrack.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. AidsToNavigation.featureBindingsDefinitions,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "navigationLine",
+					association = "RangeSystem",
+					lower = 1,
+					upper = 2147483647,
+					featureTypes = [nameof(NavigationLine)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.RangeSystem>() {
+						roleType = "association",
+						role = "navigationLine",
+					},
+				},
+			];
+
+		public static featureBinding<FeatureAssociation.RangeSystem> RangeSystem(string role) => new featureBinding<FeatureAssociation.RangeSystem> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("RangeSystem") && binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.curve];
 	}
 
 	/// <summary>
@@ -5551,6 +5648,497 @@ namespace S100FC.S125.FeatureTypes
 			];
 
 		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => Retroreflector.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
+	/// </summary>
+	public class LightAirObstruction : GenericLight
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LightAirObstruction);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Air Obstruction";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] colour {
+			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int?[] lightVisibility {
+			set { base.SetAttribute("lightVisibility", [.. value.Select(e=> new lightVisibility { value = e })]); }
+			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? exhibitionConditionOfLight {
+			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		[JsonIgnore]
+		public decimal? valueOfNominalRange {
+			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
+		}
+		[JsonIgnore]
+		public int? flareBearing {
+			set { base.SetAttribute(new flareBearing { value = value }); }
+			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
+		}
+		[JsonIgnore]
+		public multiplicityOfFeatures? multiplicityOfFeatures {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		[JsonIgnore]
+		public rhythmOfLight? rhythmOfLight {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(colour),
+					lower = 1,
+					upper = 2147483647,
+					order = 0,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
+					CreateInstance = () => new colour(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(lightVisibility),
+					lower = 0,
+					upper = 2147483647,
+					order = 1,
+					permitedValues = [1,2,3,4,5,6,7,8,9],
+					CreateInstance = () => new lightVisibility(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(exhibitionConditionOfLight),
+					lower = 0,
+					upper = 1,
+					order = 2,
+					permitedValues = [1,2,3,4],
+					CreateInstance = () => new exhibitionConditionOfLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(valueOfNominalRange),
+					lower = 0,
+					upper = 1,
+					order = 3,
+					CreateInstance = () => new valueOfNominalRange(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(flareBearing),
+					lower = 0,
+					upper = 1,
+					order = 4,
+					CreateInstance = () => new flareBearing(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(multiplicityOfFeatures),
+					lower = 0,
+					upper = 1,
+					order = 5,
+					CreateInstance = () => new multiplicityOfFeatures(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(rhythmOfLight),
+					lower = 1,
+					upper = 1,
+					order = 6,
+					CreateInstance = () => new rhythmOfLight(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAirObstruction.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAirObstruction.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
+	/// </summary>
+	public class LightAllAround : GenericLight
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LightAllAround);
+		[JsonIgnore]
+		public override string S100FC_name => "Light All Around";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] colour {
+			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? signalGeneration {
+			set { base.SetAttribute(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		[JsonIgnore]
+		public int? marksNavigationalSystemOf {
+			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		[JsonIgnore]
+		public Boolean? majorLight {
+			set { base.SetAttribute(new majorLight { value = value }); }
+			get { return base.GetAttributeValue<majorLight>(nameof(majorLight))?.value; }
+		}
+		[JsonIgnore]
+		public int? lightVisibility {
+			set { base.SetAttribute(new lightVisibility { value = value }); }
+			get { return base.GetAttributeValue<lightVisibility>(nameof(lightVisibility))?.value; }
+		}
+		[JsonIgnore]
+		public int? exhibitionConditionOfLight {
+			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfLight {
+			set { base.SetAttribute("categoryOfLight", [.. value.Select(e=> new categoryOfLight { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public decimal? valueOfNominalRange {
+			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
+			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
+		}
+		[JsonIgnore]
+		public int? flareBearing {
+			set { base.SetAttribute(new flareBearing { value = value }); }
+			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
+		}
+		[JsonIgnore]
+		public multiplicityOfFeatures? multiplicityOfFeatures {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		[JsonIgnore]
+		public rhythmOfLight? rhythmOfLight {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(colour),
+					lower = 1,
+					upper = 2147483647,
+					order = 0,
+					permitedValues = [1,3,4,5,6,9,10,11],
+					CreateInstance = () => new colour(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(signalGeneration),
+					lower = 0,
+					upper = 1,
+					order = 1,
+					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new signalGeneration(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(marksNavigationalSystemOf),
+					lower = 0,
+					upper = 1,
+					order = 2,
+					permitedValues = [1,2,9,10,11,12,13,15],
+					CreateInstance = () => new marksNavigationalSystemOf(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(majorLight),
+					lower = 0,
+					upper = 1,
+					order = 3,
+					CreateInstance = () => new majorLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(lightVisibility),
+					lower = 0,
+					upper = 1,
+					order = 4,
+					permitedValues = [1,2,3,4,5,6,7,8,9],
+					CreateInstance = () => new lightVisibility(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(exhibitionConditionOfLight),
+					lower = 0,
+					upper = 1,
+					order = 5,
+					permitedValues = [1,2,3,4],
+					CreateInstance = () => new exhibitionConditionOfLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(categoryOfLight),
+					lower = 0,
+					upper = 2147483647,
+					order = 6,
+					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
+					CreateInstance = () => new categoryOfLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(valueOfNominalRange),
+					lower = 0,
+					upper = 1,
+					order = 7,
+					CreateInstance = () => new valueOfNominalRange(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(flareBearing),
+					lower = 0,
+					upper = 1,
+					order = 8,
+					CreateInstance = () => new flareBearing(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(multiplicityOfFeatures),
+					lower = 0,
+					upper = 1,
+					order = 9,
+					CreateInstance = () => new multiplicityOfFeatures(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(rhythmOfLight),
+					lower = 1,
+					upper = 1,
+					order = 10,
+					CreateInstance = () => new rhythmOfLight(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAllAround.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAllAround.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
+	/// </summary>
+	public class LightFogDetector : GenericLight
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LightFogDetector);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Fog Detector";
+
+		#region Attributes
+		[JsonIgnore]
+		public int?[] colour {
+			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
+			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public int? signalGeneration {
+			set { base.SetAttribute(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		[JsonIgnore]
+		public rhythmOfLight? rhythmOfLight {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(colour),
+					lower = 0,
+					upper = 2147483647,
+					order = 0,
+					permitedValues = [1,3,4,5,6,9,10,11],
+					CreateInstance = () => new colour(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(signalGeneration),
+					lower = 0,
+					upper = 1,
+					order = 1,
+					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new signalGeneration(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(rhythmOfLight),
+					lower = 1,
+					upper = 1,
+					order = 2,
+					CreateInstance = () => new rhythmOfLight(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightFogDetector.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFogDetector.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+			];
+
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
+	/// </summary>
+	public class LightSectored : GenericLight
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(LightSectored);
+		[JsonIgnore]
+		public override string S100FC_name => "Light Sectored";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? signalGeneration {
+			set { base.SetAttribute(new signalGeneration { value = value }); }
+			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
+		}
+		[JsonIgnore]
+		public int? marksNavigationalSystemOf {
+			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
+			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
+		}
+		[JsonIgnore]
+		public int? exhibitionConditionOfLight {
+			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
+			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
+		}
+		[JsonIgnore]
+		public int?[] categoryOfLight {
+			set { base.SetAttribute("categoryOfLight", [.. value.Select(e=> new categoryOfLight { value = e })]); }
+			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
+		}
+		[JsonIgnore]
+		public sectorCharacteristics?[] sectorCharacteristics {
+			set { base.SetAttribute("sectorCharacteristics", value); }
+			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics)); }
+		}
+		[JsonIgnore]
+		public obscuredSector?[] obscuredSector {
+			set { base.SetAttribute("obscuredSector", value); }
+			get { return base.GetAttributeValues<obscuredSector>(nameof(obscuredSector)); }
+		}
+		[JsonIgnore]
+		public multiplicityOfFeatures? multiplicityOfFeatures {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(signalGeneration),
+					lower = 0,
+					upper = 1,
+					order = 0,
+					permitedValues = [1,2,3,4,5,6],
+					CreateInstance = () => new signalGeneration(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(marksNavigationalSystemOf),
+					lower = 0,
+					upper = 1,
+					order = 1,
+					permitedValues = [1,2,9,10,11,12,13,15],
+					CreateInstance = () => new marksNavigationalSystemOf(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(exhibitionConditionOfLight),
+					lower = 0,
+					upper = 1,
+					order = 2,
+					permitedValues = [1,2,3,4],
+					CreateInstance = () => new exhibitionConditionOfLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(categoryOfLight),
+					lower = 0,
+					upper = 2147483647,
+					order = 3,
+					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
+					CreateInstance = () => new categoryOfLight(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(sectorCharacteristics),
+					lower = 1,
+					upper = 2147483647,
+					order = 4,
+					CreateInstance = () => new sectorCharacteristics(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(obscuredSector),
+					lower = 0,
+					upper = 2147483647,
+					order = 5,
+					CreateInstance = () => new obscuredSector(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(multiplicityOfFeatures),
+					lower = 0,
+					upper = 1,
+					order = 6,
+					CreateInstance = () => new multiplicityOfFeatures(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightSectored.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightSectored.featureBindingsDefinitions;
 
 		public static featureBindingDefinition[] featureBindingsDefinitions => [
 			];
@@ -6918,7 +7506,7 @@ namespace S100FC.S125.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(LocalDirectionOfBuoyage);
 		[JsonIgnore]
-		public override string S100FC_name => "Local Direction Of Buoyage";
+		public override string S100FC_name => "Local Direction of Buoyage";
 
 		#region Attributes
 		[JsonIgnore]
@@ -6964,7 +7552,7 @@ namespace S100FC.S125.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(NavigationalSystemOfMarks);
 		[JsonIgnore]
-		public override string S100FC_name => "Navigational System Of Marks";
+		public override string S100FC_name => "Navigational System of Marks";
 
 		#region Attributes
 		[JsonIgnore]
@@ -7058,7 +7646,7 @@ namespace S100FC.S125.FeatureTypes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(QualityOfBathymetricData);
 		[JsonIgnore]
-		public override string S100FC_name => "Quality Of Bathymetric Data";
+		public override string S100FC_name => "Quality of Bathymetric Data";
 
 		#region Attributes
 		[JsonIgnore]
@@ -7170,104 +7758,7 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// A source of light, usually artificial, that serves as an aid to navigation, providing visibility and guidance, especially in low-light conditions. It could be mounted on various structures like buoys, beacons, or lighthouses to indicate a specific location or navigational point.
-	/// </summary>
-	public abstract class GenericLight : Equipment
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(GenericLight);
-		[JsonIgnore]
-		public override string S100FC_name => "Generic Light";
-
-		#region Attributes
-		[JsonIgnore]
-		public decimal? height {
-			set { base.SetAttribute(new height { value = value }); }
-			get { return base.GetAttributeValue<height>(nameof(height))?.value; }
-		}
-		[JsonIgnore]
-		public int? verticalDatum {
-			set { base.SetAttribute(new verticalDatum { value = value }); }
-			get { return base.GetAttributeValue<verticalDatum>(nameof(verticalDatum))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] status {
-			set { base.SetAttribute("status", [.. value.Select(e=> new status { value = e })]); }
-			get { return base.GetAttributeValues<status>(nameof(status)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public decimal? effectiveIntensity {
-			set { base.SetAttribute(new effectiveIntensity { value = value }); }
-			get { return base.GetAttributeValue<effectiveIntensity>(nameof(effectiveIntensity))?.value; }
-		}
-		[JsonIgnore]
-		public decimal? peakIntensity {
-			set { base.SetAttribute(new peakIntensity { value = value }); }
-			get { return base.GetAttributeValue<peakIntensity>(nameof(peakIntensity))?.value; }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(height),
-					lower = 0,
-					upper = 1,
-					order = 0,
-					CreateInstance = () => new height(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(verticalDatum),
-					lower = 0,
-					upper = 1,
-					order = 1,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49],
-					CreateInstance = () => new verticalDatum(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(status),
-					lower = 0,
-					upper = 2147483647,
-					order = 2,
-					permitedValues = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,41,42,43],
-					CreateInstance = () => new status(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(effectiveIntensity),
-					lower = 0,
-					upper = 1,
-					order = 3,
-					CreateInstance = () => new effectiveIntensity(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(peakIntensity),
-					lower = 0,
-					upper = 1,
-					order = 4,
-					CreateInstance = () => new peakIntensity(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => GenericLight.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => GenericLight.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-			];
-
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// A characteristic or element in the environment that poses a potential risk to navigation or safety. This could include hazards such as rocks, submerged objects, shallow waters, or man-made structures that could endanger vessels or other forms of transportation.
+	/// A characteristic or element in the environment that poses a potential risk to navigation or safety. This could include hazards such as rocks, submerged objects, shallow waters, or man-made structures that could endanger vessels or other forms of transportation
 	/// </summary>
 	public class DangerousFeature : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
@@ -7341,7 +7832,7 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// -
+	/// An Aid to Navigation that uses electronic systems to transmit, receive, or process navigational information for the purpose of enhancing maritime safety, situational awareness, or traffic management. An electronic AtoN may represent, augment, or exist independently of a physical aid to navigation.
 	/// </summary>
 	public abstract class ElectronicAtoN : AidsToNavigation
 	{
@@ -7352,9 +7843,9 @@ namespace S100FC.S125.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public String? atonNumber {
-			set { base.SetAttribute(new atonNumber { value = value }); }
-			get { return base.GetAttributeValue<atonNumber>(nameof(atonNumber))?.value; }
+		public String? atoNNumber {
+			set { base.SetAttribute(new atoNNumber { value = value }); }
+			get { return base.GetAttributeValue<atoNNumber>(nameof(atoNNumber))?.value; }
 		}
 		[JsonIgnore]
 		public String? mMSICode {
@@ -7373,11 +7864,11 @@ namespace S100FC.S125.FeatureTypes
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
 				.. base.attributeBindingsCatalogue,
 				new attributeBindingDefinition {
-					attribute = nameof(atonNumber),
+					attribute = nameof(atoNNumber),
 					lower = 1,
 					upper = 1,
 					order = 0,
-					CreateInstance = () => new atonNumber(),
+					CreateInstance = () => new atoNNumber(),
 				},
 				new attributeBindingDefinition {
 					attribute = nameof(mMSICode),
@@ -7413,7 +7904,202 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// -
+	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station located remotely from the intended physical Aid to Navigation.
+	/// </summary>
+	public class SyntheticAISAidToNavigation : ElectronicAtoN
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(SyntheticAISAidToNavigation);
+		[JsonIgnore]
+		public override string S100FC_name => "Synthetic AIS Aid to Navigation";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfSyntheticAISAidToNavigation {
+			set { base.SetAttribute(new categoryOfSyntheticAISAidToNavigation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfSyntheticAISAidToNavigation>(nameof(categoryOfSyntheticAISAidToNavigation))?.value; }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(categoryOfSyntheticAISAidToNavigation),
+					lower = 1,
+					upper = 1,
+					order = 0,
+					permitedValues = [1,2],
+					CreateInstance = () => new categoryOfSyntheticAISAidToNavigation(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SyntheticAISAidToNavigation.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SyntheticAISAidToNavigation.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. ElectronicAtoN.featureBindingsDefinitions,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "syntheticAISBroadcasts",
+					association = "SyntheticAIS",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.SyntheticAIS>() {
+						roleType = "association",
+						role = "syntheticAISBroadcasts",
+					},
+				},
+			];
+
+		public static featureBinding<FeatureAssociation.SyntheticAIS> SyntheticAIS(string role) => new featureBinding<FeatureAssociation.SyntheticAIS> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("SyntheticAIS") && binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
+	/// </summary>
+	public class PhysicalAISAidToNavigation : ElectronicAtoN
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
+		[JsonIgnore]
+		public override string S100FC_name => "Physical AIS Aid to Navigation";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? categoryOfPhysicalAISAidToNavigation {
+			set { base.SetAttribute(new categoryOfPhysicalAISAidToNavigation { value = value }); }
+			get { return base.GetAttributeValue<categoryOfPhysicalAISAidToNavigation>(nameof(categoryOfPhysicalAISAidToNavigation))?.value; }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(categoryOfPhysicalAISAidToNavigation),
+					lower = 1,
+					upper = 1,
+					order = 0,
+					permitedValues = [1,2,3],
+					CreateInstance = () => new categoryOfPhysicalAISAidToNavigation(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PhysicalAISAidToNavigation.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PhysicalAISAidToNavigation.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. ElectronicAtoN.featureBindingsDefinitions,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "physicalAISBroadcasts",
+					association = "PhysicalAIS",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.PhysicalAIS>() {
+						roleType = "association",
+						role = "physicalAISBroadcasts",
+					},
+				},
+			];
+
+		public static featureBinding<FeatureAssociation.PhysicalAIS> PhysicalAIS(string role) => new featureBinding<FeatureAssociation.PhysicalAIS> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PhysicalAIS") && binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
+	/// </summary>
+	public class VirtualAISAidToNavigation : ElectronicAtoN
+	{
+		[JsonIgnore]
+		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
+		[JsonIgnore]
+		public override string S100FC_name => "Virtual AIS Aid to Navigation";
+
+		#region Attributes
+		[JsonIgnore]
+		public int? virtualAISAidToNavigationType {
+			set { base.SetAttribute(new virtualAISAidToNavigationType { value = value }); }
+			get { return base.GetAttributeValue<virtualAISAidToNavigationType>(nameof(virtualAISAidToNavigationType))?.value; }
+		}
+		#endregion
+
+		#region Catalogue
+		[JsonIgnore]
+		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
+				.. base.attributeBindingsCatalogue,
+				new attributeBindingDefinition {
+					attribute = nameof(virtualAISAidToNavigationType),
+					lower = 1,
+					upper = 1,
+					order = 0,
+					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
+					CreateInstance = () => new virtualAISAidToNavigationType(),
+				},
+			];
+
+		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VirtualAISAidToNavigation.informationBindingsDefinitions;
+
+		public static informationBindingDefinition[] informationBindingsDefinitions => [
+			];
+
+		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VirtualAISAidToNavigation.featureBindingsDefinitions;
+
+		public static featureBindingDefinition[] featureBindingsDefinitions => [
+				.. ElectronicAtoN.featureBindingsDefinitions,
+				new featureBindingDefinition {
+					roleType = "association",
+					role = "virtualAISBroadcasts",
+					association = "VirtualAIS",
+					lower = 0,
+					upper = 2147483647,
+					featureTypes = [nameof(RadioStation)],
+					CreateInstance = () => new featureBinding<FeatureAssociation.VirtualAIS>() {
+						roleType = "association",
+						role = "virtualAISBroadcasts",
+					},
+				},
+			];
+
+		public static featureBinding<FeatureAssociation.VirtualAIS> VirtualAIS(string role) => new featureBinding<FeatureAssociation.VirtualAIS> {
+			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("VirtualAIS") && binding.role.Equals(role)).roleType,
+			role = role,
+		};
+		#endregion
+
+		[JsonIgnore]
+		public override Primitives[] permittedPrimitives => [Primitives.point];
+	}
+
+	/// <summary>
+	/// A characteristic shape secured at the top of a buoy or beacon to aid in its identification.
 	/// </summary>
 	public class Topmark : Equipment
 	{
@@ -7499,7 +8185,7 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// Used to identify an aggregation of two or more objects. This aggregation may be named content of categoryOfAggregation should be put in information attribute when converting to S-57.
+	/// Used to identify an aggregation of two or more  objects.
 	/// </summary>
 	public class AtonAggregation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
@@ -7562,7 +8248,7 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// Used to identify an association between two or more objects. The association may be named content of categoryOfAssociation should be put in information attribute when converting to S-57
+	/// Used to identify an association of two or more objects.
 	/// </summary>
 	public class AtonAssociation : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
@@ -7641,7 +8327,7 @@ namespace S100FC.S125.FeatureTypes
 	}
 
 	/// <summary>
-	/// This information to disseminate navigation safety notices and updates to individuals upon request and to receive reports of aid to navigation outages.
+	/// A  generic feature used to position and portray Aton Status Information.
 	/// </summary>
 	public class AtonStatusIndication : S100FC.FeatureType, IInformationBindings, IFeatureBindings
 	{
@@ -7652,9 +8338,9 @@ namespace S100FC.S125.FeatureTypes
 
 		#region Attributes
 		[JsonIgnore]
-		public expectedOutages? expectedOutages {
+		public expectedOutage? expectedOutage {
 			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<expectedOutages>(nameof(expectedOutages)); }
+			get { return base.GetAttributeValue<expectedOutage>(nameof(expectedOutage)); }
 		}
 		[JsonIgnore]
 		public featureReference?[] featureReference {
@@ -7676,17 +8362,27 @@ namespace S100FC.S125.FeatureTypes
 			set { base.SetAttribute("featureName", value); }
 			get { return base.GetAttributeValues<featureName>(nameof(featureName)); }
 		}
+		[JsonIgnore]
+		public changeDetails? changeDetails {
+			set { base.SetAttribute(value); }
+			get { return base.GetAttributeValue<changeDetails>(nameof(changeDetails)); }
+		}
+		[JsonIgnore]
+		public int? changeTypes {
+			set { base.SetAttribute(new changeTypes { value = value }); }
+			get { return base.GetAttributeValue<changeTypes>(nameof(changeTypes))?.value; }
+		}
 		#endregion
 
 		#region Catalogue
 		[JsonIgnore]
 		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
 				new attributeBindingDefinition {
-					attribute = nameof(expectedOutages),
+					attribute = nameof(expectedOutage),
 					lower = 0,
 					upper = 1,
 					order = 0,
-					CreateInstance = () => new expectedOutages(),
+					CreateInstance = () => new expectedOutage(),
 				},
 				new attributeBindingDefinition {
 					attribute = nameof(featureReference),
@@ -7715,6 +8411,20 @@ namespace S100FC.S125.FeatureTypes
 					upper = 2147483647,
 					order = 4,
 					CreateInstance = () => new featureName(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(changeDetails),
+					lower = 0,
+					upper = 1,
+					order = 5,
+					CreateInstance = () => new changeDetails(),
+				},
+				new attributeBindingDefinition {
+					attribute = nameof(changeTypes),
+					lower = 0,
+					upper = 1,
+					order = 6,
+					CreateInstance = () => new changeTypes(),
 				},
 			];
 
@@ -7767,692 +8477,6 @@ namespace S100FC.S125.FeatureTypes
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 	}
 
-	/// <summary>
-	/// An air obstruction light is a light marking an obstacle which constitutes a danger to air navigation.
-	/// </summary>
-	public class LightAirObstruction : GenericLight
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(LightAirObstruction);
-		[JsonIgnore]
-		public override string S100FC_name => "Light Air Obstruction";
-
-		#region Attributes
-		[JsonIgnore]
-		public int?[] colour {
-			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
-			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int?[] lightVisibility {
-			set { base.SetAttribute("lightVisibility", [.. value.Select(e=> new lightVisibility { value = e })]); }
-			get { return base.GetAttributeValues<lightVisibility>(nameof(lightVisibility)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? exhibitionConditionOfLight {
-			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
-			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
-		}
-		[JsonIgnore]
-		public decimal? valueOfNominalRange {
-			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
-			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
-		}
-		[JsonIgnore]
-		public int? flareBearing {
-			set { base.SetAttribute(new flareBearing { value = value }); }
-			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
-		}
-		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
-		}
-		[JsonIgnore]
-		public rhythmOfLight? rhythmOfLight {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(colour),
-					lower = 1,
-					upper = 2147483647,
-					order = 0,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12,13],
-					CreateInstance = () => new colour(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(lightVisibility),
-					lower = 0,
-					upper = 2147483647,
-					order = 1,
-					permitedValues = [1,2,3,4,5,6,7,8,9],
-					CreateInstance = () => new lightVisibility(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(exhibitionConditionOfLight),
-					lower = 0,
-					upper = 1,
-					order = 2,
-					permitedValues = [1,2,3,4],
-					CreateInstance = () => new exhibitionConditionOfLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(valueOfNominalRange),
-					lower = 0,
-					upper = 1,
-					order = 3,
-					CreateInstance = () => new valueOfNominalRange(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(flareBearing),
-					lower = 0,
-					upper = 1,
-					order = 4,
-					CreateInstance = () => new flareBearing(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(multiplicityOfFeatures),
-					lower = 0,
-					upper = 1,
-					order = 5,
-					CreateInstance = () => new multiplicityOfFeatures(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(rhythmOfLight),
-					lower = 1,
-					upper = 1,
-					order = 6,
-					CreateInstance = () => new rhythmOfLight(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAirObstruction.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAirObstruction.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-			];
-
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// An all around light is a light that is visible over the whole horizon of interest to marine navigation and having no change in the characteristics of the light.
-	/// </summary>
-	public class LightAllAround : GenericLight
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(LightAllAround);
-		[JsonIgnore]
-		public override string S100FC_name => "Light All Around";
-
-		#region Attributes
-		[JsonIgnore]
-		public int?[] colour {
-			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
-			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? signalGeneration {
-			set { base.SetAttribute(new signalGeneration { value = value }); }
-			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
-		}
-		[JsonIgnore]
-		public int? marksNavigationalSystemOf {
-			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
-			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
-		}
-		[JsonIgnore]
-		public Boolean? majorLight {
-			set { base.SetAttribute(new majorLight { value = value }); }
-			get { return base.GetAttributeValue<majorLight>(nameof(majorLight))?.value; }
-		}
-		[JsonIgnore]
-		public int? lightVisibility {
-			set { base.SetAttribute(new lightVisibility { value = value }); }
-			get { return base.GetAttributeValue<lightVisibility>(nameof(lightVisibility))?.value; }
-		}
-		[JsonIgnore]
-		public int? exhibitionConditionOfLight {
-			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
-			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfLight {
-			set { base.SetAttribute("categoryOfLight", [.. value.Select(e=> new categoryOfLight { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public decimal? valueOfNominalRange {
-			set { base.SetAttribute(new valueOfNominalRange { value = value }); }
-			get { return base.GetAttributeValue<valueOfNominalRange>(nameof(valueOfNominalRange))?.value; }
-		}
-		[JsonIgnore]
-		public int? flareBearing {
-			set { base.SetAttribute(new flareBearing { value = value }); }
-			get { return base.GetAttributeValue<flareBearing>(nameof(flareBearing))?.value; }
-		}
-		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
-		}
-		[JsonIgnore]
-		public rhythmOfLight? rhythmOfLight {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(colour),
-					lower = 1,
-					upper = 2147483647,
-					order = 0,
-					permitedValues = [1,3,4,5,6,9,10,11],
-					CreateInstance = () => new colour(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(signalGeneration),
-					lower = 0,
-					upper = 1,
-					order = 1,
-					permitedValues = [1,2,3,4,5,6],
-					CreateInstance = () => new signalGeneration(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(marksNavigationalSystemOf),
-					lower = 0,
-					upper = 1,
-					order = 2,
-					permitedValues = [1,2,9,10,11,12,13,15],
-					CreateInstance = () => new marksNavigationalSystemOf(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(majorLight),
-					lower = 0,
-					upper = 1,
-					order = 3,
-					CreateInstance = () => new majorLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(lightVisibility),
-					lower = 0,
-					upper = 1,
-					order = 4,
-					permitedValues = [1,2,3,4,5,6,7,8,9],
-					CreateInstance = () => new lightVisibility(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(exhibitionConditionOfLight),
-					lower = 0,
-					upper = 1,
-					order = 5,
-					permitedValues = [1,2,3,4],
-					CreateInstance = () => new exhibitionConditionOfLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(categoryOfLight),
-					lower = 0,
-					upper = 2147483647,
-					order = 6,
-					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
-					CreateInstance = () => new categoryOfLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(valueOfNominalRange),
-					lower = 0,
-					upper = 1,
-					order = 7,
-					CreateInstance = () => new valueOfNominalRange(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(flareBearing),
-					lower = 0,
-					upper = 1,
-					order = 8,
-					CreateInstance = () => new flareBearing(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(multiplicityOfFeatures),
-					lower = 0,
-					upper = 1,
-					order = 9,
-					CreateInstance = () => new multiplicityOfFeatures(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(rhythmOfLight),
-					lower = 1,
-					upper = 1,
-					order = 10,
-					CreateInstance = () => new rhythmOfLight(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightAllAround.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightAllAround.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-			];
-
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// A fog detector light is a light used to automatically determine conditions of visibility which warrant the turning on or off of a sound signal.
-	/// </summary>
-	public class LightFogDetector : GenericLight
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(LightFogDetector);
-		[JsonIgnore]
-		public override string S100FC_name => "Light Fog Detector";
-
-		#region Attributes
-		[JsonIgnore]
-		public int?[] colour {
-			set { base.SetAttribute("colour", [.. value.Select(e=> new colour { value = e })]); }
-			get { return base.GetAttributeValues<colour>(nameof(colour)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public int? signalGeneration {
-			set { base.SetAttribute(new signalGeneration { value = value }); }
-			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
-		}
-		[JsonIgnore]
-		public rhythmOfLight? rhythmOfLight {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<rhythmOfLight>(nameof(rhythmOfLight)); }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(colour),
-					lower = 0,
-					upper = 2147483647,
-					order = 0,
-					permitedValues = [1,3,4,5,6,9,10,11],
-					CreateInstance = () => new colour(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(signalGeneration),
-					lower = 0,
-					upper = 1,
-					order = 1,
-					permitedValues = [1,2,3,4,5,6],
-					CreateInstance = () => new signalGeneration(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(rhythmOfLight),
-					lower = 1,
-					upper = 1,
-					order = 2,
-					CreateInstance = () => new rhythmOfLight(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightFogDetector.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightFogDetector.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-			];
-
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// A light presenting different appearances (in particular, different colours) over various parts of the horizon of interest to maritime navigation.
-	/// </summary>
-	public class LightSectored : GenericLight
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(LightSectored);
-		[JsonIgnore]
-		public override string S100FC_name => "Light Sectored";
-
-		#region Attributes
-		[JsonIgnore]
-		public int? signalGeneration {
-			set { base.SetAttribute(new signalGeneration { value = value }); }
-			get { return base.GetAttributeValue<signalGeneration>(nameof(signalGeneration))?.value; }
-		}
-		[JsonIgnore]
-		public int? marksNavigationalSystemOf {
-			set { base.SetAttribute(new marksNavigationalSystemOf { value = value }); }
-			get { return base.GetAttributeValue<marksNavigationalSystemOf>(nameof(marksNavigationalSystemOf))?.value; }
-		}
-		[JsonIgnore]
-		public int? exhibitionConditionOfLight {
-			set { base.SetAttribute(new exhibitionConditionOfLight { value = value }); }
-			get { return base.GetAttributeValue<exhibitionConditionOfLight>(nameof(exhibitionConditionOfLight))?.value; }
-		}
-		[JsonIgnore]
-		public int?[] categoryOfLight {
-			set { base.SetAttribute("categoryOfLight", [.. value.Select(e=> new categoryOfLight { value = e })]); }
-			get { return base.GetAttributeValues<categoryOfLight>(nameof(categoryOfLight)).Select(e=>e.value).ToArray(); }
-		}
-		[JsonIgnore]
-		public sectorCharacteristics?[] sectorCharacteristics {
-			set { base.SetAttribute("sectorCharacteristics", value); }
-			get { return base.GetAttributeValues<sectorCharacteristics>(nameof(sectorCharacteristics)); }
-		}
-		[JsonIgnore]
-		public obscuredSector?[] obscuredSector {
-			set { base.SetAttribute("obscuredSector", value); }
-			get { return base.GetAttributeValues<obscuredSector>(nameof(obscuredSector)); }
-		}
-		[JsonIgnore]
-		public multiplicityOfFeatures? multiplicityOfFeatures {
-			set { base.SetAttribute(value); }
-			get { return base.GetAttributeValue<multiplicityOfFeatures>(nameof(multiplicityOfFeatures)); }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(signalGeneration),
-					lower = 0,
-					upper = 1,
-					order = 0,
-					permitedValues = [1,2,3,4,5,6],
-					CreateInstance = () => new signalGeneration(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(marksNavigationalSystemOf),
-					lower = 0,
-					upper = 1,
-					order = 1,
-					permitedValues = [1,2,9,10,11,12,13,15],
-					CreateInstance = () => new marksNavigationalSystemOf(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(exhibitionConditionOfLight),
-					lower = 0,
-					upper = 1,
-					order = 2,
-					permitedValues = [1,2,3,4],
-					CreateInstance = () => new exhibitionConditionOfLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(categoryOfLight),
-					lower = 0,
-					upper = 2147483647,
-					order = 3,
-					permitedValues = [4,5,8,9,10,11,12,13,14,15,17,18,19,20],
-					CreateInstance = () => new categoryOfLight(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(sectorCharacteristics),
-					lower = 1,
-					upper = 2147483647,
-					order = 4,
-					CreateInstance = () => new sectorCharacteristics(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(obscuredSector),
-					lower = 0,
-					upper = 2147483647,
-					order = 5,
-					CreateInstance = () => new obscuredSector(),
-				},
-				new attributeBindingDefinition {
-					attribute = nameof(multiplicityOfFeatures),
-					lower = 0,
-					upper = 1,
-					order = 6,
-					CreateInstance = () => new multiplicityOfFeatures(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => LightSectored.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => LightSectored.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-			];
-
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// A virtual or synthetic Aid to Navigation (AtoN) transmitted via the Automatic Identification System (AIS). Unlike a physical AtoN, which exists in the real world (like buoys or lighthouses), a synthetic AIS AtoN is created in the AIS network to provide navigational information to mariners about a point of interest or hazard, even if no physical object is present at that location. It helps in improving situational awareness.
-	/// </summary>
-	public class SyntheticAISAidToNavigation : ElectronicAtoN
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(SyntheticAISAidToNavigation);
-		[JsonIgnore]
-		public override string S100FC_name => "Synthetic AIS Aid To Navigation";
-
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfSyntheticAISAidtoNavigation {
-			set { base.SetAttribute(new categoryOfSyntheticAISAidtoNavigation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfSyntheticAISAidtoNavigation>(nameof(categoryOfSyntheticAISAidtoNavigation))?.value; }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(categoryOfSyntheticAISAidtoNavigation),
-					lower = 1,
-					upper = 1,
-					order = 0,
-					permitedValues = [1,2],
-					CreateInstance = () => new categoryOfSyntheticAISAidtoNavigation(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => SyntheticAISAidToNavigation.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => SyntheticAISAidToNavigation.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-				.. ElectronicAtoN.featureBindingsDefinitions,
-				new featureBindingDefinition {
-					roleType = "association",
-					role = "syntheticAISBroadcasts",
-					association = "SyntheticAIS",
-					lower = 0,
-					upper = 2147483647,
-					featureTypes = [nameof(RadioStation)],
-					CreateInstance = () => new featureBinding<FeatureAssociation.SyntheticAIS>() {
-						roleType = "association",
-						role = "syntheticAISBroadcasts",
-					},
-				},
-			];
-
-		public static featureBinding<FeatureAssociation.SyntheticAIS> SyntheticAIS(string role) => new featureBinding<FeatureAssociation.SyntheticAIS> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("SyntheticAIS") && binding.role.Equals(role)).roleType,
-			role = role,
-		};
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// An Automatic Identification System (AIS) message 21 transmitted from a physical Aid to Navigation, or transmitted from an AIS station for an Aid to Navigation which physically exists.
-	/// </summary>
-	public class PhysicalAISAidToNavigation : ElectronicAtoN
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(PhysicalAISAidToNavigation);
-		[JsonIgnore]
-		public override string S100FC_name => "Physical AIS Aid To Navigation";
-
-		#region Attributes
-		[JsonIgnore]
-		public int? categoryOfPhysicalAISAidToNavigation {
-			set { base.SetAttribute(new categoryOfPhysicalAISAidToNavigation { value = value }); }
-			get { return base.GetAttributeValue<categoryOfPhysicalAISAidToNavigation>(nameof(categoryOfPhysicalAISAidToNavigation))?.value; }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(categoryOfPhysicalAISAidToNavigation),
-					lower = 1,
-					upper = 1,
-					order = 0,
-					permitedValues = [1,2,3],
-					CreateInstance = () => new categoryOfPhysicalAISAidToNavigation(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => PhysicalAISAidToNavigation.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => PhysicalAISAidToNavigation.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-				.. ElectronicAtoN.featureBindingsDefinitions,
-				new featureBindingDefinition {
-					roleType = "association",
-					role = "physicalAISBroadcasts",
-					association = "PhysicalAIS",
-					lower = 0,
-					upper = 2147483647,
-					featureTypes = [nameof(RadioStation)],
-					CreateInstance = () => new featureBinding<FeatureAssociation.PhysicalAIS>() {
-						roleType = "association",
-						role = "physicalAISBroadcasts",
-					},
-				},
-			];
-
-		public static featureBinding<FeatureAssociation.PhysicalAIS> PhysicalAIS(string role) => new featureBinding<FeatureAssociation.PhysicalAIS> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("PhysicalAIS") && binding.role.Equals(role)).roleType,
-			role = role,
-		};
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
-	/// <summary>
-	/// An Automatic Identification System (AIS) message 21 transmitted from an AIS station to simulate on navigation systems an Aid to Navigation which does not physically exist.
-	/// </summary>
-	public class VirtualAISAidToNavigation : ElectronicAtoN
-	{
-		[JsonIgnore]
-		public override string S100FC_code => nameof(VirtualAISAidToNavigation);
-		[JsonIgnore]
-		public override string S100FC_name => "Virtual AIS Aid To Navigation";
-
-		#region Attributes
-		[JsonIgnore]
-		public int? virtualAISAidToNavigationType {
-			set { base.SetAttribute(new virtualAISAidToNavigationType { value = value }); }
-			get { return base.GetAttributeValue<virtualAISAidToNavigationType>(nameof(virtualAISAidToNavigationType))?.value; }
-		}
-		#endregion
-
-		#region Catalogue
-		[JsonIgnore]
-		public override attributeBindingDefinition[] attributeBindingsCatalogue => [
-				.. base.attributeBindingsCatalogue,
-				new attributeBindingDefinition {
-					attribute = nameof(virtualAISAidToNavigationType),
-					lower = 1,
-					upper = 1,
-					order = 0,
-					permitedValues = [1,2,3,4,5,6,7,8,9,10,11,12],
-					CreateInstance = () => new virtualAISAidToNavigationType(),
-				},
-			];
-
-		public override informationBindingDefinition[] GetInformationBindingsDefinitions() => VirtualAISAidToNavigation.informationBindingsDefinitions;
-
-		public static informationBindingDefinition[] informationBindingsDefinitions => [
-			];
-
-		public override featureBindingDefinition[] GetFeatureBindingsDefinitions() => VirtualAISAidToNavigation.featureBindingsDefinitions;
-
-		public static featureBindingDefinition[] featureBindingsDefinitions => [
-				.. ElectronicAtoN.featureBindingsDefinitions,
-				new featureBindingDefinition {
-					roleType = "association",
-					role = "virtualAISBroadcasts",
-					association = "VirtualAIS",
-					lower = 0,
-					upper = 2147483647,
-					featureTypes = [nameof(RadioStation)],
-					CreateInstance = () => new featureBinding<FeatureAssociation.VirtualAIS>() {
-						roleType = "association",
-						role = "virtualAISBroadcasts",
-					},
-				},
-			];
-
-		public static featureBinding<FeatureAssociation.VirtualAIS> VirtualAIS(string role) => new featureBinding<FeatureAssociation.VirtualAIS> {
-			roleType = featureBindingsDefinitions.Single(binding => binding.association.Equals("VirtualAIS") && binding.role.Equals(role)).roleType,
-			role = role,
-		};
-		#endregion
-
-		[JsonIgnore]
-		public override Primitives[] permittedPrimitives => [Primitives.point];
-	}
-
 }
 
 namespace S100FC.S125
@@ -8467,19 +8491,19 @@ namespace S100FC.S125
 
 	public class Summary : ISummary
 	{
-		public static string Name => "";
-		public static string Scope => "";
-		public static string ProductId => "";
-		public static Version Version => new Version("");
-		public static DateOnly VersionDate => DateOnly.ParseExact("2025-11-28", "yyyy-MM-dd");
-		public static string[] ComplexTypes => ["featureReference","changeDetails","contactAddress","featureName","fixedDateRange","expectedOutages","horizontalPositionUncertainty","information","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","sectorInformation","sectorLimitOne","sectorLimitTwo","signalSequence","textualDescription","verticalUncertainty","rhythmOfLight","directionalCharacter","sectorLimit","spatialAccuracy","obscuredSector","lightSector","sectorCharacteristics"];
+		public static string Name => "Marine Aids to Navigation (AtoN)";
+		public static string Scope => "Ocean, Coastal, Ports and Harbors. Excludes Inland waters.";
+		public static string ProductId => "S-125";
+		public static Version Version => new Version("1.0.0");
+		public static DateOnly VersionDate => DateOnly.ParseExact("2026-03-03", "yyyy-MM-dd");
+		public static string[] ComplexTypes => ["featureReference","changeDetails","contactAddress","featureName","fixedDateRange","expectedOutage","horizontalPositionUncertainty","information","multiplicityOfFeatures","orientation","periodicDateRange","radarWaveLength","sectorInformation","sectorLimitOne","sectorLimitTwo","signalSequence","textualDescription","verticalUncertainty","rhythmOfLight","directionalCharacter","sectorLimit","spatialAccuracy","obscuredSector","lightSector","sectorCharacteristics"];
 		public static string[] InformationAssociationTypes => ["AtonStatus"];
 		public static string[] FeatureAssociationTypes => ["AtonStatusIndicationAssociation","RangeSystem","AtonAggregations","AtonAssociations","DangerousFeatureAssociation","StructureEquipment","PhysicalAIS","SyntheticAIS","VirtualAIS"];
 		public static string[] InformationTypes => ["SpatialQuality","AtonStatusInformation"];
-		public static string[] FeatureTypes => ["AidsToNavigation","NavigationLine","RecommendedTrack","Equipment","StructureObject","GenericBuoy","GenericBeacon","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","GenericLight","DangerousFeature","ElectronicAtoN","Topmark","AtonAggregation","AtonAssociation","AtonStatusIndication","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation"];
+		public static string[] FeatureTypes => ["AidsToNavigation","Equipment","StructureObject","GenericBuoy","GenericBeacon","GenericLight","NavigationLine","RecommendedTrack","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","DangerousFeature","ElectronicAtoN","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","Topmark","AtonAggregation","AtonAssociation","AtonStatusIndication"];
 		public static string[] PrimitiveFeatures(Primitives primitive) => primitive switch {
 			Primitives.noGeometry => ["AtonAggregation","AtonAssociation"],
-			Primitives.point => ["AidsToNavigation","Equipment","StructureObject","GenericBuoy","GenericBeacon","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","GenericLight","DangerousFeature","ElectronicAtoN","Topmark","AtonStatusIndication","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation"],
+			Primitives.point => ["AidsToNavigation","Equipment","StructureObject","GenericBuoy","GenericBeacon","GenericLight","Landmark","Daymark","FogSignal","RadarReflector","RadarTransponderBeacon","RadioStation","Retroreflector","LightAirObstruction","LightAllAround","LightFogDetector","LightSectored","LightFloat","LightVessel","OffshorePlatform","Pile","SiloTank","CardinalBuoy","EmergencyWreckMarkingBuoy","InstallationBuoy","IsolatedDangerBuoy","LateralBuoy","MooringBuoy","SafeWaterBuoy","SpecialPurposeGeneralBuoy","CardinalBeacon","IsolatedDangerBeacon","SafeWaterBeacon","SpecialPurposeGeneralBeacon","LateralBeacon","WindTurbine","VerticalDatumOfData","DataCoverage","LocalDirectionOfBuoyage","NavigationalSystemOfMarks","SoundingDatum","QualityOfBathymetricData","DangerousFeature","ElectronicAtoN","SyntheticAISAidToNavigation","PhysicalAISAidToNavigation","VirtualAISAidToNavigation","Topmark","AtonStatusIndication"],
 			Primitives.pointSet => [],
 			Primitives.curve => ["NavigationLine","RecommendedTrack"],
 			Primitives.surface => [],
@@ -8499,21 +8523,21 @@ namespace S100FC.S125
 			"AidsToNavigation::AtonAggregations" => AidsToNavigation.AtonAggregations(role),
 			"AidsToNavigation::AtonAssociations" => AidsToNavigation.AtonAssociations(role),
 			"AidsToNavigation::AtonStatusIndicationAssociation" => AidsToNavigation.AtonStatusIndicationAssociation(role),
-			"NavigationLine::RangeSystem" => NavigationLine.RangeSystem(role),
-			"RecommendedTrack::RangeSystem" => RecommendedTrack.RangeSystem(role),
 			"Equipment::StructureEquipment" => Equipment.StructureEquipment(role),
 			"StructureObject::StructureEquipment" => StructureObject.StructureEquipment(role),
+			"NavigationLine::RangeSystem" => NavigationLine.RangeSystem(role),
+			"RecommendedTrack::RangeSystem" => RecommendedTrack.RangeSystem(role),
 			"RadioStation::PhysicalAIS" => RadioStation.PhysicalAIS(role),
 			"RadioStation::SyntheticAIS" => RadioStation.SyntheticAIS(role),
 			"RadioStation::VirtualAIS" => RadioStation.VirtualAIS(role),
 			"DangerousFeature::DangerousFeatureAssociation" => DangerousFeature.DangerousFeatureAssociation(role),
+			"SyntheticAISAidToNavigation::SyntheticAIS" => SyntheticAISAidToNavigation.SyntheticAIS(role),
+			"PhysicalAISAidToNavigation::PhysicalAIS" => PhysicalAISAidToNavigation.PhysicalAIS(role),
+			"VirtualAISAidToNavigation::VirtualAIS" => VirtualAISAidToNavigation.VirtualAIS(role),
 			"AtonAggregation::AtonAggregations" => AtonAggregation.AtonAggregations(role),
 			"AtonAssociation::DangerousFeatureAssociation" => AtonAssociation.DangerousFeatureAssociation(role),
 			"AtonAssociation::AtonAssociations" => AtonAssociation.AtonAssociations(role),
 			"AtonStatusIndication::AtonStatusIndicationAssociation" => AtonStatusIndication.AtonStatusIndicationAssociation(role),
-			"SyntheticAISAidToNavigation::SyntheticAIS" => SyntheticAISAidToNavigation.SyntheticAIS(role),
-			"PhysicalAISAidToNavigation::PhysicalAIS" => PhysicalAISAidToNavigation.PhysicalAIS(role),
-			"VirtualAISAidToNavigation::VirtualAIS" => VirtualAISAidToNavigation.VirtualAIS(role),
 			"" => throw new KeyNotFoundException(),
 			_ => throw new KeyNotFoundException(),
 		};
@@ -8607,10 +8631,10 @@ namespace S100FC.S125
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(techniqueOfVerticalMeasurement), typeDiscriminator: "techniqueOfVerticalMeasurement"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(trafficFlow), typeDiscriminator: "trafficFlow"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(verticalDatum), typeDiscriminator: "verticalDatum"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(atonNumber), typeDiscriminator: "atonNumber"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(atoNNumber), typeDiscriminator: "atoNNumber"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(buoyShape), typeDiscriminator: "buoyShape"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(colour), typeDiscriminator: "colour"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfSyntheticAISAidtoNavigation), typeDiscriminator: "categoryOfSyntheticAISAidtoNavigation"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfSyntheticAISAidToNavigation), typeDiscriminator: "categoryOfSyntheticAISAidToNavigation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(categoryOfPhysicalAISAidToNavigation), typeDiscriminator: "categoryOfPhysicalAISAidToNavigation"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(colourPattern), typeDiscriminator: "colourPattern"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(radarConspicuous), typeDiscriminator: "radarConspicuous"));
@@ -8658,7 +8682,7 @@ namespace S100FC.S125
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(contactAddress), typeDiscriminator: "contactAddress"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(featureName), typeDiscriminator: "featureName"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(fixedDateRange), typeDiscriminator: "fixedDateRange"));
-					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(expectedOutages), typeDiscriminator: "expectedOutages"));
+					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(expectedOutage), typeDiscriminator: "expectedOutage"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(horizontalPositionUncertainty), typeDiscriminator: "horizontalPositionUncertainty"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(information), typeDiscriminator: "information"));
 					typeInfo.PolymorphismOptions.DerivedTypes.Add(new System.Text.Json.Serialization.Metadata.JsonDerivedType(typeof(multiplicityOfFeatures), typeDiscriminator: "multiplicityOfFeatures"));

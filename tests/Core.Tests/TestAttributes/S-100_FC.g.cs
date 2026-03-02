@@ -496,7 +496,7 @@ namespace S100FC
         [JsonIgnore]
         public override bool HasValue => true;  //TODO: HasValue on ComplexAttribute!!!
 
-        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
+        public virtual bool IsValid() => true;
     }
 
     public abstract class InformationType : IAttributeBindings
@@ -597,7 +597,7 @@ namespace S100FC
             }
         }
 
-        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
+        public virtual bool IsValid() => true;
     }
 
     public abstract class FeatureType : IAttributeBindings
@@ -690,7 +690,7 @@ namespace S100FC
             }
         }
 
-        public virtual bool IsValid(IEnumerable<attributeBinding> attributes) => true;
+        public virtual bool Validate(ICollection<string> errors) => true;
     }
 
     public class attributeBindingDefinition
