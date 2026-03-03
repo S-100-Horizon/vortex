@@ -722,6 +722,8 @@ namespace S100FC.ProductCatalogue
                                                 To = binding.informationId
                                             };
 
+                                            // TODO: validate method
+
                                             // Special case for SpatialAssociation. Add to dictionary for later processing.
                                             if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
                                                 spatialAssociations.TryAdd(geometry, asso);
@@ -749,6 +751,7 @@ namespace S100FC.ProductCatalogue
                                         foreach (var binding in featureBindings) {
 
                                             // check if valid
+                                            // TODO: validate method
 
                                             var roleType = binding.roleType;
 

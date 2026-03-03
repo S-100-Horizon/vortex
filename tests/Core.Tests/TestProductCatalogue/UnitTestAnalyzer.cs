@@ -1,12 +1,14 @@
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
 using ICSharpCode.SharpZipLib.Zip;
+using Microsoft.AspNetCore.Components.Forms;
 using NetTopologySuite.Features;
 using S100FC;
 using S100FC.ProductCatalogue;
 using S100FC.S101.FeatureTypes;
 using S100FC.S128;
 using S100FC.S128.FeatureTypes;
+using S100FC.S128.SimpleAttributes;
 using S100FC.YAML;
 using Serilog;
 using System.Diagnostics;
@@ -38,6 +40,74 @@ namespace TestProductCatalogue
             //    fastZip.ExtractZip("s100ed8.gdb.zip", geodatabase.FullName, null);
             //}
         }
+
+
+        [Fact]
+        public async Task Test_ReadAttachments() {
+            var s128 = Environment.GetEnvironmentVariable("S100-Horizon-S128-Database");
+            Assert.NotNull(s128);
+            var connectionFile = new DatabaseConnectionFile(new Uri(IO.Path.GetFullPath(s128)));
+            using var geodatabase = new Geodatabase(connectionFile);
+
+            var datasetName = "101DK00LALALAND";
+            int[] editions = [15, 16, 17, 18];
+
+            using var attachment = geodatabase!.OpenDataset<Table>("attachment");
+
+
+            foreach (var edition in editions) {
+                using var cursor = attachment.Search(new QueryFilter {
+                    WhereClause = $"json LIKE '%\"DatasetName\":\"{datasetName}\"%' AND json LIKE '%\"Edition\":{edition}%'",
+                    PostfixClause = "ORDER BY created_date ASC"
+                }, true);
+
+                if (!cursor.MoveNext())
+                    throw new InvalidOperationException("No dataset rows found");
+
+                var yaml = ReadData(cursor); // root YAML
+
+
+                static string ReadData(RowCursor cursor) {
+                    if (cursor.Current["data"] is not MemoryStream stream)
+                        throw new InvalidOperationException("Column 'data' is not a MemoryStream");
+
+                    stream.Position = 0;
+                    using var reader = new StreamReader(stream);
+                    return reader.ReadToEnd();
+                }
+
+                var outputFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "attachments");
+
+                Directory.CreateDirectory(outputFolder);
+
+                var filePath = Path.Combine(outputFolder, $"{datasetName}_{edition}.yaml");
+
+                File.WriteAllText(filePath, yaml);
+            }
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+        [Fact]
+        public void Test_CompareLala() {
+            int[] editions = [17, 18];
+            var folder = @"C:/Temp/debug_lala";
+
+            var root = Path.Combine(folder, "101DK00LALALAND_16.yaml");
+            var incoming = Path.Combine(folder, "101DK00LALALAND_17.yaml");
+
+
+
+            var delta = S100FC.YAML.DatasetComparer.Compare(System.IO.File.ReadAllText(root), System.IO.File.ReadAllText(incoming));
+
+            var deltaYaml = S100FC.YAML.Converter.Serialize(delta);
+
+            IO.File.WriteAllText(Path.Combine(folder, "delta_16_17.yaml"), deltaYaml);
+
+            System.Diagnostics.Debugger.Break();
+        }
+
+
 
         [Fact]
         public async Task Test_ProductManagerCreation() {
@@ -361,7 +431,7 @@ namespace TestProductCatalogue
 
                 if (!IO.File.Exists(catalogue))
                     throw new NullReferenceException("Could not find featurecatalogue!");
-                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\" -C {datasetName}"; 
+                var commandline = $"-f \"{IO.Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml")}\" -c \"{catalogue}\" -d \"{exchangeset.FullName}\" -C {datasetName}";
 
                 var p = new Process();
                 p.StartInfo.CreateNoWindow = true;
