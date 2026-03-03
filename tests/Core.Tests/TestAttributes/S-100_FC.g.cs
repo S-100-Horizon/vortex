@@ -839,11 +839,23 @@ namespace S100FC
         public string role { get; init; } = string.Empty;
         public string? informationType { get; set; } = null;
         public string informationId { get; set; } = string.Empty;
+
+        public virtual bool Validate(ICollection<string> errors) {
+            if (string.IsNullOrEmpty(roleType)) return false;
+            if (string.IsNullOrEmpty(role)) return false;
+            if (string.IsNullOrEmpty(informationType)) return false;
+            if (string.IsNullOrEmpty(informationId)) return false;
+            return true;
+        }
     }
 
     public class informationBinding<TAssociation> : informationBinding where TAssociation : InformationAssociation, new()
     {
         public TAssociation association { get; init; } = new TAssociation();
+
+        public override bool Validate(ICollection<string> errors) {
+            return base.Validate(errors);
+        }
     }
 
     public abstract class featureBinding
@@ -852,11 +864,23 @@ namespace S100FC
         public string role { get; init; } = string.Empty;
         public string? featureType { get; set; } = null;
         public string featureId { get; set; } = string.Empty;
+
+        public virtual bool Validate(ICollection<string> errors) {
+            if (string.IsNullOrEmpty(roleType)) return false;
+            if (string.IsNullOrEmpty(role)) return false;
+            if (string.IsNullOrEmpty(featureType)) return false;
+            if (string.IsNullOrEmpty(featureId)) return false;
+            return true;
+        }
     }
 
     public class featureBinding<TAssociation> : featureBinding where TAssociation : FeatureAssociation, new()
     {
         public TAssociation association { get; init; } = new TAssociation();
+
+        public override bool Validate(ICollection<string> errors) {
+            return base.Validate(errors);
+        }
     }
 
     public interface ISummary
