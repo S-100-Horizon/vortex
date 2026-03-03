@@ -161,6 +161,7 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newedition", Name = "NewEdition")]
         public async Task<IActionResult> NewEdition(string name) {
+            _logger.LogInformation("{newEdition} called with name: {name}", nameof(NewEdition), name);
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 
@@ -184,6 +185,8 @@ namespace ProductCatalogueService.Controllers
             }
 
             var product = _electronicProductManager.ElectronicProduct(name)!;
+
+            _logger.LogInformation("Creating exchange set for product {name} edition {edition}", name, product.editionNumber);
 
             this.CreateExchangeSet(product, yaml);
 
@@ -314,7 +317,7 @@ namespace ProductCatalogueService.Controllers
             }
 
             // Cleanup temp yaml
-            IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
+            //IO.File.Delete(Path.Combine(exchangeset.FullName, $"temp_{datasetName}.yaml"));
         }
 
 
