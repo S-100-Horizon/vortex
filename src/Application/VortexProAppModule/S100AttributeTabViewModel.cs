@@ -566,7 +566,7 @@ namespace VortexProAppModule
                         //}
                     }
                     if (e.PropertyName.Equals(nameof(S100AttributeEditorViewModel.informationBindings))) {
-                        var informationBindings = (informationBinding[])viewModel;
+                        var informationBindings = (informationBinding[])viewModel;                      
 
                         var json = System.Text.Json.JsonSerializer.Serialize(informationBindings, this._module.GetFeatureCatalogue(this.SelectedSchema).DefaultJsonOptions);
 

@@ -840,7 +840,7 @@ namespace S100FC
         public string? informationType { get; set; } = null;
         public string informationId { get; set; } = string.Empty;
 
-        public virtual bool Validate(ICollection<string> errors) {
+        public virtual bool Validate(ICollection<string>? errors = default) {
             if (string.IsNullOrEmpty(roleType)) return false;
             if (string.IsNullOrEmpty(role)) return false;
             if (string.IsNullOrEmpty(informationType)) return false;
@@ -853,7 +853,7 @@ namespace S100FC
     {
         public TAssociation association { get; init; } = new TAssociation();
 
-        public override bool Validate(ICollection<string> errors) {
+        public override bool Validate(ICollection<string>? errors = default) {
             return base.Validate(errors);
         }
     }
@@ -865,7 +865,7 @@ namespace S100FC
         public string? featureType { get; set; } = null;
         public string featureId { get; set; } = string.Empty;
 
-        public virtual bool Validate(ICollection<string> errors) {
+        public virtual bool Validate(ICollection<string>? errors = default) {
             if (string.IsNullOrEmpty(roleType)) return false;
             if (string.IsNullOrEmpty(role)) return false;
             if (string.IsNullOrEmpty(featureType)) return false;
@@ -878,7 +878,7 @@ namespace S100FC
     {
         public TAssociation association { get; init; } = new TAssociation();
 
-        public override bool Validate(ICollection<string> errors) {
+        public override bool Validate(ICollection<string>? errors = default) {
             return base.Validate(errors);
         }
     }

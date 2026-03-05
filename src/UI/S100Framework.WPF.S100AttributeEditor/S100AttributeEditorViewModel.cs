@@ -88,23 +88,41 @@ namespace S100Framework.WPF.ViewModel
         #region INotifyDataErrorInfo
         public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
 
-        private bool _hasErrors = false;
-
-        //public bool HasErrors { get; private set; }
-        public bool HasErrors {
-            get {
-                return this._hasErrors;
-            }
-            set {
-                this.SetProperty(ref this._hasErrors, value);
-            }
-        }
+        public bool HasErrors => this._errors.Any();
 
         public IEnumerable GetErrors(string? propertyName) {
-            if (!nameof(attributeBindings).Equals(propertyName)) return Enumerable.Empty<string>();
-            //if(!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
+            if(string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
 
-            return this._errors.First().Value;
+            if (!this._errors.ContainsKey(propertyName) || !this._errors[propertyName].Any()) return Enumerable.Empty<string>();
+
+            return this._errors[propertyName];
+        }
+
+        private void Validate() {
+            this._errors.Clear();
+
+            if (this.Instance is InformationType informationType) {
+                this._errors[nameof(attributeBindings)] = new List<string>();
+                this._errors[nameof(informationBindings)] = new List<string>();
+
+            }
+            else if (this.Instance is FeatureType featureType) {
+                this._errors[nameof(attributeBindings)] = new List<string>();
+                this._errors[nameof(informationBindings)] = new List<string>();
+                this._errors[nameof(featureBindings)] = new List<string>();
+
+                featureType.Validate(this._errors[nameof(attributeBindings)]);
+
+                foreach(var informationBinding in this.informationBindings) {
+                    informationBinding.Validate(this._errors[nameof(informationBindings)]);
+                }
+
+                foreach (var featureBinding in this.featureBindings) {
+                    featureBinding.Validate(this._errors[nameof(featureBindings)]);
+                }
+
+                this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(HasErrors)));
+            }
         }
 
         private readonly Dictionary<string, List<string>> _errors = new();
@@ -176,6 +194,8 @@ namespace S100Framework.WPF.ViewModel
                     }
                 }
                 this.OnPropertyChanged("informationBindings");
+
+                this.Validate();
             };
 
             foreach (var e in this._informationType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
@@ -268,6 +288,8 @@ namespace S100Framework.WPF.ViewModel
                     }
                 }
                 this.OnPropertyChanged("informationBindings");
+
+                this.Validate();
             };
 
             this.featureBindings.CollectionChanged += (s, e) => {
@@ -286,6 +308,8 @@ namespace S100Framework.WPF.ViewModel
                     }
                 }
                 this.OnPropertyChanged("featureBindings");
+
+                this.Validate();
             };
 
             foreach (var e in this._featureType.attributeBindings.OrderBy(e => this.attributeBindingsCatalogue.Single(a => a.attribute.Equals(e.S100FC_code)).order)) {
@@ -338,20 +362,6 @@ namespace S100Framework.WPF.ViewModel
             //var definition = this.featureBindingDefinitions!.GroupBy.Single(e => e.Key.Equals(binding.association)).Single(e => e.role.Equals(binding.role));
 
             //return definition.upper > count;
-        }
-
-        private void Validate() {
-            this._errors.Clear();
-
-            if(this.Instance is InformationType informationType) {
-
-            }
-            else if(this.Instance is FeatureType featureType) {
-                this._errors[nameof(attributeBindings)] = new List<string>();
-                this.HasErrors = !featureType.Validate(this._errors[nameof(attributeBindings)]);
-
-                this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(HasErrors)));
-            }
         }
 
         public void AddAttribute(AttributeViewModel attributeBinding) {
@@ -416,37 +426,6 @@ namespace S100Framework.WPF.ViewModel
             return viewModel;
         }
 
-        #endregion
-
-        #region Properties        
-
-        private string _code = "UNKNOWN";
-
-        public string code {
-            get {
-                return this._code;
-            }
-            set {
-                this.SetProperty(ref this._code, value);
-            }
-        }
-
-        public ObservableCollection<AttributeViewModel> attributeBindings { get; set; } = [];
-
-        public ObservableCollection<InformationBindingViewModel> informationBindings { get; set; } = [];
-
-        public ObservableCollection<FeatureBindingViewModel> featureBindings { get; set; } = [];
-
-        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
-        #endregion
-
-        public object? Instance => this._informationType != default ? this._informationType : this._featureType;
-
-        public Func<string?> Flatten { get; private set; }
-
-        private readonly S100FC.InformationType? _informationType = default;
-        private readonly S100FC.FeatureType? _featureType = default;
-        private readonly string _uid;
 
         public static explicit operator informationBinding[](S100AttributeEditorViewModel viewmodel) {
             informationBinding[] informationBinding = [];
@@ -478,6 +457,37 @@ namespace S100Framework.WPF.ViewModel
                 }
             }
             return featureBindings;
-        }        
+        }
+        #endregion
+
+        #region Properties        
+
+        private string _code = "UNKNOWN";
+
+        public string code {
+            get {
+                return this._code;
+            }
+            set {
+                this.SetProperty(ref this._code, value);
+            }
+        }
+
+        public ObservableCollection<AttributeViewModel> attributeBindings { get; set; } = [];
+
+        public ObservableCollection<InformationBindingViewModel> informationBindings { get; set; } = [];
+
+        public ObservableCollection<FeatureBindingViewModel> featureBindings { get; set; } = [];
+
+        public attributeBindingDefinition[] attributeBindingsCatalogue { get; init; } = [];
+        #endregion
+
+        public object? Instance => this._informationType != default ? this._informationType : this._featureType;
+
+        public Func<string?> Flatten { get; private set; }
+
+        private readonly S100FC.InformationType? _informationType = default;
+        private readonly S100FC.FeatureType? _featureType = default;
+        private readonly string _uid;
     }
 }
