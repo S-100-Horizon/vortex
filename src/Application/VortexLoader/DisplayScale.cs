@@ -34,10 +34,10 @@
 
         public static DisplayScale? GetDisplayScale(string series) {
             DisplayScale scale = series.ToUpperInvariant() switch {
-                "DK4" or "GL4" => new DisplayScale(11000, 22000, 9999999),
+                "DK4" or "GL4" => new DisplayScale(11000, 22000, 10000000),
                 "DK5" or "GL5" => new DisplayScale(6000, 12000, 22000),
 
-                "US4" => new DisplayScale(22000, 45000, 9999999),
+                "US4" => new DisplayScale(22000, 45000, 10000000),
 
                 //"dk4" => new DisplayScale(11000, 22000, 90000),
                 //"dk5" => new DisplayScale(6000, 12000, 22000),
