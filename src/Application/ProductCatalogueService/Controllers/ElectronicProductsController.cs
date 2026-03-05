@@ -163,6 +163,7 @@ namespace ProductCatalogueService.Controllers
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError, "application/json")]
         [HttpPost("{name}/newedition", Name = "NewEdition")]
         public async Task<IActionResult> NewEdition(string name) {
+            _logger.LogInformation("{newEdition} called with name: {name}", nameof(NewEdition), name);
             var sw = Stopwatch.StartNew();
             var response = new ApiResponse();
 

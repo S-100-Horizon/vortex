@@ -224,7 +224,7 @@
     </DataTemplate>
 
     <DataTemplate x:Key="EnumEditorTemplate">
-        <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}" 
+        <ComboBox ItemsSource="{Binding {}, Converter={StaticResource EnumSourceConverter}}"
                   DisplayMemberPath="label"
                   SelectedValue="{Binding value}"
                   SelectedValuePath="code"

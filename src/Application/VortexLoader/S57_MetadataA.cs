@@ -520,7 +520,7 @@ namespace S100Framework.Applications
 
                             // TODO: interoperabilityIdentifier
 
-                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                             if (verticalDatum != null) {
                                 var update = true;
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {

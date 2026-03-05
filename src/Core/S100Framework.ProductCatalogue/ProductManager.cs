@@ -95,8 +95,8 @@ namespace S100FC.ProductCatalogue
 
 
         public string OutputFolder { get; internal set; }
-        private readonly IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
-
+        //private readonly IDictionary<string, Geodatabase> _connections = new Dictionary<string, Geodatabase>();
+        private readonly IDictionary<string, Uri> _connections = new Dictionary<string, Uri>();
         record ElectronicProductKey(string ps, string name)
         {
             public override string ToString() => $"{this.ps}::{this.name}";
@@ -144,11 +144,12 @@ namespace S100FC.ProductCatalogue
                         if (settings != null) {
                             foreach (var connection in settings.Connections) {
                                 if (connection.ConnectionFile == default) {
-                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), this._geodatabase);
+                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), this._geodatabase.GetPath());
                                 }
                                 else {
-                                    var geodatabase = this.OpenGeodatabase(connection.ConnectionFile);
-                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
+                                    this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), connection.ConnectionFile);
+                                    //var geodatabase = this.OpenGeodatabase(connection.ConnectionFile);
+                                    //this._connections.Add(connection.ProductSpecification.ToUpperInvariant(), geodatabase);
                                 }
                             }
 
@@ -322,7 +323,10 @@ namespace S100FC.ProductCatalogue
 
             var electronicProduct = this._electronicProducts[name];
 
-            var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+            //using var connection = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+            var uri = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+
+            using var connection = this.OpenGeodatabase(uri);
 
             var dataset = await this.GetLatestDataset(name);
 
@@ -353,7 +357,10 @@ namespace S100FC.ProductCatalogue
             if (!this._electronicProducts.TryGetValue(name, out var electronicProduct))
                 throw new ArgumentException(null, nameof(name));
 
-            var connection = this._connections[electronicProduct.productSpecification!.name]!;
+            //using var connection = this._connections[electronicProduct.productSpecification!.name]!;
+            var uri = this._connections[this._electronicProducts[name].productSpecification!.name]!;
+
+            using var connection = this.OpenGeodatabase(uri);
 
             var dataset = await this.GetLatestDataset(name);
 
@@ -524,7 +531,10 @@ namespace S100FC.ProductCatalogue
             var regFileReference = new Regex("fileReference\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
             var regPictorialRepresentation = new Regex("pictorialRepresentation\":\"(?<filename>[^\"]+)", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace);
 
-            var connection = this._connections["S-101"]!;
+            //using var connection = this._connections["S-101"]!;
+            var uri = this._connections["S-101"]!;
+
+            
 
             var update = electronicProduct.updateNumber.HasValue ? electronicProduct.updateNumber.Value.ToString("D3") : "000";
 
@@ -549,6 +559,7 @@ namespace S100FC.ProductCatalogue
             var featureTypesAdded = new List<string>();
 
             return await this.Dispatch(() => {
+                using var connection = this.OpenGeodatabase(uri);
                 var topology = connection.BuildTopology(filter)!;
 
                 //  InformationTypes
@@ -728,56 +739,73 @@ namespace S100FC.ProductCatalogue
 
                             // Information Associations
                             if (!current.IsNull("informationbindings")) {
-                                var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, this.jsonSerializerOptionsS101);
+                                try {
+                                    var informationBindings = System.Text.Json.JsonSerializer.Deserialize<informationBinding[]>(Convert.ToString(current["informationbindings"])!, this.jsonSerializerOptionsS101);
 
-                                if (informationBindings != default && informationBindings.Length != 0) {
-                                    foreach (var binding in informationBindings) {
-                                        var asso = new YAML.Association {
-                                            Name = binding.GetType().GenericTypeArguments[0].Name,
-                                            Role = binding.role,
-                                            To = binding.informationId
-                                        };
+                                    if (informationBindings != default && informationBindings.Length != 0) {
+                                        foreach (var binding in informationBindings) {
+                                            var asso = new YAML.Association {
+                                                Name = binding.GetType().GenericTypeArguments[0].Name,
+                                                Role = binding.role,
+                                                To = binding.informationId
+                                            };
 
-                                        // Special case for SpatialAssociation. Add to dictionary for later processing.
-                                        if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
-                                            spatialAssociations.TryAdd(geometry, asso);
-                                        else
-                                            feature?.AddAssociation(asso);
+                                            // TODO: validate method
 
-                                        if (!informationsTypesAdded.Contains(binding.informationId!)) {
-                                            informationsTypesAdded.Add(binding.informationId!);
-                                            dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
+                                            // Special case for SpatialAssociation. Add to dictionary for later processing.
+                                            if (prim != Primitive.Surface && asso.Name.Equals("SpatialAssociation", StringComparison.CurrentCultureIgnoreCase))
+                                                spatialAssociations.TryAdd(geometry, asso);
+                                            else
+                                                feature?.AddAssociation(asso);
+
+                                            if (!informationsTypesAdded.Contains(binding.informationId!)) {
+                                                informationsTypesAdded.Add(binding.informationId!);
+                                                dataset!.AddInformation(informationTypes.Single(e => e.ID!.Equals(binding.informationId!)));
+                                            }
                                         }
                                     }
+                                }
+                                catch (Exception ex) {
+                                    Log.Warning(ex, "Error deserializing informationbindings for feature {name}: {message}", name, ex.Message);
                                 }
                             }
 
                             // Feature Associations
                             if (!current.IsNull("featurebindings")) {
-                                var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, this.jsonSerializerOptionsS101);
+                                try {
+                                    var featureBindings = System.Text.Json.JsonSerializer.Deserialize<featureBinding[]>(Convert.ToString(current["featurebindings"])!, this.jsonSerializerOptionsS101);
 
-                                if (featureBindings != default && featureBindings.Length != 0) {
-                                    foreach (var binding in featureBindings) {
-                                        var roleType = binding.roleType;
+                                    if (featureBindings != default && featureBindings.Length != 0) {
+                                        foreach (var binding in featureBindings) {
 
-                                        // Skip association roleType
-                                        if (roleType == "association")
-                                            continue;
+                                            // check if valid
+                                            // TODO: validate method
 
-                                        var asso = new YAML.Association {
-                                            Name = binding.GetType().GenericTypeArguments[0].Name,
-                                            Role = binding.role,
-                                            To = $"110:{binding!.featureId!.Substring(1)}:1"
-                                        };
+                                            var roleType = binding.roleType;
 
-                                        feature?.AddFeatureAssociation(asso);
+                                            // Skip association roleType
+                                            if (roleType == "association")
+                                                continue;
 
-                                        var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.Substring(1)}:1"));
-                                        if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
-                                            featureTypesAdded.Add(binding.featureId);
-                                            dataset?.AddFeature(noGeometry);
+                                            var asso = new YAML.Association {
+                                                Name = binding.GetType().GenericTypeArguments[0].Name,
+                                                Role = binding.role,
+                                                To = $"110:{binding!.featureId!.Substring(1)}:1"
+                                            };
+
+                                            feature?.AddFeatureAssociation(asso);
+
+                                            var noGeometry = featureTypes.SingleOrDefault(e => e.Foid.Equals($"110:{binding.featureId.Substring(1)}:1"));
+                                            if (noGeometry != null && !featureTypesAdded.Contains(binding.featureId)) {
+                                                featureTypesAdded.Add(binding.featureId);
+                                                dataset?.AddFeature(noGeometry);
+                                            }
                                         }
                                     }
+
+                                }
+                                catch (Exception ex) {
+                                    Log.Warning(ex, "Error deserializing featurebindings for feature {name}: {message}", name, ex.Message);
                                 }
                             }
 
@@ -952,9 +980,9 @@ namespace S100FC.ProductCatalogue
             if (!this._disposed) {
                 this._singleThreadTaskScheduler.Dispose();
 
-                foreach (var e in this._connections) {
-                    e.Value.Dispose();
-                }
+                //foreach (var e in this._connections) {
+                //    e.Value.Dispose();
+                //}
                 this._geodatabase?.Dispose();
                 this._disposed = true;
             }
@@ -972,8 +1000,8 @@ namespace S100FC.ProductCatalogue
 
             var path = connectionFile.LocalPath;
 
-            if (!IO.File.Exists(path))
-                throw new ArgumentNullException($"Could not find or authorize to path: {path}");
+            //if (!IO.File.Exists(path))
+            //    throw new ArgumentNullException($"Could not find or authorize to path: {path}");
 
             if (".sde".Equals(IO.Path.GetExtension(path), StringComparison.InvariantCultureIgnoreCase)) {
                 createGeodatabase = () => { return new Geodatabase(new DatabaseConnectionFile(connectionFile)); };

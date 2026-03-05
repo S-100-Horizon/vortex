@@ -311,7 +311,7 @@ namespace S100Framework.Applications
                                     instance.fixedDateRange = dateRange;
                                 }
 
-                                var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                                var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                                 if (verticalDatum != null) {
                                     var update = true;
                                     foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -412,7 +412,7 @@ namespace S100Framework.Applications
                                     instance.pictorialRepresentation = FixFilename(current.PICREP);
                                 }
 
-                                var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                                var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                                 if (verticalDatum != null) {
                                     var update = true;
                                     foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -756,7 +756,7 @@ namespace S100Framework.Applications
 
                             };
 
-                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                             if (verticalDatum != null) {
                                 var update = true;
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -1736,7 +1736,7 @@ namespace S100Framework.Applications
                             };
 
 
-                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                             if (verticalDatum != null) {
                                 var update = true;
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {

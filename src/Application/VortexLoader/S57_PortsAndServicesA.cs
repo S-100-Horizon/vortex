@@ -292,7 +292,7 @@ namespace S100Framework.Applications
                                 // verticalClearanceValue = current.VERCOP.HasValue ? current.VERCOP.Value : default(decimal?),
                             };
 
-                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                             if (verticalDatum != null) {
                                 var update = true;
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
@@ -808,7 +808,7 @@ namespace S100Framework.Applications
                                 verticalClearanceUnlimited = current.VERCLR.HasValue ? !(current.VERCLR!.Value == default(decimal)) : default,
                             };
 
-                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT ?? 3);
+                            var verticalDatum = ImporterNIS.GetVerticalDatum(current.VERDAT);
                             if (verticalDatum != null) {
                                 var update = true;
                                 foreach (var elm in VerticalDatums.Instance.Touch(current.SHAPE!)) {
