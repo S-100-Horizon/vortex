@@ -74,6 +74,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The length of a berth or dock which is available for use.
 	/// </summary>
+	[RangeConstraintReal(0.0d, 10000.0d, Closure.closedInterval)]
 	public class availableBerthingLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -876,6 +877,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The place or general direction to which a vessel is going or directed.
 	/// </summary>
+	[StringLengthConstraint(100)]
 	public class destination : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -902,6 +904,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// A numeric measure of the spatial separation between two locations.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class distance : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -934,6 +937,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The altitude of the ground level of an object, measured from a specified vertical datum.
 	/// </summary>
+	[RangeConstraintReal(0.0d, 8850.0d, Closure.closedInterval)]
 	public class elevation : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1004,6 +1008,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The shore station receiver frequency.
 	/// </summary>
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationReceives : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1017,6 +1022,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The shore station transmitter frequency.
 	/// </summary>
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class frequencyShoreStationTransmits : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1043,6 +1049,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// A globally unique, standardised identifier for parties and locations in business processes or supply chains.
 	/// </summary>
+	[StringLengthConstraint(13)]
+	[TextPatternConstraint(@"\d{13}")]
 	public class globalLocationNumber : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -1082,6 +1090,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The value of the vertical distance to the highest point of the feature, measured from a specified vertical datum.
 	/// </summary>
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class height : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1095,6 +1104,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the horizontal accuracy of horizontal clearances and distances.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraintReal(0d, double.MaxValue, Closure.geSemiInterval)]
 	public class horizontalDistanceUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1134,6 +1145,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// A common unique identifier for entities which describe a single real-world feature, and which is used to identify instances of the feature in end-user systems where the feature may be included in multiple data product types.
 	/// </summary>
+	[TextPatternConstraint(@"urn:mrn:.+")]
 	public class interoperabilityIdentifier : S100FC.UrnTimeAttribute
 	{
 		[JsonIgnore]
@@ -1260,6 +1272,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class maximumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1273,6 +1286,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The maximum draught of a vessel permitted along a route, in a channel or dock, at a berth, or over a submerged feature.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraintReal(0.0d, 30.0d, Closure.gtLeInterval)]
 	public class maximumPermittedDraught : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1286,6 +1301,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The maximum length of a vessel permitted in a channel or dock, at a berth, or at an anchorage or mooring.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class maximumPermittedVesselLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1374,6 +1391,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The least depth of the body of water at the berth or in a berth pocket adjacent to the berth.
 	/// </summary>
+	[RangeConstraintReal(0.00d, double.MaxValue, Closure.gtSemiInterval)]
 	public class minimumBerthDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1387,6 +1405,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The smallest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class minimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1508,6 +1527,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The largest intended viewing scale for the data.
 	/// </summary>
+	[RangeConstraintInteger(1, int.MaxValue, Closure.geSemiInterval)]
 	public class optimumDisplayScale : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -1521,6 +1541,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the accuracy of a bearing.
 	/// </summary>
+	[PrecisionConstraint(3)]
+	[RangeConstraintReal(0.000d, 360.000d, Closure.geLtInterval)]
 	public class orientationUncertainty : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1534,6 +1556,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north to the major axis of the feature.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraintReal(0.0d, 360.0d, Closure.closedInterval)]
 	public class orientationValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1717,6 +1741,8 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The vector extending from the centre to the periphery of a circular or spherical feature.
 	/// </summary>
+	[PrecisionConstraint(1)]
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class radius : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1781,6 +1807,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The maximum safe force or load that a piece of equipment, device, or accessory can handle without breaking or failing under normal conditions.
 	/// </summary>
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class safeWorkingLoad : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1851,6 +1878,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The greatest depth over a sill.
 	/// </summary>
+	[RangeConstraintReal(0.0d, 100.0d, Closure.closedInterval)]
 	public class sillDepth : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -1877,6 +1905,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The publication, document, or reference work from which information comes or is acquired.
 	/// </summary>
+	[StringLengthConstraint(150)]
 	public class source : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2047,6 +2076,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraintInteger(0, 360, Closure.geLtInterval)]
 	public class textOffsetBearing : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2060,6 +2090,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The distance that text associated with a feature is positioned from the feature in an end-user system.
 	/// </summary>
+	[RangeConstraintInteger(0, 50, Closure.gtLeInterval)]
 	public class textOffsetDistance : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2102,6 +2133,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The thickness of ice that the ship can safely transit.
 	/// </summary>
+	[RangeConstraintInteger(0, int.MaxValue, Closure.gtSemiInterval)]
 	public class thicknessOfIceCapability : S100FC.IntegerAttribute
 	{
 		[JsonIgnore]
@@ -2154,6 +2186,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// Used to encode the UN Location Code (http://www.unece.org/cefact/locode/service/location.html) or - in Europe - the Inland Ship Reporting Standard (ISRS) Code.
 	/// </summary>
+	[StringLengthConstraint(20)]
 	public class uNLocationCode : S100FC.TextAttribute
 	{
 		[JsonIgnore]
@@ -2167,6 +2200,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The best estimate of the fixed horizontal or vertical accuracy component for positions, depths, heights, vertical distances and vertical clearances.
 	/// </summary>
+	[PrecisionConstraint(1)]
 	public class uncertaintyFixed : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2193,6 +2227,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The vertical clearance measured from the horizontal plane towards the feature overhead.
 	/// </summary>
+	[RangeConstraintReal(0.1d, 100.0d, Closure.closedInterval)]
 	public class verticalClearanceValue : S100FC.RealAttribute
 	{
 		[JsonIgnore]
@@ -2252,6 +2287,7 @@ namespace S100FC.S131.SimpleAttributes
 	/// <summary>
 	/// The total vertical length of a feature.
 	/// </summary>
+	[RangeConstraintReal(0.0d, double.MaxValue, Closure.gtSemiInterval)]
 	public class verticalLength : S100FC.RealAttribute
 	{
 		[JsonIgnore]

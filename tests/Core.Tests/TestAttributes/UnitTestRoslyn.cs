@@ -8,6 +8,7 @@ using Xunit.Abstractions;
 namespace TestAttributes
 {
     using S100FC;
+    using static System.Runtime.InteropServices.JavaScript.JSType;
 
     public class UnitTestRoslyn
     {
@@ -30,21 +31,77 @@ namespace TestAttributes
             this.Test_S122_Build();
             this.Test_S123_Build();
             this.Test_S124_Build();
-            //Test_S125_Build();
+            this.Test_S125_Build();
             this.Test_S127_Build();
             this.Test_S128_Build();
             this.Test_S131_Build();
+            this.Test_S501_Build();
         }
 
         [Fact]
         public void Test_S101_Build() {
             var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-101-Documentation-and-FC\S-101FC\FeatureCatalogue.xml"));
 
-            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true);
+            var navigator = ps.CreateNavigator();
+            navigator.MoveToFollowing(XPathNodeType.Element);
+
+            var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+            
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: true, validation: (code, attributes, builder) => {
+                var references = attributes.Select(e => e.Element(XName.Get("attribute", scopes["S100FC"]))!.Attribute("ref")!.Value!);
+                
+                if ("UnderwaterAwashRock".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue) {");
+                    builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Underwater/Awash Rock having mandatory attribute value of sounding populated with an empty (null) value.\");");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\treturn true;");
+                    builder.AppendLine("\t\t}");
+                }
+
+                if ("Wreck".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) {");
+                    builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Wreck having mandatory attributes height not populated and value of sounding populated with an empty (null) value.\");");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\treturn true;");
+                    builder.AppendLine("\t\t}");
+                }
+
+                if ("Obstruction".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) {");
+                    builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Obstruction having mandatory attributes height not populated and value of sounding populated with an empty (null) value.\");");
+                    builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
+                    builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\treturn true;");
+                    builder.AppendLine("\t\t}");
+                }
+            });
 
             var output = roslyn.ToString();
 
             File.WriteAllText(@".\..\..\..\S-101_FC.g.cs", output, Encoding.UTF8);
+
+            var csv = this.TypeWriter(ps);
+            this._output.WriteLine(csv);
+        }
+
+        [Fact]
+        public void Test_S501_Build() {
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-501-Feature-Catalogue\S-501_FC.xml"));
+
+            var roslyn = this.RoslynBuilder(ps, supportingSpatialAssociation: false);
+
+            var output = roslyn.ToString();
+
+            File.WriteAllText(@".\..\..\..\S-501_FC.g.cs", output, Encoding.UTF8);
 
             var csv = this.TypeWriter(ps);
             this._output.WriteLine(csv);
@@ -85,7 +142,7 @@ namespace TestAttributes
 
         [Fact]
         public void Test_S125_Build() {
-            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development\FC\S125FC.xml"));
+            var ps = XDocument.Load(System.IO.Path.Combine(this._iho, @"S-125-Product-Specification-Development-validation\FC\S125FC.xml"));
 
             var roslyn = this.RoslynBuilder(ps, "S125");
 
@@ -202,7 +259,7 @@ namespace TestAttributes
                 )
             );
 
-        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false) {
+        private StringBuilder RoslynBuilder(XDocument ps, string? id = null, bool supportingSpatialAssociation = false, Action<string, IEnumerable<XElement>, StringBuilder>? validation = default) {
             var roslyn = new StringBuilder();
 
             roslyn.AppendLine("using System;");
@@ -261,6 +318,8 @@ namespace TestAttributes
                     roslyn.AppendLine($"\t/// {definition}");
                     roslyn.AppendLine("\t/// </summary>");
 
+                    var constraints = element.Element(XName.Get("constraints", scopes["S100FC"]));
+
                     if (valueType.Equals("enumeration")) {
                         attributesKnownTypes.Add(code, "int");
                         roslyn.AppendLine($"\tpublic class {code} : S100FC.EnumerationAttribute");
@@ -300,6 +359,9 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}(int? value) => new {code} {{ value = value }};");
+
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     else if (valueType.Equals("S100_CodeList")) {
@@ -332,6 +394,9 @@ namespace TestAttributes
                         }
                         roslyn.AppendLine($"\t\t\t];");
                         //roslyn.AppendLine($"\t\tpublic int? value {{ get; set; }} = default;");
+
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     else {
@@ -369,6 +434,45 @@ namespace TestAttributes
                             _ => throw new InvalidDataException(),
                         };
 
+                        if (constraints != default) {
+                            if (constraints.Element(XName.Get("stringLength", scopes["S100CD"])) != default) {
+                                var stringLength = constraints.Element(XName.Get("stringLength", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[StringLengthConstraint({stringLength})]");
+                            }
+                            if (constraints.Element(XName.Get("precision", scopes["S100CD"])) != default) {
+                                var precision = constraints.Element(XName.Get("precision", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[PrecisionConstraint({int.Parse(precision)})]");
+                            }
+                            if (constraints.Element(XName.Get("textPattern", scopes["S100CD"])) != default) {
+                                var textPattern = constraints.Element(XName.Get("textPattern", scopes["S100CD"]))!.Value;
+                                roslyn.AppendLine($"\t[TextPatternConstraint(@\"{textPattern}\")]"); //Replace("\\","\\\\")
+                            }
+                            if (constraints.Element(XName.Get("range", scopes["S100CD"])) != default) {
+                                var lowerBound = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("lowerBound", scopes["S100Base"]));
+                                var upperBound = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("upperBound", scopes["S100Base"]));
+                                var closure = constraints.Element(XName.Get("range", scopes["S100CD"]))!.Element(XName.Get("closure", scopes["S100Base"]));
+
+                                if (!(lowerBound is null && upperBound is null)) {
+                                    if (upperBound is null) {
+                                        roslyn.AppendLine(prefix switch {
+                                            "double" => $"\t[RangeConstraintReal({lowerBound!.Value}d, double.MaxValue, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "decimal" => $"\t[RangeConstraintReal({lowerBound!.Value}d, double.MaxValue, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "int" => $"\t[RangeConstraintInteger({int.Parse(lowerBound!.Value.Split('.')[0])}, int.MaxValue, Closure.{closure!.Value})]",
+                                            _ => throw new InvalidOperationException()
+                                        });
+                                    }
+                                    else {
+                                        roslyn.AppendLine(prefix switch {
+                                            "double" => $"\t[RangeConstraintReal({lowerBound!.Value}d, {upperBound!.Value}d, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "decimal" => $"\t[RangeConstraintReal({lowerBound!.Value}d, {upperBound!.Value}d, Closure.{closure!.Value})]",   //$"{double.Parse(v, CultureInfo.InvariantCulture)}",
+                                            "int" => $"\t[RangeConstraintInteger({int.Parse(lowerBound!.Value.Split('.')[0])}, {int.Parse(upperBound!.Value.Split('.')[0])}, Closure.{closure!.Value})]",
+                                            _ => throw new InvalidOperationException()
+                                        });
+                                    }
+                                }
+                            }
+                        }
+
                         attributesKnownTypes.Add(code, prefix);
                         roslyn.AppendLine($"\tpublic class {code} : S100FC.{type}");
                         roslyn.AppendLine($"\t{{");
@@ -381,6 +485,9 @@ namespace TestAttributes
                         //roslyn.AppendLine($"\t\tpublic {prefix}? value {{ get; set; }} = default;");
                         roslyn.AppendLine();
                         roslyn.AppendLine($"\t\tpublic static implicit operator {code}({prefix}? value) => new {code} {{ value = value }};");
+
+                        //validation?.Invoke(code, roslyn);
+
                         roslyn.AppendLine($"\t}}");
                     }
                     roslyn.AppendLine();
@@ -435,6 +542,7 @@ namespace TestAttributes
                             KnownTypesComplex = attributesKnownComplex,
                             KnownAttributeTypes = attributesKnownTypes,
                             Attributes = element.XPathSelectElements("S100FC:subAttributeBinding", xmlNamespaceManager),
+                            validation = validation,
                         });
                         if (!success) {
                             notFinished = true;
@@ -470,6 +578,7 @@ namespace TestAttributes
                         KnownTypesComplex = attributesKnownComplex,
                         KnownAttributeTypes = attributesKnownTypes,
                         Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        validation = validation,
                     }, (b) => {
                         //b.AppendLine("\t\t[JsonIgnore]");
                         //roslyn.AppendLine($"\t\tpublic override string role => \"{role}\";");
@@ -510,6 +619,7 @@ namespace TestAttributes
                         KnownTypesComplex = attributesKnownComplex,
                         KnownAttributeTypes = attributesKnownTypes,
                         Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
+                        validation = validation,
                     }, (b) => {
                         //b.AppendLine("\t\t[JsonIgnore]");
                         //b.AppendLine($"\t\tpublic override string[] roles => [{string.Join(',', roles)}];");
@@ -551,6 +661,7 @@ namespace TestAttributes
                             Attributes = element.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager),
                             informationAssociationCreators = informationAssociationCreators,
                             informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
+                            validation = validation,
                         });
                         if (!success) {
                             notFinished = true;
@@ -595,7 +706,7 @@ namespace TestAttributes
                         var code = element.Element(XName.Get("code", scopes["S100FC"]))!.Value;
 
                         var informationBindings = () => element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Union([informationBindingSpatialAssociation]);
-                        
+
                         var spatialAssociation = supportingSpatialAssociation && element.XPathSelectElements("S100FC:permittedPrimitives", xmlNamespaceManager).Any(e => Enum.Parse<Primitives>(e.Value!) != Primitives.noGeometry);
 
                         var success = this.ClassBuilder(roslyn, element, "FeatureType, IInformationBindings, IFeatureBindings", new ClassBuilderHost {
@@ -607,6 +718,7 @@ namespace TestAttributes
                             informationAssociationCreators = informationAssociationCreators,
                             featureAssociationCreators = featureAssociationCreators,
                             informationBindings = () => spatialAssociation ? informationBindings() : element.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager),
+                            validation = validation,
                         }, (b) => {
 
                         }, (b) => {
@@ -681,6 +793,14 @@ namespace TestAttributes
 
                 roslyn.AppendLine("\t}");
                 roslyn.AppendLine();
+
+                //roslyn.AppendLine("\tpublic static class Validation {");
+                //roslyn.AppendLine("\t\tpublic static bool IsValid(SimpleAttribute attribute, IEnumerable<SimpleAttribute> attributes) {");
+                //validation?.Invoke(roslyn);
+                //roslyn.AppendLine("\t\t\treturn true;");
+                //roslyn.AppendLine("\t\t}");
+                //roslyn.AppendLine("\t}");
+                //roslyn.AppendLine();
 
                 roslyn.AppendLine("\tpublic static class Extensions {");
 
@@ -794,6 +914,8 @@ namespace TestAttributes
             public ICollection<string> featureAssociationCreators { get; init; } = [];
 
             public Func<IEnumerable<XElement>> informationBindings { get; init; } = () => [];
+
+            public Action<string, IEnumerable<XElement>, StringBuilder>? validation { get; set; } = default;
         }
 
         private bool ClassBuilder(StringBuilder roslyn, XElement element, string type, ClassBuilderHost host, Action<StringBuilder>? pre = default, Action<StringBuilder>? post = default) {
@@ -1055,6 +1177,8 @@ namespace TestAttributes
             roslyn.AppendLine("\t\t#endregion");
 
             post?.Invoke(roslyn);
+
+            host.validation?.Invoke(code, host.Attributes, roslyn);
 
             roslyn.AppendLine($"\t}}");
             roslyn.AppendLine();

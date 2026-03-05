@@ -1,6 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 #nullable enable
@@ -8,12 +10,65 @@ using System.Xml.Serialization;
 
 namespace S100FC
 {
+    public enum Closure : int
+    {
+        openInterval = 0,
+        geLtInterval = 1,
+        gtLeInterval = 2,
+        closedInterval = 3,
+        gtSemiInterval = 4,
+        geSemiInterval = 5,
+        ltSemiInterval = 6,
+        leSemiInterval = 7,
+    }
+
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class OrderAttribute(int order) : System.Attribute
     {
         public int Order { get; set; } = order;
     }
 
+    public abstract class ConstraintAttribute() : System.Attribute
+    {
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class PrecisionConstraintAttribute(int precision) : ConstraintAttribute
+    {
+        public int Precision = precision;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class StringLengthConstraintAttribute(int stringLength) : ConstraintAttribute
+    {
+        public int StringLength = stringLength;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class TextPatternConstraint(string textPattern) : ConstraintAttribute
+    {
+        public string TextPattern = textPattern;
+
+        public Regex Regex = new Regex(textPattern, RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
+    }
+
+    public abstract class RangeConstraintAttribute(Closure closure) : ConstraintAttribute {
+        public Closure Closure = closure;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class RangeConstraintRealAttribute(double lowerBound, double upperBound, Closure closure) : RangeConstraintAttribute(closure)
+    {
+        public double LowerBound = lowerBound;
+        public double UpperBound = upperBound;
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
+    public class RangeConstraintIntegerAttribute(int lowerBound, int upperBound, Closure closure) : RangeConstraintAttribute(closure)
+    {
+        public int LowerBound = lowerBound;
+        public int UpperBound = upperBound;
+    }
 }
 
 namespace S100FC.S100
@@ -165,13 +220,13 @@ namespace S100FC
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract bool HasValue { get; }
+        public abstract bool HasValue { get; }        
     }
 
     public abstract class SimpleAttribute : attributeBinding
     {
         [JsonIgnore]
-        public abstract string valueType { get; }
+        public abstract string valueType { get; }               
     }
 
     public abstract class BooleanAttribute : SimpleAttribute
@@ -440,6 +495,8 @@ namespace S100FC
 
         [JsonIgnore]
         public override bool HasValue => true;  //TODO: HasValue on ComplexAttribute!!!
+
+        public virtual bool IsValid() => true;
     }
 
     public abstract class InformationType : IAttributeBindings
@@ -539,6 +596,8 @@ namespace S100FC
                     this.SetAttribute(binding.CreateInstance()!);
             }
         }
+
+        public virtual bool IsValid() => true;
     }
 
     public abstract class FeatureType : IAttributeBindings
@@ -630,6 +689,8 @@ namespace S100FC
                     this.SetAttribute(binding.CreateInstance()!);
             }
         }
+
+        public virtual bool Validate(ICollection<string> errors) => true;
     }
 
     public class attributeBindingDefinition

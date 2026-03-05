@@ -755,15 +755,16 @@ namespace S100Framework.Applications
             return rhythmOfLight;
         }
 
-        internal static verticalDatum? GetVerticalDatum(int value) {
+        internal static verticalDatum? GetVerticalDatum(int? value) {
+            if(!value.HasValue) return default(verticalDatum?);
             /*
             if (current.VERDAT.HasValue) {
                 instance.verticalDatum = EnumHelper.GetEnumValue<verticalDatum>(current.VERDAT.Value);
             }
             */
 
-            if (VerticalDatumConverter.ContainsKey(value)) {
-                return EnumHelper.GetEnumValue(VerticalDatumConverter[value]);
+            if (VerticalDatumConverter.ContainsKey(value.Value)) {
+                return EnumHelper.GetEnumValue(VerticalDatumConverter[value.Value]);
             }
             return EnumHelper.GetEnumValue(value);
 
