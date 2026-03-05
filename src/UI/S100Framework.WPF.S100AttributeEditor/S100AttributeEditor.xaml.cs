@@ -89,6 +89,24 @@ namespace S100Framework.WPF
                         }
                     }
                 }
+                if(e.parameter is InformationBindingViewModel informationBinding) {
+                    if (e.parent is ItemsControl itemsControl) {
+                        var collection = (ObservableCollection<InformationBindingViewModel>)itemsControl.ItemsSource;
+                        var index = collection.IndexOf(informationBinding);
+                        if (index >= 0) {
+                            collection.RemoveAt(index);
+                        }
+                    }
+                }
+                if (e.parameter is FeatureBindingViewModel featureBinding) {
+                    if (e.parent is ItemsControl itemsControl) {
+                        var collection = (ObservableCollection<FeatureBindingViewModel>)itemsControl.ItemsSource;
+                        var index = collection.IndexOf(featureBinding);
+                        if (index >= 0) {
+                            collection.RemoveAt(index);
+                        }
+                    }
+                }
             }
         }
 
