@@ -677,6 +677,8 @@ namespace S100Framework.Applications
         }
 
         internal static void SetUsageBand(RowBuffer buffer, int scale) {
+            return;
+
             _ = scale switch {
                 -1 => throw new InvalidOperationException("compilation scale isn't initialized!"),
                 < 22000 => buffer["usageband"] = 5,

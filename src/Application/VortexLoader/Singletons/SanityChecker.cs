@@ -53,32 +53,32 @@ namespace S100Framework.Applications.Singletons
             };
             int recordCount = 0;
 
-            foreach (var featureclassName in featureClasses) {
-                int tableErrorCount = 0;
-                using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
+            //foreach (var featureclassName in featureClasses) {
+            //    int tableErrorCount = 0;
+            //    using var featureClass = _geodatabase!.OpenDataset<FeatureClass>(_geodatabase.GetName(featureclassName));
 
-                using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
+            //    using var cursor = featureClass.Search(new QueryFilter() { WhereClause = "1=1" }, true);
 
-                while (cursor.MoveNext()) {
-                    recordCount++;
-                    var feature = cursor.Current;
-                    int? usageband = default;
+            //    while (cursor.MoveNext()) {
+            //        recordCount++;
+            //        var feature = cursor.Current;
+            //        int? usageband = default;
 
-                    if (DBNull.Value != feature["usageband"] && feature["usageband"] is not null) {
-                        usageband = Convert.ToInt32(feature["usageband"]);
-                    }
+            //        if (DBNull.Value != feature["usageband"] && feature["usageband"] is not null) {
+            //            usageband = Convert.ToInt32(feature["usageband"]);
+            //        }
 
-                    if (!usageband.HasValue) {
-                        errorCount++;
-                        errorCount++;
-                        tableErrorCount++;
-                    }
-                }
+            //        if (!usageband.HasValue) {
+            //            errorCount++;
+            //            errorCount++;
+            //            tableErrorCount++;
+            //        }
+            //    }
 
-                if (tableErrorCount > 0) {
-                    Logger.Current.Information($"{tableErrorCount} errors in {tableErrorCount}");
-                }
-            }
+            //    if (tableErrorCount > 0) {
+            //        Logger.Current.Information($"{tableErrorCount} errors in {tableErrorCount}");
+            //    }
+            //}
             return errorCount;
         }
 
