@@ -1,4 +1,5 @@
-﻿using S100FC;
+﻿using Newtonsoft.Json.Linq;
+using S100FC;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -382,38 +383,50 @@ namespace S100Framework.WPF.ViewModel
 
             backingField = newValue;
             OnPropertyChanged(propertyName);
+
+            ValidateProperty(propertyName!, newValue);
             return true;
         }
         #endregion
 
         #region INotifyDataErrorInfo
-        //public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
 
-        //public bool HasErrors => this._errors.Any();
+        public bool HasErrors => this._errors.Any();
 
-        //public IEnumerable GetErrors(string? propertyName) {
-        //    if (string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
-        //    if (!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
-        //    return this._errors[propertyName];
-        //}
+        public IEnumerable GetErrors(string propertyName) => "associations".Equals(propertyName) ? _errors.Values.SelectMany(x => x) ?? Enumerable.Empty<string>() : Enumerable.Empty<string>();
 
-        public void Validate(ICollection<string> errors) {
-            //this._errors.Clear();
+        private void ValidateProperty(string propertyName, object? value) {
+            if (propertyName == nameof(roleType)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "roleType is required." : null);
+            }
+            if (propertyName == nameof(role)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "role is required." : null);
+            }
+            if (propertyName == nameof(informationType)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "informationType is required." : null);
+            }
+            if (propertyName == nameof(informationUID)) {
+                SetError(propertyName, value is null ? "informationUID is required." : null);
+            }
 
-            //if (string.IsNullOrEmpty(this.roleType))
-            //    this._errors[nameof(roleType)] = "roleType can't be empty!";
-            if (string.IsNullOrEmpty(this.role))
-                errors.Add("role can't be empty!");
-            if (string.IsNullOrEmpty(this.informationType))
-                errors.Add("informationType can't be empty!");
-            if (this.informationUID is null)
-                errors.Add("informationUID can't be empty!");
-
-            //if (errors != this.HasErrors)
-            //    this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(""));
+            // Notify that HasErrors might have changed
+            OnPropertyChanged(nameof(HasErrors));
         }
 
-        //private Dictionary<string, string> _errors = new Dictionary<string, string>();
+        private void SetError(string propertyName, string? error) {
+            var had = _errors.Remove(propertyName);
+            if (!string.IsNullOrEmpty(error))
+                _errors[propertyName] = new List<string> { error };
+
+            if (had || !string.IsNullOrEmpty(error))
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        private readonly Dictionary<string, List<string>> _errors = new();
         #endregion
 
         public string association { get; init; }
@@ -463,7 +476,11 @@ namespace S100Framework.WPF.ViewModel
             };
 
             this.role = this.roles[0];
-            //this.Validate();
+
+            this.ValidateProperty(nameof(roleType), this.roleType);
+            this.ValidateProperty(nameof(role), this.role);
+            this.ValidateProperty(nameof(informationType), this.informationType);
+            this.ValidateProperty(nameof(informationUID), this.informationUID);
         }
 
         private informationBindingDefinition? _informationBindingDefinition { get; set; } = null;
@@ -513,7 +530,7 @@ namespace S100Framework.WPF.ViewModel
         private informationBindingDefinition[] _informationBindingDefinitions;
     }
 
-    public class FeatureBindingViewModel : INotifyPropertyChanged
+    public class FeatureBindingViewModel : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler? PropertyChanged = default;
@@ -527,36 +544,50 @@ namespace S100Framework.WPF.ViewModel
 
             backingField = newValue;
             OnPropertyChanged(propertyName);
+
+            ValidateProperty(propertyName!, newValue);
             return true;
         }
         #endregion
 
         #region INotifyDataErrorInfo
-        //public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged = default;
 
-        //public bool HasErrors => this._errors.Any();
+        public bool HasErrors => this._errors.Any();
 
-        //public IEnumerable GetErrors(string? propertyName) {
-        //    if (string.IsNullOrEmpty(propertyName)) return Enumerable.Empty<string>();
-        //    if (!this._errors.ContainsKey(propertyName)) return Enumerable.Empty<string>();
-        //    return this._errors[propertyName];
-        //}
+        public IEnumerable GetErrors(string propertyName) => "associations".Equals(propertyName) ? _errors.Values.SelectMany(x => x) ?? Enumerable.Empty<string>() : Enumerable.Empty<string>();
 
-        public void Validate(ICollection<string> errors) {
-            //if (string.IsNullOrEmpty(this.roleType))
-            //    this._errors[nameof(roleType)] = "roleType can't be empty!";
-            if (string.IsNullOrEmpty(this.role))
-                errors.Add("role can't be empty!");
-            if (string.IsNullOrEmpty(this.featureType))
-                errors.Add("featureType can't be empty!");
-            if (this.featureUID is null)
-                errors.Add("featureUID can't be empty!");
+        private void ValidateProperty(string propertyName, object? value) {
+            if (propertyName == nameof(roleType)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "roleType is required." : null);
+            }
+            if (propertyName == nameof(role)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "role is required." : null);
+            }
+            if (propertyName == nameof(featureType)) {
+                var s = (string?)value ?? string.Empty;
+                SetError(propertyName, string.IsNullOrWhiteSpace(s) ? "featureType is required." : null);
+            }
+            if (propertyName == nameof(featureUID)) {
+                SetError(propertyName, value is null ? "featureUID is required." : null);
+            }
 
-            //if (errors != this.HasErrors)
-            //    this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(""));
+            // Notify that HasErrors might have changed
+            OnPropertyChanged(nameof(HasErrors));
         }
 
-        //private Dictionary<string, string> _errors = new Dictionary<string, string>();
+        private void SetError(string propertyName, string? error) {
+            var had = _errors.Remove(propertyName);
+            if (!string.IsNullOrEmpty(error))
+                _errors[propertyName] = new List<string> { error };
+
+            if (had || !string.IsNullOrEmpty(error))
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        private readonly Dictionary<string, List<string>> _errors = new();
         #endregion
 
         public string association { get; init; }
@@ -606,7 +637,10 @@ namespace S100Framework.WPF.ViewModel
                 //this.Validate();
             };
 
-            //this.Validate();
+            this.ValidateProperty(nameof(roleType), this.roleType);
+            this.ValidateProperty(nameof(role), this.role);
+            this.ValidateProperty(nameof(featureType), this.featureType);
+            this.ValidateProperty(nameof(featureUID), this.featureUID);
         }
 
         private featureBindingDefinition? _featureBindingDefinition { get; set; } = null;

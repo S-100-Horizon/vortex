@@ -103,23 +103,23 @@ namespace S100Framework.WPF.ViewModel
 
             if (this.Instance is InformationType informationType) {
                 this._errors[nameof(attributeBindings)] = new List<string>();
-                this._errors[nameof(informationBindings)] = new List<string>();
+                //this._errors[nameof(informationBindings)] = new List<string>();
 
             }
             else if (this.Instance is FeatureType featureType) {
                 this._errors[nameof(attributeBindings)] = new List<string>();
-                this._errors[nameof(informationBindings)] = new List<string>();
-                this._errors[nameof(featureBindings)] = new List<string>();
+                //this._errors[nameof(informationBindings)] = new List<string>();
+                //this._errors[nameof(featureBindings)] = new List<string>();
 
                 featureType.Validate(this._errors[nameof(attributeBindings)]);
 
-                foreach(var informationBinding in this.informationBindings) {
-                    informationBinding.Validate(this._errors[nameof(informationBindings)]);
-                }
+                //foreach(var informationBinding in this.informationBindings) {
+                //    informationBinding.Validate(this._errors[nameof(informationBindings)]);
+                //}
 
-                foreach (var featureBinding in this.featureBindings) {
-                    featureBinding.Validate(this._errors[nameof(featureBindings)]);
-                }
+                //foreach (var featureBinding in this.featureBindings) {
+                //    featureBinding.Validate(this._errors[nameof(featureBindings)]);
+                //}
 
                 this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(nameof(HasErrors)));
             }

@@ -50,6 +50,7 @@
             <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <converters:BindingAttributeEnabled x:Key="BindingAttributeEnabled"/>
             <converters:ValidationConverter x:Key="ValidationConverter"/>
+            <converters:HasErrorsToBrushConverter x:Key="HasErrorsToBrushConverter"/>
 
             <DataTemplate DataType="{x:Type viewmodel:SimpleAttributeViewModel}">
                 <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
@@ -165,56 +166,59 @@
                             </DockPanel>
                         </DataTemplate>
                     </Expander.HeaderTemplate>
-                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <xctk:WatermarkTextBox Text="{Binding roleType}" Watermark="[UNKNOWN]" IsEnabled="False" VerticalAlignment="Center"/>
+
+                    <Border BorderBrush="{Binding HasErrors, Converter={StaticResource HasErrorsToBrushConverter}}" BorderThickness="1">
+                        <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <xctk:WatermarkTextBox Text="{Binding roleType}" Watermark="[UNKNOWN]" IsEnabled="False" VerticalAlignment="Center"/>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="roleType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="roleType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
                                               SelectedValue="{Binding role}"                  
                                               Padding="2"
                                               IsEnabled="True"/>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox x:Name="informationType" ItemsSource="{Binding informationTypes}" 
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox x:Name="informationType" ItemsSource="{Binding informationTypes}" 
                                               SelectedValue="{Binding informationType}"                  
                                               Padding="2"
                                               IsEnabled="{Binding role, Converter={StaticResource BindingAttributeEnabled}}">
-                                    </ComboBox>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="informationType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="informationType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox ItemsSource="{Binding informationUIDs}" 
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox ItemsSource="{Binding informationUIDs}" 
                                               SelectedValue="{Binding informationUID}"                  
                                               Padding="2"
                                               IsEnabled="{Binding informationType, Converter={StaticResource BindingAttributeEnabled}}"
                                               DropDownOpened="InformationUID_OnDropDownOpened">
-                                    </ComboBox>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="information" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="information" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                    </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
                 </Expander>
             </DataTemplate>
 
@@ -235,57 +239,59 @@
                             </DockPanel>
                         </DataTemplate>
                     </Expander.HeaderTemplate>
-                    
-                    <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <xctk:WatermarkTextBox Text="{Binding roleType}" Watermark="[UNKNOWN]" IsEnabled="False" VerticalAlignment="Center"/>
+
+                    <Border BorderBrush="{Binding HasErrors, Converter={StaticResource HasErrorsToBrushConverter}}" BorderThickness="1">
+                        <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <xctk:WatermarkTextBox Text="{Binding roleType}" Watermark="[UNKNOWN]" IsEnabled="False" VerticalAlignment="Center"/>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="roleType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="roleType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox x:Name="role" ItemsSource="{Binding roles}" 
                                               SelectedValue="{Binding role}"                  
                                               Padding="2"
                                               IsEnabled="True"/>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="role" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox x:Name="featureType" ItemsSource="{Binding featureTypes}" 
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox x:Name="featureType" ItemsSource="{Binding featureTypes}" 
                                               SelectedValue="{Binding featureType}"                  
                                               Padding="2"
                                               IsEnabled="{Binding role, Converter={StaticResource BindingAttributeEnabled}}">
-                                    </ComboBox>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="featureType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="featureType" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                        <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
-                            <DockPanel LastChildFill="True" Background="Transparent">
-                                <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
-                                    <FrameworkElement DockPanel.Dock="Right" Width="18"/>
-                                    <ComboBox ItemsSource="{Binding featureUIDs}"                                              
+                            </Border>
+                            <Border BorderBrush="#EAEBE6" BorderThickness="0,0,0,1">
+                                <DockPanel LastChildFill="True" Background="Transparent">
+                                    <DockPanel DockPanel.Dock="Right" LastChildFill="True" Background="Transparent" Width="{Binding Converter={StaticResource PercentageConverter}, ElementName=PropertyGrid, Path=ActualWidth, ConverterParameter=0.6}">
+                                        <FrameworkElement DockPanel.Dock="Right" Width="18"/>
+                                        <ComboBox ItemsSource="{Binding featureUIDs}"                                              
                                               SelectedValue="{Binding featureUID}"
                                               Padding="2"
                                               IsEnabled="{Binding featureType, Converter={StaticResource BindingAttributeEnabled}}"
                                               DropDownOpened="FeatureUID_OnDropDownOpened">
-                                    </ComboBox>
+                                        </ComboBox>
+                                    </DockPanel>
+                                    <TextBlock DockPanel.Dock="Left" Text="feature" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
                                 </DockPanel>
-                                <TextBlock DockPanel.Dock="Left" Text="feature" TextWrapping="WrapWithOverflow" Padding="5" ClipToBounds="True" VerticalAlignment="Center"/>
-                            </DockPanel>
-                        </Border>
-                    </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </Border>
                 </Expander>
             </DataTemplate>
 

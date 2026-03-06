@@ -1,9 +1,11 @@
 ﻿using S100FC;
 using S100Framework.WPF.ViewModel;
+using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace S100Framework.WPF.Converters
 {
@@ -34,6 +36,20 @@ namespace S100Framework.WPF.Converters
                 return boolValue ? Visibility.Visible : Visibility.Collapsed;
             }
             return Visibility.Collapsed;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class HasErrorsToBrushConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
+            if (value is bool _value) {
+                return _value ? new SolidColorBrush(Colors.Red) : new SolidColorBrush(Colors.Transparent);
+            }
+            return new SolidColorBrush(Colors.Transparent);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
