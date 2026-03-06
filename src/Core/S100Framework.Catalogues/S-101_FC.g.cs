@@ -13461,6 +13461,12 @@ namespace S100FC.S101.FeatureTypes
 
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.curve,Primitives.surface,Primitives.noGeometry];
+
+		public override bool Validate(ICollection<string>? errors) {
+			if (true.Equals(this.openingBridge))
+				return this.categoryOfOpeningBridge.HasValue;
+			return true;
+		}
 	}
 
 	/// <summary>
@@ -27538,9 +27544,9 @@ namespace S100FC.S101.FeatureTypes
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point];
 
-		public override bool Validate(ICollection<string> errors) {
+		public override bool Validate(ICollection<string>? errors) {
 			if (!this.valueOfSounding.HasValue) {
-				errors.Add("This attribute is mandatory for all Underwater/Awash Rock having mandatory attribute value of sounding populated with an empty (null) value.");
+				if(!this.defaultClearanceDepth.HasValue) errors.Add("This attribute is mandatory for all Underwater/Awash Rock having mandatory attribute value of sounding populated with an empty (null) value.");
 				return this.defaultClearanceDepth.HasValue;
 			}
 			return true;
@@ -27884,9 +27890,9 @@ namespace S100FC.S101.FeatureTypes
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.surface];
 
-		public override bool Validate(ICollection<string> errors) {
+		public override bool Validate(ICollection<string>? errors) {
 			if (!this.valueOfSounding.HasValue && !this.height.HasValue) {
-				errors.Add("This attribute is mandatory for all Wreck having mandatory attributes height not populated and value of sounding populated with an empty (null) value.");
+				if(!this.defaultClearanceDepth.HasValue) errors.Add("This attribute is mandatory for all Wreck having mandatory attributes height not populated and value of sounding populated with an empty (null) value.");
 				return this.defaultClearanceDepth.HasValue;
 			}
 			return true;
@@ -28256,7 +28262,7 @@ namespace S100FC.S101.FeatureTypes
 		[JsonIgnore]
 		public override Primitives[] permittedPrimitives => [Primitives.point,Primitives.curve,Primitives.surface];
 
-		public override bool Validate(ICollection<string> errors) {
+		public override bool Validate(ICollection<string>? errors) {
 			if (!this.valueOfSounding.HasValue && !this.height.HasValue) {
 				if(!this.defaultClearanceDepth.HasValue) errors.Add("This attribute is mandatory for all Obstruction having mandatory attributes height not populated and value of sounding populated with an empty (null) value.");
 				return this.defaultClearanceDepth.HasValue;

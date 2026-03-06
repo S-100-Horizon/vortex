@@ -3900,7 +3900,7 @@ namespace S100FC.S501.SimpleAttributes
 		[JsonIgnore]
 		public override string S100FC_code => nameof(operatingCompany);
 		[JsonIgnore]
-		public override string S100FC_name => "Operator";
+		public override string S100FC_name => "Operator Company";
 
 		public static implicit operator operatingCompany(String? value) => new operatingCompany { value = value };
 	}

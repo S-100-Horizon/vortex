@@ -236,6 +236,17 @@
                                     </i:Interaction.Behaviors>
                                 </Button>
                                 <TextBlock Padding="5,0,0,0" DockPanel.Dock="Left" Text="{Binding}" VerticalAlignment="Center" />
+
+                                <!--<DockPanel.ToolTip>
+                                    <ItemsControl ItemsSource="{Binding (Validation.Errors), RelativeSource={RelativeSource Self}}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding ErrorContent}" Foreground="Red"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </DockPanel.ToolTip>-->
+
                             </DockPanel>
                         </DataTemplate>
                     </Expander.HeaderTemplate>

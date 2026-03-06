@@ -52,7 +52,8 @@ namespace S100FC
         public Regex Regex = new Regex(textPattern, RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace | RegexOptions.Compiled);
     }
 
-    public abstract class RangeConstraintAttribute(Closure closure) : ConstraintAttribute {
+    public abstract class RangeConstraintAttribute(Closure closure) : ConstraintAttribute
+    {
         public Closure Closure = closure;
     }
 
@@ -220,13 +221,13 @@ namespace S100FC
         public abstract string S100FC_name { get; }
 
         [JsonIgnore]
-        public abstract bool HasValue { get; }        
+        public abstract bool HasValue { get; }
     }
 
     public abstract class SimpleAttribute : attributeBinding
     {
         [JsonIgnore]
-        public abstract string valueType { get; }               
+        public abstract string valueType { get; }
     }
 
     public abstract class BooleanAttribute : SimpleAttribute
@@ -690,7 +691,7 @@ namespace S100FC
             }
         }
 
-        public virtual bool Validate(ICollection<string> errors) => true;
+        public virtual bool Validate(ICollection<string>? errors = default) => true;
     }
 
     public class attributeBindingDefinition

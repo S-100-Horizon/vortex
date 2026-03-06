@@ -53,7 +53,7 @@ namespace TestAttributes
                 
                 if ("UnderwaterAwashRock".Equals(code)) {
                     builder.AppendLine();
-                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string>? errors) {");
                     builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue) {");
                     builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Underwater/Awash Rock having mandatory attribute value of sounding populated with an empty (null) value.\");");
                     builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
@@ -64,7 +64,7 @@ namespace TestAttributes
 
                 if ("Wreck".Equals(code)) {
                     builder.AppendLine();
-                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string>? errors) {");
                     builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) {");
                     builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Wreck having mandatory attributes height not populated and value of sounding populated with an empty (null) value.\");");
                     builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
@@ -75,11 +75,20 @@ namespace TestAttributes
 
                 if ("Obstruction".Equals(code)) {
                     builder.AppendLine();
-                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string> errors) {");
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string>? errors) {");
                     builder.AppendLine("\t\t\tif (!this.valueOfSounding.HasValue && !this.height.HasValue) {");
                     builder.AppendLine("\t\t\t\tif(!this.defaultClearanceDepth.HasValue) errors.Add(\"This attribute is mandatory for all Obstruction having mandatory attributes height not populated and value of sounding populated with an empty (null) value.\");");
                     builder.AppendLine("\t\t\t\treturn this.defaultClearanceDepth.HasValue;");
                     builder.AppendLine("\t\t\t}");
+                    builder.AppendLine("\t\t\treturn true;");
+                    builder.AppendLine("\t\t}");
+                }
+
+                if ("Bridge".Equals(code)) {
+                    builder.AppendLine();
+                    builder.AppendLine("\t\tpublic override bool Validate(ICollection<string>? errors) {");
+                    builder.AppendLine("\t\t\tif (true.Equals(this.openingBridge))");
+                    builder.AppendLine("\t\t\t\treturn this.categoryOfOpeningBridge.HasValue;");
                     builder.AppendLine("\t\t\treturn true;");
                     builder.AppendLine("\t\t}");
                 }
